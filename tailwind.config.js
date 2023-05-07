@@ -1,0 +1,143 @@
+const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
+
+module.exports = {
+  content: ['./src/pages/**/*.js', './src/components/**/*.js'],
+  darkMode: 'class',
+  theme: {
+    fontSize: {
+      xs: ['.75rem', '1rem'],
+      sm: ['.875rem', '1.25rem'],
+      base: ['1rem', '1.5rem'],
+      lg: ['1.125rem', '1.75rem'],
+      xl: ['1.25rem', '1.75rem'],
+      '2xl': ['1.5rem', '2rem'],
+      '3xl': ['1.875rem', '2.25rem'],
+      '4xl': ['2.25rem', '2.5rem'],
+      '5xl': ['3rem', '1'],
+      '6xl': ['3.75rem', '1'],
+      '7xl': ['5rem', '1'],
+      '8xl': ['6rem', '1'],
+      '9xl': ['7rem', '1'],
+      '10xl': ['9rem', '1'],
+    },
+    fontFamily: {
+      sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      mono: ['Roboto Mono', ...defaultTheme.fontFamily.mono],
+    },
+    extend: {
+      typography(theme) {
+        return {
+          dark: {
+            css: {
+              color: theme('colors.gray.300'),
+              '[class~="lead"]': { color: theme('colors.gray.400') },
+              a: { color: theme('colors.gray.100') },
+              strong: { color: theme('colors.gray.100') },
+              'ul > li::before': { backgroundColor: theme('colors.gray.700') },
+              hr: { borderColor: theme('colors.gray.800') },
+              blockquote: {
+                color: theme('colors.gray.100'),
+                borderLeftColor: theme('colors.gray.800'),
+              },
+              h1: { color: theme('colors.gray.100') },
+              h2: { color: theme('colors.gray.100') },
+              h3: { color: theme('colors.gray.100') },
+              h4: { color: theme('colors.gray.100') },
+              code: {
+                color: theme('colors.gray.100'),
+              },
+              'a code': { color: theme('colors.gray.100') },
+              thead: {
+                color: theme('colors.gray.100'),
+                borderBottomColor: theme('colors.gray.700'),
+              },
+              'tbody tr': { borderBottomColor: theme('colors.gray.800') },
+            },
+          },
+        };
+      },
+      fontFamily: {
+        intertight: ['Inter Tight', 'sans-serif'],
+      },
+      padding: { 'fluid-video': '56.25%' },
+      colors: {
+        dovegray: {
+          50: '#C2C2C2',
+          100: '#B8B8B8',
+          200: '#A3A3A3',
+          300: '#8F8F8F',
+          400: '#7A7A7A',
+          500: '#666666',
+          600: '#4A4A4A',
+          700: '#2E2E2E',
+          800: '#121212',
+          900: '#000000',
+        },
+        tfslight: {
+          100: '#F6F8FA',
+          200: '#F3F4F6',
+          300: '#6B737C',
+          400: '#4C535B',
+          500: '#4C535B',
+          600: '#30363D',
+          700: '#161B22',
+          800: '#0D1117',
+          900: '#010409',
+        },
+        tfsdark: {
+          100: '#C9D1D9',
+          200: '#8B949E',
+          300: '#6B737C',
+          400: '#4C535B',
+          500: '#4C535B',
+          600: '#30363D',
+          700: '#161B22',
+          800: '#0D1117',
+          900: '#010409',
+        },
+        tfssecondary: {
+          100: '#7f5af0',
+          200: '#7f5af0',
+          300: '#7f5af0',
+          400: '#7f5af0',
+          500: '#7f5af0',
+          600: '#7251D8',
+          700: '#7f5af0',
+          800: '#7f5af0',
+          900: '#7f5af0',
+        },
+        tfstertiary: {
+          100: '#2cb67d',
+          200: '#2cb67d',
+          300: '#2cb67d',
+          400: '#2cb67d',
+          500: '#2cb67d',
+          600: '#2cb67d',
+          700: '#2cb67d',
+          800: '#2cb67d',
+          900: '#2cb67d',
+        },
+        primary: {
+          100: '#7f5af0',
+          200: '#7f5af0',
+          300: '#7f5af0',
+          400: '#7f5af0',
+          500: '#7f5af0',
+          600: '#7251D8',
+          700: '#7f5af0',
+          800: '#7f5af0',
+          900: '#7f5af0',
+        },
+      },
+    },
+  },
+  variants: {
+    extend: { opacity: ['disabled'], typography: ['dark'] },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
+  ],
+};

@@ -1,0 +1,97 @@
+.react-mde {
+  border: none;
+  border-style: none;
+  border-color: transparent;
+  overflow: auto;
+  background-color: transparent;
+}
+
+.react-mde div {
+  -moz-appearance: none;
+  outline: 0px none transparent;
+  border-style: none;
+  border-color: transparent;
+  overflow: auto;
+}
+
+.mde-header {
+  background-color: #111111;
+  color: #121212;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 0 15px;
+  border-radius: 5px;
+}
+
+.mde-header .mde-tabs button:first-child {
+  margin-left: 0px;
+  margin-right: 20px;
+}
+
+.mde-header .mde-tabs button:last-child {
+  margin-right: 25px;
+}
+
+.mde-tabs button {
+  padding: 0;
+}
+
+.mde-header .mde-tabs button {
+  font-size: 0.9rem;
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.mde-header ul.mde-header-group {
+  padding: 10px 20px 10px 0px;
+}
+
+.mde-header-item button {
+  color: white !important;
+  background-color: #30363d;
+}
+
+.mde-header ul.mde-header-group li.mde-header-item,
+.mde-header ul.mde-header-group li.mde-header-item button {
+  margin: 2px 4px 0px 0 !important;
+  padding: 0 4px 0px 0 !important;
+}
+
+.mde-header ul.mde-header-group li.mde-header-item button {
+  height: auto;
+}
+
+.mde-header .mde-tabs button {
+  text-decoration: none;
+  color: white;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+}
+
+.mde-header .mde-tabs button.selected {
+  text-decoration: none;
+  color: white;
+  border: 0;
+  border-bottom: 3px solid #7f5af0;
+}
+
+.mde-textarea-wrapper textarea.mde-text {
+  background-color: transparent;
+  padding: 10px;
+  resize: none;
+}
+
+.mde-textarea-wrapper textarea.mde-text::placeholder {
+  color: #cccccc;
+}
+
+.mde-preview .mde-preview-content h1,
+.mde-preview .mde-preview-content h2,
+.mde-preview .mde-preview-content h3 {
+  border-bottom: 0px;
+}
+
+.mde-preview .mde-preview-content {
+  padding: 10px;
+}

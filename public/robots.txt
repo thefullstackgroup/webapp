@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /api
+
+User-agent: SiteCheckerBotCrawler
+Disallow: /
+
+User-agent: sitechecker.pro
+Disallow:/ 
+
+Sitemap: http://thefullstack.network/sitemap.xml

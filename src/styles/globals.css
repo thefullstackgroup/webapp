@@ -1,0 +1,302 @@
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-500 text-white text-sm md:text-base font-medium py-2 sm:py-1.5 px-4 rounded focus:outline-none disabled:bg-slate-800 disabled:text-slate-400 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-tfsdark-600 hover:bg-tfsdark-500/50 text-white text-sm md:text-base font-medium py-2 sm:py-1.5 px-4 rounded focus:outline-none disabled:bg-slate-700 disabled:text-slate-400 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply bg-none text-slate-400 hover:text-white text-sm md:text-base font-medium py-2 rounded focus:outline-none disabled:bg-slate-700 disabled:text-slate-400 disabled:cursor-not-allowed;
+  }
+  .btn-with-icon {
+    @apply flex items-center space-x-2 pl-2 pr-5;
+  }
+  .btn-with-icon-only {
+    @apply bg-transparent hover:bg-tfsdark-600/50 rounded-xl;
+  }
+  .text-input {
+    @apply placeholder-gray-400 bg-tfsdark-600/50 mt-1 text-base block w-full border-none border-tfsdark-600 rounded py-2.5 px-3 focus:outline-none focus:ring-0 focus:border-tfsdark-600 resize-none ring-0 text-white;
+  }
+  .text-link {
+    @apply text-indigo-300;
+  }
+  .badge {
+    @apply bg-slate-700 text-slate-200 px-2 py-1 rounded text-sm font-normal mr-1 mb-1;
+  }
+  .badge-xs {
+    @apply text-xs;
+  }
+  .badge-with-icon {
+    @apply flex items-center space-x-1;
+  }
+}
+
+body {
+  background: #070b10;
+  color: #ffffff;
+}
+
+/* Define .no-scrollbar */
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .prose-sm {
+    font-size: 0.94rem;
+    line-height: 1.5;
+  }
+  .prose pre {
+    background-color: #282a36;
+  }
+  .prose h1,
+  .prose h2 {
+    margin-top: 1em;
+    font-size: 1.4em;
+    font-weight: 600;
+  }
+  .prose-sm h1,
+  .prose-sm h2 {
+    font-size: 1em;
+    font-weight: 600;
+  }
+  .prose {
+    font-family: 'Inter';
+  }
+  .prose p {
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+  }
+  .prose ul,
+  .prose-sm ul {
+    list-style: disc;
+  }
+  .prose-comments p {
+    margin-top: 0em !important;
+    margin-bottom: 0em;
+    font-size: 0.9em;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .prose-comments ul {
+    margin-top: 0em !important;
+    margin-bottom: 0em;
+    font-size: 0.9em;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .prose-comments li {
+    margin-top: 0em !important;
+    margin-bottom: 0em;
+  }
+  .prose-comments span {
+    margin-top: 0em !important;
+    font-size: 0.9em;
+    font-weight: 400;
+    line-height: 1.5;
+    display: block;
+  }
+  .prose-custom {
+    margin-top: 0em !important;
+  }
+  .prose-custom p {
+    margin-top: 0em !important;
+    line-height: 1.6;
+    margin-bottom: 0em !important;
+  }
+  .prose pre code {
+    font-size: 0.9rem;
+    font-family: 'Roboto Mono' !important;
+  }
+
+  .prose img {
+    /* width: auto !important; */
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .prose table {
+    display: block;
+    width: 100%;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+  }
+
+  .prose-lg img {
+    width: auto !important;
+  }
+  .prose-lg h1 {
+    font-size: 1.6rem !important;
+  }
+  .dark .dark\:prose-dark a,
+  .prose a {
+    color: #a5b4fc !important;
+    text-decoration: none;
+  }
+  .dark .dark\:prose-dark a:hover,
+  .prose a:hover {
+    color: #ffffff !important;
+    text-decoration: none;
+  }
+}
+
+.loading-blue-circle {
+  animation-delay: 0.1s;
+}
+.loading-green-circle {
+  animation-delay: 0.2s;
+}
+.loading-red-circle {
+  animation-delay: 0.3s;
+}
+
+#radioyes,
+#radiono {
+  margin-bottom: 0.2rem;
+}
+
+ul.mde-suggestions {
+  z-index: 100 !important;
+  position: static !important;
+  overflow-y: scroll;
+  max-height: 200px;
+  margin: 0 !important;
+  border: 0px !important;
+}
+ul.mde-suggestions:focus {
+  border: 0px !important;
+}
+
+ul.mde-suggestions li {
+  font-size: 0.8rem;
+}
+
+.dark ul.mde-suggestions {
+  background-color: #27272a;
+  border: 0px !important;
+}
+
+.dark ul.mde-suggestions li {
+  border: 0px !important;
+}
+
+ul.mde-suggestions li:hover {
+  background-color: #ececec !important;
+  color: #121212 !important;
+}
+
+.dark ul.mde-suggestions li:hover {
+  background-color: #3f3f46 !important;
+  color: #999999 !important;
+}
+
+ul.mde-suggestions li[aria-selected='true'] {
+  background-color: transparent !important;
+}
+
+.tf-v1-popover-tooltip-text {
+  color: #121212;
+}
+
+@media only screen and (max-width: 600px) {
+  .tf-v1-popover-tooltip,
+  .tf-v1-popover-button {
+    display: none !important;
+  }
+}
+
+.yt-lite {
+  background-color: #000;
+  position: relative;
+  display: block;
+  contain: content;
+  background-position: center center;
+  background-size: cover;
+  cursor: pointer;
+  height: 100%;
+}
+
+/* gradient */
+.yt-lite::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAADGCAYAAAAT+OqFAAAAdklEQVQoz42QQQ7AIAgEF/T/D+kbq/RWAlnQyyazA4aoAB4FsBSA/bFjuF1EOL7VbrIrBuusmrt4ZZORfb6ehbWdnRHEIiITaEUKa5EJqUakRSaEYBJSCY2dEstQY7AuxahwXFrvZmWl2rh4JZ07z9dLtesfNj5q0FU3A5ObbwAAAABJRU5ErkJggg==);
+  background-position: top;
+  background-repeat: repeat-x;
+  height: 60px;
+  padding-bottom: 50px;
+  width: 100%;
+  transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* responsive iframe with a 16:9 aspect ratio
+  thanks https://css-tricks.com/responsive-iframes/
+*/
+.yt-lite::after {
+  content: '';
+  display: block;
+  padding-bottom: calc(100% / (16 / 9));
+}
+.yt-lite > iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* play button */
+.yt-lite > .lty-playbtn {
+  width: 70px;
+  height: 46px;
+  background-color: #212121;
+  z-index: 1;
+  opacity: 0.8;
+  border-radius: 14%; /* TODO: Consider replacing this with YT's actual svg. Eh. */
+  transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
+}
+.yt-lite:hover > .lty-playbtn {
+  background-color: #f00;
+  opacity: 1;
+}
+/* play button triangle */
+.yt-lite > .lty-playbtn:before {
+  content: '';
+  border-style: solid;
+  border-width: 11px 0 11px 19px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.yt-lite > .lty-playbtn,
+.yt-lite > .lty-playbtn:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+/* Post-click styles */
+.yt-lite.lyt-activated {
+  cursor: unset;
+}
+.yt-lite.lyt-activated::before,
+.yt-lite.lyt-activated > .lty-playbtn {
+  opacity: 0;
+  pointer-events: none;
+}
