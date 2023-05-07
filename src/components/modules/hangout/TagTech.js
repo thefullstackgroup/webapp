@@ -1,23 +1,10 @@
+import TagStack from 'components/common/tags/TagStack';
 import React from 'react';
 import { useState } from 'react';
-import { IoCodeOutline } from 'react-icons/io5';
-import * as Icons from 'react-icons/si';
 
 const TagTech = ({ savedSkills, setSavedSkills, setShowTech }) => {
   const [skillList, setSkillList] = useState([]);
   const [skillName, setSkillName] = useState('');
-
-  const Icon = (props) => {
-    const { iconName } = props;
-
-    const iconKey = `Si${
-      iconName.charAt(0).toUpperCase() + iconName.slice(1).toLowerCase()
-    }`;
-    const icon = React.createElement(Icons[iconKey] || IoCodeOutline, {
-      className: 'w-5 h-5 text-slate-400',
-    });
-    return <div>{icon}</div>;
-  };
 
   const addSkill = (skill) => {
     setSkillName('');
@@ -26,7 +13,6 @@ const TagTech = ({ savedSkills, setSavedSkills, setShowTech }) => {
     });
 
     if (skill.skillId === -1) {
-      // createSkill();
       setSkillList([]);
     }
     if (!skillsExists && skill.skillId != -1) {
@@ -79,7 +65,7 @@ const TagTech = ({ savedSkills, setSavedSkills, setShowTech }) => {
             autoFocus
             placeholder="Search e.g. React"
             onChange={(e) => searchSkills(e.target.value)}
-            className="text-white bg-tfsdark-900 focus:ring-0 border-0 focus:border-0 "
+            className="text-input bg-tfsdark-900"
             value={skillName}
           />
         </div>
@@ -87,12 +73,9 @@ const TagTech = ({ savedSkills, setSavedSkills, setShowTech }) => {
       <div>
         <div>
           {skillName.length > 1 && skillList.length > 0 && (
-            <ul className="absolute top-14 w-full border border-tfsdark-800 bg-tfsdark-900 rounded shadow-lg z-10 max-h-96 overflow-scroll overscroll-contain">
+            <ul className="absolute top-10 left-0 w-full border border-tfsdark-800 bg-tfsdark-900 rounded shadow-lg z-10 max-h-96 overflow-scroll overscroll-contain">
               {skillList.map((result) => (
-                <li
-                  className="my-1 px-4 py-1 items-center"
-                  key={result.skillId}
-                >
+                <li className="my-1 px-4 items-center" key={result.skillId}>
                   <button
                     type="button"
                     className="flex items-center space-x-2 focus:outline-none w-full text-left text-slate-200 text-sm"
@@ -101,8 +84,7 @@ const TagTech = ({ savedSkills, setSavedSkills, setShowTech }) => {
                       setShowTech(false);
                     }}
                   >
-                    <Icon iconName={`${result.skillName}`} />
-                    <span>{result.skillName}</span>
+                    <TagStack tech={result.skillName} />
                   </button>
                 </li>
               ))}

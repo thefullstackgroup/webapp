@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import TextareaAutosize from 'react-textarea-autosize';
-import { Transition } from '@headlessui/react';
 import TagPost from 'components/common/tags/TagPostType';
 import TagTech from 'components/modules/hangout/TagTech';
 import Loader from 'components/common/elements/Loader';
-import UploadPostVideo from 'components/common/elements/mux/UploadPostVideo';
+import { CgSpinner } from 'react-icons/cg';
+import { BiPoll } from 'react-icons/bi';
+import { FiSend } from 'react-icons/fi';
 import {
   IoCodeSlash,
   IoImageOutline,
   IoPricetagOutline,
   IoTrashOutline,
-  IoCodeOutline,
-  IoCloseOutline,
   IoClose,
 } from 'react-icons/io5';
-import { BiPoll } from 'react-icons/bi';
-import * as Icons from 'react-icons/si';
-import { FiSend } from 'react-icons/fi';
-import * as ga from 'lib/ga';
-import { CgSpinner } from 'react-icons/cg';
+import TagStack from 'components/common/tags/TagStack';
 
 const postTypeOptions = [
   {
@@ -100,20 +96,8 @@ const postTypeOptions = [
   },
 ];
 
-// const postTypeOptions = ['ADVICE', 'LEARNING', 'MEME', 'VENT'];
 const sparkCharCount = 300;
 const initialPollOptions = ['', ''];
-const Icon = (props) => {
-  const { iconName } = props;
-
-  const iconKey = `Si${
-    iconName.charAt(0).toUpperCase() + iconName.slice(1).toLowerCase()
-  }`;
-  const icon = React.createElement(Icons[iconKey] || IoCodeOutline, {
-    className: 'w-4 h-4 text-slate-400',
-  });
-  return <div>{icon}</div>;
-};
 
 const CreatePost = ({ user }) => {
   const router = useRouter();
@@ -129,7 +113,6 @@ const CreatePost = ({ user }) => {
   const [pollOptions, setPollOptions] = useState(initialPollOptions);
   const [postBody, setPostBody] = useState('');
   const [coverImage, setCoverImage] = useState('');
-  const [coverVideo, setCoverVideo] = useState('');
 
   const addPollOption = (option) => {
     if (pollOptions.length > 5)
@@ -183,21 +166,6 @@ const CreatePost = ({ user }) => {
     setSavedSkills(filteredSavedSkills);
   };
 
-  const sendSlackMessage = async () => {
-    await axios.post(
-      `${process.env.BASEURL}/api/notifications/slack/postMessage`,
-      {
-        message: `A post (${postType}) has been posted by the username '${user.displayName}'`,
-      }
-    );
-  };
-
-  const sendGAEvent = (eventName) => {
-    ga.event({
-      action: eventName,
-    });
-  };
-
   const handleSubmitPost = async () => {
     setPosting(true);
     // change post type if character count is great than Spark count
@@ -228,7 +196,7 @@ const CreatePost = ({ user }) => {
         projectBody: postBody,
         projectTechStack: savedSkills,
         projectImgURI: coverImage,
-        projectVideoURI: coverVideo,
+        projectVideoURI: '',
         pollOptions: postType === 'POLL' ? pollOptions : [],
         sourceControlLink: '',
         projectLinkURI: '',
@@ -247,8 +215,9 @@ const CreatePost = ({ user }) => {
       .post(`${process.env.BASEURL}/api/projects/project/add`, data)
       .then((result) => {
         setPostPublished(true);
-        sendGAEvent('user_created_post');
-        sendSlackMessage();
+        sendSlackMessage(
+          `A post (${postType}) has been posted by the username '${user.displayName}'`
+        );
         router.reload(`/hangout`);
       })
       .catch((error) => {
@@ -271,7 +240,7 @@ const CreatePost = ({ user }) => {
       <div className="flex mx-0 sm:mx-0 sm:rounded-lg sm:bg-tfsdark-700 mb-6 border-b sm:border-b-0 border-tfsdark-600">
         <div className="flex w-full">
           <div className="relative ml-2 mr-4 w-full pb-4">
-            <div className="text-lg text-slate-500 border-gray-800 mb-2 px-4">
+            <div className="text-lg text-slate-500 border-gray-800 mb-2 px-2">
               {postType !== 'SPARK' && (
                 <div className="flex items-center space-x-1 pt-2">
                   <TagPost postType={postType} />
@@ -295,7 +264,7 @@ const CreatePost = ({ user }) => {
                 placeholder={
                   postType === 'POLL'
                     ? `Type question here...`
-                    : `What's happening ...`
+                    : `Share something today ...`
                 }
                 value={postBody}
                 onChange={(e) => {
@@ -365,37 +334,27 @@ const CreatePost = ({ user }) => {
                 </div>
               )}
 
-              {savedSkills.map((savedSkill, index) => (
-                <div
-                  className="bg-tfsdark-600 inline-flex items-center text-xs rounded-full mt-1 mr-1 overflow-hidden pl-1"
-                  key={index}
-                >
-                  <span
-                    className="flex items-center space-x-1 leading-relaxed truncate max-w-xs px-1 text-slate-400"
-                    x-text="tag"
+              <div className="flex items-center">
+                {savedSkills.map((savedSkill, index) => (
+                  <button
+                    onClick={() => {
+                      removeSkill(savedSkill);
+                    }}
+                    key={index}
                   >
-                    <Icon iconName={`${savedSkill}`} />
-                    <span>{savedSkill}</span>
-                  </span>
-                  <button className="w-6 h-6 inline-block align-middle text-slate-400 bg-tfsdark-600 focus:outline-none">
-                    <IoCloseOutline
-                      className="w-4 h-4 fill-current mx-auto"
-                      onClick={() => {
-                        removeSkill(savedSkill);
-                      }}
-                    />
+                    <TagStack tech={savedSkill} size="xs" />
                   </button>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
             <div className="w-full relative">
               <div className="flex justify-between">
-                <div className="flex items-center space-x-4 text-gray-400 dark:text-gray-400 w-full mx-4">
+                <div className="flex items-center space-x-4 text-gray-400 w-full mx-2">
                   <label
                     htmlFor="coverImage"
                     className="flex space-x-1 items-center font-semibold cursor-pointer"
                   >
-                    <IoImageOutline className="h-5 mx-auto w-auto text-gray-400 dark:text-gray-400" />
+                    <IoImageOutline className="h-5 mx-auto w-auto text-gray-400" />
                     <span className="hidden md:block text-sm">Image</span>
                     <input
                       id="coverImage"
@@ -406,30 +365,25 @@ const CreatePost = ({ user }) => {
                     />
                   </label>
 
-                  <UploadPostVideo
-                    setCoverVideo={setCoverVideo}
-                    setCoverImage={setCoverImage}
-                  />
-
                   <button
                     className="flex space-x-1 items-center font-semibold"
                     onClick={() => setPostType('POLL')}
                   >
-                    <BiPoll className="h-5 mx-auto w-auto text-gray-400 dark:text-gray-400" />
+                    <BiPoll className="h-5 mx-auto w-auto text-gray-400" />
                     <span className="hidden md:block text-sm">Poll</span>
                   </button>
                   <button
                     className="flex space-x-1 items-center font-semibold"
                     onClick={() => setShowFlair(!showFlair)}
                   >
-                    <IoPricetagOutline className="h-5 mx-auto w-auto text-gray-400 dark:text-gray-400" />
+                    <IoPricetagOutline className="h-5 mx-auto w-auto text-gray-400" />
                     <span className="hidden md:block text-sm">Topic</span>
                   </button>
                   <button
                     className="flex space-x-1 items-center font-semibold"
                     onClick={() => setShowTech(!showTech)}
                   >
-                    <IoCodeSlash className="h-5 mx-auto w-auto text-gray-400 dark:text-gray-400" />
+                    <IoCodeSlash className="h-5 mx-auto w-auto text-gray-400" />
                     <span className="hidden md:block text-sm">Tech</span>
                   </button>
                 </div>
@@ -441,7 +395,7 @@ const CreatePost = ({ user }) => {
                   </button>
                 ) : (
                   <button
-                    className="btn-primary btn-with-icon"
+                    className="btn-primary btn-with-icon pl-4"
                     onClick={handleSubmitPost}
                     disabled={postButtonDisabled}
                   >
@@ -451,7 +405,7 @@ const CreatePost = ({ user }) => {
                 )}
               </div>
 
-              <Transition show={showFlair}>
+              {showFlair && (
                 <div className="top-10 absolute z-20 md:left-72 w-auto">
                   <div
                     className="fixed inset-0"
@@ -472,15 +426,15 @@ const CreatePost = ({ user }) => {
                     ))}
                   </div>
                 </div>
-              </Transition>
+              )}
 
-              <Transition show={showTech}>
+              {showTech && (
                 <div className="top-10 absolute z-20 md:left-64 w-72">
                   <div
                     className="fixed inset-0"
                     onClick={() => setShowTech(!showTech)}
                   ></div>
-                  <div className="relative bg-tfsdark-900 py-2 rounded-lg flex flex-col shadow-xl px-2 border border-tfsdark-800">
+                  <div className="relative bg-tfsdark-900 rounded-lg flex flex-col shadow-xl px-2 border border-tfsdark-800 pb-1">
                     <TagTech
                       savedSkills={savedSkills}
                       setSavedSkills={setSavedSkills}
@@ -488,7 +442,7 @@ const CreatePost = ({ user }) => {
                     />
                   </div>
                 </div>
-              </Transition>
+              )}
             </div>
           </div>
         </div>
