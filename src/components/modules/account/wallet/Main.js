@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Moment from 'moment';
 import Confetti from 'react-confetti';
-import * as ga from 'lib/ga';
+import ModalDialog from 'components/common/modals/ModalDialog';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
+import { CgSpinner } from 'react-icons/cg';
 import {
   IoCheckmark,
   IoInformationCircleOutline,
   IoWalletOutline,
 } from 'react-icons/io5';
-import ModalDialog from 'components/common/modals/ModalDialog';
-import { CgSpinner } from 'react-icons/cg';
 
 const Page = ({ user, promo }) => {
   const [wallet, setWallet] = useState(null);
@@ -20,46 +20,26 @@ const Page = ({ user, promo }) => {
     user.promosClaimed.includes(promo.code)
   );
 
-  const sendSlackMessage = async () => {
-    const message = {
-      message: `WALLET: The user ${user.name} has claimed free coin against the '${promo.code} ($${promo.value})' promo`,
-    };
-
-    fetch(`${process.env.BASEURL}/api/notifications/slack/postMessage`, {
-      method: 'POST',
-      body: JSON.stringify(message),
-      headers: { 'Content-type': 'application/json; charset=UTF-8' },
-    });
-  };
-
   const getWallet = async () => {
-    const requestUrl = `${process.env.BASEURL}/api/profile/wallet/get`;
-
-    if (requestUrl != '') {
-      await axios
-        .get(requestUrl)
-        .then((response) => {
-          setWallet(response.data);
-        })
-        .catch((error) => {
-          console.log(error.status);
-        });
-    }
+    await axios
+      .get(`${process.env.BASEURL}/api/profile/wallet/get`)
+      .then((response) => {
+        setWallet(response.data);
+      })
+      .catch((error) => {
+        console.log(error.status);
+      });
   };
 
   const getWalletTransactions = async () => {
-    const requestUrl = `${process.env.BASEURL}/api/profile/wallet/transactions`;
-
-    if (requestUrl != '') {
-      await axios
-        .get(requestUrl)
-        .then((response) => {
-          setWalletTransactions(response.data.content);
-        })
-        .catch((error) => {
-          console.log(error.status);
-        });
-    }
+    await axios
+      .get(`${process.env.BASEURL}/api/profile/wallet/transactions`)
+      .then((response) => {
+        setWalletTransactions(response.data.content);
+      })
+      .catch((error) => {
+        console.log(error.status);
+      });
   };
 
   const redeemPromo = async () => {
@@ -76,13 +56,11 @@ const Page = ({ user, promo }) => {
       `${process.env.BASEURL}/api/profile/wallet/redeem`,
       redeemData
     );
-    // getWallet();
     setTimeout(() => setTransferFunds(false), 4000);
     setPromoRedeemed(true);
-    sendSlackMessage();
-    ga.event({
-      action: 'user_coin_claimed_promo',
-    });
+    sendSlackMessage(
+      `WALLET: The user ${user.name} has claimed free coin against the '${promo.code} ($${promo.value})' promo`
+    );
   };
 
   useEffect(() => {
@@ -94,7 +72,7 @@ const Page = ({ user, promo }) => {
     <>
       <div className="mt-4 md:mt-12 flex">
         <div className="w-full max-w-2xl lg:max-w-3xl overflow-hidden mx-auto">
-          <div className="rounded-lg bg-tfsdark-700 mb-4 px-4 sm:px-6 py-4 mx-4 md:mx-0">
+          <div className="rounded-lg bg-tfsdark-800 mb-4 px-4 sm:px-6 py-4 mx-4 md:mx-0">
             <div className="sm:items-center flex flex-col sm:flex-row justify-between">
               <div className="flex items-center space-x-4">
                 <IoWalletOutline className="h-16 w-16 text-gray-300" />
@@ -127,7 +105,7 @@ const Page = ({ user, promo }) => {
             )}
           </div>
 
-          <div className="mt-4 md:rounded-lg bg-tfsdark-700 mb-4 px-4 sm:px-6 py-4">
+          <div className="mt-4 md:rounded-lg bg-tfsdark-800 mb-4 px-4 sm:px-6 py-4">
             <div className="items-center flex justify-between">
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-slate-100 sm:text-xl tracking-tight lg:text-xl">

@@ -15,7 +15,7 @@ const TeamCard = ({ team }) => {
   return (
     <div className="relative px-4 sm:px-0 w-full">
       {team.status === 'ACTIVE' ? (
-        <button className="relative w-full rounded-lg bg-tfsdark-700 group border-2 border-transparent sm:hover:border-primary-600/80 p-2 sm:p-4 duration-300">
+        <button className="relative w-full rounded-lg bg-tfsdark-800 group border-2 border-transparent sm:hover:border-primary-600/80 p-2 sm:p-4 duration-300">
           <Link href={`/teams/${team.id}`}>
             <div className="sm:space-y-6">
               <div className="hidden sm:flex justify-between space-x-4">
@@ -175,7 +175,7 @@ const TeamCard = ({ team }) => {
           </Link>
         </button>
       ) : (
-        <button className="relative w-full rounded-lg bg-tfsdark-700 group border-2 border-transparent p-2 sm:p-4 duration-300">
+        <button className="relative w-full rounded-lg bg-tfsdark-800 group border-2 border-transparent p-2 sm:p-4 duration-300">
           <div className="sm:space-y-6">
             <div className="hidden sm:flex justify-between space-x-4">
               <div className="flex space-x-4 w-full">
@@ -337,7 +337,7 @@ const TeamCard = ({ team }) => {
             </div>
           )}
           {team.status !== 'ACTIVE' && (
-            <button className="absolute group z-40 bg-tfsdark-700/60 sm:rounded-lg top-0 left-0 w-full h-full cursor-not-allowed"></button>
+            <button className="absolute group z-0 bg-tfsdark-900/80 sm:rounded-lg top-0 left-0 w-full h-full cursor-not-allowed"></button>
           )}
         </button>
       )}

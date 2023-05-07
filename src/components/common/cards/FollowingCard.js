@@ -80,7 +80,7 @@ const Following = ({ post, user }) => {
 
   return (
     <>
-      <div className="w-full cursor-pointer sm:bg-tfsdark-700 sm:hover:bg-tfsdark-600/50 md:rounded-md overflow-hidden mb-6 border-b md:border-b-0 border-tfsdark-600">
+      <div className="w-full cursor-pointer sm:bg-tfsdark-800 sm:hover:bg-tfsdark-600/50 md:rounded-md overflow-hidden mb-6 border-b md:border-b-0 border-tfsdark-600">
         <article className="pt-4 pb-6 md:pb-4 border-tfsdark-600 sm:border-tfsdark-900">
           <div className="mx-4 mb-0">
             <div className="flex items-center md:space-x-2 w-full md:border-b border-tfsdark-600 pb-3 mb-3">

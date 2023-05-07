@@ -68,7 +68,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
 
   return (
     <>
-      <div className="h-full bg-tfsdark-900 no-scrollbar">
+      <div className="h-full bg-black no-scrollbar">
         {!user?.completedOnBoarding && (
           <>
             <div className="z-40 w-full max-w-screen-2xl mx-auto hidden lg:flex fixed md:relative px-8 py-6 justify-between bg-transparent">
@@ -351,7 +351,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                 </div>
               </nav>
             </div>
-            <div className="mt-14 lg:mt-0 sm:px-4 w-full sm:w-[100vw] lg:[100vw] xl:w-full bg-tfsdark-800/50">
+            <div className="mt-14 lg:mt-0 sm:px-4 w-full sm:w-[100vw] lg:[100vw] xl:w-full">
               {/* Tablet and Desktop only */}
               <div className="hidden lg:block fixed z-20 w-auto h-20 top-0 right-0 mx-auto pt-4 px-4">
                 <div className="flex items-center justify-end space-x-10">

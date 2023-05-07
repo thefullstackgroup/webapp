@@ -90,7 +90,7 @@ const Post = (props) => {
 
   return (
     <>
-      <div className="w-full cursor-pointer sm:bg-tfsdark-700 sm:hover:bg-tfsdark-600/50">
+      <div className="w-full cursor-pointer sm:bg-tfsdark-800 sm:hover:bg-tfsdark-600/50">
         <article
           className={
             'pt-4 border-b pb-4 ' +

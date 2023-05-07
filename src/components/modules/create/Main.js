@@ -53,7 +53,7 @@ const Main = ({ user }) => {
 
   return (
     <>
-      <div className="bg-tfsdark-900/50 min-h-screen">
+      <div className="bg-black min-h-screen">
         <button
           className="fixed z-50 top-5 left-4 xl:left-auto md:right-4 text-slate-400"
           onClick={() => setIsDiscardPromptOpen(true)}

@@ -66,7 +66,7 @@ const SideBar = ({ user, chatId }) => {
   };
 
   return (
-    <div className="flex flex-col w-full h-full sm:w-full items-start sm:bg-tfsdark-900/50 pt-0 sm:pt-0">
+    <div className="flex flex-col w-full h-full sm:w-full items-start sm:bg-tfsdark-800 pt-0 sm:pt-0">
       <div className="w-full h-full sm:h-[75vh] overflow-scroll no-scrollbar">
         {chatsLoading && (
           <div className="flex align-middle items-center justify-center mt-10">

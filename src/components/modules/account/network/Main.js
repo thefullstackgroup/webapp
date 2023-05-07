@@ -45,15 +45,15 @@ const Main = ({ user }) => {
               </div>
             </div>
 
-            <div className="mt-4 md:rounded-lg bg-tfsdark-700 mb-4 pb-4 overflow-hidden">
+            <div className="mt-4 md:rounded-lg bg-tfsdark-800 mb-4 pb-4 overflow-hidden">
               <div className="flex items-center justify-start divide-x divide-black mb-2">
                 {tabs.map((option, index) => (
                   <button
                     className={
                       'py-3 px-4 sm:px-8 text-center w-full text-sm sm:text-base font-semibold ' +
                       (tab == option.tab
-                        ? 'bg-tfsdark-700'
-                        : 'bg-tfsdark-800 text-slate-500 hover:text-white')
+                        ? 'bg-tfsdark-800'
+                        : 'bg-tfsdark-900 text-slate-500 hover:text-white')
                     }
                     onClick={() => setTab(option.tab)}
                     key={index}
@@ -80,7 +80,7 @@ const Main = ({ user }) => {
                 ))}
               </div>
               {tab == 1 && (
-                <div className="gap-8 w-full divide-y divide-tfsdark-800">
+                <div className="gap-8 w-full divide-y divide-tfsdark-900">
                   {!data && (
                     <div className="my-20 w-full text-center text-base">
                       You currently have no connections
