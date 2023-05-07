@@ -1,11 +1,8 @@
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
-
-const Meta = dynamic(() => import('components/common/partials/Metadata'));
-const LayoutLoggedOut = dynamic(() =>
-  import('components/common/layout/LayoutLoggedOut')
-);
-const Page = dynamic(() => import('components/modules/static/OurStory'));
+import Meta from 'components/common/partials/Metadata';
+import LayoutLoggedOut from 'components/common/layout/LayoutLoggedOut';
+import Page from 'components/modules/static/OurStory';
 const SignUpModal = dynamic(() => import('components/modules/signup/Modal'));
 
 const OurStory = () => {
