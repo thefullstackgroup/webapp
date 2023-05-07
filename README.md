@@ -22,7 +22,7 @@ The Full Stack is a [Next.js](https://nextjs.org/) project bootstrapped with
 
 2. Rename the .env.sample to .env
 
-3. Update configurations in .env (Note: we are working on a sandbox env for this)
+3. Update configurations in .env _(Note: we are working on sandbox env VARS to run a local env)_
 
 4. Install the dependencies:
 
