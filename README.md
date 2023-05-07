@@ -1,3 +1,10 @@
+<div align="center">
+<img alt="Sloan, the sloth mascot" width="120px" src="https://thefullstack.network/assets/icons/thefullstack-circle.webp">
+  <br>
+  <h1>The Full Stack</h1>
+</div>
+<br>
+
 The Full Stack platform consists of a React (NextJS) webapp that connects
 to many different microservices, such as a projects service, profile service,
 search service, connections service etc. to name a few. There are also
