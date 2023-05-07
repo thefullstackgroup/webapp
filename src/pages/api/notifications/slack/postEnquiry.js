@@ -3,7 +3,7 @@ import axios from 'axios';
 const handler = async (req, res) => {
   await axios
     .post(
-      'https://hooks.slack.com/services/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',
+      process.env.SLACK_POST_MESSAGE_URL,
       JSON.stringify({
         text: req.body.message,
       }),
