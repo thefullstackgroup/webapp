@@ -6,7 +6,7 @@ import Image from 'next/future/image';
 import { getChatNotificationsTotal } from 'components/modules/chat/Notifications';
 import fetcher from 'utils/fetcher';
 import useSWR from 'swr';
-import Footer from 'components/common/layout/LayoutFooter';
+import Footer from 'components/common/layout/Footer';
 import { BiCookie } from 'react-icons/bi';
 import {
   IoAdd,

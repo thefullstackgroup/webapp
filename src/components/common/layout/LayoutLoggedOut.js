@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Footer from 'components/common/layout/LayoutFooter';
+import Footer from 'components/common/layout/Footer';
 import { IoLogInOutline } from 'react-icons/io5';
 import Image from 'next/future/image';
 import { useRouter } from 'next/router';

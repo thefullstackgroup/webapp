@@ -39,10 +39,10 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
     <div className="">
       <div className="fixed top-0 left-0 w-full mx-auto min-h-screen mt-16 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/40 via-black to-tfsdark-900 flex justify-between"></div>
       <main className="mx-auto max-w-full overflow-hidden bg-tfsdark-900">
-        <HeroSection
+        {/* <HeroSection
           sendSlackSignUpMessage={sendSlackSignUpMessage}
           setShowSignupModal={setShowSignupModal}
-        />
+        /> */}
 
         <div className="relative mt-10 sm:pt-44 max-w-screen-2xl mx-auto min-h-screen space-y-10 md:space-y-20">
           <h3 className="text-4xl md:text-7xl font-bold font-intertight text-center px-4">
