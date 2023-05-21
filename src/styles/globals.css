@@ -5,29 +5,47 @@
 @tailwind utilities;
 
 @layer components {
+  .nav-item {
+    @apply flex items-center rounded-full px-5 py-2 text-sm font-medium text-black duration-200 hover:bg-gray-200/80 hover:text-black focus:outline-none focus:ring-0 dark:text-gray-100 dark:hover:bg-tfsdark-700 dark:hover:text-white;
+  }
+  .nav-item-icon {
+    @apply flex items-center rounded-full px-2 py-2 text-sm font-medium text-black duration-200 hover:bg-gray-200/80 hover:text-black dark:text-gray-100 dark:hover:bg-tfsdark-700 dark:hover:text-white;
+  }
+  .ftr-item {
+    @apply flex items-center text-sm text-gray-500 duration-200 hover:text-black focus:outline-none focus:ring-0 dark:text-gray-500 dark:hover:text-white;
+  }
+  .ftr-item-icon {
+    @apply flex items-center rounded-full px-2 py-2 text-sm font-medium text-gray-400 duration-200 hover:scale-110 hover:text-black dark:text-gray-500 dark:hover:text-white;
+  }
+  .btn {
+    @apply rounded-md border py-2 px-4 text-base font-medium duration-150 focus:outline-none disabled:cursor-not-allowed disabled:bg-slate-800 disabled:text-slate-400;
+  }
+  .btn-sm {
+    @apply text-sm;
+  }
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-500 text-white text-sm md:text-base font-medium py-2 sm:py-1.5 px-4 rounded focus:outline-none disabled:bg-slate-800 disabled:text-slate-400 disabled:cursor-not-allowed;
+    @apply border-transparent bg-black text-white hover:border-gray-900 hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-gray-900 dark:hover:bg-black dark:hover:text-white;
   }
   .btn-secondary {
-    @apply bg-tfsdark-600 hover:bg-tfsdark-500/50 text-white text-sm md:text-base font-medium py-2 sm:py-1.5 px-4 rounded focus:outline-none disabled:bg-slate-700 disabled:text-slate-400 disabled:cursor-not-allowed;
+    @apply rounded border-gray-800 bg-white py-2 px-4 text-sm font-medium text-gray-900 hover:bg-gray-200/50 focus:outline-none disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 dark:border-gray-700 dark:bg-black dark:text-gray-100 dark:hover:bg-gray-900 sm:py-1.5 md:text-base;
   }
   .btn-ghost {
-    @apply bg-none text-slate-400 hover:text-white text-sm md:text-base font-medium py-2 rounded focus:outline-none disabled:bg-slate-700 disabled:text-slate-400 disabled:cursor-not-allowed;
+    @apply border-transparent bg-transparent hover:border-transparent hover:bg-transparent hover:text-purple-600 dark:border-transparent dark:bg-transparent dark:bg-none dark:text-gray-300 dark:hover:bg-black dark:hover:text-purple-500;
   }
   .btn-with-icon {
-    @apply flex items-center space-x-2 pl-2 pr-5;
+    @apply flex items-center space-x-2;
   }
   .btn-with-icon-only {
-    @apply bg-transparent hover:bg-tfsdark-600/50 rounded-xl;
+    @apply rounded-xl bg-transparent hover:bg-tfsdark-600/50;
   }
   .text-input {
-    @apply placeholder-gray-400 bg-tfsdark-600/50 mt-1 text-base block w-full border-none border-tfsdark-600 rounded py-2.5 px-3 focus:outline-none focus:ring-0 focus:border-tfsdark-600 resize-none ring-0 text-white;
+    @apply block min-w-min resize-none rounded-lg border-gray-300/50 bg-transparent py-2 pl-3 pr-10 text-sm text-gray-600 placeholder-gray-300 ring-0 hover:border-gray-600 focus:border-gray-600 focus:outline-none focus:ring-0 dark:border-gray-700 dark:text-gray-200 dark:hover:border-gray-200 dark:focus:border-gray-300;
   }
   .text-link {
     @apply text-indigo-300;
   }
   .badge {
-    @apply bg-slate-700 text-slate-200 px-2 py-1 rounded text-sm font-normal mr-1 mb-1;
+    @apply mr-1 mb-1 rounded bg-slate-700 px-2 py-1 text-sm font-normal text-slate-200;
   }
   .badge-xs {
     @apply text-xs;
@@ -35,11 +53,6 @@
   .badge-with-icon {
     @apply flex items-center space-x-1;
   }
-}
-
-body {
-  background: #000000;
-  color: #ffffff;
 }
 
 /* Define .no-scrollbar */

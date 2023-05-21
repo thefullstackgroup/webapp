@@ -8,9 +8,9 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <main>
+      <main className="bg-white dark:bg-black">
         <Header />
-        {children}
+        <div className="mx-auto max-w-screen-2xl px-4">{children}</div>
         <Footer />
       </main>
 

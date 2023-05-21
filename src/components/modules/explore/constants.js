@@ -1,217 +1,261 @@
-export const categories = [
+export const Categories = [
   {
     title: 'New',
     slug: 'recent',
-    filter: '',
     sort: 'newest',
-    range: 90,
   },
   {
     title: 'Trending',
     slug: 'trending',
-    filter: '',
     sort: 'mostpopular',
-    range: 60,
   },
   {
     title: 'For You',
     slug: 'foryou',
-    filter: 'foryou',
     sort: 'newest',
-    range: 30,
   },
   {
     title: 'Following',
     slug: 'following',
     filter: 'following',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Popular',
     slug: 'popular',
-    filter: '',
     sort: 'mostpopular',
-    range: 900,
   },
   {
     title: 'Open to Collaboration',
     slug: 'opentocollab',
-    filter: 'opentocollab',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Apps',
     slug: 'apps',
-    filter: 'apps',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Games',
     slug: 'games',
-    filter: 'games',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Open Source',
     slug: 'opensource',
-    filter: 'opensource',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Tools',
     slug: 'tools',
-    filter: 'tools',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Frontend',
     slug: 'frontend',
-    filter: 'frontend',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Backend',
     slug: 'backend',
-    filter: 'backend',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Full Stack',
     slug: 'fullstack',
-    filter: 'fullstack',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Cloud',
     slug: 'cloud',
-    filter: 'cloud',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'AI',
     slug: 'ai',
-    filter: 'AI',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Machine Learning',
     slug: 'machinelearning',
-    filter: 'machine learning',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Components',
     slug: 'components',
-    filter: 'components',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Libraries',
     slug: 'libraries',
     filter: 'libraries',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Infrastructure',
     slug: 'infrastructure',
     filter: 'infrastructure',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Automation',
     slug: 'automation',
-    filter: 'automation',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'DevOps',
     slug: 'devops',
-    filter: 'devops',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Security',
     slug: 'security',
-    filter: 'security',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Databases',
     slug: 'databases',
-    filter: 'databases',
     sort: 'newest',
-    range: 900,
   },
   {
     title: 'Data Science',
     slug: 'datascience',
-    filter: 'data science',
     sort: 'newest',
-    range: 900,
   },
 ];
 
-export const techFilter = [
-  'react',
-  'java',
-  'JavaScript',
-  'typescript',
-  'node',
-  'PHP',
-  'python',
-  'c#',
-  'ruby',
-  'go',
+// export const techFilter = [
+//   {
+//     label: 'JavaScript',
+//     slug: 'javascript',
+//   },
+//   {
+//     label: 'Java',
+//     slug: 'java',
+//   },
+//   {
+//     label: 'Typescript',
+//     slug: 'typescript',
+//   },
+//   {
+//     label: 'NodeJS',
+//     slug: 'nodejs',
+//   },
+//   {
+//     label: 'PHP',
+//     slug: 'php',
+//   },
+//   {
+//     label: 'Python',
+//     slug: 'python',
+//   },
+//   {
+//     label: 'C#',
+//     slug: 'c',
+//   },
+//   {
+//     label: 'Ruby',
+//     slug: 'ruby',
+//   },
+// ];
+
+// export const categoriesFilter = [
+//   'apps',
+//   'games',
+//   'opensource',
+//   'tools',
+//   'infrastructure',
+//   'databases',
+//   'data science',
+//   'frontend',
+//   'backend',
+//   'fullstack',
+//   'cloud',
+//   'AI',
+//   'machine learning',
+//   'components',
+//   'libraries',
+//   'automation',
+//   'devops',
+//   'security',
+// ];
+
+export const RangeFilter = [
+  { value: 7, label: 'Posted this week', icon: 'FiClock' },
+  { value: 30, label: 'Posted this month', icon: 'FiClock' },
+  { value: 365, label: 'Posted this year', icon: 'FiClock' },
+  { value: 900, label: 'All time', icon: 'FiClock' },
 ];
 
-export const categoriesFilter = [
-  'apps',
-  'games',
-  'opensource',
-  'tools',
-  'infrastructure',
-  'databases',
-  'data science',
-  'frontend',
-  'backend',
-  'fullstack',
-  'cloud',
-  'AI',
-  'machine learning',
-  'components',
-  'libraries',
-  'automation',
-  'devops',
-  'security',
+export const SortFilter = [
+  { value: 'newest', label: 'Newest', icon: 'FiClock' },
+  { value: 'mostpopular', label: 'Popular', icon: 'FiClock' },
+  { value: 'oldest', label: 'Oldest', icon: 'FiClock' },
 ];
 
-export const rangeFilter = [
-  { value: 7, label: 'Posted this week' },
-  { value: 30, label: 'Posted this month' },
-  { value: 365, label: 'Posted this year' },
-  { value: 900, label: 'All time' },
-];
-
-export const sortFilter = [
-  { value: 'mostpopular', label: 'Popular' },
-  { value: 'newest', label: 'Newest' },
-  { value: 'oldest', label: 'Oldest' },
-];
+export const StackFilter = {
+  label: 'Stack',
+  icon: 'FiLayers',
+  stacks: [
+    {
+      slug: 'javascript',
+      label: 'JavaScript',
+      icon: 'SiJavascript',
+    },
+    {
+      slug: 'react',
+      label: 'React',
+      icon: 'SiReact',
+    },
+    {
+      slug: 'vue',
+      label: 'Vue',
+      icon: 'SiVuedotjs',
+    },
+    {
+      slug: 'nextjs',
+      label: 'NextJS',
+      icon: 'SiNextdotjs',
+    },
+    {
+      slug: 'nuxtjs',
+      label: 'NuxtJS',
+      icon: 'SiNuxtdotjs',
+    },
+    {
+      slug: 'gatsby',
+      label: 'Gatsby',
+      icon: 'SiGatsby',
+    },
+    {
+      slug: 'angular',
+      label: 'Angular',
+      icon: 'SiAngular',
+    },
+    {
+      slug: 'tailwindcss',
+      label: 'Tailwind',
+      icon: 'SiTailwindcss',
+    },
+    {
+      slug: 'chakra',
+      label: 'ChakraUI',
+      icon: 'SiChakraui',
+    },
+    {
+      slug: 'bootstrap',
+      label: 'Bootstrap',
+      icon: 'SiBootstrap',
+    },
+    {
+      slug: 'redux',
+      label: 'Redux',
+      icon: 'SiRedux',
+    },
+    {
+      slug: 'svelte',
+      label: 'Svelte',
+      icon: 'SiSvelte',
+    },
+  ],
+};

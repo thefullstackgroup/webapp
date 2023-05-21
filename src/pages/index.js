@@ -1,6 +1,6 @@
 import Meta from 'components/common/partials/Metadata';
 import Layout from 'components/common/layout/Layout';
-import Page from 'components/modules/static/Home';
+import Page from 'components/modules/home/Main';
 
 const Home = () => {
   return (

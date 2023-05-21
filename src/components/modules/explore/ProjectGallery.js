@@ -9,46 +9,50 @@ const PAGE_SIZE = 24;
 
 const ProjectGallery = ({
   user,
-  category,
+  stack = false,
+  category = false,
   sort,
   range,
   following,
   myTechStack,
-  viewType,
   query,
 }) => {
-  let term = category.filter;
+  let term = stack?.slug;
 
-  if (category.filter === 'react') {
+  if (stack?.slug === 'react') {
     term = 'react,reactjs';
   }
 
-  if (category.filter === 'node') {
+  if (stack?.slug === 'node') {
     term = 'nodejs';
   }
-  if (category.filter === 'tailwind css') {
+  if (stack?.slug === 'tailwindcss') {
     term = 'tailwind';
   }
 
-  if (category.filter === 'opensource') {
+  if (stack?.slug === 'opensource') {
     term = 'open source';
   }
 
-  let url = `${process.env.BASEURL}/api/search/showcase?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&range=${range}&category=${term}`;
+  let url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&range=${range}&category=${category}`;
 
-  if (category.filter === 'following') {
-    url = `${process.env.BASEURL}/api/search/showcase?size=${PAGE_SIZE}&sort=${sort}&connectionUsersIds=${following}&userId=${user.userId}&projectType=PROJECT&range=${range}`;
+  if (stack) {
+    url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${term}`;
   }
 
-  if (category.filter === 'foryou') {
-    url = `${process.env.BASEURL}/api/search/showcase?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&tech=${myTechStack}&range=${range}`;
+  if (stack?.slug === 'following') {
+    url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&connectionUsersIds=${following}&userId=${user.userId}&projectType=PROJECT&range=${range}`;
   }
 
-  if (category.filter === 'opentocollab') {
-    url = `${process.env.BASEURL}/api/search/showcase?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&lookingForCollabs=true`;
+  if (stack?.slug === 'foryou') {
+    url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&tech=${myTechStack}&range=${range}`;
   }
 
-  if (category.filter === 'search' && query !== '') {
+  if (stack?.slug === 'opentocollab') {
+    url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&lookingForCollabs=true`;
+  }
+
+  if (stack?.slug === 'search' && query !== '') {
     url = `${process.env.BASEURL}/api/search/projects?size=${PAGE_SIZE}&sort=${sort}&userId=${user.userId}&projectType=PROJECT&range=${range}&term=${query}`;
   }
 
@@ -71,50 +75,32 @@ const ProjectGallery = ({
     const projectList = posts;
     return projectList.map((project) => (
       <div key={project.projectId}>
-        <ProjectCard project={project} user={user} type={viewType} />
+        <ProjectCard project={project} user={user} />
       </div>
     ));
   });
 
   return (
     <div>
-      {viewType === 'list' && isRefreshing && (
-        <div className="relative gap-6 md:gap-8 max-w-screen-lg mx-auto ">
-          {[...Array(PAGE_SIZE)].map((elementInArray, index) => (
-            <div className="relative w-full h-80" key={index}>
-              <div className="w-full h-72 bg-tfsdark-700 animate-pulse">
-                <span className="hidden">Loading</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {posts && viewType === 'list' && !isEmpty && (
-        <div className="relative gap-6 md:gap-8 max-w-screen-lg mx-auto">
-          {projectCards}
-        </div>
-      )}
-
-      {posts && viewType === 'grid' && !isEmpty && (
-        <div className="relative sm:mt-4 grid grid-cols-1 gap-6 md:gap-10 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+      {posts && !isEmpty && (
+        <div className="relative grid grid-cols-1 gap-6 sm:mt-4 md:grid-cols-2 md:gap-10 lg:grid-cols-3 2xl:grid-cols-4">
           {projectCards}
         </div>
       )}
 
       {isEmpty && (
-        <div className="relative sm:mt-4 text-center py-20 flex flex-col">
-          {category.filter === 'following' ? (
+        <div className="relative flex flex-col py-20 text-center sm:mt-4">
+          {stack.value === 'following' ? (
             following ? (
               <>
-                <span className="font-bold text-lg">
+                <span className="text-lg font-bold">
                   No projects posted by people you&apos;re following.
                 </span>
                 <span>Check back again soon.</span>
               </>
             ) : (
               <>
-                <span className="font-bold text-lg">
+                <span className="text-lg font-bold">
                   You are not following anyone.
                 </span>
                 <span>Find people to follow.</span>
@@ -127,7 +113,7 @@ const ProjectGallery = ({
       )}
 
       {!isReachingEnd && (
-        <div className="flex justify-center my-10">
+        <div className="my-10 flex justify-center">
           {isLoadingMore ? (
             <div className="min-h-screen">
               <Loader />

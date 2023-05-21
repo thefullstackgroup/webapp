@@ -6,7 +6,7 @@ import Meta from 'components/common/partials/Metadata';
 import Layout from 'components/common/layout/Layout';
 import Main from 'components/modules/explore/Main';
 
-const Explore = () => {
+const ExploreCategorySlug = ({ slug }) => {
   const [user, getUser] = useUserProfile();
 
   useEffect(() => {
@@ -23,14 +23,14 @@ const Explore = () => {
 
       {user && (
         <Layout user={user}>
-          <Main user={user} />
+          <Main user={user} slug={slug} />
         </Layout>
       )}
     </>
   );
 };
 
-export default withAuthUser()(Explore);
+export default withAuthUser()(ExploreCategorySlug);
 
 export const getServerSideProps = withAuthUserTokenSSR()(
   async ({ AuthUser, req, res, query }) => {
@@ -55,7 +55,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
     }
 
     return {
-      props: {},
+      props: { slug: query.slug },
     };
   }
 );

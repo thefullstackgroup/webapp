@@ -44,28 +44,28 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
 
   return (
     <div className="bg-black">
-      <div className="fixed top-0 left-0 w-full mx-auto min-h-screen mt-16 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/40 via-black to-tfsdark-900 flex justify-between"></div>
-      <div className="relative z-10 max-w-screen-xl mx-auto lg:min-h-screen lg:mt-16">
-        <div className="pt-24 md:pt-32 max-w-7xl space-y-6 px-4 lg:px-0">
+      <div className="fixed top-0 left-0 mx-auto mt-16 flex min-h-screen w-full justify-between bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/40 via-black to-black"></div>
+      <div className="relative z-10 mx-auto max-w-screen-xl lg:mt-16 lg:min-h-screen">
+        <div className="max-w-7xl space-y-6 px-4 pt-24 md:pt-32 lg:px-0">
           <Link href="/about/our-story">
-            <div className="rounded-full text-slate-300 hover:text-white bg-slate-800/40 border border-tfsdark-700 px-6 py-1 text-sm w-min whitespace-nowrap mx-auto mb-10 cursor-pointer">
+            <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-tfsdark-700 bg-slate-800/40 px-6 py-1 text-sm text-slate-300 hover:text-white">
               Created by developers. See our story &rarr;
             </div>
           </Link>
-          <h1 className="text-6xl md:text-9xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-300 via-violet-200 to-white font-intertight flex justify-center -space-y-4 text-center">
+          <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-slate-300 via-violet-200 to-white bg-clip-text text-center font-intertight text-6xl font-bold tracking-tight text-transparent md:text-9xl">
             Share. Network. Grow.
           </h1>
-          <div className="max-w-5xl mx-auto">
-            <h4 className="text-center text-slate-400 font-light text-lg md:text-2xl">
+          <div className="mx-auto max-w-5xl">
+            <h4 className="text-center text-lg font-light text-slate-400 md:text-2xl">
               The Full Stack is the platform for developers, providing a
               supportive dev community to share your work, grow your network and
               help you make your best career moves.
             </h4>
           </div>
-          <div className="max-w-4xl mx-auto">
-            <div className="md:mt-20 flex justify-center items-center space-x-6">
+          <div className="mx-auto max-w-4xl">
+            <div className="flex items-center justify-center space-x-6 md:mt-20">
               <button
-                className="btn-primary text-xl py-3 px-6 rounded-lg"
+                className="btn-primary rounded-lg py-3 px-6 text-xl"
                 onClick={() => {
                   setShowSignupModal(true);
                   sendSlackSignUpMessage('GET STARTED');
@@ -74,7 +74,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                 Get started
               </button>
               <button
-                className="hidden md:block btn-secondary bg-opacity-50 text-xl py-3 px-6 rounded-lg"
+                className="btn-secondary hidden rounded-lg bg-opacity-50 py-3 px-6 text-xl md:block"
                 onClick={() => handleLearnMore()}
               >
                 Learn more
@@ -82,17 +82,17 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </div>
           </div>
         </div>
-        <div className="z-10 hidden md:block absolute bottom-20 md:bottom-20 w-full text-center">
-          <IoArrowDown className="text-tfsdark-100 w-auto h-8 md:h-12 mx-auto animate-bounce" />
+        <div className="absolute bottom-20 z-10 hidden w-full text-center md:bottom-20 md:block">
+          <IoArrowDown className="mx-auto h-8 w-auto animate-bounce text-tfsdark-100 md:h-12" />
         </div>
       </div>
 
       <div className="pt-28" id="learnmore"></div>
       <div className="mb-56">
-        <div className="max-w-screen-xl mx-auto md:min-h-screen space-y-20 md:space-y-80 pl-6 pr-4 md:px-20">
-          <div className="flex flex-col-reverse md:flex-row justify-between md:space-x-20">
+        <div className="mx-auto max-w-screen-xl space-y-20 pl-6 pr-4 md:min-h-screen md:space-y-80 md:px-20">
+          <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="md:h-[100vh] font-intertight tracking-wide text-2xl md:text-3xl flex flex-col md:space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col pt-20 font-intertight text-2xl tracking-wide md:h-[100vh] md:space-y-10 md:pt-80 md:text-3xl">
                 <p>
                   We as developers love solving problems. And we especially{' '}
                   <span className="text-purple-400">love building</span>{' '}
@@ -100,7 +100,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   ourselves.
                 </p>
                 <div className="flex items-center space-x-6">
-                  <div className="w-14 h-14">
+                  <div className="h-14 w-14">
                     <Image
                       src="/assets/landing/fordevelopers/thumbs-down.png"
                       className="h-full w-full object-cover object-left"
@@ -110,7 +110,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                       layout="fill"
                     />
                   </div>
-                  <div className="w-14 h-14">
+                  <div className="h-14 w-14">
                     <Image
                       src="/assets/landing/fordevelopers/worried-face.png"
                       className="h-full w-full object-cover object-left"
@@ -122,7 +122,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   </div>
                 </div>
               </div>
-              <div className="md:h-[80vh] font-intertight text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
                 <p>
                   Your <span className="text-purple-400">developer story</span>{' '}
                   deserves more than just a CV. Express yourself through what
@@ -134,7 +134,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   .
                 </p>
                 <div className="flex items-center space-x-6">
-                  <div className="w-14 h-14">
+                  <div className="h-14 w-14">
                     <Image
                       src="/assets/landing/fordevelopers/nerd-face.png"
                       className="h-full w-full object-cover object-left"
@@ -144,7 +144,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                       layout="fill"
                     />
                   </div>
-                  <div className="w-14 h-14">
+                  <div className="h-14 w-14">
                     <Image
                       src="/assets/landing/fordevelopers/thumbs-up.png"
                       className="h-full w-full object-cover object-left"
@@ -159,12 +159,12 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="md:sticky md:top-48 border border-purple-900/60 shadow-2xl bg-purple-500/10 shadow-purple-700/20 rounded-lg h-[60vh] w-full md:w-[28vw]">
-                <div className="h-full w-full bg-black border border-tfsdark-600 opacity-90 rounded-t-xl overflow-hidden duration-300 -ml-3 mt-3">
-                  <div className="ml-4 flex items-center space-x-2 h-8 bg-tfsdark-700/20">
-                    <div className="h-3 w-3 bg-red-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-yellow-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+              <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
                   </div>
                   <Image
                     src="/assets/landing/fordevelopers/screen1.webp"
@@ -179,9 +179,9 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </Fade>
           </div>
 
-          <div className="flex flex-col-reverse md:flex-row justify-between md:space-x-20">
+          <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="md:h-[100vh] font-intertight text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[100vh] md:pt-80 md:text-3xl">
                 <p className=" leading-snug">
                   With our seamless{' '}
                   <span className="text-purple-400">integration to GitHub</span>
@@ -191,16 +191,16 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                 </p>
                 <p>
                   <div className="flex items-center space-x-4">
-                    <div className="flex text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min whitespace-nowrap">
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                       <IoLogoGithub className="h-11 w-11 text-slate-200" />
                     </div>
-                    <span className="text-lg text-slate-300 font-medium">
+                    <span className="text-lg font-medium text-slate-300">
                       GitHub integration
                     </span>
                   </div>
                 </p>
               </div>
-              <div className="h-[80vh] font-intertight text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex h-[80vh] flex-col space-y-10 pt-20 font-intertight text-2xl md:pt-80 md:text-3xl">
                 <p className=" leading-snug">
                   Add{' '}
                   <span className="text-purple-400">
@@ -214,16 +214,16 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
 
                 <p>
                   <div className="flex items-center space-x-2 md:space-x-6">
-                    <div className="flex text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min whitespace-nowrap">
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                       <IoVideocamOutline className="h-11 w-11 text-slate-200" />
                     </div>
-                    <div className="flex text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min whitespace-nowrap">
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                       <IoImageOutline className="h-11 w-11 text-slate-200" />
                     </div>
-                    <div className="flex text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min whitespace-nowrap">
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                       <FiLink className="h-11 w-11 text-slate-200" />
                     </div>
-                    <div className="flex text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min whitespace-nowrap">
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                       <IoTerminalOutline className="h-11 w-11 text-slate-200" />
                     </div>
                   </div>
@@ -232,12 +232,12 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="md:sticky md:top-48 border border-purple-900/60 shadow-2xl bg-purple-500/10 shadow-purple-700/20 rounded-lg h-[60vh] w-full md:w-[28vw]">
-                <div className="h-full w-full bg-black border border-tfsdark-600 opacity-90 rounded-t-xl overflow-hidden duration-300 -ml-3 mt-3">
-                  <div className="ml-4 flex items-center space-x-2 h-8 bg-tfsdark-700/20">
-                    <div className="h-3 w-3 bg-red-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-yellow-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+              <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
                   </div>
                   <Image
                     src="/assets/landing/fordevelopers/screen-project.webp"
@@ -252,9 +252,9 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </Fade>
           </div>
 
-          <div className="flex flex-col-reverse md:flex-row justify-between md:space-x-20">
+          <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="md:h-[100vh] font-intertight text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[100vh] md:pt-80 md:text-3xl">
                 <p className=" leading-snug">
                   Publish your projects on the community showcase and let people{' '}
                   <span className="text-purple-400">follow you</span>. Get
@@ -263,18 +263,18 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   your project.
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-6">
-                  <div className="flex space-x-2 text-base rounded-xl bg-red-500/20 px-4 py-3">
+                  <div className="flex space-x-2 rounded-xl bg-red-500/20 px-4 py-3 text-base">
                     <IoHeartOutline className="h-12 w-12 text-red-500" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-purple-500/20 px-4 py-3">
+                  <div className="flex space-x-2 rounded-xl bg-purple-500/20 px-4 py-3 text-base">
                     <IoChatboxOutline className="h-12 w-12 text-purple-500" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-yellow-300/20 px-4 py-3">
+                  <div className="flex space-x-2 rounded-xl bg-yellow-300/20 px-4 py-3 text-base">
                     <BsGem className="h-11 w-11 text-yellow-400" />
                   </div>
                 </div>
               </div>
-              <div className="md:h-[80vh] font-intertight text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
                 <p className=" leading-snug">
                   <span className="text-purple-400">Seek inspiration</span> from
                   others. Discover projects by catgeory, tech stack or similar{' '}
@@ -284,16 +284,16 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
 
                 <p className="flex items-center space-x-8">
                   <div className="flex items-center space-x-4">
-                    <div className="flex space-x-2 text-base rounded-xl bg-blue-500/20 px-4 py-3">
+                    <div className="flex space-x-2 rounded-xl bg-blue-500/20 px-4 py-3 text-base">
                       <RiChatFollowUpFill className="h-12 w-12 text-blue-500" />
                     </div>
-                    <span className="text-lg text-blue-300 font-medium">
+                    <span className="text-lg font-medium text-blue-300">
                       Follow
                     </span>
                   </div>
                 </p>
               </div>
-              <div className="md:h-[80vh] font-intertight text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
                 <p className=" leading-snug">
                   <span className="text-purple-400">Looking for projects</span>{' '}
                   to contribute to? No problem. Simply explore the huge growing
@@ -303,10 +303,10 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
 
                 <p>
                   <div className="flex items-center space-x-4">
-                    <div className="flex space-x-2 text-base rounded-xl bg-green-500/20 px-4 py-3 w-min">
+                    <div className="flex w-min space-x-2 rounded-xl bg-green-500/20 px-4 py-3 text-base">
                       <FaHandHoldingHeart className="h-12 w-12 text-green-500" />
                     </div>
-                    <span className="text-lg text-green-400 font-medium">
+                    <span className="text-lg font-medium text-green-400">
                       Contribute
                     </span>
                   </div>
@@ -315,12 +315,12 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="md:sticky md:top-48 border border-purple-900/60 shadow-2xl bg-purple-500/10 shadow-purple-700/20 rounded-lg h-[60vh] w-full md:w-[28vw]">
-                <div className="h-full w-full bg-black border border-tfsdark-600 opacity-90 rounded-t-xl overflow-hidden duration-300 -ml-3 mt-3">
-                  <div className="ml-4 flex items-center space-x-2 h-8 bg-tfsdark-700/20">
-                    <div className="h-3 w-3 bg-red-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-yellow-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+              <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
                   </div>
                   <Image
                     src="/assets/landing/fordevelopers/screen-showcase.webp"
@@ -335,9 +335,9 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </Fade>
           </div>
 
-          <div className="flex flex-col-reverse md:flex-row justify-between md:space-x-20">
+          <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="md:h-[100vh] font-intertight tracking-wide text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl tracking-wide md:h-[100vh] md:pt-80 md:text-3xl">
                 <p>
                   In our community{' '}
                   <span className="text-purple-400">Hangout</span> area you can
@@ -348,7 +348,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   And who doesn&apos;t like memes!
                 </p>
                 <div className="flex items-center space-x-6">
-                  <div className="w-14 h-14">
+                  <div className="h-14 w-14">
                     <Image
                       src="/assets/landing/fordevelopers/thinking-face.png"
                       className="h-full w-full object-cover object-left"
@@ -358,7 +358,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                       layout="fill"
                     />
                   </div>
-                  <div className="w-14 h-14">
+                  <div className="h-14 w-14">
                     <Image
                       src="/assets/landing/fordevelopers/smiling-face.png"
                       className="h-full w-full object-cover object-left"
@@ -368,7 +368,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                       layout="fill"
                     />
                   </div>
-                  <div className="w-14 h-14">
+                  <div className="h-14 w-14">
                     <Image
                       src="/assets/landing/fordevelopers/crying-face.png"
                       className="h-full w-full object-cover object-left"
@@ -378,7 +378,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                       layout="fill"
                     />
                   </div>
-                  <div className="w-14 h-14">
+                  <div className="h-14 w-14">
                     <Image
                       src="/assets/landing/fordevelopers/laughing-face.png"
                       className="h-full w-full object-cover object-left"
@@ -390,7 +390,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   </div>
                 </div>
               </div>
-              <div className="md:h-[80vh] font-intertight text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
                 <p>
                   <span className="text-purple-400">Say hello</span> and
                   introduce yourself! We&apos;re super proud of our community
@@ -399,7 +399,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   long way!
                 </p>
                 <div className="flex items-center space-x-6">
-                  <div className="w-14 h-14">
+                  <div className="h-14 w-14">
                     <Image
                       src="/assets/landing/fordevelopers/handshake.png"
                       className="h-full w-full object-cover object-left"
@@ -414,12 +414,12 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="md:sticky md:top-48 border border-purple-900/60 shadow-2xl bg-purple-500/10 shadow-purple-700/20 rounded-lg h-[60vh] w-full md:w-[28vw]">
-                <div className="h-full w-full bg-black border border-tfsdark-600 opacity-90 rounded-t-xl overflow-hidden duration-300 -ml-3 mt-3">
-                  <div className="ml-4 flex items-center space-x-2 h-8 bg-tfsdark-700/20">
-                    <div className="h-3 w-3 bg-red-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-yellow-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+              <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
                   </div>
                   <Image
                     src="/assets/landing/fordevelopers/screen-hangout.webp"
@@ -434,9 +434,9 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </Fade>
           </div>
 
-          <div className="flex flex-col-reverse md:flex-row justify-between md:space-x-20">
+          <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="md:h-[100vh] font-intertight tracking-wide text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl tracking-wide md:h-[100vh] md:pt-80 md:text-3xl">
                 <p>
                   On <span className="text-purple-400">your profile</span>,
                   highlight your projects, code snippets, sparks (kinda like
@@ -446,21 +446,21 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   <span className="text-purple-400">recruiter spam</span>.
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-6">
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <IoCubeOutline className="h-11 w-11 text-slate-200" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <IoCodeSlashSharp className="h-11 w-11 text-slate-200" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <IoFlashOutline className="h-11 w-11 text-slate-200" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <IoBriefcaseOutline className="h-11 w-11 text-slate-200" />
                   </div>
                 </div>
               </div>
-              <div className="md:h-[80vh] font-intertight text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
                 <p>
                   Not only GitHub, but with our integrations to{' '}
                   <span className="text-purple-400">DEV, Hashnode</span> and{' '}
@@ -470,13 +470,13 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   <span className="text-purple-400">discoverablity</span>.
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-6">
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <SiDevdotto className="h-11 w-11 text-slate-200" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <SiHashnode className="h-11 w-11 text-slate-200" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <SiMedium className="h-11 w-11 text-slate-200" />
                   </div>
                 </div>
@@ -484,12 +484,12 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="md:sticky md:top-48 border border-purple-900/60 shadow-2xl bg-purple-500/10 shadow-purple-700/20 rounded-lg h-[60vh] w-full md:w-[28vw]">
-                <div className="h-full w-full bg-black border border-tfsdark-600 opacity-90 rounded-t-xl overflow-hidden duration-300 -ml-3 mt-3">
-                  <div className="ml-4 flex items-center space-x-2 h-8 bg-tfsdark-700/20">
-                    <div className="h-3 w-3 bg-red-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-yellow-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+              <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
                   </div>
                   <Image
                     src="/assets/landing/fordevelopers/screen-profile.webp"
@@ -504,9 +504,9 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </Fade>
           </div>
 
-          <div className="flex flex-col-reverse md:flex-row justify-between md:space-x-20">
+          <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="md:h-[100vh] font-intertight tracking-wide text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl tracking-wide md:h-[100vh] md:pt-80 md:text-3xl">
                 <p>
                   People make{' '}
                   <span className="text-purple-400">real connections</span> with
@@ -515,12 +515,12 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   from your profile.
                 </p>
                 <p>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <MdOutlineSlowMotionVideo className="h-11 w-11 text-slate-200" />
                   </div>
                 </p>
               </div>
-              <div className="md:h-[80vh] font-intertight text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
                 <p>
                   With a <span className="text-purple-400">video intro</span> on
                   your profile, you&apos;re 2x more likely to make better
@@ -531,7 +531,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   .
                 </p>
                 <p>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <MdOutlineSlowMotionVideo className="h-11 w-11 text-slate-200" />
                   </div>
                 </p>
@@ -539,8 +539,8 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="relative md:sticky md:top-48 border border-purple-900/60 shadow-2xl bg-purple-500/10 shadow-purple-700/20 rounded-lg h-[60vh] w-full md:w-[28vw]">
-                <div className="h-full w-full bg-black border border-tfsdark-600 opacity-90 rounded-t-xl overflow-hidden duration-300 -ml-3 mt-3">
+              <div className="relative h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
                   <VideoPlayerProfile
                     src={`https://stream.mux.com/OGgHsrxVO6KHXUBDdtsVPCMMnJej3tuPszF3L00K00m8U.m3u8`}
                     controls={false}
@@ -548,16 +548,16 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                     autoPlay={isMobile ? false : true}
                   />
                 </div>
-                <span className="absolute text-2xl top-10 left-10 md:left-4 -translate-x-1/2 whitespace-nowrap rounded-lg bg-blue-500 px-6 py-3 text-white transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-blue-500 before:content-['']">
+                <span className="absolute top-10 left-10 -translate-x-1/2 whitespace-nowrap rounded-lg bg-blue-500 px-6 py-3 text-2xl text-white transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-blue-500 before:content-[''] md:left-4">
                   Hello!
                 </span>
               </div>
             </Fade>
           </div>
 
-          <div className="flex flex-col-reverse md:flex-row justify-between md:space-x-20">
+          <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="md:h-[100vh] font-intertight tracking-wide text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl tracking-wide md:h-[100vh] md:pt-80 md:text-3xl">
                 <p>
                   <span className="text-purple-400">Team profiles</span> make
                   strong connections with people looking to collaborate or find
@@ -571,7 +571,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   ))}
                 </div>
               </div>
-              <div className="md:h-[80vh] font-intertight text-2xl md:text-3xl flex flex-col space-y-10 pt-20 md:pt-80">
+              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
                 <p>
                   Browse and discover{' '}
                   <span className="text-purple-400">teams</span> building great
@@ -590,12 +590,12 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="md:sticky md:top-48 border border-purple-900/60 shadow-2xl bg-purple-500/10 shadow-purple-700/20 rounded-lg h-[60vh] w-full md:w-[28vw]">
-                <div className="h-full w-full bg-black border border-tfsdark-600 opacity-90 rounded-t-xl overflow-hidden duration-300 -ml-3 mt-3">
-                  <div className="ml-4 flex items-center space-x-2 h-8 bg-tfsdark-700/20">
-                    <div className="h-3 w-3 bg-red-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-yellow-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+              <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
                   </div>
                   <Image
                     src="/assets/landing/fordevelopers/screen-teams.webp"
@@ -616,7 +616,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
         <Testimonials />
       </div>
 
-      <div className="max-w-3xl text-center mx-auto relative font-intertight space-y-6 px-4 pt-28 pb-48">
+      <div className="relative mx-auto max-w-3xl space-y-6 px-4 pt-28 pb-48 text-center font-intertight">
         <h4 className="text-3xl font-bold">
           Opportunity comes when you expand your network.
         </h4>
@@ -624,10 +624,10 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
           Connect with like-minded developers and grow your network. This is
           truly the best way to strengthen your career as a developer.
         </p>
-        <div className="max-w-4xl mx-auto">
-          <div className="mt-10 flex justify-center items-center space-x-6">
+        <div className="mx-auto max-w-4xl">
+          <div className="mt-10 flex items-center justify-center space-x-6">
             <button
-              className="btn-primary text-xl py-3 px-6 rounded-lg"
+              className="btn-primary rounded-lg py-3 px-6 text-xl"
               onClick={() => {
                 setShowSignupModal(true);
                 sendSlackSignUpMessage('GET STARTED');

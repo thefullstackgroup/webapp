@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 import { useMemo } from 'react';
-import ProjectCard from 'components/modules/static/shared/ProjectCard';
+import ProjectCard from 'components/common/cards/ProjectCard';
 import Loader from 'components/common/elements/Loader';
 import fetcher from 'utils/fetcher';
 
@@ -57,7 +57,7 @@ const Showcase = ({ category }) => {
   }, [data]);
 
   return (
-    <div className="relative pl-4 md:px-4 2xl:px-0 md:mx-auto sm:min-h-screen">
+    <div className="sm:min-h-screen md:mx-auto">
       {!data && (
         <div className="flex justify-center">
           <Loader />
@@ -65,7 +65,7 @@ const Showcase = ({ category }) => {
       )}
 
       {data && (
-        <div className="flex z-50 no-scrollbar sm:float-none overflow-x-scroll sm:mt-4 sm:grid sm:grid-cols-1 gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+        <div className="no-scrollbar z-50 flex gap-6 overflow-x-scroll sm:float-none sm:mt-4 sm:grid sm:grid-cols-1 md:grid-cols-2 md:gap-8 lg:grid-cols-3 2xl:grid-cols-4">
           {projectCards}
         </div>
       )}

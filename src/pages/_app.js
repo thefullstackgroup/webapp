@@ -31,7 +31,7 @@ function App({ Component, pageProps }) {
     <ThemeProvider attribute="class">
       <UserStateProvider>
         <NextProgress
-          color="#7f5af0"
+          color="#EEEEEE"
           delay={500}
           options={{ showSpinner: false }}
         />

@@ -30,7 +30,7 @@ const Avatar = (props) => {
       {props.href ? (
         <Link href={`${props.href}`} passHref>
           <div
-            className={`${dimensions} rounded-full overflow-hidden hover:ring-4 hover:ring-primary-500 duration-200`}
+            className={`${dimensions} overflow-hidden rounded-full duration-200 hover:ring-4 hover:ring-primary-500`}
           >
             <Image
               src={
@@ -50,7 +50,7 @@ const Avatar = (props) => {
           </div>
         </Link>
       ) : (
-        <div className={`${dimensions} rounded-full overflow-hidden`}>
+        <div className={`${dimensions} overflow-hidden rounded-full`}>
           <Image
             src={imgSrc ? imgSrc : '/assets/profile/user/avatar-notfound.webp'}
             className="h-full w-full object-cover"
@@ -67,10 +67,10 @@ const Avatar = (props) => {
         </div>
       )}
       {props.userId && isOnline && (
-        <div className="absolute -bottom-1 right-0 w-full flex justify-end">
+        <div className="absolute -bottom-1 right-0 flex w-full justify-end">
           <div className="w-1/3">
             <span
-              className="flex rounded-full ring-0 w-3 h-3 bg-green-500"
+              className="flex h-3 w-3 rounded-full bg-green-500 ring-0"
               title="Online"
             ></span>
           </div>

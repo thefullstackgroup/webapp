@@ -5,9 +5,14 @@ import useSWR from 'swr';
 import Link from 'next/link';
 import fetcher from 'utils/fetcher';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
-import { categories } from 'components/modules/explore/constants';
+import {
+  RangeFilter,
+  SortFilter,
+  categories,
+} from 'components/modules/explore/constants';
 import { IoAdd, IoSearchOutline } from 'react-icons/io5';
 import dynamic from 'next/dynamic';
+import ProjectGallery from './ProjectGallery';
 
 const Filters = dynamic(() => import('components/modules/explore/Filters'));
 const Feed = dynamic(() => import('components/modules/explore/Feed'));
@@ -25,40 +30,47 @@ export const Greeting = ({ name }) => {
   else if (hours >= 17 && hours <= 24) greet = 'Good evening';
 
   return (
-    <h4 className="hidden md:block text-xl md:text-2xl text-slate-100 font-semibold mb-4 tracking-tight">
+    <h4 className="mb-4 hidden text-xl font-semibold tracking-tight text-slate-100 md:block md:text-2xl">
       {greet}, <span className="capitlize">{firstName[0]}</span> 👋
     </h4>
   );
 };
 
-const Main = ({ user }) => {
-  const router = useRouter();
-  const slug = router.query.cat !== '' ? router.query.cat : '';
+const Main = ({ user, slug }) => {
+  const [sort, setSort] = useState(SortFilter[0]);
+  const [range, setRange] = useState(RangeFilter[2]);
+  const [stack, setStack] = useState(null);
   const [term, setTerm] = useState('');
-  const [viewType, setViewType] = useState(isMobile ? 'list' : 'grid');
-  let selectedTab = categories.find((category) => category.slug === slug);
-
-  const [selectedCategory, setSelectedCategory] = useState(
-    selectedTab || {
-      title: 'New',
-      slug: 'recent',
-      filter: '',
-      sort: 'newest',
-      range: 90,
-    }
-  );
-  const [range, setRange] = useState(30);
-  const [sort, setSort] = useState(null);
-
-  const url = `${process.env.BASEURL}/api/profile/social/following?userId=${user.userId}`;
-  const { data } = useSWR(url, fetcher);
-  const following =
-    (data?.length && data?.map(({ followUserId }) => followUserId).join(',')) ||
-    null;
 
   return (
     <>
-      <div className="mt-0 lg:mt-4 w-full flex justify-center">
+      <div className="min-h-screen">
+        <div className="space-y-2 py-10 text-center">
+          <h2 className="text-5xl font-bold tracking-tight">
+            Explore showcase
+          </h2>
+          <h4 className="mx-auto max-w-2xl text-xl font-normal tracking-tight text-gray-400 dark:text-gray-400">
+            Discover awesome projects from the developer showcase
+          </h4>
+        </div>
+        <div className="relative">
+          <Filters
+            range={range}
+            setRange={setRange}
+            stack={stack}
+            setStack={setStack}
+            sort={sort}
+            setSort={setSort}
+          />
+          <ProjectGallery
+            sort={sort.value}
+            range={range.value}
+            stack={stack}
+            category={slug}
+          />
+        </div>
+      </div>
+      {/* <div className="mt-0 lg:mt-4 w-full flex justify-center">
         <div className="min-h-screen w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
           <div className="relative max-w-screen-2xl mx-auto">
             <Link href="/post" passHref>
@@ -133,7 +145,7 @@ const Main = ({ user }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

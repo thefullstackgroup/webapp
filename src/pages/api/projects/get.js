@@ -5,7 +5,16 @@ import initAuth from '../../../firebase/initFirebaseApp';
 initAuth();
 
 const handler = async (req, res, AuthUser) => {
-  const accessToken = await AuthUser.getIdToken();
+  const accessToken = await AuthUser?.getIdToken();
+
+  let headers = {};
+  if (accessToken)
+    headers = {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
   let connectionUsersIds = '';
   if (req.query.connectionUsersIds) {
     connectionUsersIds = `&connectionUserIds=${req.query.connectionUsersIds}`;
@@ -27,11 +36,7 @@ const handler = async (req, res, AuthUser) => {
           ? '&lookingForCollabs=' + req.query.lookingForCollabs
           : ''
       }&${req.query.range !== undefined && `range=${req.query.range}`}`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
+      headers
     )
     .then((response) => {
       res.status(response.status).json(response.data.content);
@@ -42,4 +47,3 @@ const handler = async (req, res, AuthUser) => {
 };
 
 export default withAuthUserTokenAPI(handler);
-// export default handler;

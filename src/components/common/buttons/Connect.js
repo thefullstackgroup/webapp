@@ -53,7 +53,7 @@ const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
       )}
 
       {showPendingButton && (
-        <div className="btn-secondary bg-transparent border hover:bg-transparent border-tfsdark-600 group text-slate-400">
+        <div className="btn btn-secondary group border border-tfsdark-600 bg-transparent text-slate-400 hover:bg-transparent">
           <span>Pending...</span>
         </div>
       )}
@@ -61,14 +61,14 @@ const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
       <ModalDialog show={showModal} setShow={setShowModal} title="Connect">
         {!displayConnectionSuccess && (
           <div className="py-4">
-            <div className="flex justify-center space-x-2 sm:space-x-4 my-0 w-full">
+            <div className="my-0 flex w-full justify-center space-x-2 sm:space-x-4">
               <Avatar
                 image={connectTo?.profilePicUrl}
                 name={connectTo?.name}
                 dimensions="w-24 h-24 border-2 border-tfsdark-800"
               />
 
-              <IoCode className="w-9 h-auto text-slate-400" />
+              <IoCode className="h-auto w-9 text-slate-400" />
 
               <Avatar
                 image={connectFrom?.profilePicUrl}
@@ -76,18 +76,18 @@ const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
                 dimensions="w-24 h-24 border-2 border-tfsdark-800"
               />
             </div>
-            <div className="flex flex-col items-center mt-6 max-w-7xl sm:px-12">
-              <span className="text-center text-xl sm:text-2xl font-semibold text-slate-100">
+            <div className="mt-6 flex max-w-7xl flex-col items-center sm:px-12">
+              <span className="text-center text-xl font-semibold text-slate-100 sm:text-2xl">
                 Connect to {connectTo?.name}
               </span>
-              <span className="text-center space-x-2 text-slate-400">
+              <span className="space-x-2 text-center text-slate-400">
                 Request to connect and start the conversation.
               </span>
             </div>
             <div className="">
-              <div className="max-w-7xl mx-auto py-4 px-2 sm:py-4 sm:px-6 lg:px-8 mt-4">
+              <div className="mx-auto mt-4 max-w-7xl py-4 px-2 sm:py-4 sm:px-6 lg:px-8">
                 <ul>
-                  <li className="px-4 rounded-lg mb-0 font-normal text-base sm:text-lg text-slate-100 text-center">
+                  <li className="mb-0 rounded-lg px-4 text-center text-base font-normal text-slate-100 sm:text-lg">
                     <button
                       className="btn-primary px-10"
                       onClick={() => actionConnect()}
@@ -102,9 +102,9 @@ const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
         )}
 
         {displayConnectionSuccess && (
-          <div className="py-4 relative overflow-hidden">
+          <div className="relative overflow-hidden py-4">
             <Confetti />
-            <div className="flex justify-center space-x-2 sm:-space-x-4 my-0 w-full">
+            <div className="my-0 flex w-full justify-center space-x-2 sm:-space-x-4">
               <Avatar
                 image={connectTo.profilePicUrl}
                 name={connectTo.name}
@@ -116,14 +116,14 @@ const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
                 dimensions="w-24 h-24 border-2 border-tfsdark-800"
               />
             </div>
-            <div className="flex flex-col items-center mt-6 max-w-7xl sm:px-12 mb-6">
-              <span className="text-center space-x-2 text-xl sm:text-3xl font-bold tracking-tight text-gray-100">
+            <div className="mt-6 mb-6 flex max-w-7xl flex-col items-center sm:px-12">
+              <span className="space-x-2 text-center text-xl font-bold tracking-tight text-gray-100 sm:text-3xl">
                 Boom!
               </span>
-              <span className="mt-2 text-center space-x-2 text-base sm:text-xl font-light tracking-tight text-gray-300">
+              <span className="mt-2 space-x-2 text-center text-base font-light tracking-tight text-gray-300 sm:text-xl">
                 Your request was sent to {connectTo.name}.
               </span>
-              <span className="text-center my-4">
+              <span className="my-4 text-center">
                 Unlike other networks, making connections on The Full Stack
                 carries meaning and value. Good luck to you both becoming
                 buddies!

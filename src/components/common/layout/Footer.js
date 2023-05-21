@@ -25,28 +25,25 @@ const socials = [
 const Footer = () => {
   return (
     <>
-      <footer className="relative dark:bg-black bg-tfsdark-900 dark:border-t dark:border-tfsdark-700">
-        <div className="max-w-5xl mx-auto py-12 px-4 md:px-10 lg:py-16">
-          <div className="w-full flex flex-col justify-center space-y-4">
-            <ul className="space-x-4 md:space-x-6 flex flex-wrap items-center justify-center">
+      <footer className="relative border-t border-gray-200 bg-gray-100 dark:border-gray-900 dark:bg-black">
+        <div className="mx-auto max-w-5xl py-12 px-4 md:px-10 lg:py-16">
+          <div className="flex w-full flex-col justify-center space-y-4">
+            <ul className="flex flex-wrap items-center justify-center space-x-4 md:space-x-6">
               {links.map((link, index) => (
                 <li className=" whitespace-nowrap" key={index}>
                   <Link href={link.url} passHref>
-                    <a
-                      href="#"
-                      className="text-xs lg:text-sm text-gray-400 hover:text-white"
-                    >
+                    <a href="#" className="ftr-item">
                       {link.label}
                     </a>
                   </Link>
                 </li>
               ))}
             </ul>
-            <div className="flex space-x-6 justify-center">
+            <div className="flex justify-center space-x-6">
               {socials.map((social, index) => (
                 <a
                   href={social.url}
-                  className="text-slate-400 hover:text-white duration-200"
+                  className="ftr-item-icon"
                   target="_blank"
                   rel="noreferrer"
                   title={social.label}
@@ -68,7 +65,7 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-            <p className="w-full mt-8 text-xs text-gray-400 md:mt-0 text-center">
+            <p className="mt-8 w-full text-center text-xs text-gray-400 dark:text-gray-500">
               &copy; {new Date().getFullYear()} thefullstack.
             </p>
           </div>

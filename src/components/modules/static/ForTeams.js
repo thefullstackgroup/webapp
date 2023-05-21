@@ -38,27 +38,27 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
 
   return (
     <div className="bg-black">
-      <div className="fixed top-0 left-0 w-full mx-auto min-h-screen mt-16 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-orange-300/20 via-black to-tfsdark-900 flex justify-between"></div>
-      <div className="relative z-10 max-w-screen-xl mx-auto md:h-[70vh] lg:mt-16">
-        <div className="pt-24 md:pt-32 max-w-7xl space-y-6 px-4 lg:px-0">
+      <div className="fixed top-0 left-0 mx-auto mt-16 flex min-h-screen w-full justify-between bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-orange-300/20 via-black to-tfsdark-900"></div>
+      <div className="relative z-10 mx-auto max-w-screen-xl md:h-[70vh] lg:mt-16">
+        <div className="max-w-7xl space-y-6 px-4 pt-24 md:pt-32 lg:px-0">
           <Link href="/about/our-story">
-            <div className="rounded-full text-slate-300 hover:text-white bg-slate-800/40 border border-tfsdark-700 px-6 py-1 text-sm w-min whitespace-nowrap mx-auto mb-10 cursor-pointer">
+            <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-tfsdark-700 bg-slate-800/40 px-6 py-1 text-sm text-slate-300 hover:text-white">
               Why this matters? See our story &rarr;
             </div>
           </Link>
-          <h1 className="text-6xl md:text-9xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-200 to-yellow-200 font-intertight flex justify-center -space-y-4 text-center">
+          <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-orange-600 via-orange-200 to-yellow-200 bg-clip-text text-center font-intertight text-6xl font-bold tracking-tight text-transparent md:text-9xl">
             Team Profiles.
           </h1>
-          <div className="max-w-3xl mx-auto">
-            <h4 className="text-center text-slate-300 font-light text-lg md:text-2xl px-4">
+          <div className="mx-auto max-w-3xl">
+            <h4 className="px-4 text-center text-lg font-light text-slate-300 md:text-2xl">
               The Full Stack helps your engineering team share its unique
               culture with developers looking for more than just a job.
             </h4>
           </div>
-          <div className="max-w-4xl mx-auto">
-            <div className="mt-20 flex justify-center items-center space-x-6">
+          <div className="mx-auto max-w-4xl">
+            <div className="mt-20 flex items-center justify-center space-x-6">
               <button
-                className="btn-primary text-xl py-3 px-6 rounded-lg"
+                className="btn-primary rounded-lg py-3 px-6 text-xl"
                 onClick={() => {
                   setShowSignupModal(true);
                   sendSlackSignUpMessage('GET STARTED');
@@ -67,7 +67,7 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                 Create a team profile
               </button>
               <button
-                className="hidden md:block btn-secondary bg-tfsdark-900/30 bg-opacity-50 text-xl py-3 px-6 rounded-lg"
+                className="btn-secondary hidden rounded-lg bg-tfsdark-900/30 bg-opacity-50 py-3 px-6 text-xl md:block"
                 onClick={() => handleLearnMore()}
               >
                 Learn more
@@ -77,49 +77,49 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
         </div>
       </div>
       <div className="pt-28" id="learnmore"></div>
-      <div className="max-w-7xl text-center mx-auto relative font-intertight space-y-20 md:h-[70vh]">
+      <div className="relative mx-auto max-w-7xl space-y-20 text-center font-intertight md:h-[70vh]">
         <h4 className="text-3xl font-semibold">
           Why should you have a team profile?
         </h4>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-10">
-          <div className="rounded-xl md:bg-tfsdark-900/50 p-6 text-left space-y-4">
+        <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
+          <div className="space-y-4 rounded-xl p-6 text-left md:bg-tfsdark-900/50">
             <div className="flex items-center space-x-4 text-slate-400">
-              <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+              <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                 <BsCheckSquare className="h-8 w-8 text-slate-200" />
               </div>
-              <h4 className="font-semibold text-base uppercase">Context</h4>
+              <h4 className="text-base font-semibold uppercase">Context</h4>
             </div>
 
-            <p className="text-xl text-slate-300 font-medium">
+            <p className="text-xl font-medium text-slate-300">
               Lots of developers are contacted about new opportunities all the
               time, but they lack context about who they will be working with,
               the dev tools, the dev process, or whether they are aligned with a
               teams mission.
             </p>
           </div>
-          <div className="rounded-xl md:bg-tfsdark-900/50 p-6 text-left space-y-4">
+          <div className="space-y-4 rounded-xl p-6 text-left md:bg-tfsdark-900/50">
             <div className="flex items-center space-x-4 text-slate-400">
-              <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+              <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                 <FiStar className="h-8 w-8 text-slate-200" />
               </div>
-              <h4 className="font-semibold text-base uppercase">Attract</h4>
+              <h4 className="text-base font-semibold uppercase">Attract</h4>
             </div>
-            <p className="text-xl text-slate-300 font-medium">
+            <p className="text-xl font-medium text-slate-300">
               Developers come to The Full Stack to share their work, grow their
               network and connect with like-minded developers and engineering
               teams that share similar interests, tech stacks and shared values.
             </p>
           </div>
 
-          <div className="rounded-xl md:bg-tfsdark-900/50 p-6 text-left space-y-4">
+          <div className="space-y-4 rounded-xl p-6 text-left md:bg-tfsdark-900/50">
             <div className="flex items-center space-x-4 text-slate-400">
-              <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+              <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                 <BsGraphUp className="h-8 w-8 text-slate-200" />
               </div>
-              <h4 className="font-semibold text-base uppercase">Efficiency</h4>
+              <h4 className="text-base font-semibold uppercase">Efficiency</h4>
             </div>
-            <p className="text-xl text-slate-300 font-medium">
+            <p className="text-xl font-medium text-slate-300">
               Tech hiring is becoming more social and informal. Having a team
               profile that articulates your mission and culture within a fast
               growing dev network keeps potential developers more informed about
@@ -129,21 +129,21 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
         </div>
       </div>
 
-      <div className="mt-20 md:mt-0 mb-20 md:mb-56 space-y-20 md:space-y-40">
-        <div className="relative text-center space-y-4 px-4">
-          <h4 className="z-20 text-3xl md:text-5xl font-bold">
+      <div className="mt-20 mb-20 space-y-20 md:mt-0 md:mb-56 md:space-y-40">
+        <div className="relative space-y-4 px-4 text-center">
+          <h4 className="z-20 text-3xl font-bold md:text-5xl">
             Showcase your engineering team
           </h4>
-          <p className="text-slate-300 text-xl md:text-2xl">
+          <p className="text-xl text-slate-300 md:text-2xl">
             Don&apos;t let your team and opportunities get overlooked
           </p>
         </div>
 
-        <div className="max-w-screen-xl mx-auto md:h-[80vh] space-y-80 pl-6 pr-4 md:px-20">
-          <div className="flex flex-col-reverse md:flex-row justify-between md:space-x-20">
+        <div className="mx-auto max-w-screen-xl space-y-80 pl-6 pr-4 md:h-[80vh] md:px-20">
+          <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="font-intertight tracking-wide text-3xl flex flex-col space-y-10 pt-10">
-                <h4 className="font-semibold text-lg uppercase text-slate-400">
+              <div className="flex flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
+                <h4 className="text-lg font-semibold uppercase text-slate-400">
                   Your mission
                 </h4>
                 <p>
@@ -155,10 +155,10 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   replicated on other horizontal network.
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-8">
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <FiTarget className="h-11 w-11 text-slate-200" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <GiTeamUpgrade className="h-11 w-11 text-slate-200" />
                   </div>
                 </div>
@@ -166,12 +166,12 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </div>
 
             <Fade duration={1000} delay={200}>
-              <div className="border border-orange-900/60 shadow-2xl bg-orange-500/10 shadow-orange-700/20 rounded-lg h-[60vh] md:w-[28vw]">
-                <div className="h-full w-full bg-black border border-tfsdark-600 opacity-90 rounded-t-xl overflow-hidden duration-300 -ml-3 mt-3">
-                  <div className="ml-4 flex items-center space-x-2 h-8 bg-tfsdark-700/20">
-                    <div className="h-3 w-3 bg-red-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-yellow-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+              <div className="h-[60vh] rounded-lg border border-orange-900/60 bg-orange-500/10 shadow-2xl shadow-orange-700/20 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
                   </div>
                   <Image
                     src="/assets/landing/forteams/screen-teams.webp"
@@ -187,11 +187,11 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
           </div>
         </div>
 
-        <div className="max-w-screen-xl mx-auto md:h-[80vh] space-y-80 pl-6 pr-4 md:px-20">
-          <div className="flex flex-col-reverse md:flex-row justify-between md:space-x-20">
+        <div className="mx-auto max-w-screen-xl space-y-80 pl-6 pr-4 md:h-[80vh] md:px-20">
+          <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="h-[90vh] font-intertight tracking-wide text-3xl flex flex-col space-y-10 pt-10">
-                <h4 className="font-semibold text-lg uppercase text-slate-400">
+              <div className="flex h-[90vh] flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
+                <h4 className="text-lg font-semibold uppercase text-slate-400">
                   Teammates
                 </h4>
                 <p>
@@ -212,12 +212,12 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </div>
 
             <Fade duration={1000} delay={200}>
-              <div className="border border-orange-900/60 shadow-2xl bg-orange-500/10 shadow-orange-700/20 rounded-lg h-[60vh] md:w-[28vw]">
-                <div className="h-full w-full bg-black border border-tfsdark-600 opacity-90 rounded-t-xl overflow-hidden duration-300 -ml-3 mt-3">
-                  <div className="ml-4 flex items-center space-x-2 h-8 bg-tfsdark-700/20">
-                    <div className="h-3 w-3 bg-red-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-yellow-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+              <div className="h-[60vh] rounded-lg border border-orange-900/60 bg-orange-500/10 shadow-2xl shadow-orange-700/20 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
                   </div>
                   <Image
                     src="/assets/landing/forteams/screen-teammates.webp"
@@ -233,11 +233,11 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
           </div>
         </div>
 
-        <div className="max-w-screen-xl mx-auto md:h-[80vh] space-y-80 pl-6 pr-4 md:px-20">
-          <div className="flex flex-col-reverse md:flex-row justify-between md:space-x-20">
+        <div className="mx-auto max-w-screen-xl space-y-80 pl-6 pr-4 md:h-[80vh] md:px-20">
+          <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="font-intertight tracking-wide text-3xl flex flex-col space-y-10 pt-10">
-                <h4 className="font-semibold text-lg uppercase text-slate-400">
+              <div className="flex flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
+                <h4 className="text-lg font-semibold uppercase text-slate-400">
                   Dev Tools &middot; Dev process
                 </h4>
                 <p>
@@ -249,16 +249,16 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   work.
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-8">
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <SiVisualstudiocode className="h-11 w-11 text-slate-200" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <SiReact className="h-11 w-11 text-slate-200" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <SiJava className="h-11 w-11 text-slate-200" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <FaAws className="h-11 w-11 text-slate-200" />
                   </div>
                 </div>
@@ -266,12 +266,12 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </div>
 
             <Fade duration={1000} delay={200}>
-              <div className="border border-orange-900/60 shadow-2xl bg-orange-500/10 shadow-orange-700/20 rounded-lg h-[60vh] md:w-[28vw]">
-                <div className="h-full w-full bg-black border border-tfsdark-600 opacity-90 rounded-t-xl overflow-hidden duration-300 -ml-3 mt-3">
-                  <div className="ml-4 flex items-center space-x-2 h-8 bg-tfsdark-700/20">
-                    <div className="h-3 w-3 bg-red-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-yellow-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+              <div className="h-[60vh] rounded-lg border border-orange-900/60 bg-orange-500/10 shadow-2xl shadow-orange-700/20 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
                   </div>
                   <Image
                     src="/assets/landing/forteams/screen-tools.webp"
@@ -287,11 +287,11 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
           </div>
         </div>
 
-        <div className="max-w-screen-xl mx-auto md:h-[80vh] space-y-80 pl-6 pr-4 md:px-20">
-          <div className="flex flex-col-reverse md:flex-row justify-between md:space-x-20">
+        <div className="mx-auto max-w-screen-xl space-y-80 pl-6 pr-4 md:h-[80vh] md:px-20">
+          <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="font-intertight tracking-wide text-3xl flex flex-col space-y-10 pt-10">
-                <h4 className="font-semibold text-lg uppercase text-slate-400">
+              <div className="flex flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
+                <h4 className="text-lg font-semibold uppercase text-slate-400">
                   Free to use
                 </h4>
                 <p>
@@ -304,10 +304,10 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                 </p>
 
                 <div className="flex items-center space-x-2 md:space-x-8">
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <IoTimeOutline className="h-11 w-11 text-slate-200" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <IoShareSocialOutline className="h-11 w-11 text-slate-200" />
                   </div>
                 </div>
@@ -315,8 +315,8 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </div>
 
             <Fade duration={1000} delay={200}>
-              <div className="border border-orange-900/60 shadow-2xl bg-orange-500/10 shadow-orange-700/20 rounded-lg h-[60vh] md:w-[28vw]">
-                <div className="h-full w-full bg-black border border-tfsdark-600 opacity-90 rounded-t-xl overflow-hidden duration-300 -ml-3 mt-3">
+              <div className="h-[60vh] rounded-lg border border-orange-900/60 bg-orange-500/10 shadow-2xl shadow-orange-700/20 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
                   <VideoPlayerProfile
                     src={`https://stream.mux.com/wRd113AnijLQuPqnHs601NhVGO9OHGiSu18lBooF4Gfo.m3u8`}
                     controls={false}
@@ -329,11 +329,11 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
           </div>
         </div>
 
-        <div className="max-w-screen-xl mx-auto md:h-[80vh] space-y-80 pl-6 pr-4 md:px-20">
-          <div className="flex flex-col-reverse md:flex-row justify-between md:space-x-20">
+        <div className="mx-auto max-w-screen-xl space-y-80 pl-6 pr-4 md:h-[80vh] md:px-20">
+          <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="font-intertight tracking-wide text-3xl flex flex-col space-y-10 pt-10">
-                <h4 className="font-semibold text-lg uppercase text-slate-400">
+              <div className="flex flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
+                <h4 className="text-lg font-semibold uppercase text-slate-400">
                   Post Open roles
                 </h4>
                 <p>
@@ -343,13 +343,13 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                   a pricing model that is fair.
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-8">
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <IoBriefcaseOutline className="h-11 w-11 text-slate-200" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <IoPersonAddOutline className="h-11 w-11 text-slate-200" />
                   </div>
-                  <div className="flex space-x-2 text-base rounded-xl bg-slate-500/20 px-4 py-3 w-min">
+                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <IoDocumentTextOutline className="h-11 w-11 text-slate-200" />
                   </div>
                 </div>
@@ -357,12 +357,12 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
             </div>
 
             <Fade duration={1000} delay={200}>
-              <div className="border border-orange-900/60 shadow-2xl bg-orange-500/10 shadow-orange-700/20 rounded-lg h-[60vh] md:w-[28vw]">
-                <div className="h-full w-full bg-black border border-tfsdark-600 opacity-90 rounded-t-xl overflow-hidden duration-300 -ml-3 mt-3">
-                  <div className="ml-4 flex items-center space-x-2 h-8 bg-tfsdark-700/20">
-                    <div className="h-3 w-3 bg-red-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-yellow-500 rounded-full"></div>
-                    <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+              <div className="h-[60vh] rounded-lg border border-orange-900/60 bg-orange-500/10 shadow-2xl shadow-orange-700/20 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
                   </div>
                   <Image
                     src="/assets/landing/forteams/screen-jobs.webp"
@@ -378,22 +378,22 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
           </div>
         </div>
 
-        <div className="relative text-center space-y-10">
+        <div className="relative space-y-10 text-center">
           <h4 className="z-20 text-3xl font-bold">
             Frequently asked questions
           </h4>
-          <div className="relative max-w-3xl mx-auto px-4">
+          <div className="relative mx-auto max-w-3xl px-4">
             <Faq />
           </div>
         </div>
 
-        <div className="pt-20 relative text-center space-y-10 px-4">
-          <div className="relative max-w-3xl text-2xl mx-auto">
+        <div className="relative space-y-10 px-4 pt-20 text-center">
+          <div className="relative mx-auto max-w-3xl text-2xl">
             &quot;We love what you guys stand for, we love what The Full Stack
             stands for and we are very excited to be part of the journey!&quot;
           </div>
-          <div className="flex justify-center items-center space-x-4">
-            <div className="h-12 w-12 bg-black rounded-full overflow-hidden">
+          <div className="flex items-center justify-center space-x-4">
+            <div className="h-12 w-12 overflow-hidden rounded-full bg-black">
               <Image
                 src="/assets/landing/engineers/testimonial-foodcloud.webp"
                 className="h-full w-full object-cover object-top"
@@ -410,16 +410,16 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
       <div className="relative w-full">
         <Testimonials />
       </div>
-      <div className="max-w-3xl text-center mx-auto relative font-intertight space-y-6 pt-28 pb-48 px-4">
+      <div className="relative mx-auto max-w-3xl space-y-6 px-4 pt-28 pb-48 text-center font-intertight">
         <h4 className="text-4xl font-medium">
           Right now, there are great developers wondering if a{' '}
           <span className="text-orange-400">team like yours</span> even exists.
         </h4>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="mt-10 flex justify-center items-center space-x-6">
+        <div className="mx-auto max-w-4xl">
+          <div className="mt-10 flex items-center justify-center space-x-6">
             <button
-              className="btn-primary text-xl py-3 px-6 rounded-lg"
+              className="btn-primary rounded-lg py-3 px-6 text-xl"
               onClick={() => {
                 setShowSignupModal(true);
                 sendSlackSignUpMessage('GET STARTED');

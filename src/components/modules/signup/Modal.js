@@ -11,7 +11,7 @@ import ModalDialog from 'components/common/modals/ModalDialog';
 
 const Loader = () => {
   return (
-    <div className="bg-tfsdark-800 w-full flex justify-center items-center">
+    <div className="flex w-full items-center justify-center bg-tfsdark-800">
       <CgSpinner className="h-14 w-14 animate-spin text-white" />
     </div>
   );
@@ -81,15 +81,15 @@ function SignUpModal({ show, setShow }) {
     <ModalDialog show={show} setShow={setShow}>
       <div className="pt-2">
         <button
-          className="z-50 w-full text-white flex justify-end"
+          className="z-50 flex w-full justify-end text-white"
           onClick={() => setShow(!show)}
         >
           <IoCloseOutline className="h-8 w-8" />
         </button>
         <div className="w-full">
           <div className="flex items-center">
-            <div className="w-full max-w-md mx-auto">
-              <div className="flex flex-col text-center justify-center mb-2 space-y-6 md:mb-0">
+            <div className="mx-auto w-full max-w-md">
+              <div className="mb-2 flex flex-col justify-center space-y-6 text-center md:mb-0">
                 <Link href="/" passHref>
                   <a href="#" className="flex items-center justify-center">
                     <span className="h-16 w-16 sm:h-20 sm:w-20">
@@ -108,21 +108,21 @@ function SignUpModal({ show, setShow }) {
               <div className="p-4 md:p-8">
                 <div className="space-y-4">
                   <button
-                    className="btn-secondary text-sm md:text-base flex items-center space-x-2 justify-center px-3 py-3 md:py-4 w-full"
+                    className="btn-secondary flex w-full items-center justify-center space-x-2 px-3 py-3 text-sm md:py-4 md:text-base"
                     onClick={signInWithGoogle}
                   >
                     <FcGoogle className="h-6 w-6" />
                     <span>Continue with Google</span>
                   </button>
                   <button
-                    className="btn-secondary text-sm md:text-base flex items-center space-x-2 justify-center px-3 py-3 md:py-4 w-full"
+                    className="btn-secondary flex w-full items-center justify-center space-x-2 px-3 py-3 text-sm md:py-4 md:text-base"
                     onClick={signInWithGitHub}
                   >
                     <IoLogoGithub className="h-6 w-6" />
                     <span>Continue with GitHub</span>
                   </button>
                   <button
-                    className="btn-secondary text-sm md:text-base flex items-center space-x-2 justify-center px-3 py-3 md:py-4 w-full"
+                    className="btn-secondary flex w-full items-center justify-center space-x-2 px-3 py-3 text-sm md:py-4 md:text-base"
                     onClick={function () {
                       window.open(
                         '/api/auth/linkedin/login',
@@ -195,7 +195,7 @@ function SignUpModal({ show, setShow }) {
                     .
                   </div>
                   <div className="flex justify-center pt-4 md:pt-6">
-                    <div className="text-tfssecondary-500 text-sm text-center">
+                    <div className="text-center text-sm text-tfssecondary-500">
                       <Link href="/login" passHref>
                         <a href="#">Already have an account?</a>
                       </Link>

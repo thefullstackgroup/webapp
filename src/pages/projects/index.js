@@ -3,10 +3,10 @@ import { getUserProfile } from 'pages/api/auth/userProfile';
 import useUserProfile from 'hooks/useUserProfile';
 import { useEffect } from 'react';
 import Meta from 'components/common/partials/Metadata';
-import Layout from 'components/common/layout/Layout';
-import Main from 'components/modules/explore/Main';
+import Layout from 'components/common/layout/LayoutLoggedIn';
+import Main from 'components/modules/projects/Main';
 
-const Explore = () => {
+const Projects = () => {
   const [user, getUser] = useUserProfile();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Explore = () => {
   return (
     <>
       <Meta
-        title={`${process.env.brandName} | Showcase`}
+        title={`${process.env.brandName} | Developer Projects`}
         description="Explore the Developer Showcase and get inspiration for your next project"
         keywords=""
       />
@@ -30,7 +30,7 @@ const Explore = () => {
   );
 };
 
-export default withAuthUser()(Explore);
+export default withAuthUser()(Projects);
 
 export const getServerSideProps = withAuthUserTokenSSR()(
   async ({ AuthUser, req, res, query }) => {

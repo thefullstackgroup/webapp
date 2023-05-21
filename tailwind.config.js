@@ -26,6 +26,9 @@ module.exports = {
       mono: ['Roboto Mono', ...defaultTheme.fontFamily.mono],
     },
     extend: {
+      screens: {
+        '3xl': '1800px',
+      },
       typography(theme) {
         return {
           dark: {
@@ -62,6 +65,17 @@ module.exports = {
       },
       padding: { 'fluid-video': '56.25%' },
       colors: {
+        gray: {
+          100: '#fafafa',
+          200: '#eaeaea',
+          300: '#999',
+          400: '#888',
+          500: '#666',
+          600: '#444',
+          700: '#333',
+          800: '#111',
+          900: '#121212',
+        },
         dovegray: {
           50: '#C2C2C2',
           100: '#B8B8B8',
