@@ -44,11 +44,11 @@ const PopoverPanel = ({ item, childrenOne, childrenTwo }) => {
               <div className="w-full space-y-2">
                 {childrenOne.map((item, index) => (
                   <div key={index}>
-                    <a
-                      href="/analytics"
-                      className="nav-item flex items-center space-x-1 whitespace-nowrap rounded-md px-3 py-2 hover:bg-gray-200/80 dark:hover:bg-tfsdark-700"
-                    >
-                      <div className="flex items-start gap-3">
+                    <Link href={item.href}>
+                      <button
+                        className="nav-item flex items-start gap-3 space-x-1 whitespace-nowrap rounded-md px-3 py-2 text-left hover:bg-gray-200/80 focus:ring-0 dark:hover:bg-tfsdark-700"
+                        onClick={() => setIsShowing(false)}
+                      >
                         <Icon name={item.icon} className="h-6 w-6" />
                         <div className="flex flex-col">
                           <span className="text-black dark:text-white">
@@ -58,20 +58,19 @@ const PopoverPanel = ({ item, childrenOne, childrenTwo }) => {
                             {item.desc}
                           </span>
                         </div>
-                      </div>
-                    </a>
+                      </button>
+                    </Link>
                   </div>
                 ))}
               </div>
 
               <div className="space-y-2">
                 {childrenTwo.map((item, index) => (
-                  <a
-                    href="/analytics"
-                    className="nav-item flex items-center space-x-1 whitespace-nowrap rounded-md px-3 py-2 hover:bg-gray-200/80 dark:hover:bg-tfsdark-700"
-                    key={index}
-                  >
-                    <div className="flex items-start gap-3">
+                  <Link href={item.href} key={index}>
+                    <button
+                      className="nav-item flex items-start gap-3 space-x-1 whitespace-nowrap rounded-md px-3 py-2 text-left hover:bg-gray-200/80 focus:ring-0 dark:hover:bg-tfsdark-700"
+                      onClick={() => setIsShowing(false)}
+                    >
                       <Icon name={item.icon} className="h-6 w-6" />
                       <div className="flex flex-col">
                         <span className="text-black dark:text-white">
@@ -81,8 +80,8 @@ const PopoverPanel = ({ item, childrenOne, childrenTwo }) => {
                           {item.desc}
                         </span>
                       </div>
-                    </div>
-                  </a>
+                    </button>
+                  </Link>
                 ))}
               </div>
             </div>

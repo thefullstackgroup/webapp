@@ -1,10 +1,24 @@
 import { useRouter } from 'next/router';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
-import { StackFilter, RangeFilter, SortFilter } from './constants';
+import {
+  CategoriesFilter,
+  StackFilter,
+  RangeFilter,
+  SortFilter,
+} from './constants';
 import StackPopoverPanel from 'components/modules/explore/StackPopoverPanel';
 import FilterPopoverPanel from './FilterPopoverPanel';
 
-const Filters = ({ range, setRange, stack, setStack, sort, setSort }) => {
+const Filters = ({
+  range,
+  setRange,
+  stack,
+  setStack,
+  sort,
+  setSort,
+  category,
+  setCategory,
+}) => {
   return (
     <div className="">
       {/* <div className="no-scrollbar mt-4 flex w-auto gap-2 overflow-hidden overflow-x-scroll px-4 md:px-0">
@@ -40,6 +54,13 @@ const Filters = ({ range, setRange, stack, setStack, sort, setSort }) => {
 
       <div className="flex items-center justify-between space-x-4">
         <div className="flex items-center space-x-4">
+          {category && (
+            <FilterPopoverPanel
+              filters={CategoriesFilter}
+              filter={category}
+              setFilter={setCategory}
+            />
+          )}
           <FilterPopoverPanel
             filters={SortFilter}
             filter={sort}

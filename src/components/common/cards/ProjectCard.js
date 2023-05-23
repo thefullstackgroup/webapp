@@ -65,19 +65,19 @@ const ProjectCard = ({ project, user, type, hideAuthor }) => {
               name={project.projectCreator.displayName}
               dimensions="h-7 w-7"
             />
-            <p className="truncate px-0 text-sm font-normal">
+            <p className="truncate px-0 text-sm font-medium">
               {project.projectName}
             </p>
           </div>
 
-          <div className="flex space-x-3 px-0">
-            <button className="flex items-center space-x-1 rounded-lg font-normal text-slate-300">
+          <div className="flex space-x-2 px-0">
+            <button className="flex items-center space-x-0 rounded-lg font-normal text-slate-700 dark:text-slate-300">
               <IoHeart className="h-4 w-auto" />
               <span className="text-sm">
                 {Math.abs(project?.numberOfLikes)}
               </span>
             </button>
-            <button className="flex items-center space-x-1 rounded-lg font-normal text-slate-300">
+            <button className="flex items-center space-x-0.5 rounded-lg font-normal text-slate-700 dark:text-slate-300">
               <IoChatbox className="h-4 w-auto" />
               <span className="text-sm">{project?.numberOfComments}</span>
             </button>
@@ -106,7 +106,7 @@ const ProjectCard = ({ project, user, type, hideAuthor }) => {
       </div>
 
       {/* Project Detail Modal */}
-      <Transition
+      {/* <Transition
         show={showProject}
         enter=""
         enterFrom="opacity-0"
@@ -133,7 +133,7 @@ const ProjectCard = ({ project, user, type, hideAuthor }) => {
             </div>
           </div>
         </div>
-      </Transition>
+      </Transition> */}
     </>
   );
 };

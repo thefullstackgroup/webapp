@@ -1,29 +1,29 @@
 export const navigation = [
   {
-    href: '/showcase',
+    href: false,
     label: 'Browse',
     children: true,
     childrenOne: [
       {
-        href: '/showcase',
+        href: '/explore/popular',
         label: 'Popular projects',
         desc: 'Most voted by the community',
         icon: 'FiStar',
       },
       {
-        href: '/showcase',
+        href: '/explore/trending',
         label: 'Trending projects',
         desc: 'Projects trending in the community',
         icon: 'FiTrendingUp',
       },
       {
-        href: '/showcase',
+        href: '/explore/new',
         label: 'Latest projects',
         desc: 'Recently added to the showcase',
         icon: 'FiClock',
       },
       {
-        href: '/showcase',
+        href: '/explore/popular/opentocollab',
         label: 'Open to collaboration',
         desc: 'Projects looking for contributors',
         icon: 'FiUsers',
@@ -31,30 +31,35 @@ export const navigation = [
     ],
     childrenTwo: [
       {
-        href: '/showcase',
+        href: '/explore/popular/opensource',
         label: 'Open Source',
         desc: 'Get inspired under the hood',
         icon: 'FiUnlock',
       },
       {
-        href: '/showcase',
+        href: '/explore/popular/apps',
         label: 'Apps',
         desc: 'Cool apps built by the commmunity',
         icon: 'FiPackage',
       },
       {
-        href: '/showcase',
+        href: '/explore/popular/tools',
         label: 'Tools',
         desc: 'Devs solving their own problems',
         icon: 'FiTool',
       },
       {
-        href: '/showcase',
+        href: '/explore/popular/all',
         label: 'Browse all projects',
         desc: 'Go explore all projects',
         icon: 'FiCornerDownRight',
       },
     ],
+  },
+  {
+    href: '/hangout',
+    label: 'Create',
+    children: false,
   },
   {
     href: '/hangout',

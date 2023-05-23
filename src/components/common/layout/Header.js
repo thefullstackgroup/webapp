@@ -16,12 +16,12 @@ const Header = () => {
         <div className="mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-3">
           <div className="flex items-center space-x-8 text-base">
             <Link href="/">
-              <div className="h-8 w-8 cursor-pointer">
+              <div className="h-8 w-8 cursor-pointer overflow-hidden rounded-lg">
                 <Image
                   src={
                     currentTheme === 'dark'
-                      ? '/assets/icons/thefullstack-dark.webp'
-                      : '/assets/icons/thefullstack-light.webp'
+                      ? '/assets/icons/thefullstack-dark-square.webp'
+                      : '/assets/icons/thefullstack-light-square.webp'
                   }
                   className="object-contain"
                   alt="The Full Stack"

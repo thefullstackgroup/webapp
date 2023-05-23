@@ -41,18 +41,18 @@ const PreferredWorkType = ({ selected, addChoice, removeChoice }) => {
       {workTypes.map((type, index) =>
         selected.includes(type.value) ? (
           <button
-            className="relative badge text-sm px-2 py-1.5 whitespace-nowrap bg-tfsdark-500 text-white"
+            className="badge relative whitespace-nowrap bg-tfsdark-500 px-2 py-1.5 text-sm text-white"
             onClick={() => removeChoice(type.value)}
             key={index}
           >
             <span>{type.label}</span>
-            <span className="absolute bg-green-600 w-3 h-3 -top-1 -left-1 rounded-full ring-2 ring-white">
-              <BsCheck className="text-white w-3 h-3" />
+            <span className="absolute -top-1 -left-1 h-3 w-3 rounded-full bg-green-600 ring-2 ring-white">
+              <BsCheck className="h-3 w-3 text-white" />
             </span>
           </button>
         ) : (
           <button
-            className="badge bg-tfsdark-600/50 text-sm px-2 py-1.5 whitespace-nowrap text-tfsdark-200"
+            className="badge whitespace-nowrap bg-tfsdark-600/50 px-2 py-1.5 text-sm text-tfsdark-200"
             onClick={() => addChoice(type.value)}
             key={index}
           >
@@ -69,7 +69,7 @@ const OpenToJobOpportunityChoice = ({ selected, setChoice }) => {
     <div className="flex items-center">
       <button
         className={
-          'relative badge text-sm px-6 py-1.5 whitespace-nowrap ' +
+          'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
           (selected == true
             ? 'bg-tfsdark-500 text-white'
             : 'bg-tfsdark-600/50 text-tfsdark-200')
@@ -78,14 +78,14 @@ const OpenToJobOpportunityChoice = ({ selected, setChoice }) => {
       >
         <span>Yes</span>
         {selected == true && (
-          <span className="absolute bg-green-600 w-3 h-3 -top-1 -left-1 rounded-full ring-2 ring-white">
-            <BsCheck className="text-white w-3 h-3" />
+          <span className="absolute -top-1 -left-1 h-3 w-3 rounded-full bg-green-600 ring-2 ring-white">
+            <BsCheck className="h-3 w-3 text-white" />
           </span>
         )}
       </button>
       <button
         className={
-          'relative badge text-sm px-6 py-1.5 whitespace-nowrap ' +
+          'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
           (selected == false
             ? 'bg-tfsdark-500 text-white'
             : 'bg-tfsdark-600/50 text-tfsdark-200')
@@ -94,8 +94,8 @@ const OpenToJobOpportunityChoice = ({ selected, setChoice }) => {
       >
         <span>No</span>
         {selected == false && (
-          <span className="absolute bg-green-600 w-3 h-3 -top-1 -left-1 rounded-full ring-2 ring-white">
-            <BsCheck className="text-white w-3 h-3" />
+          <span className="absolute -top-1 -left-1 h-3 w-3 rounded-full bg-green-600 ring-2 ring-white">
+            <BsCheck className="h-3 w-3 text-white" />
           </span>
         )}
       </button>
@@ -108,7 +108,7 @@ const RelocationChoice = ({ selected, setChoice }) => {
     <div className="flex items-center">
       <button
         className={
-          'relative badge text-sm px-6 py-1.5 whitespace-nowrap ' +
+          'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
           (selected == true
             ? 'bg-tfsdark-500 text-white'
             : 'bg-tfsdark-600/50 text-tfsdark-200')
@@ -117,14 +117,14 @@ const RelocationChoice = ({ selected, setChoice }) => {
       >
         <span>Yes</span>
         {selected == true && (
-          <span className="absolute bg-green-600 w-3 h-3 -top-1 -left-1 rounded-full ring-2 ring-white">
-            <BsCheck className="text-white w-3 h-3" />
+          <span className="absolute -top-1 -left-1 h-3 w-3 rounded-full bg-green-600 ring-2 ring-white">
+            <BsCheck className="h-3 w-3 text-white" />
           </span>
         )}
       </button>
       <button
         className={
-          'relative badge text-sm px-6 py-1.5 whitespace-nowrap ' +
+          'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
           (selected == false
             ? 'bg-tfsdark-500 text-white'
             : 'bg-tfsdark-600/50 text-tfsdark-200')
@@ -133,8 +133,8 @@ const RelocationChoice = ({ selected, setChoice }) => {
       >
         <span>No</span>
         {selected == false && (
-          <span className="absolute bg-green-600 w-3 h-3 -top-1 -left-1 rounded-full ring-2 ring-white">
-            <BsCheck className="text-white w-3 h-3" />
+          <span className="absolute -top-1 -left-1 h-3 w-3 rounded-full bg-green-600 ring-2 ring-white">
+            <BsCheck className="h-3 w-3 text-white" />
           </span>
         )}
       </button>
@@ -262,20 +262,20 @@ const JobPreferences = ({ user }) => {
 
   return (
     <>
-      <div className="mt-0 lg:mt-12 w-full flex justify-center">
-        <div className="min-h-screen w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-          <div className="relative max-w-4xl mx-auto">
-            <div className="mx-4 md:mx-0 space-y-6 mb-10">
+      <div className="mt-0 flex w-full justify-center lg:mt-12">
+        <div className="min-h-screen w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+          <div className="relative mx-auto max-w-4xl">
+            <div className="mx-4 mb-10 space-y-6 md:mx-0">
               <Link href={`/account/settings`}>
-                <div className="flex items-center space-x-2 sm:px-4 md:px-0 mb-4 cursor-pointer">
+                <div className="mb-4 flex cursor-pointer items-center space-x-2 sm:px-4 md:px-0">
                   <IoArrowBack className="h-5 w-5" />
-                  <h2 className="font-bold text-sm">
+                  <h2 className="text-sm font-bold">
                     Back to account settings
                   </h2>
                 </div>
               </Link>
               <div className="relative w-min whitespace-nowrap">
-                <h2 className="text-3xl sm:text-3xl font-bold tracking-tight">
+                <h2 className="text-3xl font-bold tracking-tight sm:text-3xl">
                   Work preferences
                 </h2>
               </div>
@@ -286,12 +286,12 @@ const JobPreferences = ({ user }) => {
                 private by default and not displayed on your profile.{' '}
                 <span className="font-bold">No recruiter spam</span>.
               </div>
-              <div className="w-full rounded-lg bg-tfsdark-700 mb-4 px-4">
-                <div className="py-4 sm:px-2 mb-36 sm:mb-0">
+              <div className="mb-4 w-full rounded-lg bg-tfsdark-700 px-4">
+                <div className="mb-36 py-4 sm:mb-0 sm:px-2">
                   <div className="space-y-4">
                     <div className="space-y-6">
                       <div>
-                        <label className="text-sm text-slate-400 font-medium">
+                        <label className="text-sm font-medium text-slate-400">
                           Are you open to opportunties?
                         </label>
                         <div className="mt-2">
@@ -302,7 +302,7 @@ const JobPreferences = ({ user }) => {
                         </div>
                       </div>
                       <div>
-                        <label className="text-sm text-slate-400 font-medium">
+                        <label className="text-sm font-medium text-slate-400">
                           Are you open to relocation?
                         </label>
                         <div className="mt-2">
@@ -327,7 +327,7 @@ const JobPreferences = ({ user }) => {
                       </div>
 
                       <div>
-                        <label className="text-sm text-slate-400 font-medium">
+                        <label className="text-sm font-medium text-slate-400">
                           Select your preferred work types
                         </label>
                         <div className="mt-2 flex flex-wrap">
@@ -340,7 +340,7 @@ const JobPreferences = ({ user }) => {
                       </div>
 
                       <div>
-                        <label className="text-sm text-slate-400 font-medium">
+                        <label className="text-sm font-medium text-slate-400">
                           What are your salary expectations?
                         </label>
                         <div className="flex items-start space-x-2">
@@ -414,14 +414,14 @@ const JobPreferences = ({ user }) => {
                           </div>
                         </div>
                         {formError && baseSalary > maxSalary && (
-                          <span className="text-red-500 text-xs">
+                          <span className="text-xs text-red-500">
                             Min salary cannot be greater than max salary.
                           </span>
                         )}
                       </div>
 
                       <div>
-                        <label className="text-sm text-slate-400 font-medium">
+                        <label className="text-sm font-medium text-slate-400">
                           What kind of roles are you interested in?
                         </label>
                         <select
@@ -442,7 +442,7 @@ const JobPreferences = ({ user }) => {
                           <div className="mt-2 flex flex-wrap items-center">
                             {interestedRoles.map((interestedRole, index) => (
                               <div
-                                className="relative group px-2 py-1 bg-tfsdark-600 w-min whitespace-nowrap rounded-md text-sm mr-2 mb-1 cursor-pointer"
+                                className="group relative mr-2 mb-1 w-min cursor-pointer whitespace-nowrap rounded-md bg-tfsdark-600 px-2 py-1 text-sm"
                                 key={index}
                                 onClick={() =>
                                   removeInterestedRole(interestedRole)
@@ -459,7 +459,7 @@ const JobPreferences = ({ user }) => {
                       </div>
 
                       <div>
-                        <label className="text-sm text-slate-400 font-medium">
+                        <label className="text-sm font-medium text-slate-400">
                           What should your dream job look like?
                         </label>
                         <input
@@ -475,7 +475,7 @@ const JobPreferences = ({ user }) => {
                       </div>
 
                       <div>
-                        <label className="text-sm text-slate-400 font-medium">
+                        <label className="text-sm font-medium text-slate-400">
                           Most impressive accomplishment?
                         </label>
                         <input
@@ -514,7 +514,7 @@ const JobPreferences = ({ user }) => {
                     )}
                   </div>
 
-                  <div className="text-sm mt-8 text-slate-300 flex items-center space-x-2">
+                  <div className="mt-8 flex items-center space-x-2 text-sm text-slate-300">
                     <IoInformationCircle className="h-5 w-5" />
                     <span>
                       Your details are private by default and will not displayed

@@ -37,7 +37,7 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div className="relative">
+      <div className="relative space-y-8">
         <Filters
           range={range}
           setRange={setRange}

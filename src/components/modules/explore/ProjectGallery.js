@@ -5,7 +5,7 @@ import { IoChevronDown } from 'react-icons/io5';
 import Loader from 'components/common/elements/Loader';
 import fetcher from 'utils/fetcher';
 
-const PAGE_SIZE = 24;
+const PAGE_SIZE = 36;
 
 const ProjectGallery = ({
   user,
@@ -17,42 +17,46 @@ const ProjectGallery = ({
   myTechStack,
   query,
 }) => {
-  let term = stack?.slug;
+  let term = stack?.value;
 
-  if (stack?.slug === 'react') {
+  if (stack?.value === 'react') {
     term = 'react,reactjs';
   }
 
-  if (stack?.slug === 'node') {
+  if (stack?.value === 'node') {
     term = 'nodejs';
   }
-  if (stack?.slug === 'tailwindcss') {
+  if (stack?.value === 'tailwindcss') {
     term = 'tailwind';
   }
 
-  if (stack?.slug === 'opensource') {
+  if (stack?.value === 'opensource') {
     term = 'open source';
   }
 
-  let url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&range=${range}&category=${category}`;
+  let url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&range=${range}`;
+
+  if (category) {
+    if (category?.value === 'opentocollab') {
+      url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&lookingForCollabs=true`;
+    } else {
+      url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${category}`;
+    }
+  }
 
   if (stack) {
     url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${term}`;
   }
 
-  if (stack?.slug === 'following') {
+  if (stack?.value === 'following') {
     url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&connectionUsersIds=${following}&userId=${user.userId}&projectType=PROJECT&range=${range}`;
   }
 
-  if (stack?.slug === 'foryou') {
+  if (stack?.value === 'foryou') {
     url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&tech=${myTechStack}&range=${range}`;
   }
 
-  if (stack?.slug === 'opentocollab') {
-    url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&lookingForCollabs=true`;
-  }
-
-  if (stack?.slug === 'search' && query !== '') {
+  if (stack?.value === 'search' && query !== '') {
     url = `${process.env.BASEURL}/api/search/projects?size=${PAGE_SIZE}&sort=${sort}&userId=${user.userId}&projectType=PROJECT&range=${range}&term=${query}`;
   }
 
@@ -90,7 +94,7 @@ const ProjectGallery = ({
 
       {isEmpty && (
         <div className="relative flex flex-col py-20 text-center sm:mt-4">
-          {stack.value === 'following' ? (
+          {category.value === 'following' ? (
             following ? (
               <>
                 <span className="text-lg font-bold">
@@ -107,7 +111,9 @@ const ProjectGallery = ({
               </>
             )
           ) : (
-            <span>No projects to show here.</span>
+            <span>
+              No projects returned. Try different filters or a different search.
+            </span>
           )}
         </div>
       )}
@@ -120,11 +126,10 @@ const ProjectGallery = ({
             </div>
           ) : (
             <button
-              className="btn-secondary btn-with-icon px-4"
+              className="btn btn-secondary btn-with-icon"
               disabled={isLoadingMore || isReachingEnd}
               onClick={() => setSize(size + 1)}
             >
-              <IoChevronDown />
               <span>Load more</span>
             </button>
           )}

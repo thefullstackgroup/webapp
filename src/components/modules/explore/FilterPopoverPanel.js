@@ -39,9 +39,9 @@ const FilterPopoverPanel = ({ filters, filter, setFilter }) => {
           <div className="relative mt-3 rounded-xl border border-gray-400 bg-white px-2 py-2 shadow-xl shadow-gray-600/20 dark:border-gray-600 dark:bg-black/95">
             <div className="absolute -top-[1px] left-[50px] h-2 w-2 -translate-x-1/2 -translate-y-1/2 rotate-45 transform border-l border-t border-gray-400 bg-white dark:border-gray-600 dark:bg-black"></div>
 
-            <div className="grid w-max grid-cols-1">
+            <div className="no-scrollbar flex max-h-96 w-44 flex-col overflow-y-scroll overscroll-contain">
               {filters.map((item, index) => (
-                <div className="w-40" key={index}>
+                <div className="w-44" key={index}>
                   <button
                     className="nav-item group w-full whitespace-nowrap rounded-md px-3 py-2 hover:bg-gray-200/80 dark:hover:bg-tfsdark-700"
                     onClick={() => {
