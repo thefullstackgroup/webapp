@@ -15,11 +15,11 @@ const Reactions = ({ project, user }) => {
 
   return (
     <>
-      <div className="hidden lg:flex flex-1 flex-col w-full overflow-scroll overscroll-contain h-screen bg-black no-scrollbar">
+      <div className="no-scrollbar sticky top-16 hidden h-screen w-full flex-1 flex-col overflow-scroll overscroll-contain bg-black lg:flex">
         {/* Profile */}
-        <div className="sticky w-full top-0 z-10">
-          <div className="border-b border-tfsdark-600/50 px-6 bg-black pt-4 pb-4 space-y-4">
-            <div className="flex lg:flex-col 2xl:flex-row lg:space-y-4 2xl:space-y-0 2xl:items-center 2xl:justify-between">
+        <div className="sticky top-0 z-10 w-full">
+          <div className="space-y-4 border-b border-tfsdark-600/50 bg-black px-6 pt-4 pb-4">
+            <div className="flex lg:flex-col lg:space-y-4 2xl:flex-row 2xl:items-center 2xl:justify-between 2xl:space-y-0">
               <div className="flex items-center space-x-3">
                 <Avatar
                   href={`/${project?.projectCreator?.displayName}`}
@@ -28,7 +28,7 @@ const Reactions = ({ project, user }) => {
                   dimensions="h-14 w-14"
                 />
                 <Link href={`/${project?.projectCreator?.displayName}`}>
-                  <div className="flex flex-col pt-1 cursor-pointer">
+                  <div className="flex cursor-pointer flex-col pt-1">
                     <div className="text-base">
                       <p className="font-bold tracking-tight">
                         {project?.projectCreator?.name}
@@ -50,7 +50,7 @@ const Reactions = ({ project, user }) => {
             </div>
           </div>
           {user && (
-            <div className="border-b border-tfsdark-600/50 px-6 bg-black pt-4 pb-4 space-y-2">
+            <div className="space-y-2 border-b border-tfsdark-600/50 bg-black px-6 pt-4 pb-4">
               <Actions
                 user={user}
                 project={project}
@@ -65,14 +65,14 @@ const Reactions = ({ project, user }) => {
         </div>
 
         {/* Comments */}
-        <div className="relative top-0 px-4 py-4 h-[74vh] overflow-y-scroll overscroll-contain no-scrollbar">
+        <div className="no-scrollbar relative top-0 h-[74vh] overflow-y-scroll overscroll-contain px-4 py-4">
           <ListComments user={user} post={project} />
         </div>
 
         {/* Post comment */}
         {user && (
-          <div className="sticky z-0 w-full max-w-lg bottom-0 bg-black border-t border-tfsdark-700 px-4">
-            <div className="flex items-center sm:space-x-4 py-6">
+          <div className="sticky bottom-0 z-0 w-full max-w-lg border-t border-tfsdark-700 bg-black px-4">
+            <div className="flex items-center py-6 sm:space-x-4">
               <Avatar
                 image={user.profilePicUrl}
                 name={user.displayName}
@@ -97,8 +97,8 @@ const Reactions = ({ project, user }) => {
       </div>
 
       {isMobile && user && (
-        <div className="fixed bottom-12 left-0 w-full z-10 lg:hidden">
-          <div className="flex space-x-6 bg-tfsdark-800/90 w-min py-2 px-4 rounded-full mx-auto border border-tfsdark-600 items-center">
+        <div className="fixed bottom-12 left-0 z-10 w-full lg:hidden">
+          <div className="mx-auto flex w-min items-center space-x-6 rounded-full border border-tfsdark-600 bg-tfsdark-800/90 py-2 px-4">
             <Actions
               user={user}
               project={project}
@@ -112,26 +112,26 @@ const Reactions = ({ project, user }) => {
 
       {isMobile && showCommentsModal && (
         <div className="absolute">
-          <div className="top-20 left-0 fixed z-20 w-full mx-auto">
+          <div className="fixed top-20 left-0 z-20 mx-auto w-full">
             <div
               className="fixed inset-0 bg-tfsdark-900 bg-opacity-80"
               onClick={() => setShowCommentsModal(!showCommentsModal)}
             ></div>
             <div
-              className="absolute z-50 top-2 right-2 cursor-pointer"
+              className="absolute top-2 right-2 z-50 cursor-pointer"
               onClick={() => setShowCommentsModal(!showCommentsModal)}
             >
               <IoCloseSharp className="h-6 w-6 text-white" />
             </div>
-            <div className="flex flex-col mx-auto max-w-full relative bg-tfsdark-900 border-t border-tfsdark-700 rounded-t-2xl h-[90vh]">
-              <div className="text-center py-3 text-sm">
+            <div className="relative mx-auto flex h-[90vh] max-w-full flex-col rounded-t-2xl border-t border-tfsdark-700 bg-tfsdark-900">
+              <div className="py-3 text-center text-sm">
                 <div>
                   {project?.numberOfComments}{' '}
                   {project?.numberOfComments == 1 ? 'comment' : 'comments'}
                 </div>
               </div>
               {user && (
-                <div className="w-full max-w-full border-t border-tfsdark-700 px-4 h-20">
+                <div className="h-20 w-full max-w-full border-t border-tfsdark-700 px-4">
                   <div className="flex items-center space-x-2 py-2">
                     <Avatar
                       image={user.profilePicUrl}
@@ -148,7 +148,7 @@ const Reactions = ({ project, user }) => {
                   </div>
                 </div>
               )}
-              <div className="w-full px-4 md:px-8 pb-28 overflow-y-scroll overscroll-contain no-scrollbar">
+              <div className="no-scrollbar w-full overflow-y-scroll overscroll-contain px-4 pb-28 md:px-8">
                 <ListComments user={user} post={project} />
               </div>
             </div>

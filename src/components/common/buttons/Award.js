@@ -65,13 +65,13 @@ const AwardButton = ({ user, post }) => {
   return (
     <>
       {user.userId == post?.projectCreator?.userId ? (
-        <button className="btn-secondary btn-with-icon bg-transparent hover:bg-transparent pl-1 pr-2 text-sm space-x-1 cursor-not-allowed group relative">
+        <button className="btn-secondary btn-with-icon group relative cursor-not-allowed space-x-1 bg-transparent pl-1 pr-2 text-sm hover:bg-transparent">
           <ToolTip message="Award" />
           {post.contentTotalDiamonds != null &&
           post.contentTotalDiamonds > 0 ? (
-            <BsGem className="h-6 w-6 text-yellow-500" />
+            <BsGem className="h-5 w-5 text-yellow-500" />
           ) : (
-            <BsGem className="h-6 w-6" />
+            <BsGem className="h-5 w-5" />
           )}
 
           {post.contentTotalDiamonds != null &&
@@ -84,15 +84,15 @@ const AwardButton = ({ user, post }) => {
       ) : (
         <div>
           <button
-            className="btn-secondary btn-with-icon bg-transparent hover:bg-yellow-400/20 sm:hover:text-yellow-500 rounded-xl group pl-1 pr-2 text-sm space-x-1 cursor-pointer group relative"
+            className="btn-secondary btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent pl-1 pr-2 text-sm hover:bg-yellow-400/20 sm:hover:text-yellow-500"
             onClick={() => setSelectAward(!selectAward)}
           >
             <ToolTip message="Award" />
             {post.contentTotalDiamonds != null &&
             post.contentTotalDiamonds > 0 ? (
-              <BsGem className="h-6 w-6 text-yellow-500" />
+              <BsGem className="h-5 w-5 text-yellow-500" />
             ) : (
-              <BsGem className="h-6 w-6" />
+              <BsGem className="h-5 w-5" />
             )}
 
             {post.contentTotalDiamonds != null &&
@@ -108,8 +108,8 @@ const AwardButton = ({ user, post }) => {
             setShow={setSelectAward}
             title="Give reward"
           >
-            <div className="flex flex-col text-center px-2 space-y-4 py-4">
-              <span className="text-base font-normal text-slate-200 mb-3 line-clamp-2">
+            <div className="flex flex-col space-y-4 px-2 py-4 text-center">
+              <span className="mb-3 text-base font-normal text-slate-200 line-clamp-2">
                 Select reward amount to send to{' '}
                 <span className="font-bold">
                   {post.projectCreator?.displayName}
@@ -120,7 +120,7 @@ const AwardButton = ({ user, post }) => {
                 {rewards.map((reward, index) => (
                   <button
                     key={index}
-                    className="bg-tfsdark-700 hover:bg-tfsdark-600/80 py-3 px-4 rounded-xl flex justify-between items-center space-x-4 text-base text-slate-200 group hover:text-yellow-500"
+                    className="group flex items-center justify-between space-x-4 rounded-xl bg-tfsdark-700 py-3 px-4 text-base text-slate-200 hover:bg-tfsdark-600/80 hover:text-yellow-500"
                     onClick={() => {
                       setTransactMessage(
                         `@${
@@ -155,10 +155,10 @@ const AwardButton = ({ user, post }) => {
             setShow={setSendReward}
             title="Give reward"
           >
-            <div className="py-4 flex flex-col text-center px-2 space-y-4">
+            <div className="flex flex-col space-y-4 py-4 px-2 text-center">
               {!coinSent && (
                 <div className="">
-                  <div className="flex space-x-2 justify-center my-2">
+                  <div className="my-2 flex justify-center space-x-2">
                     {[...Array(transactDiamonds)].map(
                       (elementInArray, index) => (
                         <BsGem
@@ -174,7 +174,7 @@ const AwardButton = ({ user, post }) => {
                   </span>
                   <span>
                     {transactAmount > walletBalance && (
-                      <p className="mt-2 text-red-500 text-sm">
+                      <p className="mt-2 text-sm text-red-500">
                         Oops, you dont have enough coin in your wallet. <br />
                         <Link href="/account/wallet">
                           <a href="#" className="font-bold hover:text-red-500">
@@ -188,7 +188,7 @@ const AwardButton = ({ user, post }) => {
                     </p>
                   </span>
 
-                  <div className="mt-6 flex flex-col-reverse sm:flex-row space-y-4 space-y-reverse sm:space-y-0 sm:space-x-2 items-center justify-center">
+                  <div className="mt-6 flex flex-col-reverse items-center justify-center space-y-4 space-y-reverse sm:flex-row sm:space-y-0 sm:space-x-2">
                     <button
                       className="btn-secondary w-full sm:w-auto"
                       onClick={() => {
@@ -215,15 +215,15 @@ const AwardButton = ({ user, post }) => {
                 <>
                   <div className="relative overflow-hidden">
                     <Confetti />
-                    <div className="max-w-7xl mx-auto py-4 px-2 sm:py-4 sm:px-6 lg:px-8">
+                    <div className="mx-auto max-w-7xl py-4 px-2 sm:py-4 sm:px-6 lg:px-8">
                       <div>
-                        <IoCheckmarkSharp className="mx-auto text-green-500 h-12 w-12" />
-                        <p className="text-center p-4 text-xl font-semibold text-gray-100">
+                        <IoCheckmarkSharp className="mx-auto h-12 w-12 text-green-500" />
+                        <p className="p-4 text-center text-xl font-semibold text-gray-100">
                           Reward sent to {post.projectCreator.name}
                         </p>
                         <p>Your balance is now ${walletBalance.toFixed(2)}</p>
                         <button
-                          className="mt-6 btn-primary"
+                          className="btn-primary mt-6"
                           onClick={() => setSendReward(false)}
                         >
                           <span>Done</span>

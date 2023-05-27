@@ -9,7 +9,7 @@ const FilterPopoverPanel = ({ filters, filter, setFilter }) => {
     <Popover className="relative z-40">
       <Popover.Button
         className={
-          'flex min-w-min resize-none items-center space-x-2 rounded-lg border border-gray-300/50 bg-transparent py-2 px-4 text-sm text-gray-600 placeholder-gray-300 ring-0 hover:border-gray-600 focus:border-gray-600 focus:outline-none focus:ring-0 dark:border-gray-700 dark:text-gray-200 dark:hover:border-gray-200 dark:focus:border-gray-300 ' +
+          'flex min-w-min resize-none items-center space-x-2 rounded-lg border border-gray-300/50 bg-transparent py-1.5 px-3 text-sm text-gray-600 placeholder-gray-300 ring-0 hover:border-gray-600 focus:border-gray-600 focus:outline-none focus:ring-0 dark:border-gray-700 dark:text-gray-200 dark:hover:border-gray-200 dark:focus:border-gray-300 ' +
           (isShowing && `border-gray-600 dark:border-gray-200`)
         }
         onMouseEnter={() => setIsShowing(true)}

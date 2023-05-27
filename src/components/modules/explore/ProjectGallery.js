@@ -1,11 +1,10 @@
 import React, { useMemo } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import ProjectCard from 'components/common/cards/ProjectCard';
-import { IoChevronDown } from 'react-icons/io5';
 import Loader from 'components/common/elements/Loader';
 import fetcher from 'utils/fetcher';
 
-const PAGE_SIZE = 36;
+let PAGE_SIZE = 40;
 
 const ProjectGallery = ({
   user,
@@ -16,31 +15,34 @@ const ProjectGallery = ({
   following,
   myTechStack,
   query,
+  count = 40,
 }) => {
-  let term = stack?.value;
+  let term = stack?.slug;
 
-  if (stack?.value === 'react') {
+  if (stack?.slug === 'react') {
     term = 'react,reactjs';
   }
 
-  if (stack?.value === 'node') {
+  if (stack?.slug === 'node') {
     term = 'nodejs';
   }
-  if (stack?.value === 'tailwindcss') {
+  if (stack?.slug === 'tailwindcss') {
     term = 'tailwind';
   }
 
-  if (stack?.value === 'opensource') {
+  if (stack?.slug === 'opensource') {
     term = 'open source';
   }
+
+  if (count !== null) PAGE_SIZE = count;
 
   let url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&range=${range}`;
 
   if (category) {
-    if (category?.value === 'opentocollab') {
+    if (category?.slug === 'opentocollab') {
       url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&lookingForCollabs=true`;
     } else {
-      url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${category}`;
+      url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${category.term}`;
     }
   }
 
@@ -48,15 +50,15 @@ const ProjectGallery = ({
     url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${term}`;
   }
 
-  if (stack?.value === 'following') {
+  if (stack?.slug === 'following') {
     url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&connectionUsersIds=${following}&userId=${user.userId}&projectType=PROJECT&range=${range}`;
   }
 
-  if (stack?.value === 'foryou') {
-    url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&tech=${myTechStack}&range=${range}`;
-  }
+  // if (stack?.slug === 'foryou') {
+  //   url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&tech=${myTechStack}&range=${range}`;
+  // }
 
-  if (stack?.value === 'search' && query !== '') {
+  if (stack?.slug === 'search' && query !== '') {
     url = `${process.env.BASEURL}/api/search/projects?size=${PAGE_SIZE}&sort=${sort}&userId=${user.userId}&projectType=PROJECT&range=${range}&term=${query}`;
   }
 
@@ -87,14 +89,14 @@ const ProjectGallery = ({
   return (
     <div>
       {posts && !isEmpty && (
-        <div className="relative grid grid-cols-1 gap-6 sm:mt-4 md:grid-cols-2 md:gap-10 lg:grid-cols-3 2xl:grid-cols-4">
+        <div className="relative grid grid-cols-1 gap-6 sm:mt-4 md:grid-cols-2 md:gap-4 lg:grid-cols-3 2xl:grid-cols-5">
           {projectCards}
         </div>
       )}
 
       {isEmpty && (
         <div className="relative flex flex-col py-20 text-center sm:mt-4">
-          {category.value === 'following' ? (
+          {category.slug === 'following' ? (
             following ? (
               <>
                 <span className="text-lg font-bold">
@@ -120,11 +122,12 @@ const ProjectGallery = ({
 
       {!isReachingEnd && (
         <div className="my-10 flex justify-center">
-          {isLoadingMore ? (
+          {isLoadingMore && (
             <div className="min-h-screen">
               <Loader />
             </div>
-          ) : (
+          )}
+          {count == 40 && (
             <button
               className="btn btn-secondary btn-with-icon"
               disabled={isLoadingMore || isReachingEnd}

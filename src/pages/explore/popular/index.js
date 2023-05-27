@@ -7,12 +7,14 @@ import Layout from 'components/common/layout/Layout';
 import { RangeFilter, SortFilter } from 'components/modules/explore/constants';
 import Filters from 'components/modules/explore/Filters';
 import ProjectGallery from 'components/modules/explore/ProjectGallery';
+import Categories from 'components/modules/explore/Categories';
 
 const ExplorePopular = () => {
   const [user, getUser] = useUserProfile();
   const [sort, setSort] = useState(SortFilter[1]);
   const [range, setRange] = useState(RangeFilter[3]);
   const [stack, setStack] = useState(null);
+  const [category, setCategory] = useState(null);
 
   useEffect(() => {
     getUser();
@@ -28,7 +30,7 @@ const ExplorePopular = () => {
 
       {user && (
         <Layout user={user}>
-          <div className="min-h-screen">
+          <div className="min-h-screen space-y-6">
             <div className="space-y-2 py-10 text-center">
               <h2 className="text-5xl font-bold tracking-tight">
                 Popular projects
@@ -37,6 +39,7 @@ const ExplorePopular = () => {
                 Discover awesome projects from the developer showcase
               </h4>
             </div>
+            <Categories category={category} setCategory={setCategory} />
             <div className="relative">
               <Filters
                 range={range}
@@ -47,8 +50,8 @@ const ExplorePopular = () => {
                 setSort={setSort}
               />
               <ProjectGallery
-                sort={sort.value}
-                range={range.value}
+                sort={sort.orderBy}
+                range={range.days}
                 stack={stack}
               />
             </div>

@@ -1,7 +1,7 @@
 export const navigation = [
   {
     href: false,
-    label: 'Browse',
+    label: 'Explore',
     children: true,
     childrenOne: [
       {
@@ -55,11 +55,6 @@ export const navigation = [
         icon: 'FiCornerDownRight',
       },
     ],
-  },
-  {
-    href: '/hangout',
-    label: 'Create',
-    children: false,
   },
   {
     href: '/hangout',

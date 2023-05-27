@@ -7,24 +7,10 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
 
   return (
     <div className="flex items-center gap-2">
-      {stack && (
-        <div className="px-3 py-2">
-          <button
-            className="btn-sm btn-ghost btn-with-icon w-full"
-            onClick={() => {
-              setStack(null);
-              setIsShowing(false);
-            }}
-          >
-            <Icon name={'FiRotateCw'} className="h-4 w-4" />
-          </button>
-        </div>
-      )}
-
       <Popover className="relative z-40 flex items-center">
         <Popover.Button
           className={
-            'flex min-w-min resize-none items-center space-x-2 rounded-lg border border-gray-300/50 bg-transparent py-2 px-4 text-sm text-gray-600 placeholder-gray-300 ring-0 hover:border-gray-600 focus:border-gray-600 focus:outline-none focus:ring-0 dark:border-gray-700 dark:text-gray-200 dark:hover:border-gray-200 dark:focus:border-gray-300 ' +
+            'flex min-w-min resize-none items-center space-x-2 rounded-lg border border-gray-300/50 bg-transparent py-1.5 px-3 text-sm text-gray-600 placeholder-gray-300 ring-0 hover:border-gray-600 focus:border-gray-600 focus:outline-none focus:ring-0 dark:border-gray-700 dark:text-gray-200 dark:hover:border-gray-200 dark:focus:border-gray-300 ' +
             (isShowing && `border-gray-600 dark:border-gray-200`)
           }
           onMouseEnter={() => setIsShowing(true)}
@@ -32,6 +18,18 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
         >
           <Icon name={item.icon} className="h-4 w-4" />
           <span>{stack ? stack.label : item.label}</span>
+
+          {stack && (
+            <button
+              className="btn-sm btn-ghost btn-with-icon w-full text-xs"
+              onClick={() => {
+                setStack(null);
+                setIsShowing(false);
+              }}
+            >
+              <Icon name="FiX" className="h-4 w-4" />
+            </button>
+          )}
         </Popover.Button>
 
         <Transition

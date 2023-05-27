@@ -48,10 +48,9 @@ const Main = ({ user, orderBy, rangeFrom, category }) => {
             setSort={setSort}
           />
           <ProjectGallery
-            sort={sort.value}
-            range={range.value}
+            sort={sort.orderBy}
+            range={range.days}
             stack={stack}
-            category={category}
           />
         </div>
       </div>

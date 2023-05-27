@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import useUserProfile from 'hooks/useUserProfile';
 import Meta from 'components/common/partials/Metadata';
 import Main from 'components/modules/project/Main';
-import Layout from 'components/common/layout/LayoutLoggedIn';
+import Layout from 'components/common/layout/Layout';
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
 

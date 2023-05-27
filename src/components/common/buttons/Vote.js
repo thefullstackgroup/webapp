@@ -2,8 +2,8 @@ import axios from 'axios';
 import { useState } from 'react';
 import * as ga from 'lib/ga';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
-import { BiUpvote } from 'react-icons/bi';
 import ToolTip from 'components/common/elements/ToolTip';
+import Icon from '../elements/Icon';
 
 const ButtonVote = ({ user, post }) => {
   const postId = post._id || post.projectId;
@@ -45,18 +45,21 @@ const ButtonVote = ({ user, post }) => {
 
   return (
     <button
-      className="btn-secondary btn-with-icon bg-transparent hover:bg-tfstertiary-600/10 sm:hover:text-green-400 rounded-xl group pl-0 pr-2 text-sm space-x-1 group relative"
+      className="btn-secondary btn-with-icon group group relative space-x-1 rounded-xl bg-transparent pl-0 pr-2 text-sm hover:bg-tfstertiary-600/10 sm:hover:text-green-400"
       onClick={() => handleVote()}
     >
       <ToolTip message="Upvote" />
       {isLiked ? (
         <>
-          <BiUpvote className="text-tfstertiary-500 w-6 h-6" />
-          <span className="text-tfstertiary-500">{Math.abs(refreshLikes)}</span>
+          <Icon name={'FiHeart'} className="h-5 w-5 text-red-500" />
+          <span className="text-white">{Math.abs(refreshLikes)}</span>
         </>
       ) : (
         <>
-          <BiUpvote className="w-6 h-6 sm:group-hover:text-green-400" />
+          <Icon
+            name={'FiHeart'}
+            className="h-6 w-6 sm:group-hover:text-green-400"
+          />
           <span>{Math.abs(refreshLikes)}</span>
         </>
       )}

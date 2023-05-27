@@ -47,8 +47,8 @@ const ExploreNew = () => {
                 setSort={setSort}
               />
               <ProjectGallery
-                sort={sort.value}
-                range={range.value}
+                sort={sort.orderBy}
+                range={range.days}
                 stack={stack}
               />
             </div>

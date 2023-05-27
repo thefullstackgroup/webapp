@@ -30,7 +30,7 @@
     @apply rounded border-gray-800 bg-white py-2 px-4 text-sm font-medium text-gray-900 hover:bg-gray-200/50 focus:outline-none disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 dark:border-gray-700 dark:bg-black dark:text-gray-100 dark:hover:bg-gray-900 sm:py-1.5 md:text-base;
   }
   .btn-ghost {
-    @apply border-transparent bg-transparent hover:border-transparent hover:bg-transparent hover:text-purple-600 dark:border-transparent dark:bg-transparent dark:bg-none dark:text-gray-300 dark:hover:bg-black dark:hover:text-purple-500;
+    @apply border-transparent bg-transparent hover:border-transparent hover:bg-transparent hover:text-purple-600 dark:border-transparent dark:bg-transparent dark:bg-none dark:text-gray-300 dark:hover:bg-black dark:hover:text-white;
   }
   .btn-with-icon {
     @apply flex items-center space-x-2;

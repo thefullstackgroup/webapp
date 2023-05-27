@@ -37,6 +37,12 @@ const Main = () => {
           </div>
         </div>
       </div>
+      <div className="relative space-y-4">
+        <h3 className="text-2xl font-bold tracking-tight">
+          Popular projects this month
+        </h3>
+        <ProjectGallery sort={'mostpopular'} range={60} count={5} />
+      </div>
       <div className="relative space-y-8">
         <Filters
           range={range}
@@ -46,7 +52,7 @@ const Main = () => {
           sort={sort}
           setSort={setSort}
         />
-        <ProjectGallery sort={sort.value} range={range.value} stack={stack} />
+        <ProjectGallery sort={sort.orderBy} range={range.days} stack={stack} />
       </div>
     </div>
   );

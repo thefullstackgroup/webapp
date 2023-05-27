@@ -46,7 +46,7 @@ const PopoverPanel = ({ item, childrenOne, childrenTwo }) => {
                   <div key={index}>
                     <Link href={item.href}>
                       <button
-                        className="nav-item flex items-start gap-3 space-x-1 whitespace-nowrap rounded-md px-3 py-2 text-left hover:bg-gray-200/80 focus:ring-0 dark:hover:bg-tfsdark-700"
+                        className="nav-item flex w-full items-start gap-3 space-x-1 whitespace-nowrap rounded-md px-3 py-2 text-left hover:bg-gray-200/80 focus:outline-none focus:ring-0 dark:hover:bg-tfsdark-700"
                         onClick={() => setIsShowing(false)}
                       >
                         <Icon name={item.icon} className="h-6 w-6" />
@@ -68,7 +68,7 @@ const PopoverPanel = ({ item, childrenOne, childrenTwo }) => {
                 {childrenTwo.map((item, index) => (
                   <Link href={item.href} key={index}>
                     <button
-                      className="nav-item flex items-start gap-3 space-x-1 whitespace-nowrap rounded-md px-3 py-2 text-left hover:bg-gray-200/80 focus:ring-0 dark:hover:bg-tfsdark-700"
+                      className="nav-item flex w-full items-start gap-3 space-x-1 whitespace-nowrap rounded-md px-3 py-2 text-left hover:bg-gray-200/80 focus:outline-none focus:ring-0 dark:hover:bg-tfsdark-700"
                       onClick={() => setIsShowing(false)}
                     >
                       <Icon name={item.icon} className="h-6 w-6" />
