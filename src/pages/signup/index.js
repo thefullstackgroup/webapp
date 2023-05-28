@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Loader from 'components/common/elements/Loader';
 import { FcGoogle } from 'react-icons/fc';
 import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5';
+import Layout from 'components/common/layout/Layout';
 
 const Loading = () => {
   return (
@@ -77,116 +78,109 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center">
-      <div className="mx-auto w-full max-w-md">
-        <div className="flex flex-col justify-center space-y-4 text-center sm:mb-6">
-          <Link href="/" passHref>
-            <a href="#" className="flex items-center justify-center">
-              <span className="h-16 w-16 sm:h-20 sm:w-20">
-                <img
-                  src="/assets/icons/thefullstack-circle.webp"
-                  className="object-contain"
-                  alt={process.env.brandName}
-                />
-              </span>
-            </a>
-          </Link>
-          <div className="mt-2 text-lg font-semibold sm:text-2xl">
-            Sign up to The Full Stack
+    <Layout>
+      <div className="flex h-[60vh] items-center">
+        <div className="mx-auto w-full max-w-md">
+          <div className="flex flex-col justify-center space-y-4 text-center">
+            <h2>Sign up to The Full Stack</h2>
+            <p>
+              Join us and thousands of developers who have discovered a place to
+              show off their work and grow their network.
+            </p>
           </div>
-        </div>
-        <div className="p-8">
-          <div className="space-y-4">
-            <button
-              className="btn-secondary flex w-full items-center justify-center space-x-2 px-3 py-4 text-base"
-              onClick={signInWithGoogle}
-            >
-              <FcGoogle className="h-6 w-6" />
-              <span>Sign up with Google</span>
-            </button>
-            <button
-              className="btn-secondary flex w-full items-center justify-center space-x-2 px-3 py-4 text-base"
-              onClick={signInWithGitHub}
-            >
-              <IoLogoGithub className="h-6 w-6" />
-              <span>Sign up with GitHub</span>
-            </button>
-            <button
-              className="btn-secondary flex w-full items-center justify-center space-x-2 px-3 py-4 text-base"
-              onClick={function () {
-                window.open(
-                  '/api/auth/linkedin/login',
-                  'LinkedInSignIn',
-                  'height=515,width=400'
-                );
-              }}
-            >
-              <IoLogoLinkedin className="h-6 w-6 text-[#0077B5]" />
-              <span>Sign up with LinkedIn</span>
-            </button>
+          <div className="p-8">
+            <div className="space-y-4">
+              <button
+                className="btn btn-secondary flex w-full items-center justify-center space-x-2 px-3 py-3 text-base"
+                onClick={signInWithGoogle}
+              >
+                <FcGoogle className="h-6 w-6" />
+                <span>Sign up with Google</span>
+              </button>
+              <button
+                className="btn btn-secondary flex w-full items-center justify-center space-x-2 px-3 py-3 text-base"
+                onClick={signInWithGitHub}
+              >
+                <IoLogoGithub className="h-6 w-6" />
+                <span>Sign up with GitHub</span>
+              </button>
+              <button
+                className="btn btn-secondary flex w-full items-center justify-center space-x-2 px-3 py-3 text-base"
+                onClick={function () {
+                  window.open(
+                    '/api/auth/linkedin/login',
+                    'LinkedInSignIn',
+                    'height=515,width=400'
+                  );
+                }}
+              >
+                <IoLogoLinkedin className="h-6 w-6 text-[#0077B5]" />
+                <span>Sign up with LinkedIn</span>
+              </button>
 
-            {process.env.ENABLE_EMAIL_PASS_SIGNUP && (
-              <>
-                <div className="py-2 text-center text-sm text-slate-400">
-                  Or sign up using email
+              {process.env.ENABLE_EMAIL_PASS_SIGNUP && (
+                <>
+                  <div className="py-2 text-center text-sm text-slate-400">
+                    Or sign up using email
+                  </div>
+                  <input
+                    type="text"
+                    className="text-input text-sm md:text-base"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email address"
+                  />
+                  {email && (
+                    <>
+                      <input
+                        type="password"
+                        className="text-input"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                      />
+                      <input
+                        type="password"
+                        className="text-input"
+                        value={repeatPassword}
+                        onChange={(e) => setRepeatPassword(e.target.value)}
+                        placeholder="Repeat password"
+                      />
+                    </>
+                  )}
+
+                  {signUpMessage && (
+                    <div className="text-sm text-red-500">{signUpMessage}</div>
+                  )}
+
+                  <div className="flex">
+                    <button
+                      className="btn-primary w-full py-3"
+                      onClick={() =>
+                        signUpWithEmailAndPassword(
+                          email,
+                          password,
+                          repeatPassword
+                        )
+                      }
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </>
+              )}
+              <div className="flex justify-center pt-6">
+                <div className="text-tfssecondary-500 text-center text-sm">
+                  <Link href="/login" passHref>
+                    <a href="#">Already have an account?</a>
+                  </Link>
                 </div>
-                <input
-                  type="text"
-                  className="text-input text-sm md:text-base"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                />
-                {email && (
-                  <>
-                    <input
-                      type="password"
-                      className="text-input"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Password"
-                    />
-                    <input
-                      type="password"
-                      className="text-input"
-                      value={repeatPassword}
-                      onChange={(e) => setRepeatPassword(e.target.value)}
-                      placeholder="Repeat password"
-                    />
-                  </>
-                )}
-
-                {signUpMessage && (
-                  <div className="text-sm text-red-500">{signUpMessage}</div>
-                )}
-
-                <div className="flex">
-                  <button
-                    className="btn-primary w-full py-3"
-                    onClick={() =>
-                      signUpWithEmailAndPassword(
-                        email,
-                        password,
-                        repeatPassword
-                      )
-                    }
-                  >
-                    Continue
-                  </button>
-                </div>
-              </>
-            )}
-            <div className="flex justify-center pt-6">
-              <div className="text-tfssecondary-500 text-center text-sm">
-                <Link href="/login" passHref>
-                  <a href="#">Already have an account?</a>
-                </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

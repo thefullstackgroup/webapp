@@ -6,13 +6,7 @@ import Meta from 'components/common/partials/Metadata';
 import Layout from 'components/common/layout/Layout';
 import Main from 'components/modules/hangout/Main';
 
-const Hangout = () => {
-  const [user, getUser] = useUserProfile();
-
-  useEffect(() => {
-    getUser();
-  }, []);
-
+const Hangout = ({ user }) => {
   return (
     <>
       <Meta
@@ -20,11 +14,10 @@ const Hangout = () => {
         description="The Developer network"
         keywords=""
       />
-      {user && (
-        <Layout user={user}>
-          <Main user={user} />
-        </Layout>
-      )}
+
+      <Layout user={user}>
+        <Main user={user} />
+      </Layout>
     </>
   );
 };
@@ -46,7 +39,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
     }
 
     return {
-      props: {},
+      props: { user: userProfile || null },
     };
   }
 );

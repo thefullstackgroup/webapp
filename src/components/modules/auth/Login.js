@@ -56,42 +56,31 @@ const Page = () => {
         keywords="developer, social network, developers, software engineering, full stack, software engineering network, tech community, tech companies, best tech companies, developer portfolio, developer network, professional network, professional community"
       />
 
-      <div className="min-h-screen flex items-center">
-        <div className="w-full max-w-md mx-auto">
-          <div className="flex flex-col text-center justify-center space-y-4 sm:mb-6">
-            <Link href="/" passHref>
-              <a href="#" className="flex items-center justify-center">
-                <span className="h-16 w-16 sm:h-20 sm:w-20">
-                  <img
-                    src="/assets/icons/thefullstack-circle.webp"
-                    className="object-contain"
-                    alt={process.env.brandName}
-                  />
-                </span>
-              </a>
-            </Link>
-            <div className="mt-2 text-lg sm:text-2xl font-semibold">
+      <div className="my-14 flex items-center">
+        <div className="mx-auto w-full max-w-md">
+          <div className="flex flex-col justify-center space-y-4 text-center">
+            <div className="mt-2 text-lg font-semibold sm:text-2xl">
               Welcome back, sign in
             </div>
           </div>
           <div className="p-8">
             <div className="space-y-4">
               <button
-                className="btn-secondary btn-with-icon text-base flex justify-center px-3 py-4 w-full"
+                className="btn btn-secondary btn-with-icon flex w-full justify-center px-3 py-3 text-base"
                 onClick={signInWithGoogle}
               >
                 <FcGoogle className="h-6 w-6" />
                 <span>Continue with Google</span>
               </button>
               <button
-                className="btn-secondary btn-with-icon text-base flex justify-center px-3 py-4 w-full"
+                className="btn btn-secondary btn-with-icon flex w-full justify-center px-3 py-3 text-base"
                 onClick={signInWithGitHub}
               >
                 <IoLogoGithub className="h-6 w-6" />
                 <span>Continue with GitHub</span>
               </button>
               <button
-                className="btn-secondary btn-with-icon text-base flex justify-center px-3 py-4 w-full"
+                className="btn btn-secondary btn-with-icon flex w-full justify-center px-3 py-3 text-base"
                 onClick={function () {
                   window.open(
                     '/api/auth/linkedin/login',
@@ -103,7 +92,7 @@ const Page = () => {
                 <IoLogoLinkedin className="h-6 w-6 text-[#0077B5]" />
                 <span>Continue with LinkedIn</span>
               </button>
-              <div className="text-center text-slate-500 text-sm py-2">
+              <div className="py-2 text-center text-sm">
                 Or sign in using email
               </div>
               <form onSubmit={handleSubmit}>
@@ -125,34 +114,28 @@ const Page = () => {
                     />
                   )}
                   {email != '' && emailError && (
-                    <div className="text-red-500 text-sm">
+                    <div className="text-sm text-red-500">
                       Sorry, wrong email or password. Try again.
                     </div>
                   )}
                   <div className="flex">
                     <button
                       type="submit"
-                      className="btn-primary w-full py-3 text-lg"
+                      className="btn btn-primary w-full py-2.5"
                     >
                       Continue
                     </button>
                   </div>
                 </div>
               </form>
-              <div className="flex items-center justify-center space-x-1 sm:space-x-2 pt-6 text-tfssecondary-500 whitespace-nowrap text-xs sm:text-sm">
-                <div className="text-center hover:text-white">
-                  <Link href="/" passHref>
-                    <a href="#">Home</a>
-                  </Link>
-                </div>
-                <span>&middot;</span>
-                <div className="text-center hover:text-white">
+              <div className="flex items-center justify-center space-x-1 whitespace-nowrap pt-6 text-xs sm:space-x-2 sm:text-sm">
+                <div className="text-center">
                   <Link href="/login/forgotpassword" passHref>
                     <a href="#">Forgot your password?</a>
                   </Link>
                 </div>
                 <span>&middot;</span>
-                <div className="text-center hover:text-white">
+                <div className="text-center">
                   <Link href="/signup" passHref>
                     <a href="#">Need an account?</a>
                   </Link>

@@ -21,30 +21,30 @@ const Actions = (props) => {
 
       {props.setShowCommentsModal ? (
         <button
-          className="flex space-x-1 text-slate-200 items-center font-semibold group relative"
+          className="group relative flex items-center space-x-1 font-semibold text-slate-200"
           onClick={() => props.setShowCommentsModal(true)}
         >
           <ToolTip message={'Comment'} />
-          <IoChatboxOutline className="w-6 h-auto sm:group-hover:text-link sm:group-hover:scale-125 duration-100" />
+          <IoChatboxOutline className="sm:group-hover:text-link h-auto w-6 duration-100 sm:group-hover:scale-125" />
           <span className="flex items-center text-sm">{numberOfComments} </span>
         </button>
       ) : (
         <button
-          className="btn-secondary btn-with-icon bg-transparent hover:bg-primary-400/20 sm:hover:text-primary-500 rounded-xl group pl-2 pr-2 text-sm space-x-1 cursor-pointer group relative"
+          className="btn-secondary btn-with-icon hover:bg-primary-400/20 sm:hover:text-primary-500 group group relative cursor-pointer space-x-1 rounded-xl bg-transparent pl-2 pr-2 text-sm"
           onClick={commentAction}
         >
           <ToolTip message={'Comment'} />
-          <IoChatboxOutline className="w-6 h-auto sm:group-hover:text-primary-500" />
+          <IoChatboxOutline className="sm:group-hover:text-primary-500 h-auto w-6" />
           <span className="flex items-center text-sm">{numberOfComments}</span>
         </button>
       )}
 
-      {props.user.userId != props.project?.projectCreator?.userId ? (
+      {props.user?.userId != props.project?.projectCreator?.userId ? (
         <ButtonAward user={props.user} post={props.project} />
       ) : (
-        <div className="hidden md:inline-flex space-x-1 items-center text-slate-200 font-semibold cursor-default">
+        <div className="hidden cursor-default items-center space-x-1 font-semibold text-slate-200 md:inline-flex">
           {projectAwards != null && projectAwards > 0 ? (
-            <BsGem className="h-6 w-7 text-primary-500" />
+            <BsGem className="text-primary-500 h-6 w-7" />
           ) : (
             <BsGem className="h-6 w-7" />
           )}

@@ -1,6 +1,7 @@
 import { withAuthUser, AuthAction } from 'next-firebase-auth';
 import Page from 'components/modules/auth/Login';
 import Loader from 'components/common/elements/Loader';
+import Layout from 'components/common/layout/Layout';
 
 const Loading = () => {
   return (
@@ -11,7 +12,11 @@ const Loading = () => {
 };
 
 const Login = () => {
-  return <Page />;
+  return (
+    <Layout>
+      <Page />
+    </Layout>
+  );
 };
 
 export default withAuthUser({

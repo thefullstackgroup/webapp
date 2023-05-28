@@ -7,7 +7,7 @@
 @layer components {
   /* header */
   .nav-bar {
-    @apply flex items-center rounded-full px-5 py-2 text-sm font-medium text-black duration-200 hover:bg-base-200 hover:text-black focus:outline-none focus:ring-0 dark:text-base-100 dark:hover:bg-base-700/80 dark:hover:text-white;
+    @apply flex items-center rounded-full px-5 py-2 text-base font-medium text-black duration-200 hover:bg-base-200 hover:text-black focus:outline-none focus:ring-0 dark:text-base-100 dark:hover:bg-base-700/80 dark:hover:text-white;
   }
   .nav-bar-icon {
     @apply flex items-center rounded-full px-2 py-2 text-sm font-medium text-black hover:text-base-900;
@@ -24,21 +24,33 @@
     @apply flex items-center rounded-full px-2 py-2 text-sm font-medium text-base-400 duration-200 hover:scale-110 hover:text-black dark:text-base-500 dark:hover:text-white;
   }
 
+  /* Text */
+  h2 {
+    @apply text-3xl font-bold;
+  }
+  h3 {
+    @apply text-lg font-semibold tracking-tight;
+  }
+
+  p {
+    @apply text-base-800 dark:text-base-200;
+  }
+
   /* Buttons */
   .btn {
-    @apply rounded-md py-2 px-4 text-base font-medium duration-150 focus:outline-none disabled:cursor-not-allowed disabled:bg-base-800 disabled:text-base-400;
+    @apply rounded-md py-1.5 px-4 text-base duration-150 focus:outline-none disabled:cursor-not-allowed disabled:bg-base-800 disabled:text-base-400;
   }
   .btn-sm {
     @apply text-sm;
   }
   .btn-primary {
-    @apply border bg-base-900 text-white hover:border-base-800 hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-base-900 dark:hover:bg-black dark:hover:text-white;
+    @apply border border-transparent bg-base-900 text-white hover:border-base-800 hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-base-900 dark:hover:bg-black dark:hover:text-white;
   }
   .btn-secondary {
-    @apply rounded border border-base-400 bg-white py-2 px-4 text-sm text-base-600 hover:border-base-900 hover:bg-base-200/50 hover:text-base-900 focus:outline-none disabled:cursor-not-allowed disabled:bg-base-700 disabled:text-base-400 dark:border-base-500 dark:bg-base-800 dark:text-white dark:hover:bg-base-700 sm:py-1.5 md:text-base;
+    @apply rounded border border-base-400 bg-white text-base-600 hover:border-base-900 hover:bg-base-200/50 hover:text-base-900 focus:outline-none disabled:cursor-not-allowed disabled:bg-base-700 disabled:text-base-400 dark:border-base-500 dark:bg-base-800 dark:text-white dark:hover:bg-base-700;
   }
   .btn-ghost {
-    @apply border-transparent bg-transparent hover:border-transparent hover:bg-transparent hover:text-purple-600 dark:border-transparent dark:bg-transparent dark:bg-none dark:text-base-300 dark:hover:bg-black dark:hover:text-white;
+    @apply border-transparent bg-transparent hover:border-transparent hover:bg-transparent hover:text-base-400 dark:border-transparent dark:bg-transparent dark:bg-none dark:text-base-300 dark:hover:bg-black dark:hover:text-white;
   }
   .btn-with-icon {
     @apply flex items-center space-x-2;
@@ -55,7 +67,7 @@
 
   /* Forms */
   .text-input {
-    @apply block min-w-min resize-none rounded-lg border-base-300/50 bg-transparent py-2 pl-3 pr-10 text-sm text-base-600 placeholder-base-300 ring-0 hover:border-base-600 focus:border-base-600 focus:outline-none focus:ring-0 dark:border-base-700 dark:text-base-200 dark:hover:border-base-200 dark:focus:border-base-300;
+    @apply block w-full resize-none rounded-lg border-base-400 bg-transparent py-3 px-3 text-sm text-base-600 placeholder-base-300 ring-0 hover:border-base-600 focus:border-base-600 focus:outline-none focus:ring-0 dark:border-base-600 dark:text-base-200 dark:hover:border-base-200 dark:focus:border-base-300;
   }
   .text-link {
     @apply text-indigo-300;
@@ -70,6 +82,9 @@
   }
   .badge-with-icon {
     @apply flex items-center space-x-1;
+  }
+  .popover-button {
+    @apply flex min-w-min resize-none items-center space-x-2 rounded-lg border border-base-300/50 bg-transparent py-1.5 px-3 text-sm text-base-600 placeholder-base-300 ring-0 hover:border-base-600 focus:border-base-600 focus:outline-none focus:ring-0 dark:border-base-500 dark:text-base-100 dark:hover:border-base-200 dark:focus:border-base-300;
   }
   .popover {
     @apply relative mt-6 rounded-xl border border-base-400 bg-white px-2 py-2 text-sm shadow-xl shadow-base-600/20 dark:border-base-600 dark:bg-base-900/95;

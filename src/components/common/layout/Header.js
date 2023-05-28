@@ -7,7 +7,7 @@ import { useTheme } from 'next-themes';
 import { navigation } from './constants';
 import { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
-import Avatar from '../elements/Avatar';
+import ProfilePopoverPanel from './ProfilePopoverPanel';
 
 const Header = ({ user }) => {
   const { systemTheme, theme } = useTheme();
@@ -93,7 +93,7 @@ const Header = ({ user }) => {
                       href="#"
                       className="nav-bar flex items-center space-x-2 "
                     >
-                      <span>Create Project</span>
+                      <span>Share</span>
                     </a>
                   </Link>
                 </li>
@@ -101,15 +101,13 @@ const Header = ({ user }) => {
             </div>
 
             <div className="flex items-center space-x-3">
-              <Link href="" passHref>
-                <a
-                  href="#"
-                  className="nav-bar flex items-center space-x-2 bg-base-200/50 dark:bg-base-700/50"
-                >
-                  <Icon name={'FiStar'} className="h-3 w-3" />
-                  <span>Star us on GitHub</span>
-                </a>
-              </Link>
+              <a
+                href="https://github.com/thefullstackgroup/thefullstack"
+                className="nav-bar flex items-center space-x-2 bg-base-200/50 text-sm dark:bg-base-700/50"
+              >
+                <Icon name={'FiStar'} className="h-3 w-3" />
+                <span>Star us on GitHub</span>
+              </a>
 
               <button className="nav-bar nav-bar-icon">
                 <Icon name={'FiSearch'} />
@@ -121,19 +119,7 @@ const Header = ({ user }) => {
 
               <Mode />
 
-              {user ? (
-                <button>
-                  <Avatar
-                    image={user.profilePicUrl}
-                    name={user.displayName}
-                    dimensions="h-7 w-7"
-                  />
-                </button>
-              ) : (
-                <button className="nav-bar nav-bar-icon bg-base-200 dark:bg-base-700">
-                  <Icon name={'FiUser'} />
-                </button>
-              )}
+              <ProfilePopoverPanel user={user} />
             </div>
           </div>
         </header>

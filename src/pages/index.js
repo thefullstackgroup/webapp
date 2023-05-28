@@ -1,11 +1,10 @@
-import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
+import { withAuthUserTokenSSR } from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
 import Meta from 'components/common/partials/Metadata';
 import Layout from 'components/common/layout/Layout';
 import Page from 'components/modules/home/Main';
 
 const Home = ({ user }) => {
-  console.log(user);
   return (
     <>
       <Meta
@@ -13,15 +12,10 @@ const Home = ({ user }) => {
         description="A community and network to discover and connect with developers around the globe."
         keywords="developer, social network, developers, software engineering, full stack, software engineering network, tech community, tech companies, best tech companies, developer portfolio, developer network, professional network, professional community"
       />
-      {user ? (
-        <Layout user={user}>
-          <Page user={user} />
-        </Layout>
-      ) : (
-        <Layout>
-          <Page />
-        </Layout>
-      )}
+
+      <Layout user={user}>
+        <Page user={user} />
+      </Layout>
     </>
   );
 };
@@ -50,13 +44,8 @@ export const getServerSideProps = withAuthUserTokenSSR()(
       };
     }
 
-    if (userProfile)
-      return {
-        props: { user: userProfile },
-      };
-
     return {
-      props: { user: null },
+      props: { user: userProfile || null },
     };
   }
 );

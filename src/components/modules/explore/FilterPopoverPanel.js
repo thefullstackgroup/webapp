@@ -9,12 +9,19 @@ const FilterPopoverPanel = ({ filters, filter, setFilter }) => {
     <Popover className="relative z-40">
       <Popover.Button
         className={
-          'flex min-w-min resize-none items-center space-x-2 rounded-lg border border-base-300/50 bg-transparent py-1.5 px-3 text-sm text-base-600 placeholder-base-300 ring-0 hover:border-base-600 focus:border-base-600 focus:outline-none focus:ring-0 dark:border-base-500 dark:text-base-100 dark:hover:border-base-200 dark:focus:border-base-300 ' +
+          'popover-button ' +
           (isShowing && `border-base-900 dark:border-base-200`)
         }
         onMouseEnter={() => setIsShowing(true)}
         onMouseLeave={() => setIsShowing(false)}
       >
+        {filter.type === 'sort' && (
+          <Icon name={'FiFilter'} className="h-4 w-4" />
+        )}
+        {filter.type === 'range' && (
+          <Icon name={'FiClock'} className="h-4 w-4" />
+        )}
+
         <span>{filter ? filter.label : filters[0].label}</span>
         <Icon
           name={'FiChevronDown'}

@@ -9,10 +9,10 @@ import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 const Main = ({ user }) => {
   const [topicSelected, setTopicSelected] = useState();
 
-  const url = `${process.env.BASEURL}/api/profile/social/following?userId=${user.userId}`;
-  const { data } = useSWR(url, fetcher);
-  const following =
-    (data && data?.map(({ followUserId }) => followUserId).join(',')) || null;
+  // const url = `${process.env.BASEURL}/api/profile/social/following?userId=${user?.userId}`;
+  // const { data } = useSWR(url, fetcher);
+  // const following =
+  //   (data && data?.map(({ followUserId }) => followUserId).join(',')) || null;
 
   return (
     <>
@@ -63,7 +63,7 @@ const Main = ({ user }) => {
             </div>
           </div>
 
-          <Feed user={user} topic={topicSelected?.type} following={following} />
+          <Feed user={user} topic={topicSelected?.type} following={null} />
         </div>
       </div>
       <Topics topic={topicSelected} setTopicSelected={setTopicSelected} />

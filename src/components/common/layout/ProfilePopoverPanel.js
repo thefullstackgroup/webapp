@@ -2,28 +2,37 @@ import { useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import Icon from '../elements/Icon';
 import Link from 'next/link';
+import Avatar from '../elements/Avatar';
 
-const PopoverPanel = ({ item, childrenOne, childrenTwo }) => {
+const ProfilePopoverPanel = ({ user }) => {
   const [isShowing, setIsShowing] = useState(false);
 
   return (
     <Popover className="relative">
-      <Popover.Button
-        className={
-          'nav-bar flex items-center space-x-1 pr-3 ' +
-          (isShowing && ` bg-base-200 dark:bg-base-700/80 dark:text-white`)
-        }
-        onMouseEnter={() => setIsShowing(true)}
-        onMouseLeave={() => setIsShowing(false)}
-      >
-        <span>{item.label}</span>
-        <Icon
-          name={'FiChevronDown'}
+      {user ? (
+        <Popover.Button
+          className={'btn px-1'}
+          onMouseEnter={() => setIsShowing(true)}
+          onMouseLeave={() => setIsShowing(false)}
+        >
+          <Avatar
+            image={user.profilePicUrl}
+            name={user.displayName}
+            dimensions="h-7 w-7"
+          />
+        </Popover.Button>
+      ) : (
+        <Popover.Button
           className={
-            `h-4 w-4 ` + (isShowing && `rotate-180 transform duration-200`)
+            'nav-bar nav-bar-icon bg-base-200 dark:bg-base-700 ' +
+            (isShowing && ` bg-base-200 dark:bg-base-700 dark:text-white`)
           }
-        />
-      </Popover.Button>
+          onMouseEnter={() => setIsShowing(true)}
+          onMouseLeave={() => setIsShowing(false)}
+        >
+          <Icon name={'FiUser'} />
+        </Popover.Button>
+      )}
 
       <Transition
         show={isShowing}
@@ -36,13 +45,125 @@ const PopoverPanel = ({ item, childrenOne, childrenTwo }) => {
         leaveFrom="transform scale-100 opacity-100"
         leaveTo="transform scale-95 opacity-0"
       >
-        <Popover.Panel className="absolute -top-3 -left-4 z-50 ">
+        <Popover.Panel className="absolute -top-3 -right-2 z-50 ">
           <div className="popover">
-            <div className="popover-arrow"></div>
+            <div className="popover-arrow left-auto right-4"></div>
 
             <div className="flex items-start">
-              <div className="w-full space-y-2">
-                {childrenOne.map((item, index) => (
+              {user ? (
+                <div className="w-64 space-y-2 px-2 py-1">
+                  <Link href="#">
+                    <div className="nav-popover cursor-pointer">
+                      <Avatar
+                        image={user.profilePicUrl}
+                        name={user.displayName}
+                        dimensions="h-11 w-11"
+                      />
+                      <div className="flex flex-col text-left">
+                        <span className="text-base font-semibold">
+                          {user.name}
+                        </span>
+                        <span className="text-base-500 dark:text-base-400">
+                          @{user.displayName}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+
+                  <div className="flex flex-col border-b border-t border-base-200 py-2 dark:border-base-700">
+                    <Link href="#">
+                      <button
+                        className="nav-popover items-center"
+                        onClick={() => setIsShowing(false)}
+                      >
+                        <Icon name={'FiGrid'} className="h-6 w-6" />
+                        <span className="text-black dark:text-white">
+                          Dashboard
+                        </span>
+                      </button>
+                    </Link>
+                    <Link href="#">
+                      <button
+                        className="nav-popover items-center"
+                        onClick={() => setIsShowing(false)}
+                      >
+                        <Icon name={'FiShare2'} className="h-6 w-6" />
+                        <span className="text-black dark:text-white">
+                          Network
+                        </span>
+                      </button>
+                    </Link>
+                    <Link href="#">
+                      <button
+                        className="nav-popover items-center"
+                        onClick={() => setIsShowing(false)}
+                      >
+                        <Icon name={'FiCreditCard'} className="h-6 w-6" />
+                        <span className="text-black dark:text-white">
+                          Wallet
+                        </span>
+                      </button>
+                    </Link>
+                    <Link href="#">
+                      <button
+                        className="nav-popover items-center"
+                        onClick={() => setIsShowing(false)}
+                      >
+                        <Icon name={'FiHeart'} className="h-6 w-6" />
+                        <span className="text-black dark:text-white">
+                          Invite friends
+                        </span>
+                      </button>
+                    </Link>
+                    <Link href="#">
+                      <button
+                        className="nav-popover items-center"
+                        onClick={() => setIsShowing(false)}
+                      >
+                        <Icon name={'FiSettings'} className="h-6 w-6" />
+                        <span className="text-black dark:text-white">
+                          Account settings
+                        </span>
+                      </button>
+                    </Link>
+                  </div>
+                  <Link href="/account/settings/signout">
+                    <button
+                      className="nav-popover items-center text-base-500 hover:text-base-500 focus:border-none focus:outline-none focus:ring-0 dark:text-base-300 hover:dark:text-base-300"
+                      onClick={() => setIsShowing(false)}
+                    >
+                      <Icon
+                        name={'FiLogOut'}
+                        className="h-6 w-6 hover:text-base-700"
+                      />
+                      <span className="text-base-500 hover:text-base-500 dark:text-base-300 hover:dark:text-base-300">
+                        Sign out
+                      </span>
+                    </button>
+                  </Link>
+                </div>
+              ) : (
+                <div className="w-64 space-y-2 px-2 py-4 text-center">
+                  <div className="mx-auto h-20 w-20 rounded-full bg-base-200 p-4 dark:bg-base-700">
+                    <Icon name={'FiUser'} className="h-12 w-12" />
+                  </div>
+                  <p className="">Sign up or login to your account.</p>
+                  <div className="flex items-center justify-center space-x-2">
+                    <Link href="/signup">
+                      <button className="btn btn-primary btn-with-icon">
+                        <span>Sign up</span>
+                      </button>
+                    </Link>
+                    <Link href="/login">
+                      <button className="btn btn-secondary btn-with-icon">
+                        <span>Log in</span>
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              )}
+
+              {/* {childrenOne.map((item, index) => (
                   <div key={index}>
                     <Link href={item.href}>
                       <button
@@ -61,29 +182,7 @@ const PopoverPanel = ({ item, childrenOne, childrenTwo }) => {
                       </button>
                     </Link>
                   </div>
-                ))}
-              </div>
-
-              <div className="space-y-2">
-                {childrenTwo.map((item, index) => (
-                  <Link href={item.href} key={index}>
-                    <button
-                      className="nav-popover"
-                      onClick={() => setIsShowing(false)}
-                    >
-                      <Icon name={item.icon} className="h-6 w-6" />
-                      <div className="flex flex-col">
-                        <span className="text-black dark:text-white">
-                          {item.label}
-                        </span>
-                        <span className="font-normal text-base-500 dark:text-base-300">
-                          {item.desc}
-                        </span>
-                      </div>
-                    </button>
-                  </Link>
-                ))}
-              </div>
+                ))} */}
             </div>
           </div>
         </Popover.Panel>
@@ -92,4 +191,4 @@ const PopoverPanel = ({ item, childrenOne, childrenTwo }) => {
   );
 };
 
-export default PopoverPanel;
+export default ProfilePopoverPanel;

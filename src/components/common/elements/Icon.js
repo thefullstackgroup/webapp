@@ -1,6 +1,7 @@
 import { createElement } from 'react';
 import * as FiIcons from 'react-icons/fi';
 import * as SiIcons from 'react-icons/si';
+import * as IoIcons from 'react-icons/io5';
 
 const Icon = (props) => {
   const { name, pack, className } = props;
@@ -13,6 +14,12 @@ const Icon = (props) => {
 
   if (pack === 'Si') {
     icon = createElement(SiIcons[name], {
+      className: style,
+    });
+  }
+
+  if (pack === 'Io') {
+    icon = createElement(IoIcons[name], {
       className: style,
     });
   }

@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/future/image';
 import Icon from '../elements/Icon';
 import Avatar from '../elements/Avatar';
 
 const ProjectCard = ({ project, feature = false, user, type, hideAuthor }) => {
-  const projectLink = `/${project.projectCreator.displayName}/project/${project.projectSlug}`;
+  const projectLink = `/${project?.projectCreator?.displayName}/project/${project.projectSlug}`;
 
   return (
     <>
       <Link href={projectLink} shallow={true}>
         <div
           className={
-            'group relative mb-6 w-full cursor-pointer ' +
+            'group relative w-full cursor-pointer ' +
             (feature ? 'h-80' : 'h-64')
           }
         >
@@ -44,12 +43,12 @@ const ProjectCard = ({ project, feature = false, user, type, hideAuthor }) => {
             </h3>
             <div className="flex items-center space-x-2">
               <Avatar
-                image={project.projectCreator.profilePicUrl}
-                name={project.projectCreator.displayName}
+                image={project.projectCreator?.profilePicUrl}
+                name={project.projectCreator?.displayName}
                 dimensions="h-5 w-5"
               />
               <p className="text-sm text-base-400 dark:text-base-300">
-                {project.projectCreator.name}
+                {project.projectCreator?.name}
               </p>
             </div>
           </div>

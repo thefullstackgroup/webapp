@@ -1,18 +1,10 @@
-import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
+import { withAuthUserTokenSSR } from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
-import useUserProfile from 'hooks/useUserProfile';
-import { useEffect } from 'react';
 import Meta from 'components/common/partials/Metadata';
 import Layout from 'components/common/layout/Layout';
 import Main from 'components/modules/explore/Main';
 
-const Explore = () => {
-  const [user, getUser] = useUserProfile();
-
-  useEffect(() => {
-    getUser();
-  }, []);
-
+const Explore = ({ user }) => {
   return (
     <>
       <Meta
@@ -21,16 +13,14 @@ const Explore = () => {
         keywords=""
       />
 
-      {user && (
-        <Layout user={user}>
-          <Main user={user} />
-        </Layout>
-      )}
+      <Layout user={user}>
+        <Main user={user} />
+      </Layout>
     </>
   );
 };
 
-export default withAuthUser()(Explore);
+export default Explore;
 
 export const getServerSideProps = withAuthUserTokenSSR()(
   async ({ AuthUser, req, res, query }) => {
@@ -55,7 +45,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
     }
 
     return {
-      props: {},
+      props: { user: userProfile || null },
     };
   }
 );

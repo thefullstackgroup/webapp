@@ -64,7 +64,7 @@ const AwardButton = ({ user, post }) => {
 
   return (
     <>
-      {user.userId == post?.projectCreator?.userId ? (
+      {user?.userId == post?.projectCreator?.userId ? (
         <button className="btn-secondary btn-with-icon group relative cursor-not-allowed space-x-1 bg-transparent pl-1 pr-2 text-sm hover:bg-transparent">
           <ToolTip message="Award" />
           {post.contentTotalDiamonds != null &&
