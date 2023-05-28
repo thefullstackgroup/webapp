@@ -103,7 +103,7 @@ const Icon = (props) => {
     iconName.charAt(0).toUpperCase() + iconName.slice(1).toLowerCase()
   }`;
   const icon = React.createElement(Icons[iconKey] || IoCodeOutline, {
-    className: 'w-4 h-4 text-slate-400',
+    className: 'w-4 h-4 text-base-400',
   });
   return <div>{icon}</div>;
 };
@@ -323,13 +323,13 @@ const EditPost = ({
                     key={index}
                   >
                     <span
-                      className="flex max-w-xs items-center space-x-1 truncate px-1 leading-relaxed text-slate-400"
+                      className="flex max-w-xs items-center space-x-1 truncate px-1 leading-relaxed text-base-400"
                       x-text="tag"
                     >
                       <Icon iconName={`${savedSkill}`} />
                       <span>{savedSkill}</span>
                     </span>
-                    <button className="inline-block h-8 w-6 bg-base-600 align-middle text-slate-400 focus:outline-none">
+                    <button className="inline-block h-8 w-6 bg-base-600 align-middle text-base-400 focus:outline-none">
                       <IoCloseOutline
                         className="mx-auto h-4 w-4 fill-current"
                         onClick={() => {
@@ -344,12 +344,12 @@ const EditPost = ({
           </div>
         </div>
         <div className="relative w-full">
-          <div className="flex w-full space-x-6 text-slate-400">
+          <div className="flex w-full space-x-6 text-base-400">
             <label
               htmlFor="coverImage"
               className="flex cursor-pointer items-center space-x-2 font-semibold"
             >
-              <IoImageOutline className="mx-auto h-6 w-auto text-slate-400" />
+              <IoImageOutline className="mx-auto h-6 w-auto text-base-400" />
               <span className="hidden text-sm md:block">Image</span>
               <input
                 id="coverImage"
@@ -364,7 +364,7 @@ const EditPost = ({
               className="flex items-center space-x-2 font-semibold"
               onClick={() => setShowFlair(!showFlair)}
             >
-              <IoPricetagOutline className="h-5 w-auto text-slate-400" />
+              <IoPricetagOutline className="h-5 w-auto text-base-400" />
               <span className="hidden whitespace-nowrap text-sm md:block">
                 Topic
               </span>
@@ -373,13 +373,13 @@ const EditPost = ({
               className="flex items-center space-x-2 font-semibold"
               onClick={() => setShowTech(!showTech)}
             >
-              <IoCodeSlash className="mx-auto h-5 w-auto text-slate-400" />
+              <IoCodeSlash className="mx-auto h-5 w-auto text-base-400" />
               <span className="hidden text-sm md:block">Tech</span>
             </button>
             <div className="flex w-full items-center justify-end space-x-2">
               <button
                 onClick={() => setIsDeletePromptOpen(true)}
-                className="btn-primary bg-transparent text-slate-500 hover:bg-transparent hover:text-red-500"
+                className="btn-primary bg-transparent text-base-500 hover:bg-transparent hover:text-red-500"
               >
                 <span>Delete</span>
               </button>

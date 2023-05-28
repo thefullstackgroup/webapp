@@ -140,7 +140,7 @@ const CreateJob = ({ teamId, setShow }) => {
         <div className="no-scrollbar h-[74vh] space-y-4 overflow-y-scroll overscroll-contain py-4">
           <div className="space-y-6">
             <div>
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Job title
               </label>
               <input
@@ -160,7 +160,7 @@ const CreateJob = ({ teamId, setShow }) => {
               )}
             </div>
             <div>
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Link to apply
               </label>
               <input
@@ -180,7 +180,7 @@ const CreateJob = ({ teamId, setShow }) => {
               )}
             </div>
             <div>
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Salary range
               </label>
               <div className="flex items-start space-x-2">
@@ -244,7 +244,7 @@ const CreateJob = ({ teamId, setShow }) => {
               )}
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Employment type
               </label>
               <EmploymentType selected={type} setType={setType} />
@@ -255,7 +255,7 @@ const CreateJob = ({ teamId, setShow }) => {
               )}
             </div>
             <div>
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Location(s)
               </label>
 
@@ -290,7 +290,7 @@ const CreateJob = ({ teamId, setShow }) => {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Tech Stack:
               </label>
               <div className="no-scrollbar mt-2 flex flex-wrap items-center">
@@ -332,7 +332,7 @@ const CreateJob = ({ teamId, setShow }) => {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Job description
               </label>
               <div className="rounded-md bg-base-600/50">
@@ -386,7 +386,7 @@ const CreateJob = ({ teamId, setShow }) => {
         </div>
 
         <div className="flex justify-between py-4">
-          <div className="flex items-center space-x-2 text-xs text-slate-300">
+          <div className="flex items-center space-x-2 text-xs text-base-300">
             <IoInformationCircleSharp className="h-4 w-4" />
             <span>
               Information from your team profile will be added to your role

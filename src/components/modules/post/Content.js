@@ -122,15 +122,15 @@ const Content = ({
                         <span className="group-hover:text-link font-semibold tracking-tight text-white">
                           {authorName}
                         </span>
-                        <span className="ml-1 text-slate-500 sm:mt-0">
+                        <span className="ml-1 text-base-500 sm:mt-0">
                           · @{authorDisplayName}
                         </span>
                       </button>
-                      {/* <p className="text-slate-200 hover:text-primary-500 font-semibold">
+                      {/* <p className="text-base-200 hover:text-primary-500 font-semibold">
                         {authorDisplayName}
                       </p> */}
 
-                      <div className="text-xs text-slate-500">
+                      <div className="text-xs text-base-500">
                         {Moment(post?.createdDate).format('MMM Do')}
                       </div>
                     </div>
@@ -155,7 +155,7 @@ const Content = ({
                 </div>
               )}
 
-            <article className="prose prose-lg prose-dark mx-0 max-w-full overflow-x-hidden text-slate-100">
+            <article className="prose prose-lg prose-dark mx-0 max-w-full overflow-x-hidden text-base-100">
               <Markdown
                 options={{
                   overrides: {
@@ -222,9 +222,7 @@ const Content = ({
                     </button>
                   ))}
 
-                  <div className="text-sm text-slate-400">
-                    {pollVotes} votes
-                  </div>
+                  <div className="text-sm text-base-400">{pollVotes} votes</div>
                 </div>
               ))}
 
@@ -261,7 +259,7 @@ const Content = ({
                     </div>
                   ))}
 
-                  <div className="text-sm text-slate-400">
+                  <div className="text-sm text-base-400">
                     {pollVotes} {pollVotes == 1 ? 'vote' : 'votes'}
                   </div>
                 </div>

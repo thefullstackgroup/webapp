@@ -34,7 +34,7 @@ const SubCard = ({ project }) => {
         </div>
 
         <div className="absolute left-0 bottom-0 w-full space-y-0 py-6 px-4 pr-10">
-          <p className="font-intertight text-sm font-medium text-slate-300">
+          <p className="font-intertight text-sm font-medium text-base-300">
             {project.author}
           </p>
           <h3 className="font-intertight text-xl font-medium md:text-3xl">
@@ -120,7 +120,7 @@ const Featured = () => {
                 <h3 className="font-intertight text-lg font-medium md:text-2xl">
                   {featuredProject.author}
                 </h3>
-                <p className="text-sm text-slate-400 md:text-lg">
+                <p className="text-sm text-base-400 md:text-lg">
                   {featuredProject.authorRole}
                 </p>
               </div>
@@ -128,7 +128,7 @@ const Featured = () => {
             <h3 className="font-intertight text-2xl font-medium md:text-5xl">
               {featuredProject.title}
             </h3>
-            <p className="text-base text-slate-300 md:text-xl">
+            <p className="text-base text-base-300 md:text-xl">
               {featuredProject.desc}
             </p>
             <div className="flex space-x-4">
@@ -138,7 +138,7 @@ const Featured = () => {
                   size={'lg'}
                   key={index}
                   iconOnly={true}
-                  style="h-10 w-10 text-slate-500 rounded"
+                  style="h-10 w-10 text-base-500 rounded"
                 />
               ))}
             </div>

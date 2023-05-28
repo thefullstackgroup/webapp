@@ -21,7 +21,7 @@ const Profile = ({ users, user, lastChatMessage, unRead }) => {
 
   return (
     <div className="flex items-start space-x-2">
-      <div className="relative group">
+      <div className="group relative">
         <Avatar
           image={chatUser?.profilePicUrl}
           name={chatUser?.name}
@@ -31,16 +31,16 @@ const Profile = ({ users, user, lastChatMessage, unRead }) => {
       <div className="flex flex-col text-left">
         <div
           className={
-            'text-left items-center space-x-2 font-medium text-base ' +
-            (unRead ? 'text-white' : 'text-slate-300')
+            'items-center space-x-2 text-left text-base font-medium ' +
+            (unRead ? 'text-white' : 'text-base-300')
           }
         >
           {chatUser?.name}
         </div>
         <span
           className={
-            'font-normal text-sm line-clamp-1 ' +
-            (unRead ? 'text-white' : 'text-slate-500')
+            'text-sm font-normal line-clamp-1 ' +
+            (unRead ? 'text-white' : 'text-base-500')
           }
         >
           {lastChatMessage

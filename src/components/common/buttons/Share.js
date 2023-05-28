@@ -12,11 +12,11 @@ const Share = ({ url, message }) => {
   return (
     <>
       <button
-        className="btn-secondary bg-transparent hover:bg-slate-400/20 rounded-xl px-2 text-sm cursor-pointer group relative"
+        className="btn-secondary group relative cursor-pointer rounded-xl bg-transparent px-2 text-sm hover:bg-base-400/20"
         onClick={() => setShowShareOptions(!showShareOptions)}
       >
         <ToolTip message="Share" />
-        <IoArrowRedoOutline className="w-6 h-auto sm:group-hover:text-slate-300" />
+        <IoArrowRedoOutline className="h-auto w-6 sm:group-hover:text-base-300" />
       </button>
 
       <ModalDialog
@@ -24,11 +24,11 @@ const Share = ({ url, message }) => {
         setShow={setShowShareOptions}
         title="Share post"
       >
-        <div className="py-4 p-2 text-center shadow-xl sm:max-w-xl mx-auto">
-          <div className="space-y-3 text-left max-w-xs md:max-w-full">
+        <div className="mx-auto p-2 py-4 text-center shadow-xl sm:max-w-xl">
+          <div className="max-w-xs space-y-3 text-left md:max-w-full">
             <h4 className="text-sm font-semibold">Copy link</h4>
             <div
-              className="text-input flex items-center justify-between space-x-2 cursor-pointer"
+              className="text-input flex cursor-pointer items-center justify-between space-x-2"
               onClick={() => {
                 navigator.clipboard.writeText(url);
                 setIsCopied(true);
@@ -37,13 +37,13 @@ const Share = ({ url, message }) => {
                 );
               }}
             >
-              <span className="w-11/12 overflow-hidden overflow-x-scroll no-scrollbar whitespace-nowrap ">
+              <span className="no-scrollbar w-11/12 overflow-hidden overflow-x-scroll whitespace-nowrap ">
                 {url}
               </span>
-              <IoCopyOutline className="h-6 w-6 text-slate-400" />
+              <IoCopyOutline className="h-6 w-6 text-base-400" />
             </div>
             {isCopied && (
-              <span className="text-xs font-semibold text-tfstertiary-500">
+              <span className="text-tfstertiary-500 text-xs font-semibold">
                 Copied to clipboard!
               </span>
             )}

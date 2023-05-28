@@ -112,13 +112,13 @@ const UploadIntroVideo = ({ setMuxAssetId, buttonLabel }) => {
         {isUploading ? (
           <>
             {isPreparing ? (
-              <div className="flex items-center space-x-1 pt-3 ml-2 text-slate-300">
-                <BiLoaderAlt className="w-4 h-auto animate-spin" />
+              <div className="ml-2 flex items-center space-x-1 pt-3 text-base-300">
+                <BiLoaderAlt className="h-auto w-4 animate-spin" />
                 <span>Preparing video...</span>
               </div>
             ) : (
-              <div className="flex items-center space-x-1 pt-3 ml-2 text-slate-300">
-                <BiLoaderAlt className="w-4 h-auto animate-spin" />
+              <div className="ml-2 flex items-center space-x-1 pt-3 text-base-300">
+                <BiLoaderAlt className="h-auto w-4 animate-spin" />
                 <span>Uploading...{progress ? `${progress}%` : ''}</span>
               </div>
             )}

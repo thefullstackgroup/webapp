@@ -87,7 +87,7 @@ const Page = ({ user }) => {
                     <div className="flex flex-col items-center justify-between space-y-4 rounded-md border border-base-600 bg-base-800 px-4 py-4 md:flex-row md:space-y-0 md:px-8">
                       <div className="flex flex-col">
                         <span>Would you like to cancel your subscription?</span>
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-base-400">
                           Any active job posts will remain active until expiry
                           date.
                         </span>
@@ -115,11 +115,11 @@ const Page = ({ user }) => {
           <div>
             <div className="justify-center sm:flex sm:items-start">
               <div className="mt-3 text-center sm:mt-0">
-                <h3 className="text-xl font-bold text-slate-200">
+                <h3 className="text-xl font-bold text-base-200">
                   Cancel subscription?
                 </h3>
                 <div className="mt-2">
-                  <p className="text-sm text-slate-300">
+                  <p className="text-sm text-base-300">
                     Are you sure you want to cancel your subscription? This
                     action cannot be undone.
                   </p>

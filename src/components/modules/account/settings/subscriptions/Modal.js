@@ -29,7 +29,7 @@ const Modal = ({ user, show, setShow }) => {
             )}
             {user.userAttributes.accountType === 'FREE' && (
               <div>
-                <div className="mt-4 flex flex-col space-y-2 text-center text-lg text-slate-400">
+                <div className="mt-4 flex flex-col space-y-2 text-center text-lg text-base-400">
                   <h3 className="text-2xl font-semibold text-white">
                     Reach one of the fastest growing dev communities on the web
                   </h3>
@@ -43,7 +43,7 @@ const Modal = ({ user, show, setShow }) => {
                         'relative w-1/2 whitespace-nowrap rounded-md border-base-700 py-2 text-sm font-medium shadow-sm focus:z-10 focus:outline-none sm:w-auto sm:px-8 ' +
                         (frequency == 1
                           ? 'bg-primary-600 text-white'
-                          : 'text-slate-400')
+                          : 'text-base-400')
                       }
                       onClick={() => setFrequency(1)}
                     >
@@ -55,7 +55,7 @@ const Modal = ({ user, show, setShow }) => {
                         'relative w-1/2 whitespace-nowrap rounded-md border-base-700 py-2 text-sm font-medium shadow-sm focus:z-10 focus:outline-none sm:w-auto sm:px-8 ' +
                         (frequency == 12
                           ? 'bg-primary-600 text-white'
-                          : 'text-slate-400')
+                          : 'text-base-400')
                       }
                       onClick={() => setFrequency(12)}
                     >
@@ -88,7 +88,7 @@ const Modal = ({ user, show, setShow }) => {
                 </div>
                 <div className="my-6 flex items-center justify-between space-x-4 text-sm">
                   <div className="flex items-center space-x-2">
-                    <span className="text-slate-300">
+                    <span className="text-base-300">
                       Safe & Secure Payments with
                     </span>
                     <FaStripe className="h-10 w-10" />

@@ -165,7 +165,7 @@ const InviteMembers = ({
                 />
 
                 <h4>{user.name}</h4>
-                <span className="text-slate-400">{user.currentTitle}</span>
+                <span className="text-base-400">{user.currentTitle}</span>
               </div>
               <button className="btn-ghost text-left text-xs">
                 Team owner
@@ -185,7 +185,7 @@ const InviteMembers = ({
                   />
 
                   <h4>{member.name}</h4>
-                  <span className="text-slate-400">{member.currentTitle}</span>
+                  <span className="text-base-400">{member.currentTitle}</span>
                 </div>
                 <button
                   className="btn-ghost text-left text-xs text-red-500"
@@ -287,10 +287,10 @@ const InviteMembers = ({
                                     className="absolute inset-0"
                                     aria-hidden="true"
                                   ></span>
-                                  <p className="text-sm font-medium text-slate-100">
+                                  <p className="text-sm font-medium text-base-100">
                                     {eng?.name || eng?.displayName}
                                   </p>
-                                  <p className="truncate text-sm text-slate-400">
+                                  <p className="truncate text-sm text-base-400">
                                     {eng?.currentTitle}
                                   </p>
                                 </a>
@@ -299,7 +299,7 @@ const InviteMembers = ({
                           ) : (
                             <div className="relative flex items-center space-x-3 py-5 outline-none">
                               <div className="min-w-0 flex-1">
-                                <p className="text-sm font-medium text-slate-100">
+                                <p className="text-sm font-medium text-base-100">
                                   Sorry an unexpected error has occurred with
                                   this search result.
                                 </p>
@@ -319,7 +319,7 @@ const InviteMembers = ({
               <div className="w-full border-t border-base-600"></div>
             </div>
             <div className="relative flex justify-center">
-              <span className="bg-base-900 px-2 text-sm text-slate-400">
+              <span className="bg-base-900 px-2 text-sm text-base-400">
                 Can&apos;t find them? Send an invite
               </span>
             </div>

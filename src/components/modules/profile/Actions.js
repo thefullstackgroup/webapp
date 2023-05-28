@@ -17,7 +17,7 @@ const Actions = ({
   setUploadVideoIntroPanel,
 }) => {
   return (
-    <div className="flex justify-start space-x-3 items-center">
+    <div className="flex items-center justify-start space-x-3">
       {profile?.userId !== myProfile?.userId && (
         <ButtonFollow
           followToUser={profile?.userId}
@@ -47,7 +47,7 @@ const Actions = ({
       {profile?.userId === myProfile?.userId && (
         <>
           <button
-            className="btn-secondary w-full md:w-auto"
+            className="btn btn-secondary w-full md:w-auto"
             onClick={() => setShowEditProfile(true)}
           >
             <span className="whitespace-nowrap">Edit profile</span>
@@ -55,7 +55,7 @@ const Actions = ({
 
           <div className="relative">
             <button
-              className="relative group btn-ghost px-2 "
+              className="btn-ghost group relative px-2 "
               onClick={() => {
                 setUploadVideoIntroPanel(true);
                 sendSlackMessage(
@@ -66,11 +66,11 @@ const Actions = ({
               <ToolTip message="Your video intro" />
               <MdOutlineSlowMotionVideo className="h-6 w-6" />
             </button>
-            <span className="absolute top-1 left-7 w-3 h-3 rounded-full bg-red-500 px-1"></span>
+            <span className="absolute top-1 left-7 h-3 w-3 rounded-full bg-red-500 px-1"></span>
           </div>
 
           <Link href="/account/settings">
-            <button className="relative group btn-ghost">
+            <button className="btn btn-ghost group relative">
               <ToolTip message="Account settings" />
               <IoSettingsOutline className="h-6 w-6" />
             </button>

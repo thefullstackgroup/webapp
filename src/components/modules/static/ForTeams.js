@@ -34,7 +34,7 @@ const ForTeams = () => {
       <div className="relative z-10 mx-auto max-w-screen-xl md:h-[70vh] lg:mt-16">
         <div className="max-w-7xl space-y-6 px-4 pt-24 md:pt-32 lg:px-0">
           <Link href="/about/our-story">
-            <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-700 bg-slate-800/40 px-6 py-1 text-sm text-slate-300 hover:text-white">
+            <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-700 bg-base-800/40 px-6 py-1 text-sm text-base-300 hover:text-white">
               Why this matters? See our story &rarr;
             </div>
           </Link>
@@ -42,7 +42,7 @@ const ForTeams = () => {
             Team Profiles.
           </h1>
           <div className="mx-auto max-w-3xl">
-            <h4 className="px-4 text-center text-lg font-light text-slate-300 md:text-2xl">
+            <h4 className="px-4 text-center text-lg font-light text-base-300 md:text-2xl">
               The Full Stack helps your engineering team share its unique
               culture with developers looking for more than just a job.
             </h4>
@@ -72,14 +72,14 @@ const ForTeams = () => {
 
         <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
           <div className="space-y-4 rounded-xl p-6 text-left md:bg-base-900/50">
-            <div className="flex items-center space-x-4 text-slate-400">
-              <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                <BsCheckSquare className="h-8 w-8 text-slate-200" />
+            <div className="flex items-center space-x-4 text-base-400">
+              <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                <BsCheckSquare className="h-8 w-8 text-base-200" />
               </div>
               <h4 className="text-base font-semibold uppercase">Context</h4>
             </div>
 
-            <p className="text-xl font-medium text-slate-300">
+            <p className="text-xl font-medium text-base-300">
               Lots of developers are contacted about new opportunities all the
               time, but they lack context about who they will be working with,
               the dev tools, the dev process, or whether they are aligned with a
@@ -87,13 +87,13 @@ const ForTeams = () => {
             </p>
           </div>
           <div className="space-y-4 rounded-xl p-6 text-left md:bg-base-900/50">
-            <div className="flex items-center space-x-4 text-slate-400">
-              <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                <Icon name={'FiStar'} className="h-8 w-8 text-slate-200" />
+            <div className="flex items-center space-x-4 text-base-400">
+              <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                <Icon name={'FiStar'} className="h-8 w-8 text-base-200" />
               </div>
               <h4 className="text-base font-semibold uppercase">Attract</h4>
             </div>
-            <p className="text-xl font-medium text-slate-300">
+            <p className="text-xl font-medium text-base-300">
               Developers come to The Full Stack to share their work, grow their
               network and connect with like-minded developers and engineering
               teams that share similar interests, tech stacks and shared values.
@@ -101,13 +101,13 @@ const ForTeams = () => {
           </div>
 
           <div className="space-y-4 rounded-xl p-6 text-left md:bg-base-900/50">
-            <div className="flex items-center space-x-4 text-slate-400">
-              <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                <BsGraphUp className="h-8 w-8 text-slate-200" />
+            <div className="flex items-center space-x-4 text-base-400">
+              <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                <BsGraphUp className="h-8 w-8 text-base-200" />
               </div>
               <h4 className="text-base font-semibold uppercase">Efficiency</h4>
             </div>
-            <p className="text-xl font-medium text-slate-300">
+            <p className="text-xl font-medium text-base-300">
               Tech hiring is becoming more social and informal. Having a team
               profile that articulates your mission and culture within a fast
               growing dev network keeps potential developers more informed about
@@ -122,7 +122,7 @@ const ForTeams = () => {
           <h4 className="z-20 text-3xl font-bold md:text-5xl">
             Showcase your engineering team
           </h4>
-          <p className="text-xl text-slate-300 md:text-2xl">
+          <p className="text-xl text-base-300 md:text-2xl">
             Don&apos;t let your team and opportunities get overlooked
           </p>
         </div>
@@ -131,7 +131,7 @@ const ForTeams = () => {
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
               <div className="flex flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
-                <h4 className="text-lg font-semibold uppercase text-slate-400">
+                <h4 className="text-lg font-semibold uppercase text-base-400">
                   Your mission
                 </h4>
                 <p>
@@ -143,14 +143,14 @@ const ForTeams = () => {
                   replicated on other horizontal network.
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-8">
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
                     <Icon
                       name={'FiTarget'}
-                      className="h-11 w-11 text-slate-200"
+                      className="h-11 w-11 text-base-200"
                     />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <GiTeamUpgrade className="h-11 w-11 text-slate-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                    <GiTeamUpgrade className="h-11 w-11 text-base-200" />
                   </div>
                 </div>
               </div>
@@ -182,7 +182,7 @@ const ForTeams = () => {
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
               <div className="flex h-[90vh] flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
-                <h4 className="text-lg font-semibold uppercase text-slate-400">
+                <h4 className="text-lg font-semibold uppercase text-base-400">
                   Teammates
                 </h4>
                 <p>
@@ -228,7 +228,7 @@ const ForTeams = () => {
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
               <div className="flex flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
-                <h4 className="text-lg font-semibold uppercase text-slate-400">
+                <h4 className="text-lg font-semibold uppercase text-base-400">
                   Dev Tools &middot; Dev process
                 </h4>
                 <p>
@@ -240,25 +240,25 @@ const ForTeams = () => {
                   work.
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-8">
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
                     <Icon
                       name={'SiVisualstudiocode'}
                       pack={'Si'}
-                      className="h-11 w-11 text-slate-200"
+                      className="h-11 w-11 text-base-200"
                     />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
                     <Icon
                       name={'SiReact'}
                       pack={'Si'}
-                      className="h-11 w-11 text-slate-200"
+                      className="h-11 w-11 text-base-200"
                     />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <FaJava className="h-11 w-11 text-slate-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                    <FaJava className="h-11 w-11 text-base-200" />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <FaAws className="h-11 w-11 text-slate-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                    <FaAws className="h-11 w-11 text-base-200" />
                   </div>
                 </div>
               </div>
@@ -290,7 +290,7 @@ const ForTeams = () => {
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
               <div className="flex flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
-                <h4 className="text-lg font-semibold uppercase text-slate-400">
+                <h4 className="text-lg font-semibold uppercase text-base-400">
                   Free to use
                 </h4>
                 <p>
@@ -303,18 +303,18 @@ const ForTeams = () => {
                 </p>
 
                 <div className="flex items-center space-x-2 md:space-x-8">
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
                     <Icon
                       name={'IoTimeOutline'}
                       pack={'Io'}
-                      className="h-11 w-11 text-slate-200"
+                      className="h-11 w-11 text-base-200"
                     />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
                     <Icon
                       name={'IoShareSocialOutline'}
                       pack={'Io'}
-                      className="h-11 w-11 text-slate-200"
+                      className="h-11 w-11 text-base-200"
                     />
                   </div>
                 </div>
@@ -340,7 +340,7 @@ const ForTeams = () => {
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
               <div className="flex flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
-                <h4 className="text-lg font-semibold uppercase text-slate-400">
+                <h4 className="text-lg font-semibold uppercase text-base-400">
                   Post Open roles
                 </h4>
                 <p>
@@ -350,25 +350,25 @@ const ForTeams = () => {
                   a pricing model that is fair.
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-8">
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
                     <Icon
                       name={'IoBriefcaseOutline'}
                       pack={'Io'}
-                      className="h-11 w-11 text-slate-200"
+                      className="h-11 w-11 text-base-200"
                     />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
                     <Icon
                       name={'IoPersonAddOutline'}
                       pack={'Io'}
-                      className="h-11 w-11 text-slate-200"
+                      className="h-11 w-11 text-base-200"
                     />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
                     <Icon
                       name={'IoDocumentTextOutline'}
                       pack={'Io'}
-                      className="h-11 w-11 text-slate-200"
+                      className="h-11 w-11 text-base-200"
                     />
                   </div>
                 </div>

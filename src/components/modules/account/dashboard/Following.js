@@ -36,11 +36,11 @@ const Following = ({ user }) => {
                   <div className="flex cursor-pointer flex-col truncate">
                     <p className="whitespace-nowrap font-semibold">
                       {profile.name}
-                      <span className="ml-2 font-normal text-slate-400">
+                      <span className="ml-2 font-normal text-base-400">
                         @{profile.displayName}
                       </span>
                     </p>
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-base-400">
                       {profile.currentTitle}
                     </p>
                   </div>

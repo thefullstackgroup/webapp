@@ -36,7 +36,7 @@ const LayoutLoggedOut = ({ children, setShowSignupModal }) => {
                     'duration-300 ' +
                     (navSection[2] === 'developers'
                       ? 'text-white'
-                      : 'text-slate-400 hover:text-white')
+                      : 'text-base-400 hover:text-white')
                   }
                 >
                   For Developers
@@ -48,7 +48,7 @@ const LayoutLoggedOut = ({ children, setShowSignupModal }) => {
                     'duration-300 ' +
                     (navSection[2] === 'teams'
                       ? 'text-white'
-                      : 'text-slate-400 hover:text-white')
+                      : 'text-base-400 hover:text-white')
                   }
                 >
                   For Teams
@@ -59,7 +59,7 @@ const LayoutLoggedOut = ({ children, setShowSignupModal }) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <span className="text-slate-400 duration-300 hover:text-white">
+                <span className="text-base-400 duration-300 hover:text-white">
                   Newsletter
                 </span>
               </a>
@@ -69,7 +69,7 @@ const LayoutLoggedOut = ({ children, setShowSignupModal }) => {
                     'duration-300 ' +
                     (navSection[2] === 'our-story'
                       ? 'text-white'
-                      : 'text-slate-400 hover:text-white')
+                      : 'text-base-400 hover:text-white')
                   }
                 >
                   About
@@ -78,13 +78,13 @@ const LayoutLoggedOut = ({ children, setShowSignupModal }) => {
             </div>
             <div className="flex items-center space-x-10 text-sm font-medium">
               <Link href="/login">
-                <button className="text-slate-400 duration-300 hover:text-white">
+                <button className="text-base-400 duration-300 hover:text-white">
                   Login
                 </button>
               </Link>
 
               <button
-                className="btn-primary bg-slate-300 py-1 text-sm text-base-800 duration-300 hover:bg-white"
+                className="btn-primary bg-base-300 py-1 text-sm text-base-800 duration-300 hover:bg-white"
                 onClick={() => setShowSignupModal(true)}
               >
                 Sign up
@@ -108,7 +108,7 @@ const LayoutLoggedOut = ({ children, setShowSignupModal }) => {
             </Link>
           </div>
           <Link href="/login">
-            <button className="btn-with-icon text-sm font-medium text-slate-300">
+            <button className="btn-with-icon text-sm font-medium text-base-300">
               <IoLogInOutline className="h-5 w-5" />
               <span>Sign in</span>
             </button>

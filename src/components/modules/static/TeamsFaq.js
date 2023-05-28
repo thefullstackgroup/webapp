@@ -83,7 +83,7 @@ const Faq = ({ showTitle = true }) => {
                       'flex w-full items-start justify-between text-left ' +
                       (open
                         ? 'text-orange-100'
-                        : 'hover:text-white text-slate-200')
+                        : 'text-base-200 hover:text-white')
                     }
                   >
                     <span className="text-xl leading-7">{faq.question}</span>
@@ -97,7 +97,7 @@ const Faq = ({ showTitle = true }) => {
                   </Disclosure.Button>
                 </dt>
                 <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                  <p className="text-lg text-left leading-7 text-white">
+                  <p className="text-left text-lg leading-7 text-white">
                     {faq.answer}
                   </p>
                 </Disclosure.Panel>

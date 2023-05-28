@@ -215,7 +215,7 @@ const Card = ({ channel, profile }) => {
           </div>
           <div className="w-full">
             <h4 className="font-semibold">{channel.title}</h4>
-            <p className="text-xs text-slate-400 md:text-sm">{channel.desc}</p>
+            <p className="text-xs text-base-400 md:text-sm">{channel.desc}</p>
           </div>
           <div className="mt-2">
             {connected ? (
@@ -245,7 +245,7 @@ const Card = ({ channel, profile }) => {
             )}
             <h4 className="font-semibold">{channel.title}</h4>
           </div>
-          <p className="text-xs text-slate-400">{channel.desc}</p>
+          <p className="text-xs text-base-400">{channel.desc}</p>
           <div className="absolute bottom-2 left-0 mt-2">
             {connected ? (
               <div className="flex w-min space-x-1 py-1.5 text-xs text-green-600">
@@ -288,7 +288,7 @@ const Card = ({ channel, profile }) => {
                       <FaMedium className="h-16 w-16" />
                     )}
                   </div>
-                  <div className="text-slate-400">{channel.desc}</div>
+                  <div className="text-base-400">{channel.desc}</div>
                 </div>
                 <div className="space-y-2">
                   <label>Your {channel.title} username</label>
@@ -349,25 +349,25 @@ const Card = ({ channel, profile }) => {
                     )}
                   </div>
                   <div>
-                    <p className="text-slate-400">
+                    <p className="text-base-400">
                       Do you want to disconnect the {channel.title} account
                       {channel.name === 'GITHUB' && (
-                        <span className="inline-flex px-1 font-mono text-slate-100">
+                        <span className="inline-flex px-1 font-mono text-base-100">
                           {profile.bio.gitHubAccount}
                         </span>
                       )}
                       {channel.name === 'DEV_TO' && (
-                        <span className="inline-flex px-1 font-mono text-slate-100">
+                        <span className="inline-flex px-1 font-mono text-base-100">
                           {profile.bio.devToAccount}
                         </span>
                       )}
                       {channel.name === 'HASH_NODE' && (
-                        <span className="inline-flex px-1 font-mono text-slate-100">
+                        <span className="inline-flex px-1 font-mono text-base-100">
                           {profile.bio.hashNodeAccount}
                         </span>
                       )}
                       {channel.name === 'MEDIUM' && (
-                        <span className="inline-flex px-1 font-mono text-slate-100">
+                        <span className="inline-flex px-1 font-mono text-base-100">
                           {profile.bio.mediumAccount}
                         </span>
                       )}

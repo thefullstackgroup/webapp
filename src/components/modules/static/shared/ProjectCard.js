@@ -36,7 +36,7 @@ const ProjectCard = (props) => {
         </div>
 
         <div className="absolute left-0 bottom-0 w-full space-y-0 py-6 px-4 pr-10">
-          <p className="font-intertight text-sm font-medium text-slate-300">
+          <p className="font-intertight text-sm font-medium text-base-300">
             {props.project.projectCreator.name}
           </p>
           <h3 className="font-intertight text-xl font-medium md:text-2xl">
@@ -79,22 +79,22 @@ const ProjectCard = (props) => {
 
         {props.project.numberOfLikes > 0 && (
           <div className="flex space-x-4 px-3">
-            <button className="flex items-center space-x-1 font-normal rounded-lg text-slate-400">
+            <button className="flex items-center space-x-1 font-normal rounded-lg text-base-400">
               <BiUpvote className="w-auto h-6" />
               <span className="text-sm">
                 {Math.abs(props.project?.numberOfLikes)}
               </span>
             </button>
-            <button className="flex items-center space-x-1 font-normal rounded-lg text-slate-400">
+            <button className="flex items-center space-x-1 font-normal rounded-lg text-base-400">
               <IoChatboxOutline className="w-6 h-auto" />
               <span className="text-sm">{props.project?.numberOfComments}</span>
             </button>
 
-            <button className="flex items-center space-x-1 font-normal text-slate-400">
+            <button className="flex items-center space-x-1 font-normal text-base-400">
               {props.project?.contentTotalDiamonds > 0 ? (
                 <BsGem className="text-yellow-500 w-auto h-5" />
               ) : (
-                <BsGem className="text-slate-400 w-auto h-5" />
+                <BsGem className="text-base-400 w-auto h-5" />
               )}
               <span className="text-sm">
                 {props.project?.contentTotalDiamonds}
@@ -106,14 +106,14 @@ const ProjectCard = (props) => {
           {props.project.projectName}
         </p>
         <div className="flex space-x-2 px-3">
-          <IoLayersOutline className="h-5 w-5 mb-1 text-slate-200" />
+          <IoLayersOutline className="h-5 w-5 mb-1 text-base-200" />
           {props.project?.projectTechStack.map((stack, index) => (
             <TechBadge
               tech={stack}
               size={'xs'}
               key={index}
               iconOnly={true}
-              style="h-5 w-5 text-slate-500 rounded"
+              style="h-5 w-5 text-base-500 rounded"
             />
           ))}
         </div>

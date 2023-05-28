@@ -91,9 +91,9 @@ const Following = ({ post, user }) => {
                   dimensions="hidden md:block h-6 w-6"
                 />
               )}
-              <div className="flex w-full items-start justify-between space-x-1 text-sm text-slate-300 md:text-base">
+              <div className="flex w-full items-start justify-between space-x-1 text-sm text-base-300 md:text-base">
                 <div>
-                  <span className="font-medium text-slate-100">
+                  <span className="font-medium text-base-100">
                     {post.triggeredByUser?.name}
                   </span>{' '}
                   {actionMessage}
@@ -127,13 +127,13 @@ const Following = ({ post, user }) => {
                         <span className="group-hover:text-link font-semibold tracking-tight text-white">
                           {postData?.projectCreator.name}
                         </span>
-                        <span className="ml-1 text-slate-500 sm:mt-0">
+                        <span className="ml-1 text-base-500 sm:mt-0">
                           · @{postData?.projectCreator?.displayName}
                         </span>
                       </button>
                     </Link>
 
-                    <div className="text-xs text-slate-500">
+                    <div className="text-xs text-base-500">
                       {Moment(postData?.createdDate).format('MMM Do')}
                     </div>
                   </div>

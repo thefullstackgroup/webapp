@@ -47,13 +47,13 @@ const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
   return (
     <>
       {!showPendingButton && (
-        <button className="btn-primary" onClick={() => setShowModal(true)}>
+        <button className="btn btn-primary" onClick={() => setShowModal(true)}>
           <span>Connect</span>
         </button>
       )}
 
       {showPendingButton && (
-        <div className="btn btn-secondary group border border-base-600 bg-transparent text-slate-400 hover:bg-transparent">
+        <div className="btn btn-secondary group border border-base-600 bg-transparent text-base-400 hover:bg-transparent">
           <span>Pending...</span>
         </div>
       )}
@@ -68,7 +68,7 @@ const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
                 dimensions="w-24 h-24 border-2 border-base-800"
               />
 
-              <IoCode className="h-auto w-9 text-slate-400" />
+              <IoCode className="h-auto w-9 text-base-400" />
 
               <Avatar
                 image={connectFrom?.profilePicUrl}
@@ -77,17 +77,17 @@ const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
               />
             </div>
             <div className="mt-6 flex max-w-7xl flex-col items-center sm:px-12">
-              <span className="text-center text-xl font-semibold text-slate-100 sm:text-2xl">
+              <span className="text-center text-xl font-semibold text-base-100 sm:text-2xl">
                 Connect to {connectTo?.name}
               </span>
-              <span className="space-x-2 text-center text-slate-400">
+              <span className="space-x-2 text-center text-base-400">
                 Request to connect and start the conversation.
               </span>
             </div>
             <div className="">
               <div className="mx-auto mt-4 max-w-7xl py-4 px-2 sm:py-4 sm:px-6 lg:px-8">
                 <ul>
-                  <li className="mb-0 rounded-lg px-4 text-center text-base font-normal text-slate-100 sm:text-lg">
+                  <li className="mb-0 rounded-lg px-4 text-center text-base font-normal text-base-100 sm:text-lg">
                     <button
                       className="btn-primary px-10"
                       onClick={() => actionConnect()}

@@ -76,7 +76,7 @@ const Main = (props) => {
 
   if (!profile)
     return (
-      <div className="my-48 w-full flex justify-center">
+      <div className="my-48 flex w-full justify-center">
         <Loader />
       </div>
     );
@@ -87,72 +87,66 @@ const Main = (props) => {
 
   return (
     <>
-      <div className="mt-0 lg:mt-8 w-full flex justify-center">
-        <div className="w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56 mb-20">
-          <Overview
-            profile={profile}
-            user={props.myProfile}
-            isConnected={isConnected}
-            isConnectionPending={isConnectionPending}
-            teams={teams}
-            setShowEditProfile={setShowEditProfile}
-            setUploadVideoIntroPanel={setUploadVideoIntroPanel}
+      <div className="mx-auto max-w-screen-lg">
+        <Overview
+          profile={profile}
+          user={props.myProfile}
+          isConnected={isConnected}
+          isConnectionPending={isConnectionPending}
+          teams={teams}
+          setShowEditProfile={setShowEditProfile}
+          setUploadVideoIntroPanel={setUploadVideoIntroPanel}
+        />
+
+        {profile.userId === props.myProfile.userId && (
+          <Goals
+            goal={props.myProfile.profileGoal}
+            setCreateTeamPanel={setCreateTeamPanel}
           />
+        )}
 
-          {profile.userId === props.myProfile.userId && (
-            <Goals
-              goal={props.myProfile.profileGoal}
-              setCreateTeamPanel={setCreateTeamPanel}
-            />
-          )}
-
-          {profile?.userId === props.myProfile.userId && (
-            <div className="relative lg:flex gap-4 max-w-screen-lg mx-auto mb-8 sm:mb-10 px-4 md:px-0">
-              <AccountsSection profile={profile} />
-            </div>
-          )}
-
-          {profile?.gitHubUserName && (
-            <div className="relative max-w-screen-lg mx-auto mb-8 sm:mb-10 px-4 md:px-0">
-              <GitHubCalendar
-                username={profile?.gitHubUserName}
-                blockSize={16}
-                theme={GitHubCalendarTheme}
-                hideColorLegend={isMobile ? true : false}
-                hideMonthLabels={isMobile ? true : false}
-              />
-            </div>
-          )}
-
-          <div className="relative max-w-screen-lg mx-auto">
-            <div className="flex justify-between items-center overflow-y-scroll no-scrollbar">
-              <Menu tab={tab} setTab={setTab} profile={profile} />
-              <div className="hidden md:block">
-                <Social social={profile} />
-              </div>
-            </div>
-
-            {tab == 0 && (
-              <ProjectsSection profile={profile} myProfile={props.myProfile} />
-            )}
-            {tab == 1 && <SnippetsSection />}
-
-            {tab == 2 && (
-              <SparksSection profile={profile} myProfile={props.myProfile} />
-            )}
-
-            {tab == 3 && (
-              <ArticlesSection profile={profile} source={'DEV_TO'} />
-            )}
-
-            {tab == 4 && (
-              <ArticlesSection profile={profile} source={'HASH_NODE'} />
-            )}
-
-            {tab == 5 && (
-              <ArticlesSection profile={profile} source={'MEDIUM'} />
-            )}
+        {profile?.userId === props.myProfile.userId && (
+          <div className="relative mx-auto mb-8 max-w-screen-lg gap-4 px-4 sm:mb-10 md:px-0 lg:flex">
+            <AccountsSection profile={profile} />
           </div>
+        )}
+
+        {profile?.gitHubUserName && (
+          <div className="relative mx-auto mb-8 max-w-screen-lg px-4 sm:mb-10 md:px-0">
+            <GitHubCalendar
+              username={profile?.gitHubUserName}
+              blockSize={16}
+              theme={GitHubCalendarTheme}
+              hideColorLegend={isMobile ? true : false}
+              hideMonthLabels={isMobile ? true : false}
+            />
+          </div>
+        )}
+
+        <div className="relative mx-auto max-w-screen-lg">
+          <div className="no-scrollbar flex items-center justify-between overflow-y-scroll">
+            <Menu tab={tab} setTab={setTab} profile={profile} />
+            <div className="hidden md:block">
+              <Social social={profile} />
+            </div>
+          </div>
+
+          {tab == 0 && (
+            <ProjectsSection profile={profile} myProfile={props.myProfile} />
+          )}
+          {tab == 1 && <SnippetsSection />}
+
+          {tab == 2 && (
+            <SparksSection profile={profile} myProfile={props.myProfile} />
+          )}
+
+          {tab == 3 && <ArticlesSection profile={profile} source={'DEV_TO'} />}
+
+          {tab == 4 && (
+            <ArticlesSection profile={profile} source={'HASH_NODE'} />
+          )}
+
+          {tab == 5 && <ArticlesSection profile={profile} source={'MEDIUM'} />}
         </div>
       </div>
 
@@ -164,8 +158,8 @@ const Main = (props) => {
         disabled
       >
         <div>
-          <div className="relative z-20 w-full flex flex-col h-screen overflow-hidden overflow-y-scroll no-scrollbar overscroll-contain">
-            <div className="top-0 w-full max-w-3xl mx-auto bg-transparent">
+          <div className="no-scrollbar relative z-20 flex h-screen w-full flex-col overflow-hidden overflow-y-scroll overscroll-contain">
+            <div className="top-0 mx-auto w-full max-w-3xl bg-transparent">
               <EditProfile displayName={profile?.displayName} />
             </div>
           </div>

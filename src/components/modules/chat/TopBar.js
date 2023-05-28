@@ -5,7 +5,7 @@ import ReportButton from 'components/common/buttons/Report';
 const TopBar = ({ user, chatUserInfo }) => {
   if (!chatUserInfo)
     return (
-      <div className="px-8 py-4 text-xs text-slate-500">Loading user...</div>
+      <div className="px-8 py-4 text-xs text-base-500">Loading user...</div>
     );
   return (
     <div className="flex h-16 w-full items-center space-x-2 border-b border-base-700 px-4 sm:px-6">

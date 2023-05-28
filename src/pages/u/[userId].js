@@ -12,11 +12,11 @@ const UserNotFound = () => {
         <h2 className="mt-40 text-2xl font-bold tracking-tight lg:text-5xl">
           Oops! User not found.
         </h2>
-        <p className="text-base text-slate-400 lg:text-lg">
+        <p className="text-base text-base-400 lg:text-lg">
           Sorry, this user may have moved their profile under a different name.
         </p>
-        <FaRegSadTear className="my-20 h-28 w-auto text-slate-400" />
-        <p className="text-lg text-slate-400">
+        <FaRegSadTear className="my-20 h-28 w-auto text-base-400" />
+        <p className="text-lg text-base-400">
           <Link href="/">
             <button className="btn-primary mt-10">Back to home</button>
           </Link>
@@ -47,7 +47,7 @@ const UserProfile = ({ userProfile, projects }) => {
               <Profile profile={userProfile} projects={projects} />
             </div>
           </main>
-          <div className="my-10 flex flex-col items-center justify-center space-x-1 px-4 text-center text-xs text-slate-400 md:flex-row">
+          <div className="my-10 flex flex-col items-center justify-center space-x-1 px-4 text-center text-xs text-base-400 md:flex-row">
             <span>
               {userProfile.name}&apos;s profile made with{' '}
               <FaHeart className="inline-flex h-4 w-auto text-red-500" /> on{' '}

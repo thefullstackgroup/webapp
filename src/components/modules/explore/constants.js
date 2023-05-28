@@ -28,7 +28,7 @@ export const CategoriesFilter = [
   {
     label: 'Open Source',
     slug: 'opensource',
-    term: 'opensource',
+    term: 'open source',
     title: '',
     desc: 'Developer projects that are open source',
   },
@@ -70,7 +70,7 @@ export const CategoriesFilter = [
   {
     label: 'AI',
     slug: 'ai',
-    term: 'ai',
+    term: 'AI',
     title: 'All things AI',
     desc: 'The world as become obsessed with AI, check out these projects',
   },

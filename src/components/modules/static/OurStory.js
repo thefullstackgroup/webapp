@@ -19,15 +19,15 @@ const Main = () => {
       <div className="relative z-10 mx-auto max-w-6xl">
         <div className="max-w-7xl space-y-6 px-4 pt-24 md:max-w-4xl md:pt-32 lg:px-0">
           <Link href="/about/our-story">
-            <div className="mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-700 bg-slate-800/40 px-4 py-1 text-sm text-slate-300 hover:text-white">
+            <div className="mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-700 bg-base-800/40 px-4 py-1 text-sm text-base-300 hover:text-white">
               Our mission
             </div>
           </Link>
-          <h1 className="flex justify-center -space-y-4 font-intertight text-5xl font-bold tracking-tight text-slate-100 md:text-7xl">
+          <h1 className="flex justify-center -space-y-4 font-intertight text-5xl font-bold tracking-tight text-base-100 md:text-7xl">
             Connecting developers to build awesome things.
           </h1>
           <div className="mx-auto max-w-3xl md:mx-0">
-            <h4 className="text-2xl font-light text-slate-300">
+            <h4 className="text-2xl font-light text-base-300">
               We build platforms that enable developers to grow a network and
               connect to teams to build the most amazing things.
             </h4>
@@ -35,14 +35,14 @@ const Main = () => {
         </div>
 
         <div className="max-w-4xl space-y-10 px-4 md:px-0">
-          <div className="mt-40 mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-700 bg-slate-800/40 px-4 py-1 text-sm text-slate-300 hover:text-white">
+          <div className="mt-40 mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-700 bg-base-800/40 px-4 py-1 text-sm text-base-300 hover:text-white">
             Our purpose
           </div>
           <h4 className="font-intertight text-4xl font-bold">
             Why this matters?
           </h4>
           <div className="space-y-4">
-            <p className="text-xl text-slate-300">
+            <p className="text-xl text-base-300">
               There is a global shortage of 40 million developers worldwide, yet
               10.2 million still get overlooked. We, as developers, love solving
               problems and building product. But we&apos;re not good at selling
@@ -54,13 +54,13 @@ const Main = () => {
               know, not for what you can build.
             </p>
 
-            <p className="text-xl text-slate-300">
+            <p className="text-xl text-base-300">
               Frustrated with how developers get discovered and get connected to
               other developers and teams, we founded a company with a mission to
               make this easier and simpler with a better experience.
             </p>
 
-            <p className="text-xl text-slate-300">
+            <p className="text-xl text-base-300">
               Opportunity comes around when you expand your network. We believe
               in the power of building your own network. We believe showing off
               what you can build and expressing your story yields results. And
@@ -71,7 +71,7 @@ const Main = () => {
               best career moves.
             </p>
 
-            <p className="text-xl text-slate-300">
+            <p className="text-xl text-base-300">
               We named it <span className="font-bold">The Full Stack</span>.
             </p>
           </div>
@@ -94,7 +94,7 @@ const Main = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold md:text-2xl">Noel Maher</h4>
-                  <h5 className="text-slate-400">CEO & Co-founder</h5>
+                  <h5 className="text-base-400">CEO & Co-founder</h5>
                   <div className="mt-2 flex items-center space-x-4">
                     <a
                       href="https://www.linkedin.com/in/noelmaher/"
@@ -134,7 +134,7 @@ const Main = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold md:text-2xl">Phil Bannon</h4>
-                  <h5 className="text-slate-400">CTO & Co-founder</h5>
+                  <h5 className="text-base-400">CTO & Co-founder</h5>
                   <div className="mt-2 flex items-center space-x-4">
                     <a
                       href="https://www.linkedin.com/in/philipbannon/"
@@ -173,7 +173,7 @@ const Main = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold md:text-2xl">Jamie Good</h4>
-                  <h5 className="text-slate-400">COO & Co-founder</h5>
+                  <h5 className="text-base-400">COO & Co-founder</h5>
                   <div className="mt-2 flex items-center space-x-4">
                     <a
                       href="https://www.linkedin.com/in/jamiegood/"
@@ -215,7 +215,7 @@ const Main = () => {
                   <h4 className="text-lg font-bold md:text-2xl">
                     Henrique Oliveira
                   </h4>
-                  <h5 className="text-slate-400">Senior Engineer</h5>
+                  <h5 className="text-base-400">Senior Engineer</h5>
                   <div className="mt-2 flex items-center space-x-4">
                     <a
                       href="https://www.linkedin.com/in/h3nrik/"

@@ -120,7 +120,7 @@ const SignUp = () => {
 
               {process.env.ENABLE_EMAIL_PASS_SIGNUP && (
                 <>
-                  <div className="py-2 text-center text-sm text-slate-400">
+                  <div className="py-2 text-center text-sm text-base-400">
                     Or sign up using email
                   </div>
                   <input

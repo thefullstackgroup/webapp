@@ -203,12 +203,12 @@ const ReplyToComment = ({
 
                   <div className="item-center flex justify-between">
                     <div className="flex items-center space-x-4">
-                      <button className="group relative text-xs text-slate-400">
+                      <button className="group relative text-xs text-base-400">
                         <ToolTip message={'Markdown supported'} />
-                        <IoLogoMarkdown className="h-6 w-6 text-slate-400" />
+                        <IoLogoMarkdown className="h-6 w-6 text-base-400" />
                       </button>
                       <button onClick={() => setShowEmoji(!showEmoji)}>
-                        <IoHappy className="h-5 w-5 text-slate-400" />
+                        <IoHappy className="h-5 w-5 text-base-400" />
                       </button>
                     </div>
                     <button className="btn-primary" onClick={handlePostReply}>

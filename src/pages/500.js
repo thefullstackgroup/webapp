@@ -15,12 +15,12 @@ const FiveZeroZero = () => {
   }, []);
   return (
     <div className="h-screen">
-      <div className="w-full h-full flex justify-center">
-        <div className="flex flex-col m-auto max-w-3xl px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mt-10 mb-4">
+      <div className="flex h-full w-full justify-center">
+        <div className="m-auto flex max-w-3xl flex-col px-4 text-center">
+          <h2 className="mt-10 mb-4 text-4xl font-bold tracking-tight md:text-5xl">
             Internal Server Error
           </h2>
-          <p className="text-2xl text-slate-200">
+          <p className="text-2xl text-base-200">
             It looks like someone forgot to write a unit test and instead you
             got served this lame error page. We&apos;re truly sorry. Why
             don&apos;t you go grab a beer, have a slice (on us), then try
@@ -31,12 +31,12 @@ const FiveZeroZero = () => {
               Lets try this again &rarr;
             </a>
           </p>
-          <p className="hidden mt-12 mb-8 md:flex flex-row justify-center items-center">
+          <p className="mt-12 mb-8 hidden flex-row items-center justify-center md:flex">
             <IoBeerOutline className="h-48 w-auto text-gray-400" />
             <FiPlus className="h-20 w-auto text-gray-400" />
             <FaPizzaSlice className="h-48 w-auto text-gray-400" />
           </p>
-          <p className="text-xl text-gray-400 italic">
+          <p className="text-xl italic text-gray-400">
             Sorry we&apos;ll do better next time
           </p>
         </div>

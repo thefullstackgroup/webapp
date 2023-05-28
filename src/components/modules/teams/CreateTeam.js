@@ -129,7 +129,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
                     Free
                   </span>
                 </span>
-                <span className="text-sm text-slate-400">
+                <span className="text-sm text-base-400">
                   Your team profile should answer the questions developers want
                   to know about your team / company, how you work, your dev
                   tools and hiring process.
@@ -155,7 +155,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
                   </span>
                 </span>
 
-                <span className="text-sm text-slate-400">
+                <span className="text-sm text-base-400">
                   Invite your teammates to join. Their profiles will be
                   displayed on your team profile, which really helps to make
                   strong connections with people looking to collaborate or find
@@ -180,7 +180,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
                     Subscription
                   </span>
                 </span>
-                <span className="text-sm text-slate-400">
+                <span className="text-sm text-base-400">
                   Looking to connect and hire developers for your team? Post
                   open roles to your team profile. We will also share on our
                   weekly newsletter and share across other socials.
@@ -294,7 +294,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
       )}
 
       <div>
-        <label className="text-sm font-medium text-slate-400">Team name</label>
+        <label className="text-sm font-medium text-base-400">Team name</label>
         <input
           type="text"
           name="username"
@@ -311,7 +311,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
       </div>
 
       <div>
-        <label className="text-sm font-medium text-slate-400">
+        <label className="text-sm font-medium text-base-400">
           Team tagline
         </label>
         <input

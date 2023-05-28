@@ -38,7 +38,7 @@ const Plan = ({ user }) => {
 
   return (
     user.userAttributes.accountType !== 'FREE' && (
-      <div className="text-sm text-slate-400">
+      <div className="text-sm text-base-400">
         <p>
           Your team subscription plan{' '}
           <span className="font-bold">{planName}</span> allows you to post{' '}
@@ -54,7 +54,7 @@ const Card = ({ job, setJobSelected, setViewJob, setEditJob }) => {
     <div className="flex items-center justify-between py-2">
       <div className="flex flex-col">
         <div className="font-semibold">{job.title}</div>
-        <div className="text-slate-400">
+        <div className="text-base-400">
           {job.employmentType} &middot; {job.locationType} &middot;{' '}
           {job.salaryRange.currency}{' '}
           {(job.salaryRange.min / 1000).toFixed(1).replace(/\.0$/, '') + 'k'} -{' '}
@@ -187,7 +187,7 @@ const Page = ({ user, teamId }) => {
                         <div className="mx-auto w-2/3 text-lg font-semibold">
                           Have you got open roles on your team?
                         </div>
-                        <div className="mx-auto w-2/3 text-slate-300">
+                        <div className="mx-auto w-2/3 text-base-300">
                           Post open positions on your Team profile. We send
                           developers an email when a job matches their
                           preferences, including tech stack, years of

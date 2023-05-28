@@ -85,17 +85,17 @@ const StepFive = ({ user, referralCode }) => {
   };
 
   return (
-    <div className="max-w-screen-xl px-4 sm:px-0 mx-auto mb-10">
-      <div className="sm:w-full flex justify-center md:justify-start">
+    <div className="mx-auto mb-10 max-w-screen-xl px-4 sm:px-0">
+      <div className="flex justify-center sm:w-full md:justify-start">
         <div className="w-full">
-          <h2 className="text-sm md:text-lg text-slate-400 text-center mb-6">
+          <h2 className="mb-6 text-center text-sm text-base-400 md:text-lg">
             We send your introduction when you request a connection.
           </h2>
 
-          <div className="w-full mb-6">
+          <div className="mb-6 w-full">
             <div className="">
               <div className="space-y-6">
-                <div className="w-full flex justify-center">
+                <div className="flex w-full justify-center">
                   <Avatar
                     image={user?.profilePicUrl}
                     name={user?.name}
@@ -108,7 +108,7 @@ const StepFive = ({ user, referralCode }) => {
                 <div>
                   <label
                     htmlFor="country"
-                    className="text-slate-300 font-semibold"
+                    className="font-semibold text-base-300"
                   >
                     Your introduction
                   </label>
@@ -129,13 +129,13 @@ const StepFive = ({ user, referralCode }) => {
                     }}
                   />
 
-                  <span className="text-gray-400 text-sm">
+                  <span className="text-sm text-gray-400">
                     Remaining characters: {remainingCharsAbout}
                   </span>
                 </div>
 
-                <div className="relative mt-4 sm:mt-8 text-base sm:text-base tracking-tight w-full">
-                  <label className="text-slate-300 font-semibold">
+                <div className="relative mt-4 w-full text-base tracking-tight sm:mt-8 sm:text-base">
+                  <label className="font-semibold text-base-300">
                     Lastly, where did you hear about thefullstack?
                   </label>
                   <select
@@ -152,17 +152,17 @@ const StepFive = ({ user, referralCode }) => {
                   </select>
                 </div>
 
-                <div className="relative mt-4 sm:mt-8 text-base sm:text-base tracking-tight w-full">
+                <div className="relative mt-4 w-full text-base tracking-tight sm:mt-8 sm:text-base">
                   <div className="flex space-x-4">
                     <input
                       id="request"
                       name="request"
                       type="checkbox"
                       checked={newsletterOptIn}
-                      className="focus:ring-primary-500 h-5 w-5 text-primary-600 border-primary-300 rounded outline-none focus:outline-none"
+                      className="focus:ring-primary-500 text-primary-600 border-primary-300 h-5 w-5 rounded outline-none focus:outline-none"
                       onChange={() => setNewsletterOptIn(!newsletterOptIn)}
                     />
-                    <label className="text-slate-300 text-sm">
+                    <label className="text-sm text-base-300">
                       Opt in to receive our community newsletter once a week,
                       showcasing the best projects of the week along with
                       projects looking for contributors.
@@ -176,13 +176,13 @@ const StepFive = ({ user, referralCode }) => {
           {hearAbout !== 'Select' ? (
             <button
               type="submit"
-              className="btn-primary py-3 w-full"
+              className="btn-primary w-full py-3"
               onClick={handleSubmit}
             >
               Awesome! Let&apos;s go &rarr;
             </button>
           ) : (
-            <button className="btn-primary py-3 w-full" disabled>
+            <button className="btn-primary w-full py-3" disabled>
               Finish
             </button>
           )}

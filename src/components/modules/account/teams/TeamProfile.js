@@ -283,7 +283,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium  text-slate-400">
+                    <label className="text-sm font-medium  text-base-400">
                       Team name:
                     </label>
                     <input
@@ -303,7 +303,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium  text-slate-400">
+                    <label className="text-sm font-medium  text-base-400">
                       One liner of what you do:
                     </label>
                     <input
@@ -323,7 +323,7 @@ const TeamProfile = ({ user, team = null }) => {
 
                   <div className="flex items-center space-x-4">
                     <div className="w-1/3">
-                      <label className="text-sm font-medium  text-slate-400">
+                      <label className="text-sm font-medium  text-base-400">
                         Founded:
                       </label>
                       <select
@@ -344,7 +344,7 @@ const TeamProfile = ({ user, team = null }) => {
                       </select>
                     </div>
                     <div className="w-1/3">
-                      <label className="text-sm font-medium  text-slate-400">
+                      <label className="text-sm font-medium  text-base-400">
                         Stage:
                       </label>
                       <select
@@ -365,7 +365,7 @@ const TeamProfile = ({ user, team = null }) => {
                       </select>
                     </div>
                     <div className="w-1/3">
-                      <label className="text-sm font-medium  text-slate-400">
+                      <label className="text-sm font-medium  text-base-400">
                         Number of team members:
                       </label>
                       <input
@@ -380,7 +380,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium  text-slate-400">
+                    <label className="text-sm font-medium  text-base-400">
                       Location(s):
                     </label>
                     <CountrySelect setCountryName={addLocation} />
@@ -398,7 +398,7 @@ const TeamProfile = ({ user, team = null }) => {
                     </div>
                   </div>
                   <div>
-                    <label className="text-sm font-medium  text-slate-400">
+                    <label className="text-sm font-medium  text-base-400">
                       GitHub team account:
                     </label>
                     <input
@@ -413,7 +413,7 @@ const TeamProfile = ({ user, team = null }) => {
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium  text-slate-400">
+                    <label className="text-sm font-medium  text-base-400">
                       Website:
                     </label>
                     <input
@@ -429,7 +429,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium  text-slate-400">
+                    <label className="text-sm font-medium  text-base-400">
                       Mission statement:
                     </label>
                     <textarea
@@ -444,7 +444,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium  text-slate-400">
+                    <label className="text-sm font-medium  text-base-400">
                       Tech Stack:
                     </label>
                     <div className="no-scrollbar mt-2 flex flex-wrap items-center">
@@ -484,7 +484,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium text-slate-400">
+                    <label className="text-sm font-medium text-base-400">
                       Images:
                     </label>
                     <div className="flex gap-4">
@@ -627,7 +627,7 @@ const TeamProfile = ({ user, team = null }) => {
                     </div>
                   </div>
                   <div>
-                    <label className="text-sm font-medium  text-slate-400">
+                    <label className="text-sm font-medium  text-base-400">
                       How are the teams structured?
                     </label>
                     <textarea
@@ -642,7 +642,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium  text-slate-400">
+                    <label className="text-sm font-medium  text-base-400">
                       How does the development process work? What&apos;s the
                       process for working through bugs, features and tech debt?
                     </label>
@@ -658,7 +658,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium  text-slate-400">
+                    <label className="text-sm font-medium  text-base-400">
                       What tools do developers use?
                     </label>
                     <textarea
@@ -673,7 +673,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium  text-slate-400">
+                    <label className="text-sm font-medium  text-base-400">
                       What does the hiring process look like?
                     </label>
                     <textarea
@@ -720,11 +720,11 @@ const TeamProfile = ({ user, team = null }) => {
           <div>
             <div className="justify-center sm:flex sm:items-start">
               <div className="mt-3 text-center sm:mt-0">
-                <h3 className="text-xl font-bold text-slate-200">
+                <h3 className="text-xl font-bold text-base-200">
                   Delete team?
                 </h3>
                 <div className="mt-2">
-                  <p className="text-sm text-slate-300">
+                  <p className="text-sm text-base-300">
                     Are you sure you want to delete this team? This action
                     cannot be undone.
                   </p>

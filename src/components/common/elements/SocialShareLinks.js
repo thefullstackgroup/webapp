@@ -20,31 +20,31 @@ const SocialShareLinks = ({ link, title }) => {
         windowWidth={defaultDimensions.width}
         windowHeight={defaultDimensions.height}
       >
-        <div className="bg-red-600 py-3 px-3 rounded-xl w-14">
-          <FaReddit className="w-7 h-7 text-white mx-auto" />
+        <div className="w-14 rounded-xl bg-red-600 py-3 px-3">
+          <FaReddit className="mx-auto h-7 w-7 text-white" />
         </div>
-        <div className="text-xs text-slate-400 mt-2">Reddit</div>
+        <div className="mt-2 text-xs text-base-400">Reddit</div>
       </RedditShareButton>
 
       <FacebookShareButton url={link} quote={title}>
-        <div className="bg-blue-600 py-3 px-3 rounded-xl w-14">
-          <FaFacebook className="w-7 h-7 text-white mx-auto" />
+        <div className="w-14 rounded-xl bg-blue-600 py-3 px-3">
+          <FaFacebook className="mx-auto h-7 w-7 text-white" />
         </div>
-        <div className="text-xs text-slate-400 mt-2">Facebook</div>
+        <div className="mt-2 text-xs text-base-400">Facebook</div>
       </FacebookShareButton>
 
       <TwitterShareButton url={link} title={title}>
-        <div className="bg-blue-500 py-3 px-3 rounded-xl w-14">
-          <FaTwitter className="w-7 h-7 text-white mx-auto" />
+        <div className="w-14 rounded-xl bg-blue-500 py-3 px-3">
+          <FaTwitter className="mx-auto h-7 w-7 text-white" />
         </div>
-        <div className="text-xs text-slate-400 mt-2">Twitter</div>
+        <div className="mt-2 text-xs text-base-400">Twitter</div>
       </TwitterShareButton>
 
       <WhatsappShareButton url={link} title={title}>
-        <div className="bg-green-500 py-3 px-3 rounded-xl w-14">
-          <FaWhatsapp className="w-7 h-7 text-white mx-auto" />
+        <div className="w-14 rounded-xl bg-green-500 py-3 px-3">
+          <FaWhatsapp className="mx-auto h-7 w-7 text-white" />
         </div>
-        <div className="text-xs text-slate-400 mt-2">Whatsapp</div>
+        <div className="mt-2 text-xs text-base-400">Whatsapp</div>
       </WhatsappShareButton>
     </div>
   );

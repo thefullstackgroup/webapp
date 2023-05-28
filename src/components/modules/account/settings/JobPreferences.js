@@ -279,7 +279,7 @@ const JobPreferences = ({ user }) => {
                   Work preferences
                 </h2>
               </div>
-              <div className="text-slate-200">
+              <div className="text-base-200">
                 The Full Stack can help you find and connect to tech teams with
                 open positions matched to your preferences. Set the criteria
                 below for matches based upon your profile. Your details are
@@ -291,7 +291,7 @@ const JobPreferences = ({ user }) => {
                   <div className="space-y-4">
                     <div className="space-y-6">
                       <div>
-                        <label className="text-sm font-medium text-slate-400">
+                        <label className="text-sm font-medium text-base-400">
                           Are you open to opportunties?
                         </label>
                         <div className="mt-2">
@@ -302,7 +302,7 @@ const JobPreferences = ({ user }) => {
                         </div>
                       </div>
                       <div>
-                        <label className="text-sm font-medium text-slate-400">
+                        <label className="text-sm font-medium text-base-400">
                           Are you open to relocation?
                         </label>
                         <div className="mt-2">
@@ -327,7 +327,7 @@ const JobPreferences = ({ user }) => {
                       </div>
 
                       <div>
-                        <label className="text-sm font-medium text-slate-400">
+                        <label className="text-sm font-medium text-base-400">
                           Select your preferred work types
                         </label>
                         <div className="mt-2 flex flex-wrap">
@@ -340,7 +340,7 @@ const JobPreferences = ({ user }) => {
                       </div>
 
                       <div>
-                        <label className="text-sm font-medium text-slate-400">
+                        <label className="text-sm font-medium text-base-400">
                           What are your salary expectations?
                         </label>
                         <div className="flex items-start space-x-2">
@@ -421,7 +421,7 @@ const JobPreferences = ({ user }) => {
                       </div>
 
                       <div>
-                        <label className="text-sm font-medium text-slate-400">
+                        <label className="text-sm font-medium text-base-400">
                           What kind of roles are you interested in?
                         </label>
                         <select
@@ -459,7 +459,7 @@ const JobPreferences = ({ user }) => {
                       </div>
 
                       <div>
-                        <label className="text-sm font-medium text-slate-400">
+                        <label className="text-sm font-medium text-base-400">
                           What should your dream job look like?
                         </label>
                         <input
@@ -475,7 +475,7 @@ const JobPreferences = ({ user }) => {
                       </div>
 
                       <div>
-                        <label className="text-sm font-medium text-slate-400">
+                        <label className="text-sm font-medium text-base-400">
                           Most impressive accomplishment?
                         </label>
                         <input
@@ -514,7 +514,7 @@ const JobPreferences = ({ user }) => {
                     )}
                   </div>
 
-                  <div className="mt-8 flex items-center space-x-2 text-sm text-slate-300">
+                  <div className="mt-8 flex items-center space-x-2 text-sm text-base-300">
                     <IoInformationCircle className="h-5 w-5" />
                     <span>
                       Your details are private by default and will not displayed

@@ -15,7 +15,7 @@ export const Greeting = ({ name }) => {
   else if (hours >= 17 && hours <= 24) greet = 'Good evening';
 
   return (
-    <h4 className="mb-4 hidden text-xl font-semibold tracking-tight text-slate-100 md:block md:text-2xl">
+    <h4 className="mb-4 hidden text-xl font-semibold tracking-tight text-base-100 md:block md:text-2xl">
       {greet}, <span className="capitlize">{firstName[0]}</span> 👋
     </h4>
   );

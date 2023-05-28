@@ -271,14 +271,14 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
           {!postIsPublished && (
             <div className="w-full cursor-pointer bg-red-500/40 py-3 px-4 font-normal md:px-8">
               This project is{' '}
-              <span className="font-bold text-slate-200">unpublished</span> and
+              <span className="font-bold text-base-200">unpublished</span> and
               not visible to anyone.
             </div>
           )}
           <div className="sticky top-0 left-0 z-40 w-full bg-base-700 px-4 py-4 md:px-8">
             <div className="sticky top-0 mx-auto flex max-w-screen-2xl items-center justify-end space-x-4 md:space-x-8">
               <button
-                className="flex items-center space-x-2 text-base text-slate-400"
+                className="flex items-center space-x-2 text-base text-base-400"
                 onClick={() => handleSavePost(true)}
               >
                 {saving ? (
@@ -287,11 +287,11 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
                     <span>Saving ...</span>
                   </>
                 ) : (
-                  <span className="hover:text-slate-300">Save draft</span>
+                  <span className="hover:text-base-300">Save draft</span>
                 )}
               </button>
               <button
-                className="text-slate-400 hover:text-slate-300"
+                className="text-base-400 hover:text-base-300"
                 onClick={() => setShowSettings(true)}
               >
                 <RiSettingsLine className="h-6 w-6" />
@@ -348,7 +348,7 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
               <div className="flex h-96 w-full flex-col">
                 <div className="mx-auto flex h-full w-auto items-center justify-center">
                   <div className="flex flex-col space-y-4">
-                    <p className="text-slate-400">Add a cover image or video</p>
+                    <p className="text-base-400">Add a cover image or video</p>
                     <div className="flex items-center space-x-4">
                       <div>
                         <label

@@ -78,7 +78,7 @@ const CommentReplies = ({
                       <Link href={`/${comment.authorName}`} passHref>
                         <a
                           href="#"
-                          className="text-base font-medium text-slate-200"
+                          className="text-base font-medium text-base-200"
                         >
                           {comment.authorName}
                         </a>

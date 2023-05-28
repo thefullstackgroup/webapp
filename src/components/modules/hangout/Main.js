@@ -22,14 +22,14 @@ const Main = ({ user }) => {
             <CreatePost user={user} />
             <div className="relative flex space-x-8 border-b border-base-600 px-4 pb-4 text-base sm:border-b-0 sm:px-1">
               {topicSelected && topicSelected?.type !== 'following' && (
-                <button className="rounded-md font-semibold text-slate-100">
+                <button className="rounded-md font-semibold text-base-100">
                   <h3>{topicSelected?.label}</h3>
                 </button>
               )}
 
               <button
                 className={`${
-                  topicSelected ? 'text-slate-400' : 'text-slate-100'
+                  topicSelected ? 'text-base-400' : 'text-base-100'
                 } font-semibold `}
                 onClick={() => setTopicSelected(null)}
               >
@@ -39,8 +39,8 @@ const Main = ({ user }) => {
               <button
                 className={`${
                   topicSelected?.type === 'following'
-                    ? 'text-slate-100'
-                    : 'text-slate-400'
+                    ? 'text-base-100'
+                    : 'text-base-400'
                 } relative font-semibold `}
                 onClick={() => {
                   setTopicSelected({

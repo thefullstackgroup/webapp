@@ -67,13 +67,13 @@ const Page = ({ user }) => {
                               <div className="text-xl font-semibold">
                                 {team.name}
                               </div>
-                              <div className="text-slate-400">
+                              <div className="text-base-400">
                                 {team.description}
                               </div>
                             </div>
                           </div>
                           <div className="flex items-center space-x-10">
-                            <span className="text-sm italic text-slate-400">
+                            <span className="text-sm italic text-base-400">
                               You are the owner
                             </span>
                             <button className="btn-ghost btn-with-icon text-sm">
@@ -109,13 +109,13 @@ const Page = ({ user }) => {
                               <div className="text-xl font-semibold">
                                 {team.name}
                               </div>
-                              <div className="text-slate-400">
+                              <div className="text-base-400">
                                 {team.description}
                               </div>
                             </div>
                           </div>
                           <div className="flex items-center space-x-10 pr-4">
-                            <span className="text-sm italic text-slate-400">
+                            <span className="text-sm italic text-base-400">
                               You are a member
                             </span>
                           </div>

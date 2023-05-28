@@ -14,7 +14,6 @@ import {
   IoCameraOutline,
   IoChevronDown,
   IoChevronUp,
-  IoPeopleSharp,
 } from 'react-icons/io5';
 
 const Overview = ({
@@ -58,7 +57,7 @@ const Overview = ({
   };
 
   return (
-    <div className="relative mx-auto mb-4 max-w-screen-lg border-b border-base-700 px-4 md:mb-0 md:border-none md:px-0">
+    <div className="relative mb-4 border-b border-base-700 px-4 md:mb-0 md:border-none md:px-0">
       <div className="mt-2 items-start justify-between border-base-700 pb-4 md:mt-10 md:border-none lg:mb-8 lg:flex lg:space-x-4 lg:pb-4">
         <div className="flex w-full items-center space-x-4 md:space-x-8 lg:items-start">
           <div className="relative mt-1">
@@ -70,7 +69,7 @@ const Overview = ({
                   : profile?.profilePicUrl
               }
               name={profile?.name}
-              dimensions="w-20 h-20 md:w-36 md:h-36 ring-4 ring-primary-500"
+              dimensions="w-20 h-20 md:w-36 md:h-36"
               width={500}
               height={500}
               layout="fill"
@@ -107,14 +106,14 @@ const Overview = ({
           <div className="w-full md:pr-4">
             <div className="items-baseline md:space-x-2 lg:flex">
               <h2 className="text-xl font-bold md:text-3xl">{profile?.name}</h2>
-              <p className="text-sm text-slate-500 md:text-base">
+              <p className="text-sm text-base-500 md:text-base">
                 @{profile?.displayName}
               </p>
             </div>
-            <div className="text-sm text-slate-300 lg:text-base">
+            <div className="text-sm text-base-700 dark:text-base-300 lg:text-base">
               {profile?.currentTitle}
             </div>
-            <div className="mt-2 mb-3 hidden items-center space-x-3 text-sm text-slate-500 lg:flex">
+            <div className="mt-2 mb-3 hidden items-center space-x-3 text-sm text-base-500 lg:flex">
               {profile?.country && countryCode && (
                 <div className="flex items-center space-x-1">
                   <span>{countryCodeEmoji(countryCode.iso2)}</span>
@@ -131,10 +130,10 @@ const Overview = ({
                 teams?.data?.length > 0 && (
                   <Link href={`/teams/${teams.data[0].id}`} passHref>
                     <a className="group flex items-center space-x-1">
-                      <span className="rounded-full border border-base-600 px-2 text-[0.7em] text-slate-400">
+                      <span className="rounded-full border border-base-600 px-2 text-[0.7em] text-base-400">
                         Team
                       </span>
-                      <span className="group-hover:text-slate-100">
+                      <span className="group-hover:text-base-100">
                         {teams.data[0].name}
                       </span>
                     </a>
@@ -142,7 +141,7 @@ const Overview = ({
                 )}
             </div>
 
-            <div className="mt-3 hidden cursor-pointer text-base text-slate-200 lg:block">
+            <div className="mt-3 hidden cursor-pointer text-base lg:block">
               {profile?.bio?.aboutUser}
             </div>
 
@@ -168,7 +167,7 @@ const Overview = ({
               {profile?.userTechStacks.length > 12 &&
                 (showStacks ? (
                   <button
-                    className="flex items-center space-x-1 text-xs text-slate-400"
+                    className="flex items-center space-x-1 text-xs text-base-400"
                     onClick={() => setShowStacks(true)}
                   >
                     <IoChevronUp />
@@ -176,7 +175,7 @@ const Overview = ({
                   </button>
                 ) : (
                   <button
-                    className="flex items-center space-x-1 text-xs text-slate-400"
+                    className="flex items-center space-x-1 text-xs text-base-400"
                     onClick={() => setShowStacks(true)}
                   >
                     <IoChevronDown />
@@ -198,7 +197,7 @@ const Overview = ({
         </div>
       </div>
 
-      <div className="block cursor-pointer text-sm text-slate-200 lg:hidden">
+      <div className="block cursor-pointer text-sm text-base-200 lg:hidden">
         {profile?.bio?.aboutUser}
       </div>
 
@@ -206,7 +205,7 @@ const Overview = ({
         <Social social={profile} />
       </div>
 
-      <div className="mt-2 flex items-center space-x-4 text-xs text-slate-500 lg:hidden">
+      <div className="mt-2 flex items-center space-x-4 text-xs text-base-500 lg:hidden">
         {profile?.country && countryCode && (
           <div className="flex items-center space-x-1">
             <span>{countryCodeEmoji(countryCode.iso2)}</span>
@@ -221,10 +220,10 @@ const Overview = ({
         {teams?.data[0]?.status === 'ACTIVE' && teams?.data?.length > 0 && (
           <Link href={`/teams/${teams.data[0].id}`} passHref>
             <a className="group flex items-center space-x-1">
-              <span className="rounded-full border border-base-600 px-1.5 text-[0.7em] text-slate-400">
+              <span className="rounded-full border border-base-600 px-1.5 text-[0.7em] text-base-400">
                 Team
               </span>
-              <span className="group-hover:text-slate-100">
+              <span className="group-hover:text-base-100">
                 {teams.data[0].name}
               </span>
             </a>

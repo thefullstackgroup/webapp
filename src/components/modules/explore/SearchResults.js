@@ -103,7 +103,7 @@ const SearchResults = ({ user }) => {
               <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-1 px-4 md:px-0">
                 {stacks.map((stack, index) => (
                   <div
-                    className="cursor-pointer whitespace-nowrap rounded-full border border-base-600 py-2 px-4 text-xs text-slate-400 duration-200 hover:border-base-400 hover:bg-base-700 sm:text-sm"
+                    className="cursor-pointer whitespace-nowrap rounded-full border border-base-600 py-2 px-4 text-xs text-base-400 duration-200 hover:border-base-400 hover:bg-base-700 sm:text-sm"
                     onClick={() => {
                       setTerm(stack);
                       handleSearch(stack);
@@ -118,7 +118,7 @@ const SearchResults = ({ user }) => {
 
               <div className="grid grid-cols-1">
                 <div className="flex items-center justify-between space-x-4 px-4 md:px-0">
-                  <h4 className="text-xl font-semibold capitalize text-slate-100 md:text-2xl">
+                  <h4 className="text-xl font-semibold capitalize text-base-100 md:text-2xl">
                     {selectedCategory.filter === 'search' &&
                       query !== '' &&
                       query}

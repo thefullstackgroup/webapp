@@ -48,15 +48,15 @@ const ForDevelopers = () => {
       <div className="relative z-10 mx-auto max-w-screen-xl lg:mt-16 lg:min-h-screen">
         <div className="max-w-7xl space-y-6 px-4 pt-24 md:pt-32 lg:px-0">
           <Link href="/about/our-story">
-            <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-700 bg-slate-800/40 px-6 py-1 text-sm text-slate-300 hover:text-white">
+            <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-700 bg-base-800/40 px-6 py-1 text-sm text-base-300 hover:text-white">
               Created by developers. See our story &rarr;
             </div>
           </Link>
-          <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-slate-300 via-violet-200 to-white bg-clip-text text-center font-intertight text-6xl font-bold tracking-tight text-transparent md:text-9xl">
+          <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-base-300 via-violet-200 to-white bg-clip-text text-center font-intertight text-6xl font-bold tracking-tight text-transparent md:text-9xl">
             Share. Network. Grow.
           </h1>
           <div className="mx-auto max-w-5xl">
-            <h4 className="text-center text-lg font-light text-slate-400 md:text-2xl">
+            <h4 className="text-center text-lg font-light text-base-400 md:text-2xl">
               The Full Stack is the platform for developers, providing a
               supportive dev community to share your work, grow your network and
               help you make your best career moves.
@@ -191,10 +191,10 @@ const ForDevelopers = () => {
                 </p>
                 <p>
                   <div className="flex items-center space-x-4">
-                    <div className="flex w-min whitespace-nowrap rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                      <IoLogoGithub className="h-11 w-11 text-slate-200" />
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                      <IoLogoGithub className="h-11 w-11 text-base-200" />
                     </div>
-                    <span className="text-lg font-medium text-slate-300">
+                    <span className="text-lg font-medium text-base-300">
                       GitHub integration
                     </span>
                   </div>
@@ -214,17 +214,17 @@ const ForDevelopers = () => {
 
                 <p>
                   <div className="flex items-center space-x-2 md:space-x-6">
-                    <div className="flex w-min whitespace-nowrap rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                      <IoVideocamOutline className="h-11 w-11 text-slate-200" />
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                      <IoVideocamOutline className="h-11 w-11 text-base-200" />
                     </div>
-                    <div className="flex w-min whitespace-nowrap rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                      <IoImageOutline className="h-11 w-11 text-slate-200" />
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                      <IoImageOutline className="h-11 w-11 text-base-200" />
                     </div>
-                    <div className="flex w-min whitespace-nowrap rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                      <FiLink className="h-11 w-11 text-slate-200" />
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                      <FiLink className="h-11 w-11 text-base-200" />
                     </div>
-                    <div className="flex w-min whitespace-nowrap rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                      <IoTerminalOutline className="h-11 w-11 text-slate-200" />
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                      <IoTerminalOutline className="h-11 w-11 text-base-200" />
                     </div>
                   </div>
                 </p>
@@ -446,17 +446,17 @@ const ForDevelopers = () => {
                   <span className="text-purple-400">recruiter spam</span>.
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-6">
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <IoCubeOutline className="h-11 w-11 text-slate-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                    <IoCubeOutline className="h-11 w-11 text-base-200" />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <IoCodeSlashSharp className="h-11 w-11 text-slate-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                    <IoCodeSlashSharp className="h-11 w-11 text-base-200" />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <IoFlashOutline className="h-11 w-11 text-slate-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                    <IoFlashOutline className="h-11 w-11 text-base-200" />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <IoBriefcaseOutline className="h-11 w-11 text-slate-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                    <IoBriefcaseOutline className="h-11 w-11 text-base-200" />
                   </div>
                 </div>
               </div>
@@ -470,14 +470,14 @@ const ForDevelopers = () => {
                   <span className="text-purple-400">discoverablity</span>.
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-6">
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <SiDevdotto className="h-11 w-11 text-slate-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                    <SiDevdotto className="h-11 w-11 text-base-200" />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <SiHashnode className="h-11 w-11 text-slate-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                    <SiHashnode className="h-11 w-11 text-base-200" />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <SiMedium className="h-11 w-11 text-slate-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                    <SiMedium className="h-11 w-11 text-base-200" />
                   </div>
                 </div>
               </div>
@@ -515,8 +515,8 @@ const ForDevelopers = () => {
                   from your profile.
                 </p>
                 <p>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <MdOutlineSlowMotionVideo className="h-11 w-11 text-slate-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                    <MdOutlineSlowMotionVideo className="h-11 w-11 text-base-200" />
                   </div>
                 </p>
               </div>
@@ -531,8 +531,8 @@ const ForDevelopers = () => {
                   .
                 </p>
                 <p>
-                  <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <MdOutlineSlowMotionVideo className="h-11 w-11 text-slate-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
+                    <MdOutlineSlowMotionVideo className="h-11 w-11 text-base-200" />
                   </div>
                 </p>
               </div>
@@ -620,7 +620,7 @@ const ForDevelopers = () => {
         <h4 className="text-3xl font-bold">
           Opportunity comes when you expand your network.
         </h4>
-        <p className="text-2xl text-slate-400">
+        <p className="text-2xl text-base-400">
           Connect with like-minded developers and grow your network. This is
           truly the best way to strengthen your career as a developer.
         </p>

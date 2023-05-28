@@ -59,10 +59,10 @@ const ButtonReport = ({ user, profile }) => {
       <div>
         <button
           type="button"
-          className="btn-secondary group w-full border border-transparent bg-transparent px-0 hover:bg-transparent"
+          className="btn btn-ghost group w-full border border-transparent bg-transparent px-0 hover:bg-transparent"
           onClick={() => setShowPanel(true)}
         >
-          <IoEllipsisHorizontal className="group-hover:text-primary-500 h-5 w-5 text-slate-400" />
+          <IoEllipsisHorizontal className="group-hover:text-primary-500 h-5 w-5 text-base-400" />
           <span className="hidden">Report</span>
         </button>
 
@@ -74,7 +74,7 @@ const ButtonReport = ({ user, profile }) => {
             ></div>
             <div className="relative flex h-20 w-48 flex-col divide-y-2 divide-base-700 overflow-scroll overscroll-contain rounded-md border border-base-600 bg-base-700 py-0.5 text-sm shadow-xl sm:max-w-xl">
               <div className="rounded-lg bg-base-700">
-                <ul className="flex flex-col divide-y-2 divide-base-600/50 text-left text-sm text-slate-400">
+                <ul className="flex flex-col divide-y-2 divide-base-600/50 text-left text-sm text-base-400">
                   <li className="px-2 py-2 hover:text-white">
                     <button
                       className="flex w-full items-center space-x-2"
@@ -186,7 +186,7 @@ const ButtonReport = ({ user, profile }) => {
                 Submit report
               </button>
               <button
-                className="w-full pt-4 text-center text-sm text-slate-500"
+                className="w-full pt-4 text-center text-sm text-base-500"
                 onClick={() => setShowReportProfile(false)}
               >
                 Cancel

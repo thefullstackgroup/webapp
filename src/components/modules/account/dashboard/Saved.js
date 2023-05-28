@@ -18,7 +18,7 @@ const ProjectCard = ({ project }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col text-slate-400">
+        <div className="flex flex-col text-base-400">
           <p className="text-lg font-semibold text-white">
             {project.projectName}
           </p>

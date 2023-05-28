@@ -26,7 +26,7 @@ const Archive = ({ user }) => {
                 </h2>
               </div>
               <div className="mb-4 w-full rounded-lg bg-base-700 px-4 py-4 sm:px-6">
-                <p className="mt-1 mb-6 text-slate-100">
+                <p className="mt-1 mb-6 text-base-100">
                   Your data belongs to you and you can download an archive of
                   your data anytime.
                 </p>
@@ -42,10 +42,10 @@ const Archive = ({ user }) => {
                         />
                       </div>
                       <div className="ml-3">
-                        <label htmlFor="request" className="text-slate-200">
+                        <label htmlFor="request" className="text-base-200">
                           Request Data Archive
                         </label>
-                        <p className="text-sm text-slate-400">
+                        <p className="text-sm text-base-400">
                           Request a data archive to be sent to you, including
                           all your profile data, your connections, account
                           history, and information we infer about you based on

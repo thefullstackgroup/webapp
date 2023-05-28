@@ -27,7 +27,7 @@ const EditProfile = ({ displayName }) => {
                     `w-full whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium sm:px-4 sm:py-2 ` +
                     (nav === index
                       ? `bg-base-600/70 text-white`
-                      : `bg-base-700/70 text-slate-400 hover:text-white`)
+                      : `bg-base-700/70 text-base-400 hover:text-white`)
                   }
                   key={index}
                   onClick={() => setNav(index)}

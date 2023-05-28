@@ -64,7 +64,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                 </span>
               </h3>
 
-              <div className="mb-20 flex flex-col items-center justify-center font-intertight text-xl text-slate-400 md:flex-row md:space-x-10 md:text-2xl">
+              <div className="mb-20 flex flex-col items-center justify-center font-intertight text-xl text-base-400 md:flex-row md:space-x-10 md:text-2xl">
                 <div className="flex items-center space-x-2">
                   <span>Over 5000+ projects showcased</span>
                 </div>
@@ -78,7 +78,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                     `whitespace-nowrap rounded-lg px-3 py-1.5 text-base font-medium sm:px-4 sm:py-2 ` +
                     (category.filter === selectedCategory?.filter
                       ? `bg-base-600/50 text-white`
-                      : `text-slate-400 hover:text-white`)
+                      : `text-base-400 hover:text-white`)
                   }
                   key={index}
                   onClick={() => {
@@ -165,7 +165,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
               </button>
               <Link href="/greatest-developer-portfolio-ever" passHref>
                 <a
-                  className="btn-seondary w-full rounded-lg bg-slate-400/20 py-3 px-6 text-center text-lg md:w-auto"
+                  className="btn-seondary w-full rounded-lg bg-base-400/20 py-3 px-6 text-center text-lg md:w-auto"
                   target="_blank"
                 >
                   Need project ideas?
@@ -177,7 +177,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
           <div className="">
             <div className="relative pt-4 pb-20">
               <div className="relative px-4 text-center md:px-8 lg:mx-auto lg:max-w-6xl 2xl:px-0">
-                <p className="relative mt-10 mb-32 w-full text-center font-intertight text-4xl font-semibold tracking-tight text-slate-300 lg:my-20 lg:pb-10 xl:text-5xl">
+                <p className="relative mt-10 mb-32 w-full text-center font-intertight text-4xl font-semibold tracking-tight text-base-300 lg:my-20 lg:pb-10 xl:text-5xl">
                   Join{' '}
                   <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-blue-600 bg-clip-text text-transparent">
                     thousands of developers

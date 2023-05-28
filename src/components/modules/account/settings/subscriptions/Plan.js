@@ -57,16 +57,16 @@ const Plan = ({ user, plan, frequency, selected, upgrade = false }) => {
         </div>
         <div className="flex flex-col text-right">
           <span className="text-xl font-bold">&euro; {plan.price}</span>
-          <span className="text-xs text-slate-400">per month</span>
+          <span className="text-xs text-base-400">per month</span>
         </div>
       </div>
-      <div className="text-sm text-slate-200">{plan.description}</div>
+      <div className="text-sm text-base-200">{plan.description}</div>
       <ul className="space-y-2 text-sm">
         {plan.features.map((feature, index) =>
           feature.value ? (
             <li key={index}>
               <div className="flex items-start justify-between">
-                <div className="flex items-center space-x-2 text-slate-300">
+                <div className="flex items-center space-x-2 text-base-300">
                   <IoCheckmark className="h-5 w-5 text-green-500" />
                   <span>{feature.label}</span>
                 </div>
@@ -76,8 +76,8 @@ const Plan = ({ user, plan, frequency, selected, upgrade = false }) => {
           ) : (
             <li key={index}>
               <div className="flex items-start justify-between">
-                <div className="flex items-center space-x-2 text-slate-600">
-                  <IoCloseCircleSharp className="h-5 w-5 text-slate-600" />
+                <div className="flex items-center space-x-2 text-base-600">
+                  <IoCloseCircleSharp className="h-5 w-5 text-base-600" />
                   <span>{feature.label}</span>
                 </div>
                 <div>{feature.value}</div>

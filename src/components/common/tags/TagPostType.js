@@ -10,7 +10,7 @@ const TagPostType = ({ postType, className }) => {
     const { iconName } = props;
 
     const icon = React.createElement(Icons[iconName] || IoCodeSlashSharp, {
-      className: 'w-auto h-4 text-slate-500',
+      className: 'w-auto h-4 text-base-500',
     });
     return <span>{icon}</span>;
   };
@@ -94,7 +94,7 @@ const TagPostType = ({ postType, className }) => {
 
   return (
     <div
-      className={`${className} text-xs font-normal text-slate-500 flex items-center space-x-1 -ml-0.5`}
+      className={`${className} -ml-0.5 flex items-center space-x-1 text-xs font-normal text-base-500`}
     >
       <Icon iconName={`${icon}`} />
       <span>{label}</span>

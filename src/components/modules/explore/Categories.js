@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
 import { CategoriesFilter } from './constants';
 
-const Categories = ({ category, setCategory }) => {
+const Categories = ({ category, setCategory, enableState = true }) => {
   const router = useRouter();
 
   return (
-    <div className="no-scrollbar mt-6 flex w-auto gap-2 overflow-hidden overflow-x-scroll px-4 md:px-0">
+    <div className="no-scrollbar mt-6 flex w-auto gap-2 overflow-hidden overflow-x-scroll">
       {CategoriesFilter.map((item, index) => (
         <button
           className={
@@ -15,7 +15,7 @@ const Categories = ({ category, setCategory }) => {
           }
           key={index}
           onClick={() => {
-            setCategory(item);
+            enableState && setCategory(item);
             router.push(`/explore/popular/${item.slug}`, undefined, {
               shallow: true,
             });

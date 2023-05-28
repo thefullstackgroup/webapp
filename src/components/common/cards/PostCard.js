@@ -135,14 +135,14 @@ const Post = (props) => {
                           <span className="group-hover:text-link font-semibold tracking-tight">
                             {props.project.projectCreator?.name}
                           </span>
-                          <span className="ml-1 text-slate-500 sm:mt-0">
+                          <span className="ml-1 text-base-500 sm:mt-0">
                             · @{props.project.projectCreator?.displayName}
                           </span>
                         </button>
                       </Link>
 
                       {!props.pinnedPost && (
-                        <div className="text-xs text-slate-500">
+                        <div className="text-xs text-base-500">
                           {Moment(props.project.createdDate).format('MMM Do')}
                         </div>
                       )}
@@ -235,7 +235,7 @@ const Post = (props) => {
                         <div className="flex w-full flex-col space-y-2">
                           {pollData?.pollOptions?.map((option, index) => (
                             <button
-                              className="hover:bg-primary-500 w-full rounded-full bg-slate-700 py-3 px-4 text-sm font-medium sm:text-base"
+                              className="hover:bg-primary-500 w-full rounded-full bg-base-700 py-3 px-4 text-sm font-medium sm:text-base"
                               key={index}
                               onClick={() =>
                                 handleCastVote(option.pollOptionId)
@@ -269,7 +269,7 @@ const Post = (props) => {
                                   (leadingVote?.pollOptionId ==
                                   option.pollOptionId
                                     ? 'bg-primary-500'
-                                    : 'bg-slate-700') +
+                                    : 'bg-base-700') +
                                   ' relative h-11 rounded-r-lg py-2 px-4'
                                 }
                                 style={{

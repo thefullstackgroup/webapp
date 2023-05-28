@@ -166,13 +166,13 @@ const NotificationsPreferences = () => {
                 </h2>
               </div>
               <div className="mb-4 w-full space-y-6 rounded-lg bg-base-700 px-4 py-4 sm:px-6">
-                <p className="mt-4 text-slate-100">
+                <p className="mt-4 text-base-100">
                   We send email notifications when you receive upvotes, likes,
                   comments and awards on your projects and posts. We also send
                   email notifications when you make connections or receive chat
                   messages.
                 </p>
-                <p className="mt-4 text-slate-100">
+                <p className="mt-4 text-base-100">
                   Use the toggles below to enable or disable email
                   notifications.
                 </p>
@@ -203,12 +203,12 @@ const NotificationsPreferences = () => {
                                     key={channelType}
                                   >
                                     <span className="">
-                                      <span className="font-normal text-slate-100">
+                                      <span className="font-normal text-base-100">
                                         {workflowLabels[workflowKey]}
                                       </span>
                                     </span>
                                     <div className="flex items-center space-x-2">
-                                      <span className="text-xs text-slate-500">
+                                      <span className="text-xs text-base-500">
                                         {preferenceSetting
                                           ? 'Enabled'
                                           : 'Disabled'}

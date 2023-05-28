@@ -40,9 +40,9 @@ const ForgotPassword = () => {
         keywords="developer, social network, developers, software engineering, full stack, software engineering network, tech community, tech companies, best tech companies, developer portfolio, developer network, professional network, professional community"
       />
 
-      <div className="min-h-screen flex items-center">
-        <div className="w-full max-w-md mx-auto">
-          <div className="flex flex-col text-center justify-center space-y-4 sm:mb-6">
+      <div className="flex min-h-screen items-center">
+        <div className="mx-auto w-full max-w-md">
+          <div className="flex flex-col justify-center space-y-4 text-center sm:mb-6">
             <Link href="/" passHref>
               <a href="#" className="flex items-center justify-center">
                 <span className="h-16 w-16 sm:h-20 sm:w-20">
@@ -54,10 +54,10 @@ const ForgotPassword = () => {
                 </span>
               </a>
             </Link>
-            <div className="mt-2 text-lg sm:text-2xl font-semibold">
+            <div className="mt-2 text-lg font-semibold sm:text-2xl">
               Forgot your password?
             </div>
-            <div className="text-center text-slate-500 text-sm py-2">
+            <div className="py-2 text-center text-sm text-base-500">
               Don&apos;t panic! We will send you a link to reset your password.
             </div>
           </div>
@@ -73,18 +73,18 @@ const ForgotPassword = () => {
                 />
 
                 {email == '' && emailError && (
-                  <div className="text-red-500 text-sm">
+                  <div className="text-sm text-red-500">
                     Please enter your email address
                   </div>
                 )}
                 {emailNotFound && (
-                  <div className="text-red-500 text-sm">
+                  <div className="text-sm text-red-500">
                     Something went wrong please try again
                   </div>
                 )}
 
                 {emailSuccess && (
-                  <div className="text-blue-500 text-sm">
+                  <div className="text-sm text-blue-500">
                     You will receive and email with instructions on how to reset
                     your password in a few minutes
                   </div>
@@ -101,7 +101,7 @@ const ForgotPassword = () => {
                 </div>
               </div>
 
-              <div className="flex items-center justify-center space-x-1 sm:space-x-2 pt-6 text-tfssecondary-500 whitespace-nowrap text-xs sm:text-sm">
+              <div className="text-tfssecondary-500 flex items-center justify-center space-x-1 whitespace-nowrap pt-6 text-xs sm:space-x-2 sm:text-sm">
                 <div className="text-center hover:text-white">
                   <Link href="/login" passHref>
                     <a href="#">&larr; Back to login</a>

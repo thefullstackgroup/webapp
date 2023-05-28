@@ -81,7 +81,7 @@ const Page = ({ user, promo }) => {
                     Wallet
                   </div>
                   <div className="space-x-1text-lg font-semibold outline-none">
-                    <span className="text-slate-300">
+                    <span className="text-base-300">
                       ${wallet?.total.toFixed(2)} total balance
                     </span>
                   </div>
@@ -108,7 +108,7 @@ const Page = ({ user, promo }) => {
           <div className="mt-4 mb-4 bg-base-800 px-4 py-4 sm:px-6 md:rounded-lg">
             <div className="flex items-center justify-between">
               <div className="flex flex-col">
-                <span className="text-lg font-bold tracking-tight text-slate-100 sm:text-xl lg:text-xl">
+                <span className="text-lg font-bold tracking-tight text-base-100 sm:text-xl lg:text-xl">
                   Transactions
                 </span>
               </div>
@@ -138,7 +138,7 @@ const Page = ({ user, promo }) => {
                               {transaction.transactionType}
                             </div>
                           </div>
-                          <p className="py-1 text-xs text-slate-400">
+                          <p className="py-1 text-xs text-base-400">
                             {transaction.transactionMessage}{' '}
                             {transaction.transactionType == 'DEBIT' &&
                               `(sent coin to @${transaction.outGoingPaymentFromUserDisplayName})`}

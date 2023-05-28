@@ -24,7 +24,11 @@ const ExploreNew = ({ user }) => {
 
       <Layout user={user}>
         <div className="min-h-screen space-y-10">
-          <Categories category={category} setCategory={setCategory} />
+          <Categories
+            category={category}
+            setCategory={setCategory}
+            enableState={false}
+          />
           <div className="mt-10 space-y-2 text-center">
             <h2 className="text-5xl font-bold tracking-tight">
               Latest projects

@@ -115,13 +115,13 @@ const StepOne = ({ user, referralCode }) => {
   };
 
   return (
-    <div className="max-w-screen-xl sm:px-0 mx-auto">
-      <div className="sm:w-full flex justify-center md:justify-start">
-        <div className="my-8 w-full max-w-3xl mx-auto px-4 sm:px-0 space-y-8">
-          <div className="sm:mb-8 text-base sm:text-base tracking-tight w-full flex justify-center">
+    <div className="mx-auto max-w-screen-xl sm:px-0">
+      <div className="flex justify-center sm:w-full md:justify-start">
+        <div className="my-8 mx-auto w-full max-w-3xl space-y-8 px-4 sm:px-0">
+          <div className="flex w-full justify-center text-base tracking-tight sm:mb-8 sm:text-base">
             <label
               htmlFor="avatar"
-              className="relative cursor-pointer font-medium focus:outline-none focus:ring-0 text-center text-xs flex flex-col justify-center"
+              className="relative flex cursor-pointer flex-col justify-center text-center text-xs font-medium focus:outline-none focus:ring-0"
             >
               <div className="flex flex-col space-y-2">
                 <Avatar
@@ -131,7 +131,7 @@ const StepOne = ({ user, referralCode }) => {
                   width={500}
                   height={500}
                 />
-                <span className="text-slate-300 hover:text-white">
+                <span className="text-base-300 hover:text-white">
                   Change avatar
                 </span>
                 <input
@@ -144,8 +144,8 @@ const StepOne = ({ user, referralCode }) => {
               </div>
             </label>
           </div>
-          <div className="relative sm:mb-8 text-base sm:text-base tracking-tight w-full space-y-1">
-            <label className="text-slate-300 font-semibold">
+          <div className="relative w-full space-y-1 text-base tracking-tight sm:mb-8 sm:text-base">
+            <label className="font-semibold text-base-300">
               What&apos;s your name?
             </label>
             <input
@@ -159,8 +159,8 @@ const StepOne = ({ user, referralCode }) => {
             />
           </div>
 
-          <div className="relative mt-4 sm:mb-8 sm:mt-8  text-base sm:text-base tracking-tight w-full space-y-1">
-            <label className="text-slate-300 font-semibold">
+          <div className="relative mt-4 w-full space-y-1  text-base tracking-tight sm:mb-8 sm:mt-8 sm:text-base">
+            <label className="font-semibold text-base-300">
               Where are you from?
             </label>
             <CountrySelect
@@ -168,8 +168,8 @@ const StepOne = ({ user, referralCode }) => {
               setCountryName={setCountryName}
             />
           </div>
-          <div className="mt-4 sm:mb-8  sm:mt-8 text-base sm:text-base tracking-tight w-full space-y-1">
-            <label className="text-gray-500 dark:text-gray-300 font-semibold">
+          <div className="mt-4 w-full  space-y-1 text-base tracking-tight sm:mb-8 sm:mt-8 sm:text-base">
+            <label className="font-semibold text-gray-500 dark:text-gray-300">
               What do you do?
             </label>
 
@@ -185,7 +185,7 @@ const StepOne = ({ user, referralCode }) => {
                 </option>
               ))}
             </select>
-            <span className="mt-1 text-xs text-slate-500">
+            <span className="mt-1 text-xs text-base-500">
               You can always change this later
             </span>
           </div>
@@ -193,13 +193,13 @@ const StepOne = ({ user, referralCode }) => {
           {!fullName?.trim().length ||
           !currentTitle?.trim().length ||
           !countryName?.trim().length ? (
-            <button type="button" className="btn-primary py-3 w-full" disabled>
+            <button type="button" className="btn-primary w-full py-3" disabled>
               Next
             </button>
           ) : (
             <button
               type="submit"
-              className="btn-primary py-3 w-full"
+              className="btn-primary w-full py-3"
               onClick={handleSubmit}
             >
               Next &rarr;
@@ -210,7 +210,7 @@ const StepOne = ({ user, referralCode }) => {
               AuthUser.signOut();
               router.push('/login');
             }}
-            className="w-full tracking-tight text-primary-500 text-sm"
+            className="text-primary-500 w-full text-sm tracking-tight"
           >
             Already have an account?
           </button>

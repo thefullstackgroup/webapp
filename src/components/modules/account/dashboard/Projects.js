@@ -28,13 +28,13 @@ const ProjectCard = ({ project }) => {
         </div>
         <div className="col-span-1 flex items-center justify-start space-x-6 sm:justify-end sm:space-x-10">
           <div className="flex flex-col rounded-md text-center">
-            <div className="flex items-center space-x-2 whitespace-nowrap text-slate-400">
+            <div className="flex items-center space-x-2 whitespace-nowrap text-base-400">
               <span className="text-sm font-medium">Reactions</span>
             </div>
             <span className="text-xl font-medium">{project.numberOfLikes}</span>
           </div>
           <div className="flex flex-col rounded-md text-center">
-            <div className="flex items-center space-x-2 whitespace-nowrap text-slate-400">
+            <div className="flex items-center space-x-2 whitespace-nowrap text-base-400">
               <span className="text-sm font-medium">Comments</span>
             </div>
             <span className="text-xl font-medium">
@@ -42,13 +42,13 @@ const ProjectCard = ({ project }) => {
             </span>
           </div>
           <div className="flex flex-col rounded-md text-center">
-            <div className="flex items-center space-x-2 whitespace-nowrap text-slate-400">
+            <div className="flex items-center space-x-2 whitespace-nowrap text-base-400">
               <span className="text-sm font-medium">Favorites</span>
             </div>
             <span className="text-xl font-medium">{project.numberOfSaves}</span>
           </div>
           <div className="flex flex-col rounded-md text-center">
-            <div className="flex items-center space-x-2 whitespace-nowrap text-slate-400">
+            <div className="flex items-center space-x-2 whitespace-nowrap text-base-400">
               <span className="text-sm font-medium">Shares</span>
             </div>
             <span className="text-xl font-medium">--</span>

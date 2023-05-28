@@ -43,7 +43,7 @@ const TeamCard = ({ team }) => {
                         {team.name}
                       </p>
                       {team.status !== 'ACTIVE' ? (
-                        <div className="hidden h-5 items-center space-x-2 whitespace-nowrap text-right text-xs font-medium text-slate-400 sm:flex">
+                        <div className="hidden h-5 items-center space-x-2 whitespace-nowrap text-right text-xs font-medium text-base-400 sm:flex">
                           Coming soon
                         </div>
                       ) : (
@@ -57,7 +57,7 @@ const TeamCard = ({ team }) => {
                       )}
                     </div>
 
-                    <p className="text-sm text-slate-400 sm:text-base">
+                    <p className="text-sm text-base-400 sm:text-base">
                       {team.description}
                     </p>
                     <div className="no-scrollbar flex flex-wrap items-center overflow-x-scroll py-2 text-xs sm:flex-nowrap">
@@ -71,16 +71,16 @@ const TeamCard = ({ team }) => {
                       ))}
                     </div>
                     {teamOwner && (
-                      <div className="my-1 flex items-center space-x-2 text-sm font-medium text-slate-400">
+                      <div className="my-1 flex items-center space-x-2 text-sm font-medium text-base-400">
                         <Avatar
                           image={teamOwner?.profilePicUrl}
                           dimensions="h-6 w-6"
                         />
 
-                        <p className="text-slate-200">
+                        <p className="text-base-200">
                           {teamOwner?.name}{' '}
                           {team?.membersIds.length > 0 && (
-                            <span className="font-normal text-slate-400">
+                            <span className="font-normal text-base-400">
                               and {team?.membersIds.length} other{' '}
                               {team?.membersIds.length == 1
                                 ? 'teammate'
@@ -123,7 +123,7 @@ const TeamCard = ({ team }) => {
                     <h4 className="text-xl font-semibold sm:text-2xl">
                       {team.name}
                     </h4>
-                    <p className="text-sm text-slate-400 sm:text-base">
+                    <p className="text-sm text-base-400 sm:text-base">
                       {team.description}
                     </p>
                   </div>
@@ -140,16 +140,16 @@ const TeamCard = ({ team }) => {
                     ))}
                   </div>
                   {teamOwner && (
-                    <div className="my-1 flex items-center space-x-2 text-sm font-medium text-slate-400">
+                    <div className="my-1 flex items-center space-x-2 text-sm font-medium text-base-400">
                       <Avatar
                         image={teamOwner?.profilePicUrl}
                         dimensions="h-6 w-6"
                       />
 
-                      <p className="text-slate-200">
+                      <p className="text-base-200">
                         {teamOwner?.name}{' '}
                         {team?.membersIds.length > 0 && (
-                          <span className="font-normal text-slate-400">
+                          <span className="font-normal text-base-400">
                             and {team?.membersIds.length} other{' '}
                             {team?.membersIds.length == 1
                               ? 'teammate'
@@ -166,7 +166,7 @@ const TeamCard = ({ team }) => {
                   </div>
                 </div>
                 {team.status !== 'ACTIVE' && (
-                  <div className="hidden h-5 items-center space-x-2 whitespace-nowrap text-right text-xs font-medium text-slate-400 sm:flex">
+                  <div className="hidden h-5 items-center space-x-2 whitespace-nowrap text-right text-xs font-medium text-base-400 sm:flex">
                     Coming soon
                   </div>
                 )}
@@ -202,7 +202,7 @@ const TeamCard = ({ team }) => {
                       {team.name}
                     </p>
                     {team.status !== 'ACTIVE' ? (
-                      <div className="hidden h-5 items-center space-x-2 whitespace-nowrap text-right text-xs font-medium text-slate-400 sm:flex">
+                      <div className="hidden h-5 items-center space-x-2 whitespace-nowrap text-right text-xs font-medium text-base-400 sm:flex">
                         Coming soon
                       </div>
                     ) : (
@@ -215,7 +215,7 @@ const TeamCard = ({ team }) => {
                       </div>
                     )}
                   </div>
-                  <p className="text-sm text-slate-400 sm:text-base">
+                  <p className="text-sm text-base-400 sm:text-base">
                     {team.description}
                   </p>
                   <div className="no-scrollbar flex flex-wrap items-center overflow-x-scroll py-2 text-xs sm:flex-nowrap">
@@ -229,16 +229,16 @@ const TeamCard = ({ team }) => {
                     ))}
                   </div>
                   {teamOwner && (
-                    <div className="my-1 flex items-center space-x-2 text-sm font-medium text-slate-400">
+                    <div className="my-1 flex items-center space-x-2 text-sm font-medium text-base-400">
                       <Avatar
                         image={teamOwner?.profilePicUrl}
                         dimensions="h-6 w-6"
                       />
 
-                      <p className="text-slate-200">
+                      <p className="text-base-200">
                         {teamOwner?.name}{' '}
                         {team?.membersIds.length > 0 && (
-                          <span className="font-normal text-slate-400">
+                          <span className="font-normal text-base-400">
                             and {team?.membersIds.length} other{' '}
                             {team?.membersIds.length == 1
                               ? 'teammate'
@@ -281,7 +281,7 @@ const TeamCard = ({ team }) => {
                   <h4 className="text-xl font-semibold sm:text-2xl">
                     {team.name}
                   </h4>
-                  <p className="text-sm text-slate-400 sm:text-base">
+                  <p className="text-sm text-base-400 sm:text-base">
                     {team.description}
                   </p>
                 </div>
@@ -298,16 +298,16 @@ const TeamCard = ({ team }) => {
                   ))}
                 </div>
                 {teamOwner && (
-                  <div className="my-1 flex items-center space-x-2 text-sm font-medium text-slate-400">
+                  <div className="my-1 flex items-center space-x-2 text-sm font-medium text-base-400">
                     <Avatar
                       image={teamOwner?.profilePicUrl}
                       dimensions="h-6 w-6"
                     />
 
-                    <p className="text-slate-200">
+                    <p className="text-base-200">
                       {teamOwner?.name}{' '}
                       {team?.membersIds.length > 0 && (
-                        <span className="font-normal text-slate-400">
+                        <span className="font-normal text-base-400">
                           and {team?.membersIds.length} other{' '}
                           {team?.membersIds.length == 1
                             ? 'teammate'
@@ -324,7 +324,7 @@ const TeamCard = ({ team }) => {
                 </div>
               </div>
               {team.status !== 'ACTIVE' && (
-                <div className="hidden h-5 items-center space-x-2 whitespace-nowrap text-right text-xs font-medium text-slate-400 sm:flex">
+                <div className="hidden h-5 items-center space-x-2 whitespace-nowrap text-right text-xs font-medium text-base-400 sm:flex">
                   Coming soon
                 </div>
               )}

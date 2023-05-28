@@ -18,7 +18,7 @@ const NewsletterSection = () => {
           <h4 className="font-intertight text-2xl font-bold uppercase md:text-4xl">
             Join 10000+ developers
           </h4>
-          <p className="text-sm text-slate-400 md:text-base">
+          <p className="text-sm text-base-400 md:text-base">
             who receive our newsletter every week, filled with the best trending
             projects showcased by the community along with projects open to
             collaboration and looking for contributors.
@@ -37,7 +37,7 @@ const NewsletterSection = () => {
               Subscribe
             </button>
           </a>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-base-400">
             Great content, no spam, easy unsubscribe
           </p>
         </div>

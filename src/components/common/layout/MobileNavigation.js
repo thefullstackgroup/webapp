@@ -36,7 +36,7 @@ const MobileNavigation = ({ user }) => {
             <button
               className={
                 'flex w-20 items-center justify-center p-2 outline-none focus:outline-none ' +
-                (navSection[1] === 'explore' ? 'text-white' : 'text-slate-400')
+                (navSection[1] === 'explore' ? 'text-white' : 'text-base-400')
               }
             >
               <div className="flex flex-col justify-center space-y-1 text-center">
@@ -53,7 +53,7 @@ const MobileNavigation = ({ user }) => {
             <button
               className={
                 'flex w-20 items-center justify-center p-2 outline-none focus:outline-none ' +
-                (navSection[1] === 'hangout' ? 'text-white' : 'text-slate-400')
+                (navSection[1] === 'hangout' ? 'text-white' : 'text-base-400')
               }
             >
               <div className="flex flex-col justify-center space-y-1 text-center">
@@ -70,7 +70,7 @@ const MobileNavigation = ({ user }) => {
             <button
               className={
                 'flex w-20 items-center justify-center p-2 outline-none focus:outline-none ' +
-                (navSection[1] === 'teams' ? 'text-white' : 'text-slate-400')
+                (navSection[1] === 'teams' ? 'text-white' : 'text-base-400')
               }
             >
               <div className="flex flex-col justify-center space-y-1 text-center">
@@ -87,7 +87,7 @@ const MobileNavigation = ({ user }) => {
             <button
               className={
                 'flex w-20 items-center justify-center p-2 outline-none focus:outline-none ' +
-                (navSection[1] === 'chat' ? 'text-white' : 'text-slate-400')
+                (navSection[1] === 'chat' ? 'text-white' : 'text-base-400')
               }
             >
               <div className="relative flex flex-col justify-center space-y-1 text-center">
@@ -111,7 +111,7 @@ const MobileNavigation = ({ user }) => {
           <button
             className={
               'flex w-20 items-center justify-center p-2 outline-none focus:outline-none ' +
-              (navSection[1] === 'account' ? 'text-white' : 'text-slate-400')
+              (navSection[1] === 'account' ? 'text-white' : 'text-base-400')
             }
             onClick={() => setIsProfileTabOpen(!isProfileTabOpen)}
           >

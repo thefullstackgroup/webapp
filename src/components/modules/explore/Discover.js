@@ -23,7 +23,7 @@ const SuggestedUserCard = (props) => {
             <p className="truncate text-xs">
               {props.project.projectCreator.displayName}
             </p>
-            <p className="hidden truncate text-xs font-normal text-slate-400 sm:block">
+            <p className="hidden truncate text-xs font-normal text-base-400 sm:block">
               {props.project.projectCreator.currentTitle}
             </p>
           </div>

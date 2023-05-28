@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <div className="w-full mt-6 flex flex-col md:flex-row justify-center space-y-4 md:space-y-0  md:space-x-10 text-sm text-slate-400 text-center mb-20">
+    <div className="mt-6 mb-20 flex w-full flex-col justify-center space-y-4 text-center  text-sm text-base-400 md:flex-row md:space-y-0 md:space-x-10">
       <Link href="/" passHref>
         <a href="">Home</a>
       </Link>

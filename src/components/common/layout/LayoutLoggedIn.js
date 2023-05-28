@@ -87,18 +87,18 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   </div>
                 </Link>
               </div>
-              <div className="flex items-center space-x-10 text-base font-normal text-slate-100">
+              <div className="flex items-center space-x-10 text-base font-normal text-base-100">
                 <Link href="/#howitworks">
-                  <button className="text-slate-300">How it works</button>
+                  <button className="text-base-300">How it works</button>
                 </Link>
                 <Link href="/about/our-story">
-                  <button className="text-slate-300">Why this matters?</button>
+                  <button className="text-base-300">Why this matters?</button>
                 </Link>
                 <Link href="/login">
-                  <button className="text-slate-300">Login</button>
+                  <button className="text-base-300">Login</button>
                 </Link>
                 <Link href="/signup">
-                  <button className="btn-primary bg-slate-100 py-1.5 text-base-800">
+                  <button className="btn-primary bg-base-100 py-1.5 text-base-800">
                     Sign up
                   </button>
                 </Link>
@@ -115,14 +115,14 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                         alt={process.env.brandName}
                       />
                     </span>
-                    <span className="text-lg font-semibold tracking-tight text-slate-100">
+                    <span className="text-lg font-semibold tracking-tight text-base-100">
                       thefullstack
                     </span>
                   </div>
                 </Link>
               </div>
               <Link href="/login">
-                <button className="btn-with-icon text-sm font-bold text-slate-300">
+                <button className="btn-with-icon text-sm font-bold text-base-300">
                   <IoLogInOutline className="h-5 w-5" />
                   <span>Sign in</span>
                 </button>
@@ -143,7 +143,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   >
                     <div className="flex cursor-pointer items-center">
                       <IoChevronBack className="mr-2 h-6 w-6" />
-                      <span className="text-lg font-semibold tracking-tight text-slate-100">
+                      <span className="text-lg font-semibold tracking-tight text-base-100">
                         Chat
                       </span>
                     </div>
@@ -196,7 +196,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   </div>
                 </Link>
 
-                <div className="relative mx-auto flex-col space-y-2 text-base font-normal text-slate-300/70 xl:space-y-1">
+                <div className="relative mx-auto flex-col space-y-2 text-base font-normal text-base-300/70 xl:space-y-1">
                   <Link href="/explore" passHref>
                     <button
                       className={
@@ -342,7 +342,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                 </div>
                 <div className="absolute bottom-10 hidden md:block">
                   <button
-                    className="relative ml-2 flex items-center space-x-3 rounded-full py-3 pl-4 text-slate-400 hover:text-white xl:ml-4 xl:w-44 xl:hover:bg-base-800"
+                    className="relative ml-2 flex items-center space-x-3 rounded-full py-3 pl-4 text-base-400 hover:text-white xl:ml-4 xl:w-44 xl:hover:bg-base-800"
                     onClick={() => setShowMoreMenu(true)}
                   >
                     <IoMenuSharp className="h-6 w-6" />
@@ -430,7 +430,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
             <div className="absolute bottom-24 left-4 z-50 mt-24 w-full sm:align-bottom md:mt-16 md:w-48">
               <div className="rounded-md border border-base-600 bg-base-700 shadow-xl sm:max-w-xl">
                 <div className="rounded-lg bg-base-700">
-                  <ul className="flex flex-col divide-y-2 divide-base-700/50 text-left text-sm text-slate-400">
+                  <ul className="flex flex-col divide-y-2 divide-base-700/50 text-left text-sm text-base-400">
                     <li className="px-2 py-2 pr-2 hover:text-white">
                       <Link href="/account/dashboard">
                         <button className="flex w-full items-center space-x-2">

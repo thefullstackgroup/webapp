@@ -90,21 +90,21 @@ const CardConnection = ({
         />
 
         <Link href={`${process.env.BASEURL}/${connection.username}`} passHref>
-          <div className="flex-1 min-w-0 cursor-pointer">
-            <p className="text-sm sm:text-base font-medium text-slate-100">
+          <div className="min-w-0 flex-1 cursor-pointer">
+            <p className="text-sm font-medium text-base-100 sm:text-base">
               @{connection.username}
             </p>
-            <p className="text-xs sm:text-sm font-medium text-slate-400">
+            <p className="text-xs font-medium text-base-400 sm:text-sm">
               {connection.title}
             </p>
           </div>
         </Link>
       </div>
       {type === 'APPROVED' && (
-        <div className="flex space-x-2 items-center">
+        <div className="flex items-center space-x-2">
           <Link href={`${process.env.BASEURL}/${connection.username}`}>
             <button className="btn-primary">
-              <IoChatbubblesOutline className="w-5 h-5 block sm:hidden" />
+              <IoChatbubblesOutline className="block h-5 w-5 sm:hidden" />
               <span className="hidden sm:block">Chat</span>
             </button>
           </Link>
@@ -112,19 +112,19 @@ const CardConnection = ({
             className="btn-secondary"
             onClick={() => handleRemove(connection.user_id)}
           >
-            <IoCloseSharp className="w-5 h-5 block sm:hidden" />
+            <IoCloseSharp className="block h-5 w-5 sm:hidden" />
             <span className="hidden sm:block">Remove</span>
           </button>
         </div>
       )}
 
       {type === 'INVITE' && (
-        <div className="flex space-x-2 items-center">
+        <div className="flex items-center space-x-2">
           <button
             className="btn-primary"
             onClick={() => handleAccept(connection.user_id)}
           >
-            <IoCheckmark className="w-5 h-5 block sm:hidden" />
+            <IoCheckmark className="block h-5 w-5 sm:hidden" />
             <span className="hidden sm:block">Accept</span>
           </button>
 
@@ -132,14 +132,14 @@ const CardConnection = ({
             className="btn-secondary"
             onClick={() => handleDecline(connection.user_id)}
           >
-            <IoCloseSharp className="w-5 h-5 block sm:hidden" />
+            <IoCloseSharp className="block h-5 w-5 sm:hidden" />
             <span className="hidden sm:block">Decline</span>
           </button>
         </div>
       )}
 
       {type === 'REQUEST' && (
-        <div className="text-sm text-slate-400">Pending...</div>
+        <div className="text-sm text-base-400">Pending...</div>
       )}
     </div>
   );

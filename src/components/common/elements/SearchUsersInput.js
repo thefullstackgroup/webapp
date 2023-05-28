@@ -99,10 +99,10 @@ const SearchUsersInput = () => {
                                 className="absolute inset-0"
                                 aria-hidden="true"
                               ></span>
-                              <p className="text-sm font-medium text-slate-100">
+                              <p className="text-sm font-medium text-base-100">
                                 {eng?.name || eng?.displayName}
                               </p>
-                              <p className="truncate text-sm text-slate-400">
+                              <p className="truncate text-sm text-base-400">
                                 {eng?.currentTitle}
                               </p>
                             </a>
@@ -112,7 +112,7 @@ const SearchUsersInput = () => {
                     ) : (
                       <div className="relative flex items-center space-x-3 py-5 outline-none">
                         <div className="min-w-0 flex-1">
-                          <p className="text-sm font-medium text-slate-100">
+                          <p className="text-sm font-medium text-base-100">
                             Sorry an unexpected error has occurred with this
                             search result.
                           </p>

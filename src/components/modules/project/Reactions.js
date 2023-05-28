@@ -33,7 +33,7 @@ const Reactions = ({ project, user }) => {
                       <p className="font-bold tracking-tight">
                         {project?.projectCreator?.name}
                       </p>
-                      <p className="text-xs tracking-tight text-slate-400">
+                      <p className="text-xs tracking-tight text-base-400">
                         {project?.projectCreator?.currentTitle}
                       </p>
                     </div>

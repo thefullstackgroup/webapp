@@ -13,11 +13,11 @@ const ProjectNotFound = () => {
         <h2 className="mt-40 text-2xl font-bold tracking-tight lg:text-5xl">
           Oops! Project not found.
         </h2>
-        <p className="text-base text-slate-400 lg:text-lg">
+        <p className="text-base text-base-400 lg:text-lg">
           Sorry, this user may have moved or deleted this project.
         </p>
-        <FaRegSadTear className="my-20 h-28 w-auto text-slate-400" />
-        <p className="text-lg text-slate-400">
+        <FaRegSadTear className="my-20 h-28 w-auto text-base-400" />
+        <p className="text-lg text-base-400">
           <Link href="/">
             <button className="btn-primary mt-10">Back to home</button>
           </Link>

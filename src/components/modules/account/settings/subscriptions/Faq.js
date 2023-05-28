@@ -73,7 +73,7 @@ const Faq = ({ showTitle = true }) => {
   return (
     <>
       {showTitle && (
-        <h3 className="font-semibold text-2xl mb-6">
+        <h3 className="mb-6 text-2xl font-semibold">
           Frequently asked questions
         </h3>
       )}
@@ -87,8 +87,8 @@ const Faq = ({ showTitle = true }) => {
                     className={
                       'flex w-full items-start justify-between text-left ' +
                       (open
-                        ? 'text-slate-400'
-                        : 'hover:text-slate-400 text-slate-100')
+                        ? 'text-base-400'
+                        : 'text-base-100 hover:text-base-400')
                     }
                   >
                     <span className="text-base font-medium leading-7">

@@ -135,7 +135,7 @@ function SignUpModal({ show, setShow }) {
                     <span>Continue with LinkedIn</span>
                   </button>
 
-                  {/* <div className="text-center text-slate-400 text-sm py-2">
+                  {/* <div className="text-center text-base-400 text-sm py-2">
                     Or sign up using email
                   </div>
                   <input
@@ -183,7 +183,7 @@ function SignUpModal({ show, setShow }) {
                     </button>
                   </div> */}
 
-                  <div className="text-xs text-slate-200">
+                  <div className="text-xs text-base-200">
                     By continuing, you agree to our{' '}
                     <Link href="/code-of-conduct" passHref>
                       <a className="font-bold">Code of Conduct</a>

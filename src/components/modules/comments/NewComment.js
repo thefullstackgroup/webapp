@@ -152,14 +152,14 @@ const NewComment = ({ user, show, setShow, project }) => {
 
               <div className="item-center flex justify-between">
                 <div className="flex items-center space-x-4">
-                  <button className="group relative text-xs text-slate-400">
+                  <button className="group relative text-xs text-base-400">
                     <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-base-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-base-600 before:content-[''] group-hover:opacity-100">
                       Markdown supported
                     </span>
-                    <IoLogoMarkdown className="h-6 w-6 text-slate-400" />
+                    <IoLogoMarkdown className="h-6 w-6 text-base-400" />
                   </button>
                   <button onClick={() => setShowEmoji(!showEmoji)}>
-                    <IoHappy className="h-5 w-5 text-slate-400" />
+                    <IoHappy className="h-5 w-5 text-base-400" />
                   </button>
                 </div>
                 <button className="btn-primary" onClick={handlePostComment}>

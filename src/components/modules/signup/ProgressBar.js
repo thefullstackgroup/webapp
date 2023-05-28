@@ -5,7 +5,7 @@ const Progress = ({ step }) => {
     <div className="pt-4 sm:pt-4">
       <div className="mx-4 mb-8 md:mx-0">
         <div>
-          <div className="mb-2 grid grid-cols-2 text-xs font-medium text-slate-500 sm:text-sm">
+          <div className="mb-2 grid grid-cols-2 text-xs font-medium text-base-500 sm:text-sm">
             <div className="">
               {step != 1 && (
                 <Link href={`/account/signup/step${step - 1}`}>
@@ -51,7 +51,7 @@ const Progress = ({ step }) => {
         </div>
       </div>
 
-      <h2 className="mb-0 text-center text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">
+      <h2 className="mb-0 text-center text-2xl font-semibold tracking-tight text-base-100 sm:text-3xl">
         {step == 1 && 'Basic information'}
         {step == 2 && 'What is your goal?'}
         {step == 3 && 'What are your interests?'}

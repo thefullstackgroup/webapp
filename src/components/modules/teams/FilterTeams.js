@@ -55,8 +55,8 @@ const FilterTeams = ({ setCreateTeamPanel }) => {
       <div className="fixed w-56 space-y-6">
         <div className="">
           <div className="flex items-center space-x-2">
-            <IoArrowDownOutline className="h-4 w-auto text-slate-100" />
-            <span className="text-base font-medium text-slate-100">
+            <IoArrowDownOutline className="h-4 w-auto text-base-100" />
+            <span className="text-base font-medium text-base-100">
               Filter by stack
             </span>
           </div>
@@ -66,7 +66,7 @@ const FilterTeams = ({ setCreateTeamPanel }) => {
               <li key={index}>
                 <button
                   href="#"
-                  className="group relative w-full whitespace-nowrap rounded-lg px-3 py-1.5 text-left text-sm font-medium text-slate-500 hover:bg-base-600 hover:text-white sm:px-6 sm:py-2"
+                  className="group relative w-full whitespace-nowrap rounded-lg px-3 py-1.5 text-left text-sm font-medium text-base-500 hover:bg-base-600 hover:text-white sm:px-6 sm:py-2"
                 >
                   <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-base-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-base-600 before:content-[''] group-hover:opacity-100">
                     Filter not active
@@ -80,8 +80,8 @@ const FilterTeams = ({ setCreateTeamPanel }) => {
 
         <div>
           <div className="mb-2 flex items-center space-x-2">
-            <IoArrowDownOutline className="h-4 w-auto text-slate-100" />
-            <span className="text-base font-medium text-slate-100">
+            <IoArrowDownOutline className="h-4 w-auto text-base-100" />
+            <span className="text-base font-medium text-base-100">
               Filter by stage
             </span>
           </div>
@@ -91,7 +91,7 @@ const FilterTeams = ({ setCreateTeamPanel }) => {
               <li key={index}>
                 <button
                   href="#"
-                  className="group relative w-full whitespace-nowrap rounded-lg px-3 py-1.5 text-left text-sm font-medium text-slate-500 hover:bg-base-600 hover:text-white sm:px-6 sm:py-2"
+                  className="group relative w-full whitespace-nowrap rounded-lg px-3 py-1.5 text-left text-sm font-medium text-base-500 hover:bg-base-600 hover:text-white sm:px-6 sm:py-2"
                 >
                   <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-base-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-base-600 before:content-[''] group-hover:opacity-100">
                     Filter not active
@@ -102,7 +102,7 @@ const FilterTeams = ({ setCreateTeamPanel }) => {
             ))}
           </ul>
 
-          <div className="group relative mt-6 ml-6 flex items-center space-x-2 text-sm font-medium text-slate-500">
+          <div className="group relative mt-6 ml-6 flex items-center space-x-2 text-sm font-medium text-base-500">
             <span>Hiring?</span>
             <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-base-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-base-600 before:content-[''] group-hover:opacity-100">
               Filter not active
@@ -126,7 +126,7 @@ const FilterTeams = ({ setCreateTeamPanel }) => {
         </div>
         <div className="space-y-4 pl-6">
           <Link href="/resources/contact/teams">
-            <button className="text-sm text-slate-500">
+            <button className="text-sm text-base-500">
               Questions or feedback?
             </button>
           </Link>

@@ -215,21 +215,6 @@ const Main = ({ user }) => {
           )}
         </div>
       </div>
-
-      {/* <div className="relative space-y-4">
-        <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-bold tracking-tight">
-            Explore showcase
-          </h3>
-          <Filters
-            range={range}
-            setRange={setRange}
-            sort={sort}
-            setSort={setSort}
-          />
-        </div>
-        <ProjectGallery sort={sort.orderBy} range={range.days} stack={stack} />
-      </div> */}
     </div>
   );
 };

@@ -58,17 +58,17 @@ const ButtonFollow = ({ followToUser, followFromUser, followToName }) => {
       {followStatus ? (
         <button
           type="button"
-          className={'btn-secondary w-full sm:w-auto group'}
+          className={'btn btn-secondary group w-full sm:w-auto'}
           onClick={() => {
             setFollowStatus(!followStatus);
             followProfile(!followStatus);
           }}
         >
           <>
-            <span className="block group-hover:hidden text-slate-400">
+            <span className="block text-base-400 group-hover:hidden">
               Following
             </span>
-            <span className="hidden group-hover:block text-slate-200">
+            <span className="hidden text-base-200 group-hover:block">
               Unfollow
             </span>
           </>
@@ -76,7 +76,7 @@ const ButtonFollow = ({ followToUser, followFromUser, followToName }) => {
       ) : (
         <button
           type="button"
-          className="btn-secondary w-full sm:w-auto"
+          className="btn btn-secondary w-full sm:w-auto"
           onClick={() => {
             setFollowStatus(!followStatus);
             followProfile(!followStatus);

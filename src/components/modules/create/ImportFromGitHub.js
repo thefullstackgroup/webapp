@@ -182,14 +182,14 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
                     onClick={() => setSelectedRepo(repo.html_url)}
                   >
                     <div>
-                      <IoCodeOutline className="h-8 w-8 text-slate-400" />
+                      <IoCodeOutline className="h-8 w-8 text-base-400" />
                     </div>
                     <div className="flex w-4/5 flex-col">
                       <span className="font-medium">{repo.name}</span>
-                      <span className="text-xs font-medium text-slate-500">
+                      <span className="text-xs font-medium text-base-500">
                         {repo.full_name}
                       </span>
-                      <span className="mt-1 text-sm text-slate-300 line-clamp-3">
+                      <span className="mt-1 text-sm text-base-300 line-clamp-3">
                         {repo.description}
                       </span>
                     </div>
@@ -209,14 +209,14 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
                       onClick={() => setSelectedRepo(repo.html_url)}
                     >
                       <div>
-                        <IoCodeOutline className="h-8 w-8 text-slate-400" />
+                        <IoCodeOutline className="h-8 w-8 text-base-400" />
                       </div>
                       <div className="flex w-4/5 flex-col">
                         <span className="font-medium">{repo.name}</span>
-                        <span className="text-xs font-medium text-slate-500">
+                        <span className="text-xs font-medium text-base-500">
                           {repo.full_name}
                         </span>
-                        <span className="mt-1 text-sm text-slate-300 line-clamp-3">
+                        <span className="mt-1 text-sm text-base-300 line-clamp-3">
                           {repo.description}
                         </span>
                       </div>

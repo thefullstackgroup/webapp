@@ -98,7 +98,7 @@ const JobDetails = ({ user, teamId, jobId }) => {
                           />
                         </div>
                         <div>
-                          <h2 className="text-2xl font-semibold text-slate-400 md:text-xl">
+                          <h2 className="text-2xl font-semibold text-base-400 md:text-xl">
                             {team.name}
                           </h2>
                         </div>
@@ -143,7 +143,7 @@ const JobDetails = ({ user, teamId, jobId }) => {
 
                     <div className="space-y-2">
                       <h3 className="font-semibold text-white">Locations(s)</h3>
-                      <p className="prose-sm prose-dark text-slate-300">
+                      <p className="prose-sm prose-dark text-base-300">
                         {job.location.map((place, index) => (
                           <span className="" key={index}>
                             {index > 0 && ', '}
@@ -157,7 +157,7 @@ const JobDetails = ({ user, teamId, jobId }) => {
                       <h3 className="font-semibold text-white">
                         Job description
                       </h3>
-                      <p className="prose-sm prose-dark text-slate-300">
+                      <p className="prose-sm prose-dark text-base-300">
                         <Markdown
                           options={{
                             overrides: {
@@ -184,7 +184,7 @@ const JobDetails = ({ user, teamId, jobId }) => {
                       <h3 className="font-semibold text-white">
                         How does the development process work?
                       </h3>
-                      <p className="text-slate-300">
+                      <p className="text-base-300">
                         {team.businessDetails?.devProcess}
                       </p>
                     </div>
@@ -193,7 +193,7 @@ const JobDetails = ({ user, teamId, jobId }) => {
                       <h3 className="font-semibold text-white">
                         What tools do developers use?
                       </h3>
-                      <p className="text-slate-300">
+                      <p className="text-base-300">
                         {team.businessDetails?.devTools}
                       </p>
                     </div>
@@ -202,7 +202,7 @@ const JobDetails = ({ user, teamId, jobId }) => {
                       <h3 className="font-semibold text-white">
                         What does your hiring process look like?
                       </h3>
-                      <p className="text-slate-300">
+                      <p className="text-base-300">
                         {team.businessDetails?.hiringProcess}
                       </p>
                     </div>
@@ -228,7 +228,7 @@ const JobDetails = ({ user, teamId, jobId }) => {
                         layout="fill"
                       />
                     </div>
-                    <div className="-mt-14 mb-6 grid w-full grid-cols-5 gap-3 rounded-md border border-base-600/50 bg-base-800 pt-20 pb-10 pl-8 pr-10 text-sm text-slate-400">
+                    <div className="-mt-14 mb-6 grid w-full grid-cols-5 gap-3 rounded-md border border-base-600/50 bg-base-800 pt-20 pb-10 pl-8 pr-10 text-sm text-base-400">
                       <div className="col-span-2 font-medium text-white">
                         Founded:
                       </div>
@@ -354,7 +354,7 @@ const JobDetails = ({ user, teamId, jobId }) => {
                 <span className="no-scrollbar w-11/12 overflow-hidden overflow-x-scroll whitespace-nowrap ">
                   {`${process.env.BASEURL}${router.asPath}`}
                 </span>
-                <IoCopyOutline className="h-6 w-6 text-slate-400" />
+                <IoCopyOutline className="h-6 w-6 text-base-400" />
               </div>
               {isCopied && (
                 <span className="text-tfstertiary-500 text-xs font-semibold">

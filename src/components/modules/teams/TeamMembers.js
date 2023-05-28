@@ -23,7 +23,7 @@ const TeamMembers = ({ title, teamOwner, teamMembers }) => {
                       Team Owner
                     </span>
                   </h4>
-                  <span className="text-sm text-slate-400">
+                  <span className="text-sm text-base-400">
                     {teamOwner.currentTitle}
                   </span>
                 </div>
@@ -43,7 +43,7 @@ const TeamMembers = ({ title, teamOwner, teamMembers }) => {
               <Link href={`/${member.displayName}`}>
                 <div className="cursor-pointer">
                   <h4 className="font-semibold">{member.name}</h4>
-                  <span className="text-sm text-slate-400">
+                  <span className="text-sm text-base-400">
                     {member.currentTitle}
                   </span>
                 </div>

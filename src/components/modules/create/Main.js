@@ -55,7 +55,7 @@ const Main = ({ user }) => {
     <>
       <div className="min-h-screen bg-black">
         <button
-          className="fixed top-5 left-4 z-50 text-slate-400 md:right-4 xl:left-auto"
+          className="fixed top-5 left-4 z-50 text-base-400 md:right-4 xl:left-auto"
           onClick={() => setIsDiscardPromptOpen(true)}
         >
           <IoClose className="h-7 w-7 md:h-8 md:w-8" />
@@ -77,9 +77,9 @@ const Main = ({ user }) => {
         <ModalAlert show={isDiscardPromptOpen} setShow={setIsDiscardPromptOpen}>
           <div className="justify-center sm:flex sm:items-start">
             <div className="mt-3 text-center sm:mt-0">
-              <h3 className="text-xl font-bold text-slate-200">Quit?</h3>
+              <h3 className="text-xl font-bold text-base-200">Quit?</h3>
               <div className="mt-2">
-                <p className="text-sm text-slate-300">
+                <p className="text-sm text-base-300">
                   Are you sure you want to quit?
                 </p>
               </div>
@@ -109,11 +109,11 @@ const Main = ({ user }) => {
           <div>
             <div className="justify-center sm:flex sm:items-start">
               <div className="mt-3 text-center sm:mt-0">
-                <h3 className="text-xl font-bold text-slate-200">
+                <h3 className="text-xl font-bold text-base-200">
                   Delete post?
                 </h3>
                 <div className="mt-2">
-                  <p className="text-sm text-slate-300">
+                  <p className="text-sm text-base-300">
                     Are you sure you want to delete this post? This action
                     cannot be undone.
                   </p>

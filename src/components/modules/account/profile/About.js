@@ -119,16 +119,16 @@ const About = ({ user }) => {
 
   return (
     <>
-      <div className="w-full mt-4">
+      <div className="mt-4 w-full">
         {successAlert && (
-          <div className="relative bg-green-500/20 text-green-500 text-sm text-center w-full rounded-md py-1.5 px-2">
+          <div className="relative w-full rounded-md bg-green-500/20 py-1.5 px-2 text-center text-sm text-green-500">
             Changes saved!
           </div>
         )}
         <div className="py-4">
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-slate-400">
+              <label className="block text-sm font-medium text-base-400">
                 Name
               </label>
               <input
@@ -144,7 +144,7 @@ const About = ({ user }) => {
             <div>
               <label
                 htmlFor="country"
-                className="block text-sm font-medium text-slate-400"
+                className="block text-sm font-medium text-base-400"
               >
                 Intro yourself in 50 words (ish).
               </label>
@@ -165,7 +165,7 @@ const About = ({ user }) => {
                 }}
               />
 
-              <span className="text-gray-400 text-xs">
+              <span className="text-xs text-gray-400">
                 Remaining characters: {remainingCharsAbout}
               </span>
             </div>
@@ -173,7 +173,7 @@ const About = ({ user }) => {
             <div>
               <label
                 className={`${
-                  isDisplayNameValid ? 'text-slate-400' : 'text-red-600'
+                  isDisplayNameValid ? 'text-base-400' : 'text-red-600'
                 } block text-sm font-medium`}
               >
                 Your display name
@@ -209,7 +209,7 @@ const About = ({ user }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-400">
+              <label className="block text-sm font-medium text-base-400">
                 What do you do?
               </label>
               <input
@@ -223,7 +223,7 @@ const About = ({ user }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-400">
+              <label className="block text-sm font-medium text-base-400">
                 Where do you live?
               </label>
               <CountrySelect
@@ -233,7 +233,7 @@ const About = ({ user }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-400">
+              <label className="block text-sm font-medium text-base-400">
                 Personal Website?
               </label>
               <input

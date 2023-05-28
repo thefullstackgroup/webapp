@@ -14,7 +14,7 @@ const TeamTech = ({ postTechStack, setPostTechStack }) => {
       iconName.charAt(0).toUpperCase() + iconName.slice(1).toLowerCase()
     }`;
     const icon = React.createElement(Icons[iconKey] || IoCodeOutline, {
-      className: 'w-5 h-5 text-slate-400',
+      className: 'w-5 h-5 text-base-400',
     });
     return <div>{icon}</div>;
   };
@@ -78,7 +78,7 @@ const TeamTech = ({ postTechStack, setPostTechStack }) => {
             autoFocus
             placeholder="Example: React"
             onChange={(e) => searchSkills(e.target.value)}
-            className=" w-full border-0 bg-transparent text-white placeholder:text-slate-400 focus:border-0 focus:ring-0"
+            className=" w-full border-0 bg-transparent text-white placeholder:text-base-400 focus:border-0 focus:ring-0"
             value={skillName}
           />
         </div>
@@ -86,7 +86,7 @@ const TeamTech = ({ postTechStack, setPostTechStack }) => {
       <div>
         <div>
           {skillName.length > 1 && skillList.length > 0 && (
-            <ul className="absolute top-11 left-0 z-10 max-h-72 w-full overflow-scroll overscroll-contain rounded-b-md bg-slate-800 shadow-lg">
+            <ul className="absolute top-11 left-0 z-10 max-h-72 w-full overflow-scroll overscroll-contain rounded-b-md bg-base-800 shadow-lg">
               {skillList.map((result) => (
                 <li
                   className="my-1 items-center px-4 py-1"
@@ -94,7 +94,7 @@ const TeamTech = ({ postTechStack, setPostTechStack }) => {
                 >
                   <button
                     type="button"
-                    className="flex w-full items-center space-x-2 text-left text-slate-200 focus:outline-none"
+                    className="flex w-full items-center space-x-2 text-left text-base-200 focus:outline-none"
                     onClick={() => {
                       addSkill(result);
                     }}

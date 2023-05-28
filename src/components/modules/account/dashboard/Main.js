@@ -86,7 +86,7 @@ const Main = ({ user }) => {
                   <h2 className="font-intertight text-2xl font-medium">
                     {user.name}
                   </h2>
-                  <h2 className="text-base text-slate-400">
+                  <h2 className="text-base text-base-400">
                     @{user.displayName}
                   </h2>
                 </div>
@@ -95,7 +95,7 @@ const Main = ({ user }) => {
               <div className="space-y-2">
                 <div className="grid grid-cols-2 items-center justify-evenly gap-4 lg:grid-cols-4">
                   <div className="flex w-full flex-col space-y-2 rounded-md border border-base-600 px-4 py-3">
-                    <div className="flex items-center space-x-1 whitespace-nowrap text-slate-400">
+                    <div className="flex items-center space-x-1 whitespace-nowrap text-base-400">
                       <IoEyeOutline className="h-4 w-4" />
                       <span className="text-sm font-semibold">
                         Profile views
@@ -116,7 +116,7 @@ const Main = ({ user }) => {
                     </div>
                   </div>
                   <div className="flex w-full flex-col space-y-2 rounded-md border border-base-600 px-4 py-3">
-                    <div className="flex items-center space-x-1 whitespace-nowrap text-slate-400">
+                    <div className="flex items-center space-x-1 whitespace-nowrap text-base-400">
                       <IoHeartOutline className="h-4 w-4" />
                       <span className="text-sm font-semibold">Reactions</span>
                     </div>
@@ -136,7 +136,7 @@ const Main = ({ user }) => {
                   </div>
 
                   <div className="group relative flex w-full flex-col space-y-2 rounded-md border border-base-600 px-4 py-3">
-                    <div className="flex items-center space-x-1 whitespace-nowrap text-slate-400">
+                    <div className="flex items-center space-x-1 whitespace-nowrap text-base-400">
                       <IoArrowRedoOutline className="h-4 w-4" />
                       <span className="text-sm font-semibold">Shares</span>
                     </div>
@@ -146,7 +146,7 @@ const Main = ({ user }) => {
                     </span>
                   </div>
                   <div className="flex w-full flex-col space-y-2 rounded-md border border-base-600 px-4 py-3">
-                    <div className="flex items-center space-x-1 whitespace-nowrap text-slate-400">
+                    <div className="flex items-center space-x-1 whitespace-nowrap text-base-400">
                       <IoPersonAddOutline className="h-4 w-4" />
                       <span className="text-sm font-semibold">Followers</span>
                     </div>
@@ -165,7 +165,7 @@ const Main = ({ user }) => {
                         `whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium focus:border-none focus:ring-0 sm:px-4 sm:py-2 ` +
                         (tab.tab == selectedTab?.tab
                           ? `bg-base-600/70 text-white`
-                          : `bg-base-700/70 text-slate-400 hover:text-white`)
+                          : `bg-base-700/70 text-base-400 hover:text-white`)
                       }
                       key={index}
                       onClick={() => setSelectedTab(tab)}

@@ -28,7 +28,7 @@ const Goals = ({ goal, setCreateTeamPanel }) => {
   return (
     <>
       {goal === 'HIRE' && (
-        <div className="relative mx-auto mb-8 w-full max-w-screen-lg gap-4 px-4 sm:mb-10 md:px-0 lg:flex">
+        <div className="w-fullgap-4 relative mb-8 px-4 sm:mb-10 md:px-0 lg:flex">
           <div className="w-full items-center justify-between space-y-4 rounded-md border border-base-600 bg-base-800 px-4 py-4 md:space-y-0 md:px-8 lg:flex">
             <div className="flex flex-col space-y-4 md:w-2/3">
               <div className="flex items-end space-x-6">
@@ -36,7 +36,7 @@ const Goals = ({ goal, setCreateTeamPanel }) => {
                   Looking to hire developers?
                 </h4>
               </div>
-              <div className="text-sm text-slate-400">
+              <div className="text-sm text-base-400">
                 Team profiles make strong connections with people looking to
                 collaborate or find work by introducing them to the people and
                 personalities on your team they would be working with day to
@@ -71,7 +71,7 @@ const Goals = ({ goal, setCreateTeamPanel }) => {
                     Looking for work opportunties?
                   </h4>
                 </div>
-                <div className="text-sm text-slate-400">
+                <div className="text-sm text-base-400">
                   The Full Stack can help you find and connect to tech teams
                   matched to your preferences. Set the criteria for matches
                   based upon your profile in your work preferences. Your details

@@ -28,7 +28,7 @@ const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
     <>
       <div className="sm:flex sm:justify-between">
         {votes.length > 0 && (
-          <div className="flex items-center text-xs text-slate-400 sm:mx-0 sm:text-base ">
+          <div className="flex items-center text-xs text-base-400 sm:mx-0 sm:text-base ">
             {showAvatars ? (
               <div
                 className="mr-2 flex -space-x-2"
@@ -96,13 +96,13 @@ const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
                   <div className="flex w-36 flex-col sm:w-auto">
                     <Link href={`/${profile?.userProfile?.displayName}`}>
                       <span
-                        className="cursor-pointer text-sm font-semibold text-slate-200 sm:text-base"
+                        className="cursor-pointer text-sm font-semibold text-base-200 sm:text-base"
                         onClick={() => setDisplayVoteInsights(false)}
                       >
                         {profile?.userProfile?.displayName}
                       </span>
                     </Link>
-                    <span className="truncate text-xs text-slate-400">
+                    <span className="truncate text-xs text-base-400">
                       {profile?.userProfile?.currentTitle}
                     </span>
                   </div>

@@ -240,7 +240,7 @@ const CreatePost = ({ user }) => {
       <div className="mx-0 mb-6 flex border-b border-base-600 sm:mx-0 sm:rounded-lg sm:border-b-0 sm:bg-base-800">
         <div className="flex w-full">
           <div className="relative ml-2 mr-4 w-full pb-4">
-            <div className="mb-2 border-gray-800 px-2 text-lg text-slate-500">
+            <div className="mb-2 border-gray-800 px-2 text-lg text-base-500">
               {postType !== 'SPARK' && (
                 <div className="flex items-center space-x-1 pt-2">
                   <TagPost postType={postType} />

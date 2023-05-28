@@ -10,7 +10,7 @@ const Card = ({ job, teamOwner }) => {
     <div className="flex items-center justify-between px-5 py-3">
       <div className="flex flex-col">
         <div className="font-semibold">{job.title}</div>
-        <div className="text-slate-400">
+        <div className="text-base-400">
           {job.employmentType} &middot; {locations} &middot; EUR 80k - 120k
         </div>
       </div>

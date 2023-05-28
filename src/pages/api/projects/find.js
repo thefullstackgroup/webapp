@@ -6,13 +6,38 @@ initAuth();
 const handler = async (req, res, AuthUser) => {
   const accessToken = await AuthUser?.getIdToken();
 
-  const requestURL = `${process.env.API_SEARCH_URL}/search/projects?page=${
+  let connectionUsersIds = '';
+  if (req.query.connectionUsersIds) {
+    connectionUsersIds = `&connectionUserIds=${req.query.connectionUsersIds}`;
+  }
+
+  // const requestURL = `${process.env.API_SEARCH_URL}/search/projects?page=${
+  //   req.query.page
+  // }&size=${req.query.size}&projectType=${req.query.projectType || ''}&orderBy=${
+  //   req.query.sort
+  // }&q=${req.query.term}&userId=${req.query.userId}&${
+  //   req.query.range !== undefined && `range=${req.query.range}`
+  // }`;
+
+  const requestURL = `${process.env.API_SEARCH_URL}/search/showcase?page=${
     req.query.page
   }&size=${req.query.size}&projectType=${req.query.projectType || ''}&orderBy=${
     req.query.sort
-  }&q=${req.query.term}&userId=${req.query.userId}&${
-    req.query.range !== undefined && `range=${req.query.range}`
-  }`;
+  }${
+    req.query?.tech && req.query?.tech !== undefined
+      ? '&techStack=' + req.query.tech
+      : ''
+  }${
+    req.query?.category && req.query?.category !== undefined
+      ? '&techCategories=' + req.query.category
+      : ''
+  }&userId=${req.query.userId}${connectionUsersIds}${
+    req.query?.lookingForCollabs && req.query?.lookingForCollabs !== undefined
+      ? '&lookingForCollabs=' + req.query.lookingForCollabs
+      : ''
+  }&${req.query.range !== undefined && `range=${req.query.range}`}`;
+
+  console.log(requestURL);
 
   if (accessToken) {
     return axios

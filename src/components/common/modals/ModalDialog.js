@@ -41,7 +41,7 @@ const ModalDialog = ({
                       className="btn-with-icon-only"
                       onClick={() => setShow(false)}
                     >
-                      <IoClose className="h-8 w-8 text-slate-300" />
+                      <IoClose className="h-8 w-8 text-base-300" />
                     </button>
                   </div>
                 </div>

@@ -30,11 +30,11 @@ const ValidationErrors = ({
           <div className="mx-auto overflow-hidden rounded-md bg-base-800 text-left shadow-xl sm:max-w-xl">
             <div className="mx-auto w-full space-y-6 bg-red-500/20 p-4 md:p-8">
               <div className="flex items-start justify-between">
-                <h3 className="text-lg font-bold text-slate-100 md:text-2xl">
+                <h3 className="text-lg font-bold text-base-100 md:text-2xl">
                   <span>Oops! Missing some info ...</span>
                 </h3>
                 <button
-                  className="text-slate-100"
+                  className="text-base-100"
                   onClick={() => {
                     setShowValidationErrors(!showValidationErrors);
                     setDraftSelected(false);

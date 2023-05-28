@@ -52,7 +52,7 @@ const ProfilePopoverPanel = ({ user }) => {
             <div className="flex items-start">
               {user ? (
                 <div className="w-64 space-y-2 px-2 py-1">
-                  <Link href="#">
+                  <Link href={`/${user.displayName}`}>
                     <div className="nav-popover cursor-pointer">
                       <Avatar
                         image={user.profilePicUrl}

@@ -131,7 +131,7 @@ const EditJob = ({ user, job, teamId, setShow }) => {
         <div className="no-scrollbar h-[74vh] space-y-4 overflow-y-scroll overscroll-contain py-4">
           <div className="space-y-8">
             <div>
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Job title
               </label>
               <input
@@ -151,7 +151,7 @@ const EditJob = ({ user, job, teamId, setShow }) => {
               )}
             </div>
             <div>
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Email or link to apply
               </label>
               <input
@@ -171,7 +171,7 @@ const EditJob = ({ user, job, teamId, setShow }) => {
               )}
             </div>
             <div>
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Salary range
               </label>
               <div className="flex items-start space-x-2">
@@ -253,7 +253,7 @@ const EditJob = ({ user, job, teamId, setShow }) => {
               )}
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Employment type
               </label>
               <EmploymentType selected={type} setType={setType} />
@@ -264,7 +264,7 @@ const EditJob = ({ user, job, teamId, setShow }) => {
               )}
             </div>
             <div>
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Location(s)
               </label>
 
@@ -299,7 +299,7 @@ const EditJob = ({ user, job, teamId, setShow }) => {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Tech Stack:
               </label>
               <div className="no-scrollbar mt-2 flex flex-wrap items-center">
@@ -341,7 +341,7 @@ const EditJob = ({ user, job, teamId, setShow }) => {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-slate-400">
+              <label className="text-sm font-medium text-base-400">
                 Job description
               </label>
               <div className="rounded-md bg-base-600/50">
@@ -419,11 +419,11 @@ const EditJob = ({ user, job, teamId, setShow }) => {
           <div>
             <div className="justify-center sm:flex sm:items-start">
               <div className="mt-3 text-center sm:mt-0">
-                <h3 className="text-xl font-bold text-slate-200">
+                <h3 className="text-xl font-bold text-base-200">
                   Delete job listing?
                 </h3>
                 <div className="mt-2">
-                  <p className="text-sm text-slate-300">
+                  <p className="text-sm text-base-300">
                     Are you sure you want to delete this job listing? This
                     action cannot be undone.
                   </p>

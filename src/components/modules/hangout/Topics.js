@@ -89,7 +89,7 @@ const Topics = ({ topic, setTopicSelected }) => {
     const icon = React.createElement(Icons[iconName] || IoCodeSlashSharp, {
       className:
         'w-auto h-6 ' +
-        (topic === props.selected ? 'text-white' : 'text-slate-300'),
+        (topic === props.selected ? 'text-white' : 'text-base-300'),
     });
     return <span>{icon}</span>;
   };
@@ -98,8 +98,8 @@ const Topics = ({ topic, setTopicSelected }) => {
     <div className="absolute right-0 top-24 hidden w-52 xl:block 2xl:right-20 2xl:w-64">
       <div className="fixed w-72 rounded-md py-4 px-6">
         <div className="mb-4 flex items-center space-x-2">
-          <IoArrowDownOutline className="h-4 w-auto text-slate-100" />
-          <span className="text-base font-bold text-slate-100">
+          <IoArrowDownOutline className="h-4 w-auto text-base-100" />
+          <span className="text-base font-bold text-base-100">
             Browse by topic
           </span>
         </div>
@@ -110,7 +110,7 @@ const Topics = ({ topic, setTopicSelected }) => {
               <button
                 href="#"
                 className={
-                  'flex w-full items-center space-x-4 rounded-md py-1.5 px-2 text-left text-sm text-slate-300 hover:bg-base-600 hover:text-white ' +
+                  'flex w-full items-center space-x-4 rounded-md py-1.5 px-2 text-left text-sm text-base-300 hover:bg-base-600 hover:text-white ' +
                   (topic?.type === item.type && 'bg-base-600')
                 }
                 onClick={() => {

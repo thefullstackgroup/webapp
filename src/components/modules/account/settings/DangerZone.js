@@ -87,7 +87,7 @@ const Page = ({ user }) => {
                             className={
                               'rounded-full border px-6 py-3 ' +
                               (reason === 'I signed up by accident'
-                                ? 'border-slate-200 bg-base-700'
+                                ? 'border-base-200 bg-base-700'
                                 : 'border-base-600 bg-base-600 hover:bg-base-500')
                             }
                             onClick={() => setReason('I signed up by accident')}
@@ -98,7 +98,7 @@ const Page = ({ user }) => {
                             className={
                               'rounded-full border px-6 py-3 ' +
                               (reason === 'The Full Stack is not for me'
-                                ? 'border-slate-200 bg-base-700'
+                                ? 'border-base-200 bg-base-700'
                                 : 'border-base-600 bg-base-600 hover:bg-base-500')
                             }
                             onClick={() =>
@@ -111,7 +111,7 @@ const Page = ({ user }) => {
                             className={
                               'rounded-full border px-6 py-3 ' +
                               (reason === 'I received too many emails'
-                                ? 'border-slate-200 bg-base-700'
+                                ? 'border-base-200 bg-base-700'
                                 : 'border-base-600 bg-base-600 hover:bg-base-500')
                             }
                             onClick={() =>
@@ -124,7 +124,7 @@ const Page = ({ user }) => {
                             className={
                               'rounded-full border px-6 py-3 ' +
                               (reason === 'Duplicate account'
-                                ? 'border-slate-200 bg-base-700'
+                                ? 'border-base-200 bg-base-700'
                                 : 'border-base-600 bg-base-600 hover:bg-base-500')
                             }
                             onClick={() => setReason('Duplicate account')}
@@ -135,7 +135,7 @@ const Page = ({ user }) => {
                             className={
                               'rounded-full border px-6 py-3 ' +
                               (reason === 'Other'
-                                ? 'border-slate-200 bg-base-700'
+                                ? 'border-base-200 bg-base-700'
                                 : 'border-base-600 bg-base-600 hover:bg-base-500')
                             }
                             onClick={() => setReason('Other')}

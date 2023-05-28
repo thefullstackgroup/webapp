@@ -51,7 +51,7 @@ const ProjectCard = ({ project, user, type, hideAuthor }) => {
         </div>
         {project?.lookingForCollabs && (
           <div
-            className="absolute top-0 right-4 rounded-full border border-slate-400 bg-base-900/40 px-2 py-0.5 text-xs font-semibold"
+            className="absolute top-0 right-4 rounded-full border border-base-400 bg-base-900/40 px-2 py-0.5 text-xs font-semibold"
             title="Open to collaboration"
           >
             <span>Collab</span>
@@ -71,22 +71,22 @@ const ProjectCard = ({ project, user, type, hideAuthor }) => {
           </div>
 
           <div className="flex space-x-2 px-0">
-            <button className="flex items-center space-x-0 rounded-lg font-normal text-slate-700 dark:text-slate-300">
+            <button className="flex items-center space-x-0 rounded-lg font-normal text-base-700 dark:text-base-300">
               <IoHeart className="h-4 w-auto" />
               <span className="text-sm">
                 {Math.abs(project?.numberOfLikes)}
               </span>
             </button>
-            <button className="flex items-center space-x-0.5 rounded-lg font-normal text-slate-700 dark:text-slate-300">
+            <button className="flex items-center space-x-0.5 rounded-lg font-normal text-base-700 dark:text-base-300">
               <IoChatbox className="h-4 w-auto" />
               <span className="text-sm">{project?.numberOfComments}</span>
             </button>
 
-            {/* <button className="flex items-center space-x-1 font-normal text-slate-400">
+            {/* <button className="flex items-center space-x-1 font-normal text-base-400">
                 {project?.contentTotalDiamonds > 0 ? (
                   <BsGem className="text-yellow-500 w-auto h-3" />
                 ) : (
-                  <BsGem className="text-slate-300 w-auto h-3" />
+                  <BsGem className="text-base-300 w-auto h-3" />
                 )}
                 <span className="text-sm">{project?.contentTotalDiamonds}</span>
               </button> */}
@@ -99,7 +99,7 @@ const ProjectCard = ({ project, user, type, hideAuthor }) => {
               size={'xs'}
               key={index}
               iconOnly={true}
-              style="h-4 w-4 text-slate-400 rounded"
+              style="h-4 w-4 text-base-400 rounded"
             />
           ))}
         </div> */}

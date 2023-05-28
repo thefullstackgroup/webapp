@@ -30,7 +30,7 @@ const SubscriptionConfirmation = () => {
                   <div className="mx-auto w-2/3 text-lg font-semibold">
                     Thank you. Your subscription is now active.
                   </div>
-                  <div className="mx-auto w-2/3 text-slate-300">
+                  <div className="mx-auto w-2/3 text-base-300">
                     You can now post open positions on your Team profile. Select
                     the team profile below to get started.
                   </div>

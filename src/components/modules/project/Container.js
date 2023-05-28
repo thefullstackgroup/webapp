@@ -39,8 +39,8 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
             <Link href={`/post?ref=${project?._id}`} passHref>
               <div className="w-full cursor-pointer bg-red-500/40 py-3 px-4 font-normal md:px-8">
                 This project is{' '}
-                <span className="font-bold text-slate-200">unpublished</span>{' '}
-                and not visible to anyone. Click to edit.
+                <span className="font-bold text-base-200">unpublished</span> and
+                not visible to anyone. Click to edit.
               </div>
             </Link>
           )}
@@ -57,7 +57,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
           </div>
         )}
 
-        <h2 className="mb-6 cursor-pointer text-2xl font-semibold tracking-tight text-slate-100 md:text-4xl">
+        <h2 className="mb-6 cursor-pointer text-2xl font-semibold tracking-tight text-base-100 md:text-4xl">
           {project?.projectName}
         </h2>
 
@@ -83,7 +83,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
         ) : (
           project?.projectImgURI && (
             <div
-              className="relative h-52 w-auto cursor-pointer overflow-hidden rounded-lg bg-slate-800 md:h-[50vh]"
+              className="relative h-52 w-auto cursor-pointer overflow-hidden rounded-lg bg-base-800 md:h-[50vh]"
               onClick={() => setShowImageModal(!showImageModal)}
             >
               <Image
@@ -144,7 +144,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
             />
             <Link href={`/${project?.projectCreator?.displayName}`}>
               <div className="flex cursor-pointer flex-col">
-                <p className="text-xs font-normal tracking-tight text-slate-400">
+                <p className="text-xs font-normal tracking-tight text-base-400">
                   Created by
                 </p>
                 <div className="text-sm">
@@ -172,7 +172,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
                 {isConnected ? (
                   <div className="flex flex-col space-y-2 rounded-md bg-base-700 p-4 duration-200 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
                     <div>
-                      <span className="text-slate-200">
+                      <span className="text-base-200">
                         This project is{' '}
                         <span className="font-bold">open to contribution</span>{' '}
                         and you are both connected.
@@ -194,7 +194,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
                     // }}
                   >
                     <div>
-                      <span className="text-slate-200">
+                      <span className="text-base-200">
                         This project is{' '}
                         <span className="font-bold">open to contribution</span>.
                         Connect with me to contribute.

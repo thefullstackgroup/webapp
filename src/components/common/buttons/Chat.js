@@ -46,8 +46,8 @@ const ChatButton = ({ profile, myProfile }) => {
 
   return (
     <div className="relative">
-      <button className="btn-primary btn-with-icon pl-3" onClick={newChat}>
-        <IoChatbubblesOutline className="w-5 h-5" />
+      <button className="btn btn-primary btn-with-icon pl-3" onClick={newChat}>
+        <IoChatbubblesOutline className="h-5 w-5" />
         <span>Chat</span>
       </button>
     </div>

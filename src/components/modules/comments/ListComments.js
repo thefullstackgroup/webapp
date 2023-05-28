@@ -100,7 +100,7 @@ const ListComments = ({ post, user }) => {
             </div>
           )}
           {!data?.comments?.content?.length > 0 && (
-            <p className="py-6 text-center text-sm text-slate-400">
+            <p className="py-6 text-center text-sm text-base-400">
               Be the first to share a comment.
             </p>
           )}
@@ -123,7 +123,7 @@ const ListComments = ({ post, user }) => {
                           <Link href={`/${comment.authorName}`} passHref>
                             <a
                               href="#"
-                              className="text-base font-semibold text-slate-200"
+                              className="text-base font-semibold text-base-200"
                             >
                               {comment.authorName}
                             </a>

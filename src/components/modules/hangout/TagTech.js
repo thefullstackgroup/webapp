@@ -78,7 +78,7 @@ const TagTech = ({ savedSkills, setSavedSkills, setShowTech }) => {
                 <li className="my-1 items-center px-4" key={result.skillId}>
                   <button
                     type="button"
-                    className="flex w-full items-center space-x-2 text-left text-sm text-slate-200 focus:outline-none"
+                    className="flex w-full items-center space-x-2 text-left text-sm text-base-200 focus:outline-none"
                     onClick={() => {
                       addSkill(result);
                       setShowTech(false);

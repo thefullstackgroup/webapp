@@ -155,7 +155,7 @@ const StepThree = ({ user }) => {
     <div className="mx-auto mb-14 max-w-screen-xl">
       <div className="flex justify-center sm:w-full">
         <div className="w-full px-4 sm:px-0">
-          <h2 className="text-center text-lg text-slate-400">
+          <h2 className="text-center text-lg text-base-400">
             Select at least 3 below.
           </h2>
           {categories?.map((category, index) => (

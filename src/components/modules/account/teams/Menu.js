@@ -60,7 +60,7 @@ const Menu = ({ user, team }) => {
                     `whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium sm:px-4 sm:py-2 ` +
                     (menuHighlight[3] === 'profile'
                       ? `bg-base-600/70 text-white`
-                      : `bg-base-700/70 text-slate-400 hover:text-white`)
+                      : `bg-base-700/70 text-base-400 hover:text-white`)
                   }
                 >
                   <span>Edit team profile</span>
@@ -73,7 +73,7 @@ const Menu = ({ user, team }) => {
                     `whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium sm:px-4 sm:py-2 ` +
                     (menuHighlight[3] === 'members'
                       ? `bg-base-600/70 text-white`
-                      : `bg-base-700/70 text-slate-400 hover:text-white`)
+                      : `bg-base-700/70 text-base-400 hover:text-white`)
                   }
                 >
                   <span>Team members</span>
@@ -86,7 +86,7 @@ const Menu = ({ user, team }) => {
                     `whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium sm:px-4 sm:py-2 ` +
                     (menuHighlight[3] === 'jobs'
                       ? `bg-base-600/70 text-white`
-                      : `bg-base-700/70 text-slate-400 hover:text-white`)
+                      : `bg-base-700/70 text-base-400 hover:text-white`)
                   }
                 >
                   <span>Post a job</span>

@@ -14,7 +14,7 @@ const ProjectTechStack = ({ postTechStack, setPostTechStack }) => {
       iconName.charAt(0).toUpperCase() + iconName.slice(1).toLowerCase()
     }`;
     const icon = React.createElement(Icons[iconKey] || IoCodeOutline, {
-      className: 'w-5 h-5 text-slate-400',
+      className: 'w-5 h-5 text-base-400',
     });
     return <div>{icon}</div>;
   };
@@ -67,7 +67,7 @@ const ProjectTechStack = ({ postTechStack, setPostTechStack }) => {
   };
 
   return (
-    <div className="relative bg-slate-700 py-1 rounded-md flex flex-col px-2">
+    <div className="relative flex flex-col rounded-md bg-base-700 py-1 px-2">
       <div className="relative">
         <div>
           <input
@@ -78,7 +78,7 @@ const ProjectTechStack = ({ postTechStack, setPostTechStack }) => {
             autoFocus
             placeholder="Example: React"
             onChange={(e) => searchSkills(e.target.value)}
-            className=" placeholder:text-slate-400 text-white bg-transparent focus:ring-0 border-0 focus:border-0 w-full"
+            className=" w-full border-0 bg-transparent text-white placeholder:text-base-400 focus:border-0 focus:ring-0"
             value={skillName}
           />
         </div>
@@ -86,15 +86,15 @@ const ProjectTechStack = ({ postTechStack, setPostTechStack }) => {
       <div>
         <div>
           {skillName.length > 1 && skillList.length > 0 && (
-            <ul className="absolute top-11 left-0 w-full bg-slate-800 rounded-b-md shadow-lg z-10 max-h-72 overflow-scroll overscroll-contain">
+            <ul className="absolute top-11 left-0 z-10 max-h-72 w-full overflow-scroll overscroll-contain rounded-b-md bg-base-800 shadow-lg">
               {skillList.map((result) => (
                 <li
-                  className="my-1 px-4 py-1 items-center"
+                  className="my-1 items-center px-4 py-1"
                   key={result.skillId}
                 >
                   <button
                     type="button"
-                    className="flex items-center space-x-2 focus:outline-none w-full text-left text-slate-200"
+                    className="flex w-full items-center space-x-2 text-left text-base-200 focus:outline-none"
                     onClick={() => {
                       addSkill(result);
                     }}

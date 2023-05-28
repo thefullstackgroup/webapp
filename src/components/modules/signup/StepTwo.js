@@ -41,7 +41,7 @@ const StepTwo = ({ user }) => {
     <div className="mx-auto mb-14 max-w-screen-xl px-4 sm:px-0">
       <div className="flex justify-center sm:w-full">
         <div className="w-full">
-          <h2 className="text-center text-lg text-slate-400">
+          <h2 className="text-center text-lg text-base-400">
             Choose one goal below.
           </h2>
           <fieldset className="mt-6 mb-6">
@@ -59,12 +59,12 @@ const StepTwo = ({ user }) => {
                   htmlFor={`goal-${goal.id}`}
                 >
                   <div className="min-w-0 flex-1 text-sm">
-                    <span className="text-xl font-bold text-slate-100">
+                    <span className="text-xl font-bold text-base-100">
                       {goal.title}
                     </span>
                     <p
                       id={`goal-${goal.id}-description`}
-                      className="text-slate-400"
+                      className="text-base-400"
                     >
                       {goal.description}
                     </p>
@@ -79,7 +79,7 @@ const StepTwo = ({ user }) => {
                         goal.id === selectedGoal ? 'checking' : ''
                       }
                       onChange={(e) => setSelectedGoal(goal.id)}
-                      className="h-5 w-5 border-slate-500 text-green-600 focus:hidden focus:ring-0"
+                      className="h-5 w-5 border-base-500 text-green-600 focus:hidden focus:ring-0"
                     />
                   </div>
                 </label>

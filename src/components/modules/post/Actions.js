@@ -21,7 +21,7 @@ const Actions = (props) => {
 
       {props.setShowCommentsModal ? (
         <button
-          className="group relative flex items-center space-x-1 font-semibold text-slate-200"
+          className="group relative flex items-center space-x-1 font-semibold text-base-200"
           onClick={() => props.setShowCommentsModal(true)}
         >
           <ToolTip message={'Comment'} />
@@ -42,7 +42,7 @@ const Actions = (props) => {
       {props.user?.userId != props.project?.projectCreator?.userId ? (
         <ButtonAward user={props.user} post={props.project} />
       ) : (
-        <div className="hidden cursor-default items-center space-x-1 font-semibold text-slate-200 md:inline-flex">
+        <div className="hidden cursor-default items-center space-x-1 font-semibold text-base-200 md:inline-flex">
           {projectAwards != null && projectAwards > 0 ? (
             <BsGem className="text-primary-500 h-6 w-7" />
           ) : (

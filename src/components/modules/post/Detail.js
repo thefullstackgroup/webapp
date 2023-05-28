@@ -42,11 +42,11 @@ const Detail = ({ postId, user, setShowPost }) => {
 
   return (
     <>
-      <div className="mt-0 flex relative">
-        <div className="relative w-full mx-auto">
-          <div className="overflow-hidden pt-6 lg:rounded-t-lg pb-40">
+      <div className="relative mt-0 flex">
+        <div className="relative mx-auto w-full">
+          <div className="overflow-hidden pt-6 pb-40 lg:rounded-t-lg">
             {!post && (
-              <div className="flex flex-1 justify-center items-center h-screen">
+              <div className="flex h-screen flex-1 items-center justify-center">
                 <Loader />
               </div>
             )}
@@ -66,7 +66,7 @@ const Detail = ({ postId, user, setShowPost }) => {
               <>
                 <div
                   id="comments"
-                  className="align-bottom sm:px-4 md:px-4 mb-10 pb-4 text-left sm:my-4 sm:align-middle sm:max-w-full sm:w-full lg:w-full"
+                  className="mb-10 pb-4 text-left align-bottom sm:my-4 sm:w-full sm:max-w-full sm:px-4 sm:align-middle md:px-4 lg:w-full"
                 >
                   <PostComments
                     post={post}
@@ -81,7 +81,7 @@ const Detail = ({ postId, user, setShowPost }) => {
                     dimensions="h-10 w-10"
                   />
 
-                  <div className="w-auto flex-1 overflow-hidden ml-3">
+                  <div className="ml-3 w-auto flex-1 overflow-hidden">
                     {/* Plain comment textarea for mobile */}
                     <div className="block">
                       <input
@@ -130,19 +130,19 @@ const Detail = ({ postId, user, setShowPost }) => {
       {isDeletePromptOpen && (
         <ModalAlert show={isDeletePromptOpen} setShow={setIsDeletePromptOpen}>
           <div>
-            <div className="sm:flex sm:items-start justify-center">
-              <div className="mt-3 sm:mt-0 text-center">
-                <h3 className="text-xl font-bold text-slate-200">
+            <div className="justify-center sm:flex sm:items-start">
+              <div className="mt-3 text-center sm:mt-0">
+                <h3 className="text-xl font-bold text-base-200">
                   Delete post?
                 </h3>
                 <div className="mt-2">
-                  <p className="text-sm text-slate-300">
+                  <p className="text-sm text-base-300">
                     Are you sure you want to delete this post?
                   </p>
                 </div>
               </div>
             </div>
-            <div className="mt-5 sm:mt-4 flex space-x-2 justify-center">
+            <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
               <button
                 type="button"
                 className="btn-primary bg-red-600/80 hover:bg-red-500"

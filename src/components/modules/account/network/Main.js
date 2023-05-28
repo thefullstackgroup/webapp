@@ -36,10 +36,10 @@ const Main = ({ user }) => {
                 dimensions="h-14 w-14 sm:h-16 sm:w-16"
               />
               <div>
-                <div className="text-2xl font-bold tracking-tight text-slate-200 lg:text-3xl">
+                <div className="text-2xl font-bold tracking-tight text-base-200 lg:text-3xl">
                   My Network
                 </div>
-                <div className="text-sm text-slate-500 sm:text-base">
+                <div className="text-sm text-base-500 sm:text-base">
                   Opportunities come around when you expand your network.
                 </div>
               </div>
@@ -53,7 +53,7 @@ const Main = ({ user }) => {
                       'w-full py-3 px-4 text-center text-sm font-semibold sm:px-8 sm:text-base ' +
                       (tab == option.tab
                         ? 'bg-base-800'
-                        : 'bg-base-900 text-slate-500 hover:text-white')
+                        : 'bg-base-900 text-base-500 hover:text-white')
                     }
                     onClick={() => setTab(option.tab)}
                     key={index}

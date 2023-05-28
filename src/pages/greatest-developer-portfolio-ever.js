@@ -108,7 +108,7 @@ const Card = ({ item }) => {
         </div>
         <div className="w-10/12 space-y-1">
           <div className="text-lg font-bold">{item.title}</div>
-          <div className="text-sm font-normal text-slate-400 line-clamp-3">
+          <div className="text-sm font-normal text-base-400 line-clamp-3">
             {item.description}
           </div>
           <div className="">
@@ -226,7 +226,7 @@ export default function GreatestPortfolio() {
           <div className="mx-4 flex max-w-7xl flex-col md:mx-auto md:flex-row">
             <div className="pt-10 md:pt-28 md:pr-14 lg:w-7/12">
               <div>
-                <h1 className="text-center font-intertight text-3xl font-bold tracking-tight text-slate-100 md:text-left md:text-6xl">
+                <h1 className="text-center font-intertight text-3xl font-bold tracking-tight text-base-100 md:text-left md:text-6xl">
                   Greatest Developer Portfolio ...ever
                 </h1>
               </div>
@@ -266,7 +266,7 @@ export default function GreatestPortfolio() {
                     <IoArrowDown className="h-4" />
                     <span className="text-base font-bold">Filter by</span>
                   </div>
-                  <ul className="my-4 ml-4 space-y-2 font-mono text-slate-400">
+                  <ul className="my-4 ml-4 space-y-2 font-mono text-base-400">
                     {filterTypes.map((item, index) => (
                       <li key={index}>
                         <button
@@ -274,7 +274,7 @@ export default function GreatestPortfolio() {
                           className={
                             filterSelected === item.type
                               ? 'text-primary-500'
-                              : 'hover:text-slate-100'
+                              : 'hover:text-base-100'
                           }
                         >
                           {item.label}
@@ -289,7 +289,7 @@ export default function GreatestPortfolio() {
                     <IoArrowDown className="h-4" />
                     <span className="text-base font-bold">Stack</span>
                   </div>
-                  <ul className="my-4 ml-4 space-y-2 font-mono text-slate-400">
+                  <ul className="my-4 ml-4 space-y-2 font-mono text-base-400">
                     {filterStacks.map((item, index) => (
                       <li key={index}>
                         <button
@@ -297,7 +297,7 @@ export default function GreatestPortfolio() {
                           className={
                             filterSelected === item.stack
                               ? 'text-primary-500'
-                              : 'hover:text-slate-100'
+                              : 'hover:text-base-100'
                           }
                         >
                           {item.label}
@@ -311,7 +311,7 @@ export default function GreatestPortfolio() {
 
             <div className="md:w-9/12">
               <div className="mb-8 flex w-full items-center rounded-md bg-base-700 px-4">
-                <FiSearch className="h-7 w-auto text-slate-600" />
+                <FiSearch className="h-7 w-auto text-base-600" />
                 <input
                   type="text"
                   name="search"
@@ -332,7 +332,7 @@ export default function GreatestPortfolio() {
                 <div className="mt-2 flex items-center space-x-2 text-sm text-gray-400">
                   <span>Filtered by:</span>
                   <button
-                    className="flex w-min items-center space-x-1 rounded-full bg-base-800 py-1 px-2.5 text-sm font-medium text-slate-200"
+                    className="flex w-min items-center space-x-1 rounded-full bg-base-800 py-1 px-2.5 text-sm font-medium text-base-200"
                     onClick={() => {
                       setFilteredData([]);
                       setFilterSelected('');
@@ -347,7 +347,7 @@ export default function GreatestPortfolio() {
                 <div className="mt-2 flex items-center space-x-2 text-sm text-gray-400">
                   <span>Search results for the term:</span>
                   <button
-                    className="flex w-auto items-center space-x-1 rounded-full bg-base-800 py-1 px-2.5 text-sm font-medium text-slate-200"
+                    className="flex w-auto items-center space-x-1 rounded-full bg-base-800 py-1 px-2.5 text-sm font-medium text-base-200"
                     onClick={() => {
                       setFilteredData([]);
                       setSearchTerm('');

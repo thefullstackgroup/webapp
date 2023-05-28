@@ -47,7 +47,7 @@ const ProjectSettings = ({
     <ModalDialog show={showSettings} setShow={setShowSettings}>
       <div className="mx-auto w-full space-y-6 py-6 px-2">
         <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-bold text-slate-100">
+          <h3 className="text-2xl font-bold text-base-100">
             <span>Settings</span>
           </h3>
           <div className="flex items-center space-x-2">
@@ -75,7 +75,7 @@ const ProjectSettings = ({
                   setShowSettings(!showSettings);
                 }}
               >
-                <IoClose className="h-6 w-6 text-slate-400 md:h-8 md:w-8" />
+                <IoClose className="h-6 w-6 text-base-400 md:h-8 md:w-8" />
               </button>
             )}
           </div>
@@ -91,7 +91,7 @@ const ProjectSettings = ({
               }
             >
               <div className="pointer-events-none absolute inset-y-2 left-4 flex pt-1">
-                <IoLogoGithub className="h-6 w-6 text-slate-200" />
+                <IoLogoGithub className="h-6 w-6 text-base-200" />
               </div>
               <input
                 type="text"
@@ -116,7 +116,7 @@ const ProjectSettings = ({
               }
             >
               <div className="pointer-events-none absolute inset-y-2 left-4 flex pt-1">
-                <IoLinkOutline className="h-6 w-6 text-slate-200" />
+                <IoLinkOutline className="h-6 w-6 text-base-200" />
               </div>
               <input
                 type="text"
@@ -143,7 +143,7 @@ const ProjectSettings = ({
         <div className="space-y-1">
           <div className="mt-6 mb-2 flex flex-1 items-center justify-between pt-2 sm:mb-0">
             <span className="">
-              <span className="font-medium text-slate-100">
+              <span className="font-medium text-base-100">
                 Is your project open to collaboration?
               </span>
             </span>

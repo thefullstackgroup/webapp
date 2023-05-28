@@ -19,10 +19,10 @@ const Overview = ({ profile }) => {
           <h1 className="text-center text-2xl font-bold tracking-tight text-white md:text-3xl">
             {profile.name}
           </h1>
-          <p className="text-center text-base font-medium text-slate-400">
+          <p className="text-center text-base font-medium text-base-400">
             {profile.currentTitle}
           </p>
-          <p className="mt-2 text-center text-base text-slate-200">
+          <p className="mt-2 text-center text-base text-base-200">
             {profile.bio.aboutUser}
           </p>
           <div className="mt-4 text-center">

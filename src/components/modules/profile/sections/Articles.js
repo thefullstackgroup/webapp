@@ -18,7 +18,7 @@ const Card = ({ post }) => {
   return (
     <div className="flex items-start">
       <div className="relative hidden h-40 w-2/12 md:block">
-        <div className="w-20 bg-base-900/30 p-2 text-center text-sm text-slate-300">
+        <div className="w-20 bg-base-900/30 p-2 text-center text-sm text-base-300">
           {Moment(post.publishedAt).format('MMM Do')}
         </div>
         <div className="h-full w-10 border-r border-dashed border-base-600">
@@ -32,7 +32,7 @@ const Card = ({ post }) => {
         <div className="w-full space-y-2">
           <div>
             <h4 className="text-xl font-semibold">{post.contentTitle}</h4>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-base-500">
               Published on
               {post.contentSource === 'DEV_TO' && 'DEV '}{' '}
               {post.contentSource === 'HASH_NODE' && 'Hashnode '}{' '}
@@ -40,7 +40,7 @@ const Card = ({ post }) => {
               {Moment(post.publishedAt).format('MMM Do')}
             </p>
           </div>
-          <p className="text-base text-slate-400">{post.contentDescription}</p>
+          <p className="text-base text-base-400">{post.contentDescription}</p>
         </div>
         {isValidImage(post.contentImageURI) && (
           <div className="mb-4 w-full md:mb-0 md:w-56">

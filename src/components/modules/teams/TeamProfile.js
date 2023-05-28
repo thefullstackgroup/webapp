@@ -64,7 +64,7 @@ const TeamProfile = ({ user, slug }) => {
               <div className="mt-0 flex min-h-screen w-full items-start justify-between gap-12 px-4 pb-20 md:mt-0 md:px-0">
                 <div className="relative w-full space-y-6 sm:space-y-8 lg:w-8/12">
                   <Link href="/teams">
-                    <button className="mt-2 text-sm text-slate-400 hover:text-white sm:mt-6 sm:text-base">
+                    <button className="mt-2 text-sm text-base-400 hover:text-white sm:mt-6 sm:text-base">
                       &larr; Back
                     </button>
                   </Link>
@@ -87,13 +87,13 @@ const TeamProfile = ({ user, slug }) => {
                           <h2 className="text-2xl font-semibold md:text-3xl">
                             {team.name}
                           </h2>
-                          <p className="text-sm text-slate-400 md:text-base">
+                          <p className="text-sm text-base-400 md:text-base">
                             {team.description}
                           </p>
                           <a
                             href={team.url}
                             target="_blank"
-                            className="flex items-center space-x-2 text-sm text-slate-500 hover:text-white md:text-base"
+                            className="flex items-center space-x-2 text-sm text-base-500 hover:text-white md:text-base"
                             rel="noreferrer"
                           >
                             <span>{team.url.replace(/(^\w+:|^)\/\//, '')}</span>
@@ -138,7 +138,7 @@ const TeamProfile = ({ user, slug }) => {
                       <h3 className="font-semibold text-white">
                         What is your team mission?
                       </h3>
-                      <p className="text-slate-300">{team.mission}</p>
+                      <p className="text-base-300">{team.mission}</p>
                     </div>
 
                     {team.businessDetails?.teamStructure !== '' && (
@@ -146,7 +146,7 @@ const TeamProfile = ({ user, slug }) => {
                         <h3 className="font-semibold text-white">
                           How are the teams structured?
                         </h3>
-                        <p className="text-slate-300">
+                        <p className="text-base-300">
                           {team.businessDetails?.teamStructure}
                         </p>
                       </div>
@@ -224,7 +224,7 @@ const TeamProfile = ({ user, slug }) => {
                         <h3 className="font-semibold text-white">
                           How does the development process work?
                         </h3>
-                        <p className="text-slate-300">
+                        <p className="text-base-300">
                           {team.businessDetails?.devProcess}
                         </p>
                       </div>
@@ -235,7 +235,7 @@ const TeamProfile = ({ user, slug }) => {
                         <h3 className="font-semibold text-white">
                           What tools do developers use?
                         </h3>
-                        <p className="text-slate-300">
+                        <p className="text-base-300">
                           {team.businessDetails?.devTools}
                         </p>
                       </div>
@@ -246,7 +246,7 @@ const TeamProfile = ({ user, slug }) => {
                         <h3 className="font-semibold text-white">
                           What does your hiring process look like?
                         </h3>
-                        <p className="text-slate-300">
+                        <p className="text-base-300">
                           {team.businessDetails?.hiringProcess}
                         </p>
                       </div>
@@ -267,7 +267,7 @@ const TeamProfile = ({ user, slug }) => {
                         layout="fill"
                       />
                     </div>
-                    <div className="-mt-14 grid w-full grid-cols-5 gap-3 rounded-md border border-base-600/50 bg-base-800 pt-20 pb-10 pl-8 pr-10 text-sm text-slate-400">
+                    <div className="-mt-14 grid w-full grid-cols-5 gap-3 rounded-md border border-base-600/50 bg-base-800 pt-20 pb-10 pl-8 pr-10 text-sm text-base-400">
                       <div className="col-span-2 font-medium text-white">
                         Founded:
                       </div>

@@ -57,7 +57,7 @@ const Main = ({ user }) => {
                     <button className="mb-4 flex w-full items-center justify-between rounded-lg bg-base-700 px-4 py-4 hover:bg-base-600/50 sm:px-6 md:mx-0">
                       <div className="flex flex-col text-left">
                         <span className="font-bold">{option.label}</span>
-                        <span className="text-sm text-slate-400 sm:text-base">
+                        <span className="text-sm text-base-400 sm:text-base">
                           {option.desc}
                         </span>
                       </div>

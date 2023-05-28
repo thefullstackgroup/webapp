@@ -47,7 +47,7 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
   if (loading)
     return (
       <div
-        className={`flex h-36 w-full items-center justify-center overflow-hidden rounded-lg bg-base-900 text-center text-xs text-slate-400`}
+        className={`flex h-36 w-full items-center justify-center overflow-hidden rounded-lg bg-base-900 text-center text-xs text-base-400`}
       >
         <Loader />
       </div>
@@ -90,23 +90,23 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
                     />
                   ) : (
                     <div className="flex h-20 items-center justify-center bg-base-700/50 text-center sm:h-44">
-                      <p className="text-sm text-slate-500">No preview image</p>
+                      <p className="text-sm text-base-500">No preview image</p>
                     </div>
                   )}
                 </div>
               )}
               {!data?.ogImage && (
                 <div className="flex h-20 w-full items-center justify-center bg-base-700/50 text-center sm:h-44">
-                  <p className="text-sm text-slate-500">No preview image</p>
+                  <p className="text-sm text-base-500">No preview image</p>
                 </div>
               )}
               {!hideDescription && (
                 <div className="w-full space-y-2 px-4 py-4 text-sm font-normal text-white">
                   <div className="font-bold line-clamp-2">{data?.ogTitle}</div>
-                  <div className="text-slate-300 line-clamp-3">
+                  <div className="text-base-300 line-clamp-3">
                     {data?.ogDescription}
                   </div>
-                  <div className="hidden items-center space-x-1 truncate text-slate-400 md:flex">
+                  <div className="hidden items-center space-x-1 truncate text-base-400 md:flex">
                     <FiExternalLink className="h-4 w-4" />
                     <span>{data?.requestUrl.substr(0, 40)}...</span>
                   </div>

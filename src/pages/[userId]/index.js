@@ -1,25 +1,25 @@
-import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
+import { withAuthUserTokenSSR } from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
 import Meta from 'components/common/partials/Metadata';
-import Layout from 'components/common/layout/LayoutLoggedIn';
+import Layout from 'components/common/layout/Layout';
 import Profile from 'components/modules/profile/Main';
 
-const UserProfile = ({ userTFS, displayName }) => {
+const UserProfile = ({ user, displayName }) => {
   return (
     <>
       <Meta
-        title={`${process.env.brandName} | ${displayName}`}
+        title={`${user.name} on ${process.env.brandName}`}
         description={`${displayName}'s developer story on The Full Stack`}
         keywords=""
       />
-      <Layout user={userTFS}>
-        <Profile displayName={displayName} myProfile={userTFS} />
+      <Layout user={user}>
+        <Profile displayName={displayName} myProfile={user} />
       </Layout>
     </>
   );
 };
 
-export default withAuthUser()(UserProfile);
+export default UserProfile;
 
 export const getServerSideProps = withAuthUserTokenSSR()(
   async ({ AuthUser, req, res, params }) => {
@@ -35,14 +35,11 @@ export const getServerSideProps = withAuthUserTokenSSR()(
       };
     }
 
-    if (userProfile) {
-      return {
-        props: {
-          userTFS: userProfile,
-          displayName: params.userId,
-        },
-      };
-    }
-    return { props: {} };
+    return {
+      props: {
+        user: userProfile || null,
+        displayName: params.userId,
+      },
+    };
   }
 );

@@ -64,7 +64,7 @@ const VideoIntro = ({ user }) => {
                 Add a video intro <br />
                 to your profile
               </h4>
-              <p className="text-lg font-light text-slate-300">
+              <p className="text-lg font-light text-base-300">
                 People make real connections with real people, not just code.
                 Introduce yourself to others in a whole new way, right from your
                 profile. With a video intro on your profile, you&apos;re 2x more
@@ -106,19 +106,19 @@ const VideoIntro = ({ user }) => {
                 3 simple steps...
               </h4>
               <p className="text-lg font-medium">1. Record your video intro</p>
-              <span className="font-light text-slate-400">
+              <span className="font-light text-base-400">
                 You can record your video intro on your computer, phone or
                 camera - the choice is yours!
               </span>
               <p className="text-lg font-medium">2. Upload your video here</p>
-              <span className="font-light text-slate-400">
+              <span className="font-light text-base-400">
                 Most video formats supported, including mp4, mov, mpeg, etc.
                 Should be no longer than 2 minutes.
               </span>
               <p className="text-lg font-medium">
                 3. Add the video to your profile
               </p>
-              <span className="font-light text-slate-400">
+              <span className="font-light text-base-400">
                 Once happy with the preview, click the Add to my profile button.
               </span>
             </div>

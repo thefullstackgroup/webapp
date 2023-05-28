@@ -35,14 +35,14 @@ const HeroSection = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
   }, [data]);
 
   return (
-    <div className="relative h-[80vh] overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900/40 via-black to-base-900 sm:h-[105vh]">
+    <div className="relative h-[80vh] overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-base-900/40 via-black to-base-900 sm:h-[105vh]">
       <div className="relative mx-auto max-w-7xl px-4 pt-20 sm:pt-40 lg:h-4/5 xl:px-8">
         <div className="relative z-20 mx-auto max-w-full pt-20 sm:pt-28 lg:max-w-7xl">
-          <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-slate-300 via-slate-100 to-slate-400 bg-clip-text text-center font-intertight text-6xl font-bold tracking-tight text-transparent md:text-9xl">
+          <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-base-300 via-base-100 to-base-400 bg-clip-text text-center font-intertight text-6xl font-bold tracking-tight text-transparent md:text-9xl">
             Make code, not war
           </h1>
 
-          <p className="mt-4 block px-4 text-center font-intertight text-xl text-slate-300 sm:text-2xl lg:text-3xl">
+          <p className="mt-4 block px-4 text-center font-intertight text-xl text-base-300 sm:text-2xl lg:text-3xl">
             Discover and connect with developers sharing their work.
           </p>
 

@@ -109,7 +109,7 @@ const AwardButton = ({ user, post }) => {
             title="Give reward"
           >
             <div className="flex flex-col space-y-4 px-2 py-4 text-center">
-              <span className="mb-3 text-base font-normal text-slate-200 line-clamp-2">
+              <span className="mb-3 text-base font-normal text-base-200 line-clamp-2">
                 Select reward amount to send to{' '}
                 <span className="font-bold">
                   {post.projectCreator?.displayName}
@@ -120,7 +120,7 @@ const AwardButton = ({ user, post }) => {
                 {rewards.map((reward, index) => (
                   <button
                     key={index}
-                    className="group flex items-center justify-between space-x-4 rounded-xl bg-base-700 py-3 px-4 text-base text-slate-200 hover:bg-base-600/80 hover:text-yellow-500"
+                    className="group flex items-center justify-between space-x-4 rounded-xl bg-base-700 py-3 px-4 text-base text-base-200 hover:bg-base-600/80 hover:text-yellow-500"
                     onClick={() => {
                       setTransactMessage(
                         `@${
@@ -138,7 +138,7 @@ const AwardButton = ({ user, post }) => {
                         (elementInArray, index) => (
                           <BsGem
                             key={index}
-                            className="h-6 w-6 text-slate-200 group-hover:text-yellow-400"
+                            className="h-6 w-6 text-base-200 group-hover:text-yellow-400"
                           />
                         )
                       )}
@@ -168,7 +168,7 @@ const AwardButton = ({ user, post }) => {
                       )
                     )}
                   </div>
-                  <span className="text-xl font-medium text-slate-100">
+                  <span className="text-xl font-medium text-base-100">
                     Send ${transactAmount} reward to{' '}
                     {post.projectCreator.displayName}?
                   </span>
@@ -183,7 +183,7 @@ const AwardButton = ({ user, post }) => {
                         </Link>
                       </p>
                     )}
-                    <p className="mt-2 text-sm text-slate-500">
+                    <p className="mt-2 text-sm text-base-500">
                       Your balance is ${walletBalance?.toFixed(2)}
                     </p>
                   </span>

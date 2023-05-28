@@ -30,7 +30,7 @@ const Projects = ({ profile, myProfile }) => {
       )}
       {projects?.length > 0 && (
         <div className="mt-8 flex w-full items-center">
-          <div className="grid w-full grid-cols-1 gap-4 px-4 md:grid-cols-2 md:gap-8 md:px-0 lg:grid-cols-3">
+          <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {projects?.map((project) => (
               <div className="col-span-1 h-80" key={project._id}>
                 <ProjectCard project={project} user={myProfile} hideAuthor />
@@ -39,8 +39,10 @@ const Projects = ({ profile, myProfile }) => {
             {[...Array(totalProjects)].map((elementInArray, index) => (
               <div
                 key={index}
-                className="col-span-1 hidden h-52 rounded-md bg-base-700 md:block"
-              ></div>
+                className="col-span-1 hidden h-40 space-y-2 md:block"
+              >
+                <div className="h-full rounded-md bg-base-800"></div>
+              </div>
             ))}
           </div>
         </div>

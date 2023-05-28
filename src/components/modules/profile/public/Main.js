@@ -20,7 +20,7 @@ const Main = (props) => {
 
       {props?.profile?.userSkills.skills.length > 0 && (
         <div className="mt-10 px-4 md:px-10">
-          <h4 className="text-sm font-medium uppercase tracking-tight text-slate-300">
+          <h4 className="text-sm font-medium uppercase tracking-tight text-base-300">
             My tech stack
           </h4>
           <ul className="mt-4 flex w-full flex-wrap">
@@ -38,7 +38,7 @@ const Main = (props) => {
 
       {props.projects?.length > 0 && (
         <div className="mt-10 px-4 md:px-10">
-          <h4 className="text-sm font-medium uppercase tracking-tight text-slate-300">
+          <h4 className="text-sm font-medium uppercase tracking-tight text-base-300">
             What I have built
           </h4>
           <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
