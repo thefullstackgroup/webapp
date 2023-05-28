@@ -34,7 +34,7 @@ const Testimonials = dynamic(() =>
   import('components/modules/static/shared/TestimonialsSection')
 );
 
-const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
+const ForDevelopers = () => {
   const handleLearnMore = () => {
     const element = document.getElementById('learnmore');
     if (element) {
@@ -642,4 +642,4 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
   );
 };
 
-export default Main;
+export default ForDevelopers;

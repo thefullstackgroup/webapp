@@ -7,18 +7,10 @@ import {
   ImageSample,
 } from 'components/modules/static/shared/constants';
 import { BsCheckSquare, BsGraphUp } from 'react-icons/bs';
-import { FaAws } from 'react-icons/fa';
-import { FiStar, FiTarget } from 'react-icons/fi';
+import { FaAws, FaJava } from 'react-icons/fa';
 import { GiTeamUpgrade } from 'react-icons/gi';
-import { SiJava, SiReact, SiVisualstudiocode } from 'react-icons/si';
-import {
-  IoBriefcaseOutline,
-  IoDocumentTextOutline,
-  IoPersonAddOutline,
-  IoShareSocialOutline,
-  IoTimeOutline,
-} from 'react-icons/io5';
 import dynamic from 'next/dynamic';
+import Icon from 'components/common/elements/Icon';
 
 const VideoPlayerProfile = dynamic(() =>
   import('components/common/elements/mux/ProfileVideoPlayer')
@@ -28,7 +20,7 @@ const Testimonials = dynamic(() =>
   import('components/modules/static/shared/TestimonialsSection')
 );
 
-const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
+const ForTeams = () => {
   const handleLearnMore = () => {
     const element = document.getElementById('learnmore');
     if (element) {
@@ -57,17 +49,13 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
           </div>
           <div className="mx-auto max-w-4xl">
             <div className="mt-20 flex items-center justify-center space-x-6">
+              <Link href="/signup">
+                <button className="btn btn-primary rounded-lg py-3 px-6">
+                  Create a team profile
+                </button>
+              </Link>
               <button
-                className="btn-primary rounded-lg py-3 px-6 text-xl"
-                onClick={() => {
-                  setShowSignupModal(true);
-                  sendSlackSignUpMessage('GET STARTED');
-                }}
-              >
-                Create a team profile
-              </button>
-              <button
-                className="btn-secondary hidden rounded-lg bg-base-900/30 bg-opacity-50 py-3 px-6 text-xl md:block"
+                className="btn btn-secondary hidden rounded-lg bg-base-900/30 bg-opacity-50 py-3 px-6 md:block"
                 onClick={() => handleLearnMore()}
               >
                 Learn more
@@ -101,7 +89,7 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
           <div className="space-y-4 rounded-xl p-6 text-left md:bg-base-900/50">
             <div className="flex items-center space-x-4 text-slate-400">
               <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                <FiStar className="h-8 w-8 text-slate-200" />
+                <Icon name={'FiStar'} className="h-8 w-8 text-slate-200" />
               </div>
               <h4 className="text-base font-semibold uppercase">Attract</h4>
             </div>
@@ -156,7 +144,10 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-8">
                   <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <FiTarget className="h-11 w-11 text-slate-200" />
+                    <Icon
+                      name={'FiTarget'}
+                      className="h-11 w-11 text-slate-200"
+                    />
                   </div>
                   <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <GiTeamUpgrade className="h-11 w-11 text-slate-200" />
@@ -250,13 +241,21 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-8">
                   <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <SiVisualstudiocode className="h-11 w-11 text-slate-200" />
+                    <Icon
+                      name={'SiVisualstudiocode'}
+                      pack={'Si'}
+                      className="h-11 w-11 text-slate-200"
+                    />
                   </div>
                   <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <SiReact className="h-11 w-11 text-slate-200" />
+                    <Icon
+                      name={'SiReact'}
+                      pack={'Si'}
+                      className="h-11 w-11 text-slate-200"
+                    />
                   </div>
                   <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <SiJava className="h-11 w-11 text-slate-200" />
+                    <FaJava className="h-11 w-11 text-slate-200" />
                   </div>
                   <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
                     <FaAws className="h-11 w-11 text-slate-200" />
@@ -305,10 +304,18 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
 
                 <div className="flex items-center space-x-2 md:space-x-8">
                   <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <IoTimeOutline className="h-11 w-11 text-slate-200" />
+                    <Icon
+                      name={'IoTimeOutline'}
+                      pack={'Io'}
+                      className="h-11 w-11 text-slate-200"
+                    />
                   </div>
                   <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <IoShareSocialOutline className="h-11 w-11 text-slate-200" />
+                    <Icon
+                      name={'IoShareSocialOutline'}
+                      pack={'Io'}
+                      className="h-11 w-11 text-slate-200"
+                    />
                   </div>
                 </div>
               </div>
@@ -344,13 +351,25 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-8">
                   <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <IoBriefcaseOutline className="h-11 w-11 text-slate-200" />
+                    <Icon
+                      name={'IoBriefcaseOutline'}
+                      pack={'Io'}
+                      className="h-11 w-11 text-slate-200"
+                    />
                   </div>
                   <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <IoPersonAddOutline className="h-11 w-11 text-slate-200" />
+                    <Icon
+                      name={'IoPersonAddOutline'}
+                      pack={'Io'}
+                      className="h-11 w-11 text-slate-200"
+                    />
                   </div>
                   <div className="flex w-min space-x-2 rounded-xl bg-slate-500/20 px-4 py-3 text-base">
-                    <IoDocumentTextOutline className="h-11 w-11 text-slate-200" />
+                    <Icon
+                      name={'IoDocumentTextOutline'}
+                      pack={'Io'}
+                      className="h-11 w-11 text-slate-200"
+                    />
                   </div>
                 </div>
               </div>
@@ -410,23 +429,19 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
       <div className="relative w-full">
         <Testimonials />
       </div>
-      <div className="relative mx-auto max-w-3xl space-y-6 px-4 pt-28 pb-48 text-center font-intertight">
-        <h4 className="text-4xl font-medium">
+      <div className="relative mx-auto max-w-3xl space-y-6 px-4 pt-28 pb-48 text-center">
+        <h4 className="font-intertight text-4xl font-medium">
           Right now, there are great developers wondering if a{' '}
           <span className="text-orange-400">team like yours</span> even exists.
         </h4>
 
         <div className="mx-auto max-w-4xl">
           <div className="mt-10 flex items-center justify-center space-x-6">
-            <button
-              className="btn-primary rounded-lg py-3 px-6 text-xl"
-              onClick={() => {
-                setShowSignupModal(true);
-                sendSlackSignUpMessage('GET STARTED');
-              }}
-            >
-              Create a Team profile
-            </button>
+            <Link href="/signup">
+              <button className="btn btn-primary rounded-lg py-3 px-6">
+                Create a Team profile
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -434,4 +449,4 @@ const Page = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
   );
 };
 
-export default Page;
+export default ForTeams;
