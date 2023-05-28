@@ -3,16 +3,16 @@ import Image from 'next/future/image';
 const PrivacyPolicy = () => {
   return (
     <div className="bg-black">
-      <div className="fixed top-0 left-0 w-full mx-auto min-h-screen mt-12 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-tfsdark-300/40 via-black to-tfsdark-900 flex justify-between"></div>
-      <div className="relative z-10 max-w-4xl mx-auto mb-20">
-        <div className="pt-14 md:pt-10 text-center space-y-6 px-4 lg:px-0 mb-10 sm:mb-28">
-          <h1 className="text-3xl md:text-6xl font-bold tracking-tight text-slate-100 font-intertight">
+      <div className="fixed top-0 left-0 mx-auto mt-12 flex min-h-screen w-full justify-between bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-base-300/40 via-black to-base-900"></div>
+      <div className="relative z-10 mx-auto mb-20 max-w-4xl">
+        <div className="mb-10 space-y-6 px-4 pt-14 text-center sm:mb-28 md:pt-10 lg:px-0">
+          <h1 className="font-intertight text-3xl font-bold tracking-tight text-slate-100 md:text-6xl">
             Privacy Policy
           </h1>
           <p>Last updated: February 13th 2023</p>
         </div>
 
-        <div className="space-y-4 px-4 prose prose-dark max-w-full">
+        <div className="prose prose-dark max-w-full space-y-4 px-4">
           <div className="pb-20">
             <p className="text-lg">
               <blockquote>
@@ -82,10 +82,10 @@ const PrivacyPolicy = () => {
               Cheers, <br />
               Noel
             </p>
-            <div className="w-20 h-20 md:w-32 md:h-32">
+            <div className="h-20 w-20 md:h-32 md:w-32">
               <Image
                 src="/assets/landing/about/noel.webp"
-                className="h-full w-full object-cover grayscale rounded-lg overflow-hidden"
+                className="h-full w-full overflow-hidden rounded-lg object-cover grayscale"
                 alt="Noel"
                 width={800}
                 height={800}

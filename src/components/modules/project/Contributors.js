@@ -13,7 +13,7 @@ const Contributors = ({ project }) => {
     <>
       {contributors?.length > 1 && (
         <div className="mt-2 mb-4 space-y-2">
-          <span className="text-tfsdark-200 font-medium text-sm">
+          <span className="text-sm font-medium text-base-200">
             Contributors
           </span>
 

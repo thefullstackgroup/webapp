@@ -141,18 +141,18 @@ const ReplyToComment = ({
       disabled
     >
       <div className="py-4">
-        <div className="hidden sm:flex items-start px-2">
+        <div className="hidden items-start px-2 sm:flex">
           <Avatar
             image={commentReplyTo?.authorProfileImageURL}
             name={commentReplyTo?.authorName}
             dimensions="h-10 w-10"
           />
-          <div className="py-2 p-4 mr-0 ml-2 overflow-scroll sm:max-h-56 overscroll-contain bg-tfsdark-600/80 rounded w-auto max-w-full no-scrollbar">
+          <div className="no-scrollbar mr-0 ml-2 w-auto max-w-full overflow-scroll overscroll-contain rounded bg-base-600/80 p-4 py-2 sm:max-h-56">
             <p className="font-semibold text-white">
               {commentReplyTo?.authorName}
             </p>
 
-            <div className="prose prose-dark prose-comments overflow-scroll no-scrollbar overscroll-contain rounded w-full max-w-full">
+            <div className="prose-comments no-scrollbar prose prose-dark w-full max-w-full overflow-scroll overscroll-contain rounded">
               <Markdown
                 options={{
                   overrides: {
@@ -174,7 +174,7 @@ const ReplyToComment = ({
 
         <div className="relative mt-4 px-2">
           <div className="relative flex items-start sm:space-x-3">
-            <div className="sm:ml-12 flex sm:space-x-4 w-full">
+            <div className="flex w-full sm:ml-12 sm:space-x-4">
               <Avatar
                 image={user?.profilePicUrl}
                 name={user?.displayName}
@@ -183,7 +183,7 @@ const ReplyToComment = ({
 
               <div className="w-auto flex-1">
                 <div className="block">
-                  <div className="mb-2 w-full overflow-scroll bg-tfsdark-700 rounded dark">
+                  <div className="dark mb-2 w-full overflow-scroll rounded bg-base-700">
                     <ReactMde
                       value={commentReply}
                       onChange={setCommentReply}
@@ -201,9 +201,9 @@ const ReplyToComment = ({
                     />
                   </div>
 
-                  <div className="flex item-center justify-between">
+                  <div className="item-center flex justify-between">
                     <div className="flex items-center space-x-4">
-                      <button className="relative group text-xs text-slate-400">
+                      <button className="group relative text-xs text-slate-400">
                         <ToolTip message={'Markdown supported'} />
                         <IoLogoMarkdown className="h-6 w-6 text-slate-400" />
                       </button>

@@ -26,7 +26,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
 
   if (!project)
     return (
-      <div className="mx-auto flex h-screen max-w-screen-xl flex-1 items-center justify-center bg-tfsdark-800">
+      <div className="mx-auto flex h-screen max-w-screen-xl flex-1 items-center justify-center bg-base-800">
         <Loader />
       </div>
     );
@@ -46,7 +46,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
           )}
 
         {project?.projectCreator?.userId === user?.userId && (
-          <div className="sticky top-0 left-0 z-50 w-full bg-tfsdark-700 px-4 py-4 md:px-8">
+          <div className="sticky top-0 left-0 z-50 w-full bg-base-700 px-4 py-4 md:px-8">
             <div className="sticky top-0 mx-auto flex max-w-screen-2xl items-center justify-end space-x-8">
               <Link href={`/post?ref=${project?._id}`} passHref>
                 <button className="btn-secondary">
@@ -69,7 +69,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
             />
           </div>
         ) : youTubeEmbedID.id ? (
-          <div className="relative h-[32vh] w-auto cursor-pointer overflow-hidden rounded-lg bg-tfsdark-800 md:h-[60vh]">
+          <div className="relative h-[32vh] w-auto cursor-pointer overflow-hidden rounded-lg bg-base-800 md:h-[60vh]">
             <div className="h-full w-full overflow-hidden">
               <LiteYouTubeEmbed
                 id={youTubeEmbedID.id}
@@ -103,7 +103,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
         )}
 
         <div className="md:pb-8">
-          <div className="z-10 flex flex-col items-start justify-between space-y-2 bg-tfsdark-900 pt-2 pb-4 sm:items-start md:flex-row md:space-y-0 md:space-x-6 lg:sticky lg:top-0">
+          <div className="z-10 flex flex-col items-start justify-between space-y-2 bg-base-900 pt-2 pb-4 sm:items-start md:flex-row md:space-y-0 md:space-x-6 lg:sticky lg:top-0">
             <div className="flex w-full flex-row-reverse items-center sm:w-auto sm:flex-row sm:space-x-2">
               {project?.sourceControlLink !== '' && (
                 <a
@@ -170,7 +170,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
             project?.projectCreator?.userId !== user?.userId && (
               <>
                 {isConnected ? (
-                  <div className="flex flex-col space-y-2 rounded-md bg-tfsdark-700 p-4 duration-200 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
+                  <div className="flex flex-col space-y-2 rounded-md bg-base-700 p-4 duration-200 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
                     <div>
                       <span className="text-slate-200">
                         This project is{' '}
@@ -185,7 +185,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
                   </div>
                 ) : (
                   <div
-                    className="flex flex-col space-y-2 rounded-md bg-tfsdark-700 p-4 duration-200 sm:flex-row sm:items-center sm:justify-between sm:space-y-0"
+                    className="flex flex-col space-y-2 rounded-md bg-base-700 p-4 duration-200 sm:flex-row sm:items-center sm:justify-between sm:space-y-0"
                     // onClick={() => {
                     //   // setDisplayConnection(true);
                     //   sendSlackMessage(
@@ -243,7 +243,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
       {showImageModal && (
         <div className="fixed top-0 left-0 z-50 mx-auto flex h-screen w-full items-center">
           <div
-            className="fixed inset-0 bg-tfsdark-900 bg-opacity-90"
+            className="fixed inset-0 bg-base-900 bg-opacity-90"
             onClick={() => setShowImageModal(!showImageModal)}
           ></div>
           <div className="absolute top-4 right-2 z-50 md:right-4">

@@ -37,32 +37,32 @@ const settingsOptions = [
 const Main = ({ user }) => {
   return (
     <>
-      <div className="mt-0 lg:mt-12 w-full flex justify-center">
-        <div className="w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-          <div className="relative max-w-4xl mx-auto">
-            <div className="mx-4 md:mx-0 space-y-6">
-              <div className="hidden sm:flex items-center space-x-2 px-4 md:px-0 mb-4">
+      <div className="mt-0 flex w-full justify-center lg:mt-12">
+        <div className="w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+          <div className="relative mx-auto max-w-4xl">
+            <div className="mx-4 space-y-6 md:mx-0">
+              <div className="mb-4 hidden items-center space-x-2 px-4 sm:flex md:px-0">
                 <IoPerson className="h-5 w-5" />
-                <h2 className="font-bold text-sm">{user.name}</h2>
+                <h2 className="text-sm font-bold">{user.name}</h2>
               </div>
 
               <div className="relative w-min whitespace-nowrap">
-                <h2 className="text-3xl sm:text-3xl font-bold tracking-tight">
+                <h2 className="text-3xl font-bold tracking-tight sm:text-3xl">
                   Account settings
                 </h2>
               </div>
               <div className="pb-20">
                 {settingsOptions.map((option, index) => (
                   <Link href={option.href} key={index}>
-                    <button className="w-full flex items-center justify-between rounded-lg bg-tfsdark-700 mb-4 px-4 sm:px-6 py-4 md:mx-0 hover:bg-tfsdark-600/50">
+                    <button className="mb-4 flex w-full items-center justify-between rounded-lg bg-base-700 px-4 py-4 hover:bg-base-600/50 sm:px-6 md:mx-0">
                       <div className="flex flex-col text-left">
                         <span className="font-bold">{option.label}</span>
-                        <span className="text-sm sm:text-base text-slate-400">
+                        <span className="text-sm text-slate-400 sm:text-base">
                           {option.desc}
                         </span>
                       </div>
                       <div className="pl-6">
-                        <IoChevronForward className="text-white h-6 w-6" />
+                        <IoChevronForward className="h-6 w-6 text-white" />
                       </div>
                     </button>
                   </Link>

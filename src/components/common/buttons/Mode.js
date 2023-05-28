@@ -10,7 +10,7 @@ const Mode = () => {
       onClick={() =>
         currentTheme === 'dark' ? setTheme('light') : setTheme('dark')
       }
-      className="nav-item nav-item-icon"
+      className="nav-bar nav-bar-icon"
     >
       {theme === 'dark' ? <Icon name="FiSun" /> : <Icon name="FiMoon" />}
     </button>

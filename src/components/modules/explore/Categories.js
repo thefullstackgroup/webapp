@@ -9,10 +9,9 @@ const Categories = ({ category, setCategory }) => {
       {CategoriesFilter.map((item, index) => (
         <button
           className={
-            `cursor-pointer whitespace-nowrap rounded-lg border py-2 px-4 text-xs duration-200 sm:text-sm ` +
-            (category && item.slug === category.slug
-              ? `border-tfsdark-200 text-tfsdark-900 dark:border-tfsdark-100 dark:text-white`
-              : ` border-transparent bg-tfsdark-100/50 text-tfsdark-400 hover:bg-tfsdark-200/30 dark:border-transparent dark:bg-tfsdark-700 dark:text-tfsdark-300 dark:hover:border-tfsdark-400 dark:hover:bg-tfsdark-700`)
+            category && item.slug === category.slug
+              ? `btn-pill-active`
+              : `btn-pill`
           }
           key={index}
           onClick={() => {

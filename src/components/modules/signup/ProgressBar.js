@@ -3,9 +3,9 @@ import Link from 'next/link';
 const Progress = ({ step }) => {
   return (
     <div className="pt-4 sm:pt-4">
-      <div className="mb-8 mx-4 md:mx-0">
+      <div className="mx-4 mb-8 md:mx-0">
         <div>
-          <div className="grid grid-cols-2 text-xs sm:text-sm font-medium text-slate-500 mb-2">
+          <div className="mb-2 grid grid-cols-2 text-xs font-medium text-slate-500 sm:text-sm">
             <div className="">
               {step != 1 && (
                 <Link href={`/account/signup/step${step - 1}`}>
@@ -16,34 +16,34 @@ const Progress = ({ step }) => {
 
             <div className="text-right">{step}/5</div>
           </div>
-          <div className="bg-tfsdark-600 rounded-full overflow-hidden">
+          <div className="overflow-hidden rounded-full bg-base-600">
             {step == 1 && (
               <div
-                className="h-2 bg-primary-500 rounded-full"
+                className="bg-primary-500 h-2 rounded-full"
                 style={{ width: '20%' }}
               />
             )}
             {step == 2 && (
               <div
-                className="h-2 bg-primary-500 rounded-full"
+                className="bg-primary-500 h-2 rounded-full"
                 style={{ width: '40%' }}
               />
             )}
             {step == 3 && (
               <div
-                className="h-2 bg-primary-500 rounded-full"
+                className="bg-primary-500 h-2 rounded-full"
                 style={{ width: '60%' }}
               />
             )}
             {step == 4 && (
               <div
-                className="h-2 bg-primary-500 rounded-full"
+                className="bg-primary-500 h-2 rounded-full"
                 style={{ width: '80%' }}
               />
             )}
             {step == 5 && (
               <div
-                className="h-2 bg-primary-500 rounded-full"
+                className="bg-primary-500 h-2 rounded-full"
                 style={{ width: '100%' }}
               />
             )}
@@ -51,7 +51,7 @@ const Progress = ({ step }) => {
         </div>
       </div>
 
-      <h2 className="tracking-tight mb-0 text-2xl sm:text-3xl font-semibold text-slate-100 text-center">
+      <h2 className="mb-0 text-center text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">
         {step == 1 && 'Basic information'}
         {step == 2 && 'What is your goal?'}
         {step == 3 && 'What are your interests?'}

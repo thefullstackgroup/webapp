@@ -9,7 +9,7 @@ const Members = ({ user, team = null }) => {
 
   if (team?.ownerId !== user.userId) {
     return (
-      <div className="h-screen flex flex-1 justify-center items-center">
+      <div className="flex h-screen flex-1 items-center justify-center">
         You are not the owner of this team.
       </div>
     );
@@ -17,13 +17,13 @@ const Members = ({ user, team = null }) => {
 
   return (
     <>
-      <div className="mt-0 lg:mt-12 w-full flex justify-center">
-        <div className="w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-          <div className="relative max-w-4xl mx-auto">
-            <div className="mx-4 md:mx-0 mb-20">
+      <div className="mt-0 flex w-full justify-center lg:mt-12">
+        <div className="w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+          <div className="relative mx-auto max-w-4xl">
+            <div className="mx-4 mb-20 md:mx-0">
               <Menu team={team} user={user} />
               <div className="space-y-4">
-                <div className="w-full rounded-lg bg-tfsdark-700 px-4 sm:px-6 py-4">
+                <div className="w-full rounded-lg bg-base-700 px-4 py-4 sm:px-6">
                   <InviteMembers
                     user={user}
                     teamId={team?.id}

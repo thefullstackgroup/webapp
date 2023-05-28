@@ -11,7 +11,7 @@ const ProfilePic = ({ profile }) => {
     <Avatar
       image={profile.profilePicUrl}
       name={profile.displayName}
-      dimensions="h-6 w-6 border-2 border-tfsdark-800"
+      dimensions="h-6 w-6 border-2 border-base-800"
     />
   );
 };
@@ -28,7 +28,7 @@ const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
     <>
       <div className="sm:flex sm:justify-between">
         {votes.length > 0 && (
-          <div className="sm:mx-0 flex text-xs sm:text-base items-center text-slate-400 ">
+          <div className="flex items-center text-xs text-slate-400 sm:mx-0 sm:text-base ">
             {showAvatars ? (
               <div
                 className="mr-2 flex -space-x-2"
@@ -48,10 +48,10 @@ const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
                 )}
               </div>
             ) : (
-              <IoHeart className="h-4 w-4 text-tfsdark-500 mr-1" />
+              <IoHeart className="mr-1 h-4 w-4 text-base-500" />
             )}
             <button
-              className="flex flex-nowrap items-start line-clamp-1 text-left text-sm leading-4"
+              className="flex flex-nowrap items-start text-left text-sm leading-4 line-clamp-1"
               onClick={() => setDisplayVoteInsights(!displayVoteInsights)}
             >
               <span className="hover:text-white">
@@ -61,7 +61,7 @@ const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
               {votes.length > 1 && (
                 <>
                   <span className="ml-1">and</span>
-                  <span className="inline-flex ml-1 font-semibold hover:text-white">
+                  <span className="ml-1 inline-flex font-semibold hover:text-white">
                     {votes.length - 1} {votes.length > 2 ? 'others' : 'other'}
                   </span>
                 </>
@@ -78,11 +78,11 @@ const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
           setShow={setDisplayVoteInsights}
           title="Liked by"
         >
-          <div className="py-4 no-scrollbar overflow-y-scroll overflow-visible overscroll-contain h-4/5 pb-20 sm:pb-4 sm:h-96 w-full">
+          <div className="no-scrollbar h-4/5 w-full overflow-visible overflow-y-scroll overscroll-contain py-4 pb-20 sm:h-96 sm:pb-4">
             {votes?.map((profile, index) => (
               <div
                 key={index}
-                className="flex items-center space-x-4 mb-6 px-2"
+                className="mb-6 flex items-center space-x-4 px-2"
               >
                 <Avatar
                   href={`/${profile?.userProfile?.displayName}`}
@@ -92,17 +92,17 @@ const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
                   dimensions="w-11 h-11"
                 />
 
-                <div className="flex w-full justify-between items-center">
-                  <div className="flex flex-col w-36 sm:w-auto">
+                <div className="flex w-full items-center justify-between">
+                  <div className="flex w-36 flex-col sm:w-auto">
                     <Link href={`/${profile?.userProfile?.displayName}`}>
                       <span
-                        className="cursor-pointer text-sm sm:text-base font-semibold text-slate-200"
+                        className="cursor-pointer text-sm font-semibold text-slate-200 sm:text-base"
                         onClick={() => setDisplayVoteInsights(false)}
                       >
                         {profile?.userProfile?.displayName}
                       </span>
                     </Link>
-                    <span className="text-xs text-slate-400 truncate">
+                    <span className="truncate text-xs text-slate-400">
                       {profile?.userProfile?.currentTitle}
                     </span>
                   </div>

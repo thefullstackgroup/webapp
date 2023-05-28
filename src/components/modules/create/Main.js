@@ -46,23 +46,23 @@ const Main = ({ user }) => {
 
   if (loading)
     return (
-      <div className="bg-tfsdark-700 min-h-screen flex justify-center items-center">
+      <div className="flex min-h-screen items-center justify-center bg-base-700">
         <Loader />
       </div>
     );
 
   return (
     <>
-      <div className="bg-black min-h-screen">
+      <div className="min-h-screen bg-black">
         <button
-          className="fixed z-50 top-5 left-4 xl:left-auto md:right-4 text-slate-400"
+          className="fixed top-5 left-4 z-50 text-slate-400 md:right-4 xl:left-auto"
           onClick={() => setIsDiscardPromptOpen(true)}
         >
           <IoClose className="h-7 w-7 md:h-8 md:w-8" />
         </button>
 
         {/* {postType === 'PROJECT' && ( */}
-        <div className="relative max-w-screen-lg mx-auto rounded-md bg-tfsdark-700">
+        <div className="relative mx-auto max-w-screen-lg rounded-md bg-base-700">
           <Scratch
             user={user}
             setPostType={setPostType}
@@ -75,8 +75,8 @@ const Main = ({ user }) => {
 
       {isDiscardPromptOpen && (
         <ModalAlert show={isDiscardPromptOpen} setShow={setIsDiscardPromptOpen}>
-          <div className="sm:flex sm:items-start justify-center">
-            <div className="mt-3 sm:mt-0 text-center">
+          <div className="justify-center sm:flex sm:items-start">
+            <div className="mt-3 text-center sm:mt-0">
               <h3 className="text-xl font-bold text-slate-200">Quit?</h3>
               <div className="mt-2">
                 <p className="text-sm text-slate-300">
@@ -85,7 +85,7 @@ const Main = ({ user }) => {
               </div>
             </div>
           </div>
-          <div className="mt-5 sm:mt-4 flex space-x-2 justify-center">
+          <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
             <button
               type="button"
               className="btn-primary"
@@ -107,8 +107,8 @@ const Main = ({ user }) => {
       {isDeletePromptOpen && (
         <ModalAlert show={isDeletePromptOpen} setShow={setIsDeletePromptOpen}>
           <div>
-            <div className="sm:flex sm:items-start justify-center">
-              <div className="mt-3 sm:mt-0 text-center">
+            <div className="justify-center sm:flex sm:items-start">
+              <div className="mt-3 text-center sm:mt-0">
                 <h3 className="text-xl font-bold text-slate-200">
                   Delete post?
                 </h3>
@@ -120,7 +120,7 @@ const Main = ({ user }) => {
                 </div>
               </div>
             </div>
-            <div className="mt-5 sm:mt-4 flex space-x-2 justify-center">
+            <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
               <button
                 type="button"
                 className="btn-primary bg-red-600/80 hover:bg-red-500"

@@ -48,7 +48,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
       <div className="relative z-10 mx-auto max-w-screen-xl lg:mt-16 lg:min-h-screen">
         <div className="max-w-7xl space-y-6 px-4 pt-24 md:pt-32 lg:px-0">
           <Link href="/about/our-story">
-            <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-tfsdark-700 bg-slate-800/40 px-6 py-1 text-sm text-slate-300 hover:text-white">
+            <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-700 bg-slate-800/40 px-6 py-1 text-sm text-slate-300 hover:text-white">
               Created by developers. See our story &rarr;
             </div>
           </Link>
@@ -83,7 +83,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
           </div>
         </div>
         <div className="absolute bottom-20 z-10 hidden w-full text-center md:bottom-20 md:block">
-          <IoArrowDown className="mx-auto h-8 w-auto animate-bounce text-tfsdark-100 md:h-12" />
+          <IoArrowDown className="mx-auto h-8 w-auto animate-bounce text-base-100 md:h-12" />
         </div>
       </div>
 
@@ -160,8 +160,8 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
 
             <Fade duration={1500} delay={600}>
               <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
-                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-base-700/20">
                     <div className="h-3 w-3 rounded-full bg-red-500"></div>
                     <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
                     <div className="h-3 w-3 rounded-full bg-green-500"></div>
@@ -233,8 +233,8 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
 
             <Fade duration={1500} delay={600}>
               <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
-                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-base-700/20">
                     <div className="h-3 w-3 rounded-full bg-red-500"></div>
                     <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
                     <div className="h-3 w-3 rounded-full bg-green-500"></div>
@@ -316,8 +316,8 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
 
             <Fade duration={1500} delay={600}>
               <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
-                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-base-700/20">
                     <div className="h-3 w-3 rounded-full bg-red-500"></div>
                     <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
                     <div className="h-3 w-3 rounded-full bg-green-500"></div>
@@ -415,8 +415,8 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
 
             <Fade duration={1500} delay={600}>
               <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
-                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-base-700/20">
                     <div className="h-3 w-3 rounded-full bg-red-500"></div>
                     <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
                     <div className="h-3 w-3 rounded-full bg-green-500"></div>
@@ -485,8 +485,8 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
 
             <Fade duration={1500} delay={600}>
               <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
-                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-base-700/20">
                     <div className="h-3 w-3 rounded-full bg-red-500"></div>
                     <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
                     <div className="h-3 w-3 rounded-full bg-green-500"></div>
@@ -540,7 +540,7 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
 
             <Fade duration={1500} delay={600}>
               <div className="relative h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
                   <VideoPlayerProfile
                     src={`https://stream.mux.com/OGgHsrxVO6KHXUBDdtsVPCMMnJej3tuPszF3L00K00m8U.m3u8`}
                     controls={false}
@@ -591,8 +591,8 @@ const Main = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
 
             <Fade duration={1500} delay={600}>
               <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-tfsdark-600 bg-black opacity-90 duration-300">
-                  <div className="ml-4 flex h-8 items-center space-x-2 bg-tfsdark-700/20">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
+                  <div className="ml-4 flex h-8 items-center space-x-2 bg-base-700/20">
                     <div className="h-3 w-3 rounded-full bg-red-500"></div>
                     <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
                     <div className="h-3 w-3 rounded-full bg-green-500"></div>

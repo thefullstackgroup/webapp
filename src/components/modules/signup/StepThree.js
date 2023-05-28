@@ -25,18 +25,18 @@ const StepThree = ({ user }) => {
     return (
       <div
         className={
-          'relative flex items-center space-x-1 rounded-full py-2 px-3 text-sm font-medium cursor-pointer ' +
+          'relative flex cursor-pointer items-center space-x-1 rounded-full py-2 px-3 text-sm font-medium ' +
           (interestSelected
-            ? 'bg-tfsdark-500/70 text-white'
-            : 'bg-tfsdark-600/40 text-tfsdark-300')
+            ? 'bg-base-500/70 text-white'
+            : 'bg-base-600/40 text-base-300')
         }
         onClick={() => saveInterest(interest.id)}
       >
-        {/* <Icon iconName={tech.icon} className={'w-6 h-6 ' + (techSelected ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-tfsdark-300')} /> */}
+        {/* <Icon iconName={tech.icon} className={'w-6 h-6 ' + (techSelected ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-base-300')} /> */}
         <span>{interest.interestName}</span>
         {interestSelected && (
-          <span className="absolute bg-green-600 w-4 h-4 -top-1 -left-1 rounded-full ring-2 ring-white">
-            <BsCheck className="text-white w-4 h-4" />
+          <span className="absolute -top-1 -left-1 h-4 w-4 rounded-full bg-green-600 ring-2 ring-white">
+            <BsCheck className="h-4 w-4 text-white" />
           </span>
         )}
       </div>
@@ -152,19 +152,19 @@ const StepThree = ({ user }) => {
   }, [interests, getAllInterests]);
 
   return (
-    <div className="max-w-screen-xl mx-auto mb-14">
-      <div className="sm:w-full flex justify-center">
+    <div className="mx-auto mb-14 max-w-screen-xl">
+      <div className="flex justify-center sm:w-full">
         <div className="w-full px-4 sm:px-0">
-          <h2 className="text-lg text-slate-400 text-center">
+          <h2 className="text-center text-lg text-slate-400">
             Select at least 3 below.
           </h2>
           {categories?.map((category, index) => (
             <div key={index}>
-              <div className="my-8 bg-tfsdark-700/50 p-3 pb-2 rounded-xl">
-                <h4 className="pl-2 font-semibold uppercase text-sm text-tfsdark-100">
+              <div className="my-8 rounded-xl bg-base-700/50 p-3 pb-2">
+                <h4 className="pl-2 text-sm font-semibold uppercase text-base-100">
                   {category.categoryName}
                 </h4>
-                <div className="w-full flex flex-wrap my-4 gap-3">
+                <div className="my-4 flex w-full flex-wrap gap-3">
                   {interests[category.id] &&
                     Object.entries(interests[category.id]).map(
                       ([key, interest]) => (
@@ -179,13 +179,13 @@ const StepThree = ({ user }) => {
             {interests && savedInterests.length > 2 ? (
               <button
                 type="submit"
-                className="btn-primary py-3 w-full"
+                className="btn-primary w-full py-3"
                 onClick={onSubmit}
               >
                 Next &rarr;
               </button>
             ) : (
-              <button className="btn-primary py-3 w-full" disabled>
+              <button className="btn-primary w-full py-3" disabled>
                 Next
               </button>
             )}

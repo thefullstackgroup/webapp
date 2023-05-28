@@ -17,6 +17,7 @@ const initAuth = () => {
 
       return `/login?destination=${encodeURIComponent(destURL)}`;
     },
+
     appPageURL: ({ ctx }) => {
       const isServerSide = typeof window === 'undefined';
 
@@ -34,7 +35,7 @@ const initAuth = () => {
 
       // By default, go to the index page if the destination URL
       // is invalid or unspecified.
-      let destURL = '/explore';
+      let destURL = '/';
 
       if (destinationParamVal) {
         const allowedHosts = ['localhost:3000', `${process.env.BASEURL}`];

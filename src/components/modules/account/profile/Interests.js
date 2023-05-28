@@ -12,17 +12,17 @@ const InterestPill = ({ interest, savedInterests, saveInterest }) => {
   return (
     <div
       className={
-        'relative flex items-center space-x-1 rounded-full py-2 px-3 text-sm font-medium cursor-pointer ' +
+        'relative flex cursor-pointer items-center space-x-1 rounded-full py-2 px-3 text-sm font-medium ' +
         (interestSelected
-          ? 'bg-tfsdark-500/70 text-white'
-          : 'bg-tfsdark-600/40 text-tfsdark-300')
+          ? 'bg-base-500/70 text-white'
+          : 'bg-base-600/40 text-base-300')
       }
       onClick={() => saveInterest(interest.id, interest.interestName)}
     >
       <span>{interest.interestName}</span>
       {interestSelected && (
-        <span className="absolute bg-green-600 w-4 h-4 -top-1 -left-1 rounded-full ring-2 ring-white">
-          <BsCheck className="text-white w-4 h-4" />
+        <span className="absolute -top-1 -left-1 h-4 w-4 rounded-full bg-green-600 ring-2 ring-white">
+          <BsCheck className="h-4 w-4 text-white" />
         </span>
       )}
     </div>
@@ -159,7 +159,7 @@ const Interests = ({ user }) => {
 
   if (Object.keys(interests).length === 0)
     return (
-      <div className="w-full h-80 flex flex-col text-sm space-y-2 justify-center items-center">
+      <div className="flex h-80 w-full flex-col items-center justify-center space-y-2 text-sm">
         <Loader />
       </div>
     );
@@ -169,11 +169,11 @@ const Interests = ({ user }) => {
       <div className="w-full">
         <div className="">
           {categories?.map((category, index) => (
-            <div className="my-6 bg-tfsdark-700 p-4 rounded-xl" key={index}>
-              <h4 className="pl-2 font-semibold uppercase text-sm text-tfsdark-100">
+            <div className="my-6 rounded-xl bg-base-700 p-4" key={index}>
+              <h4 className="pl-2 text-sm font-semibold uppercase text-base-100">
                 {category.categoryName}
               </h4>
-              <div className="w-full flex flex-wrap my-4 gap-3">
+              <div className="my-4 flex w-full flex-wrap gap-3">
                 {interests[category.id] &&
                   Object.entries(interests[category.id]).map(
                     ([key, interest]) => (

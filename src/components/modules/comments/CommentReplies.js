@@ -72,20 +72,20 @@ const CommentReplies = ({
                     dimensions="h-6 w-6"
                   />
                 </div>
-                <div className="min-w-0 bg-tfsdark-700/70 px-3 sm:px-3 rounded-md pt-1 pb-2">
+                <div className="min-w-0 rounded-md bg-base-700/70 px-3 pt-1 pb-2 sm:px-3">
                   <div>
                     <div className="text-base">
                       <Link href={`/${comment.authorName}`} passHref>
                         <a
                           href="#"
-                          className="font-medium text-slate-200 text-base"
+                          className="text-base font-medium text-slate-200"
                         >
                           {comment.authorName}
                         </a>
                       </Link>
                     </div>
                   </div>
-                  <div className="prose prose-comments prose-dark max-w-full text-tfsdark-100 overflow-x-scroll no-scrollbar">
+                  <div className="prose-comments no-scrollbar prose prose-dark max-w-full overflow-x-scroll text-base-100">
                     <Markdown
                       options={{
                         overrides: {
@@ -106,17 +106,17 @@ const CommentReplies = ({
               </div>
 
               {user && (
-                <div className="flex mt-2 items-center ml-10 space-x-6">
+                <div className="mt-2 ml-10 flex items-center space-x-6">
                   <div className="text-xs">
-                    <button className="flex items-center hover:text-gray-500 focus:outline-none text-gray-400">
+                    <button className="flex items-center text-gray-400 hover:text-gray-500 focus:outline-none">
                       {comment.likedByYou ? (
                         <IoHeart
-                          className="text-red-500 w-4 h-4 mr-1"
+                          className="mr-1 h-4 w-4 text-red-500"
                           onClick={() => performLike(comment)}
                         />
                       ) : (
                         <IoHeartOutline
-                          className="w-4 h-4 mr-1"
+                          className="mr-1 h-4 w-4"
                           onClick={() => performLike(comment)}
                         />
                       )}
@@ -126,13 +126,13 @@ const CommentReplies = ({
                   </div>
                   <div className="text-xs">
                     <button
-                      className="flex items-center hover:text-gray-500 focus:outline-none text-gray-400"
+                      className="flex items-center text-gray-400 hover:text-gray-500 focus:outline-none"
                       onClick={() => {
                         setCommentReplyTo(comment);
                         setPostCommentOpen(true);
                       }}
                     >
-                      <IoArrowUndoOutline className="w-4 h-4 mr-1" />
+                      <IoArrowUndoOutline className="mr-1 h-4 w-4" />
                       <span className="">Reply</span>
                     </button>
                   </div>
@@ -140,7 +140,7 @@ const CommentReplies = ({
                     <>
                       <div className="text-xs">
                         <button
-                          className={`flex items-center hover:text-gray-500 focus:outline-none text-gray-400`}
+                          className={`flex items-center text-gray-400 hover:text-gray-500 focus:outline-none`}
                           onClick={() => {
                             setCommentToUpdate(comment);
                             setEditCommentOpen(true);

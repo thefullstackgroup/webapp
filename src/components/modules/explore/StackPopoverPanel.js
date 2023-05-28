@@ -51,7 +51,7 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
                 {stacks.map((item, index) => (
                   <div className="w-40" key={index}>
                     <button
-                      className="nav-item group w-full whitespace-nowrap rounded-md px-3 py-2 hover:bg-gray-200/80 dark:hover:bg-tfsdark-700"
+                      className="nav-item group w-full whitespace-nowrap rounded-md px-3 py-2 hover:bg-gray-200/80 dark:hover:bg-base-700"
                       onClick={() => {
                         setStack(item);
                         setIsShowing(false);

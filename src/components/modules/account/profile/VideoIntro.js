@@ -58,13 +58,13 @@ const VideoIntro = ({ user }) => {
     <>
       {showSplash && !muxAssetId && (
         <div className="py-4 px-2">
-          <div className="grid space-y-6 md:space-y-0 md:grid-cols-2 px-4 py-2">
+          <div className="grid space-y-6 px-4 py-2 md:grid-cols-2 md:space-y-0">
             <div className="space-y-6">
               <h4 className="text-4xl font-semibold tracking-tight">
                 Add a video intro <br />
                 to your profile
               </h4>
-              <p className="text-lg text-slate-300 font-light">
+              <p className="text-lg font-light text-slate-300">
                 People make real connections with real people, not just code.
                 Introduce yourself to others in a whole new way, right from your
                 profile. With a video intro on your profile, you&apos;re 2x more
@@ -73,15 +73,15 @@ const VideoIntro = ({ user }) => {
               </p>
               <div>
                 <button
-                  className="btn-primary py-2 w-full"
+                  className="btn-primary w-full py-2"
                   onClick={() => setShowSplash(false)}
                 >
                   Get started &rarr;
                 </button>
               </div>
             </div>
-            <div className="relative flex justify-center pb-20 md:pb-0 md:justify-end">
-              <div className="relative mt-2 w-64 h-96 rounded-xl overflow-hidden border-2 border-tfsdark-600 p-2">
+            <div className="relative flex justify-center pb-20 md:justify-end md:pb-0">
+              <div className="relative mt-2 h-96 w-64 overflow-hidden rounded-xl border-2 border-base-600 p-2">
                 <VideoPlayerProfile
                   src={`https://stream.mux.com/OGgHsrxVO6KHXUBDdtsVPCMMnJej3tuPszF3L00K00m8U.m3u8`}
                   controls={false}
@@ -90,7 +90,7 @@ const VideoIntro = ({ user }) => {
                 />
               </div>
 
-              <span className="absolute text-lg top-10 left-28 -translate-x-1/2 whitespace-nowrap rounded-lg bg-purple-600 px-3 py-1 text-white transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-purple-600 before:content-['']">
+              <span className="absolute top-10 left-28 -translate-x-1/2 whitespace-nowrap rounded-lg bg-purple-600 px-3 py-1 text-lg text-white transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-purple-600 before:content-['']">
                 Hello!
               </span>
             </div>
@@ -100,32 +100,32 @@ const VideoIntro = ({ user }) => {
 
       {(!showSplash || muxAssetId) && (
         <div className="py-4 px-2">
-          <div className="grid space-y-6 md:space-y-0 md:grid-cols-2 px-4 py-2">
+          <div className="grid space-y-6 px-4 py-2 md:grid-cols-2 md:space-y-0">
             <div className="space-y-6">
               <h4 className="text-4xl font-semibold tracking-tight">
                 3 simple steps...
               </h4>
               <p className="text-lg font-medium">1. Record your video intro</p>
-              <span className="text-slate-400 font-light">
+              <span className="font-light text-slate-400">
                 You can record your video intro on your computer, phone or
                 camera - the choice is yours!
               </span>
               <p className="text-lg font-medium">2. Upload your video here</p>
-              <span className="text-slate-400 font-light">
+              <span className="font-light text-slate-400">
                 Most video formats supported, including mp4, mov, mpeg, etc.
                 Should be no longer than 2 minutes.
               </span>
               <p className="text-lg font-medium">
                 3. Add the video to your profile
               </p>
-              <span className="text-slate-400 font-light">
+              <span className="font-light text-slate-400">
                 Once happy with the preview, click the Add to my profile button.
               </span>
             </div>
-            <div className="relative flex justify-center pb-20 md:pb-0 md:justify-end">
+            <div className="relative flex justify-center pb-20 md:justify-end md:pb-0">
               <div className="w-64 space-y-4">
                 {!muxAssetId && (
-                  <div className="mt-2 max-w-full flex justify-center px-6 pt-5 pb-6 border-2 w-64 h-96 rounded-xl p-2 border-tfsdark-600 items-center">
+                  <div className="mt-2 flex h-96 w-64 max-w-full items-center justify-center rounded-xl border-2 border-base-600 p-2 px-6 pt-5 pb-6">
                     <div className="space-y-1 text-center">
                       <IoVideocamOutline className="mx-auto h-12 w-12 text-gray-300" />
                       <div className="flex text-sm text-gray-600">
@@ -143,7 +143,7 @@ const VideoIntro = ({ user }) => {
 
                 {muxAssetId != '' && (
                   <div className="space-y-2">
-                    <div className="relative mt-2 w-64 h-96 rounded-xl overflow-hidden mx-auto border-2 border-tfsdark-600 p-2">
+                    <div className="relative mx-auto mt-2 h-96 w-64 overflow-hidden rounded-xl border-2 border-base-600 p-2">
                       <VideoPlayerProfile
                         src={`https://stream.mux.com/${muxAssetId}.m3u8`}
                         controls={false}

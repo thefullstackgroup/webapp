@@ -3,7 +3,7 @@
   "background_color": "#fff",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/explore",
+  "start_url": "/",
   "name": "thefullstack",
   "short_name": "thefullstack",
   "description": "Where Reddit meets GitHub, a space where developers connect with like-minded developers to show off projects, learn and hang out.",

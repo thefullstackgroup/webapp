@@ -14,11 +14,11 @@ const Sparks = ({ profile, myProfile }) => {
   return (
     <>
       {!posts?.length > 0 && (
-        <div className="mt-8 flex flex-col items-center w-full px-2 md:px-8">
-          <div className="py-10 md:py-36 text-zinc-400 flex flex-col items-center w-full justify-evenly">
+        <div className="mt-8 flex w-full flex-col items-center px-2 md:px-8">
+          <div className="flex w-full flex-col items-center justify-evenly py-10 text-zinc-400 md:py-36">
             <span>Nothing posted yet.</span>
             {profile?.userId === myProfile.userId && (
-              <div className="flex justify-center mt-4">
+              <div className="mt-4 flex justify-center">
                 <Link href="/hangout">
                   <button className="btn-secondary">Post to community</button>
                 </Link>
@@ -28,11 +28,11 @@ const Sparks = ({ profile, myProfile }) => {
         </div>
       )}
       {posts?.length > 0 && (
-        <div className="w-full md:w-9/12 mx-auto">
-          <div className="mt-8 flex flex-col items-center max-w-3xl md:rounded-lg overflow-hidden px-0 md:px-0">
+        <div className="mx-auto w-full md:w-9/12">
+          <div className="mt-8 flex max-w-3xl flex-col items-center overflow-hidden px-0 md:rounded-lg md:px-0">
             {posts?.map((post, index) => (
               <div
-                className="relative w-full overflow-hidden border-b border-tfsdark-800"
+                className="relative w-full overflow-hidden border-b border-base-800"
                 key={index}
               >
                 <PostCard project={post} user={myProfile} seperator={true} />

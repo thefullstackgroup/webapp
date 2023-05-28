@@ -7,12 +7,14 @@ import Layout from 'components/common/layout/Layout';
 import { RangeFilter, SortFilter } from 'components/modules/explore/constants';
 import Filters from 'components/modules/explore/Filters';
 import ProjectGallery from 'components/modules/explore/ProjectGallery';
+import Categories from 'components/modules/explore/Categories';
 
-const ExploreTrending = () => {
+const ExplorePopular = () => {
   const [user, getUser] = useUserProfile();
-  const [sort, setSort] = useState(SortFilter[1]);
+  const [sort, setSort] = useState(SortFilter[0]);
   const [range, setRange] = useState(RangeFilter[1]);
   const [stack, setStack] = useState(null);
+  const [category, setCategory] = useState(null);
 
   useEffect(() => {
     getUser();
@@ -28,15 +30,17 @@ const ExploreTrending = () => {
 
       {user && (
         <Layout user={user}>
-          <div className="min-h-screen">
-            <div className="space-y-2 py-10 text-center">
+          <div className="min-h-screen space-y-10">
+            <Categories category={category} setCategory={setCategory} />
+            <div className="mt-10 space-y-2 text-center">
               <h2 className="text-5xl font-bold tracking-tight">
-                Trending projects
+                Latest projects
               </h2>
               <h4 className="mx-auto max-w-2xl text-xl font-normal tracking-tight text-gray-400 dark:text-gray-400">
                 Discover awesome projects from the developer showcase
               </h4>
             </div>
+
             <div className="relative">
               <Filters
                 range={range}
@@ -50,6 +54,8 @@ const ExploreTrending = () => {
                 sort={sort.orderBy}
                 range={range.days}
                 stack={stack}
+                category={category}
+                setCategory={setCategory}
               />
             </div>
           </div>
@@ -59,7 +65,7 @@ const ExploreTrending = () => {
   );
 };
 
-export default withAuthUser()(ExploreTrending);
+export default withAuthUser()(ExplorePopular);
 
 export const getServerSideProps = withAuthUserTokenSSR()(
   async ({ AuthUser, req, res, query }) => {

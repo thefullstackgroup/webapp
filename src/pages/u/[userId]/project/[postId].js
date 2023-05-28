@@ -9,11 +9,11 @@ import Image from 'next/future/image';
 const ProjectNotFound = () => {
   return (
     <div className="w-full pb-20">
-      <div className="flex flex-col w-auto text-center space-y-4 mb-28 px-8">
-        <h2 className="text-2xl lg:text-5xl font-bold tracking-tight mt-40">
+      <div className="mb-28 flex w-auto flex-col space-y-4 px-8 text-center">
+        <h2 className="mt-40 text-2xl font-bold tracking-tight lg:text-5xl">
           Oops! Project not found.
         </h2>
-        <p className="text-base lg:text-lg text-slate-400">
+        <p className="text-base text-slate-400 lg:text-lg">
           Sorry, this user may have moved or deleted this project.
         </p>
         <FaRegSadTear className="my-20 h-28 w-auto text-slate-400" />
@@ -38,15 +38,15 @@ const Post = ({ author, project }) => {
             keywords=""
             openGraphImage={project.projectImgURI || ''}
           />
-          <div className="max-w-screen-2xl mx-auto">
+          <div className="mx-auto max-w-screen-2xl">
             <div className="lg:px-0 xl:px-4 2xl:px-0">
-              <div className="z-30 w-full px-4 sm:px-8 py-2 sm:py-3 bg-black/90 border border-tfsdark-700 flex items-center space-x-4 text-base font-semibold">
+              <div className="z-30 flex w-full items-center space-x-4 border border-base-700 bg-black/90 px-4 py-2 text-base font-semibold sm:px-8 sm:py-3">
                 <Link href="/" passHref>
-                  <div className="flex items-center cursor-pointer space-x-4">
-                    <span className="w-10 h-10 py-1">
+                  <div className="flex cursor-pointer items-center space-x-4">
+                    <span className="h-10 w-10 py-1">
                       <Image
                         src="/assets/icons/thefullstack.webp"
-                        className="object-contain hover:opacity-100 duration-300"
+                        className="object-contain duration-300 hover:opacity-100"
                         alt="The Full Stack"
                         width={200}
                         height={200}
@@ -55,7 +55,7 @@ const Post = ({ author, project }) => {
                   </div>
                 </Link>
                 <Link href="/">
-                  <button className="duration-300 text-white hover:text-white">
+                  <button className="text-white duration-300 hover:text-white">
                     The Full Stack
                   </button>
                 </Link>

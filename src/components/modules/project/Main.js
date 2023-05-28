@@ -31,7 +31,7 @@ const Main = ({ project, user, setShowProject, standalone = false }) => {
 
   if (!project)
     return (
-      <div className="mx-auto flex h-screen max-w-screen-xl flex-1 items-center justify-center bg-tfsdark-800">
+      <div className="mx-auto flex h-screen max-w-screen-xl flex-1 items-center justify-center bg-base-800">
         <Loader />
       </div>
     );
@@ -39,7 +39,7 @@ const Main = ({ project, user, setShowProject, standalone = false }) => {
   if (project && !project.projectName)
     return (
       <div className="flex h-screen items-start justify-center sm:items-center">
-        <div className="prose prose-dark mx-auto max-w-md rounded-md bg-tfsdark-700 p-8 text-center">
+        <div className="prose prose-dark mx-auto max-w-md rounded-md bg-base-700 p-8 text-center">
           <h2 className="text-xl font-semibold">Oops! Post not found</h2>
           <p>
             This post may have been moved by the author!{' '}

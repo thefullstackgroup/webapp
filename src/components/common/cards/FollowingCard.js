@@ -80,10 +80,10 @@ const Following = ({ post, user }) => {
 
   return (
     <>
-      <div className="w-full cursor-pointer sm:bg-tfsdark-800 sm:hover:bg-tfsdark-600/50 md:rounded-md overflow-hidden mb-6 border-b md:border-b-0 border-tfsdark-600">
-        <article className="pt-4 pb-6 md:pb-4 border-tfsdark-600 sm:border-tfsdark-900">
+      <div className="mb-6 w-full cursor-pointer overflow-hidden border-b border-base-600 sm:bg-base-800 sm:hover:bg-base-600/50 md:rounded-md md:border-b-0">
+        <article className="border-base-600 pt-4 pb-6 sm:border-base-900 md:pb-4">
           <div className="mx-4 mb-0">
-            <div className="flex items-center md:space-x-2 w-full md:border-b border-tfsdark-600 pb-3 mb-3">
+            <div className="mb-3 flex w-full items-center border-base-600 pb-3 md:space-x-2 md:border-b">
               {post.triggeredByUser?.profilePicUrl && (
                 <Avatar
                   href={`/${post.triggeredByUser?.displayName}`}
@@ -91,7 +91,7 @@ const Following = ({ post, user }) => {
                   dimensions="hidden md:block h-6 w-6"
                 />
               )}
-              <div className="text-sm md:text-base text-slate-300 space-x-1 flex justify-between w-full items-start">
+              <div className="flex w-full items-start justify-between space-x-1 text-sm text-slate-300 md:text-base">
                 <div>
                   <span className="font-medium text-slate-100">
                     {post.triggeredByUser?.name}
@@ -116,18 +116,18 @@ const Following = ({ post, user }) => {
                 />
               </div>
 
-              <div className="w-full ml-4 sm:mr-4">
+              <div className="ml-4 w-full sm:mr-4">
                 <div className="flex-1">
-                  <div className="space-y-0 mb-2">
+                  <div className="mb-2 space-y-0">
                     <Link
                       href={`${process.env.BASEURL}/${postData?.projectCreator?.displayName}`}
                       passHref
                     >
-                      <button className="w-full text-left flex flex-wrap items-center group text-sm sm:text-base">
-                        <span className="tracking-tight font-semibold text-white group-hover:text-link">
+                      <button className="group flex w-full flex-wrap items-center text-left text-sm sm:text-base">
+                        <span className="group-hover:text-link font-semibold tracking-tight text-white">
                           {postData?.projectCreator.name}
                         </span>
-                        <span className="ml-1 sm:mt-0 text-slate-500">
+                        <span className="ml-1 text-slate-500 sm:mt-0">
                           · @{postData?.projectCreator?.displayName}
                         </span>
                       </button>
@@ -140,7 +140,7 @@ const Following = ({ post, user }) => {
 
                   {postData && postData.projectType === 'PROJECT' && (
                     <div
-                      className="md:flex items-start w-full gap-6 md:bg-tfsdark-800 md:p-4 md:rounded-md"
+                      className="w-full items-start gap-6 md:flex md:rounded-md md:bg-base-800 md:p-4"
                       onClick={() =>
                         handleGoToPost(
                           postData?.projectType,
@@ -152,14 +152,14 @@ const Following = ({ post, user }) => {
                       <div className="w-full md:w-1/2">
                         <Image
                           src={postData.projectImgURI}
-                          className="mt-1 h-48 w-full object-cover rounded-md"
+                          className="mt-1 h-48 w-full rounded-md object-cover"
                           alt={postData.projectName}
                           width={100}
                           height={100}
                           layout="fill"
                         />
                       </div>
-                      <div className="mt-2 md:mt-0 w-full md:w-1/2">
+                      <div className="mt-2 w-full md:mt-0 md:w-1/2">
                         <div className="text-2xl font-bold">
                           {postData?.projectName}
                         </div>
@@ -236,7 +236,7 @@ const Following = ({ post, user }) => {
 
                   {postData && postData.projectType !== 'PROJECT' && (
                     <div
-                      className="relative space-y-4 group"
+                      className="group relative space-y-4"
                       onClick={() =>
                         handleGoToPost(
                           postData?.projectType,
@@ -245,10 +245,10 @@ const Following = ({ post, user }) => {
                         )
                       }
                     >
-                      <button className="outline-none w-full text-left text-sm cursor-pointer">
+                      <button className="w-full cursor-pointer text-left text-sm outline-none">
                         <div>
-                          <div className="items-center text-base overflow-hidden">
-                            <div className="w-full prose-sm sm:prose-base prose-dark text-white prose-custom overflow-hidden">
+                          <div className="items-center overflow-hidden text-base">
+                            <div className="prose-custom prose-sm prose-dark w-full overflow-hidden text-white sm:prose-base">
                               <Markdown
                                 options={{
                                   overrides: {
@@ -288,7 +288,7 @@ const Following = ({ post, user }) => {
                           dimensions="mt-1 h-5 w-5 md:h-7 md:w-7"
                         />
 
-                        <div className="text-sm md:text-base bg-tfsdark-600 rounded-md px-2.5 py-2">
+                        <div className="rounded-md bg-base-600 px-2.5 py-2 text-sm md:text-base">
                           <Markdown
                             options={{
                               overrides: {
@@ -310,7 +310,7 @@ const Following = ({ post, user }) => {
                   )}
 
                   {post.eventTypes === 'COMMENT_RESPONDED_TO' && (
-                    <div className="-ml-8 md:ml-0 space-y-4">
+                    <div className="-ml-8 space-y-4 md:ml-0">
                       {parentComment && (
                         <div className="mt-2 flex items-start space-x-2">
                           <Avatar
@@ -319,7 +319,7 @@ const Following = ({ post, user }) => {
                             dimensions="mt-1 h-5 w-5 md:h-7 md:w-7"
                           />
 
-                          <div className="text-sm md:text-base bg-tfsdark-600 rounded-md px-2.5 py-2">
+                          <div className="rounded-md bg-base-600 px-2.5 py-2 text-sm md:text-base">
                             <Markdown
                               options={{
                                 overrides: {
@@ -345,7 +345,7 @@ const Following = ({ post, user }) => {
                           dimensions="mt-1 h-5 w-5 md:h-7 md:w-7"
                         />
 
-                        <div className="text-sm md:text-base bg-tfsdark-600 rounded-md px-2.5 py-2">
+                        <div className="rounded-md bg-base-600 px-2.5 py-2 text-sm md:text-base">
                           <Markdown
                             options={{
                               overrides: {

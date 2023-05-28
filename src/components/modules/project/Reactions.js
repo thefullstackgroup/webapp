@@ -18,7 +18,7 @@ const Reactions = ({ project, user }) => {
       <div className="no-scrollbar sticky top-16 hidden h-screen w-full flex-1 flex-col overflow-scroll overscroll-contain bg-black lg:flex">
         {/* Profile */}
         <div className="sticky top-0 z-10 w-full">
-          <div className="space-y-4 border-b border-tfsdark-600/50 bg-black px-6 pt-4 pb-4">
+          <div className="space-y-4 border-b border-base-600/50 bg-black px-6 pt-4 pb-4">
             <div className="flex lg:flex-col lg:space-y-4 2xl:flex-row 2xl:items-center 2xl:justify-between 2xl:space-y-0">
               <div className="flex items-center space-x-3">
                 <Avatar
@@ -50,7 +50,7 @@ const Reactions = ({ project, user }) => {
             </div>
           </div>
           {user && (
-            <div className="space-y-2 border-b border-tfsdark-600/50 bg-black px-6 pt-4 pb-4">
+            <div className="space-y-2 border-b border-base-600/50 bg-black px-6 pt-4 pb-4">
               <Actions
                 user={user}
                 project={project}
@@ -71,7 +71,7 @@ const Reactions = ({ project, user }) => {
 
         {/* Post comment */}
         {user && (
-          <div className="sticky bottom-0 z-0 w-full max-w-lg border-t border-tfsdark-700 bg-black px-4">
+          <div className="sticky bottom-0 z-0 w-full max-w-lg border-t border-base-700 bg-black px-4">
             <div className="flex items-center py-6 sm:space-x-4">
               <Avatar
                 image={user.profilePicUrl}
@@ -98,7 +98,7 @@ const Reactions = ({ project, user }) => {
 
       {isMobile && user && (
         <div className="fixed bottom-12 left-0 z-10 w-full lg:hidden">
-          <div className="mx-auto flex w-min items-center space-x-6 rounded-full border border-tfsdark-600 bg-tfsdark-800/90 py-2 px-4">
+          <div className="mx-auto flex w-min items-center space-x-6 rounded-full border border-base-600 bg-base-800/90 py-2 px-4">
             <Actions
               user={user}
               project={project}
@@ -114,7 +114,7 @@ const Reactions = ({ project, user }) => {
         <div className="absolute">
           <div className="fixed top-20 left-0 z-20 mx-auto w-full">
             <div
-              className="fixed inset-0 bg-tfsdark-900 bg-opacity-80"
+              className="fixed inset-0 bg-base-900 bg-opacity-80"
               onClick={() => setShowCommentsModal(!showCommentsModal)}
             ></div>
             <div
@@ -123,7 +123,7 @@ const Reactions = ({ project, user }) => {
             >
               <IoCloseSharp className="h-6 w-6 text-white" />
             </div>
-            <div className="relative mx-auto flex h-[90vh] max-w-full flex-col rounded-t-2xl border-t border-tfsdark-700 bg-tfsdark-900">
+            <div className="relative mx-auto flex h-[90vh] max-w-full flex-col rounded-t-2xl border-t border-base-700 bg-base-900">
               <div className="py-3 text-center text-sm">
                 <div>
                   {project?.numberOfComments}{' '}
@@ -131,7 +131,7 @@ const Reactions = ({ project, user }) => {
                 </div>
               </div>
               {user && (
-                <div className="h-20 w-full max-w-full border-t border-tfsdark-700 px-4">
+                <div className="h-20 w-full max-w-full border-t border-base-700 px-4">
                   <div className="flex items-center space-x-2 py-2">
                     <Avatar
                       image={user.profilePicUrl}

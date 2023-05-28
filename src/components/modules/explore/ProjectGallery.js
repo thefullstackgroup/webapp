@@ -16,6 +16,8 @@ const ProjectGallery = ({
   myTechStack,
   query,
   count = 40,
+  cols = 5,
+  feature = false,
 }) => {
   let term = stack?.slug;
 
@@ -81,7 +83,7 @@ const ProjectGallery = ({
     const projectList = posts;
     return projectList.map((project) => (
       <div key={project.projectId}>
-        <ProjectCard project={project} user={user} />
+        <ProjectCard project={project} user={user} feature={feature} />
       </div>
     ));
   });
@@ -89,7 +91,12 @@ const ProjectGallery = ({
   return (
     <div>
       {posts && !isEmpty && (
-        <div className="relative grid grid-cols-1 gap-6 sm:mt-4 md:grid-cols-2 md:gap-4 lg:grid-cols-3 2xl:grid-cols-5">
+        <div
+          className={
+            'relative grid grid-cols-1 gap-6 sm:mt-4 md:grid-cols-2 md:gap-4 lg:grid-cols-3 ' +
+            (cols < 5 ? ` 2xl:grid-cols-${cols}` : `2xl:grid-cols-5`)
+          }
+        >
           {projectCards}
         </div>
       )}
@@ -123,14 +130,13 @@ const ProjectGallery = ({
       {!isReachingEnd && (
         <div className="my-10 flex justify-center">
           {isLoadingMore && (
-            <div className="min-h-screen">
+            <div className="py-1">
               <Loader />
             </div>
           )}
-          {count == 40 && (
+          {count == 40 && !isLoadingMore && (
             <button
               className="btn btn-secondary btn-with-icon"
-              disabled={isLoadingMore || isReachingEnd}
               onClick={() => setSize(size + 1)}
             >
               <span>Load more</span>

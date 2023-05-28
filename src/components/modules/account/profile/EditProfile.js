@@ -17,17 +17,17 @@ const EditProfile = ({ displayName }) => {
 
   return (
     <>
-      <div className="w-full overflow-hidden mx-auto sm:px-2">
+      <div className="mx-auto w-full overflow-hidden sm:px-2">
         <div className="relative w-full pb-20">
-          <div className="mt-4 md:mt-6 rounded-xl">
-            <div className="relative flex justify-evenly space-x-1 mx-0">
+          <div className="mt-4 rounded-xl md:mt-6">
+            <div className="relative mx-0 flex justify-evenly space-x-1">
               {tabs.map((tabButton, index) => (
                 <button
                   className={
-                    `w-full text-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-md whitespace-nowrap font-medium ` +
+                    `w-full whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium sm:px-4 sm:py-2 ` +
                     (nav === index
-                      ? `bg-tfsdark-600/70 text-white`
-                      : `bg-tfsdark-700/70 text-slate-400 hover:text-white`)
+                      ? `bg-base-600/70 text-white`
+                      : `bg-base-700/70 text-slate-400 hover:text-white`)
                   }
                   key={index}
                   onClick={() => setNav(index)}

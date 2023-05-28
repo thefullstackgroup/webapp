@@ -8,18 +8,18 @@ const ProjectCard = ({ project }) => {
     <Link
       href={`/${project.contentOwnerUserName}/project/${project.projectSlug}`}
     >
-      <button className="w-full text-left p-4 hover:bg-tfsdark-700/50 flex items-center space-x-4">
+      <button className="flex w-full items-center space-x-4 p-4 text-left hover:bg-base-700/50">
         <div>
-          <div className="w-20 h-16 rounded-md cursor-pointer overflow-hidden">
+          <div className="h-16 w-20 cursor-pointer overflow-hidden rounded-md">
             <img
               src={project.projectImageURI}
               alt={project.projectName}
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
             />
           </div>
         </div>
         <div className="flex flex-col text-slate-400">
-          <p className="font-semibold text-white text-lg">
+          <p className="text-lg font-semibold text-white">
             {project.projectName}
           </p>
           <p className="text-sm">Posted by @{project.contentOwnerUserName}</p>
@@ -36,7 +36,7 @@ const Saved = ({ user }) => {
 
   if (!data) {
     return (
-      <div className="mt-4 w-full flex flex-1 justify-center py-40">
+      <div className="mt-4 flex w-full flex-1 justify-center py-40">
         <Loader />
       </div>
     );
@@ -45,7 +45,7 @@ const Saved = ({ user }) => {
   return (
     <>
       {projects?.content?.length > 0 && (
-        <div className="mt-4 w-full divide-y divide-tfsdark-800 rounded-md border border-tfsdark-600">
+        <div className="mt-4 w-full divide-y divide-base-800 rounded-md border border-base-600">
           {projects?.content?.map((project, index) => (
             <ProjectCard project={project} key={index} />
           ))}
@@ -53,7 +53,7 @@ const Saved = ({ user }) => {
       )}
 
       {projects?.content?.length == 0 && (
-        <div className="mt-4 w-full rounded-md border border-tfsdark-600 flex flex-1 justify-center py-20">
+        <div className="mt-4 flex w-full flex-1 justify-center rounded-md border border-base-600 py-20">
           You have not saved any projects.
         </div>
       )}

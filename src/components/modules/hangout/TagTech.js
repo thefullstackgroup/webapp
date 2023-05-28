@@ -65,7 +65,7 @@ const TagTech = ({ savedSkills, setSavedSkills, setShowTech }) => {
             autoFocus
             placeholder="Search e.g. React"
             onChange={(e) => searchSkills(e.target.value)}
-            className="text-input bg-tfsdark-900"
+            className="text-input bg-base-900"
             value={skillName}
           />
         </div>
@@ -73,12 +73,12 @@ const TagTech = ({ savedSkills, setSavedSkills, setShowTech }) => {
       <div>
         <div>
           {skillName.length > 1 && skillList.length > 0 && (
-            <ul className="absolute top-10 left-0 w-full border border-tfsdark-800 bg-tfsdark-900 rounded shadow-lg z-10 max-h-96 overflow-scroll overscroll-contain">
+            <ul className="absolute top-10 left-0 z-10 max-h-96 w-full overflow-scroll overscroll-contain rounded border border-base-800 bg-base-900 shadow-lg">
               {skillList.map((result) => (
-                <li className="my-1 px-4 items-center" key={result.skillId}>
+                <li className="my-1 items-center px-4" key={result.skillId}>
                   <button
                     type="button"
-                    className="flex items-center space-x-2 focus:outline-none w-full text-left text-slate-200 text-sm"
+                    className="flex w-full items-center space-x-2 text-left text-sm text-slate-200 focus:outline-none"
                     onClick={() => {
                       addSkill(result);
                       setShowTech(false);

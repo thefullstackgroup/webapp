@@ -15,22 +15,22 @@ const SubscriptionConfirmation = () => {
 
   return (
     <>
-      <div className="mt-4 md:mt-12 flex">
-        <div className="w-full max-w-2xl lg:max-w-4xl overflow-hidden mx-auto">
+      <div className="mt-4 flex md:mt-12">
+        <div className="mx-auto w-full max-w-2xl overflow-hidden lg:max-w-4xl">
           <Link href={`${process.env.BASEURL}/account/teams`}>
-            <div className="flex items-center space-x-2 px-4 md:px-0 mb-4 cursor-pointer">
+            <div className="mb-4 flex cursor-pointer items-center space-x-2 px-4 md:px-0">
               <IoArrowBack className="h-5 w-5" />
-              <h2 className="font-bold text-sm">Back to teams</h2>
+              <h2 className="text-sm font-bold">Back to teams</h2>
             </div>
           </Link>
-          <div className="rounded-lg bg-tfsdark-700 mb-4 px-4 sm:px-6 py-4 mx-4 md:mx-0">
-            <div className="space-y-6 mb-4">
-              <div className="text-center py-10 space-y-16">
+          <div className="mx-4 mb-4 rounded-lg bg-base-700 px-4 py-4 sm:px-6 md:mx-0">
+            <div className="mb-4 space-y-6">
+              <div className="space-y-16 py-10 text-center">
                 <div className="space-y-6">
-                  <div className="w-2/3 mx-auto font-semibold text-lg">
+                  <div className="mx-auto w-2/3 text-lg font-semibold">
                     Thank you. Your subscription is now active.
                   </div>
-                  <div className="w-2/3 mx-auto text-slate-300">
+                  <div className="mx-auto w-2/3 text-slate-300">
                     You can now post open positions on your Team profile. Select
                     the team profile below to get started.
                   </div>

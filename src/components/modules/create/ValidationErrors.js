@@ -12,25 +12,25 @@ const ValidationErrors = ({
   postProjectLink,
 }) => {
   return (
-    <div className="fixed z-50 inset-0 overflow-hidden h-screen">
-      <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div className="fixed inset-0 z-50 h-screen overflow-hidden">
+      <div className="flex min-h-screen items-center justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <div
-          className="absolute inset-0 bg-tfsdark-900 bg-opacity-80"
+          className="absolute inset-0 bg-base-900 bg-opacity-80"
           onClick={() => {
             setShowValidationErrors(!showValidationErrors);
             setDraftSelected(false);
           }}
         ></div>
 
-        <span className="hidden sm:inline-block sm:align-middle sm:h-screen">
+        <span className="hidden sm:inline-block sm:h-screen sm:align-middle">
           &#8203;
         </span>
 
-        <div className="inline-block align-bottom transform transition-all sm:align-middle sm:w-1/2 sm:max-w-2xl">
-          <div className="bg-tfsdark-800 rounded-md text-left shadow-xl sm:max-w-xl mx-auto overflow-hidden">
-            <div className="w-full mx-auto space-y-6 bg-red-500/20 p-4 md:p-8">
+        <div className="inline-block transform align-bottom transition-all sm:w-1/2 sm:max-w-2xl sm:align-middle">
+          <div className="mx-auto overflow-hidden rounded-md bg-base-800 text-left shadow-xl sm:max-w-xl">
+            <div className="mx-auto w-full space-y-6 bg-red-500/20 p-4 md:p-8">
               <div className="flex items-start justify-between">
-                <h3 className="text-lg md:text-2xl font-bold text-slate-100">
+                <h3 className="text-lg font-bold text-slate-100 md:text-2xl">
                   <span>Oops! Missing some info ...</span>
                 </h3>
                 <button

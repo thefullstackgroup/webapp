@@ -258,7 +258,7 @@ const EditPost = ({
 
   if (!post) {
     return (
-      <div className="flex flex-1 justify-center items-center h-96">
+      <div className="flex h-96 flex-1 items-center justify-center">
         <Loader />
       </div>
     );
@@ -266,17 +266,17 @@ const EditPost = ({
 
   return (
     <>
-      <div className="relative w-full bg-transparent py-4 flex flex-col h-full space-y-3 sm:px-2">
-        <div className="w-full overflow-scroll no-scrollbar h-full">
+      <div className="relative flex h-full w-full flex-col space-y-3 bg-transparent py-4 sm:px-2">
+        <div className="no-scrollbar h-full w-full overflow-scroll">
           <div className="flex items-start">
             <div className="relative mt-1 w-full">
-              <div className="text-lg text-gray-500 border-gray-800 mb-6 h-96 overflow-y-scroll">
+              <div className="mb-6 h-96 overflow-y-scroll border-gray-800 text-lg text-gray-500">
                 {postType !== 'SPARK' && <TagPost postType={postType} />}
 
                 <TextareaAutosize
                   name="postBody"
                   rows={1}
-                  className="mt-2 placeholder-gray-400 bg-transparent text-lg w-full focus:outline-none focus:ring-0 focus:border-0 border-0 h-auto resize-none p-0 text-white"
+                  className="mt-2 h-auto w-full resize-none border-0 bg-transparent p-0 text-lg text-white placeholder-gray-400 focus:border-0 focus:outline-none focus:ring-0"
                   placeholder="What's happening in your dev world? ..."
                   value={postBody}
                   onChange={(e) => {
@@ -289,7 +289,7 @@ const EditPost = ({
 
                 {postType === 'POLL' && (
                   <div className="my-2">
-                    <div className="px-8 py-20 text-center rounded-md border border-tfsdark-700">
+                    <div className="rounded-md border border-base-700 px-8 py-20 text-center">
                       Sorry, you cannot edit a poll once it has been posted.
                     </div>
                   </div>
@@ -302,36 +302,36 @@ const EditPost = ({
                 )}
 
                 {coverImage !== '' && (
-                  <div className="relative rounded-md overflow-hidden mt-4 mb-2">
+                  <div className="relative mt-4 mb-2 overflow-hidden rounded-md">
                     <img
                       src={coverImage}
-                      className="w-full h-auto"
+                      className="h-auto w-full"
                       alt={postTitle}
                     />
                     <button
-                      className="absolute top-2 right-2 bg-black bg-opacity-70 rounded-md p-2"
+                      className="absolute top-2 right-2 rounded-md bg-black bg-opacity-70 p-2"
                       onClick={() => setCoverImage('')}
                     >
-                      <IoTrashOutline className="h-5 mx-auto w-auto text-white" />
+                      <IoTrashOutline className="mx-auto h-5 w-auto text-white" />
                     </button>
                   </div>
                 )}
 
                 {savedSkills.map((savedSkill, index) => (
                   <div
-                    className="bg-tfsdark-600 inline-flex items-center text-xs rounded-full mt-1 mr-1 overflow-hidden pl-1"
+                    className="mt-1 mr-1 inline-flex items-center overflow-hidden rounded-full bg-base-600 pl-1 text-xs"
                     key={index}
                   >
                     <span
-                      className="flex items-center space-x-1 leading-relaxed truncate max-w-xs px-1 text-slate-400"
+                      className="flex max-w-xs items-center space-x-1 truncate px-1 leading-relaxed text-slate-400"
                       x-text="tag"
                     >
                       <Icon iconName={`${savedSkill}`} />
                       <span>{savedSkill}</span>
                     </span>
-                    <button className="w-6 h-8 inline-block align-middle text-slate-400 bg-tfsdark-600 focus:outline-none">
+                    <button className="inline-block h-8 w-6 bg-base-600 align-middle text-slate-400 focus:outline-none">
                       <IoCloseOutline
-                        className="w-4 h-4 fill-current mx-auto"
+                        className="mx-auto h-4 w-4 fill-current"
                         onClick={() => {
                           removeSkill(savedSkill);
                         }}
@@ -344,13 +344,13 @@ const EditPost = ({
           </div>
         </div>
         <div className="relative w-full">
-          <div className="flex space-x-6 text-slate-400 w-full">
+          <div className="flex w-full space-x-6 text-slate-400">
             <label
               htmlFor="coverImage"
-              className="flex space-x-2 items-center font-semibold cursor-pointer"
+              className="flex cursor-pointer items-center space-x-2 font-semibold"
             >
-              <IoImageOutline className="h-6 mx-auto w-auto text-slate-400" />
-              <span className="hidden md:block text-sm">Image</span>
+              <IoImageOutline className="mx-auto h-6 w-auto text-slate-400" />
+              <span className="hidden text-sm md:block">Image</span>
               <input
                 id="coverImage"
                 name="coverImage"
@@ -361,25 +361,25 @@ const EditPost = ({
             </label>
 
             <button
-              className="flex space-x-2 items-center font-semibold"
+              className="flex items-center space-x-2 font-semibold"
               onClick={() => setShowFlair(!showFlair)}
             >
               <IoPricetagOutline className="h-5 w-auto text-slate-400" />
-              <span className="hidden md:block text-sm whitespace-nowrap">
+              <span className="hidden whitespace-nowrap text-sm md:block">
                 Topic
               </span>
             </button>
             <button
-              className="flex space-x-2 items-center font-semibold"
+              className="flex items-center space-x-2 font-semibold"
               onClick={() => setShowTech(!showTech)}
             >
-              <IoCodeSlash className="h-5 mx-auto w-auto text-slate-400" />
-              <span className="hidden md:block text-sm">Tech</span>
+              <IoCodeSlash className="mx-auto h-5 w-auto text-slate-400" />
+              <span className="hidden text-sm md:block">Tech</span>
             </button>
-            <div className="flex justify-end items-center w-full space-x-2">
+            <div className="flex w-full items-center justify-end space-x-2">
               <button
                 onClick={() => setIsDeletePromptOpen(true)}
-                className="btn-primary bg-transparent hover:bg-transparent text-slate-500 hover:text-red-500"
+                className="btn-primary bg-transparent text-slate-500 hover:bg-transparent hover:text-red-500"
               >
                 <span>Delete</span>
               </button>
@@ -400,12 +400,12 @@ const EditPost = ({
           </div>
 
           <Transition show={showFlair}>
-            <div className="bottom-10 absolute z-20 left-48 w-auto">
+            <div className="absolute bottom-10 left-48 z-20 w-auto">
               <div
                 className="fixed inset-0"
                 onClick={() => setShowFlair(!showFlair)}
               ></div>
-              <div className="relative w-auto bg-tfsdark-900 py-1 rounded-lg flex flex-col shadow-xl border border-tfsdark-800 font-mono overflow-scroll h-40 divide-y-2 divide-tfsdark-700 text-sm">
+              <div className="relative flex h-40 w-auto flex-col divide-y-2 divide-base-700 overflow-scroll rounded-lg border border-base-800 bg-base-900 py-1 font-mono text-sm shadow-xl">
                 {postTypeOptions.map((item, index) => (
                   <button
                     onClick={() => {
@@ -423,12 +423,12 @@ const EditPost = ({
           </Transition>
 
           <Transition show={showTech}>
-            <div className="bottom-10 absolute z-20 left-64 w-72">
+            <div className="absolute bottom-10 left-64 z-20 w-72">
               <div
                 className="fixed inset-0"
                 onClick={() => setShowTech(!showTech)}
               ></div>
-              <div className="relative bg-tfsdark-900 py-2 rounded-lg flex flex-col shadow-xl px-2 border border-tfsdark-800">
+              <div className="relative flex flex-col rounded-lg border border-base-800 bg-base-900 py-2 px-2 shadow-xl">
                 <TagTech
                   savedSkills={savedSkills}
                   setSavedSkills={setSavedSkills}

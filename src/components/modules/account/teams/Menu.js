@@ -12,35 +12,35 @@ const Menu = ({ user, team }) => {
 
   return (
     <>
-      <div className="mx-4 md:mx-0 space-y-6">
+      <div className="mx-4 space-y-6 md:mx-0">
         <Link href={`/account/settings`}>
-          <div className="flex items-center space-x-2 px-4 md:px-0 mb-4 cursor-pointer">
+          <div className="mb-4 flex cursor-pointer items-center space-x-2 px-4 md:px-0">
             <IoArrowBack className="h-5 w-5" />
-            <h2 className="font-bold text-sm">Back to account settings</h2>
+            <h2 className="text-sm font-bold">Back to account settings</h2>
           </div>
         </Link>
         <div className="flex justify-between">
-          <div className="flex items-center space-x-4 relative w-min whitespace-nowrap">
-            <h2 className="text-3xl sm:text-3xl font-bold tracking-tight">
+          <div className="relative flex w-min items-center space-x-4 whitespace-nowrap">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-3xl">
               {team?.name || 'Teams'}
             </h2>
             {team && (
               <>
                 {team?.status === 'ACTIVE' ? (
-                  <div className="flex items-center space-x-1 text-green-500 text-sm sm:text-base">
-                    <IoInformationCircleSharp className="hidden sm:block w-5 h-5" />
-                    <h2 className="hidden sm:block text-xs">
+                  <div className="flex items-center space-x-1 text-sm text-green-500 sm:text-base">
+                    <IoInformationCircleSharp className="hidden h-5 w-5 sm:block" />
+                    <h2 className="hidden text-xs sm:block">
                       Your team profile is live
                     </h2>
-                    <h2 className="block sm:hidden pl-6">Profile is live</h2>
+                    <h2 className="block pl-6 sm:hidden">Profile is live</h2>
                   </div>
                 ) : (
-                  <div className="flex items-center space-x-2 text-orange-400 text-xs">
-                    <IoInformationCircleSharp className="hidden sm:block w-5 h-5" />
+                  <div className="flex items-center space-x-2 text-xs text-orange-400">
+                    <IoInformationCircleSharp className="hidden h-5 w-5 sm:block" />
                     <h2 className="hidden sm:block">
                       Your team profile is pending review
                     </h2>
-                    <h2 className="block sm:hidden pl-6">
+                    <h2 className="block pl-6 sm:hidden">
                       Profile awaiting review
                     </h2>
                   </div>
@@ -57,10 +57,10 @@ const Menu = ({ user, team }) => {
               <Link href={`/account/teams/profile/${team?.id}`}>
                 <button
                   className={
-                    `text-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-md whitespace-nowrap font-medium ` +
+                    `whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium sm:px-4 sm:py-2 ` +
                     (menuHighlight[3] === 'profile'
-                      ? `bg-tfsdark-600/70 text-white`
-                      : `bg-tfsdark-700/70 text-slate-400 hover:text-white`)
+                      ? `bg-base-600/70 text-white`
+                      : `bg-base-700/70 text-slate-400 hover:text-white`)
                   }
                 >
                   <span>Edit team profile</span>
@@ -70,10 +70,10 @@ const Menu = ({ user, team }) => {
               <Link href={`/account/teams/members/${team?.id}`}>
                 <button
                   className={
-                    `text-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-md whitespace-nowrap font-medium ` +
+                    `whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium sm:px-4 sm:py-2 ` +
                     (menuHighlight[3] === 'members'
-                      ? `bg-tfsdark-600/70 text-white`
-                      : `bg-tfsdark-700/70 text-slate-400 hover:text-white`)
+                      ? `bg-base-600/70 text-white`
+                      : `bg-base-700/70 text-slate-400 hover:text-white`)
                   }
                 >
                   <span>Team members</span>
@@ -83,10 +83,10 @@ const Menu = ({ user, team }) => {
               <Link href={`/account/teams/jobs/${team?.id}`}>
                 <button
                   className={
-                    `text-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-md whitespace-nowrap font-medium ` +
+                    `whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium sm:px-4 sm:py-2 ` +
                     (menuHighlight[3] === 'jobs'
-                      ? `bg-tfsdark-600/70 text-white`
-                      : `bg-tfsdark-700/70 text-slate-400 hover:text-white`)
+                      ? `bg-base-600/70 text-white`
+                      : `bg-base-700/70 text-slate-400 hover:text-white`)
                   }
                 >
                   <span>Post a job</span>
@@ -95,7 +95,7 @@ const Menu = ({ user, team }) => {
             </div>
             <div>
               <button
-                className="btn-ghost text-sm bg-tfsdark-700 px-4"
+                className="btn-ghost bg-base-700 px-4 text-sm"
                 onClick={() => setViewTeamProfile(true)}
               >
                 <span>View Profile</span>
@@ -111,7 +111,7 @@ const Menu = ({ user, team }) => {
         title={`${team?.name} team profile`}
         dimensions={'max-w-screen-2xl'}
       >
-        <div className="overflow-y-scroll h-[90vh] overscroll-contain no-scrollbar">
+        <div className="no-scrollbar h-[90vh] overflow-y-scroll overscroll-contain">
           <TeamProfile user={user} slug={team?.id} />
         </div>
       </ModalDialog>

@@ -154,9 +154,9 @@ const InviteMembers = ({
     <>
       <div>
         <div className="">
-          <div className="items-center divide-y divide-tfsdark-700">
+          <div className="items-center divide-y divide-base-700">
             <div className="flex items-center justify-between py-2">
-              <div className="flex items-center space-x-3 cursor-pointer">
+              <div className="flex cursor-pointer items-center space-x-3">
                 <Avatar
                   href={`/${user.displayName}`}
                   name={user.name}
@@ -167,7 +167,7 @@ const InviteMembers = ({
                 <h4>{user.name}</h4>
                 <span className="text-slate-400">{user.currentTitle}</span>
               </div>
-              <button className="btn-ghost text-xs text-left">
+              <button className="btn-ghost text-left text-xs">
                 Team owner
               </button>
             </div>
@@ -177,7 +177,7 @@ const InviteMembers = ({
                 className="flex items-center justify-between py-3"
                 key={member.id}
               >
-                <div className="flex items-center space-x-3 cursor-pointer">
+                <div className="flex cursor-pointer items-center space-x-3">
                   <Avatar
                     image={member.profilePicUrl}
                     href={`/${member.displayName}`}
@@ -188,7 +188,7 @@ const InviteMembers = ({
                   <span className="text-slate-400">{member.currentTitle}</span>
                 </div>
                 <button
-                  className="btn-ghost text-xs text-left text-red-500"
+                  className="btn-ghost text-left text-xs text-red-500"
                   onClick={() => removeTeamMember(member.userId)}
                 >
                   Remove
@@ -218,7 +218,7 @@ const InviteMembers = ({
       >
         <div className="py-4 px-2">
           {teamMemberAdded && (
-            <div className="mt-2 mb-4 relative bg-green-500/20 text-green-500 text-sm text-center w-full rounded-md py-1.5 px-2">
+            <div className="relative mt-2 mb-4 w-full rounded-md bg-green-500/20 py-1.5 px-2 text-center text-sm text-green-500">
               Team member added
             </div>
           )}
@@ -247,23 +247,23 @@ const InviteMembers = ({
               />
 
               {showLoadingResults && (
-                <div className="-mt-1 h-72 w-full bg-tfsdark-700 flex flex-1 items-center justify-center">
+                <div className="-mt-1 flex h-72 w-full flex-1 items-center justify-center bg-base-700">
                   <Loader />
                 </div>
               )}
               {!showLoadingResults && showSearchResults && (
-                <div className="absolute -mt-1 z-50 w-full rounded-b-lg bg-tfsdark-700">
+                <div className="absolute z-50 -mt-1 w-full rounded-b-lg bg-base-700">
                   {!searchResults?.length > 0 && (
-                    <div className="h-20 flex flex-1 text-sm items-center justify-center">
+                    <div className="flex h-20 flex-1 items-center justify-center text-sm">
                       <p>User not found. Invite them by email.</p>
                     </div>
                   )}
 
                   {searchResults?.length > 0 && (
-                    <ul className="overflow-hidden h-72 overflow-y-scroll overscroll-contain">
+                    <ul className="h-72 overflow-hidden overflow-y-scroll overscroll-contain">
                       {searchResults?.map((eng, index) => (
                         <li
-                          className="hover:bg-tfsdark-600 px-4 text-left"
+                          className="px-4 text-left hover:bg-base-600"
                           key={index}
                           onClick={() => {
                             addTeamMember(eng.userId);
@@ -271,7 +271,7 @@ const InviteMembers = ({
                           }}
                         >
                           {eng?.displayName != null ? (
-                            <div className="outline-none relative py-3 flex items-center space-x-3">
+                            <div className="relative flex items-center space-x-3 py-3 outline-none">
                               <div className="flex-shrink-0">
                                 <Avatar
                                   image={
@@ -281,7 +281,7 @@ const InviteMembers = ({
                                   dimensions="h-10 w-10"
                                 />
                               </div>
-                              <div className="flex-1 min-w-0">
+                              <div className="min-w-0 flex-1">
                                 <a href="#" className="focus:outline-none">
                                   <span
                                     className="absolute inset-0"
@@ -290,15 +290,15 @@ const InviteMembers = ({
                                   <p className="text-sm font-medium text-slate-100">
                                     {eng?.name || eng?.displayName}
                                   </p>
-                                  <p className="text-sm text-slate-400 truncate">
+                                  <p className="truncate text-sm text-slate-400">
                                     {eng?.currentTitle}
                                   </p>
                                 </a>
                               </div>
                             </div>
                           ) : (
-                            <div className="outline-none relative py-5 flex items-center space-x-3">
-                              <div className="flex-1 min-w-0">
+                            <div className="relative flex items-center space-x-3 py-5 outline-none">
+                              <div className="min-w-0 flex-1">
                                 <p className="text-sm font-medium text-slate-100">
                                   Sorry an unexpected error has occurred with
                                   this search result.
@@ -316,16 +316,16 @@ const InviteMembers = ({
           </div>
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-tfsdark-600"></div>
+              <div className="w-full border-t border-base-600"></div>
             </div>
             <div className="relative flex justify-center">
-              <span className="bg-tfsdark-900 px-2 text-sm text-slate-400">
+              <span className="bg-base-900 px-2 text-sm text-slate-400">
                 Can&apos;t find them? Send an invite
               </span>
             </div>
           </div>
           {emailInvitesSent && (
-            <div className="mt-2 mb-4 relative bg-green-500/20 text-green-500 text-sm text-center w-full rounded-md py-1.5 px-2">
+            <div className="relative mt-2 mb-4 w-full rounded-md bg-green-500/20 py-1.5 px-2 text-center text-sm text-green-500">
               Invite sent
             </div>
           )}

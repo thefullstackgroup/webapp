@@ -82,33 +82,33 @@ const filterStacks = [
 
 const Card = ({ item }) => {
   return (
-    <div className="col-span-1 mb-4 md:mb-0 border border-tfsdark-600 rounded-lg p-4">
+    <div className="col-span-1 mb-4 rounded-lg border border-base-600 p-4 md:mb-0">
       <div className="flex">
-        <div className="hidden md:block w-2/12">
-          <div className="bg-tfsdark-800 rounded-lg w-12 h-12 p-2.5">
+        <div className="hidden w-2/12 md:block">
+          <div className="h-12 w-12 rounded-lg bg-base-800 p-2.5">
             {item.type.toLowerCase() === 'mobileapp' && (
-              <IoPhonePortraitOutline className="w-7 h-auto text-primary-500" />
+              <IoPhonePortraitOutline className="text-primary-500 h-auto w-7" />
             )}
             {item.type.toLowerCase() === 'webapp' && (
-              <IoBrowsersSharp className="w-7 h-auto text-primary-500" />
+              <IoBrowsersSharp className="text-primary-500 h-auto w-7" />
             )}
             {(item.type.toLowerCase() === 'service' || item.type === 'api') && (
-              <IoCloudUploadOutline className="w-7 h-auto text-primary-500" />
+              <IoCloudUploadOutline className="text-primary-500 h-auto w-7" />
             )}
             {item.type.toLowerCase() === 'theme' && (
-              <IoColorPaletteOutline className="w-7 h-auto text-primary-500" />
+              <IoColorPaletteOutline className="text-primary-500 h-auto w-7" />
             )}
             {item.type.toLowerCase() === 'plugin' && (
-              <IoLinkSharp className="w-7 h-auto text-primary-500" />
+              <IoLinkSharp className="text-primary-500 h-auto w-7" />
             )}
             {!item.type.trim().length > 0 && (
-              <IoCodeSlashSharp className="w-7 h-auto text-primary-500" />
+              <IoCodeSlashSharp className="text-primary-500 h-auto w-7" />
             )}
           </div>
         </div>
         <div className="w-10/12 space-y-1">
-          <div className="font-bold text-lg">{item.title}</div>
-          <div className="font-normal text-slate-400 text-sm line-clamp-3">
+          <div className="text-lg font-bold">{item.title}</div>
+          <div className="text-sm font-normal text-slate-400 line-clamp-3">
             {item.description}
           </div>
           <div className="">
@@ -123,7 +123,7 @@ const Card = ({ item }) => {
               </a>
             )}
           </div>
-          <div className="flex flex-row pt-2 flex-wrap">
+          <div className="flex flex-row flex-wrap pt-2">
             {item.stack?.map((value, index) => (
               <div key={index}>
                 <TechPill tech={value} size={'xs'} key={index} />
@@ -215,23 +215,23 @@ export default function GreatestPortfolio() {
       />
 
       <LayoutLoggedOut setShowSignupModal={setShowSignupModal}>
-        <div className="relative px-0 md:px-8 mb-28 max-w-screen-xl mx-auto">
-          <div className="absolute top-20 -right-8 hidden lg:block h-auto w-6/12">
+        <div className="relative mx-auto mb-28 max-w-screen-xl px-0 md:px-8">
+          <div className="absolute top-20 -right-8 hidden h-auto w-6/12 lg:block">
             <img
               src="/assets/landing/main/computer2.webp"
               alt="Greatest Developer Portfolio Ever"
               className="w-full"
             />
           </div>
-          <div className="flex flex-col md:flex-row max-w-7xl mx-4 md:mx-auto">
-            <div className="lg:w-7/12 pt-10 md:pt-28 md:pr-14">
+          <div className="mx-4 flex max-w-7xl flex-col md:mx-auto md:flex-row">
+            <div className="pt-10 md:pt-28 md:pr-14 lg:w-7/12">
               <div>
-                <h1 className="text-3xl tracking-tight font-bold font-intertight text-slate-100 md:text-6xl text-center md:text-left">
+                <h1 className="text-center font-intertight text-3xl font-bold tracking-tight text-slate-100 md:text-left md:text-6xl">
                   Greatest Developer Portfolio ...ever
                 </h1>
               </div>
               <div className="mt-4 md:w-4/5">
-                <h4 className="text-lg tracking-tight text-gray-400  md:text-2xl text-center md:text-left">
+                <h4 className="text-center text-lg tracking-tight  text-gray-400 md:text-left md:text-2xl">
                   Here you will find project ideas you could build to add to
                   your developer portfolio depending on your skills.
                 </h4>
@@ -244,7 +244,7 @@ export default function GreatestPortfolio() {
                   Explore ideas
                 </button>
               </div>
-              <div className="mt-4 lg:mt-10 mb-10 text-sm text-primary-500 font-semibold dark:hover:text-purple-400 cursor-pointer text-center lg:text-left">
+              <div className="text-primary-500 mt-4 mb-10 cursor-pointer text-center text-sm font-semibold dark:hover:text-purple-400 lg:mt-10 lg:text-left">
                 <a
                   href={`https://github.com/thefullstackgroup/greatest-developer-portfolio-ever`}
                   target="_blank"
@@ -258,13 +258,13 @@ export default function GreatestPortfolio() {
 
           <div id="ideas" className="md:mt-10"></div>
 
-          <div className="pt-10 md:flex md:space-x-4 max-w-7xl mx-4 md:mx-auto">
+          <div className="mx-4 max-w-7xl pt-10 md:mx-auto md:flex md:space-x-4">
             <div className="hidden md:block md:w-3/12">
               <div className="sticky top-20 space-y-10">
                 <div>
                   <div className="flex items-center space-x-1">
                     <IoArrowDown className="h-4" />
-                    <span className="font-bold text-base">Filter by</span>
+                    <span className="text-base font-bold">Filter by</span>
                   </div>
                   <ul className="my-4 ml-4 space-y-2 font-mono text-slate-400">
                     {filterTypes.map((item, index) => (
@@ -287,7 +287,7 @@ export default function GreatestPortfolio() {
                 <div>
                   <div className="flex items-center space-x-1">
                     <IoArrowDown className="h-4" />
-                    <span className="font-bold text-base">Stack</span>
+                    <span className="text-base font-bold">Stack</span>
                   </div>
                   <ul className="my-4 ml-4 space-y-2 font-mono text-slate-400">
                     {filterStacks.map((item, index) => (
@@ -310,14 +310,14 @@ export default function GreatestPortfolio() {
             </div>
 
             <div className="md:w-9/12">
-              <div className="w-full flex items-center rounded-md bg-tfsdark-700 px-4 mb-8">
+              <div className="mb-8 flex w-full items-center rounded-md bg-base-700 px-4">
                 <FiSearch className="h-7 w-auto text-slate-600" />
                 <input
                   type="text"
                   name="search"
                   placeholder="Search for project ideas"
                   autoFocus
-                  className="focus:placeholder-gray-400 placeholder-gray-400 text-lg md:text-xl py-3 px-4 w-full focus:ring-0 focus:border-transparent focus:outline-none bg-transparent border-0"
+                  className="w-full border-0 bg-transparent py-3 px-4 text-lg placeholder-gray-400 focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0 md:text-xl"
                   value={searchTerm}
                   onChange={(e) => {
                     setSearchTerm(e.target.value);
@@ -325,14 +325,14 @@ export default function GreatestPortfolio() {
                   }}
                 />
               </div>
-              <h4 className="text-xl tracking-tight font-bold">
+              <h4 className="text-xl font-bold tracking-tight">
                 Browse project ideas
               </h4>
               {filterSelected && (
-                <div className="flex items-center mt-2 text-sm text-gray-400 space-x-2">
+                <div className="mt-2 flex items-center space-x-2 text-sm text-gray-400">
                   <span>Filtered by:</span>
                   <button
-                    className="flex items-center space-x-1 w-min bg-tfsdark-800 text-slate-200 rounded-full py-1 px-2.5 text-sm font-medium"
+                    className="flex w-min items-center space-x-1 rounded-full bg-base-800 py-1 px-2.5 text-sm font-medium text-slate-200"
                     onClick={() => {
                       setFilteredData([]);
                       setFilterSelected('');
@@ -344,10 +344,10 @@ export default function GreatestPortfolio() {
                 </div>
               )}
               {searchTerm.trim().length > 0 && (
-                <div className="flex items-center mt-2 text-sm text-gray-400 space-x-2">
+                <div className="mt-2 flex items-center space-x-2 text-sm text-gray-400">
                   <span>Search results for the term:</span>
                   <button
-                    className="flex items-center space-x-1 w-auto bg-tfsdark-800 text-slate-200 rounded-full py-1 px-2.5 text-sm font-medium"
+                    className="flex w-auto items-center space-x-1 rounded-full bg-base-800 py-1 px-2.5 text-sm font-medium text-slate-200"
                     onClick={() => {
                       setFilteredData([]);
                       setSearchTerm('');
@@ -358,7 +358,7 @@ export default function GreatestPortfolio() {
                   </button>
                 </div>
               )}
-              <div className="mt-6 md:grid md:grid-cols-2 gap-8">
+              <div className="mt-6 gap-8 md:grid md:grid-cols-2">
                 {!filterSelected &&
                   !searchTerm &&
                   data.map((item, index) => <Card item={item} key={index} />)}
@@ -388,7 +388,7 @@ export default function GreatestPortfolio() {
         <ModalDialog show={showSignupModal} setShow={setShowSignupModal}>
           <div className="pt-2">
             <button
-              className="z-50 w-full text-white flex justify-end"
+              className="z-50 flex w-full justify-end text-white"
               onClick={() => setShowSignupModal(!showSignupModal)}
             >
               <IoCloseOutline className="h-8 w-8" />

@@ -12,13 +12,13 @@ const NewsletterSection = () => {
   };
 
   return (
-    <div className="bg-tfsdark-800/20 border border-tfsdark-700 rounded-lg p-4 md:p-8 space-y-4">
+    <div className="space-y-4 rounded-lg border border-base-700 bg-base-800/20 p-4 md:p-8">
       <div className="space-y-4 text-center">
         <div className="w-full space-y-2">
-          <h4 className="text-2xl md:text-4xl font-bold font-intertight uppercase">
+          <h4 className="font-intertight text-2xl font-bold uppercase md:text-4xl">
             Join 10000+ developers
           </h4>
-          <p className="text-sm md:text-base text-slate-400">
+          <p className="text-sm text-slate-400 md:text-base">
             who receive our newsletter every week, filled with the best trending
             projects showcased by the community along with projects open to
             collaboration and looking for contributors.
@@ -31,7 +31,7 @@ const NewsletterSection = () => {
             rel="noreferrer"
           >
             <button
-              className="btn-primary w-full whitespace-nowrap mx-auto text-lg md:text-xl py-2 px-3 md:py-3 md:px-6 rounded-lg"
+              className="btn-primary mx-auto w-full whitespace-nowrap rounded-lg py-2 px-3 text-lg md:py-3 md:px-6 md:text-xl"
               onClick={() => sendSlackMessage()}
             >
               Subscribe

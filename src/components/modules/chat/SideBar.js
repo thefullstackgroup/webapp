@@ -30,12 +30,12 @@ const SideBar = ({ user, chatId }) => {
         <button
           key={chat.id}
           className={
-            `relative flex items-start justify-between w-full p-4 outline-none sm:border-r-4 border-b sm:border-b-0 border-tfsdark-700  ` +
+            `relative flex w-full items-start justify-between border-b border-base-700 p-4 outline-none sm:border-r-4 sm:border-b-0  ` +
             (chat.id === chatId
-              ? 'border-primary-500 bg-tfsdark-600/50'
+              ? 'border-primary-500 bg-base-600/50'
               : chatNotifications[chat.id]?.unreadMessages === 1
               ? 'border-transparent bg-purple-700/20'
-              : 'border-transparent hover:bg-tfsdark-700')
+              : 'border-transparent hover:bg-base-700')
           }
           onClick={() => redirect(chat.id)}
         >
@@ -49,9 +49,9 @@ const SideBar = ({ user, chatId }) => {
           />
 
           {chatNotifications[chat.id]?.unreadMessages === 1 ? (
-            <div className="text-white h-3 w-3 font-medium text-xs rounded-full bg-purple-500"></div>
+            <div className="h-3 w-3 rounded-full bg-purple-500 text-xs font-medium text-white"></div>
           ) : (
-            <div className="flex flex-shrink-0 text-sm mt-1">
+            <div className="mt-1 flex flex-shrink-0 text-sm">
               {Moment(new Date(chat?.timestamp?.seconds * 1000)).format(
                 'MMM DD'
               )}
@@ -66,18 +66,18 @@ const SideBar = ({ user, chatId }) => {
   };
 
   return (
-    <div className="flex flex-col w-full h-full sm:w-full items-start sm:bg-tfsdark-800 pt-0 sm:pt-0">
-      <div className="w-full h-full sm:h-[75vh] overflow-scroll no-scrollbar">
+    <div className="flex h-full w-full flex-col items-start pt-0 sm:w-full sm:bg-base-800 sm:pt-0">
+      <div className="no-scrollbar h-full w-full overflow-scroll sm:h-[75vh]">
         {chatsLoading && (
-          <div className="flex align-middle items-center justify-center mt-10">
+          <div className="mt-10 flex items-center justify-center align-middle">
             <Loader />
           </div>
         )}
         {!chatsLoading && chatsList}
 
         {!chatsLoading && !chats?.length > 0 && (
-          <div className="mt-20 sm:hidden flex flex-1 flex-col justify-center items-center space-y-4">
-            <p className="text-2xl tracking-tight text-gray-300 font-medium">
+          <div className="mt-20 flex flex-1 flex-col items-center justify-center space-y-4 sm:hidden">
+            <p className="text-2xl font-medium tracking-tight text-gray-300">
               Start a conversation.
             </p>
             <IoChatbubblesOutline className="h-24 w-24 text-gray-300" />

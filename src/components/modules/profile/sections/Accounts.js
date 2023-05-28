@@ -194,17 +194,17 @@ const Card = ({ channel, profile }) => {
     <>
       <div
         className={
-          'h-20 sm:h-16 lg:h-40 flex items-start gap-4 bg-tfsdark-700 rounded-md px-3 py-2 lg:py-4 w-full mb-2 lg:mb-0 lg:w-1/4 border-2 border-transparent duration-200 cursor-pointer ' +
+          'mb-2 flex h-20 w-full cursor-pointer items-start gap-4 rounded-md border-2 border-transparent bg-base-700 px-3 py-2 duration-200 sm:h-16 lg:mb-0 lg:h-40 lg:w-1/4 lg:py-4 ' +
           (connected
             ? 'opacity-70'
-            : 'sm:hover:shadow-xl sm:hover:shadow-primary-500/20 sm:hover:border-primary-700')
+            : 'sm:hover:shadow-primary-500/20 sm:hover:border-primary-700 sm:hover:shadow-xl')
         }
         onClick={() => {
           setConnection(channel);
           setShowConnect(true);
         }}
       >
-        <div className="flex lg:hidden space-x-4 justify-between w-full">
+        <div className="flex w-full justify-between space-x-4 lg:hidden">
           <div>
             {channel.name === 'GITHUB' && <FaGithub className="h-10 w-10" />}
             {channel.name === 'DEV_TO' && <FaDev className="h-10 w-10" />}
@@ -215,22 +215,22 @@ const Card = ({ channel, profile }) => {
           </div>
           <div className="w-full">
             <h4 className="font-semibold">{channel.title}</h4>
-            <p className="text-slate-400 text-xs md:text-sm">{channel.desc}</p>
+            <p className="text-xs text-slate-400 md:text-sm">{channel.desc}</p>
           </div>
           <div className="mt-2">
             {connected ? (
-              <div className="flex text-xs w-min py-0 space-x-1 text-green-600">
+              <div className="flex w-min space-x-1 py-0 text-xs text-green-600">
                 <IoCheckmark className="h-6 w-6" />
               </div>
             ) : (
-              <button className="btn-secondary text-xs w-min py-1.5 px-2 space-x-1">
+              <button className="btn-secondary w-min space-x-1 py-1.5 px-2 text-xs">
                 <IoAdd className="h-6 w-6" />
               </button>
             )}
           </div>
         </div>
-        <div className="relative hidden lg:block h-full">
-          <div className="flex items-center space-x-2 mb-2">
+        <div className="relative hidden h-full lg:block">
+          <div className="mb-2 flex items-center space-x-2">
             {channel.name === 'GITHUB' && (
               <FaGithub className="h-10 w-10 sm:h-8 sm:w-8" />
             )}
@@ -245,15 +245,15 @@ const Card = ({ channel, profile }) => {
             )}
             <h4 className="font-semibold">{channel.title}</h4>
           </div>
-          <p className="text-slate-400 text-xs">{channel.desc}</p>
+          <p className="text-xs text-slate-400">{channel.desc}</p>
           <div className="absolute bottom-2 left-0 mt-2">
             {connected ? (
-              <div className="flex text-xs w-min py-1.5 space-x-1 text-green-600">
+              <div className="flex w-min space-x-1 py-1.5 text-xs text-green-600">
                 <IoCheckmark className="h-4 w-4" />
                 <span>Connected</span>
               </div>
             ) : (
-              <button className="btn-secondary btn-with-icon text-xs w-min py-1.5 pl-1.5 pr-2.5 space-x-1">
+              <button className="btn-secondary btn-with-icon w-min space-x-1 py-1.5 pl-1.5 pr-2.5 text-xs">
                 <IoAdd className="h-4 w-4" />
                 <span>Connect</span>
               </button>
@@ -271,9 +271,9 @@ const Card = ({ channel, profile }) => {
           dimensions={`sm:max-w-md`}
         >
           <div>
-            <div className="py-4 no-scrollbar overflow-y-scroll overflow-visible overscroll-contain h-4/5 pb-20 sm:pb-4 sm:h-auto w-full">
-              <div className="top-0 w-full mx-auto bg-transparent px-2 space-y-6 relative h-full">
-                <div className="flex items-center gap-4 mt-2">
+            <div className="no-scrollbar h-4/5 w-full overflow-visible overflow-y-scroll overscroll-contain py-4 pb-20 sm:h-auto sm:pb-4">
+              <div className="relative top-0 mx-auto h-full w-full space-y-6 bg-transparent px-2">
+                <div className="mt-2 flex items-center gap-4">
                   <div>
                     {channel.name === 'GITHUB' && (
                       <FaGithub className="h-16 w-16" />
@@ -331,9 +331,9 @@ const Card = ({ channel, profile }) => {
           dimensions={`sm:max-w-md`}
         >
           <div>
-            <div className="py-4 no-scrollbar overflow-y-scroll overflow-visible overscroll-contain h-4/5 pb-20 sm:pb-4 sm:h-56 w-full">
-              <div className="top-0 w-full mx-auto bg-transparent px-2 space-y-6 relative h-full">
-                <div className="flex items-center gap-4 mt-2">
+            <div className="no-scrollbar h-4/5 w-full overflow-visible overflow-y-scroll overscroll-contain py-4 pb-20 sm:h-56 sm:pb-4">
+              <div className="relative top-0 mx-auto h-full w-full space-y-6 bg-transparent px-2">
+                <div className="mt-2 flex items-center gap-4">
                   <div>
                     {channel.name === 'GITHUB' && (
                       <FaGithub className="h-16 w-16" />
@@ -352,22 +352,22 @@ const Card = ({ channel, profile }) => {
                     <p className="text-slate-400">
                       Do you want to disconnect the {channel.title} account
                       {channel.name === 'GITHUB' && (
-                        <span className="px-1 inline-flex text-slate-100 font-mono">
+                        <span className="inline-flex px-1 font-mono text-slate-100">
                           {profile.bio.gitHubAccount}
                         </span>
                       )}
                       {channel.name === 'DEV_TO' && (
-                        <span className="px-1 inline-flex text-slate-100 font-mono">
+                        <span className="inline-flex px-1 font-mono text-slate-100">
                           {profile.bio.devToAccount}
                         </span>
                       )}
                       {channel.name === 'HASH_NODE' && (
-                        <span className="px-1 inline-flex text-slate-100 font-mono">
+                        <span className="inline-flex px-1 font-mono text-slate-100">
                           {profile.bio.hashNodeAccount}
                         </span>
                       )}
                       {channel.name === 'MEDIUM' && (
-                        <span className="px-1 inline-flex text-slate-100 font-mono">
+                        <span className="inline-flex px-1 font-mono text-slate-100">
                           {profile.bio.mediumAccount}
                         </span>
                       )}

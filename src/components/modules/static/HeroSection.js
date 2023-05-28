@@ -19,7 +19,7 @@ const HeroSection = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
       .sort(() => Math.random() - 0.5)
       .map((project) => (
         <div
-          className="h-[30vh] w-full bg-black rounded-none overflow-hidden opacity-30 hover:opacity-40 duration-300"
+          className="h-[30vh] w-full overflow-hidden rounded-none bg-black opacity-30 duration-300 hover:opacity-40"
           key={project.projectId}
         >
           <Image
@@ -35,20 +35,20 @@ const HeroSection = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
   }, [data]);
 
   return (
-    <div className="relative h-[80vh] sm:h-[105vh] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900/40 via-black to-tfsdark-900 overflow-hidden">
-      <div className="pt-20 sm:pt-40 px-4 xl:px-8 max-w-7xl mx-auto relative lg:h-4/5">
-        <div className="relative z-20 pt-20 sm:pt-28 max-w-full lg:max-w-7xl mx-auto">
-          <h1 className="text-6xl md:text-9xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-300 via-slate-100 to-slate-400 font-intertight flex justify-center text-center -space-y-4">
+    <div className="relative h-[80vh] overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900/40 via-black to-base-900 sm:h-[105vh]">
+      <div className="relative mx-auto max-w-7xl px-4 pt-20 sm:pt-40 lg:h-4/5 xl:px-8">
+        <div className="relative z-20 mx-auto max-w-full pt-20 sm:pt-28 lg:max-w-7xl">
+          <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-slate-300 via-slate-100 to-slate-400 bg-clip-text text-center font-intertight text-6xl font-bold tracking-tight text-transparent md:text-9xl">
             Make code, not war
           </h1>
 
-          <p className="block mt-4 text-xl text-slate-300 sm:text-2xl lg:text-3xl px-4 text-center font-intertight">
+          <p className="mt-4 block px-4 text-center font-intertight text-xl text-slate-300 sm:text-2xl lg:text-3xl">
             Discover and connect with developers sharing their work.
           </p>
 
-          <div className="my-12 w-full flex justify-center md:space-x-6">
+          <div className="my-12 flex w-full justify-center md:space-x-6">
             <button
-              className="btn-primary text-lg md:text-xl py-2 px-4 md:py-3 md:px-6 bg-gradient-to-br from-primary-500 via-violet-600 to-purple-700 rounded-lg"
+              className="btn-primary from-primary-500 rounded-lg bg-gradient-to-br via-violet-600 to-purple-700 py-2 px-4 text-lg md:py-3 md:px-6 md:text-xl"
               onClick={() => {
                 setShowSignupModal(true);
                 sendSlackSignUpMessage('GET STARTED');
@@ -57,7 +57,7 @@ const HeroSection = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
               Get started
             </button>
             <Link href="/for/developers">
-              <button className="hidden md:block btn-secondary text-lg md:text-xl py-2 px-4 md:py-3 md:px-6 bg-tfsdark-400/70 hover:bg-tfsdark-600 rounded-lg">
+              <button className="btn-secondary hidden rounded-lg bg-base-400/70 py-2 px-4 text-lg hover:bg-base-600 md:block md:py-3 md:px-6 md:text-xl">
                 Learn more
               </button>
             </Link>
@@ -66,15 +66,15 @@ const HeroSection = ({ setShowSignupModal, sendSlackSignUpMessage }) => {
       </div>
       {!isMobile && (
         <>
-          <div className="w-full absolute z-10 -top-4">
-            <div className="grid grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-8 gap-0">
+          <div className="absolute -top-4 z-10 w-full">
+            <div className="grid grid-cols-3 gap-0 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-8">
               {projectCards}
             </div>
           </div>
-          <div className="w-full absolute hidden md:block top-0 left-0 z-10 bg-gradient-to-b from-tfsdark-900 via-tfsdark-900 to-transparent h-10 sm:h-36"></div>
-          <div className="w-full absolute hidden md:block bottom-0 left-0 z-10 bg-gradient-to-t from-tfsdark-900 via-tfsdark-900 to-transparent h-20"></div>
-          <div className="z-10 absolute bottom-20 md:bottom-14 w-full text-center">
-            <IoArrowDown className="text-tfsdark-100 w-auto h-8 md:h-12 mx-auto animate-bounce" />
+          <div className="absolute top-0 left-0 z-10 hidden h-10 w-full bg-gradient-to-b from-base-900 via-base-900 to-transparent sm:h-36 md:block"></div>
+          <div className="absolute bottom-0 left-0 z-10 hidden h-20 w-full bg-gradient-to-t from-base-900 via-base-900 to-transparent md:block"></div>
+          <div className="absolute bottom-20 z-10 w-full text-center md:bottom-14">
+            <IoArrowDown className="mx-auto h-8 w-auto animate-bounce text-base-100 md:h-12" />
           </div>
         </>
       )}

@@ -27,27 +27,27 @@ const Page = ({ user }) => {
 
   return (
     <>
-      <div className="mt-0 lg:mt-12 w-full flex justify-center">
-        <div className="w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-          <div className="relative max-w-4xl mx-auto">
-            <div className="mx-4 md:mx-0 space-y-6">
+      <div className="mt-0 flex w-full justify-center lg:mt-12">
+        <div className="w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+          <div className="relative mx-auto max-w-4xl">
+            <div className="mx-4 space-y-6 md:mx-0">
               <Link href={`/account/settings`}>
-                <div className="flex items-center space-x-2 px-4 md:px-0 mb-4 cursor-pointer">
+                <div className="mb-4 flex cursor-pointer items-center space-x-2 px-4 md:px-0">
                   <IoArrowBack className="h-5 w-5" />
-                  <h2 className="font-bold text-sm">
+                  <h2 className="text-sm font-bold">
                     Back to account settings
                   </h2>
                 </div>
               </Link>
 
               <div className="relative w-min whitespace-nowrap">
-                <h2 className="text-3xl sm:text-3xl font-bold tracking-tight">
+                <h2 className="text-3xl font-bold tracking-tight sm:text-3xl">
                   Danger zone
                 </h2>
               </div>
               {!deleteAccountRequested && (
-                <div className="w-full rounded-lg bg-tfsdark-700 mb-4 px-4 sm:px-6 py-4">
-                  <p className="mt-1 text-gray-300 mb-6">
+                <div className="mb-4 w-full rounded-lg bg-base-700 px-4 py-4 sm:px-6">
+                  <p className="mt-1 mb-6 text-gray-300">
                     Complete the step below if you wish to remove your account
                     entirely.
                   </p>
@@ -56,7 +56,7 @@ const Page = ({ user }) => {
                       <label className="block font-medium text-gray-300">
                         Type the word &quot;DELETE&quot; below to continue:
                       </label>
-                      <div className="mt-1 rounded-md flex">
+                      <div className="mt-1 flex rounded-md">
                         <input
                           type="text"
                           name="delete"
@@ -74,7 +74,7 @@ const Page = ({ user }) => {
                     </div>
                     {!disabledDelete && (
                       <div className="space-y-10">
-                        <p className="text-base mt-2">
+                        <p className="mt-2 text-base">
                           <i>We&apos;re really sorry to see you go.</i> 😔
                         </p>
                         <p>
@@ -85,10 +85,10 @@ const Page = ({ user }) => {
                         <div className="flex flex-col space-y-2">
                           <button
                             className={
-                              'rounded-full px-6 py-3 border ' +
+                              'rounded-full border px-6 py-3 ' +
                               (reason === 'I signed up by accident'
-                                ? 'bg-tfsdark-700 border-slate-200'
-                                : 'bg-tfsdark-600 hover:bg-tfsdark-500 border-tfsdark-600')
+                                ? 'border-slate-200 bg-base-700'
+                                : 'border-base-600 bg-base-600 hover:bg-base-500')
                             }
                             onClick={() => setReason('I signed up by accident')}
                           >
@@ -96,10 +96,10 @@ const Page = ({ user }) => {
                           </button>
                           <button
                             className={
-                              'rounded-full px-6 py-3 border ' +
+                              'rounded-full border px-6 py-3 ' +
                               (reason === 'The Full Stack is not for me'
-                                ? 'bg-tfsdark-700 border-slate-200'
-                                : 'bg-tfsdark-600 hover:bg-tfsdark-500 border-tfsdark-600')
+                                ? 'border-slate-200 bg-base-700'
+                                : 'border-base-600 bg-base-600 hover:bg-base-500')
                             }
                             onClick={() =>
                               setReason('The Full Stack is not for me')
@@ -109,10 +109,10 @@ const Page = ({ user }) => {
                           </button>
                           <button
                             className={
-                              'rounded-full px-6 py-3 border ' +
+                              'rounded-full border px-6 py-3 ' +
                               (reason === 'I received too many emails'
-                                ? 'bg-tfsdark-700 border-slate-200'
-                                : 'bg-tfsdark-600 hover:bg-tfsdark-500 border-tfsdark-600')
+                                ? 'border-slate-200 bg-base-700'
+                                : 'border-base-600 bg-base-600 hover:bg-base-500')
                             }
                             onClick={() =>
                               setReason('I received too many emails')
@@ -122,10 +122,10 @@ const Page = ({ user }) => {
                           </button>
                           <button
                             className={
-                              'rounded-full px-6 py-3 border ' +
+                              'rounded-full border px-6 py-3 ' +
                               (reason === 'Duplicate account'
-                                ? 'bg-tfsdark-700 border-slate-200'
-                                : 'bg-tfsdark-600 hover:bg-tfsdark-500 border-tfsdark-600')
+                                ? 'border-slate-200 bg-base-700'
+                                : 'border-base-600 bg-base-600 hover:bg-base-500')
                             }
                             onClick={() => setReason('Duplicate account')}
                           >
@@ -133,10 +133,10 @@ const Page = ({ user }) => {
                           </button>
                           <button
                             className={
-                              'rounded-full px-6 py-3 border ' +
+                              'rounded-full border px-6 py-3 ' +
                               (reason === 'Other'
-                                ? 'bg-tfsdark-700 border-slate-200'
-                                : 'bg-tfsdark-600 hover:bg-tfsdark-500 border-tfsdark-600')
+                                ? 'border-slate-200 bg-base-700'
+                                : 'border-base-600 bg-base-600 hover:bg-base-500')
                             }
                             onClick={() => setReason('Other')}
                           >
@@ -145,7 +145,7 @@ const Page = ({ user }) => {
                         </div>
                         {reason && (
                           <button
-                            className="w-full btn-primary uppercase bg-red-600 hover:bg-red-500 py-3"
+                            className="btn-primary w-full bg-red-600 py-3 uppercase hover:bg-red-500"
                             onClick={() => deleteUserRequest()}
                           >
                             <a>Delete my account &rarr;</a>
@@ -158,11 +158,11 @@ const Page = ({ user }) => {
               )}
 
               {deleteAccountRequested && (
-                <div className="w-full rounded-lg bg-tfsdark-700 mb-4 px-4 sm:px-6 py-20">
-                  <p className="mt-1 text-lg font-medium text-center mb-6">
+                <div className="mb-4 w-full rounded-lg bg-base-700 px-4 py-20 sm:px-6">
+                  <p className="mt-1 mb-6 text-center text-lg font-medium">
                     Sorry to see you go.
                   </p>
-                  <p className="mt-1 text-gray-300 mb-6 text-center">
+                  <p className="mt-1 mb-6 text-center text-gray-300">
                     Your account will be deleted in the next 24-48 hours.
                   </p>
                 </div>

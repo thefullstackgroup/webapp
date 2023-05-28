@@ -3,11 +3,11 @@ const locationTypeOptions = ['Remote', 'Hybrid', 'Onsite'];
 
 export const EmploymentType = ({ selected, setType }) => {
   return (
-    <div className="flex items-center w-1/2">
+    <div className="flex w-1/2 items-center">
       {employmentTypeOptions.map((type, index) => (
         <button
           className={
-            'badge w-full bg-tfsdark-600/50 text-base px-6 py-1.5 whitespace-nowrap ' +
+            'badge w-full whitespace-nowrap bg-base-600/50 px-6 py-1.5 text-base ' +
             (selected === type && 'bg-primary-500 text-white')
           }
           onClick={() => setType(type)}
@@ -22,11 +22,11 @@ export const EmploymentType = ({ selected, setType }) => {
 
 export const LocationType = ({ selected, setType }) => {
   return (
-    <div className="flex items-center w-1/2">
+    <div className="flex w-1/2 items-center">
       {locationTypeOptions.map((type, index) => (
         <button
           className={
-            'badge w-full bg-tfsdark-600/50 text-base px-6 py-1.5 ' +
+            'badge w-full bg-base-600/50 px-6 py-1.5 text-base ' +
             (selected === type && 'bg-primary-500 text-white')
           }
           onClick={() => {

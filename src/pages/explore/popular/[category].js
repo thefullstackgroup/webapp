@@ -20,8 +20,8 @@ const ExploreCategory = ({ cat }) => {
   );
 
   const [user, getUser] = useUserProfile();
-  const [sort, setSort] = useState(SortFilter[0]);
-  const [range, setRange] = useState(RangeFilter[2]);
+  const [sort, setSort] = useState(SortFilter[1]);
+  const [range, setRange] = useState(RangeFilter[3]);
   const [category, setCategory] = useState(categorySelected || null);
   const [stack, setStack] = useState(null);
 

@@ -14,7 +14,7 @@ const SubCard = ({ project }) => {
   return (
     <>
       <div
-        className="group relative h-80 w-full cursor-pointer overflow-hidden rounded-2xl border-4 border-transparent bg-gradient-to-t from-black via-tfsdark-700 to-transparent duration-200 sm:hover:border-primary-500 sm:hover:shadow-lg sm:hover:shadow-purple-900"
+        className="sm:hover:border-primary-500 group relative h-80 w-full cursor-pointer overflow-hidden rounded-2xl border-4 border-transparent bg-gradient-to-t from-black via-base-700 to-transparent duration-200 sm:hover:shadow-lg sm:hover:shadow-purple-900"
         onClick={() => setShowProject(!showProject)}
         key={project.id}
       >
@@ -29,7 +29,7 @@ const SubCard = ({ project }) => {
           />
         </div>
 
-        <div className="absolute top-4 left-4 mb-6 w-min whitespace-nowrap rounded-full border border-tfsdark-400 bg-tfsdark-700/50 px-4 py-1 text-sm text-white">
+        <div className="absolute top-4 left-4 mb-6 w-min whitespace-nowrap rounded-full border border-base-400 bg-base-700/50 px-4 py-1 text-sm text-white">
           Featured
         </div>
 
@@ -52,7 +52,7 @@ const SubCard = ({ project }) => {
         leave=""
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
-        className="fixed top-0 left-0 z-50 h-screen w-full overscroll-contain bg-tfsdark-800/70 backdrop-blur-md"
+        className="fixed top-0 left-0 z-50 h-screen w-full overscroll-contain bg-base-800/70 backdrop-blur-md"
       >
         <div
           className="fixed inset-0 h-screen w-full"
@@ -60,7 +60,7 @@ const SubCard = ({ project }) => {
         ></div>
         <div>
           <div className="no-scrollbar relative mx-auto flex h-screen w-full max-w-screen-2xl flex-col overflow-hidden overflow-y-scroll overscroll-contain 2xl:px-10">
-            <div className="top-0 mx-auto w-full max-w-full bg-tfsdark-900">
+            <div className="top-0 mx-auto w-full max-w-full bg-base-900">
               <Project
                 projectId={project.id}
                 projectSlug={project.slug}
@@ -99,10 +99,10 @@ const Featured = () => {
           </div>
 
           <div
-            className="cursor-pointer space-y-4 rounded-xl bg-gradient-to-br from-tfsdark-900 via-tfsdark-700 to-tfsdark-800 py-6 px-4 md:px-10 xl:col-span-2"
+            className="cursor-pointer space-y-4 rounded-xl bg-gradient-to-br from-base-900 via-base-700 to-base-800 py-6 px-4 md:px-10 xl:col-span-2"
             onClick={() => setShowProject(!showProject)}
           >
-            <div className="mb-6 w-min whitespace-nowrap rounded-full border border-tfsdark-400 bg-tfsdark-700/50 px-4 py-1 text-sm text-white">
+            <div className="mb-6 w-min whitespace-nowrap rounded-full border border-base-400 bg-base-700/50 px-4 py-1 text-sm text-white">
               Popular
             </div>
             <div className="flex items-center space-x-4">
@@ -161,7 +161,7 @@ const Featured = () => {
         leave=""
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
-        className="fixed top-0 left-0 z-50 h-screen w-full overscroll-contain bg-tfsdark-800/70 backdrop-blur-md"
+        className="fixed top-0 left-0 z-50 h-screen w-full overscroll-contain bg-base-800/70 backdrop-blur-md"
       >
         <div
           className="fixed inset-0 h-screen w-full"
@@ -169,7 +169,7 @@ const Featured = () => {
         ></div>
         <div>
           <div className="no-scrollbar relative mx-auto flex h-screen w-full max-w-screen-2xl flex-col overflow-hidden overflow-y-scroll overscroll-contain 2xl:px-10">
-            <div className="top-0 mx-auto w-full max-w-full bg-tfsdark-900">
+            <div className="top-0 mx-auto w-full max-w-full bg-base-900">
               <Project
                 projectId={featuredProject.id}
                 projectSlug={featuredProject.slug}

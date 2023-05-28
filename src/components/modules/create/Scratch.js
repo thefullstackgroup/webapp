@@ -31,7 +31,7 @@ import {
 
 const customCommand = {
   name: 'markdown-link',
-  icon: () => <FaMarkdown className="w-6 h-6" />,
+  icon: () => <FaMarkdown className="h-6 w-6" />,
   execute: () => {
     window.open(
       'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'
@@ -229,20 +229,20 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
         >
           {!gitHubImportSelected && (
             <div className="space-y-2 py-4">
-              <p className="mx-3 mb-4 text-2xl font-extrabold text-center">
+              <p className="mx-3 mb-4 text-center text-2xl font-extrabold">
                 Show off your project
               </p>
-              <p className="mx-6 mb-8 text-sm text-center">
+              <p className="mx-6 mb-8 text-center text-sm">
                 Import a project from GitHub or create your project from
                 scratch.
               </p>
 
-              <div className="py-6 space-y-4">
+              <div className="space-y-4 py-6">
                 <button
                   className="btn-secondary btn-with-icon w-full justify-center py-3"
                   onClick={() => setGitHubImportSelected(true)}
                 >
-                  <IoLogoGithub className="w-8 h-8" />
+                  <IoLogoGithub className="h-8 w-8" />
                   <span className="">Import from GitHub</span>
                 </button>
 
@@ -250,7 +250,7 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
                   className="btn-secondary btn-with-icon w-full justify-center py-3"
                   onClick={() => setProjectTypeSelected(true)}
                 >
-                  <IoCubeOutline className="w-8 h-8" />
+                  <IoCubeOutline className="h-8 w-8" />
                   <span className="">Create from scratch</span>
                 </button>
               </div>
@@ -269,16 +269,16 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
       {projectTypeSelected && (
         <>
           {!postIsPublished && (
-            <div className="py-3 w-full bg-red-500/40 cursor-pointer font-normal px-4 md:px-8">
+            <div className="w-full cursor-pointer bg-red-500/40 py-3 px-4 font-normal md:px-8">
               This project is{' '}
               <span className="font-bold text-slate-200">unpublished</span> and
               not visible to anyone.
             </div>
           )}
-          <div className="sticky z-40 bg-tfsdark-700 w-full top-0 left-0 px-4 md:px-8 py-4">
-            <div className="sticky top-0 flex space-x-4 md:space-x-8 justify-end mx-auto max-w-screen-2xl items-center">
+          <div className="sticky top-0 left-0 z-40 w-full bg-base-700 px-4 py-4 md:px-8">
+            <div className="sticky top-0 mx-auto flex max-w-screen-2xl items-center justify-end space-x-4 md:space-x-8">
               <button
-                className="text-slate-400 text-base flex space-x-2 items-center"
+                className="flex items-center space-x-2 text-base text-slate-400"
                 onClick={() => handleSavePost(true)}
               >
                 {saving ? (
@@ -294,7 +294,7 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
                 className="text-slate-400 hover:text-slate-300"
                 onClick={() => setShowSettings(true)}
               >
-                <RiSettingsLine className="w-6 h-6" />
+                <RiSettingsLine className="h-6 w-6" />
               </button>
               <button
                 className="btn-primary"
@@ -304,17 +304,17 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
               </button>
             </div>
           </div>
-          <div className="bg-tfsdark-900/40 flex flex-col justify-center text-center space-y-4">
+          <div className="flex flex-col justify-center space-y-4 bg-base-900/40 text-center">
             {postCoverImage && !postCoverVideo && (
-              <div className="relative w-full h-96 overflow-hidden group">
-                <div className="w-full h-full">
+              <div className="group relative h-96 w-full overflow-hidden">
+                <div className="h-full w-full">
                   <img
                     src={postCoverImage}
-                    className="w-full h-full object-cover object-center"
+                    className="h-full w-full object-cover object-center"
                     alt=""
                   />
                 </div>
-                <div className="absolute top-0 left-0 w-full h-full hidden group-hover:flex bg-tfsdark-900/40 justify-center items-center">
+                <div className="absolute top-0 left-0 hidden h-full w-full items-center justify-center bg-base-900/40 group-hover:flex">
                   <button
                     onClick={() => setPostCoverImage(null)}
                     className="btn-secondary"
@@ -326,11 +326,11 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
             )}
 
             {postCoverVideo && (
-              <div className="relative w-full h-4/5 group">
-                <div className="flex w-full overflow-hidden h-full">
+              <div className="group relative h-4/5 w-full">
+                <div className="flex h-full w-full overflow-hidden">
                   <VideoPlayer src={postCoverVideo} poster={postCoverImage} />
                 </div>
-                <div className="absolute top-0 left-0 w-full h-20 hidden group-hover:flex bg-transparent justify-end items-center px-8">
+                <div className="absolute top-0 left-0 hidden h-20 w-full items-center justify-end bg-transparent px-8 group-hover:flex">
                   <button
                     onClick={() => {
                       setPostCoverImage(null);
@@ -345,8 +345,8 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
             )}
 
             {!postCoverImage && (
-              <div className="flex flex-col w-full h-96">
-                <div className="flex justify-center w-auto mx-auto h-full items-center">
+              <div className="flex h-96 w-full flex-col">
+                <div className="mx-auto flex h-full w-auto items-center justify-center">
                   <div className="flex flex-col space-y-4">
                     <p className="text-slate-400">Add a cover image or video</p>
                     <div className="flex items-center space-x-4">
@@ -355,7 +355,7 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
                           htmlFor="file-upload"
                           className="btn-secondary btn-with-icon cursor-pointer pl-4"
                         >
-                          <FiCamera className="w-6 h-6" />
+                          <FiCamera className="h-6 w-6" />
                           <span>Image</span>
 
                           <input
@@ -378,10 +378,10 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
             )}
           </div>
           <div className="space-y-4 p-4 md:p-8">
-            <div className="w-full flex flex-col md:flex-row md:items-center md:space-x-4 justify-between">
+            <div className="flex w-full flex-col justify-between md:flex-row md:items-center md:space-x-4">
               <div className="w-full">
                 <input
-                  className="text-input font-semibold p-0 text-2xl md:text-4xl h-14 bg-transparent"
+                  className="text-input h-14 bg-transparent p-0 text-2xl font-semibold md:text-4xl"
                   placeholder="Project title ..."
                   value={postTitle}
                   onChange={(e) => setPostTitle(e.target.value)}
@@ -397,8 +397,8 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
                 )}
                 {postProjectLink !== '' && (
                   <a href={postProjectLink} target="_blank" rel="noreferrer">
-                    <button className="btn-secondary btn-with-icon text-sm py-2.5">
-                      <IoLink className="w-5 h-auto" />
+                    <button className="btn-secondary btn-with-icon py-2.5 text-sm">
+                      <IoLink className="h-auto w-5" />
                       <span className="">Visit</span>
                     </button>
                   </a>
@@ -406,7 +406,7 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
               </div>
             </div>
 
-            <div className="flex flex-wrap no-scrollbar items-center gap-1">
+            <div className="no-scrollbar flex flex-wrap items-center gap-1">
               {postTechStack?.map((stack, index) => (
                 <button key={index} onClick={() => removeTechStack(stack)}>
                   <TagStack tech={stack} size={'xs'} />
@@ -415,7 +415,7 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
 
               <div className="relative">
                 <button
-                  className="btn-primary btn-with-icon py-1 text-sm pl-1 pr-2 mb-1 space-x-1 rounded-full"
+                  className="btn-primary btn-with-icon mb-1 space-x-1 rounded-full py-1 pl-1 pr-2 text-sm"
                   onClick={() => setShowTechStackOptions(true)}
                 >
                   <IoAddOutline className="h-5 w-5" />
@@ -423,7 +423,7 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
                 </button>
 
                 {showTechStackOptions && (
-                  <div className="top-10 absolute z-20 left-0 w-80">
+                  <div className="absolute top-10 left-0 z-20 w-80">
                     <div
                       className="fixed inset-0"
                       onClick={() =>
@@ -442,7 +442,7 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
 
             {postData?.hasGitHubReadMe && <GitHubStats project={postData} />}
 
-            <div className="w-full markdown dark">
+            <div className="markdown dark w-full">
               <ReactMde
                 value={postBody}
                 onChange={setPostBody}
@@ -450,7 +450,7 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
                 onTabChange={setSelectedTab}
                 generateMarkdownPreview={(markdown) =>
                   Promise.resolve(
-                    <div className="mt-4 prose prose-dark max-w-full">
+                    <div className="prose prose-dark mt-4 max-w-full">
                       <Markdown
                         options={{
                           overrides: {

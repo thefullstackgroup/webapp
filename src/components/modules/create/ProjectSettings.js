@@ -45,14 +45,14 @@ const ProjectSettings = ({
 
   return (
     <ModalDialog show={showSettings} setShow={setShowSettings}>
-      <div className="w-full mx-auto space-y-6 py-6 px-2">
+      <div className="mx-auto w-full space-y-6 py-6 px-2">
         <div className="flex items-center justify-between">
           <h3 className="text-2xl font-bold text-slate-100">
             <span>Settings</span>
           </h3>
           <div className="flex items-center space-x-2">
             <button
-              className="btn-secondary bg-transparent hover:bg-red-500/20 text-red-500/80 hover:text-red-500"
+              className="btn-secondary bg-transparent text-red-500/80 hover:bg-red-500/20 hover:text-red-500"
               onClick={() => setIsDeletePromptOpen(true)}
             >
               Delete
@@ -75,7 +75,7 @@ const ProjectSettings = ({
                   setShowSettings(!showSettings);
                 }}
               >
-                <IoClose className="w-6 h-6 md:w-8 md:h-8 text-slate-400" />
+                <IoClose className="h-6 w-6 text-slate-400 md:h-8 md:w-8" />
               </button>
             )}
           </div>
@@ -86,8 +86,8 @@ const ProjectSettings = ({
           <div>
             <div
               className={
-                'relative flex rounded-md items-center border ' +
-                (gitHubRepoError ? 'border-red-500' : 'border-tfsdark-700')
+                'relative flex items-center rounded-md border ' +
+                (gitHubRepoError ? 'border-red-500' : 'border-base-700')
               }
             >
               <div className="pointer-events-none absolute inset-y-2 left-4 flex pt-1">
@@ -97,7 +97,7 @@ const ProjectSettings = ({
                 type="text"
                 name="repo"
                 placeholder="Link to GitHub repo"
-                className="text-input pl-12 mt-0"
+                className="text-input mt-0 pl-12"
                 value={postGitHubRepo}
                 onChange={(e) => setPostGitHubRepo(e.target.value)}
               />
@@ -111,8 +111,8 @@ const ProjectSettings = ({
           <div>
             <div
               className={
-                'relative flex rounded-md items-center border ' +
-                (projectLinkError ? 'border-red-500' : 'border-tfsdark-700')
+                'relative flex items-center rounded-md border ' +
+                (projectLinkError ? 'border-red-500' : 'border-base-700')
               }
             >
               <div className="pointer-events-none absolute inset-y-2 left-4 flex pt-1">
@@ -122,7 +122,7 @@ const ProjectSettings = ({
                 type="text"
                 name="link"
                 placeholder="Link to demo / project"
-                className="text-input pl-12 mt-0"
+                className="text-input mt-0 pl-12"
                 value={postProjectLink}
                 onChange={(e) => setPostProjectLink(e.target.value)}
               />
@@ -141,7 +141,7 @@ const ProjectSettings = ({
           />
         </div>
         <div className="space-y-1">
-          <div className="mt-6 flex flex-1 items-center pt-2 mb-2 sm:mb-0 justify-between">
+          <div className="mt-6 mb-2 flex flex-1 items-center justify-between pt-2 sm:mb-0">
             <span className="">
               <span className="font-medium text-slate-100">
                 Is your project open to collaboration?
@@ -154,7 +154,7 @@ const ProjectSettings = ({
                   name="collab"
                   type="radio"
                   defaultChecked={postOpenToCollab && 'collabyes'}
-                  className="h-5 w-5 border-gray-300 text-green-600 focus:ring-0 cursor-pointer"
+                  className="h-5 w-5 cursor-pointer border-gray-300 text-green-600 focus:ring-0"
                   onClick={() => setPostOpenToCollab(true)}
                 />
                 <label htmlFor="collabyes" className="cursor-pointer">
@@ -167,7 +167,7 @@ const ProjectSettings = ({
                   name="collab"
                   type="radio"
                   defaultChecked={!postOpenToCollab && 'collabno'}
-                  className="h-5 w-5 border-gray-300 text-green-600 focus:ring-0 cursor-pointer"
+                  className="h-5 w-5 cursor-pointer border-gray-300 text-green-600 focus:ring-0"
                   onClick={() => setPostOpenToCollab(false)}
                 />
                 <label htmlFor="collabno" className="cursor-pointer">
@@ -182,14 +182,14 @@ const ProjectSettings = ({
           {publishing ? (
             <button
               disabled
-              className="w-full btn-primary py-3 flex space-x-2 items-center justify-center"
+              className="btn-primary flex w-full items-center justify-center space-x-2 py-3"
             >
               <CgSpinner className="h-4 w-4 animate-spin" />
               <span>Publishing ...</span>
             </button>
           ) : (
             <button
-              className="w-full btn-primary py-3 flex space-x-2 items-center justify-center"
+              className="btn-primary flex w-full items-center justify-center space-x-2 py-3"
               onClick={() => handlePublishPost()}
             >
               <span>Publish</span>

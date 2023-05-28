@@ -11,7 +11,7 @@ import ModalDialog from 'components/common/modals/ModalDialog';
 
 const Loader = () => {
   return (
-    <div className="flex w-full items-center justify-center bg-tfsdark-800">
+    <div className="flex w-full items-center justify-center bg-base-800">
       <CgSpinner className="h-14 w-14 animate-spin text-white" />
     </div>
   );
@@ -195,7 +195,7 @@ function SignUpModal({ show, setShow }) {
                     .
                   </div>
                   <div className="flex justify-center pt-4 md:pt-6">
-                    <div className="text-center text-sm text-tfssecondary-500">
+                    <div className="text-tfssecondary-500 text-center text-sm">
                       <Link href="/login" passHref>
                         <a href="#">Already have an account?</a>
                       </Link>

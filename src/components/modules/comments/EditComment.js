@@ -133,7 +133,7 @@ const EditComment = ({
 
           <div className=" w-auto flex-1">
             <div className="block">
-              <div className="mb-2 w-full overflow-scroll bg-tfsdark-700 rounded dark">
+              <div className="dark mb-2 w-full overflow-scroll rounded bg-base-700">
                 <ReactMde
                   value={comment}
                   onChange={setComment}
@@ -151,9 +151,9 @@ const EditComment = ({
                 />
               </div>
 
-              <div className="flex item-center justify-between">
+              <div className="item-center flex justify-between">
                 <div className="flex items-center space-x-4">
-                  <button className="relative group text-xs text-slate-400">
+                  <button className="group relative text-xs text-slate-400">
                     <ToolTip message={'Markdown supported'} />
                     <IoLogoMarkdown className="h-6 w-6 text-slate-400" />
                   </button>

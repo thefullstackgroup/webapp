@@ -16,7 +16,7 @@ const ProjectCard = (props) => {
   return (
     <>
       <div
-        className="group relative h-80 w-full cursor-pointer overflow-hidden rounded-2xl border-4 border-transparent bg-gradient-to-t from-black via-tfsdark-700 to-transparent duration-200 sm:hover:border-primary-500 sm:hover:shadow-lg sm:hover:shadow-purple-900"
+        className="sm:hover:border-primary-500 group relative h-80 w-full cursor-pointer overflow-hidden rounded-2xl border-4 border-transparent bg-gradient-to-t from-black via-base-700 to-transparent duration-200 sm:hover:shadow-lg sm:hover:shadow-purple-900"
         onClick={() => setShowProject(!showProject)}
         key={props.project.id}
       >
@@ -31,7 +31,7 @@ const ProjectCard = (props) => {
           />
         </div>
 
-        <div className="absolute top-4 left-4 mb-6 w-min whitespace-nowrap rounded-full border border-tfsdark-400 bg-tfsdark-700/50 px-4 py-1 text-sm text-white">
+        <div className="absolute top-4 left-4 mb-6 w-min whitespace-nowrap rounded-full border border-base-400 bg-base-700/50 px-4 py-1 text-sm text-white">
           Featured
         </div>
 
@@ -45,10 +45,10 @@ const ProjectCard = (props) => {
         </div>
       </div>
       {/* <div
-        className="flex flex-col w-full bg-tfsdark-700 hover:bg-tfsdark-800 border-2 border-tfsdark-800 hover:border-primary-500 duration-200 rounded-lg space-y-2 group cursor-pointer h-full hover:shadow-lg hover:shadow-purple-900 relative overflow-hidden pb-2"
+        className="flex flex-col w-full bg-base-700 hover:bg-base-800 border-2 border-base-800 hover:border-primary-500 duration-200 rounded-lg space-y-2 group cursor-pointer h-full hover:shadow-lg hover:shadow-purple-900 relative overflow-hidden pb-2"
         onClick={() => setShowProject(!showProject)}
       >
-        <div className="w-full h-60 md:h-64 bg-tfsdark-900">
+        <div className="w-full h-60 md:h-64 bg-base-900">
           {props.project.projectImgURI && (
             <Image
               src={props.project.projectImgURI}
@@ -128,7 +128,7 @@ const ProjectCard = (props) => {
         leave=""
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
-        className="fixed top-0 left-0 z-50 h-screen w-full overscroll-contain bg-tfsdark-800/70 backdrop-blur-md"
+        className="fixed top-0 left-0 z-50 h-screen w-full overscroll-contain bg-base-800/70 backdrop-blur-md"
       >
         <div
           className="fixed inset-0 h-screen w-full"
@@ -136,7 +136,7 @@ const ProjectCard = (props) => {
         ></div>
         <div>
           <div className="no-scrollbar relative mx-auto flex h-screen w-full max-w-screen-2xl flex-col overflow-hidden overflow-y-scroll overscroll-contain 2xl:px-10">
-            <div className="top-0 mx-auto w-full max-w-full bg-tfsdark-900">
+            <div className="top-0 mx-auto w-full max-w-full bg-base-900">
               <Project
                 projectId={props.project._id || props.project.projectId}
                 projectSlug={props.project.projectSlug}

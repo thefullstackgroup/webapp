@@ -120,7 +120,7 @@ const AwardButton = ({ user, post }) => {
                 {rewards.map((reward, index) => (
                   <button
                     key={index}
-                    className="group flex items-center justify-between space-x-4 rounded-xl bg-tfsdark-700 py-3 px-4 text-base text-slate-200 hover:bg-tfsdark-600/80 hover:text-yellow-500"
+                    className="group flex items-center justify-between space-x-4 rounded-xl bg-base-700 py-3 px-4 text-base text-slate-200 hover:bg-base-600/80 hover:text-yellow-500"
                     onClick={() => {
                       setTransactMessage(
                         `@${

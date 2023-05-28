@@ -8,11 +8,11 @@ import LayoutLoggedOut from 'components/common/layout/LayoutLoggedOut';
 const UserNotFound = () => {
   return (
     <div className="w-full pb-20">
-      <div className="flex flex-col w-auto text-center space-y-4 mb-28 px-8">
-        <h2 className="text-2xl lg:text-5xl font-bold tracking-tight mt-40">
+      <div className="mb-28 flex w-auto flex-col space-y-4 px-8 text-center">
+        <h2 className="mt-40 text-2xl font-bold tracking-tight lg:text-5xl">
           Oops! User not found.
         </h2>
-        <p className="text-base lg:text-lg text-slate-400">
+        <p className="text-base text-slate-400 lg:text-lg">
           Sorry, this user may have moved their profile under a different name.
         </p>
         <FaRegSadTear className="my-20 h-28 w-auto text-slate-400" />
@@ -42,18 +42,18 @@ const UserProfile = ({ userProfile, projects }) => {
             description={`${userProfile.name} | ${userProfile.currentTitle} | ${process.env.brandName} on thefullstack`}
             keywords=""
           />
-          <main className="w-full bg-tfsdark-700">
-            <div className="w-full max-w-screen-lg mx-auto relative mt-36 md:mt-48 flex">
+          <main className="w-full bg-base-700">
+            <div className="relative mx-auto mt-36 flex w-full max-w-screen-lg md:mt-48">
               <Profile profile={userProfile} projects={projects} />
             </div>
           </main>
-          <div className="flex flex-col md:flex-row justify-center text-center items-center space-x-1 text-xs my-10 text-slate-400 px-4">
+          <div className="my-10 flex flex-col items-center justify-center space-x-1 px-4 text-center text-xs text-slate-400 md:flex-row">
             <span>
               {userProfile.name}&apos;s profile made with{' '}
               <FaHeart className="inline-flex h-4 w-auto text-red-500" /> on{' '}
               <a
                 href={process.env.BASEURL}
-                className="font-semibold text-white hover:text-primary-500"
+                className="hover:text-primary-500 font-semibold text-white"
               >
                 thefullstack
               </a>

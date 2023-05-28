@@ -54,8 +54,8 @@ const ListJobs = ({ user, teamId, teamOwner }) => {
   return (
     <>
       <div className="space-y-2">
-        <p className="text-white font-semibold">Open roles</p>
-        <div className="bg-tfsdark-800 rounded-md border border-tfsdark-600 py-1 divide-y divide-tfsdark-600/50">
+        <p className="font-semibold text-white">Open roles</p>
+        <div className="divide-y divide-base-600/50 rounded-md border border-base-600 bg-base-800 py-1">
           {jobsList}
         </div>
       </div>

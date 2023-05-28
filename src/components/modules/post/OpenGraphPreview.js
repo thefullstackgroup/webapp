@@ -47,7 +47,7 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
   if (loading)
     return (
       <div
-        className={`rounded-lg bg-tfsdark-900 w-full flex items-center justify-center overflow-hidden text-xs text-center text-slate-400 h-36`}
+        className={`flex h-36 w-full items-center justify-center overflow-hidden rounded-lg bg-base-900 text-center text-xs text-slate-400`}
       >
         <Loader />
       </div>
@@ -56,7 +56,7 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
   return (
     <>
       {data?.ogSiteName === 'YouTube' && youTubeEmbedID ? (
-        <div className="rounded-lg border border-gray-800 w-full h-48 md:h-96 max-h-96 overflow-hidden">
+        <div className="h-48 max-h-96 w-full overflow-hidden rounded-lg border border-gray-800 md:h-96">
           <LiteYouTubeEmbed
             id={youTubeEmbedID.id}
             title={data?.ogTitle}
@@ -67,16 +67,16 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
         </div>
       ) : (
         <div
-          className={`rounded-lg bg-tfsdark-600/60 sm:bg-tfsdark-900 w-full overflow-hidden ${sizeHeight}`}
+          className={`w-full overflow-hidden rounded-lg bg-base-600/60 sm:bg-base-900 ${sizeHeight}`}
         >
           <a href={data?.requestUrl} target="_blank" rel="noreferrer">
-            <div className="flex flex-col md:flex-row items-start h-full">
+            <div className="flex h-full flex-col items-start md:flex-row">
               {data?.ogImage && (
-                <div className="w-full h-full bg-tfsdark-800">
+                <div className="h-full w-full bg-base-800">
                   {data?.ogImage?.length > 1 ? (
                     <img
                       src={data?.ogImage[0]?.url}
-                      className="w-full h-full object-cover object-center"
+                      className="h-full w-full object-cover object-center"
                       style={{ marginTop: 0, marginBottom: 0 }}
                       alt={data?.ogTitle}
                     />
@@ -84,29 +84,29 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
                     isValidURL(data?.ogImage?.url) ? (
                     <img
                       src={data?.ogImage?.url}
-                      className="w-full h-full object-cover object-left"
+                      className="h-full w-full object-cover object-left"
                       style={{ marginTop: 0, marginBottom: 0 }}
                       alt={data?.ogTitle}
                     />
                   ) : (
-                    <div className="flex justify-center text-center h-20 sm:h-44 items-center bg-tfsdark-700/50">
-                      <p className="text-slate-500 text-sm">No preview image</p>
+                    <div className="flex h-20 items-center justify-center bg-base-700/50 text-center sm:h-44">
+                      <p className="text-sm text-slate-500">No preview image</p>
                     </div>
                   )}
                 </div>
               )}
               {!data?.ogImage && (
-                <div className="w-full flex justify-center text-center h-20 sm:h-44 items-center bg-tfsdark-700/50">
-                  <p className="text-slate-500 text-sm">No preview image</p>
+                <div className="flex h-20 w-full items-center justify-center bg-base-700/50 text-center sm:h-44">
+                  <p className="text-sm text-slate-500">No preview image</p>
                 </div>
               )}
               {!hideDescription && (
-                <div className="w-full px-4 py-4 text-sm font-normal space-y-2 text-white">
+                <div className="w-full space-y-2 px-4 py-4 text-sm font-normal text-white">
                   <div className="font-bold line-clamp-2">{data?.ogTitle}</div>
-                  <div className="line-clamp-3 text-slate-300">
+                  <div className="text-slate-300 line-clamp-3">
                     {data?.ogDescription}
                   </div>
-                  <div className="hidden md:flex text-slate-400 truncate items-center space-x-1">
+                  <div className="hidden items-center space-x-1 truncate text-slate-400 md:flex">
                     <FiExternalLink className="h-4 w-4" />
                     <span>{data?.requestUrl.substr(0, 40)}...</span>
                   </div>

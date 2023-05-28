@@ -92,15 +92,15 @@ const ListComments = ({ post, user }) => {
 
   return (
     <>
-      <div className="relative px-0 md:px-0 max-w-4xl mx-auto">
-        <div className="relative text-lg max-w-4xl ">
+      <div className="relative mx-auto max-w-4xl px-0 md:px-0">
+        <div className="relative max-w-4xl text-lg ">
           {!data && (
-            <div className="flex flex-1 items-center mt-20 justify-center text-sm">
+            <div className="mt-20 flex flex-1 items-center justify-center text-sm">
               <Loader />
             </div>
           )}
           {!data?.comments?.content?.length > 0 && (
-            <p className="text-center text-slate-400 text-sm py-6">
+            <p className="py-6 text-center text-sm text-slate-400">
               Be the first to share a comment.
             </p>
           )}
@@ -117,20 +117,20 @@ const ListComments = ({ post, user }) => {
                         dimensions="h-8 w-8 sm:h-10 sm:w-10"
                       />
                     </div>
-                    <div className="w-full bg-tfsdark-600/50 px-3 sm:px-3 py-2 rounded-md overflow-hidden">
+                    <div className="w-full overflow-hidden rounded-md bg-base-600/50 px-3 py-2 sm:px-3">
                       <div>
                         <div className="text-base">
                           <Link href={`/${comment.authorName}`} passHref>
                             <a
                               href="#"
-                              className="font-semibold text-slate-200 text-base"
+                              className="text-base font-semibold text-slate-200"
                             >
                               {comment.authorName}
                             </a>
                           </Link>
                         </div>
                       </div>
-                      <div className="prose prose-comments prose-dark max-w-full text-tfsdark-100 overflow-x-scroll no-scrollbar">
+                      <div className="prose-comments no-scrollbar prose prose-dark max-w-full overflow-x-scroll text-base-100">
                         <Markdown
                           options={{
                             overrides: {
@@ -151,17 +151,17 @@ const ListComments = ({ post, user }) => {
                   </div>
 
                   {user && (
-                    <div className="flex mt-2 items-center ml-10 sm:ml-12 space-x-6">
+                    <div className="mt-2 ml-10 flex items-center space-x-6 sm:ml-12">
                       <div className="text-xs">
-                        <button className="flex items-center hover:text-gray-500 focus:outline-none text-gray-400">
+                        <button className="flex items-center text-gray-400 hover:text-gray-500 focus:outline-none">
                           {comment.likedByYou ? (
                             <IoHeart
-                              className="text-red-500 w-4 h-4 mr-1"
+                              className="mr-1 h-4 w-4 text-red-500"
                               onClick={() => performLike(comment)}
                             />
                           ) : (
                             <IoHeartOutline
-                              className="w-4 h-4 mr-1"
+                              className="mr-1 h-4 w-4"
                               onClick={() => performLike(comment)}
                             />
                           )}
@@ -171,13 +171,13 @@ const ListComments = ({ post, user }) => {
                       </div>
                       <div className="text-xs">
                         <button
-                          className="flex items-center hover:text-gray-500 focus:outline-none text-gray-400"
+                          className="flex items-center text-gray-400 hover:text-gray-500 focus:outline-none"
                           onClick={() => {
                             setCommentReplyTo(comment);
                             setPostCommentOpen(true);
                           }}
                         >
-                          <IoArrowUndoOutline className="w-4 h-4 mr-1" />
+                          <IoArrowUndoOutline className="mr-1 h-4 w-4" />
                           <span className="">Reply</span>
                         </button>
                       </div>
@@ -185,7 +185,7 @@ const ListComments = ({ post, user }) => {
                         <>
                           <div className="text-xs">
                             <button
-                              className={`flex items-center hover:text-gray-500 focus:outline-none text-gray-400`}
+                              className={`flex items-center text-gray-400 hover:text-gray-500 focus:outline-none`}
                               onClick={() => {
                                 setCommentToUpdate(comment);
                                 setEditCommentOpen(true);

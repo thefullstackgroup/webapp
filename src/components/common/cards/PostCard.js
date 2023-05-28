@@ -90,18 +90,18 @@ const Post = (props) => {
 
   return (
     <>
-      <div className="w-full cursor-pointer sm:bg-tfsdark-800 sm:hover:bg-tfsdark-600/50">
+      <div className="w-full cursor-pointer bg-base-100 dark:bg-base-800">
         <article
           className={
-            'pt-4 border-b pb-4 ' +
+            'border-b pt-4 pb-4 ' +
             (props.seperator
               ? 'border-transparent'
-              : 'border-tfsdark-600 sm:border-tfsdark-900')
+              : 'border-base-200 dark:border-base-900')
           }
         >
           <div className="mx-4 mb-0">
             {props.project.projectType !== 'SPARK' && !props.pinnedPost && (
-              <div className="flex ml-14 md:ml-16 pl-1 md:pl-2 mb-2">
+              <div className="ml-14 mb-2 flex pl-1 md:ml-16 md:pl-2">
                 <PostTypePill postType={props.project.projectType} />
               </div>
             )}
@@ -123,19 +123,19 @@ const Post = (props) => {
 
               {/* Card Content */}
 
-              <div className="w-full ml-4 sm:mr-4">
+              <div className="ml-4 w-full sm:mr-4">
                 <div className="flex-1">
                   {props.myProfile == null && (
-                    <div className="space-y-0 mb-2">
+                    <div className="mb-2 space-y-0">
                       <Link
                         href={`${process.env.BASEURL}/${props.project.projectCreator?.displayName}`}
                         passHref
                       >
-                        <button className="w-full text-left flex flex-wrap items-center group text-sm sm:text-base">
-                          <span className="tracking-tight font-semibold text-white group-hover:text-link">
+                        <button className="group flex w-full flex-wrap items-center text-left text-sm sm:text-base">
+                          <span className="group-hover:text-link font-semibold tracking-tight">
                             {props.project.projectCreator?.name}
                           </span>
-                          <span className="ml-1 sm:mt-0 text-slate-500">
+                          <span className="ml-1 text-slate-500 sm:mt-0">
                             · @{props.project.projectCreator?.displayName}
                           </span>
                         </button>
@@ -149,14 +149,14 @@ const Post = (props) => {
                     </div>
                   )}
 
-                  <div className="relative space-y-2 group">
+                  <div className="group relative space-y-2">
                     <button
-                      className="outline-none w-full text-left text-sm cursor-pointer"
+                      className="w-full cursor-pointer text-left text-sm outline-none"
                       onClick={() => setShowPost(true)}
                     >
                       {props.project?.projectBodyPreview?.length <
                         sparkCharCount && (
-                        <div className="w-full prose-sm sm:prose-base prose prose-dark text-white prose-custom overflow-hidden">
+                        <div className="prose-custom prose prose-sm prose-dark w-full overflow-hidden text-white sm:prose-base">
                           <Markdown
                             options={{
                               overrides: {
@@ -186,8 +186,8 @@ const Post = (props) => {
                       {props.project?.projectBodyPreview?.length >
                         sparkCharCount && (
                         <div>
-                          <div className="items-center text-base overflow-hidden">
-                            <div className="w-full prose-sm sm:prose-base prose-dark text-white prose-custom overflow-hidden">
+                          <div className="items-center overflow-hidden text-base">
+                            <div className="prose-custom prose-sm prose-dark w-full overflow-hidden text-white sm:prose-base">
                               <Markdown
                                 options={{
                                   overrides: {
@@ -216,7 +216,7 @@ const Post = (props) => {
                                 )} ...`}
                               </Markdown>
                             </div>
-                            <span className="mt-4 inline-flex items-center text-sm text-link font-semibold uppercase">
+                            <span className="text-link mt-4 inline-flex items-center text-sm font-semibold uppercase">
                               See more...
                             </span>
                           </div>
@@ -228,14 +228,14 @@ const Post = (props) => {
                     {!pollUserHasVoted &&
                       props.project.projectType === 'POLL' &&
                       (loading ? (
-                        <div className="w-full flex flex-col justify-center items-center space-y-2 py-20 text-center">
-                          <FiLoader className="h-5 w-5 mb-1 animate-spin" />
+                        <div className="flex w-full flex-col items-center justify-center space-y-2 py-20 text-center">
+                          <FiLoader className="mb-1 h-5 w-5 animate-spin" />
                         </div>
                       ) : (
-                        <div className="w-full flex flex-col space-y-2">
+                        <div className="flex w-full flex-col space-y-2">
                           {pollData?.pollOptions?.map((option, index) => (
                             <button
-                              className="bg-slate-700 w-full rounded-full py-3 px-4 hover:bg-primary-500 text-sm sm:text-base font-medium"
+                              className="hover:bg-primary-500 w-full rounded-full bg-slate-700 py-3 px-4 text-sm font-medium sm:text-base"
                               key={index}
                               onClick={() =>
                                 handleCastVote(option.pollOptionId)
@@ -254,11 +254,11 @@ const Post = (props) => {
                     {pollUserHasVoted &&
                       props.project.projectType === 'POLL' &&
                       (loading ? (
-                        <div className="w-full flex flex-col justify-center items-center space-y-2 py-20 text-center">
-                          <FiLoader className="h-5 w-5 mb-1 animate-spin" />
+                        <div className="flex w-full flex-col items-center justify-center space-y-2 py-20 text-center">
+                          <FiLoader className="mb-1 h-5 w-5 animate-spin" />
                         </div>
                       ) : (
-                        <div className="w-full flex flex-col space-y-2">
+                        <div className="flex w-full flex-col space-y-2">
                           {pollData?.pollOptions?.map((option, index) => (
                             <div
                               className="relative w-full text-sm"
@@ -270,7 +270,7 @@ const Post = (props) => {
                                   option.pollOptionId
                                     ? 'bg-primary-500'
                                     : 'bg-slate-700') +
-                                  ' relative rounded-r-lg py-2 px-4 h-11'
+                                  ' relative h-11 rounded-r-lg py-2 px-4'
                                 }
                                 style={{
                                   width: `${
@@ -279,12 +279,12 @@ const Post = (props) => {
                                   }%`,
                                 }}
                               ></div>
-                              <div className="absolute top-0.5 flex w-full items-center py-2 px-4 space-x-4">
+                              <div className="absolute top-0.5 flex w-full items-center space-x-4 py-2 px-4">
                                 <span className="font-semibold">{`${(
                                   (option.voteCount / pollVotes) *
                                   100
                                 ).toFixed(0)}%`}</span>
-                                <span className="text-base truncate">
+                                <span className="truncate text-base">
                                   {option.optionText}
                                 </span>
                               </div>
@@ -301,7 +301,7 @@ const Post = (props) => {
                     {props.project.projectType !== 'POLL' &&
                       props.project.projectImgURI != '' && (
                         <div
-                          className="max-h-80 w-full rounded-md overflow-hidden bg-black"
+                          className="max-h-80 w-full overflow-hidden rounded-md bg-black"
                           onClick={() => setShowImageModal(!showImageModal)}
                         >
                           <img
@@ -329,7 +329,7 @@ const Post = (props) => {
                       )}
                     {/* END URL PREVIEW CARD */}
 
-                    <div className="w-full flex flex-wrap pb-2">
+                    <div className="flex w-full flex-wrap pb-2">
                       {props.project?.projectTechStack?.map((stack, index) => (
                         <div key={index}>
                           {stack !== 'Tech' &&
@@ -343,7 +343,7 @@ const Post = (props) => {
                   </div>
 
                   {props.project.numberOfLikes > 0 && (
-                    <div className="mb-1 mx-0">
+                    <div className="mx-0 mb-1">
                       <PostInsights
                         projectId={props.project.projectId || props.project._id}
                         showViews={false}
@@ -358,8 +358,8 @@ const Post = (props) => {
 
           <div
             className={
-              'pl-6 py-0 pr-8 w-full ' +
-              (props.myProfile == null && 'ml-2 sm:ml-6 pl-14')
+              'w-full py-0 pl-6 pr-8 ' +
+              (props.myProfile == null && 'ml-2 pl-14 sm:ml-6')
             }
           >
             <div className="flex justify-between pl-2 pr-5">
@@ -382,8 +382,8 @@ const Post = (props) => {
         dimensions={'sm:max-w-screen-md'}
       >
         <div>
-          <div className="relative z-20 w-full flex flex-col h-screen overflow-hidden overflow-y-scroll no-scrollbar overscroll-contain">
-            <div className="top-0 w-full max-w-3xl mx-auto bg-transparent">
+          <div className="no-scrollbar relative z-20 flex h-screen w-full flex-col overflow-hidden overflow-y-scroll overscroll-contain">
+            <div className="top-0 mx-auto w-full max-w-3xl bg-transparent">
               <PostDetail
                 postId={projectId}
                 user={props.user}
@@ -396,22 +396,22 @@ const Post = (props) => {
 
       {/* Image Modal */}
       {showImageModal && (
-        <div className="top-0 left-0 w-full fixed flex flex-1 z-50 h-screen">
+        <div className="fixed top-0 left-0 z-50 flex h-screen w-full flex-1">
           <div
-            className="fixed inset-0 bg-tfsdark-900 bg-opacity-80"
+            className="fixed inset-0 bg-base-900 bg-opacity-80"
             onClick={() => setShowImageModal(!showImageModal)}
           ></div>
 
-          <div className="flex flex-col justify-center w-auto my-auto mx-auto max-w-5xl max-h-screen relative bg-transparent md:rounded-xl">
-            <div className="w-auto h-full mx-auto overflow-scroll no-scrollbar">
+          <div className="relative my-auto mx-auto flex max-h-screen w-auto max-w-5xl flex-col justify-center bg-transparent md:rounded-xl">
+            <div className="no-scrollbar mx-auto h-full w-auto overflow-scroll">
               <button
-                className="z-50 w-full items-center space-x-1 text-sm text-white flex justify-end"
+                className="z-50 flex w-full items-center justify-end space-x-1 text-sm text-white"
                 onClick={() => setShowImageModal(!showImageModal)}
               >
                 <IoCloseOutline className="h-10 w-10" />
               </button>
               {props.project.projectImgURI !== ' ' && (
-                <div className="h-full w-full rounded overflow-hidden">
+                <div className="h-full w-full overflow-hidden rounded">
                   <img
                     src={props.project.projectImgURI}
                     className="w-full object-cover"

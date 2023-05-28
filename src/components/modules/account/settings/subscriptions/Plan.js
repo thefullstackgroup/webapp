@@ -41,33 +41,33 @@ const Plan = ({ user, plan, frequency, selected, upgrade = false }) => {
   return (
     <div
       className={
-        'bg-black rounded-md w-full md:w-1/3 p-4 space-y-6 border border-transparent hover:border-purple-600 duration-300 cursor-pointer group ' +
+        'group w-full cursor-pointer space-y-6 rounded-md border border-transparent bg-black p-4 duration-300 hover:border-purple-600 md:w-1/3 ' +
         (selected ? 'border-purple-600' : '')
       }
       onClick={() => selectPlan(plan)}
     >
-      <div className="flex justify-between border-b border-tfsdark-700 pb-4">
+      <div className="flex justify-between border-b border-base-700 pb-4">
         <div className="flex items-start space-x-2">
           <h4 className="text-2xl font-bold">{plan.title}</h4>
           {frequency == 12 && (
-            <span className="mt-1 badge bg-yellow-500/80 text-xs px-1 py-0.5">
+            <span className="badge mt-1 bg-yellow-500/80 px-1 py-0.5 text-xs">
               -30%
             </span>
           )}
         </div>
         <div className="flex flex-col text-right">
-          <span className="font-bold text-xl">&euro; {plan.price}</span>
+          <span className="text-xl font-bold">&euro; {plan.price}</span>
           <span className="text-xs text-slate-400">per month</span>
         </div>
       </div>
       <div className="text-sm text-slate-200">{plan.description}</div>
-      <ul className="text-sm space-y-2">
+      <ul className="space-y-2 text-sm">
         {plan.features.map((feature, index) =>
           feature.value ? (
             <li key={index}>
-              <div className="flex justify-between items-start">
+              <div className="flex items-start justify-between">
                 <div className="flex items-center space-x-2 text-slate-300">
-                  <IoCheckmark className="text-green-500 h-5 w-5" />
+                  <IoCheckmark className="h-5 w-5 text-green-500" />
                   <span>{feature.label}</span>
                 </div>
                 <div>{feature.value}</div>
@@ -75,9 +75,9 @@ const Plan = ({ user, plan, frequency, selected, upgrade = false }) => {
             </li>
           ) : (
             <li key={index}>
-              <div className="flex justify-between items-start">
+              <div className="flex items-start justify-between">
                 <div className="flex items-center space-x-2 text-slate-600">
-                  <IoCloseCircleSharp className="text-slate-600 h-5 w-5" />
+                  <IoCloseCircleSharp className="h-5 w-5 text-slate-600" />
                   <span>{feature.label}</span>
                 </div>
                 <div>{feature.value}</div>

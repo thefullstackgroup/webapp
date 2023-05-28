@@ -38,10 +38,10 @@ const StepTwo = ({ user }) => {
   }
 
   return (
-    <div className="max-w-screen-xl px-4 sm:px-0 mx-auto mb-14">
-      <div className="sm:w-full flex justify-center">
+    <div className="mx-auto mb-14 max-w-screen-xl px-4 sm:px-0">
+      <div className="flex justify-center sm:w-full">
         <div className="w-full">
-          <h2 className="text-lg text-slate-400 text-center">
+          <h2 className="text-center text-lg text-slate-400">
             Choose one goal below.
           </h2>
           <fieldset className="mt-6 mb-6">
@@ -51,15 +51,15 @@ const StepTwo = ({ user }) => {
                 <label
                   key={goalIndex}
                   className={
-                    'relative flex py-4 border-2 rounded-xl px-4 md:px-6 items-center cursor-pointer ' +
+                    'relative flex cursor-pointer items-center rounded-xl border-2 py-4 px-4 md:px-6 ' +
                     (selectedGoal == goal.id
                       ? 'border-2 border-green-600'
-                      : 'border-tfsdark-600 hover:bg-tfsdark-700')
+                      : 'border-base-600 hover:bg-base-700')
                   }
                   htmlFor={`goal-${goal.id}`}
                 >
                   <div className="min-w-0 flex-1 text-sm">
-                    <span className="font-bold text-xl text-slate-100">
+                    <span className="text-xl font-bold text-slate-100">
                       {goal.title}
                     </span>
                     <p
@@ -69,7 +69,7 @@ const StepTwo = ({ user }) => {
                       {goal.description}
                     </p>
                   </div>
-                  <div className="ml-3 flex items-center h-5">
+                  <div className="ml-3 flex h-5 items-center">
                     <input
                       id={`goal-${goal.id}`}
                       aria-describedby={`goal-${goal.id}-description`}
@@ -79,7 +79,7 @@ const StepTwo = ({ user }) => {
                         goal.id === selectedGoal ? 'checking' : ''
                       }
                       onChange={(e) => setSelectedGoal(goal.id)}
-                      className="focus:hidden focus:ring-0 h-5 w-5 text-green-600 border-slate-500"
+                      className="h-5 w-5 border-slate-500 text-green-600 focus:hidden focus:ring-0"
                     />
                   </div>
                 </label>
@@ -90,13 +90,13 @@ const StepTwo = ({ user }) => {
           {selectedGoal ? (
             <button
               type="submit"
-              className="btn-primary py-3 w-full"
+              className="btn-primary w-full py-3"
               onClick={handleSubmit}
             >
               Next &rarr;
             </button>
           ) : (
-            <button className="btn-primary py-3 w-full" disabled>
+            <button className="btn-primary w-full py-3" disabled>
               Next
             </button>
           )}

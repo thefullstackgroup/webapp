@@ -25,10 +25,10 @@ const Main = ({ user }) => {
 
   return (
     <>
-      <div className="mt-0 lg:mt-12 w-full flex justify-center">
-        <div className="w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-          <div className="relative max-w-4xl mx-auto mb-20">
-            <div className="flex items-start space-x-4 mb-10 px-4 sm:px-0 mt-4">
+      <div className="mt-0 flex w-full justify-center lg:mt-12">
+        <div className="w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+          <div className="relative mx-auto mb-20 max-w-4xl">
+            <div className="mb-10 mt-4 flex items-start space-x-4 px-4 sm:px-0">
               <Avatar
                 image={user.profilePicUrl}
                 name={user.displayName}
@@ -36,24 +36,24 @@ const Main = ({ user }) => {
                 dimensions="h-14 w-14 sm:h-16 sm:w-16"
               />
               <div>
-                <div className="text-2xl font-bold text-slate-200 tracking-tight lg:text-3xl">
+                <div className="text-2xl font-bold tracking-tight text-slate-200 lg:text-3xl">
                   My Network
                 </div>
-                <div className="text-sm sm:text-base text-slate-500">
+                <div className="text-sm text-slate-500 sm:text-base">
                   Opportunities come around when you expand your network.
                 </div>
               </div>
             </div>
 
-            <div className="mt-4 md:rounded-lg bg-tfsdark-800 mb-4 pb-4 overflow-hidden">
-              <div className="flex items-center justify-start divide-x divide-black mb-2">
+            <div className="mt-4 mb-4 overflow-hidden bg-base-800 pb-4 md:rounded-lg">
+              <div className="mb-2 flex items-center justify-start divide-x divide-black">
                 {tabs.map((option, index) => (
                   <button
                     className={
-                      'py-3 px-4 sm:px-8 text-center w-full text-sm sm:text-base font-semibold ' +
+                      'w-full py-3 px-4 text-center text-sm font-semibold sm:px-8 sm:text-base ' +
                       (tab == option.tab
-                        ? 'bg-tfsdark-800'
-                        : 'bg-tfsdark-900 text-slate-500 hover:text-white')
+                        ? 'bg-base-800'
+                        : 'bg-base-900 text-slate-500 hover:text-white')
                     }
                     onClick={() => setTab(option.tab)}
                     key={index}
@@ -73,14 +73,14 @@ const Main = ({ user }) => {
                       </span>
                       {data?.received_pending?.length > 0 &&
                         option.tab == 3 && (
-                          <span className="absolute top-0 -right-4 w-3 h-3 rounded-full bg-red-500 px-1"></span>
+                          <span className="absolute top-0 -right-4 h-3 w-3 rounded-full bg-red-500 px-1"></span>
                         )}
                     </span>
                   </button>
                 ))}
               </div>
               {tab == 1 && (
-                <div className="gap-8 w-full divide-y divide-tfsdark-900">
+                <div className="w-full gap-8 divide-y divide-base-900">
                   {!data && (
                     <div className="my-20 w-full text-center text-base">
                       You currently have no connections
@@ -106,7 +106,7 @@ const Main = ({ user }) => {
               )}
 
               {tab == 2 && (
-                <div className="gap-8 w-full divide-y divide-tfsdark-800">
+                <div className="w-full gap-8 divide-y divide-base-800">
                   {!data && (
                     <div className="my-20 w-full text-center text-base">
                       You have no connection requests pending.
@@ -132,7 +132,7 @@ const Main = ({ user }) => {
               )}
 
               {tab == 3 && (
-                <div className="gap-8 w-full divide-y divide-tfsdark-800">
+                <div className="w-full gap-8 divide-y divide-base-800">
                   {!data && (
                     <div className="my-20 w-full text-center text-base">
                       You have no connection invites.

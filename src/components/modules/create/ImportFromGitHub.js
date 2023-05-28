@@ -119,8 +119,8 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
         <div className="space-y-4 py-4">
           <div>
             <div className="flex">
-              <span className="mt-1 text-base block bg-tfsdark-600/50 rounded-l-md py-3 px-3 focus:outline-none">
-                <IoLogoGithub className="w-6 h-6 text-gray-400" />
+              <span className="mt-1 block rounded-l-md bg-base-600/50 py-3 px-3 text-base focus:outline-none">
+                <IoLogoGithub className="h-6 w-6 text-gray-400" />
               </span>
               <input
                 type="text"
@@ -131,7 +131,7 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
               />
             </div>
             {invalidGitHubUsername && (
-              <p className="text-red-500 text-xs mt-2">
+              <p className="mt-2 text-xs text-red-500">
                 Sorry, that is an invalid GitHub username, try again.
               </p>
             )}
@@ -139,13 +139,13 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
 
           {gitHubUsername?.trim().length ? (
             <button
-              className="btn-primary text-lg w-full"
+              className="btn-primary w-full text-lg"
               onClick={() => handleSubmitGitHubUsername()}
             >
               Next
             </button>
           ) : (
-            <button className="btn-primary text-lg w-full" disabled>
+            <button className="btn-primary w-full text-lg" disabled>
               Next
             </button>
           )}
@@ -155,7 +155,7 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
       {gitHubLinked && (
         <>
           {loadingRepos && (
-            <div className="w-full h-80 flex flex-col text-sm space-y-2 justify-center items-center">
+            <div className="flex h-80 w-full flex-col items-center justify-center space-y-2 text-sm">
               <Loader />
               <span>Fetching your public repos ...</span>
             </div>
@@ -169,24 +169,24 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
                 className="text-input mb-4"
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <div className="h-96 overflow-y-scroll flex flex-col space-y-2 pb-8 no-scrollbar">
+              <div className="no-scrollbar flex h-96 flex-col space-y-2 overflow-y-scroll pb-8">
                 {searchResultsRepos?.map((repo) => (
                   <button
                     key={repo.id}
                     className={
-                      'border rounded-md p-4 flex items-start space-x-4 text-left ' +
+                      'flex items-start space-x-4 rounded-md border p-4 text-left ' +
                       (selectedRepo === repo.html_url
-                        ? 'bg-green-600/10 border-green-500'
-                        : 'bg-tfsdark-700/50 hover:border-tfsdark-300 border-tfsdark-600')
+                        ? 'border-green-500 bg-green-600/10'
+                        : 'border-base-600 bg-base-700/50 hover:border-base-300')
                     }
                     onClick={() => setSelectedRepo(repo.html_url)}
                   >
                     <div>
-                      <IoCodeOutline className="w-8 h-8 text-slate-400" />
+                      <IoCodeOutline className="h-8 w-8 text-slate-400" />
                     </div>
-                    <div className="w-4/5 flex flex-col">
+                    <div className="flex w-4/5 flex-col">
                       <span className="font-medium">{repo.name}</span>
-                      <span className="text-xs text-slate-500 font-medium">
+                      <span className="text-xs font-medium text-slate-500">
                         {repo.full_name}
                       </span>
                       <span className="mt-1 text-sm text-slate-300 line-clamp-3">
@@ -201,19 +201,19 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
                     <button
                       key={repo.id}
                       className={
-                        'border rounded-md p-4 flex items-start space-x-4 text-left ' +
+                        'flex items-start space-x-4 rounded-md border p-4 text-left ' +
                         (selectedRepo === repo.html_url
-                          ? 'bg-green-600/10 border-green-500'
-                          : 'bg-tfsdark-600/50 hover:bg-tfsdark-600/80 border-tfsdark-600')
+                          ? 'border-green-500 bg-green-600/10'
+                          : 'border-base-600 bg-base-600/50 hover:bg-base-600/80')
                       }
                       onClick={() => setSelectedRepo(repo.html_url)}
                     >
                       <div>
-                        <IoCodeOutline className="w-8 h-8 text-slate-400" />
+                        <IoCodeOutline className="h-8 w-8 text-slate-400" />
                       </div>
-                      <div className="w-4/5 flex flex-col">
+                      <div className="flex w-4/5 flex-col">
                         <span className="font-medium">{repo.name}</span>
-                        <span className="text-xs text-slate-500 font-medium">
+                        <span className="text-xs font-medium text-slate-500">
                           {repo.full_name}
                         </span>
                         <span className="mt-1 text-sm text-slate-300 line-clamp-3">
@@ -226,24 +226,24 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
               {!importProcessing &&
                 (selectedRepo ? (
                   <button
-                    className="mt-4 btn-primary text-lg w-full"
+                    className="btn-primary mt-4 w-full text-lg"
                     onClick={() => handleImportGitHubRepo(selectedRepo)}
                   >
                     Import
                   </button>
                 ) : (
-                  <button className="mt-4 btn-primary text-lg w-full" disabled>
+                  <button className="btn-primary mt-4 w-full text-lg" disabled>
                     Import
                   </button>
                 ))}
 
               {importProcessing && selectedRepo && (
                 <button
-                  className="mt-4 btn-primary btn-with-icon justify-center text-lg w-full"
+                  className="btn-primary btn-with-icon mt-4 w-full justify-center text-lg"
                   disabled
                 >
                   <CgSpinner className="animate-spin" />
-                  <span className="font-normal text-base">Importing ...</span>
+                  <span className="text-base font-normal">Importing ...</span>
                 </button>
               )}
             </div>

@@ -19,7 +19,7 @@ const SignUpStep1 = ({ referralCode, userData }) => {
 
       <main className="pt-4 sm:pt-10">
         <Header />
-        <div className="bg-black max-w-2xl mx-auto rounded-md border border-tfsdark-700 px-0 sm:px-8">
+        <div className="mx-auto max-w-2xl rounded-md border border-base-700 bg-black px-0 sm:px-8">
           <Progress step={1} />
           {userData && <Page user={userData} referralCode={referralCode} />}
         </div>

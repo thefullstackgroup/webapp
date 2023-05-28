@@ -100,10 +100,10 @@ const Content = ({
 
   return (
     <>
-      <div className="px-0 md:px-4 mx-auto pb-2">
+      <div className="mx-auto px-0 pb-2 md:px-4">
         <div className="text-lg">
           <div className="flex items-start justify-between">
-            <div className="flex items-center mb-4 space-x-2">
+            <div className="mb-4 flex items-center space-x-2">
               <Avatar
                 href={profileLink}
                 image={
@@ -117,12 +117,12 @@ const Content = ({
               <Link href={profileLink} passHref>
                 <a href="#">
                   <div className="w-full">
-                    <div className="flex flex-col justify-between ml-2 text-base">
-                      <button className="w-full text-left flex flex-wrap items-center group text-base sm:text-lg">
-                        <span className="tracking-tight font-semibold text-white group-hover:text-link">
+                    <div className="ml-2 flex flex-col justify-between text-base">
+                      <button className="group flex w-full flex-wrap items-center text-left text-base sm:text-lg">
+                        <span className="group-hover:text-link font-semibold tracking-tight text-white">
                           {authorName}
                         </span>
-                        <span className="ml-1 sm:mt-0 text-slate-500">
+                        <span className="ml-1 text-slate-500 sm:mt-0">
                           · @{authorDisplayName}
                         </span>
                       </button>
@@ -155,7 +155,7 @@ const Content = ({
                 </div>
               )}
 
-            <article className="mx-0 prose prose-dark max-w-full text-slate-100 prose-lg overflow-x-hidden">
+            <article className="prose prose-lg prose-dark mx-0 max-w-full overflow-x-hidden text-slate-100">
               <Markdown
                 options={{
                   overrides: {
@@ -178,11 +178,11 @@ const Content = ({
             {post?.projectType !== 'POLL' && (coverVideo || coverImage) && (
               <figure>
                 {coverVideo ? (
-                  <div className="mx-4 sm:mx-0 relative md:rounded-md">
+                  <div className="relative mx-4 sm:mx-0 md:rounded-md">
                     <VideoPlayer src={coverVideo} poster={coverImage} />
                   </div>
                 ) : (
-                  <div className="mx-4 sm:mx-0 relative rounded overflow-hidden">
+                  <div className="relative mx-4 overflow-hidden rounded sm:mx-0">
                     <img
                       src={coverImage}
                       className="h-full w-full object-cover"
@@ -207,14 +207,14 @@ const Content = ({
             {!pollUserHasVoted &&
               post?.projectType === 'POLL' &&
               (loading ? (
-                <div className="w-full flex flex-col justify-center items-center space-y-2 mt-4 py-20 text-center">
-                  <FiLoader className="h-5 w-5 mb-1 animate-spin" />
+                <div className="mt-4 flex w-full flex-col items-center justify-center space-y-2 py-20 text-center">
+                  <FiLoader className="mb-1 h-5 w-5 animate-spin" />
                 </div>
               ) : (
-                <div className="w-full px-4 sm:px-0 flex flex-col space-y-2 mt-4">
+                <div className="mt-4 flex w-full flex-col space-y-2 px-4 sm:px-0">
                   {pollData?.pollOptions?.map((option, index) => (
                     <button
-                      className="bg-gray-800 w-full border border-tfsdark-700 rounded-full py-3 px-4 hover:bg-primary-600 text-base font-semibold"
+                      className="hover:bg-primary-600 w-full rounded-full border border-base-700 bg-gray-800 py-3 px-4 text-base font-semibold"
                       key={index}
                       onClick={() => handleCastVote(option.pollOptionId)}
                     >
@@ -231,19 +231,19 @@ const Content = ({
             {pollUserHasVoted &&
               post?.projectType === 'POLL' &&
               (loading ? (
-                <div className="w-full flex flex-col justify-center items-center space-y-2 mt-4 py-20 text-center">
-                  <FiLoader className="h-5 w-5 mb-1 animate-spin" />
+                <div className="mt-4 flex w-full flex-col items-center justify-center space-y-2 py-20 text-center">
+                  <FiLoader className="mb-1 h-5 w-5 animate-spin" />
                 </div>
               ) : (
-                <div className="w-full px-4 sm:px-0 flex flex-col space-y-2 mt-4">
+                <div className="mt-4 flex w-full flex-col space-y-2 px-4 sm:px-0">
                   {pollData?.pollOptions?.map((option, index) => (
                     <div className="relative w-full text-sm" key={index}>
                       <div
                         className={
                           (leadingVote?.pollOptionId == option.pollOptionId
                             ? 'bg-primary-500'
-                            : 'bg-tfsdark-600') +
-                          ' relative rounded-r-lg py-2 px-4 h-11'
+                            : 'bg-base-600') +
+                          ' relative h-11 rounded-r-lg py-2 px-4'
                         }
                         style={{
                           width: `${
@@ -251,7 +251,7 @@ const Content = ({
                           }%`,
                         }}
                       ></div>
-                      <div className="absolute top-0.5 flex w-full items-center py-2 px-4 space-x-4">
+                      <div className="absolute top-0.5 flex w-full items-center space-x-4 py-2 px-4">
                         <span className="font-semibold">{`${(
                           (option.voteCount / pollVotes) *
                           100
@@ -274,7 +274,7 @@ const Content = ({
               </p>
             </div>
 
-            <div className="flex mt-4 items-center ">
+            <div className="mt-4 flex items-center ">
               {techStack?.map(
                 (stack, index) =>
                   stack !== 'Tech' &&
@@ -289,7 +289,7 @@ const Content = ({
             <Insights projectId={post?.projectId || post?._id} />
           </div>
 
-          <div className="my-4 flex justify-between w-auto md:w-full border-t border-b border-tfsdark-600 py-2">
+          <div className="my-4 flex w-auto justify-between border-t border-b border-base-600 py-2 md:w-full">
             <Actions
               user={user}
               project={post}

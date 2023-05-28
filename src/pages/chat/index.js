@@ -16,24 +16,24 @@ const Chats = ({ userTFS }) => {
 
       {userTFS && (
         <Layout user={userTFS} hideMobileNav={true}>
-          <div className="mt-0 lg:mt-10 w-full flex justify-center">
-            <div className="w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-              <div className="relative max-w-5xl mx-auto">
-                <div className="hidden sm:flex items-center space-x-2 p-4 font-bold w-full text-xl tracking-tight">
-                  <IoChatbubblesOutline className="w-6 h-6" />
+          <div className="mt-0 flex w-full justify-center lg:mt-10">
+            <div className="w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+              <div className="relative mx-auto max-w-5xl">
+                <div className="hidden w-full items-center space-x-2 p-4 text-xl font-bold tracking-tight sm:flex">
+                  <IoChatbubblesOutline className="h-6 w-6" />
                   <span>Chat</span>
                 </div>
-                <div className="md:flex w-full md:rounded-md overflow-hidden">
+                <div className="w-full overflow-hidden md:flex md:rounded-md">
                   <div className="w-full md:w-1/3">
                     <Sidebar user={userTFS} />
                   </div>
-                  <div className="hidden md:block w-2/3 bg-tfsdark-900">
-                    <div className="max-h-screen h-[75vh] flex flex-1 flex-col justify-center items-center space-y-4">
-                      <p className="text-2xl tracking-tight text-gray-300 font-medium">
+                  <div className="hidden w-2/3 bg-base-900 md:block">
+                    <div className="flex h-[75vh] max-h-screen flex-1 flex-col items-center justify-center space-y-4">
+                      <p className="text-2xl font-medium tracking-tight text-gray-300">
                         Select a conversation.
                       </p>
                       <IoChatbubblesOutline className="h-24 w-24 text-gray-300" />
-                      <p className="text-lg tracking-tight text-gray-300 font-medium">
+                      <p className="text-lg font-medium tracking-tight text-gray-300">
                         Or start a new one.
                       </p>
                     </div>

@@ -30,16 +30,16 @@ const MobileNavigation = ({ user }) => {
         />
       )}
 
-      <div className="fixed bg-tfsdark-900 bottom-0 w-full z-40">
-        <div className="flex justify-evenly lg:hidden pt-2.5 pb-3 bg-tfsdark-900 w-full">
+      <div className="fixed bottom-0 z-40 w-full bg-base-900">
+        <div className="flex w-full justify-evenly bg-base-900 pt-2.5 pb-3 lg:hidden">
           <Link href="/explore" passHref>
             <button
               className={
-                'w-20 outline-none focus:outline-none flex items-center justify-center p-2 ' +
+                'flex w-20 items-center justify-center p-2 outline-none focus:outline-none ' +
                 (navSection[1] === 'explore' ? 'text-white' : 'text-slate-400')
               }
             >
-              <div className="flex flex-col text-center justify-center space-y-1">
+              <div className="flex flex-col justify-center space-y-1 text-center">
                 {navSection[1] === 'explore' ? (
                   <IoPlanetSharp className="block h-6 w-auto -rotate-45" />
                 ) : (
@@ -52,11 +52,11 @@ const MobileNavigation = ({ user }) => {
           <Link href="/hangout" passHref>
             <button
               className={
-                'w-20 outline-none focus:outline-none flex items-center justify-center p-2 ' +
+                'flex w-20 items-center justify-center p-2 outline-none focus:outline-none ' +
                 (navSection[1] === 'hangout' ? 'text-white' : 'text-slate-400')
               }
             >
-              <div className="flex flex-col text-center justify-center space-y-1">
+              <div className="flex flex-col justify-center space-y-1 text-center">
                 {navSection[1] === 'hangout' ? (
                   <IoFlash className="block h-6 w-auto" />
                 ) : (
@@ -69,11 +69,11 @@ const MobileNavigation = ({ user }) => {
           <Link href="/teams" passHref>
             <button
               className={
-                'w-20 outline-none focus:outline-none flex items-center justify-center p-2 ' +
+                'flex w-20 items-center justify-center p-2 outline-none focus:outline-none ' +
                 (navSection[1] === 'teams' ? 'text-white' : 'text-slate-400')
               }
             >
-              <div className="flex flex-col text-center justify-center space-y-1">
+              <div className="flex flex-col justify-center space-y-1 text-center">
                 {navSection[1] === 'teams' ? (
                   <IoPeople className="block h-6 w-auto" />
                 ) : (
@@ -86,11 +86,11 @@ const MobileNavigation = ({ user }) => {
           <Link href="/chat" passHref>
             <button
               className={
-                'w-20 outline-none focus:outline-none flex items-center justify-center p-2 ' +
+                'flex w-20 items-center justify-center p-2 outline-none focus:outline-none ' +
                 (navSection[1] === 'chat' ? 'text-white' : 'text-slate-400')
               }
             >
-              <div className="relative flex flex-col text-center justify-center space-y-1">
+              <div className="relative flex flex-col justify-center space-y-1 text-center">
                 {navSection[1] === 'chat' ? (
                   <IoChatbubbleOutline className="block h-6 w-auto" />
                 ) : (
@@ -98,7 +98,7 @@ const MobileNavigation = ({ user }) => {
                 )}
                 {totalChatNotifications > 0 && (
                   <div
-                    className="absolute flex justify-center left-5 -top-1.5 w-5 h-5 text-center rounded-full bg-purple-500 font-semibold text-white"
+                    className="absolute left-5 -top-1.5 flex h-5 w-5 justify-center rounded-full bg-purple-500 text-center font-semibold text-white"
                     style={{ fontSize: '11px' }}
                   >
                     <div className="mt-0.5 w-3">{totalChatNotifications}</div>
@@ -110,12 +110,12 @@ const MobileNavigation = ({ user }) => {
 
           <button
             className={
-              'w-20 outline-none focus:outline-none flex items-center justify-center p-2 ' +
+              'flex w-20 items-center justify-center p-2 outline-none focus:outline-none ' +
               (navSection[1] === 'account' ? 'text-white' : 'text-slate-400')
             }
             onClick={() => setIsProfileTabOpen(!isProfileTabOpen)}
           >
-            <div className="flex flex-col text-center justify-center space-y-1">
+            <div className="flex flex-col justify-center space-y-1 text-center">
               <Avatar
                 image={user?.profilePicUrl}
                 name={user?.displayName}

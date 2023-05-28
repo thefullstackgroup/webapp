@@ -68,13 +68,13 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
 
   return (
     <>
-      <div className="h-full bg-black no-scrollbar">
+      <div className="no-scrollbar h-full bg-black">
         {!user?.completedOnBoarding && (
           <>
-            <div className="z-40 w-full max-w-screen-2xl mx-auto hidden lg:flex fixed md:relative px-8 py-6 justify-between bg-transparent">
+            <div className="fixed z-40 mx-auto hidden w-full max-w-screen-2xl justify-between bg-transparent px-8 py-6 md:relative lg:flex">
               <div className="flex items-center space-x-16">
                 <Link href="/" passHref>
-                  <div className="flex items-center cursor-pointer">
+                  <div className="flex cursor-pointer items-center">
                     <span className="w-12">
                       <Image
                         src="/assets/thefullstack-icon.webp"
@@ -87,7 +87,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   </div>
                 </Link>
               </div>
-              <div className="flex items-center space-x-10 text-slate-100 text-base font-normal">
+              <div className="flex items-center space-x-10 text-base font-normal text-slate-100">
                 <Link href="/#howitworks">
                   <button className="text-slate-300">How it works</button>
                 </Link>
@@ -98,13 +98,13 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   <button className="text-slate-300">Login</button>
                 </Link>
                 <Link href="/signup">
-                  <button className="btn-primary py-1.5 bg-slate-100 text-tfsdark-800">
+                  <button className="btn-primary bg-slate-100 py-1.5 text-base-800">
                     Sign up
                   </button>
                 </Link>
               </div>
             </div>
-            <div className="lg:hidden px-4 py-4 absolute flex justify-between z-50 bg-transparent w-full">
+            <div className="absolute z-50 flex w-full justify-between bg-transparent px-4 py-4 lg:hidden">
               <div className="">
                 <Link href="/" passHref>
                   <div className="flex items-center justify-center">
@@ -115,15 +115,15 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                         alt={process.env.brandName}
                       />
                     </span>
-                    <span className="text-slate-100 text-lg tracking-tight font-semibold">
+                    <span className="text-lg font-semibold tracking-tight text-slate-100">
                       thefullstack
                     </span>
                   </div>
                 </Link>
               </div>
               <Link href="/login">
-                <button className="btn-with-icon text-slate-300 font-bold text-sm">
-                  <IoLogInOutline className="w-5 h-5" />
+                <button className="btn-with-icon text-sm font-bold text-slate-300">
+                  <IoLogInOutline className="h-5 w-5" />
                   <span>Sign in</span>
                 </button>
               </Link>
@@ -134,16 +134,16 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
         {/* Mobile Only */}
         {user?.completedOnBoarding && (
           <div className="block lg:hidden">
-            <div className="flex justify-between items-center px-4 py-3 fixed top-0 z-10 w-full bg-[#070B10]">
+            <div className="fixed top-0 z-10 flex w-full items-center justify-between bg-[#070B10] px-4 py-3">
               <div className="col-span-4">
                 {leftNavSection[1] === 'chat' ? (
                   <div
                     className="block lg:hidden"
                     onClick={() => router.back()}
                   >
-                    <div className="flex items-center cursor-pointer">
-                      <IoChevronBack className="h-6 w-6 mr-2" />
-                      <span className="text-slate-100 text-lg tracking-tight font-semibold">
+                    <div className="flex cursor-pointer items-center">
+                      <IoChevronBack className="mr-2 h-6 w-6" />
+                      <span className="text-lg font-semibold tracking-tight text-slate-100">
                         Chat
                       </span>
                     </div>
@@ -151,7 +151,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                 ) : (
                   <Link href="/explore" passHref>
                     <div className="block lg:hidden">
-                      <div className="flex items-center cursor-pointer">
+                      <div className="flex cursor-pointer items-center">
                         <span className="w-9">
                           <img
                             src="/assets/icons/thefullstack.webp"
@@ -164,15 +164,15 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   </Link>
                 )}
               </div>
-              <div className="flex space-x-4 items-center justify-end col-span-1">
+              <div className="col-span-1 flex items-center justify-end space-x-4">
                 <button
                   className="hover:text-white"
                   onClick={() => setShowSearchPanel(!showSearchPanel)}
                 >
-                  <IoSearch className="w-6 h-6" />
+                  <IoSearch className="h-6 w-6" />
                 </button>
 
-                <div className="w-6 h-8">
+                <div className="h-8 w-6">
                   <KnockNotificationsComponent userId={user.userId} />
                 </div>
               </div>
@@ -182,10 +182,10 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
 
         {user && (
           <main className="">
-            <div className="hidden lg:block w-16 xl:w-52 2xl:w-56">
-              <nav className="fixed z-0 top-0 w-16 xl:w-52 2xl:w-56 min-h-screen py-8 bg-black border-r border-tfsdark-600/80">
+            <div className="hidden w-16 lg:block xl:w-52 2xl:w-56">
+              <nav className="fixed top-0 z-0 min-h-screen w-16 border-r border-base-600/80 bg-black py-8 xl:w-52 2xl:w-56">
                 <Link href="/explore" passHref>
-                  <div className="flex items-center cursor-pointer ml-5 xl:ml-16 mb-8">
+                  <div className="ml-5 mb-8 flex cursor-pointer items-center xl:ml-16">
                     <span className="w-7 xl:w-16">
                       <img
                         src="/assets/icons/thefullstack-circle.webp"
@@ -196,18 +196,18 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   </div>
                 </Link>
 
-                <div className="text-base font-normal relative flex-col space-y-2 xl:space-y-1 text-slate-300/70 mx-auto">
+                <div className="relative mx-auto flex-col space-y-2 text-base font-normal text-slate-300/70 xl:space-y-1">
                   <Link href="/explore" passHref>
                     <button
                       className={
-                        'first-step xl:w-44 ml-2 xl:ml-4 pl-4 py-3 flex items-center space-x-5 xl:hover:bg-tfsdark-800 rounded-full ' +
+                        'first-step ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
                         (leftNavSection[1] === 'explore'
                           ? 'text-white'
                           : 'hover:text-white')
                       }
                     >
-                      <IoPlanetOutline className="w-6 h-6 -rotate-45" />
-                      <span className="cursor-pointer hidden xl:block">
+                      <IoPlanetOutline className="h-6 w-6 -rotate-45" />
+                      <span className="hidden cursor-pointer xl:block">
                         Shows
                       </span>
                     </button>
@@ -215,14 +215,14 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   <Link href="/hangout" passHref>
                     <button
                       className={
-                        'second-step xl:w-44 ml-2 xl:ml-4 pl-4 py-3 flex items-center space-x-5 xl:hover:bg-tfsdark-800 rounded-full ' +
+                        'second-step ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
                         (leftNavSection[1] === 'hangout'
                           ? 'text-white'
                           : 'hover:text-white')
                       }
                     >
-                      <IoFlashOutline className="w-6 h-6" />
-                      <span className="cursor-pointer hidden xl:block">
+                      <IoFlashOutline className="h-6 w-6" />
+                      <span className="hidden cursor-pointer xl:block">
                         Hangout
                       </span>
                     </button>
@@ -230,14 +230,14 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   <Link href="/teams" passHref>
                     <button
                       className={
-                        'third-step xl:w-44 ml-2 xl:ml-4 pl-4 py-3 flex items-center space-x-5 xl:hover:bg-tfsdark-800 rounded-full ' +
+                        'third-step ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
                         (leftNavSection[1] === 'teams'
                           ? 'text-white'
                           : 'hover:text-white')
                       }
                     >
-                      <IoPeopleOutline className="w-6 h-6" />
-                      <span className="cursor-pointer hidden xl:block">
+                      <IoPeopleOutline className="h-6 w-6" />
+                      <span className="hidden cursor-pointer xl:block">
                         Teams
                       </span>
                     </button>
@@ -245,15 +245,15 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
 
                   <button
                     className={
-                      'xl:w-44 ml-2 xl:ml-4 pl-4 py-3 flex items-center space-x-5 xl:hover:bg-tfsdark-800 rounded-full ' +
+                      'ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
                       (leftNavSection[2] === 'saved'
                         ? 'text-white'
                         : 'hover:text-white')
                     }
                     onClick={() => setShowSearchPanel(!showSearchPanel)}
                   >
-                    <IoSearch className="w-6 h-6" />
-                    <span className="cursor-pointer hidden xl:block">
+                    <IoSearch className="h-6 w-6" />
+                    <span className="hidden cursor-pointer xl:block">
                       Search
                     </span>
                   </button>
@@ -261,20 +261,20 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   <Link href="/account/network" passHref>
                     <button
                       className={
-                        'relative xl:w-44 ml-2 xl:ml-4 pl-4 py-3 flex items-center space-x-5 xl:hover:bg-tfsdark-800 rounded-full ' +
+                        'relative ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
                         (leftNavSection[2] === 'network'
                           ? 'text-white'
                           : 'hover:text-white')
                       }
                     >
-                      <IoGlobeOutline className="w-6 h-6" />
-                      <span className="cursor-pointer hidden xl:block">
+                      <IoGlobeOutline className="h-6 w-6" />
+                      <span className="hidden cursor-pointer xl:block">
                         Network
                       </span>
 
                       {network?.received_pending?.length > 0 && (
                         <div
-                          className="absolute flex justify-center left-4 top-2 w-3 h-3 text-center rounded-full bg-red-600 font-semibold text-white"
+                          className="absolute left-4 top-2 flex h-3 w-3 justify-center rounded-full bg-red-600 text-center font-semibold text-white"
                           style={{ fontSize: '11px' }}
                         ></div>
                       )}
@@ -284,19 +284,19 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   <Link href="/chat" passHref>
                     <button
                       className={
-                        'relative xl:w-44 ml-2 xl:ml-4 pl-4 py-3 flex items-center space-x-5 xl:hover:bg-tfsdark-800 rounded-full ' +
+                        'relative ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
                         (leftNavSection[1] === 'chat'
                           ? 'text-white'
                           : 'hover:text-white')
                       }
                     >
-                      <IoChatbubbleOutline className="w-6 h-6" />
-                      <span className="cursor-pointer hidden xl:block">
+                      <IoChatbubbleOutline className="h-6 w-6" />
+                      <span className="hidden cursor-pointer xl:block">
                         Chat
                       </span>
                       {totalChatNotifications > 0 && (
                         <div
-                          className="absolute flex justify-center left-4 top-2 w-3 h-3 text-center rounded-full bg-red-600 font-semibold text-white"
+                          className="absolute left-4 top-2 flex h-3 w-3 justify-center rounded-full bg-red-600 text-center font-semibold text-white"
                           style={{ fontSize: '11px' }}
                         ></div>
                       )}
@@ -306,14 +306,14 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   <Link href="/post" passHref>
                     <button
                       className={
-                        'fourth-step xl:w-44 ml-2 xl:ml-4 pl-4 py-3 flex items-center space-x-5 xl:hover:bg-tfsdark-800 rounded-full ' +
+                        'fourth-step ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
                         (leftNavSection[2] === 'new'
                           ? 'text-white'
                           : 'hover:text-white')
                       }
                     >
-                      <IoAdd className="w-6 h-6" />
-                      <span className="cursor-pointer hidden xl:block">
+                      <IoAdd className="h-6 w-6" />
+                      <span className="hidden cursor-pointer xl:block">
                         Create
                       </span>
                     </button>
@@ -322,7 +322,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   <Link href={`/${user?.displayName}`} passHref>
                     <button
                       className={
-                        'relative xl:w-44 ml-2 xl:ml-4 pl-4 py-3 flex items-center space-x-5 xl:hover:bg-tfsdark-800 rounded-full ' +
+                        'relative ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
                         (router.query.userId === user?.displayName
                           ? 'text-white'
                           : 'hover:text-white')
@@ -334,33 +334,33 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                         href={`/${user?.displayName}`}
                         dimensions={'w-7 h-7'}
                       />
-                      <span className="cursor-pointer hidden xl:block">
+                      <span className="hidden cursor-pointer xl:block">
                         Profile
                       </span>
                     </button>
                   </Link>
                 </div>
-                <div className="hidden md:block absolute bottom-10">
+                <div className="absolute bottom-10 hidden md:block">
                   <button
-                    className="relative xl:w-44 ml-2 xl:ml-4 pl-4 py-3 flex items-center space-x-3 xl:hover:bg-tfsdark-800 rounded-full text-slate-400 hover:text-white"
+                    className="relative ml-2 flex items-center space-x-3 rounded-full py-3 pl-4 text-slate-400 hover:text-white xl:ml-4 xl:w-44 xl:hover:bg-base-800"
                     onClick={() => setShowMoreMenu(true)}
                   >
-                    <IoMenuSharp className="w-6 h-6" />
-                    <span className="cursor-pointer hidden xl:block">More</span>
+                    <IoMenuSharp className="h-6 w-6" />
+                    <span className="hidden cursor-pointer xl:block">More</span>
                   </button>
                 </div>
               </nav>
             </div>
-            <div className="mt-14 lg:mt-0 sm:px-4 w-full sm:w-[100vw] lg:[100vw] xl:w-full">
+            <div className="lg:[100vw] mt-14 w-full sm:w-[100vw] sm:px-4 lg:mt-0 xl:w-full">
               {/* Tablet and Desktop only */}
-              <div className="hidden lg:block fixed z-20 w-auto h-20 top-0 right-0 mx-auto pt-4 px-4">
+              <div className="fixed top-0 right-0 z-20 mx-auto hidden h-20 w-auto px-4 pt-4 lg:block">
                 <div className="flex items-center justify-end space-x-10">
                   <Link href="/account/wallet" passHref>
                     <button className="w-6 text-white">
-                      <IoWalletOutline className="w-7 h-7" />
+                      <IoWalletOutline className="h-7 w-7" />
                     </button>
                   </Link>
-                  <div className="w-8 h-7">
+                  <div className="h-7 w-8">
                     <KnockNotificationsComponent userId={user.userId} />
                   </div>
                 </div>
@@ -385,25 +385,25 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
       </div>
 
       {showSearchPanel && (
-        <div className="fixed inset-0 z-50 overflow-hidden h-screen">
-          <div className="flex min-h-screen pt-4 px-4 pb-20 text-right sm:block sm:p-0">
+        <div className="fixed inset-0 z-50 h-screen overflow-hidden">
+          <div className="flex min-h-screen px-4 pt-4 pb-20 text-right sm:block sm:p-0">
             <div
               className="absolute inset-0"
               onClick={() => setShowSearchPanel(!showSearchPanel)}
             ></div>
 
-            <span className="hidden sm:inline-block sm:align-middle sm:h-screen">
+            <span className="hidden sm:inline-block sm:h-screen sm:align-middle">
               &#8203;
             </span>
 
-            <div className="absolute z-50 top-0 left-0 sm:align-bottom w-full md:w-72 min-h-screen">
-              <div className="bg-tfsdark-700 shadow-xl sm:max-w-xl border-l border-r border-tfsdark-600/50 h-screen">
+            <div className="absolute top-0 left-0 z-50 min-h-screen w-full sm:align-bottom md:w-72">
+              <div className="h-screen border-l border-r border-base-600/50 bg-base-700 shadow-xl sm:max-w-xl">
                 <div className="rounded-lg">
                   <button
-                    className="pt-2 z-50 w-10 h-10"
+                    className="z-50 h-10 w-10 pt-2"
                     onClick={() => setShowSearchPanel(false)}
                   >
-                    <IoClose className="w-8 h-8 lg:w-6 lg:h-6" />
+                    <IoClose className="h-8 w-8 lg:h-6 lg:w-6" />
                   </button>
                   <div className="lg:py-2">
                     <SearchUsersInput />
@@ -416,51 +416,51 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
       )}
 
       {showMoreMenu && (
-        <div className="fixed inset-0 z-50 overflow-hidden h-screen">
-          <div className="flex min-h-screen pt-4 px-4 pb-20 text-right sm:block sm:p-0">
+        <div className="fixed inset-0 z-50 h-screen overflow-hidden">
+          <div className="flex min-h-screen px-4 pt-4 pb-20 text-right sm:block sm:p-0">
             <div
               className="absolute inset-0"
               onClick={() => setShowMoreMenu(!showMoreMenu)}
             ></div>
 
-            <span className="hidden sm:inline-block sm:align-middle sm:h-screen">
+            <span className="hidden sm:inline-block sm:h-screen sm:align-middle">
               &#8203;
             </span>
 
-            <div className="absolute z-50 bottom-24 left-4 sm:align-bottom w-full md:w-48 mt-24 md:mt-16">
-              <div className="bg-tfsdark-700 rounded-md shadow-xl sm:max-w-xl border-tfsdark-600 border">
-                <div className="rounded-lg bg-tfsdark-700">
-                  <ul className="flex flex-col text-sm text-left text-slate-400 divide-y-2 divide-tfsdark-700/50">
-                    <li className="pr-2 hover:text-white px-2 py-2">
+            <div className="absolute bottom-24 left-4 z-50 mt-24 w-full sm:align-bottom md:mt-16 md:w-48">
+              <div className="rounded-md border border-base-600 bg-base-700 shadow-xl sm:max-w-xl">
+                <div className="rounded-lg bg-base-700">
+                  <ul className="flex flex-col divide-y-2 divide-base-700/50 text-left text-sm text-slate-400">
+                    <li className="px-2 py-2 pr-2 hover:text-white">
                       <Link href="/account/dashboard">
-                        <button className="flex items-center space-x-2 w-full">
+                        <button className="flex w-full items-center space-x-2">
                           <IoApps className="h-5 w-5" />
                           <a>Dashboard</a>
                         </button>
                       </Link>
                     </li>
 
-                    <li className="pr-2 hover:text-white px-2 py-2">
+                    <li className="px-2 py-2 pr-2 hover:text-white">
                       <Link href="/account/settings">
-                        <button className="flex items-center space-x-2 w-full">
+                        <button className="flex w-full items-center space-x-2">
                           <IoSettingsOutline className="h-5 w-5" />
                           <a>Account Settings</a>
                         </button>
                       </Link>
                     </li>
 
-                    <li className="pr-2 hover:text-white px-2 py-2">
+                    <li className="px-2 py-2 pr-2 hover:text-white">
                       <Link href="/account/profile/invite">
-                        <button className="flex items-center space-x-2 w-full">
+                        <button className="flex w-full items-center space-x-2">
                           <IoHeartOutline className="h-5 w-5" />
                           <a>Invite friends</a>
                         </button>
                       </Link>
                     </li>
 
-                    <li className="pr-2 hover:text-white px-2 py-2">
+                    <li className="px-2 py-2 pr-2 hover:text-white">
                       <button
-                        className="flex items-center space-x-2 w-full"
+                        className="flex w-full items-center space-x-2"
                         onClick={() => {
                           setShowMoreMenu(!showMoreMenu);
                           setShowCodePolicy(true);
@@ -471,9 +471,9 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                       </button>
                     </li>
 
-                    <li className="pr-2 hover:text-white px-2 py-2">
+                    <li className="px-2 py-2 pr-2 hover:text-white">
                       <button
-                        className="flex items-center space-x-2 w-full"
+                        className="flex w-full items-center space-x-2"
                         onClick={() => {
                           setShowMoreMenu(!showMoreMenu);
                           setShowPrivacyPolicy(true);
@@ -484,9 +484,9 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                       </button>
                     </li>
 
-                    <li className="pr-2 hover:text-white px-2 py-2">
+                    <li className="px-2 py-2 pr-2 hover:text-white">
                       <button
-                        className="flex items-center space-x-2 w-full"
+                        className="flex w-full items-center space-x-2"
                         onClick={() => {
                           setShowMoreMenu(!showMoreMenu);
                           setShowCookiePolicy(true);
@@ -497,9 +497,9 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                       </button>
                     </li>
 
-                    <li className="pr-2 hover:text-white px-2 py-2">
+                    <li className="px-2 py-2 pr-2 hover:text-white">
                       <Link href="/account/settings/signout">
-                        <button className="flex items-center space-x-2 w-full">
+                        <button className="flex w-full items-center space-x-2">
                           <IoLogOutOutline className="h-5 w-5" />
                           <a>Log out</a>
                         </button>
@@ -521,12 +521,12 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
       >
         <div className="pt-2">
           <button
-            className="z-50 w-full text-white flex justify-end"
+            className="z-50 flex w-full justify-end text-white"
             onClick={() => setShowCodePolicy(!showCodePolicy)}
           >
             <IoCloseOutline className="h-8 w-8" />
           </button>
-          <div className="w-full overflow-y-scroll h-[80vh] overscroll-contain">
+          <div className="h-[80vh] w-full overflow-y-scroll overscroll-contain">
             <CodeOfConduct />
           </div>
         </div>
@@ -540,12 +540,12 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
       >
         <div className="pt-2">
           <button
-            className="z-50 w-full text-white flex justify-end"
+            className="z-50 flex w-full justify-end text-white"
             onClick={() => setShowPrivacyPolicy(!showPrivacyPolicy)}
           >
             <IoCloseOutline className="h-8 w-8" />
           </button>
-          <div className="w-full overflow-y-scroll h-[80vh] overscroll-contain">
+          <div className="h-[80vh] w-full overflow-y-scroll overscroll-contain">
             <PrivacyPolicy />
           </div>
         </div>
@@ -559,12 +559,12 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
       >
         <div className="pt-2">
           <button
-            className="z-50 w-full text-white flex justify-end"
+            className="z-50 flex w-full justify-end text-white"
             onClick={() => setShowCookiePolicy(!showCookiePolicy)}
           >
             <IoCloseOutline className="h-8 w-8" />
           </button>
-          <div className="w-full overflow-y-scroll h-[80vh] overscroll-contain">
+          <div className="h-[80vh] w-full overflow-y-scroll overscroll-contain">
             <CookiePolicy />
           </div>
         </div>

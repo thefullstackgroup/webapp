@@ -10,7 +10,7 @@ import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5';
 
 const Loading = () => {
   return (
-    <div className="bg-tfsdark-800 min-h-screen w-full flex justify-center items-center">
+    <div className="flex min-h-screen w-full items-center justify-center bg-base-800">
       <Loader />
     </div>
   );
@@ -77,9 +77,9 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center">
-      <div className="w-full max-w-md mx-auto">
-        <div className="flex flex-col text-center justify-center space-y-4 sm:mb-6">
+    <div className="flex min-h-screen items-center">
+      <div className="mx-auto w-full max-w-md">
+        <div className="flex flex-col justify-center space-y-4 text-center sm:mb-6">
           <Link href="/" passHref>
             <a href="#" className="flex items-center justify-center">
               <span className="h-16 w-16 sm:h-20 sm:w-20">
@@ -91,28 +91,28 @@ const SignUp = () => {
               </span>
             </a>
           </Link>
-          <div className="mt-2 text-lg sm:text-2xl font-semibold">
+          <div className="mt-2 text-lg font-semibold sm:text-2xl">
             Sign up to The Full Stack
           </div>
         </div>
         <div className="p-8">
           <div className="space-y-4">
             <button
-              className="btn-secondary text-base flex items-center space-x-2 justify-center px-3 py-4 w-full"
+              className="btn-secondary flex w-full items-center justify-center space-x-2 px-3 py-4 text-base"
               onClick={signInWithGoogle}
             >
               <FcGoogle className="h-6 w-6" />
               <span>Sign up with Google</span>
             </button>
             <button
-              className="btn-secondary text-base flex items-center space-x-2 justify-center px-3 py-4 w-full"
+              className="btn-secondary flex w-full items-center justify-center space-x-2 px-3 py-4 text-base"
               onClick={signInWithGitHub}
             >
               <IoLogoGithub className="h-6 w-6" />
               <span>Sign up with GitHub</span>
             </button>
             <button
-              className="btn-secondary text-base flex items-center space-x-2 justify-center px-3 py-4 w-full"
+              className="btn-secondary flex w-full items-center justify-center space-x-2 px-3 py-4 text-base"
               onClick={function () {
                 window.open(
                   '/api/auth/linkedin/login',
@@ -127,7 +127,7 @@ const SignUp = () => {
 
             {process.env.ENABLE_EMAIL_PASS_SIGNUP && (
               <>
-                <div className="text-center text-slate-400 text-sm py-2">
+                <div className="py-2 text-center text-sm text-slate-400">
                   Or sign up using email
                 </div>
                 <input
@@ -157,7 +157,7 @@ const SignUp = () => {
                 )}
 
                 {signUpMessage && (
-                  <div className="text-red-500 text-sm">{signUpMessage}</div>
+                  <div className="text-sm text-red-500">{signUpMessage}</div>
                 )}
 
                 <div className="flex">
@@ -177,7 +177,7 @@ const SignUp = () => {
               </>
             )}
             <div className="flex justify-center pt-6">
-              <div className="text-tfssecondary-500 text-sm text-center">
+              <div className="text-tfssecondary-500 text-center text-sm">
                 <Link href="/login" passHref>
                   <a href="#">Already have an account?</a>
                 </Link>

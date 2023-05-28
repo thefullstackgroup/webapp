@@ -80,17 +80,17 @@ const Socials = ({ user }) => {
   };
   return (
     <>
-      <div className="w-full mt-4">
+      <div className="mt-4 w-full">
         {successAlert && (
-          <div className="relative bg-green-500/20 text-green-500 text-sm text-center w-full rounded-md py-1.5 px-2">
+          <div className="relative w-full rounded-md bg-green-500/20 py-1.5 px-2 text-center text-sm text-green-500">
             Changes saved!
           </div>
         )}
-        <div className="py-4 space-y-6">
+        <div className="space-y-6 py-4">
           <div>
             <div className="flex">
-              <span className="mt-1 text-base block bg-tfsdark-600/50 rounded-l-md py-3 px-3 focus:outline-none">
-                <FaInstagram className="w-6 h-6 text-gray-400" />
+              <span className="mt-1 block rounded-l-md bg-base-600/50 py-3 px-3 text-base focus:outline-none">
+                <FaInstagram className="h-6 w-6 text-gray-400" />
               </span>
               <input
                 type="text"
@@ -104,8 +104,8 @@ const Socials = ({ user }) => {
 
           <div>
             <div className="flex">
-              <span className="mt-1 text-base block bg-tfsdark-600/50 rounded-l-md py-3 px-3 focus:outline-none">
-                <FaTwitter className="w-6 h-6 text-gray-400" />
+              <span className="mt-1 block rounded-l-md bg-base-600/50 py-3 px-3 text-base focus:outline-none">
+                <FaTwitter className="h-6 w-6 text-gray-400" />
               </span>
               <input
                 type="text"
@@ -118,8 +118,8 @@ const Socials = ({ user }) => {
           </div>
           <div>
             <div className="flex">
-              <span className="mt-1 text-base block bg-tfsdark-600/50 rounded-l-md py-3 px-3 focus:outline-none">
-                <FaLinkedin className="w-6 h-6 text-gray-400" />
+              <span className="mt-1 block rounded-l-md bg-base-600/50 py-3 px-3 text-base focus:outline-none">
+                <FaLinkedin className="h-6 w-6 text-gray-400" />
               </span>
               <input
                 type="text"
@@ -133,8 +133,8 @@ const Socials = ({ user }) => {
 
           <div>
             <div className="flex">
-              <span className="mt-1 text-base block bg-tfsdark-600/50 rounded-l-md py-3 px-3 focus:outline-none">
-                <FaFacebook className="w-6 h-6 text-gray-400" />
+              <span className="mt-1 block rounded-l-md bg-base-600/50 py-3 px-3 text-base focus:outline-none">
+                <FaFacebook className="h-6 w-6 text-gray-400" />
               </span>
               <input
                 type="text"

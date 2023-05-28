@@ -25,14 +25,14 @@ const socials = [
 const Footer = () => {
   return (
     <>
-      <footer className="relative border-t border-gray-200 bg-gray-100 dark:border-gray-900 dark:bg-black">
+      <footer className="relative border-t border-base-200 bg-base-100 dark:border-base-900 dark:bg-base-900">
         <div className="mx-auto max-w-5xl py-12 px-4 md:px-10 lg:py-16">
           <div className="flex w-full flex-col justify-center space-y-4">
             <ul className="flex flex-wrap items-center justify-center space-x-4 md:space-x-6">
               {links.map((link, index) => (
                 <li className=" whitespace-nowrap" key={index}>
                   <Link href={link.url} passHref>
-                    <a href="#" className="ftr-item">
+                    <a href="#" className="ftr-link">
                       {link.label}
                     </a>
                   </Link>
@@ -43,7 +43,7 @@ const Footer = () => {
               {socials.map((social, index) => (
                 <a
                   href={social.url}
-                  className="ftr-item-icon"
+                  className="ftr-link-icon"
                   target="_blank"
                   rel="noreferrer"
                   title={social.label}
@@ -66,7 +66,7 @@ const Footer = () => {
               ))}
             </div>
             <p className="mt-8 w-full text-center text-xs text-gray-400 dark:text-gray-500">
-              &copy; {new Date().getFullYear()} thefullstack.
+              &copy; {new Date().getFullYear()} The Full Stack.
             </p>
           </div>
         </div>

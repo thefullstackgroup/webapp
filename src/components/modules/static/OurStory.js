@@ -5,8 +5,8 @@ import { SiGithub, SiLinkedin, SiTwitter } from 'react-icons/si';
 const Main = () => {
   return (
     <div className="bg-black">
-      <div className="fixed top-0 left-0 w-full mx-auto min-h-screen mt-16 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-tfsdark-300/40 via-black to-tfsdark-900 flex justify-between"></div>
-      <div className="fixed w-1/2 top-0 right-0 opacity-20">
+      <div className="fixed top-0 left-0 mx-auto mt-16 flex min-h-screen w-full justify-between bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-base-300/40 via-black to-base-900"></div>
+      <div className="fixed top-0 right-0 w-1/2 opacity-20">
         <Image
           src="/assets/landing/about/nodes.webp"
           className="h-full w-full object-cover grayscale"
@@ -16,18 +16,18 @@ const Main = () => {
           layout="fill"
         />
       </div>
-      <div className="relative z-10 max-w-6xl mx-auto">
-        <div className="pt-24 md:pt-32 max-w-7xl md:max-w-4xl space-y-6 px-4 lg:px-0">
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <div className="max-w-7xl space-y-6 px-4 pt-24 md:max-w-4xl md:pt-32 lg:px-0">
           <Link href="/about/our-story">
-            <div className="rounded-full text-slate-300 hover:text-white bg-slate-800/40 border border-tfsdark-700 px-4 py-1 text-sm w-min whitespace-nowrap mb-10 cursor-pointer">
+            <div className="mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-700 bg-slate-800/40 px-4 py-1 text-sm text-slate-300 hover:text-white">
               Our mission
             </div>
           </Link>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-100 font-intertight flex justify-center -space-y-4">
+          <h1 className="flex justify-center -space-y-4 font-intertight text-5xl font-bold tracking-tight text-slate-100 md:text-7xl">
             Connecting developers to build awesome things.
           </h1>
-          <div className="max-w-3xl mx-auto md:mx-0">
-            <h4 className="text-slate-300 font-light text-2xl">
+          <div className="mx-auto max-w-3xl md:mx-0">
+            <h4 className="text-2xl font-light text-slate-300">
               We build platforms that enable developers to grow a network and
               connect to teams to build the most amazing things.
             </h4>
@@ -35,10 +35,10 @@ const Main = () => {
         </div>
 
         <div className="max-w-4xl space-y-10 px-4 md:px-0">
-          <div className="mt-40 rounded-full text-slate-300 hover:text-white bg-slate-800/40 border border-tfsdark-700 px-4 py-1 text-sm w-min whitespace-nowrap mb-10 cursor-pointer">
+          <div className="mt-40 mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-700 bg-slate-800/40 px-4 py-1 text-sm text-slate-300 hover:text-white">
             Our purpose
           </div>
-          <h4 className="text-4xl font-bold font-intertight">
+          <h4 className="font-intertight text-4xl font-bold">
             Why this matters?
           </h4>
           <div className="space-y-4">
@@ -77,12 +77,12 @@ const Main = () => {
           </div>
         </div>
 
-        <div className="max-w-4xl space-y-10 mt-20 px-4 md:px-0">
-          <h4 className="text-2xl font-bold font-intertight">The Team</h4>
+        <div className="mt-20 max-w-4xl space-y-10 px-4 md:px-0">
+          <h4 className="font-intertight text-2xl font-bold">The Team</h4>
           <div className="space-y-4">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="flex space-x-4 items-center">
-                <div className="w-20 h-20 md:w-32 md:h-32 rounded-lg grayscale overflow-hidden">
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="flex items-center space-x-4">
+                <div className="h-20 w-20 overflow-hidden rounded-lg grayscale md:h-32 md:w-32">
                   <Image
                     src="/assets/landing/about/noel.webp"
                     className="h-full w-full object-cover grayscale"
@@ -93,7 +93,7 @@ const Main = () => {
                   />
                 </div>
                 <div>
-                  <h4 className="text-lg md:text-2xl font-bold">Noel Maher</h4>
+                  <h4 className="text-lg font-bold md:text-2xl">Noel Maher</h4>
                   <h5 className="text-slate-400">CEO & Co-founder</h5>
                   <div className="mt-2 flex items-center space-x-4">
                     <a
@@ -121,8 +121,8 @@ const Main = () => {
                 </div>
               </div>
 
-              <div className="flex space-x-4 items-center">
-                <div className="w-20 h-20 md:w-32 md:h-32 rounded-lg grayscale overflow-hidden">
+              <div className="flex items-center space-x-4">
+                <div className="h-20 w-20 overflow-hidden rounded-lg grayscale md:h-32 md:w-32">
                   <Image
                     src="/assets/landing/about/phil.webp"
                     className="h-full w-full object-cover grayscale"
@@ -133,7 +133,7 @@ const Main = () => {
                   />
                 </div>
                 <div>
-                  <h4 className="text-lg md:text-2xl font-bold">Phil Bannon</h4>
+                  <h4 className="text-lg font-bold md:text-2xl">Phil Bannon</h4>
                   <h5 className="text-slate-400">CTO & Co-founder</h5>
                   <div className="mt-2 flex items-center space-x-4">
                     <a
@@ -160,8 +160,8 @@ const Main = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex space-x-4 items-center">
-                <div className="w-20 h-20 md:w-32 md:h-32 rounded-lg grayscale overflow-hidden">
+              <div className="flex items-center space-x-4">
+                <div className="h-20 w-20 overflow-hidden rounded-lg grayscale md:h-32 md:w-32">
                   <Image
                     src="/assets/landing/about/jamie.webp"
                     className="h-full w-full object-cover grayscale"
@@ -172,7 +172,7 @@ const Main = () => {
                   />
                 </div>
                 <div>
-                  <h4 className="text-lg md:text-2xl font-bold">Jamie Good</h4>
+                  <h4 className="text-lg font-bold md:text-2xl">Jamie Good</h4>
                   <h5 className="text-slate-400">COO & Co-founder</h5>
                   <div className="mt-2 flex items-center space-x-4">
                     <a
@@ -200,8 +200,8 @@ const Main = () => {
                 </div>
               </div>
 
-              <div className="flex space-x-4 items-center">
-                <div className="w-20 h-20 md:w-32 md:h-32 rounded-lg grayscale overflow-hidden">
+              <div className="flex items-center space-x-4">
+                <div className="h-20 w-20 overflow-hidden rounded-lg grayscale md:h-32 md:w-32">
                   <Image
                     src="/assets/landing/about/henrique.webp"
                     className="h-full w-full object-cover grayscale"
@@ -212,7 +212,7 @@ const Main = () => {
                   />
                 </div>
                 <div>
-                  <h4 className="text-lg md:text-2xl font-bold">
+                  <h4 className="text-lg font-bold md:text-2xl">
                     Henrique Oliveira
                   </h4>
                   <h5 className="text-slate-400">Senior Engineer</h5>
@@ -246,14 +246,14 @@ const Main = () => {
           </div>
         </div>
 
-        <div className="max-w-4xl space-y-10 mt-32 mb-40 px-4 md:px-0">
-          <h4 className="text-2xl font-bold font-intertight text-center md:text-left">
+        <div className="mt-32 mb-40 max-w-4xl space-y-10 px-4 md:px-0">
+          <h4 className="text-center font-intertight text-2xl font-bold md:text-left">
             Supported and backed by
           </h4>
           <div className="mt-4 space-y-4">
-            <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-20 items-center">
-              <div className="flex flex-col text-center space-y-4">
-                <div className="w-auto h-12 grayscale overflow-hidden">
+            <div className="flex flex-col items-center space-y-8 md:flex-row md:space-y-0 md:space-x-20">
+              <div className="flex flex-col space-y-4 text-center">
+                <div className="h-12 w-auto overflow-hidden grayscale">
                   <Image
                     src="/assets/landing/about/ei.webp"
                     className="h-full w-full object-cover grayscale"
@@ -265,8 +265,8 @@ const Main = () => {
                 </div>
                 <span className="text-sm">High Potential Startup</span>
               </div>
-              <div className="flex flex-col text-center space-y-4">
-                <div className="w-auto h-12 rounded-lg grayscale overflow-hidden">
+              <div className="flex flex-col space-y-4 text-center">
+                <div className="h-12 w-auto overflow-hidden rounded-lg grayscale">
                   <Image
                     src="/assets/landing/about/ndrc.webp"
                     className="h-full w-full object-cover grayscale"

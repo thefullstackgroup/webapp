@@ -137,23 +137,23 @@ const Tech = ({ user, setSkillsSelected }) => {
     return (
       <div
         className={
-          'relative flex items-center space-x-1 rounded-full py-2 px-3 text-sm font-medium cursor-pointer ' +
+          'relative flex cursor-pointer items-center space-x-1 rounded-full py-2 px-3 text-sm font-medium ' +
           (techSelected
-            ? 'bg-tfsdark-500/70 text-white'
-            : 'bg-tfsdark-600/40 text-tfsdark-300')
+            ? 'bg-base-500/70 text-white'
+            : 'bg-base-600/40 text-base-300')
         }
         onClick={() => saveTech(tech)}
       >
         <Icon
           iconName={tech.icon}
           className={
-            'w-5 h-5 ' + (techSelected ? 'text-white' : 'text-tfsdark-300')
+            'h-5 w-5 ' + (techSelected ? 'text-white' : 'text-base-300')
           }
         />
         <span>{tech.label}</span>
         {techSelected && (
-          <span className="absolute bg-green-600 w-4 h-4 -top-1 -left-1 rounded-full ring-2 ring-white">
-            <BsCheck className="text-white w-4 h-4" />
+          <span className="absolute -top-1 -left-1 h-4 w-4 rounded-full bg-green-600 ring-2 ring-white">
+            <BsCheck className="h-4 w-4 text-white" />
           </span>
         )}
       </div>
@@ -250,54 +250,54 @@ const Tech = ({ user, setSkillsSelected }) => {
   return (
     <>
       <div className="w-full">
-        <div className="my-6 bg-tfsdark-700/50 p-4 rounded-xl">
-          <h4 className="pl-2 font-semibold uppercase text-sm text-tfsdark-100">
+        <div className="my-6 rounded-xl bg-base-700/50 p-4">
+          <h4 className="pl-2 text-sm font-semibold uppercase text-base-100">
             Frontend
           </h4>
-          <div className="w-full flex flex-wrap my-4 gap-3">
+          <div className="my-4 flex w-full flex-wrap gap-3">
             {popularFrontend.map((tech) => (
               <TechPill tech={tech} key={tech._id} usersTech={skillListUser} />
             ))}
           </div>
         </div>
-        <div className="my-8 bg-tfsdark-700/50 p-4 rounded-xl">
-          <h4 className="pl-2 font-semibold uppercase text-sm text-tfsdark-100">
+        <div className="my-8 rounded-xl bg-base-700/50 p-4">
+          <h4 className="pl-2 text-sm font-semibold uppercase text-base-100">
             Backend
           </h4>
-          <div className="w-full flex flex-wrap my-4 gap-3">
+          <div className="my-4 flex w-full flex-wrap gap-3">
             {popularBackend.map((tech) => (
               <TechPill tech={tech} key={tech._id} usersTech={skillListUser} />
             ))}
           </div>
         </div>
 
-        <div className="my-8 bg-tfsdark-700/50 p-4 rounded-xl">
-          <h4 className="pl-2 font-semibold uppercase text-sm text-tfsdark-100">
+        <div className="my-8 rounded-xl bg-base-700/50 p-4">
+          <h4 className="pl-2 text-sm font-semibold uppercase text-base-100">
             Core
           </h4>
-          <div className="w-full flex flex-wrap my-4 gap-3">
+          <div className="my-4 flex w-full flex-wrap gap-3">
             {popularCore.map((tech) => (
               <TechPill tech={tech} key={tech._id} usersTech={skillListUser} />
             ))}
           </div>
         </div>
 
-        <div className="my-8 bg-tfsdark-700/50 p-4 rounded-xl">
-          <h4 className="pl-2 font-semibold uppercase text-sm text-tfsdark-100">
+        <div className="my-8 rounded-xl bg-base-700/50 p-4">
+          <h4 className="pl-2 text-sm font-semibold uppercase text-base-100">
             Infra
           </h4>
-          <div className="w-full flex flex-wrap my-4 gap-3">
+          <div className="my-4 flex w-full flex-wrap gap-3">
             {popularInfra.map((tech) => (
               <TechPill tech={tech} key={tech._id} usersTech={skillListUser} />
             ))}
           </div>
         </div>
 
-        <div className="my-8 bg-tfsdark-700/50 p-4 rounded-xl">
-          <h4 className="pl-2 font-semibold uppercase text-sm text-tfsdark-100">
+        <div className="my-8 rounded-xl bg-base-700/50 p-4">
+          <h4 className="pl-2 text-sm font-semibold uppercase text-base-100">
             Misc
           </h4>
-          <div className="w-full flex flex-wrap my-4 gap-3">
+          <div className="my-4 flex w-full flex-wrap gap-3">
             {popularMisc.map((tech) => (
               <TechPill tech={tech} key={tech._id} usersTech={skillListUser} />
             ))}

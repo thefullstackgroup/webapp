@@ -4,11 +4,11 @@ import Link from 'next/link';
 const TeamMembers = ({ title, teamOwner, teamMembers }) => {
   return (
     <div className="space-y-2">
-      <p className="text-white font-semibold">{title}</p>
-      <div className="bg-tfsdark-800 rounded-md border border-tfsdark-600 divide-tfsdark-600/50 px-5 py-1">
-        <div className="flex flex-wrap mt-4 items-center">
+      <p className="font-semibold text-white">{title}</p>
+      <div className="divide-base-600/50 rounded-md border border-base-600 bg-base-800 px-5 py-1">
+        <div className="mt-4 flex flex-wrap items-center">
           {teamOwner && (
-            <div className="flex items-center space-x-3 sm:w-1/2 pr-4 mb-4">
+            <div className="mb-4 flex items-center space-x-3 pr-4 sm:w-1/2">
               <Avatar
                 href={`/${teamOwner.displayName}`}
                 name={teamOwner.name}
@@ -19,11 +19,11 @@ const TeamMembers = ({ title, teamOwner, teamMembers }) => {
                 <div className="cursor-pointer">
                   <h4 className="font-semibold">
                     {teamOwner.name}
-                    <span className="relative -top-2 bg-tfsdark-600 text-[0.6em] px-2 py-1 ml-2 rounded-full">
+                    <span className="relative -top-2 ml-2 rounded-full bg-base-600 px-2 py-1 text-[0.6em]">
                       Team Owner
                     </span>
                   </h4>
-                  <span className="text-slate-400 text-sm">
+                  <span className="text-sm text-slate-400">
                     {teamOwner.currentTitle}
                   </span>
                 </div>
@@ -32,7 +32,7 @@ const TeamMembers = ({ title, teamOwner, teamMembers }) => {
           )}
           {teamMembers?.map((member) => (
             <div
-              className="flex items-center space-x-3 sm:w-1/2 pr-4 mb-4"
+              className="mb-4 flex items-center space-x-3 pr-4 sm:w-1/2"
               key={member.id}
             >
               <Avatar
@@ -43,7 +43,7 @@ const TeamMembers = ({ title, teamOwner, teamMembers }) => {
               <Link href={`/${member.displayName}`}>
                 <div className="cursor-pointer">
                   <h4 className="font-semibold">{member.name}</h4>
-                  <span className="text-slate-400 text-sm">
+                  <span className="text-sm text-slate-400">
                     {member.currentTitle}
                   </span>
                 </div>

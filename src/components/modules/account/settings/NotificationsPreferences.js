@@ -139,7 +139,7 @@ const NotificationsPreferences = () => {
 
   if (!preferences) {
     return (
-      <div className="w-full h-80 flex flex-col text-sm space-y-2 justify-center items-center">
+      <div className="flex h-80 w-full flex-col items-center justify-center space-y-2 text-sm">
         <Loader />
       </div>
     );
@@ -147,25 +147,25 @@ const NotificationsPreferences = () => {
 
   return (
     <>
-      <div className="mt-0 lg:mt-12 w-full flex justify-center">
-        <div className="w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-          <div className="relative max-w-4xl mx-auto">
-            <div className="mx-4 md:mx-0 space-y-6">
+      <div className="mt-0 flex w-full justify-center lg:mt-12">
+        <div className="w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+          <div className="relative mx-auto max-w-4xl">
+            <div className="mx-4 space-y-6 md:mx-0">
               <Link href={`/account/settings`}>
-                <div className="flex items-center space-x-2 px-4 md:px-0 mb-4 cursor-pointer">
+                <div className="mb-4 flex cursor-pointer items-center space-x-2 px-4 md:px-0">
                   <IoArrowBack className="h-5 w-5" />
-                  <h2 className="font-bold text-sm">
+                  <h2 className="text-sm font-bold">
                     Back to account settings
                   </h2>
                 </div>
               </Link>
 
               <div className="relative w-min whitespace-nowrap">
-                <h2 className="text-3xl sm:text-3xl font-bold tracking-tight">
+                <h2 className="text-3xl font-bold tracking-tight sm:text-3xl">
                   Notification preferences
                 </h2>
               </div>
-              <div className="w-full rounded-lg bg-tfsdark-700 mb-4 px-4 sm:px-6 py-4 space-y-6">
+              <div className="mb-4 w-full space-y-6 rounded-lg bg-base-700 px-4 py-4 sm:px-6">
                 <p className="mt-4 text-slate-100">
                   We send email notifications when you receive upvotes, likes,
                   comments and awards on your projects and posts. We also send
@@ -177,7 +177,7 @@ const NotificationsPreferences = () => {
                   notifications.
                 </p>
 
-                <div className="border-t border-tfsdark-600">
+                <div className="border-t border-base-600">
                   {Object.keys(defaultWorkFlows).map((workflowKey) => {
                     const workflowChannelPreferences =
                       preferences?.workflows[workflowKey]?.channel_types;
@@ -188,7 +188,7 @@ const NotificationsPreferences = () => {
                         {workflowLabels[workflowKey]}
                       </div> */}
 
-                        <div className="border-b border-tfsdark-600">
+                        <div className="border-b border-base-600">
                           {Object.keys(workflowChannelPreferences).map(
                             (channelType) => {
                               // Loop over all the channel types and render a checkbox and a label
@@ -199,7 +199,7 @@ const NotificationsPreferences = () => {
                               if (channelType === 'email') {
                                 return (
                                   <div
-                                    className="mt-2 flex justify-between items-center py-3 mb-2 rounded-md "
+                                    className="mt-2 mb-2 flex items-center justify-between rounded-md py-3 "
                                     key={channelType}
                                   >
                                     <span className="">
@@ -216,10 +216,10 @@ const NotificationsPreferences = () => {
                                       <button
                                         type="button"
                                         className={
-                                          'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-0 ' +
+                                          'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-0 ' +
                                           (preferenceSetting
                                             ? 'bg-green-500'
-                                            : 'bg-tfsdark-600')
+                                            : 'bg-base-600')
                                         }
                                         onClick={() =>
                                           onPreferenceChange(
@@ -231,7 +231,7 @@ const NotificationsPreferences = () => {
                                       >
                                         <span
                                           className={
-                                            'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200 ' +
+                                            'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ' +
                                             (preferenceSetting
                                               ? 'translate-x-5'
                                               : 'translate-x-0')

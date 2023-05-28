@@ -4,7 +4,7 @@ import Loader from 'components/common/elements/Loader';
 
 const Loading = () => {
   return (
-    <div className="bg-tfsdark-800 min-h-screen w-full flex justify-center items-center">
+    <div className="flex min-h-screen w-full items-center justify-center bg-base-800">
       <Loader />
     </div>
   );

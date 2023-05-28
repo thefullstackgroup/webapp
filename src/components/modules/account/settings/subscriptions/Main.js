@@ -32,26 +32,26 @@ const Page = ({ user }) => {
 
   return (
     <>
-      <div className="mt-0 lg:mt-12 w-full flex justify-center">
-        <div className="min-h-screen w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-          <div className="relative max-w-4xl mx-auto">
-            <div className="mx-4 md:mx-0 space-y-6">
+      <div className="mt-0 flex w-full justify-center lg:mt-12">
+        <div className="min-h-screen w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+          <div className="relative mx-auto max-w-4xl">
+            <div className="mx-4 space-y-6 md:mx-0">
               <Link href={`/account/settings`}>
-                <div className="flex items-center space-x-2 sm:px-4 md:px-0 mb-4 cursor-pointer">
+                <div className="mb-4 flex cursor-pointer items-center space-x-2 sm:px-4 md:px-0">
                   <IoArrowBack className="h-5 w-5" />
-                  <h2 className="font-bold text-sm">
+                  <h2 className="text-sm font-bold">
                     Back to account settings
                   </h2>
                 </div>
               </Link>
               <div className="relative w-min whitespace-nowrap">
-                <h2 className="text-3xl sm:text-3xl font-bold tracking-tight">
+                <h2 className="text-3xl font-bold tracking-tight sm:text-3xl">
                   Subscriptions
                 </h2>
               </div>
-              <div className="w-full rounded-lg bg-tfsdark-700 pb-36 md:pb-4 px-4 sm:px-6 py-4">
+              <div className="w-full rounded-lg bg-base-700 px-4 py-4 pb-36 sm:px-6 md:pb-4">
                 {user.userAttributes.accountType === 'FREE' && (
-                  <div className="space-y-2 text-center py-20">
+                  <div className="space-y-2 py-20 text-center">
                     You have no active subscriptions.
                   </div>
                 )}
@@ -61,7 +61,7 @@ const Page = ({ user }) => {
                       Your Teams subscription
                     </h4>
 
-                    <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                    <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
                       {pricingPlans.map(
                         (plan, index) =>
                           plan.period == frequency &&
@@ -84,7 +84,7 @@ const Page = ({ user }) => {
                       )}
                     </div>
 
-                    <div className="bg-tfsdark-800 rounded-md border border-tfsdark-600 flex flex-col md:flex-row space-y-4 md:space-y-0 items-center justify-between px-4 md:px-8 py-4">
+                    <div className="flex flex-col items-center justify-between space-y-4 rounded-md border border-base-600 bg-base-800 px-4 py-4 md:flex-row md:space-y-0 md:px-8">
                       <div className="flex flex-col">
                         <span>Would you like to cancel your subscription?</span>
                         <span className="text-xs text-slate-400">
@@ -93,7 +93,7 @@ const Page = ({ user }) => {
                         </span>
                       </div>
                       <button
-                        className="btn-secondary w-full md:w-min whitespace-nowrap"
+                        className="btn-secondary w-full whitespace-nowrap md:w-min"
                         onClick={() => setShowCancelSubscription(true)}
                       >
                         Cancel subscription
@@ -113,8 +113,8 @@ const Page = ({ user }) => {
           setShow={setShowCancelSubscription}
         >
           <div>
-            <div className="sm:flex sm:items-start justify-center">
-              <div className="mt-3 sm:mt-0 text-center">
+            <div className="justify-center sm:flex sm:items-start">
+              <div className="mt-3 text-center sm:mt-0">
                 <h3 className="text-xl font-bold text-slate-200">
                   Cancel subscription?
                 </h3>
@@ -126,7 +126,7 @@ const Page = ({ user }) => {
                 </div>
               </div>
             </div>
-            <div className="mt-5 sm:mt-4 flex space-x-2 justify-center">
+            <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
               <button
                 type="button"
                 className="btn-primary bg-red-600/80 hover:bg-red-500"

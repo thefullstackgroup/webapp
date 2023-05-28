@@ -38,12 +38,13 @@ const getUserProfile = async (
   let newUserSignUp = null;
 
   if (!accessToken) {
-    return {
-      user: null,
-      redirect: `/login?destination=${encodeURIComponent(
-        process.env.BASEURL + '/' + req.url
-      )}`,
-    };
+    // return {
+    //   user: null,
+    //   redirect: `/login?destination=${encodeURIComponent(
+    //     process.env.BASEURL + '/' + req.url
+    //   )}`,
+    // };
+    return;
   }
   // 1 Try get the Profile from Profile Srv
   try {

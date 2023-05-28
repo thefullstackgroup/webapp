@@ -145,7 +145,7 @@ const Page = ({ user, teamId }) => {
 
   if (team?.ownerId !== user.userId) {
     return (
-      <div className="h-screen flex flex-1 justify-center items-center">
+      <div className="flex h-screen flex-1 items-center justify-center">
         You are not the owner of this team.
       </div>
     );
@@ -153,19 +153,19 @@ const Page = ({ user, teamId }) => {
 
   return (
     <>
-      <div className="mt-0 lg:mt-12 w-full flex justify-center">
-        <div className="w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-          <div className="relative max-w-4xl mx-auto">
-            <div className="mx-4 md:mx-0 mb-20">
+      <div className="mt-0 flex w-full justify-center lg:mt-12">
+        <div className="w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+          <div className="relative mx-auto max-w-4xl">
+            <div className="mx-4 mb-20 md:mx-0">
               <Menu team={team} user={user} />
               <div className="space-y-4">
-                <div className="w-full rounded-lg bg-tfsdark-700 px-4 sm:px-6 py-4">
+                <div className="w-full rounded-lg bg-base-700 px-4 py-4 sm:px-6">
                   {user.userAttributes.accountType !== 'FREE' && (
                     <>
                       {jobs && !jobs.length > 0 && (
-                        <div className="text-center py-10 space-y-16">
+                        <div className="space-y-16 py-10 text-center">
                           <div className="space-y-6">
-                            <div className="w-2/3 mx-auto font-semibold text-lg">
+                            <div className="mx-auto w-2/3 text-lg font-semibold">
                               You have no open roles listed.
                             </div>
                           </div>
@@ -174,7 +174,7 @@ const Page = ({ user, teamId }) => {
 
                       {jobs && jobs.length > 0 && (
                         <>
-                          <div className="divide-y divide-tfsdark-600/50">
+                          <div className="divide-y divide-base-600/50">
                             {jobsList}
                           </div>
                         </>
@@ -182,12 +182,12 @@ const Page = ({ user, teamId }) => {
                     </>
                   )}
                   {user.userAttributes.accountType === 'FREE' && (
-                    <div className="text-center py-10 space-y-16">
+                    <div className="space-y-16 py-10 text-center">
                       <div className="space-y-6">
-                        <div className="w-2/3 mx-auto font-semibold text-lg">
+                        <div className="mx-auto w-2/3 text-lg font-semibold">
                           Have you got open roles on your team?
                         </div>
-                        <div className="w-2/3 mx-auto text-slate-300">
+                        <div className="mx-auto w-2/3 text-slate-300">
                           Post open positions on your Team profile. We send
                           developers an email when a job matches their
                           preferences, including tech stack, years of
@@ -209,7 +209,7 @@ const Page = ({ user, teamId }) => {
                   )}
                 </div>
 
-                <div className="flex justify-between items-center">
+                <div className="flex items-center justify-between">
                   <Plan user={user} />
 
                   {!postRoleLimit() && (
@@ -241,7 +241,7 @@ const Page = ({ user, teamId }) => {
         title="Job listing preview"
         dimensions={'max-w-screen-2xl'}
       >
-        <div className="overflow-y-scroll h-[90vh] overscroll-contain no-scrollbar">
+        <div className="no-scrollbar h-[90vh] overflow-y-scroll overscroll-contain">
           <JobListing jobId={jobSelected?.id} teamId={team.id} />
         </div>
       </ModalDialog>

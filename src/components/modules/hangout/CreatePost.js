@@ -237,10 +237,10 @@ const CreatePost = ({ user }) => {
 
   return (
     <>
-      <div className="flex mx-0 sm:mx-0 sm:rounded-lg sm:bg-tfsdark-800 mb-6 border-b sm:border-b-0 border-tfsdark-600">
+      <div className="mx-0 mb-6 flex border-b border-base-600 sm:mx-0 sm:rounded-lg sm:border-b-0 sm:bg-base-800">
         <div className="flex w-full">
           <div className="relative ml-2 mr-4 w-full pb-4">
-            <div className="text-lg text-slate-500 border-gray-800 mb-2 px-2">
+            <div className="mb-2 border-gray-800 px-2 text-lg text-slate-500">
               {postType !== 'SPARK' && (
                 <div className="flex items-center space-x-1 pt-2">
                   <TagPost postType={postType} />
@@ -249,7 +249,7 @@ const CreatePost = ({ user }) => {
                     onClick={() => {
                       setPostType('SPARK');
                     }}
-                    className="flex tracking-tight text-xs text-gray-500"
+                    className="flex text-xs tracking-tight text-gray-500"
                   >
                     <IoClose className="h-4 w-auto" />
                   </button>
@@ -276,7 +276,7 @@ const CreatePost = ({ user }) => {
                 <div className="my-2">
                   {pollOptions.map((item, index) => (
                     <div
-                      className="grid grid-cols-12 space-x-4 items-center"
+                      className="grid grid-cols-12 items-center space-x-4"
                       key={index}
                     >
                       <div className="col-span-10">
@@ -295,7 +295,7 @@ const CreatePost = ({ user }) => {
                         {index > 1 && (
                           <button
                             onClick={() => removePollOption(index)}
-                            className="text-primary-600 font-semibold text-base"
+                            className="text-primary-600 text-base font-semibold"
                           >
                             Remove
                           </button>
@@ -305,7 +305,7 @@ const CreatePost = ({ user }) => {
                   ))}
                   <button
                     onClick={() => addPollOption('')}
-                    className="text-primary-500 font-semibold text-base"
+                    className="text-primary-500 text-base font-semibold"
                   >
                     + Add option
                   </button>
@@ -319,17 +319,17 @@ const CreatePost = ({ user }) => {
               )}
 
               {coverImage != '' && (
-                <div className="relative rounded-md overflow-hidden mt-4 mb-2">
+                <div className="relative mt-4 mb-2 overflow-hidden rounded-md">
                   <img
                     src={coverImage}
-                    className="w-full h-auto"
+                    className="h-auto w-full"
                     alt={postTitle}
                   />
                   <button
-                    className="absolute top-2 right-2 bg-black bg-opacity-70 rounded-md p-2"
+                    className="absolute top-2 right-2 rounded-md bg-black bg-opacity-70 p-2"
                     onClick={() => setCoverImage('')}
                   >
-                    <IoTrashOutline className="h-5 mx-auto w-auto text-white" />
+                    <IoTrashOutline className="mx-auto h-5 w-auto text-white" />
                   </button>
                 </div>
               )}
@@ -347,15 +347,15 @@ const CreatePost = ({ user }) => {
                 ))}
               </div>
             </div>
-            <div className="w-full relative">
+            <div className="relative w-full">
               <div className="flex justify-between">
-                <div className="flex items-center space-x-4 text-gray-400 w-full mx-2">
+                <div className="mx-2 flex w-full items-center space-x-4 text-gray-400">
                   <label
                     htmlFor="coverImage"
-                    className="flex space-x-1 items-center font-semibold cursor-pointer"
+                    className="flex cursor-pointer items-center space-x-1 font-semibold"
                   >
-                    <IoImageOutline className="h-5 mx-auto w-auto text-gray-400" />
-                    <span className="hidden md:block text-sm">Image</span>
+                    <IoImageOutline className="mx-auto h-5 w-auto text-gray-400" />
+                    <span className="hidden text-sm md:block">Image</span>
                     <input
                       id="coverImage"
                       name="coverImage"
@@ -366,31 +366,31 @@ const CreatePost = ({ user }) => {
                   </label>
 
                   <button
-                    className="flex space-x-1 items-center font-semibold"
+                    className="flex items-center space-x-1 font-semibold"
                     onClick={() => setPostType('POLL')}
                   >
-                    <BiPoll className="h-5 mx-auto w-auto text-gray-400" />
-                    <span className="hidden md:block text-sm">Poll</span>
+                    <BiPoll className="mx-auto h-5 w-auto text-gray-400" />
+                    <span className="hidden text-sm md:block">Poll</span>
                   </button>
                   <button
-                    className="flex space-x-1 items-center font-semibold"
+                    className="flex items-center space-x-1 font-semibold"
                     onClick={() => setShowFlair(!showFlair)}
                   >
-                    <IoPricetagOutline className="h-5 mx-auto w-auto text-gray-400" />
-                    <span className="hidden md:block text-sm">Topic</span>
+                    <IoPricetagOutline className="mx-auto h-5 w-auto text-gray-400" />
+                    <span className="hidden text-sm md:block">Topic</span>
                   </button>
                   <button
-                    className="flex space-x-1 items-center font-semibold"
+                    className="flex items-center space-x-1 font-semibold"
                     onClick={() => setShowTech(!showTech)}
                   >
-                    <IoCodeSlash className="h-5 mx-auto w-auto text-gray-400" />
-                    <span className="hidden md:block text-sm">Tech</span>
+                    <IoCodeSlash className="mx-auto h-5 w-auto text-gray-400" />
+                    <span className="hidden text-sm md:block">Tech</span>
                   </button>
                 </div>
 
                 {posting ? (
                   <button className="btn-primary btn-with-icon" disabled={true}>
-                    <CgSpinner className="w-4 h-auto animate-spin" />
+                    <CgSpinner className="h-auto w-4 animate-spin" />
                     <span>Posting...</span>
                   </button>
                 ) : (
@@ -399,19 +399,19 @@ const CreatePost = ({ user }) => {
                     onClick={handleSubmitPost}
                     disabled={postButtonDisabled}
                   >
-                    <FiSend className="w-4 h-auto" />
+                    <FiSend className="h-auto w-4" />
                     <span>Post</span>
                   </button>
                 )}
               </div>
 
               {showFlair && (
-                <div className="top-10 absolute z-20 md:left-72 w-auto">
+                <div className="absolute top-10 z-20 w-auto md:left-72">
                   <div
                     className="fixed inset-0"
                     onClick={() => setShowFlair(!showFlair)}
                   ></div>
-                  <div className="relative w-48 bg-tfsdark-900 py-1 rounded-lg flex flex-col shadow-xl border border-tfsdark-800 overflow-scroll h-40 divide-y-2 divide-tfsdark-700 text-sm overscroll-contain">
+                  <div className="relative flex h-40 w-48 flex-col divide-y-2 divide-base-700 overflow-scroll overscroll-contain rounded-lg border border-base-800 bg-base-900 py-1 text-sm shadow-xl">
                     {postTypeOptions.map((item, index) => (
                       <button
                         onClick={() => {
@@ -429,12 +429,12 @@ const CreatePost = ({ user }) => {
               )}
 
               {showTech && (
-                <div className="top-10 absolute z-20 md:left-64 w-72">
+                <div className="absolute top-10 z-20 w-72 md:left-64">
                   <div
                     className="fixed inset-0"
                     onClick={() => setShowTech(!showTech)}
                   ></div>
-                  <div className="relative bg-tfsdark-900 rounded-lg flex flex-col shadow-xl px-2 border border-tfsdark-800 pb-1">
+                  <div className="relative flex flex-col rounded-lg border border-base-800 bg-base-900 px-2 pb-1 shadow-xl">
                     <TagTech
                       savedSkills={savedSkills}
                       setSavedSkills={setSavedSkills}

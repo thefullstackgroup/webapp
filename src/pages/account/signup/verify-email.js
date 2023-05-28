@@ -19,9 +19,9 @@ const VerifyEmail = () => {
       />
       <main className="pt-4 sm:pt-10">
         <Header />
-        <div className="bg-black max-w-2xl mx-auto rounded-md border border-tfsdark-700 px-0 sm:px-8">
-          <div className="flex flex-col m-auto max-w-3xl px-4 text-center pb-20 space-y-8">
-            <h2 className="text-2xl font-bold tracking-tight mt-10 mb-4">
+        <div className="mx-auto max-w-2xl rounded-md border border-base-700 bg-black px-0 sm:px-8">
+          <div className="m-auto flex max-w-3xl flex-col space-y-8 px-4 pb-20 text-center">
+            <h2 className="mt-10 mb-4 text-2xl font-bold tracking-tight">
               Please verify your email address
             </h2>
             <p className="text-lg text-gray-200">

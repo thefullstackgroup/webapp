@@ -59,25 +59,25 @@ const ButtonReport = ({ user, profile }) => {
       <div>
         <button
           type="button"
-          className="btn-secondary bg-transparent px-0 hover:bg-transparent group border border-transparent w-full"
+          className="btn-secondary group w-full border border-transparent bg-transparent px-0 hover:bg-transparent"
           onClick={() => setShowPanel(true)}
         >
-          <IoEllipsisHorizontal className="h-5 w-5 text-slate-400 group-hover:text-primary-500" />
+          <IoEllipsisHorizontal className="group-hover:text-primary-500 h-5 w-5 text-slate-400" />
           <span className="hidden">Report</span>
         </button>
 
         <Transition show={showPanel}>
-          <div className="mt-4 absolute z-20 right-0 w-auto">
+          <div className="absolute right-0 z-20 mt-4 w-auto">
             <div
               className="fixed inset-0"
               onClick={() => setShowPanel(!showPanel)}
             ></div>
-            <div className="relative w-48 bg-tfsdark-700 rounded-md shadow-xl sm:max-w-xl border-tfsdark-600 border py-0.5 flex flex-col overflow-scroll h-20 divide-y-2 divide-tfsdark-700 text-sm overscroll-contain">
-              <div className="rounded-lg bg-tfsdark-700">
-                <ul className="flex flex-col text-sm text-left text-slate-400 divide-y-2 divide-tfsdark-600/50">
-                  <li className="hover:text-white px-2 py-2">
+            <div className="relative flex h-20 w-48 flex-col divide-y-2 divide-base-700 overflow-scroll overscroll-contain rounded-md border border-base-600 bg-base-700 py-0.5 text-sm shadow-xl sm:max-w-xl">
+              <div className="rounded-lg bg-base-700">
+                <ul className="flex flex-col divide-y-2 divide-base-600/50 text-left text-sm text-slate-400">
+                  <li className="px-2 py-2 hover:text-white">
                     <button
-                      className="flex items-center space-x-2 w-full"
+                      className="flex w-full items-center space-x-2"
                       onClick={() => {
                         navigator.clipboard.writeText(
                           `${process.env.BASEURL}/${profile.displayName}`
@@ -96,9 +96,9 @@ const ButtonReport = ({ user, profile }) => {
                       )}
                     </button>
                   </li>
-                  <li className="text-red-500 hover:text-red-600 px-2 py-2">
+                  <li className="px-2 py-2 text-red-500 hover:text-red-600">
                     <button
-                      className="flex items-center space-x-2 w-full"
+                      className="flex w-full items-center space-x-2"
                       onClick={() => {
                         setShowReportProfile(true);
                         setShowPanel(false);
@@ -121,11 +121,11 @@ const ButtonReport = ({ user, profile }) => {
         title={`Report ${profile.name}`}
         disabled
       >
-        <div className="py-4 p-2 text-center shadow-xl sm:max-w-xl mx-auto">
+        <div className="mx-auto p-2 py-4 text-center shadow-xl sm:max-w-xl">
           {reportSubmitted ? (
             <div className="space-y-3 text-left">
               <p className="mb-6 font-bold">Report submitted.</p>
-              <p className="mb-6 text-sm pb-6">
+              <p className="mb-6 pb-6 text-sm">
                 Thank you for notifying us and we will investigate as soon as
                 possible. Please make sure you have included any information you
                 think could help us with our investigation, including
@@ -186,7 +186,7 @@ const ButtonReport = ({ user, profile }) => {
                 Submit report
               </button>
               <button
-                className="text-center text-sm w-full pt-4 text-slate-500"
+                className="w-full pt-4 text-center text-sm text-slate-500"
                 onClick={() => setShowReportProfile(false)}
               >
                 Cancel

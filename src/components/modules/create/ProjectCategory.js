@@ -44,20 +44,20 @@ const ProjectCategory = ({ postCategories, setPostCategories }) => {
       <>
         {categorySelected ? (
           <button
-            className="relative btn-secondary text-sm rounded-full bg-tfsdark-500 text-white"
+            className="btn-secondary relative rounded-full bg-base-500 text-sm text-white"
             onClick={() =>
               removeCategory(category.categoryId, category.categoryName)
             }
           >
             <span>{category.categoryName}</span>
 
-            <span className="absolute bg-green-600 w-4 h-4 -top-1 -left-1 rounded-full ring-2 ring-white">
-              <BsCheck className="text-white w-4 h-4" />
+            <span className="absolute -top-1 -left-1 h-4 w-4 rounded-full bg-green-600 ring-2 ring-white">
+              <BsCheck className="h-4 w-4 text-white" />
             </span>
           </button>
         ) : (
           <button
-            className="relative btn-secondary text-sm bg-tfsdark-600/70 text-tfsdark-200 hover:bg-tfsdark-600/50 rounded-full "
+            className="btn-secondary relative rounded-full bg-base-600/70 text-sm text-base-200 hover:bg-base-600/50 "
             onClick={() =>
               selectCategory(category.categoryId, category.categoryName)
             }
@@ -73,7 +73,7 @@ const ProjectCategory = ({ postCategories, setPostCategories }) => {
     <div className="space-y-2">
       <span className="text-sm font-medium">Categorize your project</span>
 
-      <div className="bg-tfsdark-600/40 w-full py-4 px-4 space-y-6 rounded-md">
+      <div className="w-full space-y-6 rounded-md bg-base-600/40 py-4 px-4">
         <div className="flex flex-wrap gap-2">
           {categoriesList.map((category) => (
             <CategoryPill category={category} key={category.categoryId} />

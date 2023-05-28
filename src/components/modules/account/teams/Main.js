@@ -17,17 +17,17 @@ const Page = ({ user }) => {
 
   return (
     <>
-      <div className="mt-0 lg:mt-12 w-full flex justify-center">
-        <div className="w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-          <div className="relative max-w-4xl mx-auto">
-            <div className="mx-4 md:mx-0 space-y-4 mb-20">
+      <div className="mt-0 flex w-full justify-center lg:mt-12">
+        <div className="w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+          <div className="relative mx-auto max-w-4xl">
+            <div className="mx-4 mb-20 space-y-4 md:mx-0">
               <Menu user={user} />
-              <div className="pt-2 space-y-4">
+              <div className="space-y-4 pt-2">
                 {teamsData && !teams.length > 0 && (
-                  <div className="w-full rounded-lg bg-tfsdark-700 px-4 sm:px-6 py-4">
-                    <div className="text-center py-10 space-y-16">
+                  <div className="w-full rounded-lg bg-base-700 px-4 py-4 sm:px-6">
+                    <div className="space-y-16 py-10 text-center">
                       <div className="space-y-6">
-                        <div className="w-2/3 mx-auto font-medium">
+                        <div className="mx-auto w-2/3 font-medium">
                           You are not associated with any team.
                         </div>
                         <button
@@ -48,9 +48,9 @@ const Page = ({ user }) => {
                         href={`/account/teams/profile/${team.id}`}
                         key={team.id}
                       >
-                        <button className="text-left bg-tfsdark-600/50 hover:bg-tfsdark-600/80 px-3 py-4 rounded-md flex justify-between items-center w-full duration-300">
+                        <button className="flex w-full items-center justify-between rounded-md bg-base-600/50 px-3 py-4 text-left duration-300 hover:bg-base-600/80">
                           <div className="flex items-center space-x-4">
-                            <div className="w-16 h-16 overflow-hidden rounded-lg">
+                            <div className="h-16 w-16 overflow-hidden rounded-lg">
                               <Image
                                 src={team.image}
                                 className="h-full w-full object-cover"
@@ -73,7 +73,7 @@ const Page = ({ user }) => {
                             </div>
                           </div>
                           <div className="flex items-center space-x-10">
-                            <span className="italic text-slate-400 text-sm">
+                            <span className="text-sm italic text-slate-400">
                               You are the owner
                             </span>
                             <button className="btn-ghost btn-with-icon text-sm">
@@ -90,9 +90,9 @@ const Page = ({ user }) => {
                   (team) =>
                     team.ownerId !== user.userId && (
                       <Link href={`/teams/${team.id}`} key={team.id}>
-                        <button className="text-left bg-tfsdark-600/50 hover:bg-tfsdark-600/80 px-3 py-4 rounded-md flex justify-between items-center w-full duration-300">
+                        <button className="flex w-full items-center justify-between rounded-md bg-base-600/50 px-3 py-4 text-left duration-300 hover:bg-base-600/80">
                           <div className="flex items-center space-x-4">
-                            <div className="w-16 h-16 overflow-hidden rounded-lg">
+                            <div className="h-16 w-16 overflow-hidden rounded-lg">
                               <Image
                                 src={team.image}
                                 className="h-full w-full object-cover"
@@ -115,7 +115,7 @@ const Page = ({ user }) => {
                             </div>
                           </div>
                           <div className="flex items-center space-x-10 pr-4">
-                            <span className="italic text-slate-400 text-sm">
+                            <span className="text-sm italic text-slate-400">
                               You are a member
                             </span>
                           </div>

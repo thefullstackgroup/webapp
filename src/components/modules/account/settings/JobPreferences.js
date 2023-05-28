@@ -41,7 +41,7 @@ const PreferredWorkType = ({ selected, addChoice, removeChoice }) => {
       {workTypes.map((type, index) =>
         selected.includes(type.value) ? (
           <button
-            className="badge relative whitespace-nowrap bg-tfsdark-500 px-2 py-1.5 text-sm text-white"
+            className="badge relative whitespace-nowrap bg-base-500 px-2 py-1.5 text-sm text-white"
             onClick={() => removeChoice(type.value)}
             key={index}
           >
@@ -52,7 +52,7 @@ const PreferredWorkType = ({ selected, addChoice, removeChoice }) => {
           </button>
         ) : (
           <button
-            className="badge whitespace-nowrap bg-tfsdark-600/50 px-2 py-1.5 text-sm text-tfsdark-200"
+            className="badge whitespace-nowrap bg-base-600/50 px-2 py-1.5 text-sm text-base-200"
             onClick={() => addChoice(type.value)}
             key={index}
           >
@@ -71,8 +71,8 @@ const OpenToJobOpportunityChoice = ({ selected, setChoice }) => {
         className={
           'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
           (selected == true
-            ? 'bg-tfsdark-500 text-white'
-            : 'bg-tfsdark-600/50 text-tfsdark-200')
+            ? 'bg-base-500 text-white'
+            : 'bg-base-600/50 text-base-200')
         }
         onClick={() => setChoice(true)}
       >
@@ -87,8 +87,8 @@ const OpenToJobOpportunityChoice = ({ selected, setChoice }) => {
         className={
           'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
           (selected == false
-            ? 'bg-tfsdark-500 text-white'
-            : 'bg-tfsdark-600/50 text-tfsdark-200')
+            ? 'bg-base-500 text-white'
+            : 'bg-base-600/50 text-base-200')
         }
         onClick={() => setChoice(false)}
       >
@@ -110,8 +110,8 @@ const RelocationChoice = ({ selected, setChoice }) => {
         className={
           'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
           (selected == true
-            ? 'bg-tfsdark-500 text-white'
-            : 'bg-tfsdark-600/50 text-tfsdark-200')
+            ? 'bg-base-500 text-white'
+            : 'bg-base-600/50 text-base-200')
         }
         onClick={() => setChoice(true)}
       >
@@ -126,8 +126,8 @@ const RelocationChoice = ({ selected, setChoice }) => {
         className={
           'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
           (selected == false
-            ? 'bg-tfsdark-500 text-white'
-            : 'bg-tfsdark-600/50 text-tfsdark-200')
+            ? 'bg-base-500 text-white'
+            : 'bg-base-600/50 text-base-200')
         }
         onClick={() => setChoice(false)}
       >
@@ -286,7 +286,7 @@ const JobPreferences = ({ user }) => {
                 private by default and not displayed on your profile.{' '}
                 <span className="font-bold">No recruiter spam</span>.
               </div>
-              <div className="mb-4 w-full rounded-lg bg-tfsdark-700 px-4">
+              <div className="mb-4 w-full rounded-lg bg-base-700 px-4">
                 <div className="mb-36 py-4 sm:mb-0 sm:px-2">
                   <div className="space-y-4">
                     <div className="space-y-6">
@@ -442,13 +442,13 @@ const JobPreferences = ({ user }) => {
                           <div className="mt-2 flex flex-wrap items-center">
                             {interestedRoles.map((interestedRole, index) => (
                               <div
-                                className="group relative mr-2 mb-1 w-min cursor-pointer whitespace-nowrap rounded-md bg-tfsdark-600 px-2 py-1 text-sm"
+                                className="group relative mr-2 mb-1 w-min cursor-pointer whitespace-nowrap rounded-md bg-base-600 px-2 py-1 text-sm"
                                 key={index}
                                 onClick={() =>
                                   removeInterestedRole(interestedRole)
                                 }
                               >
-                                <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-tfsdark-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-tfsdark-600 before:content-[''] group-hover:opacity-100">
+                                <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-base-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-base-600 before:content-[''] group-hover:opacity-100">
                                   Click to remove
                                 </span>
                                 {interestedRole}

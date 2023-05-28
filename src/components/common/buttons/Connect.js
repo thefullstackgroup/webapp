@@ -53,7 +53,7 @@ const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
       )}
 
       {showPendingButton && (
-        <div className="btn btn-secondary group border border-tfsdark-600 bg-transparent text-slate-400 hover:bg-transparent">
+        <div className="btn btn-secondary group border border-base-600 bg-transparent text-slate-400 hover:bg-transparent">
           <span>Pending...</span>
         </div>
       )}
@@ -65,7 +65,7 @@ const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
               <Avatar
                 image={connectTo?.profilePicUrl}
                 name={connectTo?.name}
-                dimensions="w-24 h-24 border-2 border-tfsdark-800"
+                dimensions="w-24 h-24 border-2 border-base-800"
               />
 
               <IoCode className="h-auto w-9 text-slate-400" />
@@ -73,7 +73,7 @@ const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
               <Avatar
                 image={connectFrom?.profilePicUrl}
                 name={connectFrom?.name}
-                dimensions="w-24 h-24 border-2 border-tfsdark-800"
+                dimensions="w-24 h-24 border-2 border-base-800"
               />
             </div>
             <div className="mt-6 flex max-w-7xl flex-col items-center sm:px-12">
@@ -108,12 +108,12 @@ const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
               <Avatar
                 image={connectTo.profilePicUrl}
                 name={connectTo.name}
-                dimensions="w-24 h-24 border-2 border-tfsdark-800"
+                dimensions="w-24 h-24 border-2 border-base-800"
               />
               <Avatar
                 image={connectFrom.profilePicUrl}
                 name={connectFrom.name}
-                dimensions="w-24 h-24 border-2 border-tfsdark-800"
+                dimensions="w-24 h-24 border-2 border-base-800"
               />
             </div>
             <div className="mt-6 mb-6 flex max-w-7xl flex-col items-center sm:px-12">

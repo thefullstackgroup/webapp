@@ -44,12 +44,12 @@ const BottomBar = ({ user, id }) => {
   };
 
   return (
-    <div className="flex w-full bg-tfsdark-900">
+    <div className="flex w-full bg-base-900">
       {/* <form
         className="w-full flex py-4 px-4 sm:px-6 items-end space-x-2"
         onSubmit={sendMessage}
       > */}
-      <div className="w-full flex pb-4 px-4 items-end space-x-2">
+      <div className="flex w-full items-end space-x-2 px-4 pb-4">
         <Textarea
           type="text"
           placeholder="Type your message ..."
@@ -60,7 +60,7 @@ const BottomBar = ({ user, id }) => {
           onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && sendMessage(e)}
         />
         <button type="submit" onClick={(e) => sendMessage(e)}>
-          <IoPaperPlaneOutline className="w-7 h-7 mb-2 sm:mb-2 text-white" />
+          <IoPaperPlaneOutline className="mb-2 h-7 w-7 text-white sm:mb-2" />
         </button>
       </div>
       {/* </form> */}

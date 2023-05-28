@@ -88,31 +88,31 @@ const Chat = ({ userTFS }) => {
 
       {userTFS && (
         <Layout user={userTFS} hideMobileNav={true}>
-          <div className="mt-0 lg:mt-10 w-full flex justify-center">
-            <div className="w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-              <div className="fixed top-0 left-0 w-full h-full sm:h-auto sm:relative max-w-5xl mx-auto">
-                <div className="hidden sm:flex items-center space-x-2 p-4 font-bold w-full text-xl tracking-tight">
-                  <IoChatbubblesOutline className="w-6 h-6" />
+          <div className="mt-0 flex w-full justify-center lg:mt-10">
+            <div className="w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+              <div className="fixed top-0 left-0 mx-auto h-full w-full max-w-5xl sm:relative sm:h-auto">
+                <div className="hidden w-full items-center space-x-2 p-4 text-xl font-bold tracking-tight sm:flex">
+                  <IoChatbubblesOutline className="h-6 w-6" />
                   <span>Chat</span>
                 </div>
-                <div className="md:flex w-full md:rounded-md overflow-hidden">
-                  <div className="hidden md:block w-1/3">
+                <div className="w-full overflow-hidden md:flex md:rounded-md">
+                  <div className="hidden w-1/3 md:block">
                     {!isMobile && <Sidebar user={userTFS} chatId={id} />}
                   </div>
-                  <div className="pt-14 sm:pt-0 left-0 w-full md:w-2/3 bg-tfsdark-900">
+                  <div className="left-0 w-full bg-base-900 pt-14 sm:pt-0 md:w-2/3">
                     <Topbar chatUserInfo={chatUserInfo} user={userTFS} />
 
-                    <div className="flex w-full pt-4 px-4 sm:px-6">
-                      <div className="flex flex-col h-[65vh] md:h-[65vh] w-full overflow-hidden overflow-y-scroll overscroll-contain no-scrollbar">
+                    <div className="flex w-full px-4 pt-4 sm:px-6">
+                      <div className="no-scrollbar flex h-[65vh] w-full flex-col overflow-hidden overflow-y-scroll overscroll-contain md:h-[65vh]">
                         {loading && (
-                          <div className="flex flex-1 justify-center items-center">
+                          <div className="flex flex-1 items-center justify-center">
                             <Loader />
                           </div>
                         )}
                         {!messages?.docs?.length > 0 && !loading && (
-                          <div className="flex mt-40 flex-col justify-center items-center space-y-4">
+                          <div className="mt-40 flex flex-col items-center justify-center space-y-4">
                             <IoChatbubblesOutline className="h-24 w-24 text-gray-300 dark:text-gray-600" />
-                            <p className="text-2xl tracking-tight text-gray-300 dark:text-gray-600 font-medium">
+                            <p className="text-2xl font-medium tracking-tight text-gray-300 dark:text-gray-600">
                               Start the conversation
                             </p>
                           </div>
@@ -131,7 +131,7 @@ const Chat = ({ userTFS }) => {
                     </div>
                   </div>
                 </div>
-                <div className="absolute bottom-0 right-0 w-full max-w-2xl h-auto sm:h-20 bg-tfsdark-900">
+                <div className="absolute bottom-0 right-0 h-auto w-full max-w-2xl bg-base-900 sm:h-20">
                   <Bottombar user={userTFS} id={id} />
                 </div>
               </div>

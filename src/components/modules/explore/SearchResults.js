@@ -71,24 +71,24 @@ const SearchResults = ({ user }) => {
   }, [router.query.cat, router.query.q]);
 
   return (
-    <div className="mt-0 lg:mt-4 w-full flex justify-center">
-      <div className="min-h-screen w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-        <div className="relative max-w-screen-2xl mx-auto">
+    <div className="mt-0 flex w-full justify-center lg:mt-4">
+      <div className="min-h-screen w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+        <div className="relative mx-auto max-w-screen-2xl">
           <Link href="/post" passHref>
-            <button className="fixed bottom-20 right-0 lg:bottom-14 z-50 lg:right-5 btn-primary btn-with-icon mx-4 text-xl px-2 lg:pl-4 lg:pr-5 rounded-full shadow-xl font-semibold">
+            <button className="btn-primary btn-with-icon fixed bottom-20 right-0 z-50 mx-4 rounded-full px-2 text-xl font-semibold shadow-xl lg:bottom-14 lg:right-5 lg:pl-4 lg:pr-5">
               <IoAdd className="h-8 w-8" />
               <span className="hidden lg:block">Create</span>
             </button>
           </Link>
-          <div className="xl:py-0 mb-4 md:mb-10 space-y-4 md:space-y-6 mt-4 lg:mt-10">
-            <div className="max-w-2xl mx-auto px-4 md:px-0">
-              <div className="flex text-input rounded-lg w-full py-0 items-center">
+          <div className="mb-4 mt-4 space-y-4 md:mb-10 md:space-y-6 lg:mt-10 xl:py-0">
+            <div className="mx-auto max-w-2xl px-4 md:px-0">
+              <div className="text-input flex w-full items-center rounded-lg py-0">
                 <IoSearchOutline className="h-6 w-6 sm:h-8 sm:w-8" />
                 <input
                   type="text"
                   name="q"
                   placeholder="Search showcase..."
-                  className="text-input bg-transparent text-lg sm:text-xl rounded-lg px-2 py-2 sm:py-4 sm:px-4 m-0"
+                  className="text-input m-0 rounded-lg bg-transparent px-2 py-2 text-lg sm:py-4 sm:px-4 sm:text-xl"
                   value={term || ''}
                   onChange={(e) => setTerm(e.target.value)}
                   onKeyDown={(e) => {
@@ -100,10 +100,10 @@ const SearchResults = ({ user }) => {
               </div>
             </div>
             <div className="space-y-2 overflow-visible">
-              <div className="flex flex-wrap justify-center max-w-4xl mx-auto px-4 md:px-0 gap-1">
+              <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-1 px-4 md:px-0">
                 {stacks.map((stack, index) => (
                   <div
-                    className="border border-tfsdark-600 hover:border-tfsdark-400 text-slate-400 whitespace-nowrap text-xs sm:text-sm py-2 px-4 rounded-full hover:bg-tfsdark-700 duration-200 cursor-pointer"
+                    className="cursor-pointer whitespace-nowrap rounded-full border border-base-600 py-2 px-4 text-xs text-slate-400 duration-200 hover:border-base-400 hover:bg-base-700 sm:text-sm"
                     onClick={() => {
                       setTerm(stack);
                       handleSearch(stack);
@@ -117,8 +117,8 @@ const SearchResults = ({ user }) => {
               {/* <DiscoverFeed user={user} sort="newest" range="" search={true} /> */}
 
               <div className="grid grid-cols-1">
-                <div className="px-4 md:px-0 flex items-center space-x-4 justify-between">
-                  <h4 className="text-xl md:text-2xl text-slate-100 font-semibold capitalize">
+                <div className="flex items-center justify-between space-x-4 px-4 md:px-0">
+                  <h4 className="text-xl font-semibold capitalize text-slate-100 md:text-2xl">
                     {selectedCategory.filter === 'search' &&
                       query !== '' &&
                       query}

@@ -11,11 +11,11 @@ const images = [
 
 const ImageSample = ({ image }) => {
   return (
-    <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-black">
+    <div className="h-10 w-10 overflow-hidden rounded-full ring-2 ring-black">
       <Image
         src={image}
         alt="Teams"
-        className="w-full h-full object-cover object-center"
+        className="h-full w-full object-cover object-center"
         width={200}
         height={200}
         layout="fill"
@@ -28,11 +28,11 @@ const Goals = ({ goal, setCreateTeamPanel }) => {
   return (
     <>
       {goal === 'HIRE' && (
-        <div className="relative lg:flex gap-4 max-w-screen-lg mx-auto mb-8 sm:mb-10 px-4 md:px-0 w-full">
-          <div className="bg-tfsdark-800 rounded-md border border-tfsdark-600 lg:flex items-center justify-between px-4 md:px-8 py-4 w-full space-y-4 md:space-y-0">
+        <div className="relative mx-auto mb-8 w-full max-w-screen-lg gap-4 px-4 sm:mb-10 md:px-0 lg:flex">
+          <div className="w-full items-center justify-between space-y-4 rounded-md border border-base-600 bg-base-800 px-4 py-4 md:space-y-0 md:px-8 lg:flex">
             <div className="flex flex-col space-y-4 md:w-2/3">
               <div className="flex items-end space-x-6">
-                <h4 className="text-xl md:text-2xl font-bold">
+                <h4 className="text-xl font-bold md:text-2xl">
                   Looking to hire developers?
                 </h4>
               </div>
@@ -44,14 +44,14 @@ const Goals = ({ goal, setCreateTeamPanel }) => {
                 communities on the web.
               </div>
             </div>
-            <div className="space-y-6 flex flex-col justify-end">
+            <div className="flex flex-col justify-end space-y-6">
               <button
                 className="btn-primary"
                 onClick={() => setCreateTeamPanel(true)}
               >
                 Create a Team Profile
               </button>
-              <div className="flex md:justify-end items-center -space-x-2">
+              <div className="flex items-center -space-x-2 md:justify-end">
                 {images.map((image, index) => (
                   <ImageSample image={image} key={index} />
                 ))}
@@ -63,11 +63,11 @@ const Goals = ({ goal, setCreateTeamPanel }) => {
 
       {goal === 'FIND_WORK' && (
         <Link href="/account/settings/jobpreferences">
-          <div className="relative lg:flex gap-4 max-w-screen-lg mx-auto mb-8 sm:mb-10 px-4 md:px-0 w-full cursor-pointer">
-            <div className="bg-tfsdark-800 rounded-md border border-tfsdark-600 lg:flex items-center justify-between px-4 md:px-8 py-4 w-full space-y-4 md:space-y-0">
+          <div className="relative mx-auto mb-8 w-full max-w-screen-lg cursor-pointer gap-4 px-4 sm:mb-10 md:px-0 lg:flex">
+            <div className="w-full items-center justify-between space-y-4 rounded-md border border-base-600 bg-base-800 px-4 py-4 md:space-y-0 md:px-8 lg:flex">
               <div className="flex flex-col space-y-4 md:w-2/3">
                 <div className="flex items-end space-x-6">
-                  <h4 className="text-xl md:text-2xl font-bold">
+                  <h4 className="text-xl font-bold md:text-2xl">
                     Looking for work opportunties?
                   </h4>
                 </div>
@@ -79,9 +79,9 @@ const Goals = ({ goal, setCreateTeamPanel }) => {
                   <span className="font-bold">No recruiter spam</span>.
                 </div>
               </div>
-              <div className="space-y-6 flex flex-col justify-end">
+              <div className="flex flex-col justify-end space-y-6">
                 <button className="btn-primary">Set your preferences</button>
-                <div className="flex md:justify-end items-center -space-x-2">
+                <div className="flex items-center -space-x-2 md:justify-end">
                   {images.map((image, index) => (
                     <ImageSample image={image} key={index} />
                   ))}

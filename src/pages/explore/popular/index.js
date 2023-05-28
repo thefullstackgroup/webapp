@@ -30,8 +30,9 @@ const ExplorePopular = () => {
 
       {user && (
         <Layout user={user}>
-          <div className="min-h-screen space-y-6">
-            <div className="space-y-2 py-10 text-center">
+          <div className="min-h-screen space-y-10">
+            <Categories category={category} setCategory={setCategory} />
+            <div className="mt-10 space-y-2 text-center">
               <h2 className="text-5xl font-bold tracking-tight">
                 Popular projects
               </h2>
@@ -39,7 +40,7 @@ const ExplorePopular = () => {
                 Discover awesome projects from the developer showcase
               </h4>
             </div>
-            <Categories category={category} setCategory={setCategory} />
+
             <div className="relative">
               <Filters
                 range={range}
@@ -53,6 +54,8 @@ const ExplorePopular = () => {
                 sort={sort.orderBy}
                 range={range.days}
                 stack={stack}
+                category={category}
+                setCategory={setCategory}
               />
             </div>
           </div>

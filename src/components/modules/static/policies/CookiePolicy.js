@@ -1,16 +1,16 @@
 const CookiePolicy = () => {
   return (
     <div className="bg-black">
-      <div className="fixed top-0 left-0 w-full mx-auto min-h-screen mt-12 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-tfsdark-300/40 via-black to-tfsdark-900 flex justify-between"></div>
-      <div className="relative z-10 max-w-4xl mx-auto mb-20">
-        <div className="pt-14 md:pt-10 text-center space-y-6 px-4 lg:px-0 mb-10 sm:mb-28">
-          <h1 className="text-3xl md:text-6xl font-bold tracking-tight text-slate-100 font-intertight">
+      <div className="fixed top-0 left-0 mx-auto mt-12 flex min-h-screen w-full justify-between bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-base-300/40 via-black to-base-900"></div>
+      <div className="relative z-10 mx-auto mb-20 max-w-4xl">
+        <div className="mb-10 space-y-6 px-4 pt-14 text-center sm:mb-28 md:pt-10 lg:px-0">
+          <h1 className="font-intertight text-3xl font-bold tracking-tight text-slate-100 md:text-6xl">
             Cookie Policy
           </h1>
           <p>Last updated: July 04, 2022</p>
         </div>
 
-        <div className="space-y-4 px-4 prose prose-dark max-w-full">
+        <div className="prose prose-dark max-w-full space-y-4 px-4">
           <p>
             This policy describes how The Full Stack uses cookies on
             https://thefullstack.network (The &quot;Site&quot;). We recommend

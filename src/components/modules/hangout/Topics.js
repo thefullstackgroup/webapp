@@ -95,23 +95,23 @@ const Topics = ({ topic, setTopicSelected }) => {
   };
 
   return (
-    <div className="absolute right-0 2xl:right-20 top-24 w-52 2xl:w-64 hidden xl:block">
-      <div className="fixed w-72 py-4 px-6 rounded-md">
-        <div className="flex space-x-2 items-center mb-4">
-          <IoArrowDownOutline className="w-auto h-4 text-slate-100" />
-          <span className="font-bold text-slate-100 text-base">
+    <div className="absolute right-0 top-24 hidden w-52 xl:block 2xl:right-20 2xl:w-64">
+      <div className="fixed w-72 rounded-md py-4 px-6">
+        <div className="mb-4 flex items-center space-x-2">
+          <IoArrowDownOutline className="h-4 w-auto text-slate-100" />
+          <span className="text-base font-bold text-slate-100">
             Browse by topic
           </span>
         </div>
 
-        <ul className="max-h-[78vh] overflow-scroll no-scrollbar">
+        <ul className="no-scrollbar max-h-[78vh] overflow-scroll">
           {topics.map((item, index) => (
             <li key={index} className="mb-1">
               <button
                 href="#"
                 className={
-                  'flex items-center text-left space-x-4 text-sm hover:bg-tfsdark-600 w-full py-1.5 px-2 rounded-md text-slate-300 hover:text-white ' +
-                  (topic?.type === item.type && 'bg-tfsdark-600')
+                  'flex w-full items-center space-x-4 rounded-md py-1.5 px-2 text-left text-sm text-slate-300 hover:bg-base-600 hover:text-white ' +
+                  (topic?.type === item.type && 'bg-base-600')
                 }
                 onClick={() => {
                   setTopicSelected(item);
@@ -122,7 +122,7 @@ const Topics = ({ topic, setTopicSelected }) => {
                 <span className="relative">
                   {item.label}
                   {item.type === 'article' && (
-                    <span className="absolute top-0 -right-3 w-2 h-2 rounded-full bg-red-500 px-1"></span>
+                    <span className="absolute top-0 -right-3 h-2 w-2 rounded-full bg-red-500 px-1"></span>
                   )}
                 </span>
               </button>

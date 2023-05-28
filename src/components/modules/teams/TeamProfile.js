@@ -36,7 +36,7 @@ const TeamProfile = ({ user, slug }) => {
 
   if (!team) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex min-h-screen items-center justify-center">
         <Loader />
       </div>
     );
@@ -44,10 +44,10 @@ const TeamProfile = ({ user, slug }) => {
 
   if (team && !team.id) {
     return (
-      <div className="flex flex-col justify-center items-center min-h-screen">
+      <div className="flex min-h-screen flex-col items-center justify-center">
         This team does not exist.
         <Link href="/teams">
-          <button className="hidden sm:block text-primary-500 hover:text-white mt-6">
+          <button className="text-primary-500 mt-6 hidden hover:text-white sm:block">
             &larr; Back to Teams
           </button>
         </Link>
@@ -57,21 +57,21 @@ const TeamProfile = ({ user, slug }) => {
 
   return (
     <>
-      <div className="mt-0 md:mt-4 w-full overflow-hidden flex justify-center">
-        <div className="min-h-screen w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-          <div className="relative max-w-6xl mx-auto">
+      <div className="mt-0 flex w-full justify-center overflow-hidden md:mt-4">
+        <div className="min-h-screen w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+          <div className="relative mx-auto max-w-6xl">
             {team && (
-              <div className="mt-0 md:mt-0 flex justify-between items-start w-full pb-20 min-h-screen gap-12 px-4 md:px-0">
-                <div className="relative w-full lg:w-8/12 space-y-6 sm:space-y-8">
+              <div className="mt-0 flex min-h-screen w-full items-start justify-between gap-12 px-4 pb-20 md:mt-0 md:px-0">
+                <div className="relative w-full space-y-6 sm:space-y-8 lg:w-8/12">
                   <Link href="/teams">
-                    <button className="text-slate-400 hover:text-white mt-2 sm:mt-6 text-sm sm:text-base">
+                    <button className="mt-2 text-sm text-slate-400 hover:text-white sm:mt-6 sm:text-base">
                       &larr; Back
                     </button>
                   </Link>
                   <div className="flex items-start justify-between space-y-2">
                     <div className="space-y-1">
                       <div className="flex items-start space-x-4">
-                        <div className="block w-20 h-20 overflow-hidden rounded-lg">
+                        <div className="block h-20 w-20 overflow-hidden rounded-lg">
                           <Image
                             src={team.image}
                             className="h-full w-full object-contain object-top"
@@ -84,16 +84,16 @@ const TeamProfile = ({ user, slug }) => {
                           />
                         </div>
                         <div>
-                          <h2 className="text-2xl md:text-3xl font-semibold">
+                          <h2 className="text-2xl font-semibold md:text-3xl">
                             {team.name}
                           </h2>
-                          <p className="text-sm md:text-base text-slate-400">
+                          <p className="text-sm text-slate-400 md:text-base">
                             {team.description}
                           </p>
                           <a
                             href={team.url}
                             target="_blank"
-                            className="flex text-sm md:text-base items-center space-x-2 text-slate-500 hover:text-white"
+                            className="flex items-center space-x-2 text-sm text-slate-500 hover:text-white md:text-base"
                             rel="noreferrer"
                           >
                             <span>{team.url.replace(/(^\w+:|^)\/\//, '')}</span>
@@ -116,7 +116,7 @@ const TeamProfile = ({ user, slug }) => {
                     )}
                   </div>
                   <div className="space-y-10">
-                    <div className="flex sm:flex-wrap overflow-x-scroll no-scrollbar items-center">
+                    <div className="no-scrollbar flex items-center overflow-x-scroll sm:flex-wrap">
                       {team.techStack?.map((stack, index) => (
                         <TechBadge tech={stack} key={index} size={'sm'} />
                       ))}
@@ -135,7 +135,7 @@ const TeamProfile = ({ user, slug }) => {
                     )}
 
                     <div className="space-y-2">
-                      <h3 className="text-white font-semibold">
+                      <h3 className="font-semibold text-white">
                         What is your team mission?
                       </h3>
                       <p className="text-slate-300">{team.mission}</p>
@@ -143,7 +143,7 @@ const TeamProfile = ({ user, slug }) => {
 
                     {team.businessDetails?.teamStructure !== '' && (
                       <div className="space-y-2">
-                        <h3 className="text-white font-semibold">
+                        <h3 className="font-semibold text-white">
                           How are the teams structured?
                         </h3>
                         <p className="text-slate-300">
@@ -153,9 +153,9 @@ const TeamProfile = ({ user, slug }) => {
                     )}
 
                     {team?.imagesGallery[0] && (
-                      <div className="flex space-x-4 sm:space-x-6 items-center">
+                      <div className="flex items-center space-x-4 sm:space-x-6">
                         <div
-                          className="relative w-2/3 h-52 md:h-80 rounded-md overflow-hidden cursor-pointer"
+                          className="relative h-52 w-2/3 cursor-pointer overflow-hidden rounded-md md:h-80"
                           onClick={() => setShowImageOne(true)}
                         >
                           {team?.imagesGallery[0] && (
@@ -176,7 +176,7 @@ const TeamProfile = ({ user, slug }) => {
                         <div className="w-1/3">
                           <div className="flex flex-col items-start space-y-2 md:space-y-8">
                             <div
-                              className="relative w-full h-24 md:h-36 rounded-md overflow-hidden cursor-pointer"
+                              className="relative h-24 w-full cursor-pointer overflow-hidden rounded-md md:h-36"
                               onClick={() => setShowImageTwo(true)}
                             >
                               {team?.imagesGallery[1] && (
@@ -195,7 +195,7 @@ const TeamProfile = ({ user, slug }) => {
                               )}
                             </div>
                             <div
-                              className="relative w-full h-24 md:h-36 rounded-md overflow-hidden cursor-pointer"
+                              className="relative h-24 w-full cursor-pointer overflow-hidden rounded-md md:h-36"
                               onClick={() => setShowImageThree(true)}
                             >
                               {team?.imagesGallery[1] &&
@@ -221,7 +221,7 @@ const TeamProfile = ({ user, slug }) => {
 
                     {team.businessDetails?.devProcess !== '' && (
                       <div className="space-y-2">
-                        <h3 className="text-white font-semibold">
+                        <h3 className="font-semibold text-white">
                           How does the development process work?
                         </h3>
                         <p className="text-slate-300">
@@ -232,7 +232,7 @@ const TeamProfile = ({ user, slug }) => {
 
                     {team.businessDetails?.devTools !== '' && (
                       <div className="space-y-2">
-                        <h3 className="text-white font-semibold">
+                        <h3 className="font-semibold text-white">
                           What tools do developers use?
                         </h3>
                         <p className="text-slate-300">
@@ -243,7 +243,7 @@ const TeamProfile = ({ user, slug }) => {
 
                     {team.businessDetails?.hiringProcess !== '' && (
                       <div className="space-y-2">
-                        <h3 className="text-white font-semibold">
+                        <h3 className="font-semibold text-white">
                           What does your hiring process look like?
                         </h3>
                         <p className="text-slate-300">
@@ -253,9 +253,9 @@ const TeamProfile = ({ user, slug }) => {
                     )}
                   </div>
                 </div>
-                <div className="hidden lg:block sticky top-20 w-3/12">
-                  <div className="fixed w-72 top-24">
-                    <div className="relative ml-6 w-28 h-28 overflow-hidden rounded-xl">
+                <div className="sticky top-20 hidden w-3/12 lg:block">
+                  <div className="fixed top-24 w-72">
+                    <div className="relative ml-6 h-28 w-28 overflow-hidden rounded-xl">
                       <Image
                         src={team.image}
                         className="h-full w-full object-cover"
@@ -267,8 +267,8 @@ const TeamProfile = ({ user, slug }) => {
                         layout="fill"
                       />
                     </div>
-                    <div className="-mt-14 pt-20 grid grid-cols-5 gap-3 pb-10 pl-8 pr-10 w-full bg-tfsdark-800 rounded-md border border-tfsdark-600/50 text-slate-400 text-sm">
-                      <div className="col-span-2 text-white font-medium">
+                    <div className="-mt-14 grid w-full grid-cols-5 gap-3 rounded-md border border-base-600/50 bg-base-800 pt-20 pb-10 pl-8 pr-10 text-sm text-slate-400">
+                      <div className="col-span-2 font-medium text-white">
                         Founded:
                       </div>
                       <div className="col-span-3">
@@ -277,7 +277,7 @@ const TeamProfile = ({ user, slug }) => {
 
                       {team.businessDetails?.stage !== '' && (
                         <>
-                          <div className="col-span-2 text-white font-medium">
+                          <div className="col-span-2 font-medium text-white">
                             Stage:
                           </div>
                           <div className="col-span-3">
@@ -286,7 +286,7 @@ const TeamProfile = ({ user, slug }) => {
                         </>
                       )}
 
-                      <div className="col-span-2 text-white font-medium">
+                      <div className="col-span-2 font-medium text-white">
                         Members:
                       </div>
                       <div className="col-span-3">
@@ -296,12 +296,12 @@ const TeamProfile = ({ user, slug }) => {
                           : teamMembers?.length + 1}
                       </div>
 
-                      <div className="col-span-2 text-white font-medium">
+                      <div className="col-span-2 font-medium text-white">
                         Team lead:
                       </div>
                       <div className="col-span-3">{teamOwner?.name}</div>
 
-                      <div className="col-span-2 text-white font-medium">
+                      <div className="col-span-2 font-medium text-white">
                         Location(s):
                       </div>
                       <div className="col-span-3">
@@ -315,7 +315,7 @@ const TeamProfile = ({ user, slug }) => {
 
                       {team.businessDetails?.socialMediaLinks?.github && (
                         <>
-                          <div className="col-span-2 text-white font-medium">
+                          <div className="col-span-2 font-medium text-white">
                             Links:
                           </div>
                           <div className="col-span-3">
@@ -325,19 +325,19 @@ const TeamProfile = ({ user, slug }) => {
                               }
                               target="_blank"
                               rel="noreferrer"
-                              className="relative group"
+                              className="group relative"
                             >
-                              <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-tfsdark-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-tfsdark-600 before:content-[''] group-hover:opacity-100">
+                              <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-base-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-base-600 before:content-[''] group-hover:opacity-100">
                                 {team.businessDetails?.socialMediaLinks?.github}
                               </span>
-                              <IoLogoGithub className="w-5 h-5 hover:text-white" />
+                              <IoLogoGithub className="h-5 w-5 hover:text-white" />
                             </a>
                           </div>
                         </>
                       )}
 
                       {team && teamMembers && (
-                        <div className="mt-2 col-span-5 flex space-x-2">
+                        <div className="col-span-5 mt-2 flex space-x-2">
                           <Avatar
                             href={`/${teamOwner?.displayName}`}
                             name={teamOwner?.name}
@@ -358,7 +358,7 @@ const TeamProfile = ({ user, slug }) => {
                     </div>
 
                     {team.ownerId === user?.userId && (
-                      <div className="space-y-2 my-6">
+                      <div className="my-6 space-y-2">
                         <Link href={`/account/teams/jobs/${team.id}`}>
                           <button className="btn-primary w-full">
                             Post a job

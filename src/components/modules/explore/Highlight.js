@@ -80,11 +80,11 @@ const Slide = (props) => {
   return (
     <>
       <div
-        className="bg-tfsdark-800 overflow-hidden rounded-md w-full"
+        className="w-full overflow-hidden rounded-md bg-base-800"
         draggable={true}
       >
         <div
-          className="relative group"
+          className="group relative"
           onClick={() => {
             if (!isCenterSlide) swipeTo(slideIndex);
           }}
@@ -92,7 +92,7 @@ const Slide = (props) => {
         {isCenterSlide ? (
           <Link href={`/${author}/project/${slug}`}>
             <div className="relative cursor-pointer">
-              <div className="w-full h-80 bg-tfsdark-900">
+              <div className="h-80 w-full bg-base-900">
                 <Image
                   src={animated}
                   className="h-full w-full object-cover"
@@ -104,12 +104,12 @@ const Slide = (props) => {
                 />
               </div>
 
-              <div className="absolute w-full bottom-0 left-0 px-4 py-4 bg-gradient-to-b from-transparent to-tfsdark-700 flex flex-col space-y-2">
-                <div className="w-min font-medium bg-primary-600 rounded-md text-xs px-2 py-0.5">
+              <div className="absolute bottom-0 left-0 flex w-full flex-col space-y-2 bg-gradient-to-b from-transparent to-base-700 px-4 py-4">
+                <div className="bg-primary-600 w-min rounded-md px-2 py-0.5 text-xs font-medium">
                   Highlight
                 </div>
                 <div className="w-3/4">
-                  <span className="font-semibold tracking-tight text-3xl">
+                  <span className="text-3xl font-semibold tracking-tight">
                     {title}
                   </span>
                 </div>
@@ -117,7 +117,7 @@ const Slide = (props) => {
             </div>
           </Link>
         ) : (
-          <div className="w-full h-80 bg-tfsdark-900">
+          <div className="h-80 w-full bg-base-900">
             <Image
               src={thumb}
               className="h-full w-full object-cover opacity-70"
@@ -137,7 +137,7 @@ const Highlight = ({ user }) => {
   const ref = useRef();
 
   return (
-    <div className="mt-10 hidden lg:block relative">
+    <div className="relative mt-10 hidden lg:block">
       <ResponsiveContainer
         carouselRef={ref}
         render={(width, carouselRef) => {

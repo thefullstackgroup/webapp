@@ -58,9 +58,9 @@ const Overview = ({
   };
 
   return (
-    <div className="relative max-w-screen-lg mx-auto px-4 md:px-0 border-b md:border-none border-tfsdark-700 mb-4 md:mb-0">
-      <div className="mt-2 md:mt-10 lg:mb-8 lg:flex items-start justify-between lg:space-x-4 md:border-none border-tfsdark-700 pb-4 lg:pb-4">
-        <div className="flex items-center lg:items-start space-x-4 md:space-x-8 w-full">
+    <div className="relative mx-auto mb-4 max-w-screen-lg border-b border-base-700 px-4 md:mb-0 md:border-none md:px-0">
+      <div className="mt-2 items-start justify-between border-base-700 pb-4 md:mt-10 md:border-none lg:mb-8 lg:flex lg:space-x-4 lg:pb-4">
+        <div className="flex w-full items-center space-x-4 md:space-x-8 lg:items-start">
           <div className="relative mt-1">
             <Avatar
               userId={profile?.userId}
@@ -76,8 +76,8 @@ const Overview = ({
               layout="fill"
             />
             {isConnected && profile?.userId !== user.userId && (
-              <div className="absolute group -bottom-2 md:-bottom-2 -left-1 md:left-0 text-yellow-500 text-xs flex items-center space-x-1 bg-tfsdark-700 py-1 px-2 rounded-full cursor-pointer">
-                <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-tfsdark-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-tfsdark-600 before:content-[''] group-hover:opacity-100">
+              <div className="group absolute -bottom-2 -left-1 flex cursor-pointer items-center space-x-1 rounded-full bg-base-700 py-1 px-2 text-xs text-yellow-500 md:-bottom-2 md:left-0">
+                <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-base-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-base-600 before:content-[''] group-hover:opacity-100">
                   You are connected
                 </span>
                 <HiThumbUp className="h-4 w-4 md:h-5 md:w-5" />
@@ -85,12 +85,12 @@ const Overview = ({
               </div>
             )}
             {profile?.userId === user.userId && (
-              <div className="absolute top-4 left-5 md:top-10 md:left-12 h-8 w-10 md:h-12 md:w-12">
+              <div className="absolute top-4 left-5 h-8 w-10 md:top-10 md:left-12 md:h-12 md:w-12">
                 <label
                   htmlFor="avatar"
-                  className="relative cursor-pointer font-medium focus:outline-none focus:ring-0 text-center text-xs flex flex-col justify-center"
+                  className="relative flex cursor-pointer flex-col justify-center text-center text-xs font-medium focus:outline-none focus:ring-0"
                 >
-                  <IoCameraOutline className="text-white opacity-90 h-8 w-8 mx-auto md:h-full md:w-full" />
+                  <IoCameraOutline className="mx-auto h-8 w-8 text-white opacity-90 md:h-full md:w-full" />
                   <span className="text-white">Edit</span>
                   <input
                     id="avatar"
@@ -104,49 +104,50 @@ const Overview = ({
             )}
           </div>
 
-          <div className="md:pr-4 w-full">
-            <div className="lg:flex items-baseline md:space-x-2">
-              <h2 className="font-bold text-xl md:text-3xl">{profile?.name}</h2>
-              <p className="text-slate-500 text-sm md:text-base">
+          <div className="w-full md:pr-4">
+            <div className="items-baseline md:space-x-2 lg:flex">
+              <h2 className="text-xl font-bold md:text-3xl">{profile?.name}</h2>
+              <p className="text-sm text-slate-500 md:text-base">
                 @{profile?.displayName}
               </p>
             </div>
-            <div className="text-sm lg:text-base text-slate-300">
+            <div className="text-sm text-slate-300 lg:text-base">
               {profile?.currentTitle}
             </div>
-            <div className="mt-2 mb-3 hidden lg:flex space-x-3 items-center text-sm text-slate-500">
+            <div className="mt-2 mb-3 hidden items-center space-x-3 text-sm text-slate-500 lg:flex">
               {profile?.country && countryCode && (
-                <div className="flex space-x-1 items-center">
+                <div className="flex items-center space-x-1">
                   <span>{countryCodeEmoji(countryCode.iso2)}</span>
                   <span className="capitalize">{profile?.country}</span>
                 </div>
               )}
-              <div className="flex space-x-1 items-center">
+              <div className="flex items-center space-x-1">
                 <IoCalendarNumberOutline className="h-4 w-4" />
                 <span>
                   Joined {Moment(profile?.createdDate).format('MMMM YYYY')}
                 </span>
               </div>
-              {teams?.data[0]?.status === 'ACTIVE' && teams?.data?.length > 0 && (
-                <Link href={`/teams/${teams.data[0].id}`} passHref>
-                  <a className="flex items-center space-x-1 group">
-                    <span className="rounded-full border border-tfsdark-600 px-2 text-[0.7em] text-slate-400">
-                      Team
-                    </span>
-                    <span className="group-hover:text-slate-100">
-                      {teams.data[0].name}
-                    </span>
-                  </a>
-                </Link>
-              )}
+              {teams?.data[0]?.status === 'ACTIVE' &&
+                teams?.data?.length > 0 && (
+                  <Link href={`/teams/${teams.data[0].id}`} passHref>
+                    <a className="group flex items-center space-x-1">
+                      <span className="rounded-full border border-base-600 px-2 text-[0.7em] text-slate-400">
+                        Team
+                      </span>
+                      <span className="group-hover:text-slate-100">
+                        {teams.data[0].name}
+                      </span>
+                    </a>
+                  </Link>
+                )}
             </div>
 
-            <div className="hidden lg:block text-base text-slate-200 mt-3 cursor-pointer">
+            <div className="mt-3 hidden cursor-pointer text-base text-slate-200 lg:block">
               {profile?.bio?.aboutUser}
             </div>
 
             <div
-              className="hidden lg:flex flex-wrap mt-4 w-full cursor-pointer"
+              className="mt-4 hidden w-full cursor-pointer flex-wrap lg:flex"
               onClick={() => setShowStacks(!showStacks)}
             >
               {showStacks
@@ -185,7 +186,7 @@ const Overview = ({
             </div>
           </div>
         </div>
-        <div className="hidden lg:block mt-2">
+        <div className="mt-2 hidden lg:block">
           <Actions
             isConnected={isConnected}
             isConnectionPending={isConnectionPending}
@@ -197,30 +198,30 @@ const Overview = ({
         </div>
       </div>
 
-      <div className="block lg:hidden text-sm text-slate-200 cursor-pointer">
+      <div className="block cursor-pointer text-sm text-slate-200 lg:hidden">
         {profile?.bio?.aboutUser}
       </div>
 
-      <div className="block lg:hidden mt-2">
+      <div className="mt-2 block lg:hidden">
         <Social social={profile} />
       </div>
 
-      <div className="flex mt-2 lg:hidden space-x-4 items-center text-xs text-slate-500">
+      <div className="mt-2 flex items-center space-x-4 text-xs text-slate-500 lg:hidden">
         {profile?.country && countryCode && (
-          <div className="flex space-x-1 items-center">
+          <div className="flex items-center space-x-1">
             <span>{countryCodeEmoji(countryCode.iso2)}</span>
             <span className="capitalize">{profile?.country}</span>
           </div>
         )}
-        <div className="flex space-x-1 items-center">
+        <div className="flex items-center space-x-1">
           <IoCalendarNumberOutline className="h-4 w-4" />
           <span>Joined {Moment(profile?.createdDate).format('MMMM YYYY')}</span>
         </div>
 
         {teams?.data[0]?.status === 'ACTIVE' && teams?.data?.length > 0 && (
           <Link href={`/teams/${teams.data[0].id}`} passHref>
-            <a className="flex items-center space-x-1 group">
-              <span className="rounded-full border border-tfsdark-600 px-1.5 text-[0.7em] text-slate-400">
+            <a className="group flex items-center space-x-1">
+              <span className="rounded-full border border-base-600 px-1.5 text-[0.7em] text-slate-400">
                 Team
               </span>
               <span className="group-hover:text-slate-100">
@@ -232,7 +233,7 @@ const Overview = ({
       </div>
 
       <div
-        className="flex lg:hidden mt-3 -ml-1 w-full cursor-pointer overflow-x-scroll no-scrollbar"
+        className="no-scrollbar mt-3 -ml-1 flex w-full cursor-pointer overflow-x-scroll lg:hidden"
         onClick={() => setShowStacks(!showStacks)}
       >
         {profile?.userTechStacks?.map(
@@ -241,7 +242,7 @@ const Overview = ({
         )}
       </div>
 
-      <div className="lg:hidden mt-4 mb-6">
+      <div className="mt-4 mb-6 lg:hidden">
         <Actions
           isConnected={isConnected}
           isConnectionPending={isConnectionPending}

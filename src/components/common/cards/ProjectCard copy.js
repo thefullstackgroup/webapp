@@ -37,7 +37,7 @@ const ProjectCard = ({ project, user, type, hideAuthor }) => {
         className="group relative h-full cursor-pointer space-y-2 overflow-hidden pb-4 duration-200"
         onClick={() => setShowProject(!showProject)}
       >
-        <div className="h-72 w-full overflow-hidden rounded-md bg-tfsdark-900">
+        <div className="h-72 w-full overflow-hidden rounded-md bg-base-900">
           {project.projectImgURI && (
             <Image
               src={project.projectImgURI}
@@ -51,7 +51,7 @@ const ProjectCard = ({ project, user, type, hideAuthor }) => {
         </div>
         {project?.lookingForCollabs && (
           <div
-            className="absolute top-0 right-4 rounded-full border border-slate-400 bg-tfsdark-900/40 px-2 py-0.5 text-xs font-semibold"
+            className="absolute top-0 right-4 rounded-full border border-slate-400 bg-base-900/40 px-2 py-0.5 text-xs font-semibold"
             title="Open to collaboration"
           >
             <span>Collab</span>
@@ -114,7 +114,7 @@ const ProjectCard = ({ project, user, type, hideAuthor }) => {
         leave=""
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
-        className="fixed top-0 left-0 z-50 h-screen w-full overscroll-contain bg-tfsdark-800/70 backdrop-blur-md"
+        className="fixed top-0 left-0 z-50 h-screen w-full overscroll-contain bg-base-800/70 backdrop-blur-md"
       >
         <div
           className="fixed inset-0 h-screen w-full"
@@ -122,7 +122,7 @@ const ProjectCard = ({ project, user, type, hideAuthor }) => {
         ></div>
         <div>
           <div className="no-scrollbar relative mx-auto flex h-screen w-full max-w-screen-2xl flex-col overflow-hidden overflow-y-scroll overscroll-contain 2xl:px-10">
-            <div className="top-0 mx-auto w-full max-w-full bg-tfsdark-900">
+            <div className="top-0 mx-auto w-full max-w-full bg-base-900">
               <Project
                 projectId={project._id || project.projectId}
                 projectSlug={project.projectSlug}

@@ -18,7 +18,7 @@ import TeamTech from 'components/modules/account/teams/TeamTech';
 
 const customCommand = {
   name: 'markdown-link',
-  icon: () => <FaMarkdown className="w-6 h-6" />,
+  icon: () => <FaMarkdown className="h-6 w-6" />,
   execute: () => {
     window.open(
       'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'
@@ -136,11 +136,11 @@ const CreateJob = ({ teamId, setShow }) => {
 
   return (
     <>
-      <div className=" py-1 p-4 mb-4">
-        <div className="space-y-4 py-4 overflow-y-scroll h-[74vh] no-scrollbar overscroll-contain">
+      <div className=" mb-4 p-4 py-1">
+        <div className="no-scrollbar h-[74vh] space-y-4 overflow-y-scroll overscroll-contain py-4">
           <div className="space-y-6">
             <div>
-              <label className="text-sm text-slate-400 font-medium">
+              <label className="text-sm font-medium text-slate-400">
                 Job title
               </label>
               <input
@@ -154,13 +154,13 @@ const CreateJob = ({ teamId, setShow }) => {
                 }}
               />
               {formError && !title?.trim().length > 0 && (
-                <span className="text-red-500 text-xs">
+                <span className="text-xs text-red-500">
                   Please give a job title.
                 </span>
               )}
             </div>
             <div>
-              <label className="text-sm text-slate-400 font-medium">
+              <label className="text-sm font-medium text-slate-400">
                 Link to apply
               </label>
               <input
@@ -174,13 +174,13 @@ const CreateJob = ({ teamId, setShow }) => {
                 }}
               />
               {formError && !applyURL?.trim().length > 0 && (
-                <span className="text-red-500 text-xs">
+                <span className="text-xs text-red-500">
                   Please give a URL to apply for position.
                 </span>
               )}
             </div>
             <div>
-              <label className="text-sm text-slate-400 font-medium">
+              <label className="text-sm font-medium text-slate-400">
                 Salary range
               </label>
               <div className="flex items-start space-x-2">
@@ -211,7 +211,7 @@ const CreateJob = ({ teamId, setShow }) => {
                     ))}
                   </select>
                   {formError && !salaryMin > 0 && (
-                    <span className="text-red-500 text-xs">
+                    <span className="text-xs text-red-500">
                       Please select min salary.
                     </span>
                   )}
@@ -231,38 +231,38 @@ const CreateJob = ({ teamId, setShow }) => {
                     ))}
                   </select>
                   {formError && !salaryMax > 0 && (
-                    <span className="text-red-500 text-xs">
+                    <span className="text-xs text-red-500">
                       Please select max salary.
                     </span>
                   )}
                 </div>
               </div>
               {formError && salaryMin > salaryMax && (
-                <span className="text-red-500 text-xs">
+                <span className="text-xs text-red-500">
                   Min salary cannot be greater than max salary.
                 </span>
               )}
             </div>
             <div className="space-y-2">
-              <label className="text-sm text-slate-400 font-medium">
+              <label className="text-sm font-medium text-slate-400">
                 Employment type
               </label>
               <EmploymentType selected={type} setType={setType} />
               {formError && !type?.trim().length > 0 && (
-                <span className="text-red-500 text-xs">
+                <span className="text-xs text-red-500">
                   Please select employment type.
                 </span>
               )}
             </div>
             <div>
-              <label className="text-sm text-slate-400 font-medium">
+              <label className="text-sm font-medium text-slate-400">
                 Location(s)
               </label>
 
               <LocationType selected={locationType} setType={setLocationType} />
 
               {formError && !locationType && (
-                <span className="text-red-500 text-xs">
+                <span className="text-xs text-red-500">
                   Please select at least one.
                 </span>
               )}
@@ -290,10 +290,10 @@ const CreateJob = ({ teamId, setShow }) => {
             </div>
 
             <div>
-              <label className="text-sm text-slate-400 font-medium">
+              <label className="text-sm font-medium text-slate-400">
                 Tech Stack:
               </label>
-              <div className="mt-2 flex flex-wrap no-scrollbar items-center">
+              <div className="no-scrollbar mt-2 flex flex-wrap items-center">
                 {techStack?.map((stack, index) => (
                   <button key={index} onClick={() => removeTechStack(stack)}>
                     <TechBadge tech={stack} size={'sm'} />
@@ -302,13 +302,13 @@ const CreateJob = ({ teamId, setShow }) => {
 
                 <div className="relative">
                   <button
-                    className="btn-primary py-1.5 text-sm mb-1 space-x-1 rounded-md"
+                    className="btn-primary mb-1 space-x-1 rounded-md py-1.5 text-sm"
                     onClick={() => setShowTechStackOptions(true)}
                   >
                     <span>Add tech stack</span>
                   </button>
                   {showTechStackOptions && (
-                    <div className="top-10 absolute z-20 left-0 w-80">
+                    <div className="absolute top-10 left-0 z-20 w-80">
                       <div
                         className="fixed inset-0"
                         onClick={() =>
@@ -325,17 +325,17 @@ const CreateJob = ({ teamId, setShow }) => {
                 </div>
               </div>
               {formError && !techStack?.length > 0 && (
-                <span className="text-red-500 text-xs">
+                <span className="text-xs text-red-500">
                   Please select tech stack.
                 </span>
               )}
             </div>
 
             <div>
-              <label className="text-sm text-slate-400 font-medium">
+              <label className="text-sm font-medium text-slate-400">
                 Job description
               </label>
-              <div className="bg-tfsdark-600/50 rounded-md">
+              <div className="rounded-md bg-base-600/50">
                 <ReactMde
                   value={description}
                   onChange={setDescription}
@@ -343,7 +343,7 @@ const CreateJob = ({ teamId, setShow }) => {
                   onTabChange={setSelectedTab}
                   generateMarkdownPreview={(markdown) =>
                     Promise.resolve(
-                      <div className="mt-4 prose prose-dark max-w-full">
+                      <div className="prose prose-dark mt-4 max-w-full">
                         <Markdown
                           options={{
                             overrides: {
@@ -377,7 +377,7 @@ const CreateJob = ({ teamId, setShow }) => {
                 />
               </div>
               {formError && !description?.length > 0 && (
-                <span className="text-red-500 text-xs">
+                <span className="text-xs text-red-500">
                   Please give job description.
                 </span>
               )}

@@ -28,12 +28,12 @@ const Toast = ({ message, show, setShow }) => {
       leaveTo="opacity-0"
       className="fixed inset-0 z-50 h-2"
     >
-      <div className="pointer-events-none fixed inset-0 z-50 flex items-start sm:p-4 h-screen">
+      <div className="pointer-events-none fixed inset-0 z-50 flex h-screen items-start sm:p-4">
         <div
           className="flex w-full flex-col items-center space-y-4 sm:items-end"
           onClick={() => setIsShowing(true)}
         >
-          <div className="pointer-events-auto mt-6 w-full max-w-xs overflow-hidden rounded-lg border border-green-500 bg-tfsdark-900 shadow-lg">
+          <div className="pointer-events-auto mt-6 w-full max-w-xs overflow-hidden rounded-lg border border-green-500 bg-base-900 shadow-lg">
             <div className="p-4">
               <div className="flex items-center">
                 <div className="flex w-0 flex-1 justify-between">

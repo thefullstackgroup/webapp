@@ -50,15 +50,15 @@ const Modal = ({
 
   if (!project)
     return (
-      <div className="bg-tfsdark-900 h-screen max-w-screen-xl mx-auto flex flex-1 justify-center items-center">
+      <div className="mx-auto flex h-screen max-w-screen-xl flex-1 items-center justify-center bg-base-900">
         <Loader />
       </div>
     );
 
   if (project && !project.projectName)
     return (
-      <div className="flex justify-center items-start sm:items-center h-screen">
-        <div className="bg-tfsdark-700 max-w-md mx-auto text-center p-8 rounded-md prose prose-dark">
+      <div className="flex h-screen items-start justify-center sm:items-center">
+        <div className="prose prose-dark mx-auto max-w-md rounded-md bg-base-700 p-8 text-center">
           <h2 className="text-xl font-semibold">Oops! Post not found</h2>
           <p>
             This post may have been moved by the author!{' '}
@@ -73,7 +73,7 @@ const Modal = ({
 
   return (
     <>
-      <div className="lg:grid lg:grid-cols-12 w-full max-w-screen-2xl mx-auto h-screen overflow-scroll overscroll-contain xl:border-l xl:border-r xl:border-tfsdark-600/50">
+      <div className="mx-auto h-screen w-full max-w-screen-2xl overflow-scroll overscroll-contain lg:grid lg:grid-cols-12 xl:border-l xl:border-r xl:border-base-600/50">
         <div className="col-span-8">
           <Page
             project={project}
@@ -84,7 +84,7 @@ const Modal = ({
             standalone={standalone}
           />
         </div>
-        <div className="col-span-4 border-l border-tfsdark-700">
+        <div className="col-span-4 border-l border-base-700">
           <Reactions
             project={project}
             isConnected={isConnected}
@@ -95,9 +95,9 @@ const Modal = ({
           />
         </div>
       </div>
-      <div className="fixed z-10 top-2 xl:top-4 right-2 2xl:right-4">
+      <div className="fixed top-2 right-2 z-10 xl:top-4 2xl:right-4">
         <button
-          className="group bg-black bg-opacity-70 rounded-xl p-1 hover:bg-tfsdark-700 duration-150"
+          className="group rounded-xl bg-black bg-opacity-70 p-1 duration-150 hover:bg-base-700"
           onClick={() => setShowProject(false)}
         >
           <ToolTip message="Close" position="bottom" />

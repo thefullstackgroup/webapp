@@ -27,9 +27,9 @@ const Container = (props) => {
 
   return (
     <>
-      <div className="mt-4 md:mt-12 flex">
-        <div className="w-full max-w-2xl lg:max-w-3xl overflow-hidden mx-auto">
-          <div className="md:rounded-lg overflow-hidden sm:bg-tfsdark-700 px-4 sm:px-0 pt-4 pb-20">
+      <div className="mt-4 flex md:mt-12">
+        <div className="mx-auto w-full max-w-2xl overflow-hidden lg:max-w-3xl">
+          <div className="overflow-hidden px-4 pt-4 pb-20 sm:bg-base-700 sm:px-0 md:rounded-lg">
             <PostContent
               post={props.project}
               projectContent={props.projectContent}
@@ -41,7 +41,7 @@ const Container = (props) => {
 
             <div
               id="comments"
-              className="align-bottom sm:px-4 md:px-8 mb-10 pb-4 mx-4 md:mx-0 text-left sm:my-4 sm:align-middle sm:max-w-full sm:w-full lg:w-full"
+              className="mx-4 mb-10 pb-4 text-left align-bottom sm:my-4 sm:w-full sm:max-w-full sm:px-4 sm:align-middle md:mx-0 md:px-8 lg:w-full"
             >
               <PostComments
                 post={props.project}

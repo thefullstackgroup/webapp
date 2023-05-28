@@ -12,28 +12,28 @@ const ModalDialog = ({
   if (dimensions) modalSize = dimensions;
   if (show) {
     return (
-      <div className="fixed z-50 inset-0 overflow-scroll no-scrollbar md:overflow-hidden h-screen overflow-y-auto overscroll-contain">
-        <div className="flex items-center justify-center min-h-screen md:pt-4 md:px-4 md:pb-20 text-center sm:block sm:p-0">
+      <div className="no-scrollbar fixed inset-0 z-50 h-screen overflow-scroll overflow-y-auto overscroll-contain md:overflow-hidden">
+        <div className="flex min-h-screen items-center justify-center text-center sm:block sm:p-0 md:px-4 md:pt-4 md:pb-20">
           {!disabled ? (
             <div
-              className="absolute inset-0 bg-tfsdark-700/80 overscroll-contain h-screen backdrop-blur-sm"
+              className="absolute inset-0 h-screen overscroll-contain bg-base-700/80 backdrop-blur-sm"
               onClick={() => setShow(false)}
             ></div>
           ) : (
-            <div className="absolute inset-0 bg-tfsdark-700/80 bg-opacity-20"></div>
+            <div className="absolute inset-0 bg-base-700/80 bg-opacity-20"></div>
           )}
 
-          <span className="hidden sm:inline-block sm:align-middle sm:h-screen">
+          <span className="hidden sm:inline-block sm:h-screen sm:align-middle">
             &#8203;
           </span>
 
           <div
-            className={`inline-block align-bottom transform transition-all sm:align-middle w-full ${modalSize}`}
+            className={`inline-block w-full transform align-bottom transition-all sm:align-middle ${modalSize}`}
           >
-            <div className="bg-tfsdark-900 sm:rounded-md text-left shadow-2xl mx-auto min-h-screen sm:min-h-min max-h-min overflow-hidden">
+            <div className="mx-auto max-h-min min-h-screen overflow-hidden bg-base-900 text-left shadow-2xl sm:min-h-min sm:rounded-md">
               {title && (
-                <div className="px-4 md:px-6 py-3 border-b border-tfsdark-600/80 sticky top-0 z-10 bg-tfsdark-900">
-                  <h4 className="font-semibold text-lg pt-1 truncate pr-10">
+                <div className="sticky top-0 z-10 border-b border-base-600/80 bg-base-900 px-4 py-3 md:px-6">
+                  <h4 className="truncate pt-1 pr-10 text-lg font-semibold">
                     {title}
                   </h4>
                   <div className="absolute top-3 right-2 md:right-4">

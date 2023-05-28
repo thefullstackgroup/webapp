@@ -13,18 +13,18 @@ const Page = () => {
 
   return (
     <>
-      <div className="mt-0 lg:mt-12 w-full flex justify-center">
-        <div className="w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-          <div className="relative max-w-4xl mx-auto">
-            <div className="mx-4 md:mx-0 space-y-6">
-              <div className="w-full rounded-lg bg-tfsdark-700 mb-4 px-4 sm:px-6 py-20 text-center space-y-6">
-                <h2 className="text-xl sm:text-3xl font-bold tracking-tight">
+      <div className="mt-0 flex w-full justify-center lg:mt-12">
+        <div className="w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+          <div className="relative mx-auto max-w-4xl">
+            <div className="mx-4 space-y-6 md:mx-0">
+              <div className="mb-4 w-full space-y-6 rounded-lg bg-base-700 px-4 py-20 text-center sm:px-6">
+                <h2 className="text-xl font-bold tracking-tight sm:text-3xl">
                   We will miss you!
                 </h2>
                 <Image
                   src="/assets/profile/user/user-not-exist.png"
                   alt="User not found"
-                  className="w-28 mx-auto"
+                  className="mx-auto w-28"
                   width={200}
                   height={200}
                 />

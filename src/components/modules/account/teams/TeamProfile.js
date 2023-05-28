@@ -200,7 +200,7 @@ const TeamProfile = ({ user, team = null }) => {
 
   if (team?.ownerId !== user.userId) {
     return (
-      <div className="h-screen flex flex-1 justify-center items-center">
+      <div className="flex h-screen flex-1 items-center justify-center">
         You are not the owner of this team.
       </div>
     );
@@ -208,18 +208,18 @@ const TeamProfile = ({ user, team = null }) => {
 
   return (
     <>
-      <div className="mt-0 lg:my-12 w-full flex justify-center">
-        <div className="w-full lg:max-w-full px-0 xl:px-4 2xl:px-0 md:ml-6 lg:ml-20 xl:ml-52 2xl:ml-56">
-          <div className="relative max-w-4xl mx-auto">
+      <div className="mt-0 flex w-full justify-center lg:my-12">
+        <div className="w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
+          <div className="relative mx-auto max-w-4xl">
             <Menu team={team} user={user} />
             <div>
-              <div className="w-full rounded-lg bg-tfsdark-700 px-4 sm:px-6 py-4">
+              <div className="w-full rounded-lg bg-base-700 px-4 py-4 sm:px-6">
                 <div className="space-y-4">
                   <div className="">
-                    <div className="flex space-x-4 items-center">
+                    <div className="flex items-center space-x-4">
                       {logo ? (
                         <>
-                          <div className="w-24 h-20 overflow-hidden rounded-lg border border-tfsdark-600">
+                          <div className="h-20 w-24 overflow-hidden rounded-lg border border-base-600">
                             <Image
                               src={logo}
                               className="h-full w-full object-cover"
@@ -234,7 +234,7 @@ const TeamProfile = ({ user, team = null }) => {
                           <div className="w-full">
                             <label
                               htmlFor="logo"
-                              className="relative cursor-pointer font-medium focus:outline-none focus:ring-0 text-center text-xs flex flex-col justify-center"
+                              className="relative flex cursor-pointer flex-col justify-center text-center text-xs font-medium focus:outline-none focus:ring-0"
                             >
                               <span className="btn-secondary w-min whitespace-nowrap text-sm">
                                 Change logo
@@ -251,13 +251,13 @@ const TeamProfile = ({ user, team = null }) => {
                         </>
                       ) : (
                         <>
-                          <div className="w-44 h-40 overflow-hidden rounded-xl border border-tfsdark-600">
-                            <div className="h-full w-full bg-tfsdark-600"></div>
+                          <div className="h-40 w-44 overflow-hidden rounded-xl border border-base-600">
+                            <div className="h-full w-full bg-base-600"></div>
                           </div>
                           <div className="mt-4 w-full text-center">
                             <label
                               htmlFor="logo"
-                              className="relative cursor-pointer font-medium focus:outline-none focus:ring-0 text-center text-xs flex flex-col justify-center"
+                              className="relative flex cursor-pointer flex-col justify-center text-center text-xs font-medium focus:outline-none focus:ring-0"
                             >
                               <span className="btn-secondary w-min whitespace-nowrap text-xs">
                                 Upload team logo
@@ -276,14 +276,14 @@ const TeamProfile = ({ user, team = null }) => {
                     </div>
 
                     {formError && !logo?.trim().length > 0 && (
-                      <span className="ml-6 text-red-500 text-xs">
+                      <span className="ml-6 text-xs text-red-500">
                         Please upload your team icon.
                       </span>
                     )}
                   </div>
 
                   <div>
-                    <label className="text-sm text-slate-400  font-medium">
+                    <label className="text-sm font-medium  text-slate-400">
                       Team name:
                     </label>
                     <input
@@ -296,14 +296,14 @@ const TeamProfile = ({ user, team = null }) => {
                     />
 
                     {formError && !name?.trim().length > 0 && (
-                      <span className="text-red-500 text-xs">
+                      <span className="text-xs text-red-500">
                         Please give a name for your team.
                       </span>
                     )}
                   </div>
 
                   <div>
-                    <label className="text-sm text-slate-400  font-medium">
+                    <label className="text-sm font-medium  text-slate-400">
                       One liner of what you do:
                     </label>
                     <input
@@ -315,15 +315,15 @@ const TeamProfile = ({ user, team = null }) => {
                       onChange={(e) => setDescription(e.target.value)}
                     />
                     {formError && !description?.trim().length > 0 && (
-                      <span className="text-red-500 text-xs">
+                      <span className="text-xs text-red-500">
                         Please give a one liner description for your team.
                       </span>
                     )}
                   </div>
 
-                  <div className="flex space-x-4 items-center">
+                  <div className="flex items-center space-x-4">
                     <div className="w-1/3">
-                      <label className="text-sm text-slate-400  font-medium">
+                      <label className="text-sm font-medium  text-slate-400">
                         Founded:
                       </label>
                       <select
@@ -344,7 +344,7 @@ const TeamProfile = ({ user, team = null }) => {
                       </select>
                     </div>
                     <div className="w-1/3">
-                      <label className="text-sm text-slate-400  font-medium">
+                      <label className="text-sm font-medium  text-slate-400">
                         Stage:
                       </label>
                       <select
@@ -365,7 +365,7 @@ const TeamProfile = ({ user, team = null }) => {
                       </select>
                     </div>
                     <div className="w-1/3">
-                      <label className="text-sm text-slate-400  font-medium">
+                      <label className="text-sm font-medium  text-slate-400">
                         Number of team members:
                       </label>
                       <input
@@ -380,7 +380,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm text-slate-400  font-medium">
+                    <label className="text-sm font-medium  text-slate-400">
                       Location(s):
                     </label>
                     <CountrySelect setCountryName={addLocation} />
@@ -398,7 +398,7 @@ const TeamProfile = ({ user, team = null }) => {
                     </div>
                   </div>
                   <div>
-                    <label className="text-sm text-slate-400  font-medium">
+                    <label className="text-sm font-medium  text-slate-400">
                       GitHub team account:
                     </label>
                     <input
@@ -413,7 +413,7 @@ const TeamProfile = ({ user, team = null }) => {
                     />
                   </div>
                   <div>
-                    <label className="text-sm text-slate-400  font-medium">
+                    <label className="text-sm font-medium  text-slate-400">
                       Website:
                     </label>
                     <input
@@ -429,7 +429,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm text-slate-400  font-medium">
+                    <label className="text-sm font-medium  text-slate-400">
                       Mission statement:
                     </label>
                     <textarea
@@ -444,10 +444,10 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm text-slate-400  font-medium">
+                    <label className="text-sm font-medium  text-slate-400">
                       Tech Stack:
                     </label>
-                    <div className="mt-2 flex flex-wrap no-scrollbar items-center">
+                    <div className="no-scrollbar mt-2 flex flex-wrap items-center">
                       {techStack?.map((stack, index) => (
                         <button
                           key={index}
@@ -459,13 +459,13 @@ const TeamProfile = ({ user, team = null }) => {
 
                       <div className="relative">
                         <button
-                          className="btn-primary py-1.5 text-sm mb-1 space-x-1 rounded-md"
+                          className="btn-primary mb-1 space-x-1 rounded-md py-1.5 text-sm"
                           onClick={() => setShowTechStackOptions(true)}
                         >
                           <span>Add tech stack</span>
                         </button>
                         {showTechStackOptions && (
-                          <div className="top-10 absolute z-20 left-0 w-80">
+                          <div className="absolute top-10 left-0 z-20 w-80">
                             <div
                               className="fixed inset-0"
                               onClick={() =>
@@ -484,11 +484,11 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm text-slate-400 font-medium">
+                    <label className="text-sm font-medium text-slate-400">
                       Images:
                     </label>
                     <div className="flex gap-4">
-                      <div className="relative w-40 h-36 rounded-md overflow-hidden">
+                      <div className="relative h-36 w-40 overflow-hidden rounded-md">
                         {imageOne ? (
                           <>
                             <Image
@@ -512,11 +512,11 @@ const TeamProfile = ({ user, team = null }) => {
                           </>
                         ) : (
                           <>
-                            <div className="h-full w-full bg-tfsdark-600"></div>
-                            <div className="absolute top-0 w-full h-full md:w-full text-center flex items-center">
+                            <div className="h-full w-full bg-base-600"></div>
+                            <div className="absolute top-0 flex h-full w-full items-center text-center md:w-full">
                               <label
                                 htmlFor="image1"
-                                className="relative cursor-pointer font-medium focus:outline-none focus:ring-0 text-center text-sm flex justify-center w-full"
+                                className="relative flex w-full cursor-pointer justify-center text-center text-sm font-medium focus:outline-none focus:ring-0"
                               >
                                 <span className="text-white">Upload image</span>
                                 <input
@@ -534,7 +534,7 @@ const TeamProfile = ({ user, team = null }) => {
                         )}
                       </div>
 
-                      <div className="relative w-40 h-36 rounded-md overflow-hidden">
+                      <div className="relative h-36 w-40 overflow-hidden rounded-md">
                         {imageTwo ? (
                           <>
                             <Image
@@ -558,11 +558,11 @@ const TeamProfile = ({ user, team = null }) => {
                           </>
                         ) : (
                           <>
-                            <div className="h-full w-full bg-tfsdark-600"></div>
-                            <div className="absolute top-0 w-full h-full md:w-full text-center flex items-center">
+                            <div className="h-full w-full bg-base-600"></div>
+                            <div className="absolute top-0 flex h-full w-full items-center text-center md:w-full">
                               <label
                                 htmlFor="image2"
-                                className="relative cursor-pointer font-medium focus:outline-none focus:ring-0 text-center text-sm flex justify-center w-full"
+                                className="relative flex w-full cursor-pointer justify-center text-center text-sm font-medium focus:outline-none focus:ring-0"
                               >
                                 <span className="text-white">Upload image</span>
                                 <input
@@ -579,7 +579,7 @@ const TeamProfile = ({ user, team = null }) => {
                           </>
                         )}
                       </div>
-                      <div className="relative w-40 h-36 rounded-md overflow-hidden">
+                      <div className="relative h-36 w-40 overflow-hidden rounded-md">
                         {imageThree ? (
                           <>
                             <Image
@@ -603,11 +603,11 @@ const TeamProfile = ({ user, team = null }) => {
                           </>
                         ) : (
                           <>
-                            <div className="h-full w-full bg-tfsdark-600"></div>
-                            <div className="absolute top-0 w-full h-full md:w-full text-center flex items-center">
+                            <div className="h-full w-full bg-base-600"></div>
+                            <div className="absolute top-0 flex h-full w-full items-center text-center md:w-full">
                               <label
                                 htmlFor="image3"
-                                className="relative cursor-pointer font-medium focus:outline-none focus:ring-0 text-center text-sm flex justify-center w-full"
+                                className="relative flex w-full cursor-pointer justify-center text-center text-sm font-medium focus:outline-none focus:ring-0"
                               >
                                 <span className="text-white">Upload image</span>
                                 <input
@@ -627,7 +627,7 @@ const TeamProfile = ({ user, team = null }) => {
                     </div>
                   </div>
                   <div>
-                    <label className="text-sm text-slate-400  font-medium">
+                    <label className="text-sm font-medium  text-slate-400">
                       How are the teams structured?
                     </label>
                     <textarea
@@ -642,7 +642,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm text-slate-400  font-medium">
+                    <label className="text-sm font-medium  text-slate-400">
                       How does the development process work? What&apos;s the
                       process for working through bugs, features and tech debt?
                     </label>
@@ -658,7 +658,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm text-slate-400  font-medium">
+                    <label className="text-sm font-medium  text-slate-400">
                       What tools do developers use?
                     </label>
                     <textarea
@@ -673,7 +673,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
 
                   <div>
-                    <label className="text-sm text-slate-400  font-medium">
+                    <label className="text-sm font-medium  text-slate-400">
                       What does the hiring process look like?
                     </label>
                     <textarea
@@ -688,7 +688,7 @@ const TeamProfile = ({ user, team = null }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-between mt-6">
+              <div className="mt-6 flex justify-between">
                 <button
                   className="btn-ghost px-0 text-red-600"
                   onClick={() => setIsDeletePromptOpen(true)}
@@ -718,8 +718,8 @@ const TeamProfile = ({ user, team = null }) => {
       {isDeletePromptOpen && (
         <ModalAlert show={isDeletePromptOpen} setShow={setIsDeletePromptOpen}>
           <div>
-            <div className="sm:flex sm:items-start justify-center">
-              <div className="mt-3 sm:mt-0 text-center">
+            <div className="justify-center sm:flex sm:items-start">
+              <div className="mt-3 text-center sm:mt-0">
                 <h3 className="text-xl font-bold text-slate-200">
                   Delete team?
                 </h3>
@@ -731,7 +731,7 @@ const TeamProfile = ({ user, team = null }) => {
                 </div>
               </div>
             </div>
-            <div className="mt-5 sm:mt-4 flex space-x-2 justify-center">
+            <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
               <button
                 type="button"
                 className="btn-primary bg-red-600/80 hover:bg-red-500"

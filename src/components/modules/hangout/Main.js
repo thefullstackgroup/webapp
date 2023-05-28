@@ -16,13 +16,13 @@ const Main = ({ user }) => {
 
   return (
     <>
-      <div className="mt-4 md:mt-12 flex">
-        <div className="w-full max-w-2xl lg:max-w-3xl overflow-hidden mx-auto">
+      <div className="mt-4 flex md:mt-12">
+        <div className="mx-auto w-full max-w-2xl overflow-hidden lg:max-w-3xl">
           <div className="w-full">
             <CreatePost user={user} />
-            <div className="text-base flex space-x-8 relative px-4 sm:px-1 pb-4 border-b sm:border-b-0 border-tfsdark-600">
+            <div className="relative flex space-x-8 border-b border-base-600 px-4 pb-4 text-base sm:border-b-0 sm:px-1">
               {topicSelected && topicSelected?.type !== 'following' && (
-                <button className="text-slate-100 rounded-md font-semibold">
+                <button className="rounded-md font-semibold text-slate-100">
                   <h3>{topicSelected?.label}</h3>
                 </button>
               )}
@@ -41,7 +41,7 @@ const Main = ({ user }) => {
                   topicSelected?.type === 'following'
                     ? 'text-slate-100'
                     : 'text-slate-400'
-                } font-semibold relative `}
+                } relative font-semibold `}
                 onClick={() => {
                   setTopicSelected({
                     label: 'Following',
@@ -55,7 +55,7 @@ const Main = ({ user }) => {
               >
                 <h3>Following </h3>
                 <div className="absolute -top-2 -right-10">
-                  <span className="border border-green-700 py-0.5 px-1 rounded-xl text-green-600 text-[0.7em]">
+                  <span className="rounded-xl border border-green-700 py-0.5 px-1 text-[0.7em] text-green-600">
                     Beta
                   </span>
                 </div>

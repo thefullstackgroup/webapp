@@ -114,18 +114,18 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
       <div className="py-4 px-4">
         <ol role="list" className="overflow-hidden">
           <li className="relative pb-10">
-            <div className="absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5 bg-primary-600"></div>
+            <div className="bg-primary-600 absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5"></div>
 
             <div className="group relative flex items-start">
               <span className="flex h-9 items-center">
-                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-tfsdark-800">
-                  <span className="h-2.5 w-2.5 rounded-full bg-primary-600"></span>
+                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-base-800">
+                  <span className="bg-primary-600 h-2.5 w-2.5 rounded-full"></span>
                 </span>
               </span>
               <span className="ml-4 flex min-w-0 flex-col">
-                <span className="mt-1 font-semibold text-white text-lg">
+                <span className="mt-1 text-lg font-semibold text-white">
                   Create a team profile
-                  <span className="relative -top-1 ml-2 mb-2 badge text-[0.6em] px-1.5 py-0.5">
+                  <span className="badge relative -top-1 ml-2 mb-2 px-1.5 py-0.5 text-[0.6em]">
                     Free
                   </span>
                 </span>
@@ -139,18 +139,18 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
           </li>
 
           <li className="relative pb-10">
-            <div className="absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5 bg-primary-600"></div>
+            <div className="bg-primary-600 absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5"></div>
 
             <div className="group relative flex items-start">
               <span className="flex h-9 items-center">
-                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-tfsdark-800">
-                  <span className="h-2.5 w-2.5 rounded-full bg-primary-600"></span>
+                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-base-800">
+                  <span className="bg-primary-600 h-2.5 w-2.5 rounded-full"></span>
                 </span>
               </span>
               <span className="ml-4 flex min-w-0 flex-col">
-                <span className="mt-1 font-semibold text-white text-lg">
+                <span className="mt-1 text-lg font-semibold text-white">
                   Add your teammates
-                  <span className="relative -top-1 ml-2 mb-2 badge text-[0.6em] px-1.5 py-0.5">
+                  <span className="badge relative -top-1 ml-2 mb-2 px-1.5 py-0.5 text-[0.6em]">
                     Free
                   </span>
                 </span>
@@ -165,18 +165,18 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
             </div>
           </li>
           <li className="relative pb-10">
-            <div className="absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5 bg-primary-600"></div>
+            <div className="bg-primary-600 absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5"></div>
 
             <div className="group relative flex items-start">
               <span className="flex h-9 items-center">
-                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-tfsdark-800">
-                  <span className="h-2.5 w-2.5 rounded-full bg-primary-600"></span>
+                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-base-800">
+                  <span className="bg-primary-600 h-2.5 w-2.5 rounded-full"></span>
                 </span>
               </span>
               <span className="ml-4 flex min-w-0 flex-col">
-                <span className="mt-1 font-semibold text-white text-lg">
+                <span className="mt-1 text-lg font-semibold text-white">
                   Post open roles
-                  <span className="relative -top-1 ml-2 mb-2 badge text-[0.6em] px-1.5 py-0.5">
+                  <span className="badge relative -top-1 ml-2 mb-2 px-1.5 py-0.5 text-[0.6em]">
                     Subscription
                   </span>
                 </span>
@@ -193,13 +193,13 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
 
             <div className="group relative flex items-start">
               <span className="flex h-9 items-center">
-                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-primary-600 bg-tfsdark-800">
-                  <span className="h-2.5 w-2.5 rounded-full bg-primary-600"></span>
+                <span className="border-primary-600 relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 bg-base-800">
+                  <span className="bg-primary-600 h-2.5 w-2.5 rounded-full"></span>
                 </span>
               </span>
               <span className="ml-4 w-full">
                 <button
-                  className="btn-primary py-2 w-full"
+                  className="btn-primary w-full py-2"
                   onClick={() => setDisplaySplash(false)}
                 >
                   Get started &rarr;
@@ -226,15 +226,15 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
           dimensions={'absolute inset-0 top-0 max-w-3xl'}
           disabled
         >
-          <div className="h-[50vh] overflow-y-scroll overscroll-contain no-scrollbar p-2">
+          <div className="no-scrollbar h-[50vh] overflow-y-scroll overscroll-contain p-2">
             <Faq showTitle={false} />
           </div>
         </ModalDialog>
       )}
     </>
   ) : (
-    <div className="py-4 px-2 space-y-6">
-      <div className="relative w-28 h-28 overflow-hidden rounded-xl">
+    <div className="space-y-6 py-4 px-2">
+      <div className="relative h-28 w-28 overflow-hidden rounded-xl">
         {logo ? (
           <>
             <Image
@@ -247,12 +247,12 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
               height={100}
               layout="fill"
             />
-            <div className="absolute bottom-2 w-full md:w-full text-center">
+            <div className="absolute bottom-2 w-full text-center md:w-full">
               <label
                 htmlFor="logo"
-                className="relative cursor-pointer font-medium focus:outline-none focus:ring-0 text-center text-xs flex flex-col justify-center"
+                className="relative flex cursor-pointer flex-col justify-center text-center text-xs font-medium focus:outline-none focus:ring-0"
               >
-                <span className="btn-secondary bg-red-500 w-min mx-auto text-xs">
+                <span className="btn-secondary mx-auto w-min bg-red-500 text-xs">
                   Delete
                 </span>
                 <input
@@ -267,13 +267,13 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
           </>
         ) : (
           <>
-            <div className="h-full w-full bg-tfsdark-600"></div>
-            <div className="absolute top-6 md:top-8 h-8 w-full md:h-12 md:w-full text-center">
+            <div className="h-full w-full bg-base-600"></div>
+            <div className="absolute top-6 h-8 w-full text-center md:top-8 md:h-12 md:w-full">
               <label
                 htmlFor="logo"
-                className="relative cursor-pointer font-medium focus:outline-none focus:ring-0 text-center text-xs flex flex-col justify-center"
+                className="relative flex cursor-pointer flex-col justify-center text-center text-xs font-medium focus:outline-none focus:ring-0"
               >
-                <IoCameraOutline className="text-white opacity-90 h-full w-10 mx-auto" />
+                <IoCameraOutline className="mx-auto h-full w-10 text-white opacity-90" />
                 <span className="text-white">Upload logo</span>
                 <input
                   id="logo"
@@ -288,7 +288,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
         )}
       </div>
       {formError && !logo?.trim().length > 0 && (
-        <span className="text-red-500 text-xs">
+        <span className="text-xs text-red-500">
           Please upload your team icon.
         </span>
       )}
@@ -304,7 +304,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
           onChange={(e) => setName(e.target.value)}
         />
         {formError && !name?.trim().length > 0 && (
-          <span className="text-red-500 text-xs">
+          <span className="text-xs text-red-500">
             Please give a name for your team.
           </span>
         )}
@@ -323,7 +323,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
           onChange={(e) => setDescription(e.target.value)}
         />
         {formError && !description?.trim().length > 0 && (
-          <span className="text-red-500 text-xs">
+          <span className="text-xs text-red-500">
             Please give a one liner description for your team.
           </span>
         )}
@@ -331,7 +331,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
 
       <div className="flex justify-between">
         <button
-          className="hidden sm:block btn-ghost"
+          className="btn-ghost hidden sm:block"
           onClick={() => setCreateTeamPanel(false)}
         >
           Cancel

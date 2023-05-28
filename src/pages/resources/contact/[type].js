@@ -90,32 +90,32 @@ const ContactForm = ({ formType }) => {
         description="The web3 professional network for Developers"
         keywords=""
       />
-      <main className="bg-tfsdark-900 min-h-screen text-gray-100 text-xl px-4 md:px-0">
+      <main className="min-h-screen bg-base-900 px-4 text-xl text-gray-100 md:px-0">
         <div className="pt-10 md:pt-20">
-          <div className="max-w-2xl mx-auto flex mb-20">
-            <span className="h-7 sm:h-7 w-10 mr-1">
+          <div className="mx-auto mb-20 flex max-w-2xl">
+            <span className="mr-1 h-7 w-10 sm:h-7">
               <img
                 src="/assets/thefullstack-dark-new-icon.png"
                 className="object-contain"
                 alt={process.env.brandName}
               />
             </span>
-            <span className="text-gray-300 text-xl tracking-tighter font-bold">
+            <span className="text-xl font-bold tracking-tighter text-gray-300">
               thefullstack
             </span>
           </div>
 
-          <div className="max-w-2xl mx-auto">
+          <div className="mx-auto max-w-2xl">
             <div className="relative">
               {showMultiChoice && (
                 <div className="absolute w-full">
                   <div className="text-2xl font-medium">{introMessage}</div>
-                  <div className="flex flex-col space-y-2 mt-8">
+                  <div className="mt-8 flex flex-col space-y-2">
                     {mulitpleChoiceOptions.map((answer, index) => (
                       <button
                         type="button"
                         className={
-                          'flex items-start border py-2 px-2 text-gray-100 text-left rounded ' +
+                          'flex items-start rounded border py-2 px-2 text-left text-gray-100 ' +
                           (multiChoiceSelected == index
                             ? 'bg-blue-500'
                             : 'hover:bg-gray-700')
@@ -128,7 +128,7 @@ const ContactForm = ({ formType }) => {
                           setShowContactDetails(true);
                         }}
                       >
-                        <span className="border border-gray-200 rounded text-xs text-gray-200 py-1 px-2 mr-2">
+                        <span className="mr-2 rounded border border-gray-200 py-1 px-2 text-xs text-gray-200">
                           {index + 1}
                         </span>{' '}
                         <span>{answer}</span>
@@ -150,7 +150,7 @@ const ContactForm = ({ formType }) => {
                   <input
                     type="text"
                     value={name}
-                    className="mt-2 border border-gray-700 bg-gray-800 rounded w-full text-white focus:ring-purple-600"
+                    className="mt-2 w-full rounded border border-gray-700 bg-gray-800 text-white focus:ring-purple-600"
                     onChange={(e) => setName(e.target.value)}
                   />
                   {name && (
@@ -161,14 +161,14 @@ const ContactForm = ({ formType }) => {
                       <input
                         type="text"
                         value={email}
-                        className="mt-2 border border-gray-700 bg-gray-800 rounded w-full text-white focus:ring-purple-600"
+                        className="mt-2 w-full rounded border border-gray-700 bg-gray-800 text-white focus:ring-purple-600"
                         onChange={(e) => setEmail(e.target.value)}
                       />
                     </>
                   )}
-                  <div className="flex items-center mt-6 justify-between">
+                  <div className="mt-6 flex items-center justify-between">
                     <button
-                      className="flex text-sm text-gray-400 space-x-1 items-center"
+                      className="flex items-center space-x-1 text-sm text-gray-400"
                       onClick={() => {
                         setShowMultiChoice(true);
                         setShowContactDetails(true);

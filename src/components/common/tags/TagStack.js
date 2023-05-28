@@ -29,7 +29,7 @@ const TagStack = (props) => {
   ) : (
     <div
       className={
-        'relative group w-min font-medium mr-1 mb-1 flex space-x-1 whitespace-nowrap items-center px-2.5 py-1.5 rounded-lg bg-tfsdark-600/50 text-slate-400 tracking-tight  ' +
+        'group relative mr-1 mb-1 flex w-min items-center space-x-1 whitespace-nowrap rounded-lg bg-base-600/50 px-2.5 py-1.5 font-medium tracking-tight text-slate-400  ' +
         (props.size ? 'text-' + props.size : 'text-sm')
       }
     >

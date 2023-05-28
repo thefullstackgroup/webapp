@@ -6,7 +6,7 @@ const Overview = ({ profile }) => {
   return (
     <>
       <div className="-mt-28 w-full">
-        <div className="flex justify-center mt-12">
+        <div className="mt-12 flex justify-center">
           <Avatar
             image={profile.profilePicUrl}
             name={profile.name}
@@ -15,19 +15,19 @@ const Overview = ({ profile }) => {
             height={500}
           />
         </div>
-        <div className="w-full mt-4 bg-tfsdark-700 px-4 sm:px-14">
-          <h1 className="text-center text-2xl md:text-3xl tracking-tight text-white font-bold">
+        <div className="mt-4 w-full bg-base-700 px-4 sm:px-14">
+          <h1 className="text-center text-2xl font-bold tracking-tight text-white md:text-3xl">
             {profile.name}
           </h1>
           <p className="text-center text-base font-medium text-slate-400">
             {profile.currentTitle}
           </p>
-          <p className="text-center text-base text-slate-200 mt-2">
+          <p className="mt-2 text-center text-base text-slate-200">
             {profile.bio.aboutUser}
           </p>
           <div className="mt-4 text-center">
             <Link href="/signup">
-              <button className="btn-primary px-8 rounded-full">Connect</button>
+              <button className="btn-primary rounded-full px-8">Connect</button>
             </Link>
           </div>
         </div>
