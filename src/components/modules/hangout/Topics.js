@@ -95,13 +95,11 @@ const Topics = ({ topic, setTopicSelected }) => {
   };
 
   return (
-    <div className="absolute right-0 top-24 hidden w-52 xl:block 2xl:right-20 2xl:w-64">
-      <div className="fixed w-72 rounded-md py-4 px-6">
+    <div className="w-64">
+      <div className="fixed top-20 w-72 rounded-md py-4 px-6">
         <div className="mb-4 flex items-center space-x-2">
-          <IoArrowDownOutline className="h-4 w-auto text-base-100" />
-          <span className="text-base font-bold text-base-100">
-            Browse by topic
-          </span>
+          <IoArrowDownOutline className="h-4 w-auto" />
+          <span className="text-base font-bold">Browse by topic</span>
         </div>
 
         <ul className="no-scrollbar max-h-[78vh] overflow-scroll">
@@ -110,12 +108,14 @@ const Topics = ({ topic, setTopicSelected }) => {
               <button
                 href="#"
                 className={
-                  'flex w-full items-center space-x-4 rounded-md py-1.5 px-2 text-left text-sm text-base-300 hover:bg-base-600 hover:text-white ' +
-                  (topic?.type === item.type && 'bg-base-600')
+                  'flex w-full items-center space-x-4 rounded-md py-1.5 px-2 text-left text-sm hover:text-base-900 dark:hover:text-white  ' +
+                  (topic?.type === item.type
+                    ? 'text-base-900 dark:text-white dark:hover:bg-base-900'
+                    : 'text-base-500 hover:bg-base-200/50 dark:text-base-400 dark:hover:bg-base-800')
                 }
                 onClick={() => {
                   setTopicSelected(item);
-                  sendSlackMessage(`Clicked on Hangout topic ${item?.label}`);
+                  // sendSlackMessage(`Clicked on Hangout topic ${item?.label}`);
                 }}
               >
                 <Icon iconName={`${item.icon}`} selected={item.type} />

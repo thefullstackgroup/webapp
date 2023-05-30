@@ -30,7 +30,7 @@ const Actions = (props) => {
         </button>
       ) : (
         <button
-          className="btn-secondary btn-with-icon hover:bg-primary-400/20 sm:hover:text-primary-500 group group relative cursor-pointer space-x-1 rounded-xl bg-transparent pl-2 pr-2 text-sm"
+          className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm dark:hover:bg-violet-500/40 dark:hover:text-violet-500"
           onClick={commentAction}
         >
           <ToolTip message={'Comment'} />

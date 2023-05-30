@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
-import { RangeFilter, SortFilter } from 'components/modules/explore/constants';
-import dynamic from 'next/dynamic';
-import ProjectGallery from './ProjectGallery';
-import Filters from 'components/modules/explore/Filters';
+import { IoLogoGithub } from 'react-icons/io5';
+import { FcGoogle } from 'react-icons/fc';
+import ProjectGallery from 'components/modules/explore/ProjectGallery';
+import Discover from 'components/modules/explore/Discover';
+import Icon from 'components/common/elements/Icon';
+import DividerShowMore from 'components/common/elements/DividerShowMore';
+import { CategoriesFilter } from './constants';
+import Link from 'next/link';
+import useSWR from 'swr';
+import fetcher from 'utils/fetcher';
 
 export const Greeting = ({ name }) => {
   const myDate = new Date();
@@ -15,46 +20,286 @@ export const Greeting = ({ name }) => {
   else if (hours >= 17 && hours <= 24) greet = 'Good evening';
 
   return (
-    <h4 className="mb-4 hidden text-xl font-semibold tracking-tight text-base-100 md:block md:text-2xl">
+    <h4 className="hidden text-2xl font-semibold tracking-tight md:block">
       {greet}, <span className="capitlize">{firstName[0]}</span> 👋
     </h4>
   );
 };
 
-const Main = ({ user, orderBy, rangeFrom, category }) => {
-  const [sort, setSort] = useState(orderBy || SortFilter[0]);
-  const [range, setRange] = useState(rangeFrom || RangeFilter[2]);
-  const [stack, setStack] = useState(null);
-  const [term, setTerm] = useState('');
+const Main = ({ user }) => {
+  const viewsURL = `${process.env.BASEURL}/api/stats/profile/getStats`;
+  const { data: views } = useSWR(viewsURL, fetcher);
+  const numberOfViews = views ? views.totalUniqueProfileViewCount : 0;
+  const numberOfReactions = views ? views.totalNumberOfReactions : 0;
+  const viewsLastWeekURL = `${process.env.BASEURL}/api/stats/profile/getStats?range=7`;
+  const { data: viewsLastWeek } = useSWR(viewsLastWeekURL, fetcher);
+
+  const numberOfViewsLastWeek = viewsLastWeek
+    ? viewsLastWeek.totalUniqueProfileViewCount
+    : 0;
+  const numberOfReactionsLastWeek = viewsLastWeek
+    ? viewsLastWeek.totalNumberOfReactions
+    : 0;
+
+  const viewsDiff = (numberOfViewsLastWeek / numberOfViews) * 100;
+  const reactionsDiff = (numberOfReactionsLastWeek / numberOfReactions) * 100;
 
   return (
-    <>
-      <div className="min-h-screen">
-        <div className="space-y-2 py-10 text-center">
-          <h2 className="text-5xl font-bold tracking-tight">
-            Explore showcase
-          </h2>
-          <h4 className="mx-auto max-w-2xl text-xl font-normal tracking-tight text-gray-400 dark:text-gray-400">
-            Discover awesome projects from the developer showcase
-          </h4>
+    <div className="min-h-screen space-y-4 pt-6">
+      {!user && (
+        <div className="rounded-2xl bg-base-200/80 dark:bg-base-800">
+          <div className="mx-auto max-w-3xl py-14 text-center">
+            <div className="relative space-y-6">
+              <h2 className="text-5xl font-bold tracking-tight">
+                <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-blue-600 bg-clip-text text-transparent">
+                  Discover and connect
+                </span>{' '}
+                with developers sharing projects.
+              </h2>
+              <h4 className="mx-auto max-w-2xl text-xl font-normal tracking-tight text-base-400 dark:text-base-400">
+                The Full Stack is an open source platform for developers to
+                share projects with a supportive dev community and grow a
+                network of value.
+              </h4>
+              <div className="flex items-center justify-center space-x-4">
+                <button className="btn btn-secondary btn-with-icon rounded-full py-2">
+                  <IoLogoGithub className="h-5 w-5" />
+                  <span>Continue with GitHub</span>
+                </button>
+                <button className="btn btn-secondary btn-with-icon rounded-full py-2">
+                  <FcGoogle />
+                  <span>Continue with Google</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="relative">
-          <Filters
-            range={range}
-            setRange={setRange}
-            stack={stack}
-            setStack={setStack}
-            sort={sort}
-            setSort={setSort}
+      )}
+      {user && (
+        <div className="flex items-center justify-between">
+          <div>
+            <Greeting name={user?.name} />
+          </div>
+          <div className="flex items-end space-x-6">
+            <div className="flex w-full space-x-2 whitespace-nowrap">
+              <span className="text-sm">Views:</span>
+
+              <div className="text-sm font-medium">
+                {numberOfViews}
+
+                {viewsDiff > 0 && (
+                  <span className="pl-1 text-xs text-green-500">
+                    +{viewsDiff.toFixed(1)}%
+                  </span>
+                )}
+              </div>
+            </div>
+            <div className="flex w-full  space-x-2 whitespace-nowrap">
+              <span className="text-sm">Reactions:</span>
+
+              <div className="text-sm font-medium">
+                {numberOfReactions}
+                {reactionsDiff > 0 && (
+                  <span className="pl-1 text-xs text-green-500">
+                    +{reactionsDiff.toFixed(1)}%
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      <div className="pt-4 pb-10">
+        <Discover user={user} sort="newest" range={90} />
+      </div>
+
+      <div className="space-y-4">
+        <h3 className="flex items-center space-x-2">
+          <Icon name={'FiStar'} className="h-6 w-6" />
+          <span>Popular projects this month</span>
+        </h3>
+        <ProjectGallery
+          sort={'mostpopular'}
+          range={90}
+          count={4}
+          cols={4}
+          feature={true}
+        />
+      </div>
+
+      <DividerShowMore
+        label="Browse popular projects"
+        href="/explore/popular"
+      />
+
+      <div className="space-y-4">
+        <h3 className="flex items-center space-x-2">
+          <Icon name={'FiTool'} className="h-6 w-6" />
+          <span>New projects added</span>
+        </h3>
+
+        <ProjectGallery sort={'newest'} range={30} count={5} cols={5} />
+      </div>
+
+      <DividerShowMore
+        label="Show more projects"
+        href="/explore/popular/opentocollab"
+      />
+
+      <div className="space-y-4">
+        <h3 className="flex items-center space-x-2">
+          <Icon name={'FiTool'} className="h-6 w-6" />
+          <span>Projects open to collaboration</span>
+        </h3>
+
+        <ProjectGallery
+          sort={'mostpopular'}
+          category={{
+            label: 'Open to Collaboration',
+            slug: 'opentocollab',
+            term: 'opentocollab',
+            title: 'Projects open to collaboration',
+            desc: 'Discover and connect to developers actively looking for collaborators',
+          }}
+          range={90}
+          count={5}
+          cols={5}
+        />
+      </div>
+
+      <DividerShowMore
+        label="Show more projects"
+        href="/explore/popular/opentocollab"
+      />
+
+      <div className="space-y-4">
+        <h3 className="flex items-center space-x-2">
+          <Icon name={'IoDesktopOutline'} pack={'Io'} className="h-6 w-6" />
+          <span>Awesome apps you&apos;ll like</span>
+        </h3>
+        <ProjectGallery
+          sort={'mostpopular'}
+          category={{
+            label: 'Apps',
+            slug: 'apps',
+            term: 'apps',
+            title: 'Full stack apps projects',
+            desc: 'Cool apps built by the community',
+          }}
+          range={90}
+          count={5}
+          cols={5}
+        />
+      </div>
+
+      <DividerShowMore label="Show more apps" href="/explore/popular/apps" />
+
+      <div className="space-y-4">
+        <h3 className="flex items-center space-x-2">
+          <Icon
+            name={'IoGameControllerOutline'}
+            pack={'Io'}
+            className="h-7 w-7"
           />
-          <ProjectGallery
-            sort={sort.orderBy}
-            range={range.days}
-            stack={stack}
-          />
+          <span>Games projects you&apos;ll like</span>
+        </h3>
+        <ProjectGallery
+          sort={'mostpopular'}
+          category={{
+            label: 'Games',
+            slug: 'games',
+            term: 'games',
+            title: 'Games',
+            desc: '',
+          }}
+          range={365}
+          count={5}
+          cols={5}
+        />
+      </div>
+
+      <DividerShowMore label="Show more games" href="/explore/popular/games" />
+
+      <div className="space-y-4">
+        <h3 className="flex items-center space-x-2">
+          <Icon name={'FiTool'} className="h-6 w-6" />
+          <span>Dev tool projects</span>
+        </h3>
+
+        <ProjectGallery
+          sort={'mostpopular'}
+          category={{
+            label: 'Tools',
+            slug: 'tools',
+            term: 'tools',
+            title: '',
+            desc: '',
+          }}
+          range={90}
+          count={5}
+          cols={5}
+        />
+      </div>
+
+      <DividerShowMore label="Show more tools" href="/explore/popular/tools" />
+
+      <div className="space-y-4">
+        <h3 className="flex items-center space-x-2">
+          <Icon name={'FiGitPullRequest'} className="h-6 w-6" />
+          <span>Open source projects</span>
+        </h3>
+
+        <ProjectGallery
+          sort={'mostpopular'}
+          category={{
+            label: 'Open Source',
+            slug: 'opensource',
+            term: 'opensource',
+            title: '',
+            desc: '',
+          }}
+          range={365}
+          count={5}
+          cols={5}
+        />
+      </div>
+
+      <DividerShowMore
+        label="Show more open source"
+        href="/explore/popular/opensource"
+      />
+
+      <div className="space-y-4">
+        <h3 className="flex items-center space-x-2">
+          <span>Browse by category</span>
+        </h3>
+        <div className="no-scrollbar mt-6 grid grid-cols-6 gap-4 px-4 md:px-0">
+          {CategoriesFilter.map(
+            (item, index) =>
+              item.slug !== 'datascience' && (
+                <Link href={`/explore/popular/${item.slug}`} key={index}>
+                  <div className="group flex h-32 w-full cursor-pointer flex-col justify-between rounded-lg border border-transparent bg-base-200/50 p-4 text-left duration-200 hover:border-base-700 hover:bg-base-50 dark:border-base-700 dark:bg-base-900 dark:hover:border-base-100 dark:hover:bg-base-900">
+                    <div className="flex flex-col">
+                      <span className="text-base font-medium text-base-700 group-hover:text-base-700 dark:text-base-200 dark:group-hover:text-base-100">
+                        {item.label}
+                      </span>
+                      <span className="text-sm text-base-300 dark:text-base-400">
+                        {item.desc}
+                      </span>
+                    </div>
+                    <div className="flex justify-end">
+                      <Icon
+                        name={'FiChevronRight'}
+                        className="text-base-300 dark:text-base-400"
+                      />
+                    </div>
+                  </div>
+                </Link>
+              )
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

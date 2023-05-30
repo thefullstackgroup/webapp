@@ -1,23 +1,21 @@
 import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
 import Meta from 'components/common/partials/Metadata';
-import Layout from 'components/common/layout/LayoutLoggedIn';
+import Layout from 'components/common/layout/Layout';
 import Main from 'components/modules/account/wallet/Main';
 
-const AccountWallet = ({ userProfile, promo }) => {
+const AccountWallet = ({ user, promo }) => {
   return (
     <>
       <Meta
-        title={`${process.env.brandName} | Wallet`}
+        title={`${user.name} | Wallet`}
         description="The developer network"
         keywords=""
       />
 
-      {userProfile && (
-        <Layout user={userProfile}>
-          <Main user={userProfile} promo={promo} />
-        </Layout>
-      )}
+      <Layout user={user}>
+        <Main user={user} promo={promo} />
+      </Layout>
     </>
   );
 };
@@ -31,7 +29,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
 
     return {
       props: {
-        userProfile: userProfile,
+        user: userProfile || null,
         promo: {
           code: 'EARLYADOPTER',
           value: 20,

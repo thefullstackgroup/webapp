@@ -8,7 +8,7 @@ const UserProfile = ({ user, displayName }) => {
   return (
     <>
       <Meta
-        title={`${user.name} on ${process.env.brandName}`}
+        title={`${displayName} on ${process.env.brandName}`}
         description={`${displayName}'s developer story on The Full Stack`}
         keywords=""
       />

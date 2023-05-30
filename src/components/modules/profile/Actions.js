@@ -18,7 +18,7 @@ const Actions = ({
 }) => {
   return (
     <div className="flex items-center justify-start space-x-3">
-      {profile?.userId !== myProfile?.userId && (
+      {myProfile && profile?.userId !== myProfile?.userId && (
         <ButtonFollow
           followToUser={profile?.userId}
           followFromUser={myProfile?.userId}
@@ -26,7 +26,7 @@ const Actions = ({
         />
       )}
 
-      {!isConnected && profile?.userId !== myProfile?.userId && (
+      {myProfile && !isConnected && profile?.userId !== myProfile?.userId && (
         <ButtonConnect
           connectionPending={isConnectionPending}
           connectFrom={myProfile}
@@ -34,13 +34,13 @@ const Actions = ({
         />
       )}
 
-      {isConnected && profile?.userId !== myProfile?.userId && (
+      {myProfile && isConnected && profile?.userId !== myProfile?.userId && (
         <div>
           <ButtonChat profile={profile} myProfile={myProfile} />
         </div>
       )}
 
-      {profile?.userId !== myProfile?.userId && (
+      {myProfile && profile?.userId !== myProfile?.userId && (
         <ButtonReport user={myProfile} profile={profile} />
       )}
 

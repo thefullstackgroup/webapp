@@ -15,8 +15,8 @@ initAuth();
 
 function App({ Component, pageProps }) {
   initFirebasePresence();
-
   const router = useRouter();
+
   useEffect(() => {
     const handleRouteChange = (url) => {
       ga.pageview(url);
@@ -31,7 +31,7 @@ function App({ Component, pageProps }) {
     <ThemeProvider attribute="class">
       <UserStateProvider>
         <NextProgress
-          color="#EEEEEE"
+          color="#666666"
           delay={500}
           options={{ showSpinner: false }}
         />

@@ -7,26 +7,24 @@ import fetcher from 'utils/fetcher';
 const SuggestedUserCard = (props) => {
   return (
     <>
+      <div className="mx-auto sm:h-28 sm:w-24">
+        {props.project.projectCreator.profilePicUrl && (
+          <Avatar
+            userId={props.project.userId}
+            href={`/${props.project.projectCreator.displayName}`}
+            image={props.project.projectCreator.profilePicUrl}
+            dimensions="h-20 w-20 sm:h-24 sm:w-24 rounded-full opacity-100 sm:group-hover:ring-4 group-hover:ring-primary-500 duration-200"
+          />
+        )}
+      </div>
       <Link href={`/${props.project.projectCreator.displayName}`}>
-        <div className="group relative h-32 w-full cursor-pointer sm:h-36">
-          <div className="mx-auto h-24 w-20 pt-2 sm:h-28 sm:w-24">
-            {props.project.projectCreator.profilePicUrl && (
-              <Avatar
-                userId={props.project.userId}
-                href={`/${props.project.projectCreator.displayName}`}
-                image={props.project.projectCreator.profilePicUrl}
-                dimensions="h-20 w-20 sm:h-24 sm:w-24 rounded-full opacity-100 sm:group-hover:ring-4 group-hover:ring-primary-500 duration-200"
-              />
-            )}
-          </div>
-          <div className="text-center text-base font-normal sm:font-semibold">
-            <p className="truncate text-xs">
-              {props.project.projectCreator.displayName}
-            </p>
-            <p className="hidden truncate text-xs font-normal text-base-400 sm:block">
-              {props.project.projectCreator.currentTitle}
-            </p>
-          </div>
+        <div className="text-center text-base font-normal sm:font-semibold">
+          <p className="truncate text-xs">
+            {props.project.projectCreator.displayName}
+          </p>
+          <p className="hidden truncate text-xs font-normal text-base-400 sm:block">
+            {props.project.projectCreator.currentTitle}
+          </p>
         </div>
       </Link>
     </>
@@ -89,10 +87,7 @@ const Discover = ({ user, count, search }) => {
             {suggestedUsers?.map(
               (project, index) =>
                 user?.userId !== project.userId && (
-                  <div
-                    className="h-32 w-24 overflow-visible sm:h-36 sm:w-24"
-                    key={index}
-                  >
+                  <div className="h-32 w-24 sm:h-36 sm:w-24" key={index}>
                     <SuggestedUserCard project={project} user={user} />
                   </div>
                 )

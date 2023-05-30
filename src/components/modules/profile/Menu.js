@@ -17,12 +17,10 @@ const Tabs = ({ tab, setTab, profile }) => {
       ))}
       {profile?.bio?.devToAccount && profile?.bio?.devToAccount !== '' && (
         <button
-          className={tab == 3 ? 'btn-pill-active' : 'btn-pill'}
-          //   `sm:px-4.5 flex w-full items-center space-x-1 whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium sm:py-1 md:w-auto ` +
-          //   (tab === 3
-          //     ? `bg-base-500/70 text-white`
-          //     : `bg-base-700/70 text-base-400 hover:bg-base-700 hover:text-white`)
-          // }
+          className={
+            'flex items-center space-x-1 ' +
+            (tab == 3 ? 'btn-pill-active' : 'btn-pill')
+          }
           onClick={() => setTab(3)}
         >
           <FaDev className="mx-auto h-5 w-5" />
@@ -33,10 +31,8 @@ const Tabs = ({ tab, setTab, profile }) => {
         profile?.bio?.hashNodeAccount !== '' && (
           <button
             className={
-              `sm:px-4.5 flex w-full items-center space-x-1 whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium sm:py-1 md:w-auto ` +
-              (tab === 4
-                ? `bg-base-500/70 text-white`
-                : `bg-base-700/70 text-base-400 hover:bg-base-700 hover:text-white`)
+              'flex items-center space-x-1 ' +
+              (tab == 4 ? 'btn-pill-active' : 'btn-pill')
             }
             onClick={() => setTab(4)}
           >
@@ -47,10 +43,8 @@ const Tabs = ({ tab, setTab, profile }) => {
       {profile?.bio?.mediumAccount && profile?.bio?.mediumAccount !== '' && (
         <button
           className={
-            `sm:px-4.5 flex w-full items-center space-x-1 whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium sm:py-1 md:w-auto ` +
-            (tab === 5
-              ? `bg-base-500/70 text-white`
-              : `bg-base-700/70 text-base-400 hover:bg-base-700 hover:text-white`)
+            'flex items-center space-x-1 ' +
+            (tab == 5 ? 'btn-pill-active' : 'btn-pill')
           }
           onClick={() => setTab(5)}
         >

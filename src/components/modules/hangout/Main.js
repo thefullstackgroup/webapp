@@ -16,32 +16,35 @@ const Main = ({ user }) => {
 
   return (
     <>
-      <div className="mt-4 flex md:mt-12">
-        <div className="mx-auto w-full max-w-2xl overflow-hidden lg:max-w-3xl">
+      <div className="flex gap-20">
+        <div className="w-1/5">
+          <Topics topic={topicSelected} setTopicSelected={setTopicSelected} />
+        </div>
+        <div className="min-h-screen w-3/5 border-l border-r border-base-200 dark:border-base-700">
           <div className="w-full">
             <CreatePost user={user} />
-            <div className="relative flex space-x-8 border-b border-base-600 px-4 pb-4 text-base sm:border-b-0 sm:px-1">
+            <div className="relative flex space-x-4 border-b border-base-200 px-8 pb-4 dark:border-base-600">
+              <button
+                className={
+                  topicSelected?.type == null ? 'btn-pill-active' : 'btn-pill'
+                }
+                onClick={() => setTopicSelected(null)}
+              >
+                Global
+              </button>
+
               {topicSelected && topicSelected?.type !== 'following' && (
-                <button className="rounded-md font-semibold text-base-100">
-                  <h3>{topicSelected?.label}</h3>
+                <button className="btn-pill-active">
+                  &rarr; {topicSelected?.label}
                 </button>
               )}
 
               <button
-                className={`${
-                  topicSelected ? 'text-base-400' : 'text-base-100'
-                } font-semibold `}
-                onClick={() => setTopicSelected(null)}
-              >
-                <h3>Global</h3>
-              </button>
-
-              <button
-                className={`${
+                className={
                   topicSelected?.type === 'following'
-                    ? 'text-base-100'
-                    : 'text-base-400'
-                } relative font-semibold `}
+                    ? 'btn-pill-active relative'
+                    : 'btn-pill relative'
+                }
                 onClick={() => {
                   setTopicSelected({
                     label: 'Following',
@@ -53,9 +56,9 @@ const Main = ({ user }) => {
                   );
                 }}
               >
-                <h3>Following </h3>
-                <div className="absolute -top-2 -right-10">
-                  <span className="rounded-xl border border-green-700 py-0.5 px-1 text-[0.7em] text-green-600">
+                Following
+                <div className="absolute -top-2 -right-4">
+                  <span className="rounded-xl border border-green-700 bg-base-50 py-0.5 px-1 text-[0.7em] text-green-600 dark:bg-base-900">
                     Beta
                   </span>
                 </div>
@@ -65,8 +68,8 @@ const Main = ({ user }) => {
 
           <Feed user={user} topic={topicSelected?.type} following={null} />
         </div>
+        <div className="w-1/5"></div>
       </div>
-      <Topics topic={topicSelected} setTopicSelected={setTopicSelected} />
     </>
   );
 };

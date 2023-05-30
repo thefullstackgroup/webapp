@@ -26,7 +26,7 @@ const Overview = ({
   setUploadVideoIntroPanel,
 }) => {
   const [showStacks, setShowStacks] = useState(false);
-  const [myProfileImage, setMyProfileImage] = useState(user.profilePicUrl);
+  const [myProfileImage, setMyProfileImage] = useState(user?.profilePicUrl);
   const countryCode = profile ? lookup.byCountry(profile?.country) : null;
 
   const handleFileChange = async (event) => {
@@ -64,7 +64,7 @@ const Overview = ({
             <Avatar
               userId={profile?.userId}
               image={
-                profile?.userId === user.userId
+                profile?.userId === user?.userId
                   ? myProfileImage
                   : profile?.profilePicUrl
               }
@@ -74,7 +74,7 @@ const Overview = ({
               height={500}
               layout="fill"
             />
-            {isConnected && profile?.userId !== user.userId && (
+            {user && isConnected && profile?.userId !== user.userId && (
               <div className="group absolute -bottom-2 -left-1 flex cursor-pointer items-center space-x-1 rounded-full bg-base-700 py-1 px-2 text-xs text-yellow-500 md:-bottom-2 md:left-0">
                 <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-base-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-base-600 before:content-[''] group-hover:opacity-100">
                   You are connected
@@ -83,7 +83,7 @@ const Overview = ({
                 <span>Buddy</span>
               </div>
             )}
-            {profile?.userId === user.userId && (
+            {user && profile?.userId === user.userId && (
               <div className="absolute top-4 left-5 h-8 w-10 md:top-10 md:left-12 md:h-12 md:w-12">
                 <label
                   htmlFor="avatar"
@@ -126,7 +126,7 @@ const Overview = ({
                   Joined {Moment(profile?.createdDate).format('MMMM YYYY')}
                 </span>
               </div>
-              {teams?.data[0]?.status === 'ACTIVE' &&
+              {/* {teams?.data[0]?.status === 'ACTIVE' &&
                 teams?.data?.length > 0 && (
                   <Link href={`/teams/${teams.data[0].id}`} passHref>
                     <a className="group flex items-center space-x-1">
@@ -138,7 +138,7 @@ const Overview = ({
                       </span>
                     </a>
                   </Link>
-                )}
+                )} */}
             </div>
 
             <div className="mt-3 hidden cursor-pointer text-base lg:block">
@@ -164,7 +164,7 @@ const Overview = ({
                       )
                   )}
 
-              {profile?.userTechStacks.length > 12 &&
+              {profile?.userTechStacks?.length > 12 &&
                 (showStacks ? (
                   <button
                     className="flex items-center space-x-1 text-xs text-base-400"

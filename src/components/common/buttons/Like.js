@@ -49,20 +49,20 @@ const ButtonLike = ({ user, post }) => {
       {post.projectType === 'PROJECT' ? (
         <>
           <button
-            className="btn-secondary btn-with-icon bg-transparent hover:bg-tfstertiary-600/10 sm:hover:text-green-400 rounded-xl group pl-1 pr-2 text-sm space-x-1 group relative"
+            className="btn btn-ghost btn-with-icon hover:bg-tfstertiary-600/10 group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm sm:hover:text-green-400"
             onClick={() => handleLike()}
           >
             <ToolTip message="Upvote" />
             {isLiked ? (
               <>
-                <BiUpvote className="text-tfstertiary-500 w-6 h-6" />
+                <BiUpvote className="text-tfstertiary-500 h-6 w-6" />
                 <span className="text-tfstertiary-500">
                   {Math.abs(refreshLikes)}
                 </span>
               </>
             ) : (
               <>
-                <BiUpvote className="w-6 h-6 sm:group-hover:text-green-400" />
+                <BiUpvote className="h-6 w-6 sm:group-hover:text-green-400" />
                 <span>{Math.abs(refreshLikes)}</span>
               </>
             )}
@@ -70,20 +70,20 @@ const ButtonLike = ({ user, post }) => {
         </>
       ) : (
         <button
-          className="btn-secondary btn-with-icon bg-transparent hover:bg-red-500/20 sm:hover:text-red-400 rounded-xl group pl-1 pr-2 text-sm space-x-1 group relative"
+          className="btn btn-ghost btn-with-icon group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm hover:bg-red-500/20 hover:text-red-400 dark:hover:bg-red-500/20 dark:hover:text-red-400"
           onClick={() => handleLike()}
         >
           <ToolTip message="Like" />
           {isLiked ? (
             <>
-              <IoHeart className="text-red-500 w-6 h-6" />
-              <span className="text-red-400 flex items-center text-sm">
+              <IoHeart className="h-6 w-6 text-red-500" />
+              <span className="flex items-center text-sm text-red-400">
                 {Math.abs(refreshLikes)}
               </span>
             </>
           ) : (
             <>
-              <IoHeartOutline className="w-6 h-6 sm:group-hover:text-red-400" />
+              <IoHeartOutline className="h-6 w-6 sm:group-hover:text-red-400" />
               <span>{Math.abs(refreshLikes)}</span>
             </>
           )}

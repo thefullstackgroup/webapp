@@ -1,22 +1,21 @@
 import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
 import Meta from 'components/common/partials/Metadata';
-import Layout from 'components/common/layout/LayoutLoggedIn';
+import Layout from 'components/common/layout/Layout';
 import InviteFriends from 'components/modules/account/profile/InviteFriends';
 
-const Invite = ({ userProfile }) => {
+const Invite = ({ user }) => {
   return (
     <div>
       <Meta
-        title={`${process.env.brandName} | Invite friends`}
+        title={`${user.name} | Invite your friends`}
         description="The developer network"
         keywords=""
       />
-      {userProfile && (
-        <Layout user={userProfile}>
-          <InviteFriends user={userProfile} />
-        </Layout>
-      )}
+
+      <Layout user={user}>
+        <InviteFriends user={user} />
+      </Layout>
     </div>
   );
 };
@@ -39,7 +38,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
 
     return {
       props: {
-        userProfile: userProfile,
+        user: userProfile || null,
       },
     };
   }

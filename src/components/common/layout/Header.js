@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import ProfilePopoverPanel from './ProfilePopoverPanel';
 
-const Header = ({ user }) => {
+const Header = ({ user, headerFixed = false }) => {
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const [showHeader, setShowHeader] = useState(true);
@@ -30,12 +30,14 @@ const Header = ({ user }) => {
   };
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', controlNavbar);
+    if (!headerFixed) {
+      if (typeof window !== 'undefined') {
+        window.addEventListener('scroll', controlNavbar);
 
-      return () => {
-        window.removeEventListener('scroll', controlNavbar);
-      };
+        return () => {
+          window.removeEventListener('scroll', controlNavbar);
+        };
+      }
     }
   }, [lastScrollY]);
 
@@ -103,7 +105,7 @@ const Header = ({ user }) => {
             <div className="flex items-center space-x-3">
               <a
                 href="https://github.com/thefullstackgroup/thefullstack"
-                className="nav-bar flex items-center space-x-2 bg-base-200/50 text-sm dark:bg-base-700/50"
+                className="nav-bar flex items-center space-x-2 bg-base-200 text-sm dark:bg-base-700/50"
               >
                 <Icon name={'FiStar'} className="h-3 w-3" />
                 <span>Star us on GitHub</span>

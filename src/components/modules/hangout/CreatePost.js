@@ -237,8 +237,8 @@ const CreatePost = ({ user }) => {
 
   return (
     <>
-      <div className="mx-0 mb-6 flex border-b border-base-600 sm:mx-0 sm:rounded-lg sm:border-b-0 sm:bg-base-800">
-        <div className="flex w-full">
+      <div className="mx-0 mb-6 flex border-b border-base-200 py-6 dark:border-base-700">
+        <div className="flex w-full px-4">
           <div className="relative ml-2 mr-4 w-full pb-4">
             <div className="mb-2 border-gray-800 px-2 text-lg text-base-500">
               {postType !== 'SPARK' && (
@@ -260,7 +260,7 @@ const CreatePost = ({ user }) => {
                 name="postBody"
                 autoFocus
                 rows={1}
-                className="text-input bg-transparent px-0"
+                className="text-input border-0 bg-transparent px-0 text-lg"
                 placeholder={
                   postType === 'POLL'
                     ? `Type question here...`
@@ -395,7 +395,7 @@ const CreatePost = ({ user }) => {
                   </button>
                 ) : (
                   <button
-                    className="btn-primary btn-with-icon pl-4"
+                    className="btn btn-primary btn-with-icon pl-4"
                     onClick={handleSubmitPost}
                     disabled={postButtonDisabled}
                   >

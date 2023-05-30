@@ -2,7 +2,7 @@ import { withAuthUserTokenSSR } from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
 import Meta from 'components/common/partials/Metadata';
 import Layout from 'components/common/layout/Layout';
-import Page from 'components/modules/home/Main';
+import Page from 'components/modules/explore/Main';
 
 const Home = ({ user }) => {
   return (

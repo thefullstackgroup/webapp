@@ -90,23 +90,10 @@ const Post = (props) => {
 
   return (
     <>
-      <div className="w-full cursor-pointer bg-base-100 dark:bg-base-800">
-        <article
-          className={
-            'border-b pt-4 pb-4 ' +
-            (props.seperator
-              ? 'border-transparent'
-              : 'border-base-200 dark:border-base-900')
-          }
-        >
+      <div className="w-full cursor-pointer border-b py-4 px-4 dark:border-base-700">
+        <article>
           <div className="mx-4 mb-0">
-            {props.project.projectType !== 'SPARK' && !props.pinnedPost && (
-              <div className="ml-14 mb-2 flex pl-1 md:ml-16 md:pl-2">
-                <PostTypePill postType={props.project.projectType} />
-              </div>
-            )}
-
-            <div className="flex items-start">
+            <div className="flex items-start gap-6">
               {props.myProfile == null && (
                 <div className="">
                   <Avatar
@@ -123,7 +110,7 @@ const Post = (props) => {
 
               {/* Card Content */}
 
-              <div className="ml-4 w-full sm:mr-4">
+              <div className="w-full">
                 <div className="flex-1">
                   {props.myProfile == null && (
                     <div className="mb-2 space-y-0">
@@ -347,29 +334,20 @@ const Post = (props) => {
                       <PostInsights
                         projectId={props.project.projectId || props.project._id}
                         showViews={false}
-                        showAvatars={false}
                       />
                     </div>
                   )}
                 </div>
+                <div className="-ml-2 mt-6 flex justify-between">
+                  <Actions
+                    user={props.user}
+                    project={props.project}
+                    isLiked={props.isLiked}
+                    nComments={props.nComments}
+                    setShowPost={setShowPost}
+                  />
+                </div>
               </div>
-            </div>
-          </div>
-
-          <div
-            className={
-              'w-full py-0 pl-6 pr-8 ' +
-              (props.myProfile == null && 'ml-2 pl-14 sm:ml-6')
-            }
-          >
-            <div className="flex justify-between pl-2 pr-5">
-              <Actions
-                user={props.user}
-                project={props.project}
-                isLiked={props.isLiked}
-                nComments={props.nComments}
-                setShowPost={setShowPost}
-              />
             </div>
           </div>
         </article>

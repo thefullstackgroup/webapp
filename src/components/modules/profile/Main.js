@@ -3,6 +3,7 @@ import axios from 'axios';
 import useSWR, { mutate } from 'swr';
 import { useState } from 'react';
 import { isMobile } from 'react-device-detect';
+import { useTheme } from 'next-themes';
 import GitHubCalendar from 'react-github-calendar';
 import fetcher from 'utils/fetcher';
 import Loader from 'components/common/elements/Loader';
@@ -22,7 +23,15 @@ import Intro from 'components/modules/profile/sections/Intro';
 import Goals from 'components/modules/profile/sections/Goals';
 import Overview from 'components/modules/profile/sections/Overview';
 
-const GitHubCalendarTheme = {
+const GitHubCalendarLightTheme = {
+  level4: '#216E39',
+  level3: '#30A14E',
+  level2: '#40C463',
+  level1: '#9BE9A8',
+  level0: '#EBEDF0',
+};
+
+const GitHubCalendarDarkTheme = {
   level4: '#39D353',
   level3: '#26A641',
   level2: '#006D32',
@@ -31,6 +40,8 @@ const GitHubCalendarTheme = {
 };
 
 const Main = (props) => {
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === 'system' ? systemTheme : theme;
   const [tab, setTab] = useState(0);
   const [createTeamPanel, setCreateTeamPanel] = useState(false);
   const [uploadVideoIntroPanel, setUploadVideoIntroPanel] = useState(false);
@@ -43,11 +54,11 @@ const Main = (props) => {
   const profileURL = `${process.env.BASEURL}/api/profile/user?userId=${props.displayName}`;
   const { data: profile } = useSWR(profileURL, fetcher);
 
-  const myProfileURL = `${process.env.BASEURL}/api/profile/me`;
-  const { data: myProfile } = useSWR(myProfileURL, fetcher);
+  // const myProfileURL = `${process.env.BASEURL}/api/profile/me`;
+  // const { data: myProfile } = useSWR(myProfileURL, fetcher);
 
-  const teamsURL = `${process.env.BASEURL}/api/teams/getTeamsByUser?userId=${profile?.userId}`;
-  const { data: teams } = useSWR(teamsURL, fetcher);
+  // const teamsURL = `${process.env.BASEURL}/api/teams/getTeamsByUser?userId=${profile?.userId}`;
+  // const { data: teams } = useSWR(teamsURL, fetcher);
 
   const checkIfConnected = async () => {
     axios
@@ -66,12 +77,12 @@ const Main = (props) => {
   };
 
   useEffect(() => {
-    if (profile) checkIfConnected(profile?.userId);
+    if (props.myProfile) checkIfConnected(profile?.userId);
   }, [isConnected, profile]);
 
   useEffect(() => {
     if (profile && !profile?.error) mutate(profileURL);
-    if (myProfile && !myProfile?.error) mutate(myProfileURL);
+    // if (propsmyProfile && !myProfile?.error) mutate(myProfileURL);
   });
 
   if (!profile)
@@ -93,19 +104,19 @@ const Main = (props) => {
           user={props.myProfile}
           isConnected={isConnected}
           isConnectionPending={isConnectionPending}
-          teams={teams}
+          teams={null}
           setShowEditProfile={setShowEditProfile}
           setUploadVideoIntroPanel={setUploadVideoIntroPanel}
         />
 
-        {profile.userId === props.myProfile.userId && (
+        {profile.userId === props.myProfile?.userId && (
           <Goals
-            goal={props.myProfile.profileGoal}
+            goal={props.myProfile?.profileGoal}
             setCreateTeamPanel={setCreateTeamPanel}
           />
         )}
 
-        {profile?.userId === props.myProfile.userId && (
+        {profile?.userId === props.myProfile?.userId && (
           <div className="relative mx-auto mb-8 max-w-screen-lg gap-4 px-4 sm:mb-10 md:px-0 lg:flex">
             <AccountsSection profile={profile} />
           </div>
@@ -116,7 +127,11 @@ const Main = (props) => {
             <GitHubCalendar
               username={profile?.gitHubUserName}
               blockSize={16}
-              theme={GitHubCalendarTheme}
+              theme={
+                currentTheme === 'dark'
+                  ? GitHubCalendarDarkTheme
+                  : GitHubCalendarLightTheme
+              }
               hideColorLegend={isMobile ? true : false}
               hideMonthLabels={isMobile ? true : false}
             />
@@ -176,11 +191,11 @@ const Main = (props) => {
         <CreateTeam
           user={props.myProfile}
           setCreateTeamPanel={setCreateTeamPanel}
-          teams={teams}
+          teams={null}
         />
       </ModalDialog>
 
-      {profile.userId === props.myProfile.userId && (
+      {profile.userId === props.myProfile?.userId && (
         <>
           <ModalDialog
             show={uploadVideoIntroPanel}
@@ -190,7 +205,7 @@ const Main = (props) => {
             disabled
           >
             <div className="">
-              <VideoIntro user={myProfile} />
+              <VideoIntro user={props.myProfile} />
             </div>
           </ModalDialog>
         </>

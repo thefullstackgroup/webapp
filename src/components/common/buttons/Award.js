@@ -11,6 +11,7 @@ import { IoCheckmarkSharp } from 'react-icons/io5';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import ToolTip from 'components/common/elements/ToolTip';
 import fetcher from 'utils/fetcher';
+import Icon from '../elements/Icon';
 
 const rewards = [
   { amount: 0.05, numberOfDiamonds: 1 },
@@ -64,12 +65,12 @@ const AwardButton = ({ user, post }) => {
 
   return (
     <>
-      {user?.userId == post?.projectCreator?.userId ? (
-        <button className="btn-secondary btn-with-icon group relative cursor-not-allowed space-x-1 bg-transparent pl-1 pr-2 text-sm hover:bg-transparent">
+      {user?.userId === post?.projectCreator?.userId ? (
+        <button className="btn btn-ghost btn-with-icon group relative cursor-not-allowed space-x-1 bg-transparent px-2 text-sm hover:bg-transparent">
           <ToolTip message="Award" />
           {post.contentTotalDiamonds != null &&
           post.contentTotalDiamonds > 0 ? (
-            <BsGem className="h-5 w-5 text-yellow-500" />
+            <BsGem className="h-5 w-5 dark:text-yellow-500" />
           ) : (
             <BsGem className="h-5 w-5" />
           )}
@@ -84,15 +85,15 @@ const AwardButton = ({ user, post }) => {
       ) : (
         <div>
           <button
-            className="btn-secondary btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent pl-1 pr-2 text-sm hover:bg-yellow-400/20 sm:hover:text-yellow-500"
+            className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm dark:hover:bg-yellow-500/40 dark:hover:text-yellow-500"
             onClick={() => setSelectAward(!selectAward)}
           >
             <ToolTip message="Award" />
             {post.contentTotalDiamonds != null &&
             post.contentTotalDiamonds > 0 ? (
-              <BsGem className="h-5 w-5 text-yellow-500" />
+              <Icon name={'FiGift'} className="h-5 w-5 text-yellow-500" />
             ) : (
-              <BsGem className="h-5 w-5" />
+              <Icon name={'FiGift'} className="h-5 w-5" />
             )}
 
             {post.contentTotalDiamonds != null &&
@@ -110,7 +111,7 @@ const AwardButton = ({ user, post }) => {
           >
             <div className="flex flex-col space-y-4 px-2 py-4 text-center">
               <span className="mb-3 text-base font-normal text-base-200 line-clamp-2">
-                Select reward amount to send to{' '}
+                Select your reward to gift to{' '}
                 <span className="font-bold">
                   {post.projectCreator?.displayName}
                 </span>
@@ -120,7 +121,7 @@ const AwardButton = ({ user, post }) => {
                 {rewards.map((reward, index) => (
                   <button
                     key={index}
-                    className="group flex items-center justify-between space-x-4 rounded-xl bg-base-700 py-3 px-4 text-base text-base-200 hover:bg-base-600/80 hover:text-yellow-500"
+                    className="group flex items-center justify-between space-x-4 rounded-xl py-3 px-4 text-base text-base-200 duration-200 dark:bg-base-800 dark:hover:bg-base-600/80 dark:hover:text-yellow-500"
                     onClick={() => {
                       setTransactMessage(
                         `@${
@@ -136,7 +137,8 @@ const AwardButton = ({ user, post }) => {
                     <div className="flex space-x-2">
                       {[...Array(reward.numberOfDiamonds)].map(
                         (elementInArray, index) => (
-                          <BsGem
+                          <Icon
+                            name={'FiGift'}
                             key={index}
                             className="h-6 w-6 text-base-200 group-hover:text-yellow-400"
                           />
@@ -161,7 +163,8 @@ const AwardButton = ({ user, post }) => {
                   <div className="my-2 flex justify-center space-x-2">
                     {[...Array(transactDiamonds)].map(
                       (elementInArray, index) => (
-                        <BsGem
+                        <Icon
+                          name={'FiGift'}
                           key={index}
                           className="h-10 w-10 text-yellow-400"
                         />

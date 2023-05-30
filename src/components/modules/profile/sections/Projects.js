@@ -18,7 +18,7 @@ const Projects = ({ profile, myProfile }) => {
         <div className="mt-8 flex w-full flex-col items-center px-2 md:px-8">
           <div className="flex w-full flex-col items-center justify-evenly py-10 text-zinc-400 md:py-36">
             <span>No projects posted yet.</span>
-            {profile?.userId === myProfile.userId && (
+            {profile?.userId === myProfile?.userId && (
               <div className="mt-4 flex justify-center">
                 <Link href="/post">
                   <button className="btn-secondary">Show off a project</button>
@@ -32,7 +32,7 @@ const Projects = ({ profile, myProfile }) => {
         <div className="mt-8 flex w-full items-center">
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {projects?.map((project) => (
-              <div className="col-span-1 h-80" key={project._id}>
+              <div className="col-span-1" key={project._id}>
                 <ProjectCard project={project} user={myProfile} hideAuthor />
               </div>
             ))}

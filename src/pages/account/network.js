@@ -1,10 +1,10 @@
 import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
 import Meta from 'components/common/partials/Metadata';
-import Layout from 'components/common/layout/LayoutLoggedIn';
+import Layout from 'components/common/layout/Layout';
 import Main from 'components/modules/account/network/Main';
 
-const AccountNetwork = ({ userProfile }) => {
+const AccountNetwork = ({ user }) => {
   return (
     <>
       <div>
@@ -14,11 +14,9 @@ const AccountNetwork = ({ userProfile }) => {
           keywords=""
         />
 
-        {userProfile && (
-          <Layout user={userProfile}>
-            <Main user={userProfile} />
-          </Layout>
-        )}
+        <Layout user={user}>
+          <Main user={user} />
+        </Layout>
       </div>
     </>
   );
@@ -42,7 +40,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
 
     return {
       props: {
-        userProfile: userProfile,
+        user: userProfile || null,
       },
     };
   }

@@ -71,7 +71,7 @@ const ProfilePopoverPanel = ({ user }) => {
                   </Link>
 
                   <div className="flex flex-col border-b border-t border-base-200 py-2 dark:border-base-700">
-                    <Link href="#">
+                    <Link href="/account/dashboard">
                       <button
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
@@ -82,7 +82,7 @@ const ProfilePopoverPanel = ({ user }) => {
                         </span>
                       </button>
                     </Link>
-                    <Link href="#">
+                    <Link href="/account/network">
                       <button
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
@@ -93,7 +93,16 @@ const ProfilePopoverPanel = ({ user }) => {
                         </span>
                       </button>
                     </Link>
-                    <Link href="#">
+                    <Link href="/chat">
+                      <button
+                        className="nav-popover items-center"
+                        onClick={() => setIsShowing(false)}
+                      >
+                        <Icon name={'FiMessageSquare'} className="h-6 w-6" />
+                        <span className="text-black dark:text-white">Chat</span>
+                      </button>
+                    </Link>
+                    <Link href="/account/wallet">
                       <button
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
@@ -104,7 +113,7 @@ const ProfilePopoverPanel = ({ user }) => {
                         </span>
                       </button>
                     </Link>
-                    <Link href="#">
+                    <Link href="/account/profile/invite">
                       <button
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
@@ -115,7 +124,7 @@ const ProfilePopoverPanel = ({ user }) => {
                         </span>
                       </button>
                     </Link>
-                    <Link href="#">
+                    <Link href="/account/settings">
                       <button
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}

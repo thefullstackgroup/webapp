@@ -22,55 +22,58 @@ const socials = [
   { url: 'https://github.com/thefullstackgroup', label: 'GitHub' },
 ];
 
-const Footer = () => {
+const Footer = ({ hideFooter }) => {
   return (
     <>
-      <footer className="relative border-t border-base-200 bg-base-100 dark:border-base-700 dark:bg-base-800 mt-20">
-        <div className="mx-auto max-w-5xl py-12 px-4 md:px-10 lg:py-16">
-          <div className="flex w-full flex-col justify-center space-y-4">
-            <ul className="flex flex-wrap items-center justify-center space-x-4 md:space-x-6">
-              {links.map((link, index) => (
-                <li className=" whitespace-nowrap" key={index}>
-                  <Link href={link.url} passHref>
-                    <a href="#" className="ftr-link">
-                      {link.label}
-                    </a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="flex justify-center space-x-6">
-              {socials.map((social, index) => (
-                <a
-                  href={social.url}
-                  className="ftr-link-icon"
-                  target="_blank"
-                  rel="noreferrer"
-                  title={social.label}
-                  key={index}
-                >
-                  <span className="sr-only">{social.label}</span>
-                  {social.label === 'LinkedIn' && (
-                    <FaLinkedin className="h-6 w-6" />
-                  )}
-                  {social.label === 'Instagram' && (
-                    <FaInstagram className="h-6 w-6" />
-                  )}
-                  {social.label === 'Twitter' && (
-                    <FaTwitter className="h-6 w-6" />
-                  )}
-                  {social.label === 'GitHub' && (
-                    <FaGithub className="h-6 w-6" />
-                  )}
-                </a>
-              ))}
+      {!hideFooter && (
+        <footer className="relative mt-20 border-t border-base-200 bg-base-100 dark:border-base-700/70 dark:bg-base-900">
+          <div className="mx-auto max-w-5xl py-12 px-4 md:px-10 lg:py-16">
+            <div className="flex w-full flex-col justify-center space-y-4">
+              <ul className="flex flex-wrap items-center justify-center space-x-4 md:space-x-6">
+                {links.map((link, index) => (
+                  <li className=" whitespace-nowrap" key={index}>
+                    <Link href={link.url} passHref>
+                      <a href="#" className="ftr-link">
+                        {link.label}
+                      </a>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex justify-center space-x-6">
+                {socials.map((social, index) => (
+                  <a
+                    href={social.url}
+                    className="ftr-link-icon"
+                    target="_blank"
+                    rel="noreferrer"
+                    title={social.label}
+                    key={index}
+                  >
+                    <span className="sr-only">{social.label}</span>
+                    {social.label === 'LinkedIn' && (
+                      <FaLinkedin className="h-6 w-6" />
+                    )}
+                    {social.label === 'Instagram' && (
+                      <FaInstagram className="h-6 w-6" />
+                    )}
+                    {social.label === 'Twitter' && (
+                      <FaTwitter className="h-6 w-6" />
+                    )}
+                    {social.label === 'GitHub' && (
+                      <FaGithub className="h-6 w-6" />
+                    )}
+                  </a>
+                ))}
+              </div>
+              <p className="mt-8 w-full text-center text-xs text-gray-400 dark:text-gray-500">
+                &copy; {new Date().getFullYear()} The Full Stack.
+              </p>
             </div>
-            <p className="mt-8 w-full text-center text-xs text-gray-400 dark:text-gray-500">
-              &copy; {new Date().getFullYear()} The Full Stack.
-            </p>
           </div>
-        </div>
-      </footer>
+        </footer>
+      )}
+
       <CookieConsent
         disableStyles={true}
         location="bottom"
