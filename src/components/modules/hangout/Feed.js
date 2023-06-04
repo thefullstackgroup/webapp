@@ -54,8 +54,8 @@ const Feed = ({ user, topic, following }) => {
 
   if (topic === 'following' && !following) {
     return (
-      <div className="w-full mt-20 flex flex-col text-center">
-        <span className="font-bold text-lg">You are not following anyone.</span>
+      <div className="mt-20 flex w-full flex-col text-center">
+        <span className="text-lg font-bold">You are not following anyone.</span>
         <span>Find people to follow.</span>
       </div>
     );
@@ -64,7 +64,7 @@ const Feed = ({ user, topic, following }) => {
   return (
     <>
       {!topic && (
-        <div className="relative sm:rounded-t-lg overflow-hidden">
+        <div className="relative overflow-hidden sm:rounded-t-lg">
           <PinnedPost user={user} />
         </div>
       )}
@@ -75,13 +75,13 @@ const Feed = ({ user, topic, following }) => {
           setSize(size + 1);
         }}
         hasMore={hasMore}
-        loader={<div className="w-full py-20 flex justify-center"></div>}
-        endMessage={<div className="text-center py-20 p-4">No more posts</div>}
+        loader={<div className="flex w-full justify-center py-20"></div>}
+        endMessage={<div className="p-4 py-20 text-center">No more posts</div>}
         style={{ overflow: 'hidden' }}
       >
         <div className="overflow-hidden">
           {isEmpty && (
-            <div className="w-full py-20 flex justify-center">
+            <div className="flex w-full justify-center py-20">
               No more posts
             </div>
           )}

@@ -16,7 +16,7 @@ const ModalDialog = ({
         <div className="flex min-h-screen items-center justify-center text-center sm:block sm:p-0 md:px-4 md:pt-4 md:pb-20">
           {!disabled ? (
             <div
-              className="absolute inset-0 h-screen overscroll-contain bg-base-800/80 backdrop-blur-sm"
+              className="absolute inset-0 h-screen overscroll-contain bg-base-400/50 backdrop-blur-sm dark:bg-base-800/70"
               onClick={() => setShow(false)}
             ></div>
           ) : (
@@ -32,7 +32,7 @@ const ModalDialog = ({
           >
             <div className="mx-auto max-h-min min-h-screen overflow-hidden bg-base-50 text-left shadow-2xl dark:bg-base-900 sm:min-h-min sm:rounded-md">
               {title && (
-                <div className="sticky top-0 z-10 border-b border-base-700/70 bg-base-900 px-4 py-3 md:px-6">
+                <div className="sticky top-0 z-10 border-b border-base-200 bg-white px-4 py-3 dark:border-base-800 dark:bg-base-900 md:px-6">
                   <h4 className="truncate pt-1 pr-10 text-lg font-semibold">
                     {title}
                   </h4>

@@ -24,9 +24,12 @@ const Following = ({ user }) => {
   return (
     <>
       {followingProfiles?.length > 0 && (
-        <div className="mt-4 w-full divide-y divide-base-600 rounded-md border border-base-600">
+        <div className="mt-4 w-full rounded-md border border-base-200 dark:border-base-700">
           {followingProfiles?.map((profile, index) => (
-            <div className="w-full p-4 hover:bg-base-600/50" key={index}>
+            <div
+              className="w-full p-4 duration-200 hover:bg-base-200/50 dark:hover:bg-base-800"
+              key={index}
+            >
               <div className="flex items-center space-x-4">
                 <Avatar
                   href={`/${profile.displayName}`}

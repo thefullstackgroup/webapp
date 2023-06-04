@@ -8,7 +8,7 @@ const handler = async (req, res, AuthUser) => {
   const accessToken = await AuthUser.getIdToken();
   return axios
     .get(
-      `${process.env.API_TRANSACTIONS_URL}/wallet/transactions?page=0&size=20`,
+      `${process.env.API_TRANSACTIONS_URL}/wallet/transactions?page=0&size=50`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,

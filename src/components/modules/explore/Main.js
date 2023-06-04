@@ -254,7 +254,7 @@ const Main = ({ user }) => {
           category={{
             label: 'Open Source',
             slug: 'opensource',
-            term: 'opensource',
+            term: 'open source',
             title: '',
             desc: '',
           }}

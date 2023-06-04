@@ -8,7 +8,7 @@ const ProjectCard = ({ project }) => {
     <Link
       href={`/${project.contentOwnerUserName}/project/${project.projectSlug}`}
     >
-      <button className="flex w-full items-center space-x-4 p-4 text-left hover:bg-base-700/50">
+      <button className="flex w-full items-center space-x-4 p-4 text-left duration-200 hover:bg-base-200/50 dark:hover:bg-base-800">
         <div>
           <div className="h-16 w-20 cursor-pointer overflow-hidden rounded-md">
             <img
@@ -19,10 +19,10 @@ const ProjectCard = ({ project }) => {
           </div>
         </div>
         <div className="flex flex-col text-base-400">
-          <p className="text-lg font-semibold text-white">
-            {project.projectName}
+          <p className="text-lg font-semibold">{project.projectName}</p>
+          <p className="text-sm text-base-400">
+            Posted by @{project.contentOwnerUserName}
           </p>
-          <p className="text-sm">Posted by @{project.contentOwnerUserName}</p>
         </div>
       </button>
     </Link>
@@ -45,7 +45,7 @@ const Saved = ({ user }) => {
   return (
     <>
       {projects?.content?.length > 0 && (
-        <div className="mt-4 w-full divide-y divide-base-800 rounded-md border border-base-600">
+        <div className="mt-4 w-full rounded-md border border-base-200 dark:border-base-700">
           {projects?.content?.map((project, index) => (
             <ProjectCard project={project} key={index} />
           ))}
@@ -53,7 +53,7 @@ const Saved = ({ user }) => {
       )}
 
       {projects?.content?.length == 0 && (
-        <div className="mt-4 flex w-full flex-1 justify-center rounded-md border border-base-600 py-20">
+        <div className="mt-4 flex w-full flex-1 justify-center rounded-md border border-base-200 py-20 dark:border-base-700">
           You have not saved any projects.
         </div>
       )}

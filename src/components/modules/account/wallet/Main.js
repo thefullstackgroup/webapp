@@ -10,6 +10,7 @@ import {
   IoInformationCircleOutline,
   IoWalletOutline,
 } from 'react-icons/io5';
+import Icon from 'components/common/elements/Icon';
 
 const Page = ({ user, promo }) => {
   const [wallet, setWallet] = useState(null);
@@ -70,95 +71,76 @@ const Page = ({ user, promo }) => {
 
   return (
     <>
-      <div className="mt-4 flex md:mt-12">
-        <div className="mx-auto w-full max-w-2xl overflow-hidden lg:max-w-3xl">
-          <div className="mx-4 mb-4 rounded-lg bg-base-800 px-4 py-4 sm:px-6 md:mx-0">
-            <div className="flex flex-col justify-between sm:flex-row sm:items-center">
-              <div className="flex items-center space-x-4">
-                <IoWalletOutline className="h-16 w-16 text-gray-300" />
-                <div className="flex flex-col">
-                  <div className="space-x-1  text-xl font-bold tracking-tight text-gray-200 sm:text-xl lg:text-2xl">
-                    Wallet
-                  </div>
-                  <div className="space-x-1text-lg font-semibold outline-none">
-                    <span className="text-base-300">
-                      ${wallet?.total.toFixed(2)} total balance
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="mt-4 items-start border-t border-base-600 pt-4 sm:flex">
-              <IoInformationCircleOutline className="mr-2 hidden h-7 w-7 sm:block" />
-              <p className="text-base">
-                Your wallet contains virtual coin that you can use to to reward
-                and endorse others.
-              </p>
-            </div>
-            {!promoRedeemed && (
-              <button
-                className="btn-primary btn-with-icon mt-4"
-                onClick={() => redeemPromo()}
-              >
-                <span>💰 Claim your free $20</span>
-              </button>
-            )}
+      <div className="mx-auto mt-0 w-full max-w-5xl justify-center lg:mt-6">
+        <div className="flex items-center justify-between">
+          <div className="hidden py-4 text-4xl font-medium tracking-tight sm:block">
+            Wallet
           </div>
-
-          <div className="mt-4 mb-4 bg-base-800 px-4 py-4 sm:px-6 md:rounded-lg">
-            <div className="flex items-center justify-between">
-              <div className="flex flex-col">
-                <span className="text-lg font-bold tracking-tight text-base-100 sm:text-xl lg:text-xl">
-                  Transactions
-                </span>
+          <div className="text-lg font-medium text-cyan-dark dark:text-cyan-dark">
+            Balance: ${wallet?.total.toFixed(2)}
+          </div>
+        </div>
+        <div className="mb-4 flex items-center justify-between">
+          <div className="flex items-center text-base-300 dark:text-base-500">
+            <Icon name={'FiInfo'} className="mr-2 hidden h-5 w-5 sm:block" />
+            <p className="text-sm text-base-300 dark:text-base-500">
+              Your wallet contains virtual coin that you can use to to reward
+              and endorse others.
+            </p>
+          </div>
+          {promoRedeemed && (
+            <button
+              className="btn btn-sm btn-secondary btn-with-icon"
+              onClick={() => redeemPromo()}
+            >
+              <span>💰 Claim your free $20</span>
+            </button>
+          )}
+        </div>
+        <div className="mb-4 overflow-hidden border border-base-200 pb-4 dark:border-base-700 md:rounded-lg">
+          {walletTransactions?.length > 0 && (
+            <div className="text-base">
+              <div className="grid grid-cols-8 px-6 py-4 text-sm font-bold sm:text-base">
+                <div className="col-span-4">Date</div>
+                <div className="col-span-2 text-right">Amount</div>
+                <div className="col-span-2 text-right">Type</div>
               </div>
-            </div>
-            <div className="mt-4 pt-4">
-              {walletTransactions?.length > 0 && (
-                <div className="text-base">
-                  <div className="grid grid-cols-8 pb-2 text-sm font-bold sm:text-base">
-                    <div className="col-span-4">Date</div>
-                    <div className="col-span-2 text-right">Amount</div>
-                    <div className="col-span-2 text-right">Type</div>
-                  </div>
-                  <div className="">
-                    {walletTransactions?.map((transaction) => (
-                      <div className="" key={transaction.transactionId}>
-                        <div className="border-t border-base-600 py-2 text-sm sm:text-base">
-                          <div className="grid grid-cols-8">
-                            <div className="col-span-4">
-                              {Moment(transaction.createdDate).format(
-                                'DD-MMM-YYYY'
-                              )}
-                            </div>
-                            <div className="col-span-2 text-right">
-                              ${transaction.transactionAmount.toFixed(2)}
-                            </div>
-                            <div className="col-span-2 text-right">
-                              {transaction.transactionType}
-                            </div>
-                          </div>
-                          <p className="py-1 text-xs text-base-400">
-                            {transaction.transactionMessage}{' '}
-                            {transaction.transactionType == 'DEBIT' &&
-                              `(sent coin to @${transaction.outGoingPaymentFromUserDisplayName})`}
-                            {transaction.transactionType == 'CREDIT' &&
-                              `(received coin from @${transaction.inComingPaymentFromUserDisplayName})`}
-                          </p>
+              <div>
+                {walletTransactions?.map((transaction) => (
+                  <div key={transaction.transactionId}>
+                    <div className="border-t border-base-200 px-6 py-2 text-sm dark:border-base-700 sm:text-base">
+                      <div className="grid grid-cols-8">
+                        <div className="col-span-4">
+                          {Moment(transaction.createdDate).format(
+                            'DD-MMM-YYYY'
+                          )}
+                        </div>
+                        <div className="col-span-2 text-right">
+                          ${transaction.transactionAmount.toFixed(2)}
+                        </div>
+                        <div className="col-span-2 text-right">
+                          {transaction.transactionType}
                         </div>
                       </div>
-                    ))}
+                      <p className="py-1 text-xs text-base-300 dark:text-base-500">
+                        {transaction.transactionMessage}{' '}
+                        {transaction.transactionType == 'DEBIT' &&
+                          `(sent coin to @${transaction.outGoingPaymentFromUserDisplayName})`}
+                        {transaction.transactionType == 'CREDIT' &&
+                          `(received coin from @${transaction.inComingPaymentFromUserDisplayName})`}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              )}
-
-              {!walletTransactions?.length && (
-                <div className="text-base">
-                  <p>No transactions recorded</p>
-                </div>
-              )}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
+
+          {!walletTransactions?.length && (
+            <div className="my-20 flex justify-center">
+              <p>No transactions recorded</p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -176,7 +158,7 @@ const Page = ({ user, promo }) => {
                   className="mx-auto w-96 rounded-md"
                   alt="Waiting"
                 />
-                <div className="mx-auto mt-8 flex w-full items-center justify-center space-x-2 text-base text-gray-300 sm:space-x-6">
+                <div className="mx-auto mt-8 flex w-full items-center justify-center space-x-2 text-base text-base-300 sm:space-x-6">
                   <CgSpinner className="h-6 w-6 animate-spin text-gray-300" />
                   <span>Sending coin to your wallet ...</span>
                 </div>

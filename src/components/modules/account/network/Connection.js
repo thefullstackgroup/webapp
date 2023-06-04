@@ -79,7 +79,7 @@ const CardConnection = ({
   };
 
   return (
-    <div className="flex items-center justify-between py-3 px-4 sm:px-6">
+    <div className="flex items-center justify-between py-3 px-4 duration-200 hover:bg-base-200/50 dark:hover:bg-base-800 sm:px-6">
       <div className="flex items-center space-x-4">
         <Avatar
           image={connection.picture}
@@ -91,10 +91,10 @@ const CardConnection = ({
 
         <Link href={`${process.env.BASEURL}/${connection.username}`} passHref>
           <div className="min-w-0 flex-1 cursor-pointer">
-            <p className="text-sm font-medium text-base-100 sm:text-base">
+            <p className="text-sm font-medium sm:text-base">
               @{connection.username}
             </p>
-            <p className="text-xs font-medium text-base-400 sm:text-sm">
+            <p className="text-xs font-medium text-base-300 dark:text-base-500 sm:text-sm">
               {connection.title}
             </p>
           </div>
@@ -103,13 +103,13 @@ const CardConnection = ({
       {type === 'APPROVED' && (
         <div className="flex items-center space-x-2">
           <Link href={`${process.env.BASEURL}/${connection.username}`}>
-            <button className="btn-primary">
+            <button className="btn btn-primary">
               <IoChatbubblesOutline className="block h-5 w-5 sm:hidden" />
               <span className="hidden sm:block">Chat</span>
             </button>
           </Link>
           <button
-            className="btn-secondary"
+            className="btn btn-secondary"
             onClick={() => handleRemove(connection.user_id)}
           >
             <IoCloseSharp className="block h-5 w-5 sm:hidden" />

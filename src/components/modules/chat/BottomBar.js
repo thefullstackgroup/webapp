@@ -4,6 +4,7 @@ import { IoPaperPlaneOutline } from 'react-icons/io5';
 import Textarea from 'react-expanding-textarea';
 import axios from 'axios';
 import * as ga from 'lib/ga';
+import Icon from 'components/common/elements/Icon';
 
 const BottomBar = ({ user, id }) => {
   const [input, setInput] = useState('');
@@ -44,26 +45,24 @@ const BottomBar = ({ user, id }) => {
   };
 
   return (
-    <div className="flex w-full bg-base-900">
-      {/* <form
-        className="w-full flex py-4 px-4 sm:px-6 items-end space-x-2"
-        onSubmit={sendMessage}
-      > */}
-      <div className="flex w-full items-end space-x-2 px-4 pb-4">
+    <div className="relative flex w-full bg-base-900">
+      <div className="absolute bottom-0 flex w-full items-end space-x-2 px-4 pb-4">
         <Textarea
           type="text"
           placeholder="Type your message ..."
-          className="text-input"
+          className="text-input bg-white dark:bg-base-900"
           autoComplete="off"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && sendMessage(e)}
         />
         <button type="submit" onClick={(e) => sendMessage(e)}>
-          <IoPaperPlaneOutline className="mb-2 h-7 w-7 text-white sm:mb-2" />
+          <Icon
+            name={'FiSend'}
+            className="mb-2 h-7 w-7 text-base-700 dark:text-white sm:mb-2"
+          />
         </button>
       </div>
-      {/* </form> */}
     </div>
   );
 };

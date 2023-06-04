@@ -11,19 +11,19 @@ const ProjectCard = ({ project, feature = false, user, type, hideAuthor }) => {
       <Link href={projectLink} shallow={true}>
         <div
           className={
-            'group relative w-full cursor-pointer ' +
+            'group relative w-full cursor-pointer duration-200  ' +
             (feature ? 'h-80' : 'h-64')
           }
         >
           <div
             className={
-              'w-full cursor-pointer overflow-hidden rounded-md bg-base-200 dark:bg-base-800 ' +
+              'w-full cursor-pointer bg-base-200 dark:bg-base-800 ' +
               (feature ? 'h-56' : 'h-40')
             }
           >
             <Image
               src={project.projectImgURI}
-              className="h-full w-full object-cover object-top duration-200 hover:opacity-100 group-hover:scale-105 dark:opacity-90"
+              className="h-full w-full object-cover object-top duration-200 hover:opacity-100 group-hover:shadow-xl group-hover:shadow-highlight-purple/20 dark:opacity-90"
               alt={project.title}
               width={300}
               height={200}
@@ -38,7 +38,7 @@ const ProjectCard = ({ project, feature = false, user, type, hideAuthor }) => {
           )}
 
           <div className="w-full space-y-0 py-2">
-            <h3 className="truncate text-base font-semibold">
+            <h3 className="truncate pr-4 text-base font-semibold">
               {project.projectName}
             </h3>
             <div className="flex items-center space-x-2">

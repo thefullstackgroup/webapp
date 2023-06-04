@@ -29,13 +29,13 @@ const ProjectCard = ({ project }) => {
         <div className="col-span-1 flex items-center justify-start space-x-6 sm:justify-end sm:space-x-10">
           <div className="flex flex-col rounded-md text-center">
             <div className="flex items-center space-x-2 whitespace-nowrap text-base-400">
-              <span className="text-sm font-medium">Reactions</span>
+              <span className="text-sm">Reactions</span>
             </div>
             <span className="text-xl font-medium">{project.numberOfLikes}</span>
           </div>
           <div className="flex flex-col rounded-md text-center">
             <div className="flex items-center space-x-2 whitespace-nowrap text-base-400">
-              <span className="text-sm font-medium">Comments</span>
+              <span className="text-sm">Comments</span>
             </div>
             <span className="text-xl font-medium">
               {project.numberOfComments}
@@ -43,13 +43,13 @@ const ProjectCard = ({ project }) => {
           </div>
           <div className="flex flex-col rounded-md text-center">
             <div className="flex items-center space-x-2 whitespace-nowrap text-base-400">
-              <span className="text-sm font-medium">Favorites</span>
+              <span className="text-sm">Favorites</span>
             </div>
             <span className="text-xl font-medium">{project.numberOfSaves}</span>
           </div>
           <div className="flex flex-col rounded-md text-center">
             <div className="flex items-center space-x-2 whitespace-nowrap text-base-400">
-              <span className="text-sm font-medium">Shares</span>
+              <span className="text-sm">Shares</span>
             </div>
             <span className="text-xl font-medium">--</span>
           </div>
@@ -78,7 +78,7 @@ const TabProjects = ({ user }) => {
         <div className="mt-4 w-full space-y-4">
           {projects?.map((project, index) => (
             <div
-              className="flex w-full items-center justify-between rounded-md border border-base-600 p-4 hover:bg-base-700/50"
+              className="flex w-full items-center justify-between rounded-md border border-base-200 p-4 duration-200 hover:bg-base-200/50 dark:border-base-700 dark:hover:bg-base-800"
               key={index}
             >
               <ProjectCard project={project} />
@@ -87,7 +87,7 @@ const TabProjects = ({ user }) => {
         </div>
       )}
       {!projects?.length > 0 && (
-        <div className="mt-4 flex w-full flex-1 justify-center rounded-md border border-base-600 py-20">
+        <div className="mt-4 flex w-full flex-1 justify-center rounded-md border border-base-200 py-20 dark:border-base-700">
           You have not posted any projects.
         </div>
       )}

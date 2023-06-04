@@ -47,7 +47,7 @@
     @apply border border-transparent bg-base-900 text-white hover:border-base-800 hover:bg-white hover:text-black dark:border-white dark:bg-base-200 dark:text-base-900 dark:hover:bg-black dark:hover:text-white disabled:dark:border-transparent disabled:dark:bg-base-700 disabled:dark:text-base-900;
   }
   .btn-secondary {
-    @apply border border-base-400 bg-white text-base-600 hover:border-base-900 hover:bg-base-200/50 hover:text-base-900 focus:outline-none disabled:cursor-not-allowed disabled:bg-base-700 disabled:text-base-400 dark:border-base-500 dark:bg-base-900 dark:text-base-400 dark:hover:border-base-100 dark:hover:bg-base-900 dark:hover:text-base-50;
+    @apply border border-base-400 bg-white text-base-600 hover:border-base-900 hover:bg-base-200/50 hover:text-base-900 focus:outline-none disabled:cursor-not-allowed disabled:bg-base-700 disabled:text-base-400 dark:border-base-500 dark:bg-base-900 dark:text-base-300 dark:hover:border-base-100 dark:hover:bg-base-900 dark:hover:text-base-50;
   }
   .btn-ghost {
     @apply border-transparent bg-transparent hover:border-transparent hover:bg-transparent hover:text-base-400 dark:border-transparent dark:bg-transparent dark:bg-none dark:text-base-300 dark:hover:bg-black dark:hover:text-white;
@@ -199,7 +199,7 @@
   .prose-lg h1 {
     font-size: 1.6rem !important;
   }
-  .dark .dark\:prose-dark a,
+  /* .dark .dark\:prose-dark a,
   .prose a {
     color: #a5b4fc !important;
     text-decoration: none;
@@ -208,17 +208,7 @@
   .prose a:hover {
     color: #ffffff !important;
     text-decoration: none;
-  }
-}
-
-.loading-blue-circle {
-  animation-delay: 0.1s;
-}
-.loading-green-circle {
-  animation-delay: 0.2s;
-}
-.loading-red-circle {
-  animation-delay: 0.3s;
+  } */
 }
 
 #radioyes,
@@ -263,17 +253,6 @@ ul.mde-suggestions li:hover {
 
 ul.mde-suggestions li[aria-selected='true'] {
   background-color: transparent !important;
-}
-
-.tf-v1-popover-tooltip-text {
-  color: #121212;
-}
-
-@media only screen and (max-width: 600px) {
-  .tf-v1-popover-tooltip,
-  .tf-v1-popover-button {
-    display: none !important;
-  }
 }
 
 .yt-lite {

@@ -8,8 +8,8 @@ const Message = ({ user, message, numberOfMessages, currentMessageIndex }) => {
         <div
           className={
             !sender
-              ? `bg-gray-700 py-2 px-2 sm:px-4 rounded-lg rounded-bl-none my-1 text-sm w-4/5 sm:w-auto max-w-max sm:max-w-lg`
-              : `bg-blue-600 text-white py-2 px-2 sm:px-4 rounded-lg rounded-br-none my-1 text-sm w-4/5 sm:w-auto max-w-max sm:max-w-lg`
+              ? `my-1 mb-2 w-4/5 max-w-max rounded-lg rounded-bl-none bg-base-200 py-2 px-2 text-sm dark:bg-base-700 sm:w-auto sm:max-w-lg sm:px-4`
+              : `my-1 mb-2 w-4/5 max-w-max rounded-lg rounded-br-none bg-blue-600 py-2 px-2 text-sm text-white sm:w-auto sm:max-w-lg sm:px-4`
           }
         >
           {message.text}
@@ -18,7 +18,7 @@ const Message = ({ user, message, numberOfMessages, currentMessageIndex }) => {
 
       {numberOfMessages == currentMessageIndex + 1 && (
         <div className={!sender ? `flex justify-start` : `flex justify-end`}>
-          <span className="text-xs text-gray-400 px-1">
+          <span className="px-1 text-xs text-gray-400">
             Sent{' '}
             {Moment(new Date(message?.timestamp?.seconds * 1000)).format(
               'MMM DD, YYYY h:mm a'

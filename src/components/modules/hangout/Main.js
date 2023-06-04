@@ -16,14 +16,14 @@ const Main = ({ user }) => {
 
   return (
     <>
-      <div className="flex gap-20">
+      <div className="flex gap-24">
         <div className="w-1/5">
           <Topics topic={topicSelected} setTopicSelected={setTopicSelected} />
         </div>
         <div className="min-h-screen w-3/5 border-l border-r border-base-200 dark:border-base-700">
           <div className="w-full">
             <CreatePost user={user} />
-            <div className="relative flex space-x-4 border-b border-base-200 px-8 pb-4 dark:border-base-600">
+            <div className="relative flex space-x-4 border-b border-base-200 pl-8 pr-12 pb-4 dark:border-base-600">
               <button
                 className={
                   topicSelected?.type == null ? 'btn-pill-active' : 'btn-pill'

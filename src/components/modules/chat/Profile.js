@@ -32,7 +32,9 @@ const Profile = ({ users, user, lastChatMessage, unRead }) => {
         <div
           className={
             'items-center space-x-2 text-left text-base font-medium ' +
-            (unRead ? 'text-white' : 'text-base-300')
+            (unRead
+              ? 'text-base-900 dark:text-white'
+              : 'text-base-900 dark:text-base-200')
           }
         >
           {chatUser?.name}
@@ -40,7 +42,7 @@ const Profile = ({ users, user, lastChatMessage, unRead }) => {
         <span
           className={
             'text-sm font-normal line-clamp-1 ' +
-            (unRead ? 'text-white' : 'text-base-500')
+            (unRead ? 'dark:text-white' : 'dark:text-base-400')
           }
         >
           {lastChatMessage

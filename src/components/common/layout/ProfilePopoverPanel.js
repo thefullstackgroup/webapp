@@ -99,7 +99,9 @@ const ProfilePopoverPanel = ({ user }) => {
                         onClick={() => setIsShowing(false)}
                       >
                         <Icon name={'FiMessageSquare'} className="h-6 w-6" />
-                        <span className="text-black dark:text-white">Chat</span>
+                        <span className="text-black dark:text-white">
+                          Messages
+                        </span>
                       </button>
                     </Link>
                     <Link href="/account/wallet">

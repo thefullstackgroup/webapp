@@ -17,6 +17,7 @@ import {
   IoClose,
 } from 'react-icons/io5';
 import TagStack from 'components/common/tags/TagStack';
+import Avatar from 'components/common/elements/Avatar';
 
 const postTypeOptions = [
   {
@@ -256,21 +257,28 @@ const CreatePost = ({ user }) => {
                 </div>
               )}
 
-              <TextareaAutosize
-                name="postBody"
-                autoFocus
-                rows={1}
-                className="text-input border-0 bg-transparent px-0 text-lg"
-                placeholder={
-                  postType === 'POLL'
-                    ? `Type question here...`
-                    : `Share something today ...`
-                }
-                value={postBody}
-                onChange={(e) => {
-                  setPostBody(e.target.value);
-                }}
-              />
+              <div className="flex items-start space-x-4">
+                <Avatar
+                  image={user?.profilePicUrl}
+                  name={user?.displayName}
+                  dimensions={'w-9 h-9 mt-4'}
+                />
+                <TextareaAutosize
+                  name="postBody"
+                  autoFocus
+                  rows={1}
+                  className="text-input border-0 bg-transparent px-0 text-lg"
+                  placeholder={
+                    postType === 'POLL'
+                      ? `Type question here...`
+                      : `Share something today ...`
+                  }
+                  value={postBody}
+                  onChange={(e) => {
+                    setPostBody(e.target.value);
+                  }}
+                />
+              </div>
 
               {postType === 'POLL' && (
                 <div className="my-2">

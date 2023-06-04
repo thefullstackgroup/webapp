@@ -8,7 +8,7 @@ const Layout = ({ user, children, headerFixed, hideFooter }) => {
 
   return (
     <>
-      <main className="bg-white dark:bg-black">
+      <main className="min-h-screen bg-white dark:bg-black">
         <Header user={user} headerFixed={headerFixed} />
         <div className="mx-auto max-w-screen-2xl px-4">{children}</div>
         <Footer hideFooter={hideFooter} />

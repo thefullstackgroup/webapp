@@ -26,7 +26,7 @@ const Footer = ({ hideFooter }) => {
   return (
     <>
       {!hideFooter && (
-        <footer className="relative mt-20 border-t border-base-200 bg-base-100 dark:border-base-700/70 dark:bg-base-900">
+        <footer className="relative mt-20 border-t border-base-200 bg-base-50 dark:border-base-700/70 dark:bg-base-900">
           <div className="mx-auto max-w-5xl py-12 px-4 md:px-10 lg:py-16">
             <div className="flex w-full flex-col justify-center space-y-4">
               <ul className="flex flex-wrap items-center justify-center space-x-4 md:space-x-6">

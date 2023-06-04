@@ -90,7 +90,7 @@ const Post = (props) => {
 
   return (
     <>
-      <div className="w-full cursor-pointer border-b py-4 px-4 dark:border-base-700">
+      <div className="w-full cursor-pointer border-b py-6 pl-4 pr-10 dark:border-base-700">
         <article>
           <div className="mx-4 mb-0">
             <div className="flex items-start gap-6">
@@ -174,7 +174,7 @@ const Post = (props) => {
                         sparkCharCount && (
                         <div>
                           <div className="items-center overflow-hidden text-base">
-                            <div className="prose-custom prose-sm prose-dark w-full overflow-hidden text-white sm:prose-base">
+                            <div className="prose-custom prose-sm prose-dark w-full overflow-hidden sm:prose-base">
                               <Markdown
                                 options={{
                                   overrides: {
@@ -222,7 +222,7 @@ const Post = (props) => {
                         <div className="flex w-full flex-col space-y-2">
                           {pollData?.pollOptions?.map((option, index) => (
                             <button
-                              className="hover:bg-primary-500 w-full rounded-full bg-base-700 py-3 px-4 text-sm font-medium sm:text-base"
+                              className="btn btn-secondary rounded-full py-3"
                               key={index}
                               onClick={() =>
                                 handleCastVote(option.pollOptionId)
@@ -246,38 +246,40 @@ const Post = (props) => {
                         </div>
                       ) : (
                         <div className="flex w-full flex-col space-y-2">
-                          {pollData?.pollOptions?.map((option, index) => (
-                            <div
-                              className="relative w-full text-sm"
-                              key={index}
-                            >
+                          <div className="space-y-2 rounded-lg border px-4 py-4 dark:border-base-700">
+                            {pollData?.pollOptions?.map((option, index) => (
                               <div
-                                className={
-                                  (leadingVote?.pollOptionId ==
-                                  option.pollOptionId
-                                    ? 'bg-primary-500'
-                                    : 'bg-base-700') +
-                                  ' relative h-11 rounded-r-lg py-2 px-4'
-                                }
-                                style={{
-                                  width: `${
-                                    (option.voteCount / leadingVote.voteCount) *
+                                className="relative w-full text-sm"
+                                key={index}
+                              >
+                                <div
+                                  className={
+                                    (leadingVote?.pollOptionId ==
+                                    option.pollOptionId
+                                      ? 'bg-cyan-dark'
+                                      : 'bg-base-600') +
+                                    ' relative h-10 rounded-r-2xl py-2 px-4'
+                                  }
+                                  style={{
+                                    width: `${
+                                      (option.voteCount /
+                                        leadingVote.voteCount) *
+                                      100
+                                    }%`,
+                                  }}
+                                ></div>
+                                <div className="absolute top-0.5 flex w-full items-center space-x-4 py-2 px-3">
+                                  <span className="font-semibold">{`${(
+                                    (option.voteCount / pollVotes) *
                                     100
-                                  }%`,
-                                }}
-                              ></div>
-                              <div className="absolute top-0.5 flex w-full items-center space-x-4 py-2 px-4">
-                                <span className="font-semibold">{`${(
-                                  (option.voteCount / pollVotes) *
-                                  100
-                                ).toFixed(0)}%`}</span>
-                                <span className="truncate text-base">
-                                  {option.optionText}
-                                </span>
+                                  ).toFixed(0)}%`}</span>
+                                  <span className="truncate text-sm">
+                                    {option.optionText}
+                                  </span>
+                                </div>
                               </div>
-                            </div>
-                          ))}
-
+                            ))}
+                          </div>
                           <div className="text-sm text-gray-400">
                             {pollVotes} votes
                           </div>

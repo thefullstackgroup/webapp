@@ -72,7 +72,7 @@ export const CategoriesFilter = [
     slug: 'ai',
     term: 'AI',
     title: 'All things AI',
-    desc: 'The world as become obsessed with AI, check out these projects',
+    desc: 'The world has become obsessed with AI, check out these projects',
   },
   {
     label: 'Machine Learning',

@@ -1,11 +1,11 @@
 import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
 import Meta from 'components/common/partials/Metadata';
-import Layout from 'components/common/layout/LayoutLoggedIn';
+import Layout from 'components/common/layout/Layout';
 import Page from 'components/modules/account/dashboard/Main';
 import axios from 'axios';
 
-const AccountDashboard = ({ userProfile }) => {
+const AccountDashboard = ({ user }) => {
   return (
     <>
       <div>
@@ -15,9 +15,9 @@ const AccountDashboard = ({ userProfile }) => {
           keywords=""
         />
 
-        {userProfile && (
-          <Layout user={userProfile}>
-            <Page user={userProfile} />
+        {user && (
+          <Layout user={user}>
+            <Page user={user} />
           </Layout>
         )}
       </div>
@@ -54,7 +54,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
 
         return {
           props: {
-            userProfile: userProfile,
+            user: userProfile,
             requestedPending: connections.data.data.requested_pending,
             receivedPending: connections.data.data.received_pending,
             connections: connections.data.data.connections,
@@ -63,7 +63,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
       } catch (error) {
         return {
           props: {
-            userProfile: userProfile,
+            user: userProfile,
             requestedPending: [],
             receivedPending: [],
             connections: [],
