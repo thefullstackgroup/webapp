@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Avatar from 'components/common/elements/Avatar';
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
+import Icon from 'components/common/elements/Icon';
 
 const SuggestedUserCard = (props) => {
   return (
@@ -13,7 +14,7 @@ const SuggestedUserCard = (props) => {
             userId={props.project.userId}
             href={`/${props.project.projectCreator.displayName}`}
             image={props.project.projectCreator.profilePicUrl}
-            dimensions="h-20 w-20 sm:h-24 sm:w-24 rounded-full opacity-100 sm:group-hover:ring-4 group-hover:ring-primary-500 duration-200"
+            dimensions="h-20 w-20 sm:h-24 sm:w-24 opacity-100 sm:group-hover:ring-4 group-hover:ring-primary-500 duration-200"
           />
         )}
       </div>
@@ -63,15 +64,16 @@ const Discover = ({ user, count, search }) => {
 
   return (
     <>
-      <div className="max-w-screen-2xl md:mt-2 lg:w-full">
-        {/* <div className="mb-4 hidden px-4 md:px-0 lg:block">
-          <h4 className="text-2xl font-bold tracking-tight">
-            Discover and follow
-          </h4>
-        </div> */}
+      <div className="max-w-screen-2xl lg:w-full">
+        <div className="mb-4 hidden px-4 md:px-0 lg:block">
+          <h3 className="flex items-center space-x-2">
+            <Icon name={'FiStar'} className="h-6 w-6" />
+            <span>Follow trending users</span>
+          </h3>
+        </div>
 
         {!data && (
-          <div className="no-scrollbar flex items-center gap-4 overflow-x-scroll px-4 md:gap-6 md:px-0">
+          <div className="no-scrollbar flex items-center gap-4 overflow-y-visible overflow-x-scroll px-4 md:gap-6 md:px-0">
             {[...Array(15)].map((elementInArray, index) => (
               <div className="mx-auto h-32 w-24 sm:h-36 sm:w-24" key={index}>
                 <div className="h-20 w-20 animate-pulse rounded-full bg-base-700 sm:h-24 sm:w-24">
@@ -83,7 +85,7 @@ const Discover = ({ user, count, search }) => {
         )}
 
         {suggestedUsers && (
-          <div className="no-scrollbar flex items-center gap-4 overflow-x-scroll px-4 md:gap-6 md:px-1">
+          <div className="no-scrollbar flex items-center gap-4 overflow-y-visible overflow-x-scroll px-4 pt-2 md:gap-6 md:px-1">
             {suggestedUsers?.map(
               (project, index) =>
                 user?.userId !== project.userId && (

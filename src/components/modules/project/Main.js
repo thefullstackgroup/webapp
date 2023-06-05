@@ -54,9 +54,18 @@ const Main = ({ project, user, setShowProject, standalone = false }) => {
 
   return (
     <>
-      <div className="relative mx-auto max-w-screen-2xl">
-        <div className="mx-auto w-full max-w-screen-2xl gap-10 lg:grid lg:grid-cols-12">
-          <div className="col-span-8">
+      <div className="relative mx-auto">
+        <Page
+          project={project}
+          isConnected={isConnected}
+          isConnectionPending={isConnectionPending}
+          user={user}
+          setShowProject={setShowProject}
+          standalone={standalone}
+        />
+      </div>
+      {/* <div className="mx-auto w-full max-w-screen-2xl gap-14 lg:grid lg:grid-cols-12"> */}
+      {/* <div className="col-span-8">
             <Page
               project={project}
               isConnected={isConnected}
@@ -75,9 +84,8 @@ const Main = ({ project, user, setShowProject, standalone = false }) => {
               setShowProject={setShowProject}
               standalone={standalone}
             />
-          </div>
-        </div>
-      </div>
+          </div> */}
+      {/* </div> */}
     </>
   );
 };

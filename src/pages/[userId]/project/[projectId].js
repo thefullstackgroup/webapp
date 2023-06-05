@@ -1,24 +1,16 @@
-import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
-import { useEffect } from 'react';
-import useUserProfile from 'hooks/useUserProfile';
+import { withAuthUserTokenSSR } from 'next-firebase-auth';
+import { getUserProfile } from 'pages/api/auth/userProfile';
 import Meta from 'components/common/partials/Metadata';
 import Main from 'components/modules/project/Main';
 import Layout from 'components/common/layout/Layout';
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
 
-const Project = (props) => {
-  let { projectUserId, projectSlug } = props;
-  const [user, getUser] = useUserProfile();
-
-  let url = `${process.env.BASEURL}/api/posts/getPost?postId=${projectSlug}&authorId=${projectUserId}`;
-  // if (!user)
-  //   url = `${process.env.BASEURL}/api/posts/getPublicPost?postId=${projectSlug}&authorId=${projectUserId}`;
-  const { data: project } = useSWR(url, fetcher);
-
-  useEffect(() => {
-    getUser();
-  }, []);
+const Project = ({ user, project }) => {
+  // let url = `${process.env.BASEURL}/api/posts/getPost?postId=${projectSlug}&authorId=${user.id}`;
+  // // if (!user)
+  // //   url = `${process.env.BASEURL}/api/posts/getPublicPost?postId=${projectSlug}&authorId=${projectUserId}`;
+  // const { data: project } = useSWR(url, fetcher);
 
   return (
     <>
@@ -28,8 +20,8 @@ const Project = (props) => {
         keywords=""
       />
 
-      {user && project && (
-        <Layout user={user}>
+      {project && (
+        <Layout user={user} fullWidth>
           <Main project={project} user={user} standalone={true} />
         </Layout>
       )}
@@ -37,26 +29,22 @@ const Project = (props) => {
   );
 };
 
-export default withAuthUser()(Project);
+export default Project;
 
 export const getServerSideProps = withAuthUserTokenSSR()(
-  async ({ AuthUser, params }) => {
-    const userId = params.userId;
-    const projectId = params.projectId;
-
-    if (AuthUser.id === null) {
-      return {
-        redirect: {
-          destination: `/u/${userId}/${projectId}`,
-          permanent: false,
-        },
-      };
-    }
+  async ({ AuthUser, req, res, params }) => {
+    const accessToken = await AuthUser.getIdToken();
+    const userProfile = await getUserProfile(accessToken, null, req, res);
+    const project = await fetcher(
+      `${process.env.API_PROJECTS_URL}/project/${encodeURIComponent(
+        params.projectId
+      )}/user/${encodeURIComponent(params.userId)}`
+    );
 
     return {
       props: {
-        projectUserId: userId,
-        projectSlug: projectId,
+        user: userProfile || null,
+        project: project,
       },
     };
   }

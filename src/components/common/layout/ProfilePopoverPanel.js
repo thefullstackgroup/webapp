@@ -46,24 +46,24 @@ const ProfilePopoverPanel = ({ user }) => {
         leaveTo="transform scale-95 opacity-0"
       >
         <Popover.Panel className="absolute -top-3 -right-2 z-50 ">
-          <div className="popover">
+          <div className="popover px-2">
             <div className="popover-arrow left-auto right-4"></div>
 
             <div className="flex items-start">
               {user ? (
-                <div className="w-64 space-y-2 px-2 py-1">
+                <div className="w-64 space-y-2">
                   <Link href={`/${user.displayName}`}>
-                    <div className="nav-popover cursor-pointer">
+                    <div className="nav-popover cursor-pointer space-x-0">
                       <Avatar
                         image={user.profilePicUrl}
                         name={user.displayName}
-                        dimensions="h-11 w-11"
+                        dimensions="h-10 w-10"
                       />
                       <div className="flex flex-col text-left">
                         <span className="text-base font-semibold">
                           {user.name}
                         </span>
-                        <span className="text-base-500 dark:text-base-400">
+                        <span className="font-normal text-base-500 dark:text-base-400">
                           @{user.displayName}
                         </span>
                       </div>

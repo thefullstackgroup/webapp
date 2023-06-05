@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Icons from 'react-icons/si';
 import { IoCodeSlashSharp } from 'react-icons/io5';
+import ToolTip from '../elements/ToolTip';
 
 const TagStack = (props) => {
   const Icon = (props) => {
@@ -24,8 +25,15 @@ const TagStack = (props) => {
     else return null;
   };
 
+  if (Icons[`Si${props.iconName}`] === 'undefined') {
+    return null;
+  }
+
   return props.iconOnly && Icons[`Si${props.iconName}`] !== 'undefined' ? (
-    <Icon iconName={`${props.tech}`} style={props.style} />
+    <div className="group relative">
+      <ToolTip message={props.tech} />
+      <Icon iconName={`${props.tech}`} style={props.style} />
+    </div>
   ) : (
     <div
       className={

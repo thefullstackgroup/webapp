@@ -12,11 +12,13 @@ import GitHubStats from 'components/modules/project/GitHubStats';
 import Contributors from 'components/modules/project/Contributors';
 import { BiExpandAlt } from 'react-icons/bi';
 import { IoCloseOutline, IoLogoGithub } from 'react-icons/io5';
+import Moment from 'moment';
 import Loader from 'components/common/elements/Loader';
 import ToolTip from 'components/common/elements/ToolTip';
 import Insights from 'components/modules/post/Insights';
 import ButtonConnect from 'components/common/buttons/Connect';
 import ButtonChat from 'components/common/buttons/Chat';
+import Icon from 'components/common/elements/Icon';
 
 const Container = ({ project, isConnected, isConnectionPending, user }) => {
   const [showImageModal, setShowImageModal] = useState(false);
@@ -33,7 +35,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
 
   return (
     <>
-      <div className="no-scrollbar py-6">
+      <div className="no-scrollbar">
         {project?.isDraft &&
           project?.projectCreator?.userId === user?.userId && (
             <Link href={`/post?ref=${project?._id}`} passHref>
@@ -57,116 +59,135 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
           </div>
         )}
 
-        <h2 className="mb-6 cursor-pointer text-2xl font-semibold tracking-tight text-base-100 md:text-4xl">
-          {project?.projectName}
-        </h2>
-
-        {project?.projectVideoURI ? (
-          <div className="h-[58vh] w-full overflow-hidden bg-black md:h-[64vh]">
-            <VideoPlayer
-              src={project?.projectVideoURI}
-              poster={`${project?.projectImgURI}?width=640`}
-            />
-          </div>
-        ) : youTubeEmbedID.id ? (
-          <div className="relative h-[32vh] w-auto cursor-pointer overflow-hidden rounded-lg bg-base-800 md:h-[60vh]">
-            <div className="h-full w-full overflow-hidden">
-              <LiteYouTubeEmbed
-                id={youTubeEmbedID.id}
-                title={project?.projectName}
-                aspectHeight={4}
-                aspectWidth={3}
-                autoplay={1}
-              />
-            </div>
-          </div>
-        ) : (
-          project?.projectImgURI && (
-            <div
-              className="relative h-52 w-auto cursor-pointer overflow-hidden rounded-lg bg-base-800 md:h-[50vh]"
-              onClick={() => setShowImageModal(!showImageModal)}
-            >
-              <Image
-                src={project?.projectImgURI}
-                className="h-full w-full object-cover opacity-90"
-                alt={project?.projectName}
-                width={900}
-                height={900}
-                layout="fill"
-                priority={true}
-              />
-              <button className="absolute top-4 right-6 hidden rounded-lg bg-black bg-opacity-40 p-2 lg:block">
-                <BiExpandAlt className="h-6 w-6 text-white" />
-              </button>
-            </div>
-          )
-        )}
-
-        <div className="md:pb-8">
-          <div className="z-10 flex flex-col items-start justify-between space-y-2 bg-base-900 pt-2 pb-4 sm:items-start md:flex-row md:space-y-0 md:space-x-6 lg:sticky lg:top-0">
-            <div className="flex w-full flex-row-reverse items-center sm:w-auto sm:flex-row sm:space-x-2">
-              {project?.sourceControlLink !== '' && (
-                <a
-                  href={project?.sourceControlLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-ghost btn-with-icon group relative py-2 pl-2 pr-4 text-base"
-                >
-                  <ToolTip message="Browse GitHub repository" />
-                  <IoLogoGithub className="h-auto w-7 " />
-                  <span className="hidden sm:block">Source</span>
-                </a>
-              )}
-
-              {project?.projectLinkURI !== '' && (
-                <a
-                  href={project?.projectLinkURI}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-primary btn-with-icon group relative w-full justify-center whitespace-nowrap px-4 py-2 text-base sm:w-auto"
-                >
-                  <span className="">View project</span>
-                </a>
-              )}
-            </div>
-          </div>
-
-          <div className="block md:hidden">
-            <Insights projectId={project?._id} />
-          </div>
-
-          <div className="mt-4 flex items-center space-x-3 xl:hidden">
-            <Avatar
-              href={`/${project?.projectCreator?.displayName}`}
-              image={project?.projectCreator?.profilePicUrl}
-              name={project?.projectCreator?.displayName}
-              dimensions="h-8 w-8"
-            />
-            <Link href={`/${project?.projectCreator?.displayName}`}>
-              <div className="flex cursor-pointer flex-col">
-                <p className="text-xs font-normal tracking-tight text-base-400">
-                  Created by
-                </p>
-                <div className="text-sm">
-                  <p className="font-bold tracking-tight">
-                    {project?.projectCreator?.name}
-                  </p>
-                </div>
+        <div className="bg-gradient-to-b from-base-50 to-base-200/50 py-14 dark:from-base-900 dark:to-base-800/90">
+          <div className="relative z-10 mx-auto flex max-w-screen-2xl items-center gap-12 px-20">
+            <div className="w-5/12 space-y-4">
+              <div className="flex items-center space-x-3">
+                <Avatar
+                  href={`/${project?.projectCreator?.displayName}`}
+                  image={project?.projectCreator?.profilePicUrl}
+                  name={project?.projectCreator?.displayName}
+                  dimensions="h-14 w-14"
+                />
+                <Link href={`/${project?.projectCreator?.displayName}`}>
+                  <div className="flex cursor-pointer flex-col -space-y-1">
+                    <span className="text-sm font-light text-base-300 dark:text-base-400">
+                      Created by
+                    </span>
+                    <span className="text-lg font-medium">
+                      {project?.projectCreator?.name}
+                    </span>
+                  </div>
+                </Link>
               </div>
-            </Link>
-          </div>
+              <div className="space-y-1">
+                <h2 className="text-5xl font-semibold tracking-tight">
+                  {project?.projectName}
+                </h2>
+                {/* <p className="px-0.5 text-sm font-light text-base-300 dark:text-base-400">
+                  Posted {Moment(project?.createdDate).format('MMM Do, YYYY')}
+                </p> */}
+              </div>
 
-          <div className="col-span-4 flex">
-            <div className="no-scrollbar my-2 flex w-auto items-center overflow-hidden overflow-x-scroll">
-              {project?.projectTechStack?.map((stack, index) => (
-                <TagStack tech={stack} key={index} size={'xs'} />
-              ))}
+              <div className="my-4 mt-6 flex flex-wrap items-center gap-0.5 ">
+                {project?.projectTechStack?.map((stack, index) => (
+                  <TagStack tech={stack} key={index} />
+                ))}
+              </div>
+
+              <div className="flex w-full flex-row-reverse items-center pt-6 sm:w-auto sm:flex-row sm:space-x-2">
+                {project?.projectLinkURI !== '' && (
+                  <a
+                    href={project?.projectLinkURI}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-primary btn-with-icon"
+                  >
+                    <span className="">View project</span>
+                    <Icon name={'FiExternalLink'} className="h-auto w-5" />
+                  </a>
+                )}
+
+                {project?.sourceControlLink !== '' && (
+                  <a
+                    href={project?.sourceControlLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-secondary btn-with-icon"
+                  >
+                    <span className="hidden sm:block">Code</span>
+                    <IoLogoGithub className="h-auto w-5" />
+                  </a>
+                )}
+              </div>
+            </div>
+
+            <div className="w-7/12">
+              {project?.projectVideoURI ? (
+                <div className="h-[200px] w-full overflow-hidden rounded-xl border border-base-300 bg-black dark:border-base-700 md:h-[450px]">
+                  <VideoPlayer
+                    src={project?.projectVideoURI}
+                    poster={`${project?.projectImgURI}?width=640`}
+                  />
+                </div>
+              ) : youTubeEmbedID.id ? (
+                <div className="relative h-[200px] w-auto cursor-pointer overflow-hidden rounded-xl border border-base-300 bg-base-800 dark:border-base-700 md:h-[450px]">
+                  <div className="h-full w-full overflow-hidden">
+                    <LiteYouTubeEmbed
+                      id={youTubeEmbedID.id}
+                      title={project?.projectName}
+                      aspectHeight={4}
+                      aspectWidth={3}
+                      autoplay={1}
+                    />
+                  </div>
+                </div>
+              ) : (
+                project?.projectImgURI && (
+                  <div
+                    className="relative h-52 w-auto cursor-pointer overflow-hidden rounded-lg border border-base-300 bg-base-800 dark:border-base-700 md:h-[450px]"
+                    onClick={() => setShowImageModal(!showImageModal)}
+                  >
+                    <Image
+                      src={project?.projectImgURI}
+                      className="h-full w-full object-cover opacity-90"
+                      alt={project?.projectName}
+                      width={900}
+                      height={900}
+                      layout="fill"
+                      priority={true}
+                    />
+                    <button className="absolute top-4 right-6 hidden rounded-lg bg-black bg-opacity-40 p-2 lg:block">
+                      <BiExpandAlt className="h-6 w-6 text-white" />
+                    </button>
+                  </div>
+                )
+              )}
             </div>
           </div>
+        </div>
 
-          {project?.hasGitHubReadMe && <GitHubStats project={project} />}
+        <div className="sticky top-0 z-50 border-b border-t bg-base-50 dark:border-base-700 dark:bg-base-900">
+          <div className="mx-auto flex max-w-4xl justify-between">
+            <div className="flex space-x-10">
+              <button className="border-b border-base-900 py-5 font-mono dark:border-base-50">
+                Description
+              </button>
+              <button className="py-5 font-mono">Contributors</button>
+              <button className="py-5 font-mono">Stats</button>
+            </div>
+            <button className="py-5 font-mono">GitHub</button>
+          </div>
+        </div>
 
-          {project?.lookingForCollabs &&
+        <div className="mx-auto max-w-4xl">
+          {/* <div className="block md:hidden">
+            <Insights projectId={project?._id} />
+          </div> */}
+
+          {/* {project?.hasGitHubReadMe && <GitHubStats project={project} />} */}
+
+          {/* {project?.lookingForCollabs &&
             project?.projectCreator?.userId !== user?.userId && (
               <>
                 {isConnected ? (
@@ -208,9 +229,9 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
                   </div>
                 )}
               </>
-            )}
+            )} */}
 
-          <div className="prose prose-dark mt-4 max-w-full">
+          <div className="prose mx-auto mt-4 max-w-4xl dark:prose-dark">
             {!project?.projectBody.includes('</img>') ? (
               project?.projectBody && (
                 <Markdown

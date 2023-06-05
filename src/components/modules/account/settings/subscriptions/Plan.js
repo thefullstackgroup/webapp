@@ -2,6 +2,7 @@ import getStripe from 'utils/stripe/getStripe';
 import axios from 'axios';
 import { IoCheckmark, IoCloseCircleSharp } from 'react-icons/io5';
 import { useState } from 'react';
+import Icon from 'components/common/elements/Icon';
 
 const Plan = ({ user, plan, frequency, selected, upgrade = false }) => {
   const [processing, setProcessing] = useState(false);
@@ -10,7 +11,7 @@ const Plan = ({ user, plan, frequency, selected, upgrade = false }) => {
     await axios.post(
       `${process.env.BASEURL}/api/notifications/slack/postMessage`,
       {
-        message: `JOBS: ${user.displayName} has selected ${plan.refPlan} plan and is now on Stripe checkout.`,
+        message: `JOBS: ${user?.displayName} has selected ${plan.refPlan} plan and is now on Stripe checkout.`,
       }
     );
   };
@@ -41,33 +42,29 @@ const Plan = ({ user, plan, frequency, selected, upgrade = false }) => {
   return (
     <div
       className={
-        'group w-full cursor-pointer space-y-6 rounded-md border border-transparent bg-black p-4 duration-300 hover:border-purple-600 md:w-1/3 ' +
-        (selected ? 'border-purple-600' : '')
+        'group w-full space-y-6 rounded-md border border-transparent bg-base-200/70 p-4 duration-300 dark:bg-base-800 md:w-1/3 ' +
+        (selected
+          ? 'border-cyan-dark'
+          : 'hover:border-base-800 dark:hover:border-base-200')
       }
-      onClick={() => selectPlan(plan)}
     >
       <div className="flex justify-between border-b border-base-700 pb-4">
         <div className="flex items-start space-x-2">
-          <h4 className="text-2xl font-bold">{plan.title}</h4>
-          {frequency == 12 && (
-            <span className="badge mt-1 bg-yellow-500/80 px-1 py-0.5 text-xs">
-              -30%
-            </span>
-          )}
+          <h4 className="text-2xl font-semibold">{plan.title}</h4>
         </div>
         <div className="flex flex-col text-right">
           <span className="text-xl font-bold">&euro; {plan.price}</span>
           <span className="text-xs text-base-400">per month</span>
         </div>
       </div>
-      <div className="text-sm text-base-200">{plan.description}</div>
+      <div className="text-sm">{plan.description}</div>
       <ul className="space-y-2 text-sm">
         {plan.features.map((feature, index) =>
           feature.value ? (
             <li key={index}>
               <div className="flex items-start justify-between">
-                <div className="flex items-center space-x-2 text-base-300">
-                  <IoCheckmark className="h-5 w-5 text-green-500" />
+                <div className="flex items-center space-x-2">
+                  <Icon name={'FiCheck'} className="h-5 w-5 text-green-500" />
                   <span>{feature.label}</span>
                 </div>
                 <div>{feature.value}</div>
@@ -76,8 +73,11 @@ const Plan = ({ user, plan, frequency, selected, upgrade = false }) => {
           ) : (
             <li key={index}>
               <div className="flex items-start justify-between">
-                <div className="flex items-center space-x-2 text-base-600">
-                  <IoCloseCircleSharp className="h-5 w-5 text-base-600" />
+                <div className="flex items-center space-x-2 text-base-300 dark:text-base-500">
+                  <Icon
+                    name={'FiXCircle'}
+                    className="h-5 w-5 text-base-300 dark:text-base-500"
+                  />
                   <span>{feature.label}</span>
                 </div>
                 <div>{feature.value}</div>
@@ -88,9 +88,14 @@ const Plan = ({ user, plan, frequency, selected, upgrade = false }) => {
       </ul>
       {upgrade ? (
         selected ? (
-          <button className={'btn-secondary w-full'}>Current plan</button>
+          <button className={'btn btn-primary w-full'} disabled>
+            Current plan
+          </button>
         ) : (
-          <button className={'btn-primary group-hover:bg-primary-500 w-full'}>
+          <button
+            className={'btn btn-primary group-hover:bg-primary-500 w-full'}
+            onClick={() => selectPlan(plan)}
+          >
             {processing ? 'Processing ...' : `Upgrade plan`}
           </button>
         )

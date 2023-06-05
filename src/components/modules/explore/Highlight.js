@@ -105,11 +105,11 @@ const Slide = (props) => {
               </div>
 
               <div className="absolute bottom-0 left-0 flex w-full flex-col space-y-2 bg-gradient-to-b from-transparent to-base-700 px-4 py-4">
-                <div className="bg-primary-600 w-min rounded-md px-2 py-0.5 text-xs font-medium">
+                <div className="w-min rounded-md bg-highlight-alert px-2 py-0.5 text-xs font-medium text-white">
                   Highlight
                 </div>
                 <div className="w-3/4">
-                  <span className="text-3xl font-semibold tracking-tight">
+                  <span className="text-3xl font-semibold tracking-tight text-white">
                     {title}
                   </span>
                 </div>

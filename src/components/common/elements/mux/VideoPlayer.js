@@ -37,7 +37,11 @@ const VideoPlayer = ({ src, poster, controls = true, muted = false }) => {
 
   return (
     <>
-      <video ref={videoRef} poster={poster} className="w-full h-full" />
+      <video
+        ref={videoRef}
+        poster={poster}
+        className="h-full w-full object-contain"
+      />
     </>
   );
 };

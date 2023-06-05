@@ -17,13 +17,13 @@ const ProjectCard = ({ project, feature = false, user, type, hideAuthor }) => {
         >
           <div
             className={
-              'w-full cursor-pointer bg-base-200 dark:bg-base-800 ' +
+              'w-full cursor-pointer overflow-hidden rounded bg-base-200 dark:bg-base-800 ' +
               (feature ? 'h-56' : 'h-40')
             }
           >
             <Image
               src={project.projectImgURI}
-              className="h-full w-full object-cover object-top duration-200 hover:opacity-100 group-hover:shadow-xl group-hover:shadow-highlight-purple/20 dark:opacity-90"
+              className="h-full w-full object-cover object-top duration-200 hover:opacity-100 group-hover:scale-105 group-hover:shadow-xl dark:opacity-90"
               alt={project.title}
               width={300}
               height={200}

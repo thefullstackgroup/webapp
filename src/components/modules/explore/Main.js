@@ -8,6 +8,7 @@ import { CategoriesFilter } from './constants';
 import Link from 'next/link';
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
+import Highlight from './Highlight';
 
 export const Greeting = ({ name }) => {
   const myDate = new Date();
@@ -48,9 +49,9 @@ const Main = ({ user }) => {
     <div className="min-h-screen space-y-4 pt-6">
       {!user && (
         <div className="rounded-2xl bg-base-200/80 dark:bg-base-800">
-          <div className="mx-auto max-w-3xl py-14 text-center">
+          <div className="mx-auto max-w-4xl py-14 text-center">
             <div className="relative space-y-6">
-              <h2 className="text-5xl font-bold tracking-tight">
+              <h2 className="text-6xl font-bold tracking-tighter">
                 <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-blue-600 bg-clip-text text-transparent">
                   Discover and connect
                 </span>{' '}
@@ -109,7 +110,12 @@ const Main = ({ user }) => {
           </div>
         </div>
       )}
+
       <div className="pt-4 pb-10">
+        <Highlight />
+      </div>
+
+      <div className="pb-10">
         <Discover user={user} sort="newest" range={90} />
       </div>
 

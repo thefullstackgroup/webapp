@@ -9,6 +9,9 @@ import {
 import { BsCheck } from 'react-icons/bs';
 import { IoInformationCircle, IoArrowBack } from 'react-icons/io5';
 import { CgSpinner } from 'react-icons/cg';
+import Menu from './Menu';
+import Icon from 'components/common/elements/Icon';
+import ToolTip from 'components/common/elements/ToolTip';
 
 const roles = [
   'Junior Full Stack Developer',
@@ -41,18 +44,15 @@ const PreferredWorkType = ({ selected, addChoice, removeChoice }) => {
       {workTypes.map((type, index) =>
         selected.includes(type.value) ? (
           <button
-            className="badge relative whitespace-nowrap bg-base-500 px-2 py-1.5 text-sm text-white"
+            className="badge relative whitespace-nowrap bg-cyan-dark px-2 py-1.5 text-sm text-white"
             onClick={() => removeChoice(type.value)}
             key={index}
           >
-            <span>{type.label}</span>
-            <span className="absolute -top-1 -left-1 h-3 w-3 rounded-full bg-green-600 ring-2 ring-white">
-              <BsCheck className="h-3 w-3 text-white" />
-            </span>
+            {type.label}
           </button>
         ) : (
           <button
-            className="badge whitespace-nowrap bg-base-600/50 px-2 py-1.5 text-sm text-base-200"
+            className="badge whitespace-nowrap bg-base-200 px-2 py-1.5 text-sm text-base-600 dark:bg-base-700 dark:text-base-200"
             onClick={() => addChoice(type.value)}
             key={index}
           >
@@ -71,33 +71,23 @@ const OpenToJobOpportunityChoice = ({ selected, setChoice }) => {
         className={
           'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
           (selected == true
-            ? 'bg-base-500 text-white'
-            : 'bg-base-600/50 text-base-200')
+            ? 'bg-cyan-dark text-white'
+            : 'bg-base-200 text-base-600 dark:bg-base-700 dark:text-base-200')
         }
         onClick={() => setChoice(true)}
       >
-        <span>Yes</span>
-        {selected == true && (
-          <span className="absolute -top-1 -left-1 h-3 w-3 rounded-full bg-green-600 ring-2 ring-white">
-            <BsCheck className="h-3 w-3 text-white" />
-          </span>
-        )}
+        Yes
       </button>
       <button
         className={
           'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
           (selected == false
-            ? 'bg-base-500 text-white'
-            : 'bg-base-600/50 text-base-200')
+            ? 'bg-cyan-dark text-white'
+            : 'bg-base-200 text-base-600 dark:bg-base-700 dark:text-base-200')
         }
         onClick={() => setChoice(false)}
       >
-        <span>No</span>
-        {selected == false && (
-          <span className="absolute -top-1 -left-1 h-3 w-3 rounded-full bg-green-600 ring-2 ring-white">
-            <BsCheck className="h-3 w-3 text-white" />
-          </span>
-        )}
+        No
       </button>
     </div>
   );
@@ -110,33 +100,23 @@ const RelocationChoice = ({ selected, setChoice }) => {
         className={
           'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
           (selected == true
-            ? 'bg-base-500 text-white'
-            : 'bg-base-600/50 text-base-200')
+            ? 'bg-cyan-dark text-white'
+            : 'bg-base-200 text-base-600 dark:bg-base-700 dark:text-base-200')
         }
         onClick={() => setChoice(true)}
       >
-        <span>Yes</span>
-        {selected == true && (
-          <span className="absolute -top-1 -left-1 h-3 w-3 rounded-full bg-green-600 ring-2 ring-white">
-            <BsCheck className="h-3 w-3 text-white" />
-          </span>
-        )}
+        Yes
       </button>
       <button
         className={
           'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
           (selected == false
-            ? 'bg-base-500 text-white'
-            : 'bg-base-600/50 text-base-200')
+            ? 'bg-cyan-dark text-white'
+            : 'bg-base-200 text-base-600 dark:bg-base-700 dark:text-base-200')
         }
         onClick={() => setChoice(false)}
       >
-        <span>No</span>
-        {selected == false && (
-          <span className="absolute -top-1 -left-1 h-3 w-3 rounded-full bg-green-600 ring-2 ring-white">
-            <BsCheck className="h-3 w-3 text-white" />
-          </span>
-        )}
+        No
       </button>
     </div>
   );
@@ -262,7 +242,248 @@ const JobPreferences = ({ user }) => {
 
   return (
     <>
-      <div className="mt-0 flex w-full justify-center lg:mt-12">
+      <div className="mx-auto mt-0 w-full max-w-5xl justify-center lg:mt-6">
+        <div className="hidden w-full pt-4 pb-10 text-4xl font-medium tracking-tight sm:block">
+          Account settings
+        </div>
+        <div className="flex items-start space-x-4">
+          <div className="sticky top-20 w-3/12">
+            <Menu selected="Work preferences" />
+          </div>
+          <div className="mb-4 w-full rounded-lg border border-base-200 px-4 dark:border-base-700 sm:px-6">
+            <div className="mb-36 py-4 sm:mb-0">
+              <h4 className="mb-2 text-2xl font-medium">Work preferences</h4>
+              <p className="mb-6">
+                The Full Stack can help you find and connect to tech teams with
+                open positions matched to your preferences. Set the criteria
+                below for matches based upon your profile. Your details are
+                private by default and not displayed on your profile. No
+                recruiter spam.
+              </p>
+              <div className="space-y-4">
+                <div className="space-y-6">
+                  <div>
+                    <label className="label text-sm">
+                      Are you open to opportunties?
+                    </label>
+
+                    <OpenToJobOpportunityChoice
+                      selected={openToJobOpportunities}
+                      setChoice={setOpenToJobOpportunities}
+                    />
+                  </div>
+                  <div>
+                    <label className="label text-sm">
+                      Are you open to relocation?
+                    </label>
+
+                    <RelocationChoice
+                      selected={openToRelocation}
+                      setChoice={setOpenToRelocation}
+                    />
+
+                    {openToRelocation && (
+                      <input
+                        type="text"
+                        name="relocation"
+                        placeholder="Any conditions or preferences to relocation?"
+                        className="text-input mt-2"
+                        value={openToRelocationDescription}
+                        onChange={(e) => {
+                          setOpenToRelocationDescription(e.target.value);
+                        }}
+                      />
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="label text-sm">
+                      Select your preferred work types
+                    </label>
+                    <div className="flex flex-wrap">
+                      <PreferredWorkType
+                        selected={preferredWorkTypes}
+                        addChoice={addWorkType}
+                        removeChoice={removeWorkType}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="label text-sm">
+                      What are your salary expectations?
+                    </label>
+                    <div className="flex items-start space-x-2">
+                      <select
+                        className="text-input w-48"
+                        onChange={(e) => {
+                          setLocalCurrency(e.target.value);
+                        }}
+                      >
+                        {currencies.map((curr, index) =>
+                          curr === localCurrency ? (
+                            <option value={curr} key={index} selected>
+                              {curr}
+                            </option>
+                          ) : (
+                            <option value={curr} key={index}>
+                              {curr}
+                            </option>
+                          )
+                        )}
+                      </select>
+                      <div className="w-full">
+                        <select
+                          className="text-input"
+                          onChange={(e) => {
+                            setBaseSalary(e.target.value);
+                          }}
+                        >
+                          <option value="">Minimum</option>
+                          {salaryRanges.map((range, index) =>
+                            range.value == baseSalary ? (
+                              <option value={range.value} key={index} selected>
+                                {range.label}
+                              </option>
+                            ) : (
+                              <option value={range.value} key={index}>
+                                {range.label}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                      <div className="w-full">
+                        <select
+                          className="text-input"
+                          onChange={(e) => {
+                            setMaxSalary(e.target.value);
+                          }}
+                        >
+                          <option value="">Maximum</option>
+                          {salaryRanges.map((range, index) =>
+                            range.value == maxSalary ? (
+                              <option value={range.value} key={index} selected>
+                                {range.label}
+                              </option>
+                            ) : (
+                              <option value={range.value} key={index}>
+                                {range.label}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                    </div>
+                    {formError && baseSalary > maxSalary && (
+                      <span className="text-xs text-red-500">
+                        Min salary cannot be greater than max salary.
+                      </span>
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="label text-sm">
+                      What kind of roles are you interested in?
+                    </label>
+                    <select
+                      className="text-input"
+                      onChange={(e) => addInterestedRole(e.target.value)}
+                    >
+                      <option>Choose roles ...</option>
+                      {roles.map(
+                        (role, index) =>
+                          !interestedRoles.includes(role) && (
+                            <option value={role} key={index}>
+                              {role}
+                            </option>
+                          )
+                      )}
+                    </select>
+                    {interestedRoles && (
+                      <div className="mt-2 flex flex-wrap items-center">
+                        {interestedRoles.map((interestedRole, index) => (
+                          <div
+                            className="group relative mr-2 mb-1 w-min cursor-pointer whitespace-nowrap rounded-md bg-base-600 px-2 py-1 text-sm"
+                            key={index}
+                            onClick={() => removeInterestedRole(interestedRole)}
+                          >
+                            <ToolTip message={'Click to remove'} />
+
+                            {interestedRole}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="label text-sm">
+                      What should your dream job look like?
+                    </label>
+                    <input
+                      type="text"
+                      name="dream"
+                      placeholder="This could be anything ..."
+                      className="text-input"
+                      value={dreamJob}
+                      onChange={(e) => {
+                        setDreamJob(e.target.value);
+                      }}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="label text-sm">
+                      Most impressive accomplishment?
+                    </label>
+                    <input
+                      type="text"
+                      name="title"
+                      placeholder="This could be anything ..."
+                      className="text-input"
+                      value={notableAccomplishment}
+                      onChange={(e) => {
+                        setNotableAccomplishment(e.target.value);
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-between pt-8">
+                {saving ? (
+                  <button
+                    className="btn-primary btn-with-icon w-full justify-center"
+                    disabled
+                  >
+                    <CgSpinner className="h-4 w-4 animate-spin" />
+                    <span>Saving</span>
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => handleSubmit()}
+                  >
+                    <span className="hidden sm:block">Save preferences</span>
+                    <span className="block sm:hidden">Save</span>
+                  </button>
+                )}
+              </div>
+
+              <div className="mt-8 flex items-center space-x-2 text-sm text-base-500 dark:text-base-400">
+                <Icon name={'FiInfo'} className="h-5 w-5" />
+                <span>
+                  Your details are private by default and will not displayed on
+                  your profile.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* <div className="mt-0 flex w-full justify-center lg:mt-12">
         <div className="min-h-screen w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
           <div className="relative mx-auto max-w-4xl">
             <div className="mx-4 mb-10 space-y-6 md:mx-0">
@@ -286,247 +507,10 @@ const JobPreferences = ({ user }) => {
                 private by default and not displayed on your profile.{' '}
                 <span className="font-bold">No recruiter spam</span>.
               </div>
-              <div className="mb-4 w-full rounded-lg bg-base-700 px-4">
-                <div className="mb-36 py-4 sm:mb-0 sm:px-2">
-                  <div className="space-y-4">
-                    <div className="space-y-6">
-                      <div>
-                        <label className="text-sm font-medium text-base-400">
-                          Are you open to opportunties?
-                        </label>
-                        <div className="mt-2">
-                          <OpenToJobOpportunityChoice
-                            selected={openToJobOpportunities}
-                            setChoice={setOpenToJobOpportunities}
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium text-base-400">
-                          Are you open to relocation?
-                        </label>
-                        <div className="mt-2">
-                          <RelocationChoice
-                            selected={openToRelocation}
-                            setChoice={setOpenToRelocation}
-                          />
-                        </div>
-
-                        {openToRelocation && (
-                          <input
-                            type="text"
-                            name="relocation"
-                            placeholder="Any conditions or preferences to relocation?"
-                            className="text-input"
-                            value={openToRelocationDescription}
-                            onChange={(e) => {
-                              setOpenToRelocationDescription(e.target.value);
-                            }}
-                          />
-                        )}
-                      </div>
-
-                      <div>
-                        <label className="text-sm font-medium text-base-400">
-                          Select your preferred work types
-                        </label>
-                        <div className="mt-2 flex flex-wrap">
-                          <PreferredWorkType
-                            selected={preferredWorkTypes}
-                            addChoice={addWorkType}
-                            removeChoice={removeWorkType}
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="text-sm font-medium text-base-400">
-                          What are your salary expectations?
-                        </label>
-                        <div className="flex items-start space-x-2">
-                          <select
-                            className="text-input w-48"
-                            onChange={(e) => {
-                              setLocalCurrency(e.target.value);
-                            }}
-                          >
-                            {currencies.map((curr, index) =>
-                              curr === localCurrency ? (
-                                <option value={curr} key={index} selected>
-                                  {curr}
-                                </option>
-                              ) : (
-                                <option value={curr} key={index}>
-                                  {curr}
-                                </option>
-                              )
-                            )}
-                          </select>
-                          <div className="w-full">
-                            <select
-                              className="text-input"
-                              onChange={(e) => {
-                                setBaseSalary(e.target.value);
-                              }}
-                            >
-                              <option value="">Minimum</option>
-                              {salaryRanges.map((range, index) =>
-                                range.value == baseSalary ? (
-                                  <option
-                                    value={range.value}
-                                    key={index}
-                                    selected
-                                  >
-                                    {range.label}
-                                  </option>
-                                ) : (
-                                  <option value={range.value} key={index}>
-                                    {range.label}
-                                  </option>
-                                )
-                              )}
-                            </select>
-                          </div>
-                          <div className="w-full">
-                            <select
-                              className="text-input"
-                              onChange={(e) => {
-                                setMaxSalary(e.target.value);
-                              }}
-                            >
-                              <option value="">Maximum</option>
-                              {salaryRanges.map((range, index) =>
-                                range.value == maxSalary ? (
-                                  <option
-                                    value={range.value}
-                                    key={index}
-                                    selected
-                                  >
-                                    {range.label}
-                                  </option>
-                                ) : (
-                                  <option value={range.value} key={index}>
-                                    {range.label}
-                                  </option>
-                                )
-                              )}
-                            </select>
-                          </div>
-                        </div>
-                        {formError && baseSalary > maxSalary && (
-                          <span className="text-xs text-red-500">
-                            Min salary cannot be greater than max salary.
-                          </span>
-                        )}
-                      </div>
-
-                      <div>
-                        <label className="text-sm font-medium text-base-400">
-                          What kind of roles are you interested in?
-                        </label>
-                        <select
-                          className="text-input"
-                          onChange={(e) => addInterestedRole(e.target.value)}
-                        >
-                          <option>Choose roles ...</option>
-                          {roles.map(
-                            (role, index) =>
-                              !interestedRoles.includes(role) && (
-                                <option value={role} key={index}>
-                                  {role}
-                                </option>
-                              )
-                          )}
-                        </select>
-                        {interestedRoles && (
-                          <div className="mt-2 flex flex-wrap items-center">
-                            {interestedRoles.map((interestedRole, index) => (
-                              <div
-                                className="group relative mr-2 mb-1 w-min cursor-pointer whitespace-nowrap rounded-md bg-base-600 px-2 py-1 text-sm"
-                                key={index}
-                                onClick={() =>
-                                  removeInterestedRole(interestedRole)
-                                }
-                              >
-                                <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-base-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-base-600 before:content-[''] group-hover:opacity-100">
-                                  Click to remove
-                                </span>
-                                {interestedRole}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-
-                      <div>
-                        <label className="text-sm font-medium text-base-400">
-                          What should your dream job look like?
-                        </label>
-                        <input
-                          type="text"
-                          name="dream"
-                          placeholder="This could be anything ..."
-                          className="text-input"
-                          value={dreamJob}
-                          onChange={(e) => {
-                            setDreamJob(e.target.value);
-                          }}
-                        />
-                      </div>
-
-                      <div>
-                        <label className="text-sm font-medium text-base-400">
-                          Most impressive accomplishment?
-                        </label>
-                        <input
-                          type="text"
-                          name="title"
-                          placeholder="This could be anything ..."
-                          className="text-input"
-                          value={notableAccomplishment}
-                          onChange={(e) => {
-                            setNotableAccomplishment(e.target.value);
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-between pt-8">
-                    {saving ? (
-                      <button
-                        className="btn-primary btn-with-icon w-full justify-center"
-                        disabled
-                      >
-                        <CgSpinner className="h-4 w-4 animate-spin" />
-                        <span>Saving</span>
-                      </button>
-                    ) : (
-                      <button
-                        className="btn-primary w-full"
-                        onClick={() => handleSubmit()}
-                      >
-                        <span className="hidden sm:block">
-                          Save preferences
-                        </span>
-                        <span className="block sm:hidden">Save</span>
-                      </button>
-                    )}
-                  </div>
-
-                  <div className="mt-8 flex items-center space-x-2 text-sm text-base-300">
-                    <IoInformationCircle className="h-5 w-5" />
-                    <span>
-                      Your details are private by default and will not displayed
-                      on your profile.
-                    </span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <Toast show={showToast} setShow={setShowToast} message={toastMessage} />
     </>
   );

@@ -20,7 +20,7 @@ const GitHubStats = ({ project }) => {
     <>
       {gitHubStats && gitHubStats.starCount > 0 && (
         <div className="rounded-md py-4">
-          <div className="grid gap-2 text-base sm:grid-cols-2">
+          <div className="grid gap-2 text-base sm:grid-cols-1">
             <div className="col-span-1 flex items-center justify-between rounded-md bg-base-600/40 p-2 px-4">
               <div className="flex items-center space-x-2">
                 <HiOutlineStar className="h-5 w-auto text-yellow-500" />
