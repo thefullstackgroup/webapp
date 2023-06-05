@@ -12,11 +12,11 @@ const Share = ({ url, message }) => {
   return (
     <>
       <button
-        className="btn-secondary group relative cursor-pointer rounded-xl bg-transparent px-2 text-sm hover:bg-base-400/20"
+        className="btn btn-ghost group relative cursor-pointer rounded-xl bg-transparent px-2 text-sm"
         onClick={() => setShowShareOptions(!showShareOptions)}
       >
         <ToolTip message="Share" />
-        <IoArrowRedoOutline className="h-auto w-6 sm:group-hover:text-base-300" />
+        <IoArrowRedoOutline className="h-auto w-7 sm:group-hover:text-base-300" />
       </button>
 
       <ModalDialog

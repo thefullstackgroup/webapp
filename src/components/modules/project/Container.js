@@ -15,6 +15,8 @@ import { IoCloseOutline, IoLogoGithub } from 'react-icons/io5';
 import Moment from 'moment';
 import Loader from 'components/common/elements/Loader';
 import ToolTip from 'components/common/elements/ToolTip';
+import Actions from 'components/modules/project/Actions';
+import FollowButton from 'components/common/buttons/Follow';
 import Insights from 'components/modules/post/Insights';
 import ButtonConnect from 'components/common/buttons/Connect';
 import ButtonChat from 'components/common/buttons/Chat';
@@ -84,9 +86,9 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
                 <h2 className="text-5xl font-semibold tracking-tight">
                   {project?.projectName}
                 </h2>
-                {/* <p className="px-0.5 text-sm font-light text-base-300 dark:text-base-400">
+                <p className="px-0.5 text-sm font-light text-base-300 dark:text-base-400">
                   Posted {Moment(project?.createdDate).format('MMM Do, YYYY')}
-                </p> */}
+                </p>
               </div>
 
               <div className="my-4 mt-6 flex flex-wrap items-center gap-0.5 ">
@@ -95,7 +97,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
                 ))}
               </div>
 
-              <div className="flex w-full flex-row-reverse items-center pt-6 sm:w-auto sm:flex-row sm:space-x-2">
+              <div className="flex w-full flex-row-reverse items-center pt-4 sm:w-auto sm:flex-row sm:space-x-2">
                 {project?.projectLinkURI !== '' && (
                   <a
                     href={project?.projectLinkURI}
@@ -119,6 +121,15 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
                     <IoLogoGithub className="h-auto w-5" />
                   </a>
                 )}
+              </div>
+
+              <div className="flex w-56 pt-8">
+                <Actions
+                  user={user}
+                  project={project}
+                  isLiked={project?.likedByCurrentUser}
+                  nComments={project?.numberOfComments}
+                />
               </div>
             </div>
 
@@ -168,26 +179,33 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
         </div>
 
         <div className="sticky top-0 z-50 border-b border-t bg-base-50 dark:border-base-700 dark:bg-base-900">
-          <div className="mx-auto flex max-w-4xl justify-between">
+          <div className="mx-auto flex max-w-screen-2xl items-center justify-between px-20">
             <div className="flex space-x-10">
-              <button className="border-b border-base-900 py-5 font-mono dark:border-base-50">
+              <button className="border-b border-base-900 py-5 dark:border-base-50">
                 Description
               </button>
-              <button className="py-5 font-mono">Contributors</button>
-              <button className="py-5 font-mono">Stats</button>
+              <button className="py-5">Contributors</button>
+              <button className="py-5">Stats</button>
             </div>
-            <button className="py-5 font-mono">GitHub</button>
+            <div>
+              {user && project?.userId !== user?.userId && (
+                <FollowButton
+                  followToUser={project?.projectCreator?.userId}
+                  followFromUser={user?.userId}
+                  followToName={project?.projectCreator?.displayName}
+                />
+              )}
+            </div>
           </div>
         </div>
 
-        <div className="mx-auto max-w-4xl">
-          {/* <div className="block md:hidden">
-            <Insights projectId={project?._id} />
-          </div> */}
+        <div className="relative z-10 mx-auto flex max-w-screen-2xl items-start gap-20 px-20">
+          <div className="w-8/12 py-4">
+            <div className="block md:hidden">
+              <Insights projectId={project?._id} />
+            </div>
 
-          {/* {project?.hasGitHubReadMe && <GitHubStats project={project} />} */}
-
-          {/* {project?.lookingForCollabs &&
+            {/* {project?.lookingForCollabs &&
             project?.projectCreator?.userId !== user?.userId && (
               <>
                 {isConnected ? (
@@ -231,32 +249,83 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
               </>
             )} */}
 
-          <div className="prose mx-auto mt-4 max-w-4xl dark:prose-dark">
-            {!project?.projectBody.includes('</img>') ? (
-              project?.projectBody && (
-                <Markdown
-                  options={{
-                    overrides: {
-                      pre: {
-                        component: CodeBlock,
+            <div className="prose mx-auto mt-4 max-w-4xl dark:prose-dark">
+              {!project?.projectBody.includes('</img>') ? (
+                project?.projectBody && (
+                  <Markdown
+                    options={{
+                      overrides: {
+                        pre: {
+                          component: CodeBlock,
+                        },
+                        a: {
+                          props: { target: '_blank' },
+                        },
                       },
-                      a: {
-                        props: { target: '_blank' },
-                      },
-                    },
-                  }}
-                >
-                  {project?.projectBody}
-                </Markdown>
-              )
-            ) : (
-              <span className="italic">
-                The description for this project cannot be displayed as it
-                contains invalid markdown or HTML.
-              </span>
-            )}
+                    }}
+                  >
+                    {project?.projectBody}
+                  </Markdown>
+                )
+              ) : (
+                <span className="italic">
+                  The description for this project cannot be displayed as it
+                  contains invalid markdown or HTML.
+                </span>
+              )}
+            </div>
           </div>
-          {user && <Contributors project={project} />}
+          <div className="sticky top-20 w-4/12 space-y-6 pt-8 pl-10">
+            {project?.lookingForCollabs &&
+              project?.projectCreator?.userId !== user?.userId && (
+                <>
+                  {isConnected ? (
+                    <div className="space-y-2 px-4 py-2">
+                      <div>
+                        <span className="text-base-200">
+                          This project is{' '}
+                          <span className="font-bold">
+                            open to contribution
+                          </span>{' '}
+                          and you are both connected.
+                        </span>
+                      </div>
+                      <ButtonChat
+                        profile={project.projectCreator}
+                        myProfile={user}
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className="space-y-2 px-4 py-2"
+                      // onClick={() => {
+                      //   // setDisplayConnection(true);
+                      //   sendSlackMessage(
+                      //     `Clicked on the connect to collaborate button on the project '${project?.projectName}'`
+                      //   );
+                      // }}
+                    >
+                      <div>
+                        <span className="text-base-200">
+                          This project is{' '}
+                          <span className="font-bold">
+                            open to contribution
+                          </span>
+                          . Connect with me to contribute.
+                        </span>
+                      </div>
+                      <ButtonConnect
+                        connectionPending={isConnectionPending}
+                        connectFrom={user}
+                        connectTo={project.projectCreator}
+                      />
+                    </div>
+                  )}
+                </>
+              )}
+            {project?.hasGitHubReadMe && <GitHubStats project={project} />}
+            {user && <Contributors project={project} />}
+          </div>
         </div>
       </div>
 

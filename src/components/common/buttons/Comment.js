@@ -17,11 +17,11 @@ const ButtonComment = ({ user, post, action = false }) => {
   return (
     <>
       <button
-        className="btn-secondary btn-with-icon bg-transparent hover:bg-primary-400/20 sm:hover:text-primary-500 rounded-xl group pl-1 pr-2 text-sm space-x-1 cursor-pointer group relative"
+        className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm dark:text-base-200 dark:hover:bg-violet-500/40 dark:hover:text-violet-500"
         onClick={() => handleComment()}
       >
         <ToolTip message="Comment" />
-        <IoChatboxOutline className="w-6 h-auto sm:group-hover:text-primary-500" />
+        <IoChatboxOutline className="sm:group-hover:text-primary-500 h-auto w-6" />
         <span className="flex items-center text-sm">
           {post.numberOfComments}
         </span>

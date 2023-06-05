@@ -18,54 +18,52 @@ const GitHubStats = ({ project }) => {
 
   return (
     <>
-      {gitHubStats && gitHubStats.starCount > 0 && (
-        <div className="rounded-md py-4">
-          <div className="grid gap-2 text-base sm:grid-cols-1">
-            <div className="col-span-1 flex items-center justify-between rounded-md bg-base-600/40 p-2 px-4">
-              <div className="flex items-center space-x-2">
-                <HiOutlineStar className="h-5 w-auto text-yellow-500" />
-                <span className="text-base-200">Stars</span>
-              </div>
-              <div className="font-semibold">{gitHubStats.starCount}</div>
+      {gitHubStats && (
+        <div className="gap-2 divide-y divide-base-700">
+          <div className="flex items-center justify-between py-2">
+            <div className="flex items-center space-x-2">
+              <HiOutlineStar className="h-5 w-auto text-yellow-500" />
+              <span>Stars</span>
             </div>
-            <div className="col-span-1 flex items-center justify-between rounded-md bg-base-600/40 p-2 px-4">
-              <div className="flex items-center space-x-2">
-                <IoGitCommitOutline className="h-5 w-auto text-red-500" />
-                <span className="text-base-200">Commits</span>
-              </div>
-              <div className="font-semibold">{gitHubStats.numberOfCommits}</div>
+            <div className="font-semibold">{gitHubStats.starCount}</div>
+          </div>
+          <div className="flex items-center justify-between py-2">
+            <div className="flex items-center space-x-2">
+              <IoGitCommitOutline className="h-5 w-auto text-red-500" />
+              <span>Commits</span>
             </div>
-            <div className="col-span-1 flex items-center justify-between rounded-md bg-base-600/40 p-2 px-4">
-              <div className="flex items-center space-x-2">
-                <IoStopCircle className="h-5 w-auto text-orange-500" />
-                <span className="text-base-200">Issues</span>
-              </div>
-              <div className="font-semibold">{gitHubStats.numberOfIssues}</div>
+            <div className="font-semibold">{gitHubStats.numberOfCommits}</div>
+          </div>
+          <div className="flex items-center justify-between py-2">
+            <div className="flex items-center space-x-2">
+              <IoStopCircle className="h-5 w-auto text-orange-500" />
+              <span>Issues</span>
             </div>
-            <div className="col-span-1 flex items-center justify-between rounded-md bg-base-600/40 p-2 px-4">
-              <div className="flex items-center space-x-2">
-                <BiGitRepoForked className="h-5 w-auto text-fuchsia-500" />
-                <span className="text-base-200">Forks</span>
-              </div>
-              <div className="font-semibold">{gitHubStats.numberOfForks}</div>
+            <div className="font-semibold">{gitHubStats.numberOfIssues}</div>
+          </div>
+          <div className="flex items-center justify-between py-2">
+            <div className="flex items-center space-x-2">
+              <BiGitRepoForked className="h-5 w-auto text-fuchsia-500" />
+              <span>Forks</span>
             </div>
-            <div className="col-span-1 flex items-center justify-between rounded-md bg-base-600/40 p-2 px-4">
-              <div className="flex items-center space-x-2">
-                <IoPeopleOutline className="h-5 w-auto text-blue-500" />
-                <span className="text-base-200">Contributors</span>
-              </div>
-              <div className="font-semibold">
-                {gitHubStats.numberOfContributors}
-              </div>
+            <div className="font-semibold">{gitHubStats.numberOfForks}</div>
+          </div>
+          <div className="flex items-center justify-between py-2">
+            <div className="flex items-center space-x-2">
+              <IoPeopleOutline className="h-5 w-auto text-blue-500" />
+              <span>Contributors</span>
             </div>
-            <div className="col-span-1 flex items-center justify-between rounded-md bg-base-600/40 p-2 px-4">
-              <div className="flex items-center space-x-2">
-                <IoGitPullRequestOutline className="text-tfstertiary-500 h-5 w-auto" />
-                <span className="text-base-200">Pull Requests</span>
-              </div>
-              <div className="font-semibold">
-                {gitHubStats.numberOfPullRequests}
-              </div>
+            <div className="font-semibold">
+              {gitHubStats.numberOfContributors}
+            </div>
+          </div>
+          <div className="flex items-center justify-between py-2">
+            <div className="flex items-center space-x-2">
+              <IoGitPullRequestOutline className="text-tfstertiary-500 h-5 w-auto" />
+              <span>Pull Requests</span>
+            </div>
+            <div className="font-semibold">
+              {gitHubStats.numberOfPullRequests}
             </div>
           </div>
         </div>

@@ -85,7 +85,7 @@ const AwardButton = ({ user, post }) => {
       ) : (
         <div>
           <button
-            className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm dark:hover:bg-yellow-500/40 dark:hover:text-yellow-500"
+            className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm dark:text-base-200 dark:hover:bg-yellow-500/40 dark:hover:text-yellow-500"
             onClick={() => setSelectAward(!selectAward)}
           >
             <ToolTip message="Award" />

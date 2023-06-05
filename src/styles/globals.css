@@ -141,11 +141,17 @@
     margin-top: 0.8em;
     margin-bottom: 0.8em;
     font-size: 1.1rem;
-    font-weight: 300;
+    font-weight: 400;
   }
   .prose ul,
   .prose-sm ul {
     list-style: disc;
+  }
+  .prose li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-size: 1.1rem;
+    font-weight: 400;
   }
   .prose-comments p {
     margin-top: 0em !important;
@@ -154,16 +160,18 @@
     font-weight: 400;
     line-height: 1.5;
   }
-  .prose-comments ul {
+  .prose-comments ul,
+  .prose-comments ol {
     margin-top: 0em !important;
     margin-bottom: 0em;
-    font-size: 0.9em;
+    font-size: 1.1em;
     font-weight: 400;
     line-height: 1.5;
   }
   .prose-comments li {
     margin-top: 0em !important;
     margin-bottom: 0em;
+    font-size: 1.1em;
   }
   .prose-comments span {
     margin-top: 0em !important;
@@ -191,6 +199,7 @@
     margin-bottom: 8px;
     display: inline-block;
     max-width: 100%;
+    border-radius: 5px;
   }
 
   .prose table {

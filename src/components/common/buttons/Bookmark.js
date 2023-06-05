@@ -68,14 +68,14 @@ const ButtonBookmark = (props) => {
   return (
     <>
       <button
-        className="btn-secondary group relative cursor-pointer rounded-xl bg-transparent px-2 text-sm hover:bg-base-400/20"
+        className="btn btn-ghost group relative cursor-pointer rounded-xl bg-transparent px-2 text-sm"
         onClick={() => saveProject(!isSaved ? 'save' : 'remove')}
       >
         <ToolTip message="Save" />
         {isSaved ? (
-          <IoBookmark className="h-auto w-6 sm:group-hover:text-base-300" />
+          <IoBookmark className="h-auto w-7 sm:group-hover:text-base-300" />
         ) : (
-          <IoBookmarkOutline className="h-auto w-6 sm:group-hover:text-base-300" />
+          <IoBookmarkOutline className="h-auto w-7 sm:group-hover:text-base-300" />
         )}
       </button>
     </>

@@ -4,6 +4,7 @@ import { firebase } from 'firebase/firebaseApp';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { IoChatbubblesOutline } from 'react-icons/io5';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
+import Icon from '../elements/Icon';
 
 const ChatButton = ({ profile, myProfile }) => {
   const router = useRouter();
@@ -46,9 +47,9 @@ const ChatButton = ({ profile, myProfile }) => {
 
   return (
     <div className="relative">
-      <button className="btn btn-primary btn-with-icon pl-3" onClick={newChat}>
-        <IoChatbubblesOutline className="h-5 w-5" />
-        <span>Chat</span>
+      <button className="btn btn-primary btn-with-icon" onClick={newChat}>
+        <Icon name={'FiMessageSquare'} className="h-5 w-5" />
+        <span>Message</span>
       </button>
     </div>
   );
