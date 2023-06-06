@@ -11,7 +11,7 @@ const ProfilePic = ({ profile }) => {
     <Avatar
       image={profile.profilePicUrl}
       name={profile.displayName}
-      dimensions="h-6 w-6 border-2 border-base-800"
+      dimensions="h-7 w-7 border-2 border-black"
     />
   );
 };
@@ -26,51 +26,49 @@ const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
 
   return (
     <>
-      <div className="sm:flex sm:justify-between">
-        {votes.length > 0 && (
-          <div className="flex items-center text-xs text-base-400 sm:mx-0 sm:text-base ">
-            {showAvatars ? (
-              <div
-                className="mr-2 flex -space-x-2"
-                onClick={() => setDisplayVoteInsights(!displayVoteInsights)}
-              >
-                {votes.length > 0 && (
-                  <ProfilePic profile={votes[0]?.userProfile} />
-                )}
-                {votes.length > 1 && (
-                  <ProfilePic profile={votes[1]?.userProfile} />
-                )}
-                {votes.length > 2 && (
-                  <ProfilePic profile={votes[2]?.userProfile} />
-                )}
-                {votes.length > 3 && (
-                  <ProfilePic profile={votes[3]?.userProfile} />
-                )}
-              </div>
-            ) : (
-              <IoHeart className="mr-1 h-4 w-4 text-base-500" />
-            )}
-            <button
-              className="flex flex-nowrap items-start text-left text-sm leading-4 line-clamp-1"
+      {votes.length > 0 && (
+        <div className="flex items-center text-xs dark:text-base-300 sm:mx-0 sm:text-base">
+          {showAvatars ? (
+            <div
+              className="mr-1 flex -space-x-2.5"
               onClick={() => setDisplayVoteInsights(!displayVoteInsights)}
             >
-              <span className="hover:text-white">
-                {votes[0]?.userProfile?.displayName}
-              </span>
-
-              {votes.length > 1 && (
-                <>
-                  <span className="ml-1">and</span>
-                  <span className="ml-1 inline-flex font-semibold hover:text-white">
-                    {votes.length - 1} {votes.length > 2 ? 'others' : 'other'}
-                  </span>
-                </>
+              {votes.length > 0 && (
+                <ProfilePic profile={votes[0]?.userProfile} />
               )}
-              <span className="">&nbsp;liked</span>
-            </button>
-          </div>
-        )}
-      </div>
+              {votes.length > 1 && (
+                <ProfilePic profile={votes[1]?.userProfile} />
+              )}
+              {votes.length > 2 && (
+                <ProfilePic profile={votes[2]?.userProfile} />
+              )}
+              {votes.length > 3 && (
+                <ProfilePic profile={votes[3]?.userProfile} />
+              )}
+            </div>
+          ) : (
+            <IoHeart className="mr-1 h-4 w-4 text-base-500" />
+          )}
+          <button
+            className="flex flex-nowrap items-start text-left text-sm leading-4 line-clamp-1"
+            onClick={() => setDisplayVoteInsights(!displayVoteInsights)}
+          >
+            <span className="hover:text-white">
+              {votes[0]?.userProfile?.name}
+            </span>
+
+            {votes.length > 1 && (
+              <>
+                <span className="ml-1">and</span>
+                <span className="ml-1 inline-flex font-semibold hover:text-white">
+                  {votes.length - 1} {votes.length > 2 ? 'others' : 'other'}
+                </span>
+              </>
+            )}
+            <span className="">&nbsp;liked</span>
+          </button>
+        </div>
+      )}
 
       {displayVoteInsights && (
         <ModalDialog
@@ -99,7 +97,7 @@ const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
                         className="cursor-pointer text-sm font-semibold text-base-200 sm:text-base"
                         onClick={() => setDisplayVoteInsights(false)}
                       >
-                        {profile?.userProfile?.displayName}
+                        {profile?.userProfile?.name}
                       </span>
                     </Link>
                     <span className="truncate text-xs text-base-400">
@@ -109,7 +107,7 @@ const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
                   <div className="">
                     <Link href={`/${profile?.userProfile?.displayName}`}>
                       <button
-                        className="btn-secondary text-sm"
+                        className="btn btn-sm btn-secondary"
                         onClick={() => setDisplayVoteInsights(false)}
                       >
                         View

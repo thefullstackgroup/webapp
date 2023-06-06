@@ -98,8 +98,7 @@ const Topics = ({ topic, setTopicSelected }) => {
     <div className="w-64">
       <div className="fixed top-20 w-72 rounded-md py-4 px-6">
         <div className="mb-4 flex items-center space-x-2">
-          <IoArrowDownOutline className="h-4 w-auto" />
-          <span className="text-base font-bold">Browse by topic</span>
+          <span className="text-lg font-semibold">Browse by topic</span>
         </div>
 
         <ul className="no-scrollbar max-h-[78vh] overflow-scroll">
@@ -108,10 +107,10 @@ const Topics = ({ topic, setTopicSelected }) => {
               <button
                 href="#"
                 className={
-                  'flex w-full items-center space-x-4 rounded-md py-1.5 px-2 text-left text-sm hover:text-base-900 dark:hover:text-white  ' +
+                  'flex w-full items-center space-x-4 rounded-md py-1.5 text-left text-base hover:text-base-900 dark:hover:text-white  ' +
                   (topic?.type === item.type
                     ? 'text-base-900 dark:text-white dark:hover:bg-base-900'
-                    : 'text-base-500 hover:bg-base-200/50 dark:text-base-400 dark:hover:bg-base-800')
+                    : 'text-base-500 hover:bg-base-200/50 dark:text-base-200 dark:hover:bg-base-800')
                 }
                 onClick={() => {
                   setTopicSelected(item);

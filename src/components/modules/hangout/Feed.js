@@ -63,11 +63,11 @@ const Feed = ({ user, topic, following }) => {
 
   return (
     <>
-      {!topic && (
+      {/* {!topic && (
         <div className="relative overflow-hidden sm:rounded-t-lg">
           <PinnedPost user={user} />
         </div>
-      )}
+      )} */}
 
       <InfiniteScroll
         dataLength={posts?.length}
@@ -86,7 +86,7 @@ const Feed = ({ user, topic, following }) => {
             </div>
           )}
 
-          {posts && postCards}
+          {posts && <div className="space-y-6">{postCards}</div>}
         </div>
       </InfiniteScroll>
     </>

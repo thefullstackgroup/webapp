@@ -187,12 +187,27 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
               <button className="py-5">Contributors</button>
               <button className="py-5">Stats</button>
             </div>
-            <div>
+            <div className="flex items-center space-x-4">
+              <Avatar
+                href={`/${project?.projectCreator?.displayName}`}
+                image={project?.projectCreator?.profilePicUrl}
+                name={project?.projectCreator?.displayName}
+                dimensions="h-8 w-8"
+              />
               {user && project?.userId !== user?.userId && (
                 <FollowButton
                   followToUser={project?.projectCreator?.userId}
                   followFromUser={user?.userId}
                   followToName={project?.projectCreator?.displayName}
+                />
+              )}
+              {project?.userId !== user?.userId && isConnected ? (
+                <ButtonChat profile={project.projectCreator} myProfile={user} />
+              ) : (
+                <ButtonConnect
+                  connectionPending={isConnectionPending}
+                  connectFrom={user}
+                  connectTo={project.projectCreator}
                 />
               )}
             </div>
