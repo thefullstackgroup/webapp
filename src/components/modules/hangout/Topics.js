@@ -89,7 +89,7 @@ const Topics = ({ topic, setTopicSelected }) => {
     const icon = React.createElement(Icons[iconName] || IoCodeSlashSharp, {
       className:
         'w-auto h-6 ' +
-        (topic === props.selected ? 'text-white' : 'text-base-300'),
+        (topic === props.selected ? 'text-white' : 'text-base-200'),
     });
     return <span>{icon}</span>;
   };

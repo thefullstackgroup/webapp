@@ -54,7 +54,7 @@ const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
             onClick={() => setDisplayVoteInsights(!displayVoteInsights)}
           >
             <span className="hover:text-white">
-              {votes[0]?.userProfile?.name}
+              {votes[0]?.userProfile?.displayName}
             </span>
 
             {votes.length > 1 && (

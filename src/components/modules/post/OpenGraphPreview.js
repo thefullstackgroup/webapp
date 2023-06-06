@@ -93,11 +93,11 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
                 )}
               </div>
             )}
-            {/* {!data?.ogImage && (
+            {!data?.ogImage && (
               <div className="flex h-20 w-full items-center justify-center bg-base-700/50 text-center sm:h-44">
                 <p className="text-sm text-base-500">No preview image</p>
               </div>
-            )} */}
+            )}
             {!hideDescription && (
               <div className="w-full px-4 py-4 text-sm font-normal text-white dark:bg-base-700/70">
                 <div className="flex items-center space-x-2">

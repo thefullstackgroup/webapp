@@ -238,220 +238,218 @@ const CreatePost = ({ user }) => {
 
   return (
     <>
-      <div className="mx-0 mb-6 flex rounded-md border border-base-200 py-6 dark:border-base-700">
-        <div className="flex w-full px-4">
-          <div className="relative ml-2 mr-4 w-full">
-            <div className="mb-2 px-2 text-lg text-base-500">
-              {postType !== 'SPARK' && (
-                <div className="flex items-center space-x-1 pt-2">
-                  <TagPost postType={postType} />
+      <div className="mx-0 mb-6 flex rounded-md border border-base-200 py-4 px-4 dark:border-base-700">
+        <div className="relative w-full">
+          <div className="text-lg text-base-500">
+            {postType !== 'SPARK' && (
+              <div className="flex items-center space-x-1 pt-2">
+                <TagPost postType={postType} />
 
-                  <button
-                    onClick={() => {
-                      setPostType('SPARK');
-                    }}
-                    className="flex text-xs tracking-tight text-gray-500"
-                  >
-                    <IoClose className="h-4 w-auto" />
-                  </button>
-                </div>
-              )}
-
-              <div className="flex items-start space-x-4">
-                <Avatar
-                  image={user?.profilePicUrl}
-                  name={user?.displayName}
-                  dimensions={'w-9 h-9 mt-4'}
-                />
-                <TextareaAutosize
-                  name="postBody"
-                  autoFocus
-                  rows={1}
-                  className="text-input border-0 bg-transparent px-0 text-lg"
-                  placeholder={
-                    postType === 'POLL'
-                      ? `Type question here...`
-                      : `Share something today ...`
-                  }
-                  value={postBody}
-                  onChange={(e) => {
-                    setPostBody(e.target.value);
+                <button
+                  onClick={() => {
+                    setPostType('SPARK');
                   }}
-                />
+                  className="flex text-xs tracking-tight text-gray-500"
+                >
+                  <IoClose className="h-4 w-auto" />
+                </button>
               </div>
+            )}
 
-              {postType === 'POLL' && (
-                <div className="my-2">
-                  {pollOptions.map((item, index) => (
-                    <div
-                      className="grid grid-cols-12 items-center space-x-4"
-                      key={index}
-                    >
-                      <div className="col-span-10">
-                        <input
-                          type="text"
-                          placeholder={`Option ${index + 1}`}
-                          name="postOption1"
-                          className="text-input"
-                          value={pollOptions[index]}
-                          onChange={(e) =>
-                            updatePollOption(index, e.target.value)
-                          }
-                        />
-                      </div>
-                      <div className="col-span-2">
-                        {index > 1 && (
-                          <button
-                            onClick={() => removePollOption(index)}
-                            className="text-primary-600 text-base font-semibold"
-                          >
-                            Remove
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                  <button
-                    onClick={() => addPollOption('')}
-                    className="text-primary-500 text-base font-semibold"
-                  >
-                    + Add option
-                  </button>
-                </div>
-              )}
+            <div className="flex items-start space-x-4">
+              <Avatar
+                image={user?.profilePicUrl}
+                name={user?.displayName}
+                dimensions={'w-9 h-9 mt-2'}
+              />
+              <TextareaAutosize
+                name="postBody"
+                autoFocus
+                rows={1}
+                className="text-input border-0 bg-transparent px-0 text-lg"
+                placeholder={
+                  postType === 'POLL'
+                    ? `Type question here...`
+                    : `Share something today ...`
+                }
+                value={postBody}
+                onChange={(e) => {
+                  setPostBody(e.target.value);
+                }}
+              />
+            </div>
 
-              {uploading && (
-                <div className="flex justify-center">
-                  <Loader />
-                </div>
-              )}
-
-              {coverImage != '' && (
-                <div className="relative mt-4 mb-2 overflow-hidden rounded-md">
-                  <img
-                    src={coverImage}
-                    className="h-auto w-full"
-                    alt={postTitle}
-                  />
-                  <button
-                    className="absolute top-2 right-2 rounded-md bg-black bg-opacity-70 p-2"
-                    onClick={() => setCoverImage('')}
-                  >
-                    <IoTrashOutline className="mx-auto h-5 w-auto text-white" />
-                  </button>
-                </div>
-              )}
-
-              <div className="flex items-center">
-                {savedSkills.map((savedSkill, index) => (
-                  <button
-                    onClick={() => {
-                      removeSkill(savedSkill);
-                    }}
+            {postType === 'POLL' && (
+              <div className="my-2">
+                {pollOptions.map((item, index) => (
+                  <div
+                    className="grid grid-cols-12 items-center space-x-4"
                     key={index}
                   >
-                    <TagStack tech={savedSkill} size="xs" />
-                  </button>
+                    <div className="col-span-10">
+                      <input
+                        type="text"
+                        placeholder={`Option ${index + 1}`}
+                        name="postOption1"
+                        className="text-input"
+                        value={pollOptions[index]}
+                        onChange={(e) =>
+                          updatePollOption(index, e.target.value)
+                        }
+                      />
+                    </div>
+                    <div className="col-span-2">
+                      {index > 1 && (
+                        <button
+                          onClick={() => removePollOption(index)}
+                          className="text-primary-600 text-base font-semibold"
+                        >
+                          Remove
+                        </button>
+                      )}
+                    </div>
+                  </div>
                 ))}
+                <button
+                  onClick={() => addPollOption('')}
+                  className="text-primary-500 text-base font-semibold"
+                >
+                  + Add option
+                </button>
               </div>
+            )}
+
+            {uploading && (
+              <div className="flex justify-center">
+                <Loader />
+              </div>
+            )}
+
+            {coverImage != '' && (
+              <div className="relative mt-4 mb-2 overflow-hidden rounded-md">
+                <img
+                  src={coverImage}
+                  className="h-auto w-full"
+                  alt={postTitle}
+                />
+                <button
+                  className="absolute top-2 right-2 rounded-md bg-black bg-opacity-70 p-2"
+                  onClick={() => setCoverImage('')}
+                >
+                  <IoTrashOutline className="mx-auto h-5 w-auto text-white" />
+                </button>
+              </div>
+            )}
+
+            <div className="flex items-center">
+              {savedSkills.map((savedSkill, index) => (
+                <button
+                  onClick={() => {
+                    removeSkill(savedSkill);
+                  }}
+                  key={index}
+                >
+                  <TagStack tech={savedSkill} size="xs" />
+                </button>
+              ))}
             </div>
-            <div className="relative w-full">
-              <div className="flex justify-between">
-                <div className="mx-2 flex w-full items-center space-x-4 text-gray-400">
-                  <label
-                    htmlFor="coverImage"
-                    className="flex cursor-pointer items-center space-x-1 font-semibold"
-                  >
-                    <IoImageOutline className="mx-auto h-5 w-auto text-gray-400" />
-                    <span className="hidden text-sm md:block">Image</span>
-                    <input
-                      id="coverImage"
-                      name="coverImage"
-                      type="file"
-                      className="sr-only"
-                      onChange={(e) => handleUploadImage(e)}
-                    />
-                  </label>
+          </div>
+          <div className="relative w-full">
+            <div className="flex items-center justify-between">
+              <div className="mx-2 flex w-full items-center space-x-4 text-gray-400">
+                <label
+                  htmlFor="coverImage"
+                  className="flex cursor-pointer items-center space-x-1 font-semibold"
+                >
+                  <IoImageOutline className="mx-auto h-5 w-auto text-gray-400" />
+                  <span className="hidden text-sm md:block">Image</span>
+                  <input
+                    id="coverImage"
+                    name="coverImage"
+                    type="file"
+                    className="sr-only"
+                    onChange={(e) => handleUploadImage(e)}
+                  />
+                </label>
 
-                  <button
-                    className="flex items-center space-x-1 font-semibold"
-                    onClick={() => setPostType('POLL')}
-                  >
-                    <BiPoll className="mx-auto h-5 w-auto text-gray-400" />
-                    <span className="hidden text-sm md:block">Poll</span>
-                  </button>
-                  <button
-                    className="flex items-center space-x-1 font-semibold"
-                    onClick={() => setShowFlair(!showFlair)}
-                  >
-                    <IoPricetagOutline className="mx-auto h-5 w-auto text-gray-400" />
-                    <span className="hidden text-sm md:block">Topic</span>
-                  </button>
-                  <button
-                    className="flex items-center space-x-1 font-semibold"
-                    onClick={() => setShowTech(!showTech)}
-                  >
-                    <IoCodeSlash className="mx-auto h-5 w-auto text-gray-400" />
-                    <span className="hidden text-sm md:block">Tech</span>
-                  </button>
-                </div>
-
-                {posting ? (
-                  <button className="btn-primary btn-with-icon" disabled={true}>
-                    <CgSpinner className="h-auto w-4 animate-spin" />
-                    <span>Posting...</span>
-                  </button>
-                ) : (
-                  <button
-                    className="btn btn-primary btn-with-icon pl-4"
-                    onClick={handleSubmitPost}
-                    disabled={postButtonDisabled}
-                  >
-                    <FiSend className="h-auto w-4" />
-                    <span>Post</span>
-                  </button>
-                )}
+                <button
+                  className="flex items-center space-x-1 font-semibold"
+                  onClick={() => setPostType('POLL')}
+                >
+                  <BiPoll className="mx-auto h-5 w-auto text-gray-400" />
+                  <span className="hidden text-sm md:block">Poll</span>
+                </button>
+                <button
+                  className="flex items-center space-x-1 font-semibold"
+                  onClick={() => setShowFlair(!showFlair)}
+                >
+                  <IoPricetagOutline className="mx-auto h-5 w-auto text-gray-400" />
+                  <span className="hidden text-sm md:block">Topic</span>
+                </button>
+                <button
+                  className="flex items-center space-x-1 font-semibold"
+                  onClick={() => setShowTech(!showTech)}
+                >
+                  <IoCodeSlash className="mx-auto h-5 w-auto text-gray-400" />
+                  <span className="hidden text-sm md:block">Tech</span>
+                </button>
               </div>
 
-              {showFlair && (
-                <div className="absolute top-10 z-20 w-auto md:left-72">
-                  <div
-                    className="fixed inset-0"
-                    onClick={() => setShowFlair(!showFlair)}
-                  ></div>
-                  <div className="relative flex h-40 w-48 flex-col divide-y-2 divide-base-700 overflow-scroll overscroll-contain rounded-lg border border-base-800 bg-base-900 py-1 text-sm shadow-xl">
-                    {postTypeOptions.map((item, index) => (
-                      <button
-                        onClick={() => {
-                          setPostType(item.type);
-                          setShowFlair(!showFlair);
-                        }}
-                        className="flex py-2 px-3"
-                        key={index}
-                      >
-                        {item.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {showTech && (
-                <div className="absolute top-10 z-20 w-72 md:left-64">
-                  <div
-                    className="fixed inset-0"
-                    onClick={() => setShowTech(!showTech)}
-                  ></div>
-                  <div className="relative flex flex-col rounded-lg border border-base-800 bg-base-900 px-2 pb-1 shadow-xl">
-                    <TagTech
-                      savedSkills={savedSkills}
-                      setSavedSkills={setSavedSkills}
-                      setShowTech={setShowTech}
-                    />
-                  </div>
-                </div>
+              {posting ? (
+                <button className="btn-primary btn-with-icon" disabled={true}>
+                  <CgSpinner className="h-auto w-4 animate-spin" />
+                  <span>Posting...</span>
+                </button>
+              ) : (
+                <button
+                  className="btn btn-primary btn-with-icon pl-4"
+                  onClick={handleSubmitPost}
+                  disabled={postButtonDisabled}
+                >
+                  <FiSend className="h-auto w-4" />
+                  <span>Post</span>
+                </button>
               )}
             </div>
+
+            {showFlair && (
+              <div className="absolute top-10 z-20 w-auto md:left-72">
+                <div
+                  className="fixed inset-0"
+                  onClick={() => setShowFlair(!showFlair)}
+                ></div>
+                <div className="relative flex h-40 w-48 flex-col divide-y-2 divide-base-700 overflow-scroll overscroll-contain rounded-lg border border-base-800 bg-base-900 py-1 text-sm shadow-xl">
+                  {postTypeOptions.map((item, index) => (
+                    <button
+                      onClick={() => {
+                        setPostType(item.type);
+                        setShowFlair(!showFlair);
+                      }}
+                      className="flex py-2 px-3"
+                      key={index}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {showTech && (
+              <div className="absolute top-10 z-20 w-72 md:left-64">
+                <div
+                  className="fixed inset-0"
+                  onClick={() => setShowTech(!showTech)}
+                ></div>
+                <div className="relative flex flex-col rounded-lg border border-base-800 bg-base-900 px-2 pb-1 shadow-xl">
+                  <TagTech
+                    savedSkills={savedSkills}
+                    setSavedSkills={setSavedSkills}
+                    setShowTech={setShowTech}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
