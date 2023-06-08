@@ -4,7 +4,7 @@ import Meta from 'components/common/partials/Metadata';
 import Layout from 'components/common/layout/Layout';
 import Main from 'components/modules/hangout/Main';
 
-const Hangout = ({ user }) => {
+const HangoutTopic = ({ user, topic }) => {
   return (
     <>
       <Meta
@@ -14,13 +14,13 @@ const Hangout = ({ user }) => {
       />
 
       <Layout user={user} headerFixed={true} hideFooter={true}>
-        <Main user={user} />
+        <Main user={user} topic={topic} />
       </Layout>
     </>
   );
 };
 
-export default Hangout;
+export default HangoutTopic;
 
 export const getServerSideProps = withAuthUserTokenSSR()(
   async ({ AuthUser, req, res, query }) => {
@@ -37,7 +37,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
     }
 
     return {
-      props: { user: userProfile || null },
+      props: { user: userProfile || null, topic: query.topic },
     };
   }
 );

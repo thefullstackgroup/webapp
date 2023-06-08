@@ -45,19 +45,19 @@ const ButtonVote = ({ user, post }) => {
 
   return (
     <button
-      className="btn btn-ghost btn-with-icon group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm hover:bg-green-500/20 hover:text-green-400 dark:text-base-200 dark:hover:bg-green-500/20 dark:hover:text-green-400"
+      className="btn btn-ghost btn-with-icon group relative space-x-1 rounded-xl bg-transparent py-1 pl-0 pr-2 text-sm hover:bg-green-500/20 hover:text-green-400 dark:text-base-200 dark:hover:bg-green-500/20 dark:hover:text-green-400"
       onClick={() => handleVote()}
     >
       <ToolTip message="Upvote" />
       {isLiked ? (
         <>
-          <Icon name={'FiHeart'} className="h-5 w-5 text-red-500" />
+          <Icon name={'FiTriangle'} className="h-6 w-6 text-red-500" />
           <span className="text-white">{Math.abs(refreshLikes)}</span>
         </>
       ) : (
         <>
           <Icon
-            name={'FiHeart'}
+            name={'FiTriangle'}
             className="h-6 w-6 sm:group-hover:text-green-400"
           />
           <span>{Math.abs(refreshLikes)}</span>

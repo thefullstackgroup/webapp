@@ -3,132 +3,127 @@ import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import { IoArrowDownOutline } from 'react-icons/io5';
 import * as Icons from 'react-icons/hi';
 import { IoCodeSlashSharp } from 'react-icons/io5';
+import Icon from 'components/common/elements/Icon';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const topics = [
   {
+    label: 'All topics',
+    slug: '',
+    icon: 'FiHash',
+  },
+  {
     label: 'Sparks',
-    type: 'spark',
-    icon: 'HiOutlineLightningBolt',
+    slug: 'spark',
+    icon: 'FiZap',
   },
   {
     label: 'Braindumps',
-    type: 'post',
-    icon: 'HiOutlineMenu',
+    slug: 'post',
+    icon: 'FiCloud',
   },
   {
     label: 'Frameworks',
-    type: 'frameworks',
-    icon: 'HiOutlineTerminal',
+    slug: 'frameworks',
+    icon: 'FiMaximize',
   },
   {
     label: 'Utilities',
-    type: 'utilities',
-    icon: 'HiOutlineCubeTransparent',
+    slug: 'utilities',
+    icon: 'FiTerminal',
   },
   {
     label: 'Articles',
-    type: 'article',
-    icon: 'HiOutlineDocumentText',
+    slug: 'article',
+    icon: 'FiFileText',
   },
   {
     label: 'Polls',
-    type: 'poll',
-    icon: 'HiOutlineChartBar',
+    slug: 'poll',
+    icon: 'FiPieChart',
   },
   {
     label: 'Tutorials',
-    type: 'tutorials',
-    icon: 'HiOutlinePresentationChartBar',
+    slug: 'tutorials',
+    icon: 'FiYoutube',
   },
   {
     label: 'Learning',
-    type: 'learning',
-    icon: 'HiOutlineAcademicCap',
+    slug: 'learning',
+    icon: 'FiBookOpen',
   },
   {
-    label: 'Career Advice',
-    type: 'career_advice',
-    icon: 'HiOutlineHand',
+    label: 'Career advice',
+    slug: 'career_advice',
+    icon: 'FiBriefcase',
   },
   {
-    label: 'Working Remote',
-    type: 'working_remotely',
-    icon: 'HiOutlineRss',
+    label: 'Working remote',
+    slug: 'working_remotely',
+    icon: 'FiCast',
   },
   {
-    label: 'My Desk Setup',
-    type: 'desk_setup',
-    icon: 'HiOutlineDesktopComputer',
+    label: 'My desk setup',
+    slug: 'desk_setup',
+    icon: 'FiMonitor',
   },
   {
-    label: 'Design Tips',
-    type: 'design_tips',
-    icon: 'HiOutlineColorSwatch',
+    label: 'Design tips',
+    slug: 'design_tips',
+    icon: 'FiDroplet',
   },
   {
     label: 'Memes',
-    type: 'meme',
-    icon: 'HiOutlineEmojiHappy',
+    slug: 'meme',
+    icon: 'FiSmile',
   },
   {
-    label: 'Project Ideas',
-    type: 'project_ideas',
-    icon: 'HiOutlineLightBulb',
+    label: 'Project ideas',
+    slug: 'project_ideas',
+    icon: 'FiLoader',
   },
   {
-    label: 'Pair Up',
-    type: 'collabs',
-    icon: 'HiOutlineUsers',
+    label: 'Pair up',
+    slug: 'collabs',
+    icon: 'FiUsers',
   },
 ];
 
-const Topics = ({ topic, setTopicSelected }) => {
-  const Icon = (props) => {
-    const { iconName } = props;
-
-    const icon = React.createElement(Icons[iconName] || IoCodeSlashSharp, {
-      className:
-        'w-auto h-6 ' +
-        (topic === props.selected ? 'text-white' : 'text-base-200'),
-    });
-    return <span>{icon}</span>;
-  };
+const Topics = ({ topic }) => {
+  const router = useRouter();
 
   return (
-    <div className="w-64">
-      <div className="fixed top-20 w-72 rounded-md py-4 px-6">
-        <div className="mb-4 flex items-center space-x-2">
-          <span className="text-lg font-semibold">Browse by topic</span>
-        </div>
+    <div className="fixed top-16 w-72 rounded-md px-6 pt-6">
+      <div className="mb-4 flex items-center space-x-2">
+        <span className="text-lg font-semibold">Filter by #topic</span>
+      </div>
 
-        <ul className="no-scrollbar max-h-[78vh] overflow-scroll">
-          {topics.map((item, index) => (
-            <li key={index} className="mb-1">
-              <button
+      <ul className="no-scrollbar max-h-[78vh] overflow-scroll">
+        {topics.map((item, index) => (
+          <li key={index} className="mb-1">
+            <Link href={`/hangout/${item.slug}`} passHref>
+              <a
                 href="#"
                 className={
-                  'flex w-full items-center space-x-4 rounded-md py-1.5 text-left text-base hover:text-base-900 dark:hover:text-white  ' +
-                  (topic?.type === item.type
+                  'flex w-full items-center space-x-3 rounded-md py-1.5 text-left text-base hover:text-base-900 dark:hover:text-white  ' +
+                  (topic === item.slug
                     ? 'text-base-900 dark:text-white dark:hover:bg-base-900'
-                    : 'text-base-500 hover:bg-base-200/50 dark:text-base-200 dark:hover:bg-base-800')
+                    : 'text-base-400 hover:text-base-900 dark:text-base-400 dark:hover:text-base-500')
                 }
-                onClick={() => {
-                  setTopicSelected(item);
-                  // sendSlackMessage(`Clicked on Hangout topic ${item?.label}`);
-                }}
               >
-                <Icon iconName={`${item.icon}`} selected={item.type} />
+                <Icon name={`${item.icon}`} />
                 <span className="relative">
                   {item.label}
-                  {item.type === 'article' && (
+                  {item.slug === 'article' && (
                     <span className="absolute top-0 -right-3 h-2 w-2 rounded-full bg-red-500 px-1"></span>
                   )}
                 </span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+              </a>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

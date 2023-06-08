@@ -52,7 +52,7 @@ const Avatar = (props) => {
               src={
                 imgSrc ? imgSrc : '/assets/profile/user/avatar-notfound.webp'
               }
-              setSrc={setImgSrc}
+              setSrc={setImgSrc || null}
               width={width}
               height={height}
               name={props.name}
@@ -63,7 +63,7 @@ const Avatar = (props) => {
         <div className={`${dimensions} overflow-hidden rounded-full`}>
           <ProfileImage
             src={imgSrc ? imgSrc : '/assets/profile/user/avatar-notfound.webp'}
-            setSrc={setImgSrc}
+            setSrc={setImgSrc || null}
             width={width}
             height={height}
             name={props.name}

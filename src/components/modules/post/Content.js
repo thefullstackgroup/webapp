@@ -107,10 +107,10 @@ const Content = ({
               <Avatar
                 href={profileLink}
                 image={
-                  post?.projectCreator.profilePicUrl ||
-                  post?.projectCreator.profilePicURL
+                  post?.projectCreator?.profilePicUrl ||
+                  post?.projectCreator?.profilePicURL
                 }
-                name={post?.projectCreator.displayName}
+                name={post?.projectCreator?.displayName}
                 userId={post?.userId}
               />
 

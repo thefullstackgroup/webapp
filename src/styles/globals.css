@@ -44,13 +44,13 @@
     @apply text-sm;
   }
   .btn-primary {
-    @apply border border-transparent bg-base-900 text-white hover:border-base-800 hover:bg-white hover:text-black disabled:bg-base-300/50 disabled:text-base-400 disabled:hover:border-transparent dark:border-white dark:bg-base-200 dark:text-base-900 dark:hover:bg-black dark:hover:text-white disabled:dark:border-transparent disabled:dark:bg-base-700 disabled:dark:text-base-300;
+    @apply border border-transparent bg-base-900 text-white hover:border-base-800 hover:bg-white hover:text-black disabled:bg-base-500 disabled:text-base-200 disabled:hover:border-transparent dark:border-white dark:bg-base-200 dark:text-base-900 dark:hover:bg-black dark:hover:text-white disabled:dark:border-transparent disabled:dark:bg-base-200/80 disabled:dark:text-base-500;
   }
   .btn-secondary {
     @apply border border-base-400 bg-white text-base-600 hover:border-base-900 hover:bg-base-200/50 hover:text-base-900 focus:outline-none disabled:cursor-not-allowed disabled:bg-base-700 disabled:text-base-400 dark:border-base-500 dark:bg-base-900 dark:text-base-300 dark:hover:border-base-100 dark:hover:bg-base-900 dark:hover:text-base-50;
   }
   .btn-ghost {
-    @apply border-transparent bg-transparent text-base-400 hover:border-transparent hover:bg-transparent hover:text-base-400 dark:border-transparent dark:bg-transparent dark:bg-none dark:text-base-300 dark:hover:bg-black dark:hover:text-white;
+    @apply border-transparent bg-transparent text-base-400 hover:border-transparent hover:bg-transparent hover:text-black dark:border-transparent dark:bg-transparent dark:bg-none dark:text-base-300 dark:hover:bg-transparent dark:hover:text-white;
   }
   .btn-danger {
     @apply border border-transparent border-red-500 bg-base-50 text-red-500 hover:border-red-400 hover:bg-white hover:text-red-400 dark:border-red-500 dark:bg-base-900 dark:text-red-500 dark:hover:bg-black dark:hover:text-red-400;
@@ -76,7 +76,7 @@
     @apply block w-full resize-none rounded-lg border-base-400 bg-transparent py-3 px-3 text-sm text-base-600 placeholder-base-300 ring-0 hover:border-base-600 focus:border-base-600 focus:outline-none focus:ring-0 dark:border-base-600 dark:text-base-200 dark:hover:border-base-200 dark:focus:border-base-300;
   }
   .text-link {
-    @apply text-indigo-300;
+    @apply text-success-default hover:bg-success-lighter dark:text-success-light dark:hover:bg-success-default/30;
   }
 
   /* Elements */
@@ -148,8 +148,8 @@
     list-style: disc;
   }
   .prose li {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin-top: 0em !important;
+    margin-bottom: 0em !important;
     font-size: 1.1rem;
     font-weight: 400;
   }
@@ -163,7 +163,7 @@
   .prose-comments ul,
   .prose-comments ol {
     margin-top: 0em !important;
-    margin-bottom: 0em;
+    margin-bottom: 0em !important;
     font-size: 1.1em;
     font-weight: 400;
     line-height: 1.5;
@@ -187,6 +187,10 @@
     margin-top: 0em !important;
     line-height: 1.6;
     margin-bottom: 0em !important;
+    display: inline;
+  }
+  .prose-custom p {
+    padding-right: 4px;
   }
   .prose pre code {
     font-size: 1rem;
@@ -216,16 +220,27 @@
   .prose-lg h1 {
     font-size: 1.6rem !important;
   }
-  /* .dark .dark\:prose-dark a,
+
   .prose a {
-    color: #333333;
-    text-decoration: underline;
-  }
-  .dark .dark\:prose-dark a:hover,
-  .prose a:hover {
-    color: #333333;
+    color: #3291ff;
     text-decoration: none;
-  } */
+  }
+
+  .prose a:hover {
+    color: #3291ff;
+    text-decoration: none;
+    background-color: #0070f330;
+  }
+
+  .dark .dark\:prose-dark a {
+    color: #0070f3;
+    text-decoration: none;
+  }
+  .dark .dark\:prose-dark a:hover {
+    color: #0070f3;
+    text-decoration: none;
+    background-color: #0070f330;
+  }
 }
 
 #radioyes,

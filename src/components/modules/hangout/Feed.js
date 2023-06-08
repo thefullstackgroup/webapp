@@ -12,6 +12,7 @@ const defaultTopics =
 const PAGE_SIZE = 10;
 
 const Feed = ({ user, topic, following }) => {
+  console.log(topic);
   const [hasMore, setHasMore] = useState(true);
 
   let url = '';
@@ -63,12 +64,6 @@ const Feed = ({ user, topic, following }) => {
 
   return (
     <>
-      {/* {!topic && (
-        <div className="relative overflow-hidden sm:rounded-t-lg">
-          <PinnedPost user={user} />
-        </div>
-      )} */}
-
       <InfiniteScroll
         dataLength={posts?.length}
         next={() => {

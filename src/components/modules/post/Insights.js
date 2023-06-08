@@ -9,9 +9,9 @@ import fetcher from 'utils/fetcher';
 const ProfilePic = ({ profile }) => {
   return (
     <Avatar
-      image={profile.profilePicUrl}
-      name={profile.displayName}
-      dimensions="h-7 w-7 border-2 border-black"
+      image={profile?.profilePicUrl}
+      name={profile?.displayName}
+      dimensions="h-7 w-7 border-2 border-base-50 dark:border-base-900"
     />
   );
 };

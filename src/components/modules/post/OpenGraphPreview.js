@@ -57,7 +57,7 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
   return (
     <>
       {data?.ogSiteName === 'YouTube' && youTubeEmbedID ? (
-        <div className="h-48 max-h-96 w-full overflow-hidden rounded-lg border border-gray-800 md:h-96">
+        <div className="h-48 max-h-96 w-full overflow-hidden md:h-96">
           <LiteYouTubeEmbed
             id={youTubeEmbedID.id}
             title={data?.ogTitle}

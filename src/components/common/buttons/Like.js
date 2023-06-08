@@ -3,8 +3,7 @@ import { useState } from 'react';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import * as ga from 'lib/ga';
 import ToolTip from 'components/common/elements/ToolTip';
-import { IoHeart, IoHeartOutline } from 'react-icons/io5';
-import { BiUpvote } from 'react-icons/bi';
+import Icon from '../elements/Icon';
 
 const ButtonLike = ({ user, post }) => {
   const postId = post._id || post.projectId;
@@ -46,49 +45,28 @@ const ButtonLike = ({ user, post }) => {
 
   return (
     <>
-      {post.projectType === 'PROJECT' ? (
-        <>
-          <button
-            className="btn btn-ghost btn-with-icon hover:bg-tfstertiary-600/10 group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm sm:hover:text-green-400"
-            onClick={() => handleLike()}
-          >
-            <ToolTip message="Upvote" />
-            {isLiked ? (
-              <>
-                <BiUpvote className="text-tfstertiary-500 h-6 w-6" />
-                <span className="text-tfstertiary-500">
-                  {Math.abs(refreshLikes)}
-                </span>
-              </>
-            ) : (
-              <>
-                <BiUpvote className="h-6 w-6 sm:group-hover:text-green-400" />
-                <span>{Math.abs(refreshLikes)}</span>
-              </>
-            )}
-          </button>
-        </>
-      ) : (
-        <button
-          className="btn btn-ghost btn-with-icon group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm hover:bg-red-500/20 hover:text-red-400 dark:hover:bg-red-500/20 dark:hover:text-red-400"
-          onClick={() => handleLike()}
-        >
-          <ToolTip message="Like" />
-          {isLiked ? (
-            <>
-              <IoHeart className="h-6 w-6 text-red-500" />
-              <span className="flex items-center text-sm text-red-400">
-                {Math.abs(refreshLikes)}
-              </span>
-            </>
-          ) : (
-            <>
-              <IoHeartOutline className="h-6 w-6 sm:group-hover:text-red-400" />
-              <span>{Math.abs(refreshLikes)}</span>
-            </>
-          )}
-        </button>
-      )}
+      <button
+        className="btn btn-ghost btn-with-icon group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm hover:bg-red-500/20 hover:text-red-400 dark:hover:bg-red-500/20 dark:hover:text-red-400"
+        onClick={() => handleLike()}
+      >
+        <ToolTip message="Like" />
+        {isLiked ? (
+          <>
+            <Icon name="FiHeart" className="h-5 w-5 text-red-500" />
+            <span className="flex items-center text-sm text-red-400">
+              {Math.abs(refreshLikes)}
+            </span>
+          </>
+        ) : (
+          <>
+            <Icon
+              name="FiHeart"
+              className="h-5 w-5 sm:group-hover:text-red-400"
+            />
+            <span>{Math.abs(refreshLikes)}</span>
+          </>
+        )}
+      </button>
     </>
   );
 };

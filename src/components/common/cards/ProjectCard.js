@@ -54,7 +54,7 @@ const ProjectCard = ({ project, feature = false, user, type, hideAuthor }) => {
           </div>
           <div className="absolute bottom-4 flex space-x-4">
             <button className="flex items-center space-x-1 rounded-lg font-normal text-base-700 dark:text-base-100">
-              <Icon name={'FiHeart'} className="h-4 w-auto" />
+              <Icon name={'FiTriangle'} className="h-4 w-auto" />
               <span className="text-sm">
                 {Math.abs(project?.numberOfLikes)}
               </span>

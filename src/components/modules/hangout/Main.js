@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
 import Feed from 'components/modules/hangout/Feed';
 import CreatePost from 'components/modules/hangout/CreatePost';
 import Topics from 'components/modules/hangout/Topics';
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 
-const Main = ({ user }) => {
-  const [topicSelected, setTopicSelected] = useState();
-
+const Main = ({ user, topic }) => {
   // const url = `${process.env.BASEURL}/api/profile/social/following?userId=${user?.userId}`;
   // const { data } = useSWR(url, fetcher);
   // const following =
@@ -18,12 +13,12 @@ const Main = ({ user }) => {
     <>
       <div className="mx-auto flex max-w-screen-xl gap-10">
         <div className="w-1/5">
-          <Topics topic={topicSelected} setTopicSelected={setTopicSelected} />
+          <Topics topic={topic} />
         </div>
         <div className="mt-6 min-h-screen w-3/5 max-w-2xl">
           <div className="w-full">
             <CreatePost user={user} />
-            <div className="relative flex space-x-4 pr-12 pb-4">
+            {/* <div className="relative flex space-x-4 pr-12 pb-4">
               <button
                 className={
                   topicSelected?.type == null ? 'btn-pill-active' : 'btn-pill'
@@ -63,10 +58,10 @@ const Main = ({ user }) => {
                   </span>
                 </div>
               </button>
-            </div>
+            </div> */}
           </div>
 
-          <Feed user={user} topic={topicSelected?.type} following={null} />
+          <Feed user={user} topic={topic} following={null} />
         </div>
         <div className="w-1/5"></div>
       </div>

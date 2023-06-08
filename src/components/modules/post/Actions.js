@@ -5,6 +5,7 @@ import ButtonLike from 'components/common/buttons/Like';
 import { IoChatboxOutline } from 'react-icons/io5';
 import { BsGem } from 'react-icons/bs';
 import ToolTip from 'components/common/elements/ToolTip';
+import Icon from 'components/common/elements/Icon';
 
 const Actions = (props) => {
   const numberOfComments = props.project.numberOfComments;
@@ -25,7 +26,10 @@ const Actions = (props) => {
           onClick={() => props.setShowCommentsModal(true)}
         >
           <ToolTip message={'Comment'} />
-          <IoChatboxOutline className="sm:group-hover:text-link h-auto w-6 duration-100 sm:group-hover:scale-125" />
+          <Icon
+            name="FiMessageSquare"
+            className="sm:group-hover:text-link h-auto w-6 duration-100 sm:group-hover:scale-125"
+          />
           <span className="flex items-center text-sm">{numberOfComments} </span>
         </button>
       ) : (
@@ -34,7 +38,10 @@ const Actions = (props) => {
           onClick={commentAction}
         >
           <ToolTip message={'Comment'} />
-          <IoChatboxOutline className="sm:group-hover:text-primary-500 h-auto w-6" />
+          <Icon
+            name="FiMessageSquare"
+            className="sm:group-hover:text-primary-500 h-auto w-6"
+          />
           <span className="flex items-center text-sm">{numberOfComments}</span>
         </button>
       )}

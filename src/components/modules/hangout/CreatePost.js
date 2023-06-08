@@ -3,97 +3,93 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import TextareaAutosize from 'react-textarea-autosize';
-import TagPost from 'components/common/tags/TagPostType';
 import TagTech from 'components/modules/hangout/TagTech';
 import Loader from 'components/common/elements/Loader';
 import { CgSpinner } from 'react-icons/cg';
-import { BiPoll } from 'react-icons/bi';
 import { FiSend } from 'react-icons/fi';
-import {
-  IoCodeSlash,
-  IoImageOutline,
-  IoPricetagOutline,
-  IoTrashOutline,
-  IoClose,
-} from 'react-icons/io5';
+import { IoTrashOutline, IoClose } from 'react-icons/io5';
 import TagStack from 'components/common/tags/TagStack';
 import Avatar from 'components/common/elements/Avatar';
+import Icon from 'components/common/elements/Icon';
+import ToolTip from 'components/common/elements/ToolTip';
+import ModalDialog from 'components/common/modals/ModalDialog';
+import TagPostType from 'components/common/tags/TagPostType';
 
-const postTypeOptions = [
+const topics = [
   {
-    label: 'Spark',
-    type: 'spark',
-    icon: 'HiOutlineLightningBolt',
+    label: 'Sparks',
+    slug: 'spark',
+    icon: 'FiZap',
   },
   {
-    label: 'Braindump',
-    type: 'POST',
-    icon: 'HiOutlineMenu',
+    label: 'Braindumps',
+    slug: 'post',
+    icon: 'FiCloud',
   },
   {
     label: 'Frameworks',
-    type: 'FRAMEWORKS',
-    icon: 'HiOutlineTerminal',
+    slug: 'frameworks',
+    icon: 'FiMaximize',
   },
   {
     label: 'Utilities',
-    type: 'UTILITIES',
-    icon: 'HiOutlineCubeTransparent',
+    slug: 'utilities',
+    icon: 'FiTerminal',
   },
   {
-    label: 'Tutorial',
-    type: 'TUTORIALS',
-    icon: 'HiOutlinePresentationChartBar',
+    label: 'Articles',
+    slug: 'article',
+    icon: 'FiFileText',
+  },
+  {
+    label: 'Polls',
+    slug: 'poll',
+    icon: 'FiPieChart',
+  },
+  {
+    label: 'Tutorials',
+    slug: 'tutorials',
+    icon: 'FiYoutube',
   },
   {
     label: 'Learning',
-    type: 'LEARNING',
-    icon: 'HiOutlineAcademicCap',
+    slug: 'learning',
+    icon: 'FiBookOpen',
   },
   {
-    label: 'Ask Community',
-    type: 'ADVICE',
-    icon: 'HiOutlineHand',
+    label: 'Career advice',
+    slug: 'career_advice',
+    icon: 'FiBriefcase',
   },
   {
-    label: 'Career Advice',
-    type: 'CAREER_ADVICE',
-    icon: 'HiOutlineHand',
+    label: 'Working remote',
+    slug: 'working_remotely',
+    icon: 'FiCast',
   },
   {
-    label: 'Working Remotely',
-    type: 'WORKING_REMOTELY',
-    icon: 'HiOutlineRss',
+    label: 'My desk setup',
+    slug: 'desk_setup',
+    icon: 'FiMonitor',
   },
   {
-    label: 'My Desk Setup',
-    type: 'DESK_SETUP',
-    icon: 'HiOutlineDesktopComputer',
+    label: 'Design tips',
+    slug: 'design_tips',
+    icon: 'FiDroplet',
   },
   {
-    label: 'Design Tips',
-    type: 'DESIGN_TIPS',
-    icon: 'HiOutlineColorSwatch',
+    label: 'Memes',
+    slug: 'meme',
+    icon: 'FiSmile',
   },
   {
-    label: 'Got The Job',
-    type: 'GOT_THE_JOB',
-    icon: 'HiOutlineThumbUp',
+    label: 'Project ideas',
+    slug: 'project_ideas',
+    icon: 'FiLoader',
   },
   {
-    label: 'Meme',
-    type: 'MEME',
-    icon: 'HiOutlineEmojiHappy',
-  },
-  {
-    label: 'Project Idea',
-    type: 'PROJECT_IDEAS',
-    icon: 'HiOutlineLightBulb',
-  },
-  {
-    label: 'Pair Up',
-    type: 'COLLABS',
-    icon: 'HiOutlineUsers',
+    label: 'Pair up',
+    slug: 'collabs',
+    icon: 'FiUsers',
   },
 ];
 
@@ -238,49 +234,48 @@ const CreatePost = ({ user }) => {
 
   return (
     <>
-      <div className="mx-0 mb-6 flex rounded-md border border-base-200 py-4 px-4 dark:border-base-700">
+      <div className="mx-0 mb-6 flex rounded-md border border-base-200 bg-base-50 py-4 px-4 dark:border-base-700 dark:bg-base-900">
         <div className="relative w-full">
           <div className="text-lg text-base-500">
-            {postType !== 'SPARK' && (
-              <div className="flex items-center space-x-1 pt-2">
-                <TagPost postType={postType} />
-
-                <button
-                  onClick={() => {
-                    setPostType('SPARK');
-                  }}
-                  className="flex text-xs tracking-tight text-gray-500"
-                >
-                  <IoClose className="h-4 w-auto" />
-                </button>
-              </div>
-            )}
-
-            <div className="flex items-start space-x-4">
+            <div className="mb-6 flex items-start space-x-4">
               <Avatar
                 image={user?.profilePicUrl}
                 name={user?.displayName}
                 dimensions={'w-9 h-9 mt-2'}
               />
-              <TextareaAutosize
-                name="postBody"
-                autoFocus
-                rows={1}
-                className="text-input border-0 bg-transparent px-0 text-lg"
-                placeholder={
-                  postType === 'POLL'
-                    ? `Type question here...`
-                    : `Share something today ...`
-                }
-                value={postBody}
-                onChange={(e) => {
-                  setPostBody(e.target.value);
-                }}
-              />
+              <div className="w-full">
+                {postType !== 'SPARK' && (
+                  <div className="pt-2">
+                    <button
+                      onClick={() => {
+                        setPostType('SPARK');
+                      }}
+                      className="flex text-xs tracking-tight text-gray-500"
+                    >
+                      <TagPostType postType={postType} />
+                    </button>
+                  </div>
+                )}
+                <TextareaAutosize
+                  name="postBody"
+                  autoFocus
+                  rows={3}
+                  className="text-input border-0 bg-transparent px-0 text-lg"
+                  placeholder={
+                    postType === 'POLL'
+                      ? `Type question here...`
+                      : `Share something today ...`
+                  }
+                  value={postBody}
+                  onChange={(e) => {
+                    setPostBody(e.target.value);
+                  }}
+                />
+              </div>
             </div>
 
             {postType === 'POLL' && (
-              <div className="my-2">
+              <div className="mb-8 ml-14 space-y-2">
                 {pollOptions.map((item, index) => (
                   <div
                     className="grid grid-cols-12 items-center space-x-4"
@@ -302,7 +297,7 @@ const CreatePost = ({ user }) => {
                       {index > 1 && (
                         <button
                           onClick={() => removePollOption(index)}
-                          className="text-primary-600 text-base font-semibold"
+                          className="btn btn-sm btn-ghost px-0"
                         >
                           Remove
                         </button>
@@ -312,7 +307,7 @@ const CreatePost = ({ user }) => {
                 ))}
                 <button
                   onClick={() => addPollOption('')}
-                  className="text-primary-500 text-base font-semibold"
+                  className="btn btn-sm btn-ghost px-0"
                 >
                   + Add option
                 </button>
@@ -320,20 +315,20 @@ const CreatePost = ({ user }) => {
             )}
 
             {uploading && (
-              <div className="flex justify-center">
+              <div className="flex justify-center py-20">
                 <Loader />
               </div>
             )}
 
             {coverImage != '' && (
-              <div className="relative mt-4 mb-2 overflow-hidden rounded-md">
+              <div className="relative mt-4 mb-6 overflow-hidden rounded-md">
                 <img
                   src={coverImage}
                   className="h-auto w-full"
                   alt={postTitle}
                 />
                 <button
-                  className="absolute top-2 right-2 rounded-md bg-black bg-opacity-70 p-2"
+                  className="btn btn-secondary absolute top-2 right-2 px-2"
                   onClick={() => setCoverImage('')}
                 >
                   <IoTrashOutline className="mx-auto h-5 w-auto text-white" />
@@ -356,12 +351,13 @@ const CreatePost = ({ user }) => {
           </div>
           <div className="relative w-full">
             <div className="flex items-center justify-between">
-              <div className="mx-2 flex w-full items-center space-x-4 text-gray-400">
+              <div className="flex w-full items-center space-x-3 text-base-400">
                 <label
                   htmlFor="coverImage"
-                  className="flex cursor-pointer items-center space-x-1 font-semibold"
+                  className="group relative flex cursor-pointer items-center space-x-1 text-base-400 hover:text-base-900 dark:text-base-300 dark:hover:text-base-50"
                 >
-                  <IoImageOutline className="mx-auto h-5 w-auto text-gray-400" />
+                  <ToolTip message="Add image" />
+                  <Icon name={'FiImage'} className="mx-auto h-4 w-auto" />
                   <span className="hidden text-sm md:block">Image</span>
                   <input
                     id="coverImage"
@@ -373,24 +369,27 @@ const CreatePost = ({ user }) => {
                 </label>
 
                 <button
-                  className="flex items-center space-x-1 font-semibold"
+                  className="group relative flex items-center space-x-1 text-base-400 hover:text-base-900 dark:text-base-300 dark:hover:text-base-50"
                   onClick={() => setPostType('POLL')}
                 >
-                  <BiPoll className="mx-auto h-5 w-auto text-gray-400" />
+                  <ToolTip message="Create a poll" />
+                  <Icon name={'FiPieChart'} className="mx-auto h-4 w-auto" />
                   <span className="hidden text-sm md:block">Poll</span>
                 </button>
                 <button
-                  className="flex items-center space-x-1 font-semibold"
+                  className="group relative flex items-center space-x-1 text-base-400 hover:text-base-900 dark:text-base-300 dark:hover:text-base-50"
                   onClick={() => setShowFlair(!showFlair)}
                 >
-                  <IoPricetagOutline className="mx-auto h-5 w-auto text-gray-400" />
+                  <ToolTip message="Tag a topic" />
+                  <Icon name={'FiHash'} className="mx-auto h-4 w-auto" />
                   <span className="hidden text-sm md:block">Topic</span>
                 </button>
                 <button
-                  className="flex items-center space-x-1 font-semibold"
+                  className="group relative flex items-center space-x-1 text-base-400 hover:text-base-900 dark:text-base-300 dark:hover:text-base-50"
                   onClick={() => setShowTech(!showTech)}
                 >
-                  <IoCodeSlash className="mx-auto h-5 w-auto text-gray-400" />
+                  <ToolTip message="Tag tech stack" />
+                  <Icon name={'FiLayers'} className="mx-auto h-4 w-auto" />
                   <span className="hidden text-sm md:block">Tech</span>
                 </button>
               </div>
@@ -412,28 +411,34 @@ const CreatePost = ({ user }) => {
               )}
             </div>
 
-            {showFlair && (
-              <div className="absolute top-10 z-20 w-auto md:left-72">
+            <ModalDialog
+              show={showFlair}
+              setShow={setShowFlair}
+              title="Tag a topic to your post"
+              dimensions={'sm:max-w-xl'}
+            >
+              <div className="">
                 <div
                   className="fixed inset-0"
                   onClick={() => setShowFlair(!showFlair)}
                 ></div>
-                <div className="relative flex h-40 w-48 flex-col divide-y-2 divide-base-700 overflow-scroll overscroll-contain rounded-lg border border-base-800 bg-base-900 py-1 text-sm shadow-xl">
-                  {postTypeOptions.map((item, index) => (
+                <div className="relative grid grid-cols-3 gap-4 py-6">
+                  {topics.map((item, index) => (
                     <button
                       onClick={() => {
-                        setPostType(item.type);
+                        setPostType(item.slug.toUpperCase());
                         setShowFlair(!showFlair);
                       }}
-                      className="flex py-2 px-3"
+                      className="btn btn-sm btn-ghost btn-with-icon whitespace-nowrap"
                       key={index}
                     >
-                      {item.label}
+                      <Icon name={item.icon} />
+                      <span>{item.label}</span>
                     </button>
                   ))}
                 </div>
               </div>
-            )}
+            </ModalDialog>
 
             {showTech && (
               <div className="absolute top-10 z-20 w-72 md:left-64">

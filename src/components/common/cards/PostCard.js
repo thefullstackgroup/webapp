@@ -3,7 +3,6 @@ import Markdown from 'markdown-to-jsx';
 import Moment from 'moment';
 import Link from 'next/link';
 import TechBadge from 'components/common/tags/TagStack';
-import PostTypePill from 'components/common/tags/TagPostType';
 import ModalDialog from 'components/common/modals/ModalDialog';
 import Actions from 'components/modules/post/Actions';
 import PostInsights from 'components/modules/post/Insights';
@@ -11,8 +10,8 @@ import OpenGraphPreview from 'components/modules/post/OpenGraphPreview';
 import Avatar from 'components/common/elements/Avatar';
 import PostDetail from 'components/modules/post/Detail';
 import extractUrls from 'extract-urls';
-import { IoCloseOutline } from 'react-icons/io5';
-import { FiLoader } from 'react-icons/fi';
+import TagPostType from 'components/common/tags/TagPostType';
+import Icon from '../elements/Icon';
 
 const sparkCharCount = 250;
 
@@ -94,44 +93,48 @@ const Post = (props) => {
 
   return (
     <>
-      <div className="w-full cursor-pointer rounded-lg border dark:border-base-700">
+      <div className="w-full cursor-pointer rounded-lg border border-base-200 bg-base-50 duration-200 hover:border-base-400 dark:border-base-700 dark:bg-black dark:hover:border-base-300">
         <article>
           <div className="space-y-4 py-3">
-            {props.myProfile == null && (
-              <div className="flex items-center space-x-3 px-4 pt-1">
-                <Avatar
-                  userId={props.project?.userId}
-                  image={
-                    props.project?.projectCreator?.profilePicUrl ||
-                    props.project?.projectCreator?.profilePicURL
-                  }
-                  name={props.project?.projectCreator?.displayName}
-                  href={`/${props.project.projectCreator?.displayName}`}
-                  dimensions="h-12 w-12"
-                />
-                <Link
-                  href={`${process.env.BASEURL}/${props.project.projectCreator?.displayName}`}
-                  passHref
-                >
-                  <div>
-                    <div className="group flex w-full flex-wrap items-center text-left text-sm">
-                      <span className="font-semibold">
-                        {props.project.projectCreator?.name}
-                      </span>
-                      {/* <span className="ml-1 dark:text-base-200">
-                        · @{props.project.projectCreator?.displayName}
-                      </span> */}
+            <div className="flex items-start justify-between px-4">
+              {props.myProfile == null && (
+                <div className="flex items-center space-x-3 pt-1">
+                  <Avatar
+                    userId={props.project?.userId}
+                    image={
+                      props.project?.projectCreator?.profilePicUrl ||
+                      props.project?.projectCreator?.profilePicURL
+                    }
+                    name={props.project?.projectCreator?.displayName}
+                    href={`/${props.project.projectCreator?.displayName}`}
+                    dimensions="h-12 w-12"
+                  />
+                  <Link
+                    href={`${process.env.BASEURL}/${props.project.projectCreator?.displayName}`}
+                    passHref
+                  >
+                    <div>
+                      <div className="group flex w-full flex-wrap items-center text-left text-sm">
+                        <span className="font-semibold">
+                          {props.project.projectCreator?.name}
+                        </span>
+                      </div>
+                      <div className="text-xs dark:text-base-300 sm:mt-0">
+                        {props.project.projectCreator?.currentTitle}
+                      </div>
+                      <div className="text-xs text-base-400 dark:text-base-400">
+                        {Moment(props.project.createdDate).format('MMM Do')}
+                      </div>
                     </div>
-                    <div className="text-xs dark:text-base-300 sm:mt-0">
-                      {props.project.projectCreator?.currentTitle}
-                    </div>
-                    <div className="text-xs dark:text-base-400">
-                      {Moment(props.project.createdDate).format('MMM Do')}
-                    </div>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
+              )}
+              <div className="pt-2">
+                {props.project.projectType !== 'SPARK' && (
+                  <TagPostType postType={props.project.projectType} />
+                )}
               </div>
-            )}
+            </div>
 
             {/* Card Content */}
 
@@ -141,7 +144,7 @@ const Post = (props) => {
                 onClick={() => setShowPost(true)}
               >
                 {props.project?.projectBodyPreview?.length < sparkCharCount && (
-                  <div className="prose-custom prose-sm prose-dark w-full overflow-hidden sm:prose-base">
+                  <div className="prose-custom prose-sm w-full overflow-hidden dark:prose-dark sm:prose-base">
                     <Markdown
                       options={{
                         overrides: {
@@ -170,7 +173,7 @@ const Post = (props) => {
                 {props.project?.projectBodyPreview?.length > sparkCharCount && (
                   <div>
                     <div className="items-center overflow-hidden text-base">
-                      <div className="prose-custom prose-sm prose-dark w-full overflow-hidden sm:prose-base">
+                      <div className="prose-custom prose-sm w-full overflow-hidden dark:prose-dark sm:prose-base">
                         <Markdown
                           options={{
                             overrides: {
@@ -219,7 +222,10 @@ const Post = (props) => {
                 props.project.projectType === 'POLL' &&
                 (loading ? (
                   <div className="flex w-full flex-col items-center justify-center space-y-2 py-20 text-center">
-                    <FiLoader className="mb-1 h-5 w-5 animate-spin" />
+                    <Icon
+                      name="FiLoader"
+                      className="mb-1 h-5 w-5 animate-spin"
+                    />
                   </div>
                 ) : (
                   <div className="flex w-full flex-col space-y-2 px-4">
@@ -243,7 +249,10 @@ const Post = (props) => {
                 props.project.projectType === 'POLL' &&
                 (loading ? (
                   <div className="flex w-full flex-col items-center justify-center space-y-2 py-20 text-center">
-                    <FiLoader className="mb-1 h-5 w-5 animate-spin" />
+                    <Icon
+                      name="FiLoader"
+                      className="mb-1 h-5 w-5 animate-spin"
+                    />
                   </div>
                 ) : (
                   <div className="mb-2 flex w-full flex-col space-y-2 px-4">
@@ -283,6 +292,7 @@ const Post = (props) => {
               {/* END DISPLAY POLL HERE */}
 
               {props.project.projectType !== 'POLL' &&
+                props.project.projectType !== 'ARTICLE' &&
                 props.project.projectImgURI != '' && (
                   <div
                     className="max-h-auto w-full overflow-hidden"
@@ -365,12 +375,12 @@ const Post = (props) => {
           ></div>
 
           <div className="relative my-auto mx-auto flex max-h-screen w-auto max-w-5xl flex-col justify-center bg-transparent md:rounded-xl">
-            <div className="no-scrollbar mx-auto h-full w-auto overflow-scroll">
+            <div className="no-scrollbar mx-auto h-full w-auto overflow-scroll text-right">
               <button
-                className="z-50 flex w-full items-center justify-end space-x-1 text-sm text-white"
+                className="btn btn-ghost z-50 px-0"
                 onClick={() => setShowImageModal(!showImageModal)}
               >
-                <IoCloseOutline className="h-10 w-10" />
+                <Icon name="FiX" className="h-10 w-10" />
               </button>
               {props.project.projectImgURI !== ' ' && (
                 <div className="h-full w-full overflow-hidden rounded">
