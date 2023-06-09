@@ -86,7 +86,7 @@ const TagPostType = ({ postType, className }) => {
     <div
       className={`${className} flex items-center space-x-1 rounded-full border px-2 py-1 text-xs font-normal text-base-500 dark:border-base-700/70 dark:text-base-300`}
     >
-      <Icon name={`${icon}`} className="h-3 w-3" />
+      <Icon name={icon} className="h-3 w-3" />
       <span>{label}</span>
     </div>
   );

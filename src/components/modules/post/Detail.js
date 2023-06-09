@@ -75,11 +75,13 @@ const Detail = ({ postId, user, setShowPost }) => {
                   />
                 </div>
                 <div className="flex items-center sm:space-x-3">
+                  {user && (
                   <Avatar
                     image={user.profilePicUrl}
                     name={user.displayName}
                     dimensions="h-10 w-10"
                   />
+                  )}
 
                   <div className="ml-3 w-auto flex-1 overflow-hidden">
                     {/* Plain comment textarea for mobile */}
@@ -111,7 +113,7 @@ const Detail = ({ postId, user, setShowPost }) => {
 
       {/* Edit Post Modal */}
 
-      {post && (
+      {post && user && (
         <ModalDialog
           show={showEditPost}
           setShow={setShowEditPost}

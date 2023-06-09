@@ -9,8 +9,8 @@ import VideoPlayer from 'components/common/elements/mux/VideoPlayer';
 import Actions from 'components/modules/post/Actions';
 import Insights from 'components/modules/post/Insights';
 import OpenGraphPreview from 'components/modules/post/OpenGraphPreview';
-import { FiLoader } from 'react-icons/fi';
 import Avatar from 'components/common/elements/Avatar';
+import Icon from 'components/common/elements/Icon';
 
 const sparkCharCount = 300;
 
@@ -138,7 +138,7 @@ const Content = ({
                 </a>
               </Link>
             </div>
-            {post?.projectCreator?.userId === user.userId && (
+            {user && post?.projectCreator?.userId === user.userId && (
               <button
                 className="btn-secondary text-sm"
                 onClick={() => setShowEditPost(true)}
@@ -148,12 +148,12 @@ const Content = ({
             )}
           </div>
           <div className="space-y-2">
-            {post?.projectType !== 'SPARK' &&
+            {/* {post?.projectType !== 'SPARK' &&
               post?.projectType !== 'ANNOUNCEMENT' && (
                 <div className="">
                   <TagPost postType={post?.projectType} />
                 </div>
-              )}
+              )} */}
 
             <article className="prose prose-lg prose-dark mx-0 max-w-full overflow-x-hidden text-base-100">
               <Markdown
@@ -208,7 +208,7 @@ const Content = ({
               post?.projectType === 'POLL' &&
               (loading ? (
                 <div className="mt-4 flex w-full flex-col items-center justify-center space-y-2 py-20 text-center">
-                  <FiLoader className="mb-1 h-5 w-5 animate-spin" />
+                  <Icon name="FiLoader" className="mb-1 h-5 w-5 animate-spin" />
                 </div>
               ) : (
                 <div className="mt-4 flex w-full flex-col space-y-2 px-4 sm:px-0">
@@ -230,7 +230,7 @@ const Content = ({
               post?.projectType === 'POLL' &&
               (loading ? (
                 <div className="mt-4 flex w-full flex-col items-center justify-center space-y-2 py-20 text-center">
-                  <FiLoader className="mb-1 h-5 w-5 animate-spin" />
+                  <Icon name="FiLoader" className="mb-1 h-5 w-5 animate-spin" />
                 </div>
               ) : (
                 <div className="mt-4 flex w-full flex-col space-y-2 px-4 sm:px-0">
