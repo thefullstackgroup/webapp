@@ -3,7 +3,7 @@ import axios from 'axios';
 import Page from 'components/modules/project/Container';
 import Link from 'next/link';
 import Loader from 'components/common/elements/Loader';
-import Reactions from 'components/modules/project/Reactions';
+// import Reactions from 'components/modules/project/Reactions';
 
 const Main = ({ project, user, setShowProject, standalone = false }) => {
   const [isConnectionPending, setIsConnectionPending] = useState(false);

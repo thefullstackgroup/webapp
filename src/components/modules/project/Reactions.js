@@ -156,7 +156,7 @@ const Reactions = ({ project, user }) => {
         </div>
       )}
 
-      {showNewComment && (
+      {showNewComment && user && (
         <NewComment
           user={user}
           show={showNewComment}

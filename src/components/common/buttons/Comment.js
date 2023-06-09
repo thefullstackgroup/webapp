@@ -27,7 +27,9 @@ const ButtonComment = ({ user, post, action = false }) => {
         </span>
       </button>
 
-      <NewComment user={user} show={show} setShow={setShow} project={post} />
+      {user && (
+        <NewComment user={user} show={show} setShow={setShow} project={post} />
+      )}
     </>
   );
 };

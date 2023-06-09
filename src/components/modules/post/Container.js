@@ -73,12 +73,14 @@ const Container = (props) => {
         </ModalDialog>
       )}
 
-      <NewComment
-        user={props.user}
-        show={showNewComment}
-        setShow={setShowNewComment}
-        project={props.project}
-      />
+      {props.user && (
+        <NewComment
+          user={props.user}
+          show={showNewComment}
+          setShow={setShowNewComment}
+          project={props.project}
+        />
+      )}
     </>
   );
 };

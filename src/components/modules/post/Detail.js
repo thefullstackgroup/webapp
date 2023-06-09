@@ -100,12 +100,14 @@ const Detail = ({ postId, user, setShowPost }) => {
         </div>
       </div>
 
-      <NewComment
-        user={user}
-        show={showNewComment}
-        setShow={setShowNewComment}
-        project={post}
-      />
+      {user && (
+        <NewComment
+          user={user}
+          show={showNewComment}
+          setShow={setShowNewComment}
+          project={post}
+        />
+      )}
 
       {/* Edit Post Modal */}
 
