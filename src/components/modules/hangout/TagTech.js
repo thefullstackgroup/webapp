@@ -56,24 +56,22 @@ const TagTech = ({ savedSkills, setSavedSkills, setShowTech }) => {
   return (
     <>
       <div className="relative">
-        <div>
-          <input
-            type="text"
-            id="skill"
-            name="skill"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search e.g. React"
-            onChange={(e) => searchSkills(e.target.value)}
-            className="text-input"
-            value={skillName}
-          />
-        </div>
+        <input
+          type="text"
+          id="skill"
+          name="skill"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search e.g. React"
+          onChange={(e) => searchSkills(e.target.value)}
+          className="text-input border-0"
+          value={skillName}
+        />
       </div>
       <div>
         <div>
           {skillName.length > 1 && skillList.length > 0 && (
-            <ul className="absolute top-12 left-0 z-10 max-h-96 w-full overflow-scroll overscroll-contain rounded border border-base-800 bg-base-900 shadow-lg">
+            <ul className="absolute top-12 left-0 z-10 max-h-96 w-full overflow-scroll overscroll-contain rounded-md border border-base-200 bg-base-100 shadow-lg dark:border-base-800 dark:bg-base-900">
               {skillList.map((result) => (
                 <li className="my-1 items-center px-2" key={result.skillId}>
                   <button

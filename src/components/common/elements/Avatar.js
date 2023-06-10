@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { checkIfUserOnline } from 'firebase/firebasePresence';
 import Image from 'next/future/image';
+import ToolTip from './ToolTip';
 
 const avatarSize = 'h-11 w-11 sm:h-14 sm:w-14';
 const avatarWidth = 100;

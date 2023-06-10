@@ -24,7 +24,7 @@ const getDaysAgo = (date) => {
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 };
 
-const Following = ({ post, user }) => {
+const FollowingCard = ({ post, user }) => {
   const router = useRouter();
   const [parentComment, setParentComment] = useState('');
 
@@ -375,4 +375,4 @@ const Following = ({ post, user }) => {
   );
 };
 
-export default Following;
+export default FollowingCard;

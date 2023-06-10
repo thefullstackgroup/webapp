@@ -43,7 +43,7 @@ const Detail = ({ postId, user, setShowPost }) => {
   return (
     <>
       <div className="relative mt-0 flex">
-        <div className="relative mx-auto w-full">
+        <div className="relative mx-auto w-screen">
           <div className="overflow-hidden pt-6 pb-40 lg:rounded-t-lg">
             {!post && (
               <div className="flex h-screen flex-1 items-center justify-center">
@@ -64,23 +64,13 @@ const Detail = ({ postId, user, setShowPost }) => {
 
             {post && (
               <>
-                <div
-                  id="comments"
-                  className="mb-10 pb-4 text-left align-bottom sm:my-4 sm:w-full sm:max-w-full sm:px-4 sm:align-middle md:px-4 lg:w-full"
-                >
-                  <PostComments
-                    post={post}
-                    user={user}
-                    setShowNewComment={setShowNewComment}
-                  />
-                </div>
                 <div className="flex items-center sm:space-x-3">
                   {user && (
-                  <Avatar
-                    image={user.profilePicUrl}
-                    name={user.displayName}
-                    dimensions="h-10 w-10"
-                  />
+                    <Avatar
+                      image={user.profilePicUrl}
+                      name={user.displayName}
+                      dimensions="h-10 w-10"
+                    />
                   )}
 
                   <div className="ml-3 w-auto flex-1 overflow-hidden">
@@ -95,6 +85,16 @@ const Detail = ({ postId, user, setShowPost }) => {
                       />
                     </div>
                   </div>
+                </div>
+                <div
+                  id="comments"
+                  className="mb-10 pb-4 text-left align-bottom sm:my-4 sm:w-full sm:max-w-full sm:px-4 sm:align-middle md:px-4 lg:w-full"
+                >
+                  <PostComments
+                    post={post}
+                    user={user}
+                    setShowNewComment={setShowNewComment}
+                  />
                 </div>
               </>
             )}

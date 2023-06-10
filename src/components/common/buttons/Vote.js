@@ -45,7 +45,7 @@ const ButtonVote = ({ user, post }) => {
 
   return (
     <button
-      className="btn btn-ghost btn-with-icon group relative space-x-1 rounded-xl bg-transparent py-1 pl-0 pr-2 text-sm hover:bg-green-500/20 hover:text-green-400 dark:text-base-200 dark:hover:bg-green-500/20 dark:hover:text-green-400"
+      className="btn btn-ghost btn-with-icon text-smhover:bg-green-500/20 group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm hover:text-green-400 dark:text-base-200 dark:hover:bg-green-500/20 dark:hover:text-green-400"
       onClick={() => handleVote()}
     >
       <ToolTip message="Upvote" />

@@ -26,29 +26,23 @@ const Actions = (props) => {
           onClick={() => props.setShowCommentsModal(true)}
         >
           <ToolTip message={'Comment'} />
-          <Icon
-            name="FiMessageSquare"
-            className="sm:group-hover:text-link h-auto w-6 duration-100 sm:group-hover:scale-125"
-          />
+          <Icon name="FiMessageSquare" className="h-auto w-6 duration-100" />
           <span className="flex items-center text-sm">{numberOfComments} </span>
         </button>
       ) : (
         <button
-          className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm dark:hover:bg-violet-500/40 dark:hover:text-violet-500"
+          className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm hover:bg-violet-500/40 hover:text-violet-500 dark:hover:bg-violet-500/40 dark:hover:text-violet-500"
           onClick={commentAction}
         >
           <ToolTip message={'Comment'} />
-          <Icon
-            name="FiMessageSquare"
-            className="sm:group-hover:text-primary-500 h-auto w-6"
-          />
+          <Icon name="FiMessageSquare" className="h-auto w-6" />
           <span className="flex items-center text-sm">{numberOfComments}</span>
         </button>
       )}
 
-      {props.user?.userId != props.project?.projectCreator?.userId ? (
-        <ButtonAward user={props.user} post={props.project} />
-      ) : (
+      {/* {props.user?.userId != props.project?.projectCreator?.userId ? ( */}
+      <ButtonAward user={props.user} post={props.project} />
+      {/* ) : (
         <div className="hidden cursor-default items-center space-x-1 font-semibold text-base-200 md:inline-flex">
           {projectAwards != null && projectAwards > 0 ? (
             <BsGem className="text-primary-500 h-6 w-7" />
@@ -62,7 +56,7 @@ const Actions = (props) => {
             <span className="text-sm">0</span>
           )}
         </div>
-      )}
+      )} */}
     </>
   );
 };

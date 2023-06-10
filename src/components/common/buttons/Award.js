@@ -70,9 +70,9 @@ const AwardButton = ({ user, post }) => {
           <ToolTip message="Award" />
           {post.contentTotalDiamonds != null &&
           post.contentTotalDiamonds > 0 ? (
-            <BsGem className="h-5 w-5 dark:text-yellow-500" />
+            <Icon name={'FiGift'} className="h-6 w-6 dark:text-yellow-500" />
           ) : (
-            <BsGem className="h-5 w-5" />
+            <Icon name={'FiGift'} className="h-6 w-6" />
           )}
 
           {post.contentTotalDiamonds != null &&
@@ -85,15 +85,15 @@ const AwardButton = ({ user, post }) => {
       ) : (
         <div>
           <button
-            className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm dark:text-base-200 dark:hover:bg-yellow-500/40 dark:hover:text-yellow-500"
+            className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm hover:bg-yellow-500/40 hover:text-yellow-600 dark:hover:bg-yellow-500/40 dark:hover:text-yellow-500"
             onClick={() => setSelectAward(!selectAward)}
           >
             <ToolTip message="Award" />
             {post.contentTotalDiamonds != null &&
             post.contentTotalDiamonds > 0 ? (
-              <Icon name={'FiGift'} className="h-5 w-5 text-yellow-500" />
+              <Icon name={'FiGift'} className="h-6 w-6 text-yellow-500" />
             ) : (
-              <Icon name={'FiGift'} className="h-5 w-5" />
+              <Icon name={'FiGift'} className="h-6 w-6" />
             )}
 
             {post.contentTotalDiamonds != null &&
@@ -109,9 +109,9 @@ const AwardButton = ({ user, post }) => {
             setShow={setSelectAward}
             title="Give reward"
           >
-            <div className="flex flex-col space-y-4 px-2 py-4 text-center">
+            <div className="flex flex-col space-y-4 px-2 py-8 text-center">
               <span className="mb-3 text-base font-normal text-base-200 line-clamp-2">
-                Select your reward to gift to{' '}
+                Select your reward amount to gift to{' '}
                 <span className="font-bold">
                   {post.projectCreator?.displayName}
                 </span>

@@ -5,6 +5,7 @@ import Avatar from 'components/common/elements/Avatar';
 import useSWR from 'swr';
 import ModalDialog from 'components/common/modals/ModalDialog';
 import fetcher from 'utils/fetcher';
+import ModalAlert from 'components/common/modals/ModalAlert';
 
 const ProfilePic = ({ profile }) => {
   return (
@@ -53,14 +54,14 @@ const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
             className="flex flex-nowrap items-start text-left text-sm leading-4 line-clamp-1"
             onClick={() => setDisplayVoteInsights(!displayVoteInsights)}
           >
-            <span className="hover:text-white">
+            <span className="hover:text-base-500 dark:hover:text-white">
               {votes[0]?.userProfile?.displayName}
             </span>
 
             {votes.length > 1 && (
               <>
                 <span className="ml-1">and</span>
-                <span className="ml-1 inline-flex font-semibold hover:text-white">
+                <span className="ml-1 inline-flex font-semibold hover:text-base-500 dark:hover:text-white">
                   {votes.length - 1} {votes.length > 2 ? 'others' : 'other'}
                 </span>
               </>
@@ -70,56 +71,51 @@ const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
         </div>
       )}
 
-      {displayVoteInsights && (
-        <ModalDialog
-          show={displayVoteInsights}
-          setShow={setDisplayVoteInsights}
-          title="Liked by"
-        >
-          <div className="no-scrollbar h-4/5 w-full overflow-visible overflow-y-scroll overscroll-contain py-4 pb-20 sm:h-96 sm:pb-4">
-            {votes?.map((profile, index) => (
-              <div
-                key={index}
-                className="mb-6 flex items-center space-x-4 px-2"
-              >
-                <Avatar
-                  href={`/${profile?.userProfile?.displayName}`}
-                  image={profile?.userProfile?.profilePicUrl}
-                  name={profile?.userProfile?.displayName}
-                  userId={profile?.userProfile?.userId}
-                  dimensions="w-11 h-11"
-                />
+      <ModalAlert
+        show={displayVoteInsights}
+        setShow={setDisplayVoteInsights}
+        title="Liked by"
+      >
+        <div className="no-scrollbar h-4/5 w-full overflow-x-visible overflow-y-scroll overscroll-contain sm:h-96 sm:py-4">
+          {votes?.map((profile, index) => (
+            <div key={index} className="mb-6 flex items-center space-x-4">
+              <Avatar
+                href={`/${profile?.userProfile?.displayName}`}
+                image={profile?.userProfile?.profilePicUrl}
+                name={profile?.userProfile?.displayName}
+                userId={profile?.userProfile?.userId}
+                dimensions="w-11 h-11"
+              />
 
-                <div className="flex w-full items-center justify-between">
-                  <div className="flex w-36 flex-col sm:w-auto">
-                    <Link href={`/${profile?.userProfile?.displayName}`}>
-                      <span
-                        className="cursor-pointer text-sm font-semibold text-base-200 sm:text-base"
-                        onClick={() => setDisplayVoteInsights(false)}
-                      >
-                        {profile?.userProfile?.name}
-                      </span>
-                    </Link>
-                    <span className="truncate text-xs text-base-400">
-                      {profile?.userProfile?.currentTitle}
+              <div className="flex w-full items-center justify-between">
+                <div className="flex w-36 flex-col sm:w-auto">
+                  <Link href={`/${profile?.userProfile?.displayName}`}>
+                    <span
+                      className="cursor-pointer text-sm font-medium sm:text-base"
+                      onClick={() => setDisplayVoteInsights(false)}
+                    >
+                      {profile?.userProfile?.name}
                     </span>
-                  </div>
-                  <div className="">
-                    <Link href={`/${profile?.userProfile?.displayName}`}>
-                      <button
-                        className="btn btn-sm btn-secondary"
-                        onClick={() => setDisplayVoteInsights(false)}
-                      >
-                        View
-                      </button>
-                    </Link>
-                  </div>
+                  </Link>
+                  <span className="truncate text-xs text-base-400">
+                    {profile?.userProfile?.currentTitle}
+                  </span>
+                </div>
+                <div className="">
+                  <Link href={`/${profile?.userProfile?.displayName}`}>
+                    <button
+                      className="btn btn-sm btn-secondary"
+                      onClick={() => setDisplayVoteInsights(false)}
+                    >
+                      View
+                    </button>
+                  </Link>
                 </div>
               </div>
-            ))}
-          </div>
-        </ModalDialog>
-      )}
+            </div>
+          ))}
+        </div>
+      </ModalAlert>
     </>
   );
 };

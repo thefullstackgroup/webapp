@@ -6,9 +6,10 @@ initAuth();
 
 const handler = async (req, res, AuthUser) => {
   const accessToken = await AuthUser.getIdToken();
+  const requestURL = `${process.env.API_PROJECTS_URL}/project/${req.query.postId}/view`;
 
   return axios
-    .get(`${process.env.API_PROJECTS_URL}/project/${req.query.postId}/view`, {
+    .get(requestURL, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },

@@ -2,8 +2,10 @@ import { React, useEffect, useState } from 'react';
 import axios from 'axios';
 import * as ga from 'lib/ga';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
+import Icon from '../elements/Icon';
+import ToolTip from '../elements/ToolTip';
 
-const ButtonFollow = ({ followToUser, followFromUser, followToName }) => {
+const ButtonFollow = ({ followToUser, followFromUser, followToName, size }) => {
   const [followStatus, setFollowStatus] = useState(false);
 
   const checkIfFollowing = () => {
@@ -58,25 +60,19 @@ const ButtonFollow = ({ followToUser, followFromUser, followToName }) => {
       {followStatus ? (
         <button
           type="button"
-          className={'btn btn-secondary group w-full sm:w-auto'}
+          className={'btn btn-ghost group relative w-full sm:w-auto ' + size}
           onClick={() => {
             setFollowStatus(!followStatus);
             followProfile(!followStatus);
           }}
         >
-          <>
-            <span className="block text-base-400 group-hover:hidden">
-              Following
-            </span>
-            <span className="hidden text-base-200 group-hover:block">
-              Unfollow
-            </span>
-          </>
+          <ToolTip message={`You are following ${followToName}`} />
+          <Icon name="FiUserCheck" className="h-6 w-6 text-cyan-default" />
         </button>
       ) : (
         <button
           type="button"
-          className="btn btn-secondary w-full sm:w-auto"
+          className={'btn btn-secondary w-full sm:w-auto ' + size}
           onClick={() => {
             setFollowStatus(!followStatus);
             followProfile(!followStatus);

@@ -4,13 +4,13 @@ import Markdown from 'markdown-to-jsx';
 import CodeBlock from 'components/common/elements/CodeBlock';
 import Moment from 'moment';
 import TechBadge from 'components/common/tags/TagStack';
-import TagPost from 'components/common/tags/TagPostType';
 import VideoPlayer from 'components/common/elements/mux/VideoPlayer';
 import Actions from 'components/modules/post/Actions';
 import Insights from 'components/modules/post/Insights';
 import OpenGraphPreview from 'components/modules/post/OpenGraphPreview';
 import Avatar from 'components/common/elements/Avatar';
 import Icon from 'components/common/elements/Icon';
+import TagPostType from 'components/common/tags/TagPostType';
 
 const sparkCharCount = 300;
 
@@ -100,10 +100,18 @@ const Content = ({
 
   return (
     <>
-      <div className="mx-auto px-0 pb-2 md:px-4">
+      <div className="mx-auto px-0">
+        {user && post?.projectCreator?.userId === user.userId && (
+          <button
+            className="btn btn-secondary mb-4 w-full text-sm"
+            onClick={() => setShowEditPost(true)}
+          >
+            Edit post
+          </button>
+        )}
         <div className="text-lg">
           <div className="flex items-start justify-between">
-            <div className="mb-4 flex items-center space-x-2">
+            <div className="mb-4 flex items-center space-x-3">
               <Avatar
                 href={profileLink}
                 image={
@@ -116,46 +124,32 @@ const Content = ({
 
               <Link href={profileLink} passHref>
                 <a href="#">
-                  <div className="w-full">
-                    <div className="ml-2 flex flex-col justify-between text-base">
-                      <button className="group flex w-full flex-wrap items-center text-left text-base sm:text-lg">
-                        <span className="group-hover:text-link font-semibold tracking-tight text-white">
-                          {authorName}
-                        </span>
-                        <span className="ml-1 text-base-500 sm:mt-0">
-                          · @{authorDisplayName}
-                        </span>
-                      </button>
-                      {/* <p className="text-base-200 hover:text-primary-500 font-semibold">
-                        {authorDisplayName}
-                      </p> */}
-
-                      <div className="text-xs text-base-500">
-                        {Moment(post?.createdDate).format('MMM Do')}
-                      </div>
+                  <div className="flex flex-col justify-between text-base">
+                    <button className="group flex w-full flex-wrap items-center text-left text-base sm:text-lg">
+                      <span className="group-hover:text-link font-semibold tracking-tight">
+                        {authorName}
+                      </span>
+                      <span className="ml-1 text-base-500 sm:mt-0">
+                        · @{authorDisplayName}
+                      </span>
+                    </button>
+                    <div className="text-xs text-base-500">
+                      {Moment(post?.createdDate).format('MMM Do')}
                     </div>
                   </div>
                 </a>
               </Link>
             </div>
-            {user && post?.projectCreator?.userId === user.userId && (
-              <button
-                className="btn-secondary text-sm"
-                onClick={() => setShowEditPost(true)}
-              >
-                Edit
-              </button>
-            )}
-          </div>
-          <div className="space-y-2">
-            {/* {post?.projectType !== 'SPARK' &&
+
+            {post?.projectType !== 'SPARK' &&
               post?.projectType !== 'ANNOUNCEMENT' && (
                 <div className="">
-                  <TagPost postType={post?.projectType} />
+                  <TagPostType postType={post?.projectType} />
                 </div>
-              )} */}
-
-            <article className="prose prose-lg prose-dark mx-0 max-w-full overflow-x-hidden text-base-100">
+              )}
+          </div>
+          <div className="space-y-2">
+            <article className="prose prose-lg mx-0 max-w-full overflow-x-hidden dark:prose-dark">
               <Markdown
                 options={{
                   overrides: {
@@ -287,7 +281,7 @@ const Content = ({
             <Insights projectId={post?.projectId || post?._id} />
           </div>
 
-          <div className="my-4 flex w-auto justify-between border-t border-b border-base-600 py-2 md:w-full">
+          <div className="my-4 flex w-auto justify-between border-t border-b border-base-200 py-2 dark:border-base-700 md:w-full">
             <Actions
               user={user}
               project={post}

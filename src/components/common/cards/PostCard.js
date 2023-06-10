@@ -93,10 +93,10 @@ const Post = (props) => {
 
   return (
     <>
-      <div className="w-full cursor-pointer rounded-lg border border-base-200 bg-base-50 duration-200 hover:border-base-400 dark:border-base-700 dark:bg-black dark:hover:border-base-300">
+      <div className="w-full cursor-pointer rounded-lg border border-base-200 bg-base-50 duration-200 hover:border-base-300/50 dark:border-base-700 dark:bg-black dark:hover:border-base-500">
         <article>
-          <div className="space-y-4 py-3">
-            <div className="flex items-start justify-between px-4">
+          <div className="space-y-4">
+            <div className="flex items-start justify-between px-4 pt-3">
               {props.myProfile == null && (
                 <div className="flex items-center space-x-3 pt-1">
                   <Avatar
@@ -262,8 +262,8 @@ const Post = (props) => {
                           <div
                             className={
                               (leadingVote?.pollOptionId == option.pollOptionId
-                                ? 'bg-cyan-dark'
-                                : 'bg-base-600') +
+                                ? 'bg-cyan-light dark:bg-cyan-dark'
+                                : 'bg-base-300/50 dark:bg-base-600') +
                               ' relative h-10 rounded-r-lg py-2 px-4'
                             }
                             style={{
@@ -300,7 +300,7 @@ const Post = (props) => {
                   >
                     <img
                       src={props.project.projectImgURI}
-                      className="w-full object-contain opacity-90"
+                      className="w-full object-contain"
                       alt={props.project.projectName}
                       title={props.project.projectName}
                     />
@@ -327,7 +327,7 @@ const Post = (props) => {
             </div>
 
             {props.project.numberOfLikes > 0 && (
-              <div className="px-4">
+              <div className="px-4 pb-3">
                 <PostInsights
                   projectId={props.project.projectId || props.project._id}
                   showViews={false}
@@ -355,7 +355,7 @@ const Post = (props) => {
       >
         <div>
           <div className="no-scrollbar relative z-20 flex h-screen w-full flex-col overflow-hidden overflow-y-scroll overscroll-contain">
-            <div className="top-0 mx-auto w-full max-w-3xl bg-transparent">
+            <div className="top-0 mx-auto w-full bg-transparent">
               <PostDetail
                 postId={projectId}
                 user={props.user}

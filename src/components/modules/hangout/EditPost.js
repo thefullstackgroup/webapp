@@ -13,100 +13,14 @@ import {
   IoCodeOutline,
   IoCloseOutline,
 } from 'react-icons/io5';
-import * as Icons from 'react-icons/si';
 import * as ga from 'lib/ga';
 import { useRouter } from 'next/router';
-
-const postTypeOptions = [
-  {
-    label: 'Spark',
-    type: 'spark',
-    icon: 'HiOutlineLightningBolt',
-  },
-  {
-    label: 'Braindump',
-    type: 'POST',
-    icon: 'HiOutlineMenu',
-  },
-  {
-    label: 'Frameworks',
-    type: 'FRAMEWORKS',
-    icon: 'HiOutlineTerminal',
-  },
-  {
-    label: 'Utilities',
-    type: 'UTILITIES',
-    icon: 'HiOutlineCubeTransparent',
-  },
-  {
-    label: 'Tutorial',
-    type: 'TUTORIALS',
-    icon: 'HiOutlinePresentationChartBar',
-  },
-  {
-    label: 'Learning',
-    type: 'LEARNING',
-    icon: 'HiOutlineAcademicCap',
-  },
-  {
-    label: 'Ask Community',
-    type: 'ADVICE',
-    icon: 'HiOutlineHand',
-  },
-  {
-    label: 'Career Advice',
-    type: 'CAREER_ADVICE',
-    icon: 'HiOutlineHand',
-  },
-  {
-    label: 'Working Remotely',
-    type: 'WORKING_REMOTELY',
-    icon: 'HiOutlineRss',
-  },
-  {
-    label: 'My Desk Setup',
-    type: 'DESK_SETUP',
-    icon: 'HiOutlineDesktopComputer',
-  },
-  {
-    label: 'Design Tips',
-    type: 'DESIGN_TIPS',
-    icon: 'HiOutlineColorSwatch',
-  },
-  {
-    label: 'Got The Job',
-    type: 'GOT_THE_JOB',
-    icon: 'HiOutlineThumbUp',
-  },
-  {
-    label: 'Meme',
-    type: 'MEME',
-    icon: 'HiOutlineEmojiHappy',
-  },
-  {
-    label: 'Project Idea',
-    type: 'PROJECT_IDEAS',
-    icon: 'HiOutlineLightBulb',
-  },
-  {
-    label: 'Pair Up',
-    type: 'COLLABS',
-    icon: 'HiOutlineUsers',
-  },
-];
+import { postTypeOptions, topics } from './constants';
+import Icon from 'components/common/elements/Icon';
+import ToolTip from 'components/common/elements/ToolTip';
+import ModalDialog from 'components/common/modals/ModalDialog';
 
 const sparkCharCount = 300;
-const Icon = (props) => {
-  const { iconName } = props;
-
-  const iconKey = `Si${
-    iconName.charAt(0).toUpperCase() + iconName.slice(1).toLowerCase()
-  }`;
-  const icon = React.createElement(Icons[iconKey] || IoCodeOutline, {
-    className: 'w-4 h-4 text-base-400',
-  });
-  return <div>{icon}</div>;
-};
 
 const EditPost = ({
   user,
@@ -322,11 +236,12 @@ const EditPost = ({
                     className="mt-1 mr-1 inline-flex items-center overflow-hidden rounded-full bg-base-600 pl-1 text-xs"
                     key={index}
                   >
+                    <TagTech tech={savedSkill} />
                     <span
                       className="flex max-w-xs items-center space-x-1 truncate px-1 leading-relaxed text-base-400"
                       x-text="tag"
                     >
-                      <Icon iconName={`${savedSkill}`} />
+                      <Icon name={savedSkill} />
                       <span>{savedSkill}</span>
                     </span>
                     <button className="inline-block h-8 w-6 bg-base-600 align-middle text-base-400 focus:outline-none">
@@ -345,7 +260,50 @@ const EditPost = ({
         </div>
         <div className="relative w-full">
           <div className="flex w-full space-x-6 text-base-400">
-            <label
+            <div className="flex w-full items-center space-x-3 text-base-400">
+              <label
+                htmlFor="coverImage"
+                className="group relative flex cursor-pointer items-center space-x-1 text-base-400 hover:text-base-900 dark:text-base-300 dark:hover:text-base-50"
+              >
+                <ToolTip message="Add image" />
+                <Icon name={'FiImage'} className="mx-auto h-4 w-auto" />
+                <span className="hidden text-sm md:block">Image</span>
+                <input
+                  id="coverImage"
+                  name="coverImage"
+                  type="file"
+                  className="sr-only"
+                  onChange={(e) => handleUploadImage(e)}
+                />
+              </label>
+
+              <button
+                className="group relative flex items-center space-x-1 text-base-400 hover:text-base-900 dark:text-base-300 dark:hover:text-base-50"
+                onClick={() => setPostType('POLL')}
+              >
+                <ToolTip message="Create a poll" />
+                <Icon name={'FiPieChart'} className="mx-auto h-4 w-auto" />
+                <span className="hidden text-sm md:block">Poll</span>
+              </button>
+              <button
+                className="group relative flex items-center space-x-1 text-base-400 hover:text-base-900 dark:text-base-300 dark:hover:text-base-50"
+                onClick={() => setShowFlair(!showFlair)}
+              >
+                <ToolTip message="Tag a topic" />
+                <Icon name={'FiHash'} className="mx-auto h-4 w-auto" />
+                <span className="hidden text-sm md:block">Topic</span>
+              </button>
+              <button
+                className="group relative flex items-center space-x-1 text-base-400 hover:text-base-900 dark:text-base-300 dark:hover:text-base-50"
+                onClick={() => setShowTech(!showTech)}
+              >
+                <ToolTip message="Tag tech stack" />
+                <Icon name={'FiLayers'} className="mx-auto h-4 w-auto" />
+                <span className="hidden text-sm md:block">Tech</span>
+              </button>
+            </div>
+
+            {/* <label
               htmlFor="coverImage"
               className="flex cursor-pointer items-center space-x-2 font-semibold"
             >
@@ -368,7 +326,7 @@ const EditPost = ({
               <span className="hidden whitespace-nowrap text-sm md:block">
                 Topic
               </span>
-            </button>
+            </button> */}
             <button
               className="flex items-center space-x-2 font-semibold"
               onClick={() => setShowTech(!showTech)}
@@ -379,18 +337,18 @@ const EditPost = ({
             <div className="flex w-full items-center justify-end space-x-2">
               <button
                 onClick={() => setIsDeletePromptOpen(true)}
-                className="btn-primary bg-transparent text-base-500 hover:bg-transparent hover:text-red-500"
+                className="btn btn-secondary btn-danger bg-transparent text-base-500 hover:bg-transparent hover:text-red-500"
               >
                 <span>Delete</span>
               </button>
               {postButtonDisabled ? (
-                <button type="button" className="btn-primary" disabled>
+                <button type="button" className="btn btn-primary" disabled>
                   <span>Save</span>
                 </button>
               ) : (
                 <button
                   type="button"
-                  className="btn-primary"
+                  className="btn btn-primary"
                   onClick={() => handleSubmitPost()}
                 >
                   <span>Save</span>
@@ -399,7 +357,52 @@ const EditPost = ({
             </div>
           </div>
 
-          <Transition show={showFlair}>
+          <ModalDialog
+            show={showFlair}
+            setShow={setShowFlair}
+            title="Tag a topic to your post"
+            dimensions={'sm:max-w-xl'}
+          >
+            <div className="">
+              <div
+                className="fixed inset-0"
+                onClick={() => setShowFlair(!showFlair)}
+              ></div>
+              <div className="relative grid grid-cols-3 gap-4 py-6">
+                {topics.map((item, index) => (
+                  <button
+                    onClick={() => {
+                      setPostType(item.slug.toUpperCase());
+                      setShowFlair(!showFlair);
+                    }}
+                    className="btn btn-sm btn-ghost btn-with-icon whitespace-nowrap"
+                    key={index}
+                  >
+                    <Icon name={item.icon} />
+                    <span>{item.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </ModalDialog>
+
+          {showTech && (
+            <div className="absolute top-10 z-20 w-72 md:left-64">
+              <div
+                className="fixed inset-0"
+                onClick={() => setShowTech(!showTech)}
+              ></div>
+              <div className="relative flex flex-col rounded-lg border bg-base-100 px-2 shadow-xl dark:border-base-800 dark:bg-base-900">
+                <TagTech
+                  savedSkills={savedSkills}
+                  setSavedSkills={setSavedSkills}
+                  setShowTech={setShowTech}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* <Transition show={showFlair}>
             <div className="absolute bottom-10 left-48 z-20 w-auto">
               <div
                 className="fixed inset-0"
@@ -420,9 +423,9 @@ const EditPost = ({
                 ))}
               </div>
             </div>
-          </Transition>
+          </Transition> */}
 
-          <Transition show={showTech}>
+          {/* <Transition show={showTech}>
             <div className="absolute bottom-10 left-64 z-20 w-72">
               <div
                 className="fixed inset-0"
@@ -436,7 +439,7 @@ const EditPost = ({
                 />
               </div>
             </div>
-          </Transition>
+          </Transition> */}
         </div>
       </div>
     </>

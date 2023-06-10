@@ -15,6 +15,7 @@ import {
   IoChevronDown,
   IoChevronUp,
 } from 'react-icons/io5';
+import ToolTip from 'components/common/elements/ToolTip';
 
 const Overview = ({
   profile,
@@ -75,12 +76,9 @@ const Overview = ({
               layout="fill"
             />
             {user && isConnected && profile?.userId !== user.userId && (
-              <div className="group absolute -bottom-2 -left-1 flex cursor-pointer items-center space-x-1 rounded-full bg-base-700 py-1 px-2 text-xs text-yellow-500 md:-bottom-2 md:left-0">
-                <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-base-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-base-600 before:content-[''] group-hover:opacity-100">
-                  You are connected
-                </span>
+              <div className="group absolute top-0 right-0 flex cursor-pointer items-end rounded-full bg-base-900 py-1 px-2 text-xs text-yellow-400">
+                <ToolTip message={'You are connected'} />
                 <HiThumbUp className="h-4 w-4 md:h-5 md:w-5" />
-                <span>Buddy</span>
               </div>
             )}
             {user && profile?.userId === user.userId && (
