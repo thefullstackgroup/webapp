@@ -2,14 +2,15 @@ import axios from 'axios';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 const ReactMde = dynamic(() => import('react-mde'), { ssr: false });
-import EmojiPicker from 'emoji-picker-react';
 import Markdown from 'markdown-to-jsx';
 import CodeBlock from 'components/common/elements/CodeBlock';
 import Avatar from 'components/common/elements/Avatar';
 import * as ga from 'lib/ga';
-import ModalDialog from 'components/common/modals/ModalDialog';
 import ToolTip from 'components/common/elements/ToolTip';
-import { IoHappy, IoLogoMarkdown } from 'react-icons/io5';
+import { IoLogoMarkdown } from 'react-icons/io5';
+import ModalAlert from 'components/common/modals/ModalAlert';
+import Icon from 'components/common/elements/Icon';
+import SelectEmoji from 'components/common/elements/SelectEmoji';
 
 const ReplyToComment = ({
   commentReplyTo,
@@ -24,15 +25,6 @@ const ReplyToComment = ({
   const [mentionList, setMentionList] = useState([
     { preview: 'Type name', value: 'Type name' },
   ]);
-
-  const onEmojiClick = (e) => {
-    let sym = e.unified.split('-');
-    let codesArray = [];
-    sym.forEach((el) => codesArray.push('0x' + el));
-    let emoji = String.fromCodePoint(...codesArray);
-    setCommentReply(commentReply + emoji);
-    setShowEmoji(false);
-  };
 
   // Tag mentions witing ReactMDE
   const MentionListItem = ({
@@ -133,7 +125,7 @@ const ReplyToComment = ({
   };
 
   return (
-    <ModalDialog
+    <ModalAlert
       show={postCommentOpen}
       setShow={setPostCommentOpen}
       title="Post your reply"
@@ -141,18 +133,16 @@ const ReplyToComment = ({
       disabled
     >
       <div className="py-4">
-        <div className="hidden items-start px-2 sm:flex">
+        <div className="hidden items-start sm:flex">
           <Avatar
             image={commentReplyTo?.authorProfileImageURL}
             name={commentReplyTo?.authorName}
             dimensions="h-10 w-10"
           />
-          <div className="no-scrollbar mr-0 ml-2 w-auto max-w-full overflow-scroll overscroll-contain rounded bg-base-600/80 p-4 py-2 sm:max-h-56">
-            <p className="font-semibold text-white">
-              {commentReplyTo?.authorName}
-            </p>
+          <div className="no-scrollbar mr-0 ml-2 w-auto max-w-full overflow-scroll overscroll-contain rounded bg-base-200/70 p-4 py-2 dark:bg-base-600/80 sm:max-h-56">
+            <p className="text-sm font-medium">{commentReplyTo?.authorName}</p>
 
-            <div className="prose-comments no-scrollbar prose prose-dark w-full max-w-full overflow-scroll overscroll-contain rounded">
+            <div className="prose-comments no-scrollbar prose w-full max-w-full overflow-scroll overscroll-contain rounded dark:prose-dark">
               <Markdown
                 options={{
                   overrides: {
@@ -172,7 +162,7 @@ const ReplyToComment = ({
           </div>
         </div>
 
-        <div className="relative mt-4 px-2">
+        <div className="relative mt-4">
           <div className="relative flex items-start sm:space-x-3">
             <div className="flex w-full sm:ml-12 sm:space-x-4">
               <Avatar
@@ -183,7 +173,7 @@ const ReplyToComment = ({
 
               <div className="w-auto flex-1">
                 <div className="block">
-                  <div className="dark mb-2 w-full overflow-scroll rounded bg-base-700">
+                  <div className="dark text-input mb-2 border border-base-400 dark:border-base-600">
                     <ReactMde
                       value={commentReply}
                       onChange={setCommentReply}
@@ -208,10 +198,16 @@ const ReplyToComment = ({
                         <IoLogoMarkdown className="h-6 w-6 text-base-400" />
                       </button>
                       <button onClick={() => setShowEmoji(!showEmoji)}>
-                        <IoHappy className="h-5 w-5 text-base-400" />
+                        <Icon
+                          name="FiSmile"
+                          className="h-5 w-5 text-base-400"
+                        />
                       </button>
                     </div>
-                    <button className="btn-primary" onClick={handlePostReply}>
+                    <button
+                      className="btn btn-primary"
+                      onClick={handlePostReply}
+                    >
                       Post
                     </button>
                   </div>
@@ -220,18 +216,15 @@ const ReplyToComment = ({
             </div>
           </div>
         </div>
-        {showEmoji && (
-          <div className="mt-2 sm:ml-28">
-            <EmojiPicker
-              theme="dark"
-              lazyLoadEmojis={true}
-              height={380}
-              onEmojiClick={onEmojiClick}
-            />
-          </div>
-        )}
+
+        <SelectEmoji
+          show={showEmoji}
+          setShow={setShowEmoji}
+          text={commentReply}
+          setText={setCommentReply}
+        />
       </div>
-    </ModalDialog>
+    </ModalAlert>
   );
 };
 

@@ -6,7 +6,6 @@ import Link from 'next/link';
 import ModalDialog from 'components/common/modals/ModalDialog';
 import Confetti from 'react-confetti';
 import * as ga from 'lib/ga';
-import { BsGem } from 'react-icons/bs';
 import { IoCheckmarkSharp } from 'react-icons/io5';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import ToolTip from 'components/common/elements/ToolTip';
@@ -98,7 +97,9 @@ const AwardButton = ({ user, post }) => {
 
             {post.contentTotalDiamonds != null &&
             post.contentTotalDiamonds > 0 ? (
-              <span className="">{post.contentTotalDiamonds}</span>
+              <span className="text-yellow-500">
+                {post.contentTotalDiamonds}
+              </span>
             ) : (
               <span className="">0</span>
             )}

@@ -368,3 +368,7 @@ ul.mde-suggestions li[aria-selected='true'] {
   opacity: 0;
   pointer-events: none;
 }
+
+aside.EmojiPickerReact.epr-main {
+  border: 0px !important;
+}

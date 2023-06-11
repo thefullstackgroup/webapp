@@ -12,6 +12,7 @@ import EditComment from 'components/modules/comments/EditComment';
 import Avatar from 'components/common/elements/Avatar';
 import Loader from 'components/common/elements/Loader';
 import fetcher from 'utils/fetcher';
+import Icon from 'components/common/elements/Icon';
 
 const ListComments = ({ post, user }) => {
   const [postCommentOpen, setPostCommentOpen] = useState(false);
@@ -117,20 +118,15 @@ const ListComments = ({ post, user }) => {
                         dimensions="h-8 w-8 sm:h-10 sm:w-10"
                       />
                     </div>
-                    <div className="w-full overflow-hidden rounded-md bg-base-600/50 px-3 py-2 sm:px-3">
+                    <div className="w-full overflow-hidden rounded-md bg-base-200/70 px-3 py-2 dark:bg-base-600/50 sm:px-3">
                       <div>
-                        <div className="text-base">
-                          <Link href={`/${comment.authorName}`} passHref>
-                            <a
-                              href="#"
-                              className="text-base font-semibold text-base-200"
-                            >
-                              {comment.authorName}
-                            </a>
-                          </Link>
-                        </div>
+                        <Link href={`/${comment.authorName}`} passHref>
+                          <a href="#" className="text-sm font-medium">
+                            {comment.authorName}
+                          </a>
+                        </Link>
                       </div>
-                      <div className="prose-comments no-scrollbar prose prose-dark max-w-full overflow-x-scroll text-base-100">
+                      <div className="prose-comments no-scrollbar prose overflow-x-scroll dark:prose-dark">
                         <Markdown
                           options={{
                             overrides: {
@@ -153,14 +149,16 @@ const ListComments = ({ post, user }) => {
                   {user && (
                     <div className="mt-2 ml-10 flex items-center space-x-6 sm:ml-12">
                       <div className="text-xs">
-                        <button className="flex items-center text-gray-400 hover:text-gray-500 focus:outline-none">
+                        <button className="flex items-center text-base-400 hover:text-base-500 focus:outline-none">
                           {comment.likedByYou ? (
-                            <IoHeart
+                            <Icon
+                              name="FiHeart"
                               className="mr-1 h-4 w-4 text-red-500"
                               onClick={() => performLike(comment)}
                             />
                           ) : (
-                            <IoHeartOutline
+                            <Icon
+                              name="FiHeart"
                               className="mr-1 h-4 w-4"
                               onClick={() => performLike(comment)}
                             />
@@ -171,13 +169,16 @@ const ListComments = ({ post, user }) => {
                       </div>
                       <div className="text-xs">
                         <button
-                          className="flex items-center text-gray-400 hover:text-gray-500 focus:outline-none"
+                          className="flex items-center text-base-400 hover:text-base-500 focus:outline-none"
                           onClick={() => {
                             setCommentReplyTo(comment);
                             setPostCommentOpen(true);
                           }}
                         >
-                          <IoArrowUndoOutline className="mr-1 h-4 w-4" />
+                          <Icon
+                            name="FiCornerUpLeft"
+                            className="mr-1 h-4 w-4"
+                          />
                           <span className="">Reply</span>
                         </button>
                       </div>
@@ -185,7 +186,7 @@ const ListComments = ({ post, user }) => {
                         <>
                           <div className="text-xs">
                             <button
-                              className={`flex items-center text-gray-400 hover:text-gray-500 focus:outline-none`}
+                              className={`flex items-center text-base-400 hover:text-base-500 focus:outline-none`}
                               onClick={() => {
                                 setCommentToUpdate(comment);
                                 setEditCommentOpen(true);

@@ -58,7 +58,7 @@ const ModalAlert = ({ children, title = false, show, setShow, dimensions }) => {
                     </div>
                   </div>
                 )}
-                <div className="px-6">{children}</div>
+                <div className="px-4">{children}</div>
               </Dialog.Panel>
             </Transition.Child>
           </div>

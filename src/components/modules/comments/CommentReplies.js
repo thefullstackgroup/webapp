@@ -7,6 +7,7 @@ import Markdown from 'markdown-to-jsx';
 import CodeBlock from 'components/common/elements/CodeBlock';
 import Avatar from 'components/common/elements/Avatar';
 import fetcher from 'utils/fetcher';
+import Icon from 'components/common/elements/Icon';
 
 const CommentReplies = ({
   commentId,
@@ -72,20 +73,15 @@ const CommentReplies = ({
                     dimensions="h-6 w-6"
                   />
                 </div>
-                <div className="min-w-0 rounded-md bg-base-700/70 px-3 pt-1 pb-2 sm:px-3">
+                <div className="min-w-0 rounded-md bg-base-200/70 px-3 pt-1 pb-2 dark:bg-base-700/70 sm:px-3">
                   <div>
-                    <div className="text-base">
-                      <Link href={`/${comment.authorName}`} passHref>
-                        <a
-                          href="#"
-                          className="text-base font-medium text-base-200"
-                        >
-                          {comment.authorName}
-                        </a>
-                      </Link>
-                    </div>
+                    <Link href={`/${comment.authorName}`} passHref>
+                      <a href="#" className="text-sm font-medium">
+                        {comment.authorName}
+                      </a>
+                    </Link>
                   </div>
-                  <div className="prose-comments no-scrollbar prose prose-dark max-w-full overflow-x-scroll text-base-100">
+                  <div className="prose-comments no-scrollbar prose max-w-full overflow-x-scroll dark:prose-dark">
                     <Markdown
                       options={{
                         overrides: {
@@ -108,31 +104,39 @@ const CommentReplies = ({
               {user && (
                 <div className="mt-2 ml-10 flex items-center space-x-6">
                   <div className="text-xs">
-                    <button className="flex items-center text-gray-400 hover:text-gray-500 focus:outline-none">
+                    <button className="flex items-center text-base-400 hover:text-base-500 focus:outline-none">
                       {comment.likedByYou ? (
-                        <IoHeart
-                          className="mr-1 h-4 w-4 text-red-500"
-                          onClick={() => performLike(comment)}
-                        />
+                        <>
+                          <Icon
+                            name="FiHeart"
+                            className="mr-1 h-4 w-4 text-red-500"
+                            onClick={() => performLike(comment)}
+                          />
+                          <span className="text-red-500">
+                            {comment.commentLikeCount}
+                          </span>
+                        </>
                       ) : (
-                        <IoHeartOutline
-                          className="mr-1 h-4 w-4"
-                          onClick={() => performLike(comment)}
-                        />
+                        <>
+                          <Icon
+                            name="FiHeart"
+                            className="mr-1 h-4 w-4"
+                            onClick={() => performLike(comment)}
+                          />
+                          <span className="">{comment.commentLikeCount}</span>
+                        </>
                       )}
-
-                      <span className="">{comment.commentLikeCount}</span>
                     </button>
                   </div>
                   <div className="text-xs">
                     <button
-                      className="flex items-center text-gray-400 hover:text-gray-500 focus:outline-none"
+                      className="flex items-center text-base-400 hover:text-base-500 focus:outline-none"
                       onClick={() => {
                         setCommentReplyTo(comment);
                         setPostCommentOpen(true);
                       }}
                     >
-                      <IoArrowUndoOutline className="mr-1 h-4 w-4" />
+                      <Icon name="FiCornerUpLeft" className="mr-1 h-4 w-4" />
                       <span className="">Reply</span>
                     </button>
                   </div>
@@ -140,7 +144,7 @@ const CommentReplies = ({
                     <>
                       <div className="text-xs">
                         <button
-                          className={`flex items-center text-gray-400 hover:text-gray-500 focus:outline-none`}
+                          className={`flex items-center text-base-400 hover:text-base-500 focus:outline-none`}
                           onClick={() => {
                             setCommentToUpdate(comment);
                             setEditCommentOpen(true);

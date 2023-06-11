@@ -262,7 +262,7 @@ const Post = (props) => {
                           <div
                             className={
                               (leadingVote?.pollOptionId == option.pollOptionId
-                                ? 'bg-cyan-light dark:bg-cyan-dark'
+                                ? 'bg-cyan-default dark:bg-cyan-dark'
                                 : 'bg-base-300/50 dark:bg-base-600') +
                               ' relative h-10 rounded-r-lg py-2 px-4'
                             }

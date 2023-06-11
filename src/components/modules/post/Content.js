@@ -233,8 +233,8 @@ const Content = ({
                       <div
                         className={
                           (leadingVote?.pollOptionId == option.pollOptionId
-                            ? 'bg-primary-500'
-                            : 'bg-base-600') +
+                            ? 'bg-cyan-default dark:bg-cyan-dark'
+                            : 'bg-base-300/50 dark:bg-base-600') +
                           ' relative h-11 rounded-r-lg py-2 px-4'
                         }
                         style={{

@@ -78,7 +78,7 @@
 
 .mde-textarea-wrapper textarea.mde-text {
   background-color: transparent;
-  padding: 10px;
+  padding: 0px;
   resize: none;
 }
 

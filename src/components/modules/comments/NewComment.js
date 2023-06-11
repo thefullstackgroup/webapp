@@ -5,9 +5,11 @@ const ReactMde = dynamic(() => import('react-mde'), { ssr: false });
 import EmojiPicker from 'emoji-picker-react';
 import * as ga from 'lib/ga';
 import Avatar from 'components/common/elements/Avatar';
-import ModalDialog from 'components/common/modals/ModalDialog';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import { IoHappy, IoLogoMarkdown } from 'react-icons/io5';
+import ModalAlert from 'components/common/modals/ModalAlert';
+import SelectEmoji from 'components/common/elements/SelectEmoji';
+import Icon from 'components/common/elements/Icon';
 
 const NewComment = ({ user, show, setShow, project }) => {
   const [comment, setComment] = useState('');
@@ -114,7 +116,7 @@ const NewComment = ({ user, show, setShow, project }) => {
   };
 
   return (
-    <ModalDialog
+    <ModalAlert
       show={show}
       setShow={setShow}
       title="Post comment"
@@ -131,7 +133,7 @@ const NewComment = ({ user, show, setShow, project }) => {
 
           <div className="w-auto flex-1">
             <div className="block">
-              <div className="dark mb-2 w-full overflow-scroll rounded bg-base-700">
+              <div className="dark text-input mb-2 border">
                 <ReactMde
                   value={comment}
                   onChange={setComment}
@@ -159,28 +161,24 @@ const NewComment = ({ user, show, setShow, project }) => {
                     <IoLogoMarkdown className="h-6 w-6 text-base-400" />
                   </button>
                   <button onClick={() => setShowEmoji(!showEmoji)}>
-                    <IoHappy className="h-5 w-5 text-base-400" />
+                    <Icon name="FiSmile" className="h-5 w-5 text-base-400" />
                   </button>
                 </div>
-                <button className="btn-primary" onClick={handlePostComment}>
+                <button className="btn btn-primary" onClick={handlePostComment}>
                   Post
                 </button>
               </div>
             </div>
           </div>
         </div>
-        {showEmoji && (
-          <div className="mt-2 sm:ml-12">
-            <EmojiPicker
-              theme="dark"
-              lazyLoadEmojis={true}
-              height={380}
-              onEmojiClick={onEmojiClick}
-            />
-          </div>
-        )}
+        <SelectEmoji
+          show={showEmoji}
+          setShow={setShowEmoji}
+          text={comment}
+          setText={setComment}
+        />
       </div>
-    </ModalDialog>
+    </ModalAlert>
   );
 };
 

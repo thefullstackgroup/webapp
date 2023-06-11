@@ -2,11 +2,12 @@ import axios from 'axios';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 const ReactMde = dynamic(() => import('react-mde'), { ssr: false });
-import EmojiPicker from 'emoji-picker-react';
 import Avatar from 'components/common/elements/Avatar';
-import ModalDialog from 'components/common/modals/ModalDialog';
 import ToolTip from 'components/common/elements/ToolTip';
-import { IoHappy, IoLogoMarkdown } from 'react-icons/io5';
+import { IoLogoMarkdown } from 'react-icons/io5';
+import ModalAlert from 'components/common/modals/ModalAlert';
+import Icon from 'components/common/elements/Icon';
+import SelectEmoji from 'components/common/elements/SelectEmoji';
 
 const EditComment = ({
   commentToUpdate,
@@ -21,15 +22,6 @@ const EditComment = ({
   const [mentionList, setMentionList] = useState([
     { preview: 'Type name', value: 'Type name' },
   ]);
-
-  const onEmojiClick = (e) => {
-    let sym = e.unified.split('-');
-    let codesArray = [];
-    sym.forEach((el) => codesArray.push('0x' + el));
-    let emoji = String.fromCodePoint(...codesArray);
-    setComment(comment + emoji);
-    setShowEmoji(false);
-  };
 
   const MentionListItem = ({
     profilePicUrl,
@@ -116,7 +108,7 @@ const EditComment = ({
   };
 
   return (
-    <ModalDialog
+    <ModalAlert
       show={editCommentOpen}
       setShow={setEditCommentOpen}
       title="Update comment"
@@ -133,7 +125,7 @@ const EditComment = ({
 
           <div className=" w-auto flex-1">
             <div className="block">
-              <div className="dark mb-2 w-full overflow-scroll rounded bg-base-700">
+              <div className="dark text-input mb-2 border">
                 <ReactMde
                   value={comment}
                   onChange={setComment}
@@ -158,28 +150,24 @@ const EditComment = ({
                     <IoLogoMarkdown className="h-6 w-6 text-base-400" />
                   </button>
                   <button onClick={() => setShowEmoji(!showEmoji)}>
-                    <IoHappy className="h-5 w-5 text-base-400" />
+                    <Icon name="FiSmile" className="h-5 w-5 text-base-400" />
                   </button>
                 </div>
-                <button className="btn-primary" onClick={handleEditComment}>
+                <button className="btn btn-primary" onClick={handleEditComment}>
                   Update
                 </button>
               </div>
             </div>
           </div>
         </div>
-        {showEmoji && (
-          <div className="mt-2 sm:ml-12">
-            <EmojiPicker
-              theme="dark"
-              lazyLoadEmojis={true}
-              height={380}
-              onEmojiClick={onEmojiClick}
-            />
-          </div>
-        )}
+        <SelectEmoji
+          show={showEmoji}
+          setShow={setShowEmoji}
+          text={comment}
+          setText={setComment}
+        />
       </div>
-    </ModalDialog>
+    </ModalAlert>
   );
 };
 

@@ -78,7 +78,7 @@ const Detail = ({ postId, user, setShowPost }) => {
                     <div className="block">
                       <input
                         type="text"
-                        className="text-input rounded-xl"
+                        className="text-input"
                         onClick={() => setShowNewComment(true)}
                         placeholder="Write a comment..."
                         readOnly
