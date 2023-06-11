@@ -24,7 +24,7 @@ const Actions = (props) => {
       ) : (
         <button
           className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm hover:bg-violet-500/40 hover:text-violet-500 dark:hover:bg-violet-500/40 dark:hover:text-violet-500"
-          onClick={commentAction}
+          onClick={() => commentAction(true)}
         >
           <ToolTip message={'Comment'} />
           <Icon name="FiMessageSquare" className="h-auto w-6" />
