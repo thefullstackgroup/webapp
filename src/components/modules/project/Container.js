@@ -21,8 +21,19 @@ import Insights from 'components/modules/post/Insights';
 import ButtonConnect from 'components/common/buttons/Connect';
 import ButtonChat from 'components/common/buttons/Chat';
 import Icon from 'components/common/elements/Icon';
+import ButtonBookmark from 'components/common/buttons/Bookmark';
+import ShareButton from 'components/common/buttons/Share';
+import Social from '../profile/sections/Social';
 
-const Container = ({ project, isConnected, isConnectionPending, user }) => {
+const Container = ({
+  project,
+  author,
+  isConnected,
+  isConnectionPending,
+  user,
+  setShowComments,
+}) => {
+  console.log(author);
   const [showImageModal, setShowImageModal] = useState(false);
   const [youTubeEmbedID, setYouTubeEmbedID] = useState(
     project?.projectLinkURI ? getVideoId(project?.projectLinkURI) : ''
@@ -37,7 +48,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
 
   return (
     <>
-      <div className="no-scrollbar">
+      <div className="">
         {project?.isDraft &&
           project?.projectCreator?.userId === user?.userId && (
             <Link href={`/post?ref=${project?._id}`} passHref>
@@ -61,8 +72,8 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
           </div>
         )}
 
-        <div className="bg-gradient-to-b from-base-50 to-base-200/50 py-14 dark:from-base-900 dark:to-base-800/90">
-          <div className="relative z-10 mx-auto flex max-w-screen-2xl items-center gap-12 px-20">
+        <div className="bg-gradient-to-b from-base-50 to-base-200/50 pt-14 dark:from-base-900 dark:to-base-800/90">
+          <div className="relative z-10 mx-auto flex max-w-screen-2xl items-center gap-12 px-20 pb-10">
             <div className="w-5/12 space-y-4">
               <div className="flex items-center space-x-3">
                 <Avatar
@@ -129,6 +140,7 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
                   project={project}
                   isLiked={project?.likedByCurrentUser}
                   nComments={project?.numberOfComments}
+                  setShowComments={setShowComments}
                 />
               </div>
             </div>
@@ -178,48 +190,39 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
           </div>
         </div>
 
-        <div className="sticky top-0 z-50 border-b border-t bg-base-50 dark:border-base-700 dark:bg-base-900">
+        <div className="sticky top-0 z-50 border-b bg-[#EFEFEF] dark:border-t dark:border-base-700 dark:bg-base-900">
           <div className="mx-auto flex max-w-screen-2xl items-center justify-between px-20">
-            <div className="flex space-x-10">
-              <button className="border-b border-base-900 py-5 dark:border-base-50">
-                Description
-              </button>
-              <button className="py-5">Contributors</button>
-              <button className="py-5">Stats</button>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Avatar
-                href={`/${project?.projectCreator?.displayName}`}
-                image={project?.projectCreator?.profilePicUrl}
-                name={project?.projectCreator?.displayName}
-                dimensions="h-8 w-8"
-              />
+            {project?.hasGitHubReadMe && <GitHubStats project={project} />}
+            <div className="flex items-center space-x-8">
+              {/* <div className="flex items-center space-x-3">
+                <Avatar
+                  href={`/${project?.projectCreator?.displayName}`}
+                  image={project?.projectCreator?.profilePicUrl}
+                  name={project?.projectCreator?.displayName}
+                  dimensions="h-9 w-9"
+                />
+                <Link href={`/${project?.projectCreator?.displayName}`}>
+                  <div className="flex cursor-pointer items-end pt-1">
+                    <p className="text-base font-medium tracking-tight">
+                      {project?.projectCreator?.name}
+                    </p>
+                  </div>
+                </Link>
+              </div>
               {user && project?.userId !== user?.userId && (
                 <FollowButton
                   followToUser={project?.projectCreator?.userId}
                   followFromUser={user?.userId}
                   followToName={project?.projectCreator?.displayName}
                 />
-              )}
-              {project?.userId !== user?.userId && isConnected ? (
-                <ButtonChat profile={project.projectCreator} myProfile={user} />
-              ) : (
-                <ButtonConnect
-                  connectionPending={isConnectionPending}
-                  connectFrom={user}
-                  connectTo={project.projectCreator}
-                />
-              )}
+              )} */}
             </div>
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto flex max-w-screen-2xl items-start gap-20 px-20">
+        <div className="relative z-10 mx-auto flex max-w-screen-2xl items-start justify-between px-20">
           <div className="w-8/12 py-4">
-            <div className="block md:hidden">
-              <Insights projectId={project?._id} />
-            </div>
-
+            {/* {project?.hasGitHubReadMe && <GitHubStats project={project} />} */}
             {/* {project?.lookingForCollabs &&
             project?.projectCreator?.userId !== user?.userId && (
               <>
@@ -290,56 +293,70 @@ const Container = ({ project, isConnected, isConnectionPending, user }) => {
               )}
             </div>
           </div>
-          <div className="sticky top-20 w-4/12 space-y-6 pt-8 pl-10">
+          <div className="sticky top-16 flex w-4/12 flex-col items-end space-y-8 pt-8">
+            {/* Profile Card */}
+            <div className="w-96 space-y-5 rounded-md bg-base-200/70 px-4 py-4 dark:bg-base-800">
+              <div className="flex items-center space-x-3">
+                <Avatar
+                  href={`/${author?.displayName}`}
+                  image={author?.profilePicUrl}
+                  name={author?.displayName}
+                  dimensions="h-16 w-16"
+                />
+
+                <div className="flex cursor-pointer flex-col">
+                  <Link href={`/${author?.displayName}`}>
+                    <h4 className="text-lg font-medium">{author?.name}</h4>
+                  </Link>
+                  <p className="text-sm font-light text-base-300 dark:text-base-400">
+                    {author?.currentTitle}
+                  </p>
+                  <p className="text-sm font-light text-base-300 dark:text-base-400">
+                    Joined {Moment(author?.createdDate).format('MMMM YYYY')}
+                  </p>
+                </div>
+              </div>
+
+              {user && project?.userId !== user?.userId && (
+                <FollowButton
+                  followToUser={project?.projectCreator?.userId}
+                  followFromUser={user?.userId}
+                  followToName={project?.projectCreator?.displayName}
+                  size={'sm:w-full'}
+                />
+              )}
+
+              <div>
+                {author?.bio?.aboutUser !== ''
+                  ? author?.bio?.aboutUser
+                  : 'No bio added'}
+              </div>
+              <div className="flex flex-wrap">
+                {author?.userTechStacks?.map(
+                  (stack, index) =>
+                    stack != null && (
+                      <TagStack tech={stack} key={index} size="xs" />
+                    )
+                )}
+              </div>
+              <Social social={author} />
+            </div>
+
             {project?.lookingForCollabs &&
               project?.projectCreator?.userId !== user?.userId && (
-                <>
-                  {isConnected ? (
-                    <div className="space-y-2 px-4 py-2">
-                      <div>
-                        <span className="text-base-200">
-                          This project is{' '}
-                          <span className="font-bold">
-                            open to contribution
-                          </span>{' '}
-                          and you are both connected.
-                        </span>
-                      </div>
-                      <ButtonChat
-                        profile={project.projectCreator}
-                        myProfile={user}
-                      />
-                    </div>
-                  ) : (
-                    <div
-                      className="space-y-2 px-4 py-2"
-                      // onClick={() => {
-                      //   // setDisplayConnection(true);
-                      //   sendSlackMessage(
-                      //     `Clicked on the connect to collaborate button on the project '${project?.projectName}'`
-                      //   );
-                      // }}
-                    >
-                      <div>
-                        <span className="text-base-200">
-                          This project is{' '}
-                          <span className="font-bold">
-                            open to contribution
-                          </span>
-                          . Connect with me to contribute.
-                        </span>
-                      </div>
-                      <ButtonConnect
-                        connectionPending={isConnectionPending}
-                        connectFrom={user}
-                        connectTo={project.projectCreator}
-                      />
-                    </div>
-                  )}
-                </>
+                <div className="w-full max-w-sm space-y-3 rounded-md bg-base-200/70 px-4 py-4 dark:bg-base-800">
+                  <h4 className="text-lg font-medium">Contributors</h4>
+                  <Contributors project={project} />
+                  <div className="font-light">
+                    This project is{' '}
+                    <span className="font-bold">open to contribution</span> and
+                    actively looking for collaborators.
+                  </div>
+                  <button className="btn btn-secondary w-full">
+                    Want to contribute?
+                  </button>
+                </div>
               )}
-            {project?.hasGitHubReadMe && <GitHubStats project={project} />}
-            {user && <Contributors project={project} />}
           </div>
         </div>
       </div>

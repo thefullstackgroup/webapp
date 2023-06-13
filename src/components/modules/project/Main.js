@@ -1,13 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Page from 'components/modules/project/Container';
 import Link from 'next/link';
 import Loader from 'components/common/elements/Loader';
-// import Reactions from 'components/modules/project/Reactions';
+import { Dialog, Transition } from '@headlessui/react';
+import Reactions from './Reactions';
+import Icon from 'components/common/elements/Icon';
 
-const Main = ({ project, user, setShowProject, standalone = false }) => {
+const Main = ({ user, project, author }) => {
   const [isConnectionPending, setIsConnectionPending] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
+  const [showComments, setShowComments] = useState(false);
+  const cancelButtonRef = useRef(null);
 
   const checkIfConnected = async () => {
     axios
@@ -57,35 +61,58 @@ const Main = ({ project, user, setShowProject, standalone = false }) => {
       <div className="relative mx-auto">
         <Page
           project={project}
+          author={author}
           isConnected={isConnected}
           isConnectionPending={isConnectionPending}
           user={user}
-          setShowProject={setShowProject}
-          standalone={standalone}
+          setShowComments={setShowComments}
         />
       </div>
-      {/* <div className="mx-auto w-full max-w-screen-2xl gap-14 lg:grid lg:grid-cols-12"> */}
-      {/* <div className="col-span-8">
-            <Page
-              project={project}
-              isConnected={isConnected}
-              isConnectionPending={isConnectionPending}
-              user={user}
-              setShowProject={setShowProject}
-              standalone={standalone}
-            />
+
+      <Transition.Root show={showComments}>
+        <Dialog
+          as="div"
+          className="relative z-50"
+          initialFocus={cancelButtonRef}
+          onClose={setShowComments}
+        >
+          <Transition.Child
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-base-400/50 dark:bg-base-900/40" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 z-10 flex justify-center">
+            <div className="flex w-full items-end justify-center text-center sm:items-center sm:p-0">
+              <Transition.Child
+                enter="ease-out duration-300"
+                enterFrom="translate-x-full"
+                enterTo="translate-x-0"
+                leave="ease-in duration-200"
+                leaveFrom="translate-x-0"
+                leaveTo="translate-x-full"
+                className={`fixed right-0 top-0 h-screen w-full max-w-lg`}
+              >
+                <Dialog.Panel
+                  className={`relative h-full w-full overflow-hidden border-l bg-white text-left shadow-xl dark:border-base-600 dark:bg-base-900`}
+                >
+                  <Reactions
+                    project={project}
+                    isConnected={isConnected}
+                    isConnectionPending={isConnectionPending}
+                    user={user}
+                  />
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
           </div>
-          <div className="col-span-4 hidden lg:block">
-            <Reactions
-              project={project}
-              isConnected={isConnected}
-              isConnectionPending={isConnectionPending}
-              user={user}
-              setShowProject={setShowProject}
-              standalone={standalone}
-            />
-          </div> */}
-      {/* </div> */}
+        </Dialog>
+      </Transition.Root>
     </>
   );
 };

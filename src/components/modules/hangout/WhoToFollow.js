@@ -6,7 +6,7 @@ import Avatar from 'components/common/elements/Avatar';
 import ButtonFollow from 'components/common/buttons/Follow';
 
 const WhoToFollow = ({ user }) => {
-  let url = `${process.env.BASEURL}/api/projects/get?page=1&size=5&sort=mostpopular&projectType=PROJECT&range=40`;
+  let url = `${process.env.BASEURL}/api/projects/get?page=1&size=12&sort=mostpopular&projectType=PROJECT&range=40`;
 
   const { data } = useSWR(url, fetcher);
   const uniqueIds = [];

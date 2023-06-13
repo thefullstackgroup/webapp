@@ -12,8 +12,7 @@ const Actions = (props) => {
         <ButtonComment
           user={props.user}
           post={props.project}
-          showModal={props.showCommentsModal}
-          action={props.setShowCommentsModal}
+          action={props.setShowComments}
         />
         <ButtonAward user={props.user} post={props.project} />
 

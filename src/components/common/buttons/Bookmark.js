@@ -71,7 +71,7 @@ const ButtonBookmark = (props) => {
         className="btn btn-ghost group relative cursor-pointer rounded-xl bg-transparent px-2 text-sm"
         onClick={() => saveProject(!isSaved ? 'save' : 'remove')}
       >
-        <ToolTip message="Save" />
+        <ToolTip message="Bookmark" />
         {isSaved ? (
           <IoBookmark className="h-auto w-7 sm:group-hover:text-base-300" />
         ) : (

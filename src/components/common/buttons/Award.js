@@ -3,7 +3,6 @@ import useSWR from 'swr';
 import { useAuthUser } from 'next-firebase-auth';
 import axios from 'axios';
 import Link from 'next/link';
-import ModalDialog from 'components/common/modals/ModalDialog';
 import Confetti from 'react-confetti';
 import * as ga from 'lib/ga';
 import { IoCheckmarkSharp } from 'react-icons/io5';
@@ -11,6 +10,7 @@ import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import ToolTip from 'components/common/elements/ToolTip';
 import fetcher from 'utils/fetcher';
 import Icon from '../elements/Icon';
+import ModalAlert from '../modals/ModalAlert';
 
 const rewards = [
   { amount: 0.05, numberOfDiamonds: 1 },
@@ -105,24 +105,24 @@ const AwardButton = ({ user, post }) => {
             )}
           </button>
 
-          <ModalDialog
+          <ModalAlert
             show={selectAward}
             setShow={setSelectAward}
             title="Give reward"
           >
             <div className="flex flex-col space-y-4 px-2 py-8 text-center">
-              <span className="mb-3 text-base font-normal text-base-200 line-clamp-2">
+              <span className="mb-3 text-base font-normal line-clamp-2">
                 Select your reward amount to gift to{' '}
                 <span className="font-bold">
                   {post.projectCreator?.displayName}
                 </span>
                 .
               </span>
-              <div className="flex flex-col space-y-2">
+              <div className="flex flex-col space-y-3">
                 {rewards.map((reward, index) => (
                   <button
                     key={index}
-                    className="group flex items-center justify-between space-x-4 rounded-xl py-3 px-4 text-base text-base-200 duration-200 dark:bg-base-800 dark:hover:bg-base-600/80 dark:hover:text-yellow-500"
+                    className="btn btn-with-icon btn-secondary group justify-between hover:border-yellow-500 hover:text-yellow-500"
                     onClick={() => {
                       setTransactMessage(
                         `@${
@@ -132,7 +132,6 @@ const AwardButton = ({ user, post }) => {
                       setTransactAmount(reward.amount);
                       setTransactDiamonds(reward.numberOfDiamonds);
                       setSendReward(true);
-                      setSelectAward(false);
                     }}
                   >
                     <div className="flex space-x-2">
@@ -141,7 +140,7 @@ const AwardButton = ({ user, post }) => {
                           <Icon
                             name={'FiGift'}
                             key={index}
-                            className="h-6 w-6 text-base-200 group-hover:text-yellow-400"
+                            className="h-6 w-6 dark:group-hover:text-yellow-500"
                           />
                         )
                       )}
@@ -151,9 +150,9 @@ const AwardButton = ({ user, post }) => {
                 ))}
               </div>
             </div>
-          </ModalDialog>
+          </ModalAlert>
 
-          <ModalDialog
+          <ModalAlert
             show={sendReward}
             setShow={setSendReward}
             title="Give reward"
@@ -172,7 +171,7 @@ const AwardButton = ({ user, post }) => {
                       )
                     )}
                   </div>
-                  <span className="text-xl font-medium text-base-100">
+                  <span className="text-xl font-medium">
                     Send ${transactAmount} reward to{' '}
                     {post.projectCreator.displayName}?
                   </span>
@@ -188,13 +187,13 @@ const AwardButton = ({ user, post }) => {
                       </p>
                     )}
                     <p className="mt-2 text-sm text-base-500">
-                      Your balance is ${walletBalance?.toFixed(2)}
+                      Your current balance is ${walletBalance?.toFixed(2)}
                     </p>
                   </span>
 
                   <div className="mt-6 flex flex-col-reverse items-center justify-center space-y-4 space-y-reverse sm:flex-row sm:space-y-0 sm:space-x-2">
                     <button
-                      className="btn-secondary w-full sm:w-auto"
+                      className="btn btn-secondary w-full sm:w-auto"
                       onClick={() => {
                         setSendReward(false);
                         setSelectAward(true);
@@ -205,7 +204,7 @@ const AwardButton = ({ user, post }) => {
 
                     {transactAmount <= walletBalance && (
                       <button
-                        className="btn-primary w-full sm:w-auto"
+                        className="btn btn-primary w-full sm:w-auto"
                         onClick={() => handleSendCoin(post.userId)}
                       >
                         Send reward
@@ -238,7 +237,7 @@ const AwardButton = ({ user, post }) => {
                 </>
               )}
             </div>
-          </ModalDialog>
+          </ModalAlert>
         </div>
       )}
     </>

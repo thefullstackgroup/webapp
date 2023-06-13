@@ -2,10 +2,10 @@ import { React, useState } from 'react';
 import { IoArrowRedoOutline, IoCopyOutline } from 'react-icons/io5';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import SocialShareLinks from 'components/common/elements/SocialShareLinks';
-import ModalDialog from 'components/common/modals/ModalDialog';
 import ToolTip from 'components/common/elements/ToolTip';
+import ModalAlert from '../modals/ModalAlert';
 
-const Share = ({ url, message }) => {
+const ShareButton = ({ url, message }) => {
   const [showShareOptions, setShowShareOptions] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
@@ -19,16 +19,16 @@ const Share = ({ url, message }) => {
         <IoArrowRedoOutline className="h-auto w-7 sm:group-hover:text-base-300" />
       </button>
 
-      <ModalDialog
+      <ModalAlert
         show={showShareOptions}
         setShow={setShowShareOptions}
-        title="Share post"
+        title="Share this project"
       >
         <div className="mx-auto p-2 py-4 text-center shadow-xl sm:max-w-xl">
           <div className="max-w-xs space-y-3 text-left md:max-w-full">
             <h4 className="text-sm font-semibold">Copy link</h4>
             <div
-              className="text-input flex cursor-pointer items-center justify-between space-x-2"
+              className="text-input flex cursor-pointer items-center justify-between space-x-2 border"
               onClick={() => {
                 navigator.clipboard.writeText(url);
                 setIsCopied(true);
@@ -53,9 +53,9 @@ const Share = ({ url, message }) => {
             <SocialShareLinks link={url} title={message} />
           </div>
         </div>
-      </ModalDialog>
+      </ModalAlert>
     </>
   );
 };
 
-export default Share;
+export default ShareButton;

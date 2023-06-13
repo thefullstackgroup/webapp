@@ -11,7 +11,7 @@ import { SiHashnode, SiMedium } from 'react-icons/si';
 
 const Social = ({ social }) => {
   return (
-    <div className="flex items-center justify-start space-x-4 md:space-x-5">
+    <div className="flex items-center justify-start space-x-4">
       {social && social?.personalWebsite && (
         <a
           href={social?.personalWebsite}

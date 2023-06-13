@@ -60,14 +60,16 @@ const ButtonFollow = ({ followToUser, followFromUser, followToName, size }) => {
       {followStatus ? (
         <button
           type="button"
-          className={'btn btn-ghost group relative w-full sm:w-auto ' + size}
+          className={
+            'btn btn-secondary group relative w-full sm:w-auto ' + size
+          }
           onClick={() => {
             setFollowStatus(!followStatus);
             followProfile(!followStatus);
           }}
         >
-          <ToolTip message={`You are following ${followToName}`} />
-          <Icon name="FiUserCheck" className="h-6 w-6 text-cyan-default" />
+          <ToolTip message={`Click to unfollow ${followToName}`} />
+          Following
         </button>
       ) : (
         <button

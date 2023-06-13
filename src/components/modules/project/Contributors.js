@@ -20,7 +20,7 @@ const Contributors = ({ project }) => {
               <Avatar
                 image={contributor.avatar_url}
                 name={contributor.login}
-                dimensions="h-12 w-12"
+                dimensions="h-10 w-10"
               />
             </div>
           ))}
