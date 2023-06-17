@@ -15,12 +15,12 @@ const Sparks = ({ profile, myProfile }) => {
     <>
       {!posts?.length > 0 && (
         <div className="mt-8 flex w-full flex-col items-center px-2 md:px-8">
-          <div className="flex w-full flex-col items-center justify-evenly py-10 text-zinc-400 md:py-36">
+          <div className="flex w-full flex-col items-center justify-evenly py-10 text-base-300 md:py-36">
             <span>Nothing posted yet.</span>
             {profile?.userId === myProfile?.userId && (
               <div className="mt-4 flex justify-center">
                 <Link href="/hangout">
-                  <button className="btn-secondary">Post to community</button>
+                  <button className="btn btn-primary">Post to community</button>
                 </Link>
               </div>
             )}

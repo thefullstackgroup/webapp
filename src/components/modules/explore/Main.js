@@ -48,7 +48,7 @@ const Main = ({ user }) => {
   return (
     <div className="min-h-screen space-y-4 pt-6">
       {!user && (
-        <div className="rounded-2xl bg-base-200/80 dark:bg-base-800">
+        <div className="rounded-lg bg-transparent dark:bg-transparent">
           <div className="mx-auto max-w-4xl py-14 text-center">
             <div className="relative space-y-6">
               <h2 className="text-6xl font-bold tracking-tighter">
@@ -147,10 +147,38 @@ const Main = ({ user }) => {
         <ProjectGallery sort={'newest'} range={30} count={5} cols={5} />
       </div>
 
-      <DividerShowMore
-        label="Show more projects"
-        href="/explore/popular/opentocollab"
-      />
+      <DividerShowMore label="Show new projects" href="/explore/new" />
+
+      <div className="space-y-4 pb-6">
+        <h3 className="flex items-center space-x-2">
+          <span>Browse by category</span>
+        </h3>
+        <div className="no-scrollbar mt-6 grid grid-cols-6 gap-4 px-4 md:px-0">
+          {CategoriesFilter.map(
+            (item, index) =>
+              item.slug !== 'datascience' && (
+                <Link href={`/explore/popular/${item.slug}`} key={index}>
+                  <div className="group flex h-32 w-full cursor-pointer flex-col justify-between rounded-lg border border-transparent bg-base-200/50 p-4 text-left duration-200 hover:border-base-700 hover:bg-base-50 dark:border-base-700 dark:bg-base-900 dark:hover:border-base-100 dark:hover:bg-base-900">
+                    <div className="flex flex-col">
+                      <span className="text-base font-medium text-base-700 group-hover:text-base-700 dark:text-base-200 dark:group-hover:text-base-100">
+                        {item.label}
+                      </span>
+                      <span className="text-sm text-base-300 dark:text-base-400">
+                        {item.desc}
+                      </span>
+                    </div>
+                    <div className="flex justify-end">
+                      <Icon
+                        name={'FiChevronRight'}
+                        className="text-base-300 dark:text-base-400"
+                      />
+                    </div>
+                  </div>
+                </Link>
+              )
+          )}
+        </div>
+      </div>
 
       <div className="space-y-4">
         <h3 className="flex items-center space-x-2">
@@ -274,37 +302,6 @@ const Main = ({ user }) => {
         label="Show more open source"
         href="/explore/popular/opensource"
       />
-
-      <div className="space-y-4">
-        <h3 className="flex items-center space-x-2">
-          <span>Browse by category</span>
-        </h3>
-        <div className="no-scrollbar mt-6 grid grid-cols-6 gap-4 px-4 md:px-0">
-          {CategoriesFilter.map(
-            (item, index) =>
-              item.slug !== 'datascience' && (
-                <Link href={`/explore/popular/${item.slug}`} key={index}>
-                  <div className="group flex h-32 w-full cursor-pointer flex-col justify-between rounded-lg border border-transparent bg-base-200/50 p-4 text-left duration-200 hover:border-base-700 hover:bg-base-50 dark:border-base-700 dark:bg-base-900 dark:hover:border-base-100 dark:hover:bg-base-900">
-                    <div className="flex flex-col">
-                      <span className="text-base font-medium text-base-700 group-hover:text-base-700 dark:text-base-200 dark:group-hover:text-base-100">
-                        {item.label}
-                      </span>
-                      <span className="text-sm text-base-300 dark:text-base-400">
-                        {item.desc}
-                      </span>
-                    </div>
-                    <div className="flex justify-end">
-                      <Icon
-                        name={'FiChevronRight'}
-                        className="text-base-300 dark:text-base-400"
-                      />
-                    </div>
-                  </div>
-                </Link>
-              )
-          )}
-        </div>
-      </div>
     </div>
   );
 };

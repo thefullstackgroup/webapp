@@ -22,12 +22,8 @@ import { FaMarkdown } from 'react-icons/fa';
 import { FiCamera } from 'react-icons/fi';
 import { CgSpinner } from 'react-icons/cg';
 import { RiSettingsLine } from 'react-icons/ri';
-import {
-  IoAddOutline,
-  IoCubeOutline,
-  IoLink,
-  IoLogoGithub,
-} from 'react-icons/io5';
+import { IoAddOutline, IoLink } from 'react-icons/io5';
+import Icon from 'components/common/elements/Icon';
 
 const customCommand = {
   name: 'markdown-link',
@@ -239,18 +235,18 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
 
               <div className="space-y-4 py-6">
                 <button
-                  className="btn-secondary btn-with-icon w-full justify-center py-3"
+                  className="btn btn-secondary btn-with-icon w-full justify-center py-3"
                   onClick={() => setGitHubImportSelected(true)}
                 >
-                  <IoLogoGithub className="h-8 w-8" />
+                  <Icon name="FiGithub" className="h-8 w-8" />
                   <span className="">Import from GitHub</span>
                 </button>
 
                 <button
-                  className="btn-secondary btn-with-icon w-full justify-center py-3"
+                  className="btn btn-secondary btn-with-icon w-full justify-center py-3"
                   onClick={() => setProjectTypeSelected(true)}
                 >
-                  <IoCubeOutline className="h-8 w-8" />
+                  <Icon name="FiBox" className="h-8 w-8" />
                   <span className="">Create from scratch</span>
                 </button>
               </div>
@@ -275,38 +271,40 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
               not visible to anyone.
             </div>
           )}
-          <div className="sticky top-0 left-0 z-40 w-full bg-base-700 px-4 py-4 md:px-8">
-            <div className="sticky top-0 mx-auto flex max-w-screen-2xl items-center justify-end space-x-4 md:space-x-8">
-              <button
-                className="flex items-center space-x-2 text-base text-base-400"
-                onClick={() => handleSavePost(true)}
-              >
-                {saving ? (
-                  <>
-                    <CgSpinner className="h-4 w-4 animate-spin" />
-                    <span>Saving ...</span>
-                  </>
-                ) : (
-                  <span className="hover:text-base-300">Save draft</span>
-                )}
-              </button>
-              <button
-                className="text-base-400 hover:text-base-300"
-                onClick={() => setShowSettings(true)}
-              >
-                <RiSettingsLine className="h-6 w-6" />
-              </button>
-              <button
-                className="btn-primary"
-                onClick={() => setShowSettings(true)}
-              >
-                Publish
-              </button>
+          <div className="border-b border-base-200 dark:border-base-700">
+            <div className="sticky top-0 left-0 z-40 mx-auto w-full max-w-screen-2xl px-4 py-4 md:px-8">
+              <div className="sticky top-0 mx-auto flex max-w-screen-2xl items-center justify-end space-x-4 md:space-x-8">
+                <button
+                  className="flex items-center space-x-2 text-base text-base-400"
+                  onClick={() => handleSavePost(true)}
+                >
+                  {saving ? (
+                    <>
+                      <CgSpinner className="h-4 w-4 animate-spin" />
+                      <span>Saving ...</span>
+                    </>
+                  ) : (
+                    <span className="hover:text-base-300">Save draft</span>
+                  )}
+                </button>
+                <button
+                  className="text-base-400 hover:text-base-300"
+                  onClick={() => setShowSettings(true)}
+                >
+                  <RiSettingsLine className="h-6 w-6" />
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => setShowSettings(true)}
+                >
+                  Publish
+                </button>
+              </div>
             </div>
           </div>
-          <div className="flex flex-col justify-center space-y-4 bg-base-900/40 text-center">
+          <div className="mx-auto flex w-full max-w-screen-2xl flex-col justify-center space-y-4 bg-base-900/40 text-center">
             {postCoverImage && !postCoverVideo && (
-              <div className="group relative h-96 w-full overflow-hidden">
+              <div className="group relative h-96 w-1/2 overflow-hidden">
                 <div className="h-full w-full">
                   <img
                     src={postCoverImage}
@@ -327,7 +325,7 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
 
             {postCoverVideo && (
               <div className="group relative h-4/5 w-full">
-                <div className="flex h-full w-full overflow-hidden">
+                <div className="flex h-full w-1/2 overflow-hidden">
                   <VideoPlayer src={postCoverVideo} poster={postCoverImage} />
                 </div>
                 <div className="absolute top-0 left-0 hidden h-20 w-full items-center justify-end bg-transparent px-8 group-hover:flex">
@@ -391,7 +389,7 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
                 {postGitHubRepo !== '' && (
                   <a href={postGitHubRepo} target="_blank" rel="noreferrer">
                     <button className="btn-secondary btn-with-icon">
-                      <IoLogoGithub className="h-auto w-6" />
+                      <Icon name="FiGithub" className="h-auto w-6" />
                     </button>
                   </a>
                 )}

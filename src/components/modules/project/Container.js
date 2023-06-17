@@ -56,7 +56,7 @@ const Container = ({
           )}
 
         {project?.projectCreator?.userId === user?.userId && (
-          <div className="mx-auto flex max-w-screen-2xl items-center justify-end space-x-8 px-20">
+          <div className="mx-auto mt-8 flex max-w-screen-2xl space-x-8 px-20">
             <Link href={`/post?ref=${project?._id}`} passHref>
               <button className="btn btn-secondary">
                 <span>Edit Project</span>
@@ -95,39 +95,42 @@ const Container = ({
                 </p>
               </div>
 
-              <div className="my-4 mt-6 flex flex-wrap items-center gap-0.5 ">
-                {project?.projectTechStack?.map((stack, index) => (
-                  <TagStack tech={stack} key={index} />
-                ))}
+              <div>
+                <div className="mt-6 flex flex-wrap items-center gap-0.5">
+                  {project?.projectTechStack?.map((stack, index) => (
+                    <TagStack tech={stack} key={index} />
+                  ))}
+                </div>
+
+                <div className="flex w-full flex-row-reverse items-center pt-4 sm:w-auto sm:flex-row sm:space-x-2">
+                  {project?.projectLinkURI !== '' && (
+                    <a
+                      href={project?.projectLinkURI}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-primary btn-with-icon"
+                    >
+                      <span className="">View project</span>
+                      <Icon name={'FiExternalLink'} className="h-auto w-5" />
+                    </a>
+                  )}
+
+                  {project?.sourceControlLink !== '' && (
+                    <a
+                      href={project?.sourceControlLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-secondary btn-with-icon"
+                    >
+                      <span className="hidden sm:block">Code</span>
+                      <IoLogoGithub className="h-auto w-5" />
+                    </a>
+                  )}
+                </div>
               </div>
 
-              <div className="flex w-full flex-row-reverse items-center pt-4 sm:w-auto sm:flex-row sm:space-x-2">
-                {project?.projectLinkURI !== '' && (
-                  <a
-                    href={project?.projectLinkURI}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn btn-primary btn-with-icon"
-                  >
-                    <span className="">View project</span>
-                    <Icon name={'FiExternalLink'} className="h-auto w-5" />
-                  </a>
-                )}
-
-                {project?.sourceControlLink !== '' && (
-                  <a
-                    href={project?.sourceControlLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn btn-secondary btn-with-icon"
-                  >
-                    <span className="hidden sm:block">Code</span>
-                    <IoLogoGithub className="h-auto w-5" />
-                  </a>
-                )}
-              </div>
               {user && (
-                <div>
+                <div className="pt-6">
                   <Insights projectId={project?._id} />
                 </div>
               )}

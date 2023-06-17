@@ -30,12 +30,12 @@ const Page = ({ user }) => {
         <div className="hidden w-full pt-4 pb-10 text-4xl font-medium tracking-tight sm:block">
           Account settings
         </div>
-        <div className="flex items-start space-x-4">
+        <div className="flex min-h-[60vh] items-start space-x-4">
           <div className="w-3/12">
             <Menu selected="Danger zone" />
           </div>
           {!deleteAccountRequested && (
-            <div className="mb-4 w-full rounded-lg border border-base-200 px-4 py-4 dark:border-base-700 sm:px-6">
+            <div className="mb-4 w-full rounded-lg border border-base-200 bg-base-50 px-4 py-4 dark:border-base-700 dark:bg-base-900 sm:px-6">
               <h4 className="mb-6 text-2xl font-medium">Danger zone</h4>
               <p className="mt-1 mb-6">
                 Complete the step below if you wish to remove your account
@@ -126,7 +126,7 @@ const Page = ({ user }) => {
                     </div>
                     {reason && (
                       <button
-                        className="btn btn-danger py-3"
+                        className="btn btn-danger"
                         onClick={() => deleteUserRequest()}
                       >
                         <a>Delete my account</a>

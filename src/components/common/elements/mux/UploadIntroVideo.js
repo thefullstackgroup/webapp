@@ -128,7 +128,7 @@ const UploadIntroVideo = ({ setMuxAssetId, buttonLabel }) => {
             <button
               type="button"
               onClick={() => inputRef.current.click()}
-              className="btn-secondary"
+              className="btn btn-secondary"
             >
               {buttonLabel}
             </button>

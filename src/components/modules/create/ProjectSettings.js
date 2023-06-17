@@ -4,6 +4,7 @@ import ModalDialog from 'components/common/modals/ModalDialog';
 import { IoClose, IoLinkOutline, IoLogoGithub } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
 import { CgSpinner } from 'react-icons/cg';
+import Icon from 'components/common/elements/Icon';
 
 const ProjectSettings = ({
   showSettings,
@@ -45,14 +46,14 @@ const ProjectSettings = ({
 
   return (
     <ModalDialog show={showSettings} setShow={setShowSettings}>
-      <div className="mx-auto w-full space-y-6 py-6 px-2">
+      <div className="mx-auto w-full space-y-6 py-6">
         <div className="flex items-center justify-between">
           <h3 className="text-2xl font-bold text-base-100">
             <span>Settings</span>
           </h3>
           <div className="flex items-center space-x-2">
             <button
-              className="btn-secondary bg-transparent text-red-500/80 hover:bg-red-500/20 hover:text-red-500"
+              className="btn btn-danger"
               onClick={() => setIsDeletePromptOpen(true)}
             >
               Delete
@@ -91,7 +92,7 @@ const ProjectSettings = ({
               }
             >
               <div className="pointer-events-none absolute inset-y-2 left-4 flex pt-1">
-                <IoLogoGithub className="h-6 w-6 text-base-200" />
+                <Icon name="FiGithub" className="h-5 w-5 text-base-200" />
               </div>
               <input
                 type="text"
@@ -116,7 +117,7 @@ const ProjectSettings = ({
               }
             >
               <div className="pointer-events-none absolute inset-y-2 left-4 flex pt-1">
-                <IoLinkOutline className="h-6 w-6 text-base-200" />
+                <Icon name="FiLink" className="h-5 w-5 text-base-200" />
               </div>
               <input
                 type="text"
@@ -182,14 +183,14 @@ const ProjectSettings = ({
           {publishing ? (
             <button
               disabled
-              className="btn-primary flex w-full items-center justify-center space-x-2 py-3"
+              className="btn btn-primary flex w-full items-center justify-center space-x-2 py-3"
             >
               <CgSpinner className="h-4 w-4 animate-spin" />
               <span>Publishing ...</span>
             </button>
           ) : (
             <button
-              className="btn-primary flex w-full items-center justify-center space-x-2 py-3"
+              className="btn btn-primary flex w-full items-center justify-center space-x-2 py-3"
               onClick={() => handlePublishPost()}
             >
               <span>Publish</span>

@@ -28,8 +28,8 @@ const Goals = ({ goal, setCreateTeamPanel }) => {
   return (
     <>
       {goal === 'HIRE' && (
-        <div className="w-fullgap-4 relative mb-8 px-4 sm:mb-10 md:px-0 lg:flex">
-          <div className="w-full items-center justify-between space-y-4 rounded-md border border-base-600 bg-base-800 px-4 py-4 md:space-y-0 md:px-8 lg:flex">
+        <div className="relative mb-8 w-full gap-4 px-4 sm:mb-10 md:px-0 lg:flex">
+          <div className="w-full items-center justify-between space-y-4 rounded-md bg-base-200/40 px-4 py-4 dark:bg-base-800 md:space-y-0 md:px-8 lg:flex">
             <div className="flex flex-col space-y-4 md:w-2/3">
               <div className="flex items-end space-x-6">
                 <h4 className="text-xl font-bold md:text-2xl">
@@ -64,14 +64,14 @@ const Goals = ({ goal, setCreateTeamPanel }) => {
       {goal === 'FIND_WORK' && (
         <Link href="/account/settings/jobpreferences">
           <div className="relative mx-auto mb-8 w-full max-w-screen-lg cursor-pointer gap-4 px-4 sm:mb-10 md:px-0 lg:flex">
-            <div className="w-full items-center justify-between space-y-4 rounded-md border border-base-600 bg-base-800 px-4 py-4 md:space-y-0 md:px-8 lg:flex">
+            <div className="w-full items-center justify-between space-y-4 rounded-md border border-base-300/40 bg-base-200/40 px-4 py-3 dark:border-base-700 dark:bg-base-900 md:space-y-0 md:px-4 lg:flex">
               <div className="flex flex-col space-y-4 md:w-2/3">
                 <div className="flex items-end space-x-6">
-                  <h4 className="text-xl font-bold md:text-2xl">
+                  <h4 className="text-xl font-medium md:text-2xl">
                     Looking for work opportunties?
                   </h4>
                 </div>
-                <div className="text-sm text-base-400">
+                <div className="text-sm text-base-600 dark:text-base-300">
                   The Full Stack can help you find and connect to tech teams
                   matched to your preferences. Set the criteria for matches
                   based upon your profile in your work preferences. Your details
@@ -80,7 +80,9 @@ const Goals = ({ goal, setCreateTeamPanel }) => {
                 </div>
               </div>
               <div className="flex flex-col justify-end space-y-6">
-                <button className="btn-primary">Set your preferences</button>
+                <button className="btn btn-sm btn-secondary">
+                  Set your preferences
+                </button>
                 <div className="flex items-center -space-x-2 md:justify-end">
                   {images.map((image, index) => (
                     <ImageSample image={image} key={index} />

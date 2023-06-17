@@ -50,37 +50,28 @@ const Actions = (props) => {
       ) : (
         <div className="flex justify-between border-t border-base-200 px-4 py-2 dark:border-base-700">
           <button
-            className="btn btn-ghost btn-with-icon group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm text-base-800   hover:bg-red-500/20 hover:text-red-400 dark:text-base-200 dark:hover:bg-red-500/20 dark:hover:text-red-400"
+            className="btn btn-ghost btn-with-icon group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm text-base-800 hover:bg-red-500/20 hover:text-red-400 dark:text-base-200 dark:hover:bg-red-500/20 dark:hover:text-red-400"
             onClick={() => setShowSignUp(!showSignUp)}
           >
             <ToolTip message="Like" />
 
-            <Icon
-              name="FiHeart"
-              className="h-5 w-5 sm:group-hover:text-red-400"
-            />
+            <Icon name="FiHeart" className="h-5 w-5" />
             <span>{Math.abs(props.project.numberOfLikes)}</span>
           </button>
           <button
-            className="btn btn-ghost btn-with-icon group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm text-base-800   hover:bg-red-500/20 hover:text-red-400 dark:text-base-200 dark:hover:bg-red-500/20 dark:hover:text-red-400"
+            className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm text-base-800 hover:bg-violet-500/40 hover:text-violet-500 dark:text-base-200 dark:hover:bg-violet-500/40 dark:hover:text-violet-500"
             onClick={() => setShowSignUp(!showSignUp)}
           >
             <ToolTip message="Comment" />
-            <Icon
-              name="FiMessageSquare"
-              className="h-5 w-5 sm:group-hover:text-red-400"
-            />
+            <Icon name="FiMessageSquare" className="h-5 w-5" />
             <span>{Math.abs(props.project.numberOfComments)}</span>
           </button>
           <button
-            className="btn btn-ghost btn-with-icon group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm text-base-800   hover:bg-red-500/20 hover:text-red-400 dark:text-base-200 dark:hover:bg-red-500/20 dark:hover:text-red-400"
+            className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm text-base-800 hover:bg-yellow-500/40 hover:text-yellow-600 dark:text-base-200 dark:hover:bg-yellow-500/40 dark:hover:text-yellow-500"
             onClick={() => setShowSignUp(!showSignUp)}
           >
             <ToolTip message="Award" />
-            <Icon
-              name="FiStar"
-              className="h-5 w-5 sm:group-hover:text-red-400"
-            />
+            <Icon name="FiStar" className="h-5 w-5" />
             <span>{Math.abs(props.project.contentTotalDiamonds)}</span>
           </button>
         </div>
@@ -95,14 +86,14 @@ const Actions = (props) => {
               show off projects and grow a network.
             </p>
             <div className="items-centet flex justify-center space-x-2">
-              <Link href="/login">
-                <a href="#" className="btn btn-secondary">
-                  Login
-                </a>
-              </Link>
               <Link href="/signup">
                 <a href="#" className="btn btn-primary">
                   Sign up
+                </a>
+              </Link>
+              <Link href="/login">
+                <a href="#" className="btn btn-secondary">
+                  Login
                 </a>
               </Link>
             </div>

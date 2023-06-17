@@ -16,12 +16,14 @@ const Projects = ({ profile, myProfile }) => {
     <>
       {!projects?.length > 0 && (
         <div className="mt-8 flex w-full flex-col items-center px-2 md:px-8">
-          <div className="flex w-full flex-col items-center justify-evenly py-10 text-zinc-400 md:py-36">
+          <div className="flex w-full flex-col items-center justify-evenly py-10 text-base-400 md:py-36">
             <span>No projects posted yet.</span>
             {profile?.userId === myProfile?.userId && (
               <div className="mt-4 flex justify-center">
                 <Link href="/post">
-                  <button className="btn-secondary">Show off a project</button>
+                  <button className="btn btn-primary">
+                    Show off a project
+                  </button>
                 </Link>
               </div>
             )}

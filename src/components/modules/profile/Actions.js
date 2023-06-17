@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { MdOutlineSlowMotionVideo } from 'react-icons/md';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
+import Icon from 'components/common/elements/Icon';
 
 const Actions = ({
   isConnected,
@@ -53,26 +54,23 @@ const Actions = ({
             <span className="whitespace-nowrap">Edit profile</span>
           </button>
 
-          <div className="relative">
-            <button
-              className="btn-ghost group relative px-2 "
-              onClick={() => {
-                setUploadVideoIntroPanel(true);
-                sendSlackMessage(
-                  `Clicked on video intro and might add to their profile.`
-                );
-              }}
-            >
-              <ToolTip message="Your video intro" />
-              <MdOutlineSlowMotionVideo className="h-6 w-6" />
-            </button>
-            <span className="absolute top-1 left-7 h-3 w-3 rounded-full bg-red-500 px-1"></span>
-          </div>
+          <button
+            className="btn btn-ghost group relative px-4"
+            onClick={() => {
+              setUploadVideoIntroPanel(true);
+              sendSlackMessage(
+                `Clicked on video intro and might add to their profile.`
+              );
+            }}
+          >
+            <ToolTip message="Your video intro" />
+            <Icon name="FiPlayCircle" className="h-6 w-6" />
+          </button>
 
           <Link href="/account/settings">
-            <button className="btn btn-ghost group relative">
+            <button className="btn btn-ghost group relative px-0">
               <ToolTip message="Account settings" />
-              <IoSettingsOutline className="h-6 w-6" />
+              <Icon name="FiSettings" className="h-6 w-6" />
             </button>
           </Link>
         </>

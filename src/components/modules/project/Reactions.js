@@ -94,7 +94,7 @@ const Reactions = ({ project, user }) => {
             </div>
           </div>
         ) : (
-          <div className="w-full bg-base-50 px-4 pt-4 dark:bg-base-900">
+          <div className="w-full bg-base-50 px-8 pt-4 dark:bg-base-900">
             <div className="flex items-center pb-6 sm:space-x-2">
               <Link href="/signup">
                 <input

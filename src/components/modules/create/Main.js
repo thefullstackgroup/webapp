@@ -62,7 +62,7 @@ const Main = ({ user }) => {
         </button>
 
         {/* {postType === 'PROJECT' && ( */}
-        <div className="relative mx-auto max-w-screen-lg rounded-md bg-base-700">
+        <div className="relative mx-auto w-full rounded-md">
           <Scratch
             user={user}
             setPostType={setPostType}
@@ -75,38 +75,40 @@ const Main = ({ user }) => {
 
       {isDiscardPromptOpen && (
         <ModalAlert show={isDiscardPromptOpen} setShow={setIsDiscardPromptOpen}>
-          <div className="justify-center sm:flex sm:items-start">
-            <div className="mt-3 text-center sm:mt-0">
-              <h3 className="text-xl font-bold text-base-200">Quit?</h3>
-              <div className="mt-2">
-                <p className="text-sm text-base-300">
-                  Are you sure you want to quit?
-                </p>
+          <div className="py-8">
+            <div className="justify-center sm:flex sm:items-start">
+              <div className="mt-3 text-center sm:mt-0">
+                <h3 className="text-xl font-bold text-base-200">Quit?</h3>
+                <div className="mt-2">
+                  <p className="text-sm text-base-300">
+                    Are you sure you want to quit?
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
-            <button
-              type="button"
-              className="btn-primary"
-              onClick={() => setIsDiscardPromptOpen(false)}
-            >
-              No
-            </button>
-            <button
-              type="button"
-              className="btn-secondary"
-              onClick={() => router.back()}
-            >
-              Yes
-            </button>
+            <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => setIsDiscardPromptOpen(false)}
+              >
+                No
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => router.back()}
+              >
+                Yes
+              </button>
+            </div>
           </div>
         </ModalAlert>
       )}
 
       {isDeletePromptOpen && (
         <ModalAlert show={isDeletePromptOpen} setShow={setIsDeletePromptOpen}>
-          <div>
+          <div className="py-8">
             <div className="justify-center sm:flex sm:items-start">
               <div className="mt-3 text-center sm:mt-0">
                 <h3 className="text-xl font-bold text-base-200">
@@ -123,14 +125,14 @@ const Main = ({ user }) => {
             <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
               <button
                 type="button"
-                className="btn-primary bg-red-600/80 hover:bg-red-500"
+                className="btn btn-danger"
                 onClick={() => deletePost()}
               >
                 Delete
               </button>
               <button
                 type="button"
-                className="btn-secondary"
+                className="btn btn-secondary"
                 onClick={() => setIsDeletePromptOpen(false)}
               >
                 Cancel

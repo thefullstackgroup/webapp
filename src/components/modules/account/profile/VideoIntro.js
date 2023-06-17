@@ -6,6 +6,7 @@ import UploadIntroVideo from 'components/common/elements/mux/UploadIntroVideo';
 import VideoPlayerProfile from 'components/common/elements/mux/ProfileVideoPlayer';
 import { IoVideocamOutline } from 'react-icons/io5';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
+import Icon from 'components/common/elements/Icon';
 
 const VideoIntro = ({ user }) => {
   const [saving, setSaving] = useState(false);
@@ -60,11 +61,11 @@ const VideoIntro = ({ user }) => {
         <div className="py-4 px-2">
           <div className="grid space-y-6 px-4 py-2 md:grid-cols-2 md:space-y-0">
             <div className="space-y-6">
-              <h4 className="text-4xl font-semibold tracking-tight">
+              <h4 className="text-3xl font-semibold tracking-tight">
                 Add a video intro <br />
                 to your profile
               </h4>
-              <p className="text-lg font-light text-base-300">
+              <p className="text-lg font-light">
                 People make real connections with real people, not just code.
                 Introduce yourself to others in a whole new way, right from your
                 profile. With a video intro on your profile, you&apos;re 2x more
@@ -73,7 +74,7 @@ const VideoIntro = ({ user }) => {
               </p>
               <div>
                 <button
-                  className="btn-primary w-full py-2"
+                  className="btn btn-primary w-full py-2"
                   onClick={() => setShowSplash(false)}
                 >
                   Get started &rarr;
@@ -81,7 +82,7 @@ const VideoIntro = ({ user }) => {
               </div>
             </div>
             <div className="relative flex justify-center pb-20 md:justify-end md:pb-0">
-              <div className="relative mt-2 h-96 w-64 overflow-hidden rounded-xl border-2 border-base-600 p-2">
+              <div className="relative mt-2 h-96 w-64 overflow-hidden rounded-xl">
                 <VideoPlayerProfile
                   src={`https://stream.mux.com/OGgHsrxVO6KHXUBDdtsVPCMMnJej3tuPszF3L00K00m8U.m3u8`}
                   controls={false}
@@ -102,23 +103,23 @@ const VideoIntro = ({ user }) => {
         <div className="py-4 px-2">
           <div className="grid space-y-6 px-4 py-2 md:grid-cols-2 md:space-y-0">
             <div className="space-y-6">
-              <h4 className="text-4xl font-semibold tracking-tight">
+              <h4 className="text-3xl font-semibold tracking-tight">
                 3 simple steps...
               </h4>
               <p className="text-lg font-medium">1. Record your video intro</p>
-              <span className="font-light text-base-400">
+              <span className="font-light text-base-500 dark:text-base-300">
                 You can record your video intro on your computer, phone or
                 camera - the choice is yours!
               </span>
               <p className="text-lg font-medium">2. Upload your video here</p>
-              <span className="font-light text-base-400">
+              <span className="font-light text-base-500 dark:text-base-300">
                 Most video formats supported, including mp4, mov, mpeg, etc.
                 Should be no longer than 2 minutes.
               </span>
               <p className="text-lg font-medium">
                 3. Add the video to your profile
               </p>
-              <span className="font-light text-base-400">
+              <span className="font-light text-base-500 dark:text-base-300">
                 Once happy with the preview, click the Add to my profile button.
               </span>
             </div>
@@ -126,8 +127,11 @@ const VideoIntro = ({ user }) => {
               <div className="w-64 space-y-4">
                 {!muxAssetId && (
                   <div className="mt-2 flex h-96 w-64 max-w-full items-center justify-center rounded-xl border-2 border-base-600 p-2 px-6 pt-5 pb-6">
-                    <div className="space-y-1 text-center">
-                      <IoVideocamOutline className="mx-auto h-12 w-12 text-gray-300" />
+                    <div className="space-y-3 text-center">
+                      <Icon
+                        name="FiVideo"
+                        className="mx-auto h-10 w-10 text-gray-300"
+                      />
                       <div className="flex text-sm text-gray-600">
                         <UploadIntroVideo
                           setMuxAssetId={setMuxAssetId}

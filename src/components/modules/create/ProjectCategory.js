@@ -44,7 +44,7 @@ const ProjectCategory = ({ postCategories, setPostCategories }) => {
       <>
         {categorySelected ? (
           <button
-            className="btn-secondary relative rounded-full bg-base-500 text-sm text-white"
+            className="btn btn-pill relative rounded-full bg-base-500 text-sm text-white"
             onClick={() =>
               removeCategory(category.categoryId, category.categoryName)
             }
@@ -57,7 +57,7 @@ const ProjectCategory = ({ postCategories, setPostCategories }) => {
           </button>
         ) : (
           <button
-            className="btn-secondary relative rounded-full bg-base-600/70 text-sm text-base-200 hover:bg-base-600/50 "
+            className="btn btn-pill relative rounded-full bg-base-600/70 text-sm text-base-200 hover:bg-base-600/50 "
             onClick={() =>
               selectCategory(category.categoryId, category.categoryName)
             }

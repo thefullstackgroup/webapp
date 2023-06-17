@@ -1,7 +1,6 @@
-import { FaLinkedin, FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
-
 import axios from 'axios';
 import { useState } from 'react';
+import Icon from 'components/common/elements/Icon';
 
 const Socials = ({ user }) => {
   const [facebookAcc, setFacebookAcc] = useState(
@@ -87,69 +86,67 @@ const Socials = ({ user }) => {
           </div>
         )}
         <div className="space-y-6 py-4">
-          <div>
-            <div className="flex">
-              <span className="mt-1 block rounded-l-md bg-base-600/50 py-3 px-3 text-base focus:outline-none">
-                <FaInstagram className="h-6 w-6 text-gray-400" />
-              </span>
-              <input
-                type="text"
-                placeholder="Your Instagram profile"
-                value={instagramAc}
-                onChange={(e) => setInstagramAc(e.target.value)}
-                className="text-input rounded-l-none"
-              />
-            </div>
+          <div className="flex items-center space-x-4">
+            <input
+              type="text"
+              placeholder="Your Instagram profile"
+              value={instagramAc}
+              onChange={(e) => setInstagramAc(e.target.value)}
+              className="text-input"
+            />
+            <Icon
+              name="SiInstagram"
+              pack="Si"
+              className="h-6 w-6 text-gray-400"
+            />
           </div>
 
-          <div>
-            <div className="flex">
-              <span className="mt-1 block rounded-l-md bg-base-600/50 py-3 px-3 text-base focus:outline-none">
-                <FaTwitter className="h-6 w-6 text-gray-400" />
-              </span>
-              <input
-                type="text"
-                placeholder="Your Twitter handle"
-                value={twitterAcc}
-                onChange={(e) => setTwitterAcc(e.target.value)}
-                className="text-input rounded-l-none"
-              />
-            </div>
-          </div>
-          <div>
-            <div className="flex">
-              <span className="mt-1 block rounded-l-md bg-base-600/50 py-3 px-3 text-base focus:outline-none">
-                <FaLinkedin className="h-6 w-6 text-gray-400" />
-              </span>
-              <input
-                type="text"
-                placeholder="Your LinkedIn profile"
-                value={linkedInAcc}
-                onChange={(e) => setlinkedInAcc(e.target.value)}
-                className="text-input rounded-l-none"
-              />
-            </div>
+          <div className="flex items-center space-x-4">
+            <input
+              type="text"
+              placeholder="Your Twitter handle"
+              value={twitterAcc}
+              onChange={(e) => setTwitterAcc(e.target.value)}
+              className="text-input"
+            />
+            <Icon
+              name="SiTwitter"
+              pack="Si"
+              className="h-6 w-6 text-gray-400"
+            />
           </div>
 
-          <div>
-            <div className="flex">
-              <span className="mt-1 block rounded-l-md bg-base-600/50 py-3 px-3 text-base focus:outline-none">
-                <FaFacebook className="h-6 w-6 text-gray-400" />
-              </span>
-              <input
-                type="text"
-                placeholder="Your Facebook profile"
-                value={facebookAcc}
-                onChange={(e) => setFacebookAcc(e.target.value)}
-                className="text-input rounded-l-none"
-              />
-            </div>
+          <div className="flex items-center space-x-4">
+            <input
+              type="text"
+              placeholder="Your LinkedIn profile"
+              value={linkedInAcc}
+              onChange={(e) => setlinkedInAcc(e.target.value)}
+              className="text-input"
+            />
+            <Icon
+              name="SiLinkedin"
+              pack="Si"
+              className="h-6 w-6 text-gray-400"
+            />
+          </div>
+
+          <div className="flex items-center space-x-4">
+            <input
+              type="text"
+              placeholder="Your Facebook profile"
+              value={facebookAcc}
+              onChange={(e) => setFacebookAcc(e.target.value)}
+              className="text-input"
+            />
+            <Icon
+              name="SiFacebook"
+              pack="Si"
+              className="h-6 w-6 text-gray-400"
+            />
           </div>
           <div>
-            <button
-              className="btn-primary w-full px-8 py-2.5"
-              onClick={handleSubmit}
-            >
+            <button className="btn btn-primary" onClick={handleSubmit}>
               Save changes
             </button>
           </div>

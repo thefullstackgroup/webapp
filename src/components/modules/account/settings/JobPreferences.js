@@ -1,17 +1,14 @@
 import { useState } from 'react';
 import axios from 'axios';
-import Link from 'next/link';
 import Toast from 'components/common/elements/Toast';
-import {
-  currencies,
-  salaryRanges,
-} from 'components/modules/account/teams/constants';
-import { BsCheck } from 'react-icons/bs';
-import { IoInformationCircle, IoArrowBack } from 'react-icons/io5';
 import { CgSpinner } from 'react-icons/cg';
 import Menu from './Menu';
 import Icon from 'components/common/elements/Icon';
 import ToolTip from 'components/common/elements/ToolTip';
+import {
+  currencies,
+  salaryRanges,
+} from 'components/modules/account/teams/constants';
 
 const roles = [
   'Junior Full Stack Developer',
@@ -44,7 +41,7 @@ const PreferredWorkType = ({ selected, addChoice, removeChoice }) => {
       {workTypes.map((type, index) =>
         selected.includes(type.value) ? (
           <button
-            className="badge relative whitespace-nowrap bg-cyan-dark px-2 py-1.5 text-sm text-white"
+            className="badge relative whitespace-nowrap bg-cyan-dark text-white dark:bg-cyan-dark"
             onClick={() => removeChoice(type.value)}
             key={index}
           >
@@ -52,7 +49,7 @@ const PreferredWorkType = ({ selected, addChoice, removeChoice }) => {
           </button>
         ) : (
           <button
-            className="badge whitespace-nowrap bg-base-200 px-2 py-1.5 text-sm text-base-600 dark:bg-base-700 dark:text-base-200"
+            className="badge whitespace-nowrap"
             onClick={() => addChoice(type.value)}
             key={index}
           >
@@ -69,10 +66,8 @@ const OpenToJobOpportunityChoice = ({ selected, setChoice }) => {
     <div className="flex items-center">
       <button
         className={
-          'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
-          (selected == true
-            ? 'bg-cyan-dark text-white'
-            : 'bg-base-200 text-base-600 dark:bg-base-700 dark:text-base-200')
+          'badge relative whitespace-nowrap px-4 ' +
+          (selected == true && 'bg-cyan-dark text-white dark:bg-cyan-dark')
         }
         onClick={() => setChoice(true)}
       >
@@ -80,10 +75,8 @@ const OpenToJobOpportunityChoice = ({ selected, setChoice }) => {
       </button>
       <button
         className={
-          'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
-          (selected == false
-            ? 'bg-cyan-dark text-white'
-            : 'bg-base-200 text-base-600 dark:bg-base-700 dark:text-base-200')
+          'badge relative whitespace-nowrap px-4 ' +
+          (selected == false && 'bg-cyan-dark text-white dark:bg-cyan-dark')
         }
         onClick={() => setChoice(false)}
       >
@@ -98,10 +91,8 @@ const RelocationChoice = ({ selected, setChoice }) => {
     <div className="flex items-center">
       <button
         className={
-          'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
-          (selected == true
-            ? 'bg-cyan-dark text-white'
-            : 'bg-base-200 text-base-600 dark:bg-base-700 dark:text-base-200')
+          'badge relative whitespace-nowrap px-4 ' +
+          (selected == true && 'bg-cyan-dark text-white dark:bg-cyan-dark')
         }
         onClick={() => setChoice(true)}
       >
@@ -109,10 +100,8 @@ const RelocationChoice = ({ selected, setChoice }) => {
       </button>
       <button
         className={
-          'badge relative whitespace-nowrap px-6 py-1.5 text-sm ' +
-          (selected == false
-            ? 'bg-cyan-dark text-white'
-            : 'bg-base-200 text-base-600 dark:bg-base-700 dark:text-base-200')
+          'badge relative whitespace-nowrap px-4 ' +
+          (selected == false && 'bg-cyan-dark text-white dark:bg-cyan-dark')
         }
         onClick={() => setChoice(false)}
       >
@@ -250,7 +239,7 @@ const JobPreferences = ({ user }) => {
           <div className="sticky top-20 w-3/12">
             <Menu selected="Work preferences" />
           </div>
-          <div className="mb-4 w-full rounded-lg border border-base-200 px-4 dark:border-base-700 sm:px-6">
+          <div className="mb-4 w-full rounded-lg border border-base-200 bg-base-50 px-4 dark:border-base-700 dark:bg-base-900 sm:px-6">
             <div className="mb-36 py-4 sm:mb-0">
               <h4 className="mb-2 text-2xl font-medium">Work preferences</h4>
               <p className="mb-6">

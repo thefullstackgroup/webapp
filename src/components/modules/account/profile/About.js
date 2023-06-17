@@ -128,9 +128,7 @@ const About = ({ user }) => {
         <div className="py-4">
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-base-400">
-                Name
-              </label>
+              <label className="label text-sm">Name</label>
               <input
                 type="text"
                 name="username"
@@ -142,10 +140,7 @@ const About = ({ user }) => {
             </div>
 
             <div>
-              <label
-                htmlFor="country"
-                className="block text-sm font-medium text-base-400"
-              >
+              <label htmlFor="country" className="label text-sm">
                 Intro yourself in 50 words (ish).
               </label>
               <textarea
@@ -174,7 +169,7 @@ const About = ({ user }) => {
               <label
                 className={`${
                   isDisplayNameValid ? 'text-base-400' : 'text-red-600'
-                } block text-sm font-medium`}
+                } label text-sm`}
               >
                 Your display name
               </label>
@@ -209,9 +204,7 @@ const About = ({ user }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-base-400">
-                What do you do?
-              </label>
+              <label className="label text-sm">What do you do?</label>
               <input
                 type="text"
                 placeholder="e.g. Software Engineer"
@@ -223,9 +216,7 @@ const About = ({ user }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-base-400">
-                Where do you live?
-              </label>
+              <label className="label text-sm">Where do you live?</label>
               <CountrySelect
                 countryName={countryName}
                 setCountryName={setCountryName}
@@ -233,9 +224,7 @@ const About = ({ user }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-base-400">
-                Personal Website?
-              </label>
+              <label className="label text-sm">Personal Website?</label>
               <input
                 type="text"
                 name="website"
@@ -246,10 +235,7 @@ const About = ({ user }) => {
             </div>
 
             <div>
-              <button
-                className="btn-primary w-full px-8 py-2.5"
-                onClick={handleSubmit}
-              >
+              <button className="btn btn-primary" onClick={handleSubmit}>
                 Save changes
               </button>
             </div>

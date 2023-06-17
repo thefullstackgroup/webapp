@@ -22,6 +22,7 @@ import VideoIntro from 'components/modules/account/profile/VideoIntro';
 import Intro from 'components/modules/profile/sections/Intro';
 import Goals from 'components/modules/profile/sections/Goals';
 import Overview from 'components/modules/profile/sections/Overview';
+import ModalAlert from 'components/common/modals/ModalAlert';
 
 const GitHubCalendarLightTheme = {
   level4: '#216E39',
@@ -181,7 +182,7 @@ const Main = (props) => {
         </div>
       </ModalDialog>
 
-      <ModalDialog
+      <ModalAlert
         show={createTeamPanel}
         setShow={setCreateTeamPanel}
         title="Let's setup your team"
@@ -193,21 +194,19 @@ const Main = (props) => {
           setCreateTeamPanel={setCreateTeamPanel}
           teams={null}
         />
-      </ModalDialog>
+      </ModalAlert>
 
       {profile.userId === props.myProfile?.userId && (
         <>
-          <ModalDialog
+          <ModalAlert
             show={uploadVideoIntroPanel}
             setShow={setUploadVideoIntroPanel}
             title="Introduce yourself"
             dimensions={'sm:max-w-3xl'}
             disabled
           >
-            <div className="">
-              <VideoIntro user={props.myProfile} />
-            </div>
-          </ModalDialog>
+            <VideoIntro user={props.myProfile} />
+          </ModalAlert>
         </>
       )}
 

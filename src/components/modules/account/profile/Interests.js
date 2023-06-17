@@ -11,12 +11,7 @@ const InterestPill = ({ interest, savedInterests, saveInterest }) => {
 
   return (
     <div
-      className={
-        'relative flex cursor-pointer items-center space-x-1 rounded-full py-2 px-3 text-sm font-medium ' +
-        (interestSelected
-          ? 'bg-base-500/70 text-white'
-          : 'bg-base-600/40 text-base-300')
-      }
+      className="badge badge-with-icon relative cursor-pointer px-2.5 py-1.5"
       onClick={() => saveInterest(interest.id, interest.interestName)}
     >
       <span>{interest.interestName}</span>
@@ -167,28 +162,29 @@ const Interests = ({ user }) => {
   return (
     <>
       <div className="w-full">
-        <div className="">
-          {categories?.map((category, index) => (
-            <div className="my-6 rounded-xl bg-base-700 p-4" key={index}>
-              <h4 className="pl-2 text-sm font-semibold uppercase text-base-100">
-                {category.categoryName}
-              </h4>
-              <div className="my-4 flex w-full flex-wrap gap-3">
-                {interests[category.id] &&
-                  Object.entries(interests[category.id]).map(
-                    ([key, interest]) => (
-                      <InterestPill
-                        interest={interest}
-                        key={interest.id}
-                        savedInterests={savedInterests}
-                        saveInterest={saveInterest}
-                      />
-                    )
-                  )}
-              </div>
+        {categories?.map((category, index) => (
+          <div
+            className="my-6 rounded-lg border border-base-300 p-4 dark:border-base-700"
+            key={index}
+          >
+            <h4 className="text-sm font-semibold uppercase">
+              {category.categoryName}
+            </h4>
+            <div className="my-4 flex w-full flex-wrap gap-1">
+              {interests[category.id] &&
+                Object.entries(interests[category.id]).map(
+                  ([key, interest]) => (
+                    <InterestPill
+                      interest={interest}
+                      key={interest.id}
+                      savedInterests={savedInterests}
+                      saveInterest={saveInterest}
+                    />
+                  )
+                )}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </>
   );

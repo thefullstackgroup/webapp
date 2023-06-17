@@ -10,12 +10,12 @@ const Archive = ({ user }) => {
         <div className="hidden w-full pt-4 pb-10 text-4xl font-medium tracking-tight sm:block">
           Account settings
         </div>
-        <div className="flex items-start space-x-4">
+        <div className="flex h-[60vh] items-start space-x-4">
           <div className="w-3/12">
             <Menu selected="Request data" />
           </div>
 
-          <div className="mb-4 w-full rounded-lg border border-base-200 px-4 py-4 dark:border-base-700 sm:px-6">
+          <div className="mb-4 w-full rounded-lg border border-base-200 bg-base-50 px-4 py-4 dark:border-base-700 dark:bg-base-900 sm:px-6">
             <h4 className="mb-6 text-2xl font-medium">Request your data</h4>
             <p className="mt-1 mb-6 font-bold">
               Your data belongs to you and you can request an archive of your

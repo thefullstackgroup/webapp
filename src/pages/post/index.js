@@ -3,7 +3,7 @@ import { getUserProfile } from 'pages/api/auth/userProfile';
 import Meta from 'components/common/partials/Metadata';
 import Main from 'components/modules/create/Main';
 
-const CreatePost = ({ userTFS }) => {
+const CreatePost = ({ user }) => {
   return (
     <div>
       <Meta
@@ -11,7 +11,7 @@ const CreatePost = ({ userTFS }) => {
         description="The developer network"
         keywords=""
       />
-      <Main user={userTFS} />
+      <Main user={user} />
     </div>
   );
 };
@@ -34,7 +34,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
 
     return {
       props: {
-        userTFS: userProfile,
+        user: userProfile,
       },
     };
   }

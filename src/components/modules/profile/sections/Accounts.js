@@ -194,41 +194,14 @@ const Card = ({ channel, profile }) => {
     <>
       <div
         className={
-          'mb-2 flex h-20 w-full cursor-pointer items-start gap-4 rounded-md border-2 border-transparent bg-base-700 px-3 py-2 duration-200 sm:h-16 lg:mb-0 lg:h-40 lg:w-1/4 lg:py-4 ' +
-          (connected
-            ? 'opacity-70'
-            : 'sm:hover:shadow-primary-500/20 sm:hover:border-primary-700 sm:hover:shadow-xl')
+          'mb-2 flex h-20 w-full cursor-pointer items-start gap-4 rounded-md border border-base-300/40 bg-base-200/40 px-3 py-2 duration-200 hover:border-base-500 dark:border-base-700 dark:bg-base-900 dark:hover:border-base-300 sm:h-16 lg:mb-0 lg:h-44 lg:w-1/4 lg:py-3 ' +
+          (connected ? 'opacity-70' : '')
         }
         onClick={() => {
           setConnection(channel);
           setShowConnect(true);
         }}
       >
-        <div className="flex w-full justify-between space-x-4 lg:hidden">
-          <div>
-            {channel.name === 'GITHUB' && <FaGithub className="h-10 w-10" />}
-            {channel.name === 'DEV_TO' && <FaDev className="h-10 w-10" />}
-            {channel.name === 'HASH_NODE' && (
-              <SiHashnode className="h-10 w-10" />
-            )}
-            {channel.name === 'MEDIUM' && <FaMedium className="h-10 w-10" />}
-          </div>
-          <div className="w-full">
-            <h4 className="font-semibold">{channel.title}</h4>
-            <p className="text-xs text-base-400 md:text-sm">{channel.desc}</p>
-          </div>
-          <div className="mt-2">
-            {connected ? (
-              <div className="flex w-min space-x-1 py-0 text-xs text-green-600">
-                <IoCheckmark className="h-6 w-6" />
-              </div>
-            ) : (
-              <button className="btn-secondary w-min space-x-1 py-1.5 px-2 text-xs">
-                <IoAdd className="h-6 w-6" />
-              </button>
-            )}
-          </div>
-        </div>
         <div className="relative hidden h-full lg:block">
           <div className="mb-2 flex items-center space-x-2">
             {channel.name === 'GITHUB' && (
@@ -243,9 +216,11 @@ const Card = ({ channel, profile }) => {
             {channel.name === 'MEDIUM' && (
               <FaMedium className="h-10 w-10 sm:h-8 sm:w-8" />
             )}
-            <h4 className="font-semibold">{channel.title}</h4>
+            <h4 className="font-medium">{channel.title}</h4>
           </div>
-          <p className="text-xs text-base-400">{channel.desc}</p>
+          <p className="text-xs text-base-600 dark:text-base-300 md:text-sm">
+            {channel.desc}
+          </p>
           <div className="absolute bottom-2 left-0 mt-2">
             {connected ? (
               <div className="flex w-min space-x-1 py-1.5 text-xs text-green-600">
@@ -253,7 +228,7 @@ const Card = ({ channel, profile }) => {
                 <span>Connected</span>
               </div>
             ) : (
-              <button className="btn-secondary btn-with-icon w-min space-x-1 py-1.5 pl-1.5 pr-2.5 text-xs">
+              <button className="btn btn-secondary btn-with-icon w-min space-x-1 py-1.5 pl-1.5 pr-2.5 text-xs">
                 <IoAdd className="h-4 w-4" />
                 <span>Connect</span>
               </button>

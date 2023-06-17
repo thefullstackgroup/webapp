@@ -1,7 +1,7 @@
 const Snippets = () => {
   return (
-    <div className="mt-4 flex flex-col items-center w-full px-8">
-      <div className="py-14 md:py-40 text-zinc-400 flex items-center w-full justify-evenly">
+    <div className="mt-4 flex w-full flex-col items-center px-8">
+      <div className="flex w-full items-center justify-evenly py-14 text-base-300 md:py-40">
         Snippets coming soon.
       </div>
     </div>

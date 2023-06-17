@@ -35,11 +35,11 @@ const Page = ({ user }) => {
         <div className="hidden w-full pt-4 pb-10 text-4xl font-medium tracking-tight sm:block">
           Account settings
         </div>
-        <div className="flex items-start space-x-4">
+        <div className="flex min-h-[60vh] items-start space-x-4">
           <div className="w-3/12">
             <Menu selected="Subscriptions" />
           </div>
-          <div className="w-full rounded-lg border border-base-200 px-4 py-4 pb-36 dark:border-base-700 sm:px-6 md:pb-4">
+          <div className="w-full rounded-lg border border-base-200 bg-base-50 px-4 py-4 pb-36 dark:border-base-700 dark:bg-base-900 sm:px-6 md:pb-4">
             {user.userAttributes.accountType === 'FREE' && (
               <div className="space-y-2 py-20 text-center">
                 You have no active subscriptions.

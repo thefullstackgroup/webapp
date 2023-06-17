@@ -20,14 +20,12 @@ const EditProfile = ({ displayName }) => {
       <div className="mx-auto w-full overflow-hidden sm:px-2">
         <div className="relative w-full pb-20">
           <div className="mt-4 rounded-xl md:mt-6">
-            <div className="relative mx-0 flex justify-evenly space-x-1">
+            <div className="relative mx-0 flex justify-evenly space-x-2">
               {tabs.map((tabButton, index) => (
                 <button
                   className={
                     `w-full whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium sm:px-4 sm:py-2 ` +
-                    (nav === index
-                      ? `bg-base-600/70 text-white`
-                      : `bg-base-700/70 text-base-400 hover:text-white`)
+                    (nav === index ? `btn-pill-active` : `btn-pill`)
                   }
                   key={index}
                   onClick={() => setNav(index)}

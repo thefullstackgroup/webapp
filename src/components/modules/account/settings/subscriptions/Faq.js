@@ -77,21 +77,18 @@ const Faq = ({ showTitle = true }) => {
           Frequently asked questions
         </h3>
       )}
-      <dl className="space-y-4 divide-y divide-white/10">
+      <dl className="space-y-4 divide-y divide-base-200 dark:divide-base-700">
         {faqs.map((faq) => (
-          <Disclosure as="div" key={faq.question} className="pt-6">
+          <Disclosure as="div" key={faq.question} className="pt-4">
             {({ open }) => (
               <>
                 <dt>
                   <Disclosure.Button
                     className={
-                      'flex w-full items-start justify-between text-left ' +
-                      (open
-                        ? 'text-base-400'
-                        : 'text-base-100 hover:text-base-400')
+                      'flex w-full items-start justify-between text-left'
                     }
                   >
-                    <span className="text-base font-medium leading-7">
+                    <span className="text-base font-semibold leading-7">
                       {faq.question}
                     </span>
                     <span className="ml-6 flex h-7 items-center">
@@ -104,7 +101,7 @@ const Faq = ({ showTitle = true }) => {
                   </Disclosure.Button>
                 </dt>
                 <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                  <p className="text-base leading-7 text-white">{faq.answer}</p>
+                  <p className="text-base leading-7">{faq.answer}</p>
                 </Disclosure.Panel>
               </>
             )}

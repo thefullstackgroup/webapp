@@ -8,6 +8,7 @@ import { useAuthUser } from 'next-firebase-auth';
 
 // Required CSS import, unless you're overriding the styling
 import '@knocklabs/react-notification-feed/dist/index.css';
+import Icon from 'components/common/elements/Icon';
 
 const KNOCK_FEED_ID = '0790851e-ba77-4863-b919-c45f384ef8ad';
 
@@ -56,10 +57,14 @@ const NotificationsPanel = ({ userId }) => {
           colorMode="dark"
         >
           <>
-            <NotificationIconButton
+            <button
+              className="nav-bar nav-bar-icon"
               ref={notifButtonRef}
               onClick={(e) => setIsVisible(!isVisible)}
-            />
+            >
+              <Icon name={'FiBell'} />
+            </button>
+            {/* <NotificationIconButton /> */}
             <NotificationFeedPopover
               buttonRef={notifButtonRef}
               isVisible={isVisible}

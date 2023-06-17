@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Mode from 'components/common/buttons/Mode';
+import dynamic from 'next/dynamic';
 import PopoverPanel from 'components/common/layout/PopoverPanel';
 import Icon from '../elements/Icon';
 import { useTheme } from 'next-themes';
@@ -8,6 +9,9 @@ import { navigation } from './constants';
 import { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import ProfilePopoverPanel from './ProfilePopoverPanel';
+const KnockNotificationsComponent = dynamic(() =>
+  import('components/modules/account/settings/NotificationsPanel')
+);
 
 const Header = ({ user, headerFixed = false }) => {
   const { systemTheme, theme } = useTheme();
@@ -57,12 +61,12 @@ const Header = ({ user, headerFixed = false }) => {
           <div className="mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-2">
             <div className="flex items-center space-x-4 text-base">
               <Link href="/">
-                <div className="h-12 w-12 cursor-pointer overflow-hidden rounded-lg">
+                <div className="mr-6 h-10 w-10 cursor-pointer overflow-hidden rounded-lg">
                   <Image
                     src={
                       currentTheme === 'dark'
-                        ? '/assets/icons/thefullstack-dark-square.webp'
-                        : '/assets/icons/thefullstack-light-square.webp'
+                        ? '/assets/icons/thefullstack-dark.webp'
+                        : '/assets/icons/thefullstack-light.webp'
                     }
                     className="object-contain"
                     alt="The Full Stack"
@@ -122,9 +126,15 @@ const Header = ({ user, headerFixed = false }) => {
                 <Icon name={'FiSearch'} />
               </button>
 
-              <button className="nav-bar nav-bar-icon">
-                <Icon name={'FiBell'} />
-              </button>
+              {user ? (
+                <div className="w-8">
+                  <KnockNotificationsComponent userId={user?.userId} />
+                </div>
+              ) : (
+                <button className="nav-bar nav-bar-icon">
+                  <Icon name={'FiBell'} />
+                </button>
+              )}
 
               <Mode />
 

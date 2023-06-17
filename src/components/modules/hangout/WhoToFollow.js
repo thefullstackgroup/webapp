@@ -3,10 +3,9 @@ import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
 import { useMemo } from 'react';
 import Avatar from 'components/common/elements/Avatar';
-import ButtonFollow from 'components/common/buttons/Follow';
 
 const WhoToFollow = ({ user }) => {
-  let url = `${process.env.BASEURL}/api/projects/get?page=1&size=12&sort=mostpopular&projectType=PROJECT&range=40`;
+  let url = `${process.env.BASEURL}/api/projects/get?page=1&size=10&sort=mostpopular&projectType=PROJECT&range=40`;
 
   const { data } = useSWR(url, fetcher);
   const uniqueIds = [];
@@ -29,7 +28,7 @@ const WhoToFollow = ({ user }) => {
 
   return (
     <div className="rounded-md px-6">
-      <ul className="w-full space-y-5 border-0 border-base-200 bg-base-50 pl-8 pt-4 dark:border-base-700 dark:bg-transparent">
+      <ul className="w-full space-y-5 border-0 border-base-200 pl-8 pt-4 dark:border-base-700 dark:bg-transparent">
         <li>
           <span className="text-lg font-semibold">Discover and follow</span>
         </li>
@@ -38,7 +37,7 @@ const WhoToFollow = ({ user }) => {
             (project, index) =>
               user?.userId !== project.userId && (
                 <li
-                  className="flex items-center justify-between gap-8"
+                  className="flex items-center justify-between gap-4"
                   key={index}
                 >
                   <div className="group flex cursor-pointer items-center gap-3">
@@ -62,12 +61,11 @@ const WhoToFollow = ({ user }) => {
                       </div>
                     </Link>
                   </div>
-                  <ButtonFollow
-                    followToUser={project?.projectCreator?.userId}
-                    followFromUser={user?.userId}
-                    followToName={project?.projectCreator?.displayName}
-                    size={'btn-sm rounded-full'}
-                  />
+                  <Link href={`/${project.projectCreator.displayName}`}>
+                    <button className="btn btn-secondary btn-sm rounded-full">
+                      Follow
+                    </button>
+                  </Link>
                 </li>
               )
           )}
