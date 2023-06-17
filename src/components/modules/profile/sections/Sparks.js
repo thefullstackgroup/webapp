@@ -28,8 +28,8 @@ const Sparks = ({ profile, myProfile }) => {
         </div>
       )}
       {posts?.length > 0 && (
-        <div className="mx-auto w-full md:w-9/12">
-          <div className="mt-8 flex max-w-3xl flex-col items-center overflow-hidden px-0 md:rounded-lg md:px-0">
+        <div className="mx-auto w-full md:w-8/12">
+          <div className="mt-8 flex max-w-3xl flex-col items-center space-y-6 overflow-hidden px-0 md:rounded-lg md:px-0">
             {posts?.map((post, index) => (
               <div
                 className="relative w-full overflow-hidden border-b border-base-800"
