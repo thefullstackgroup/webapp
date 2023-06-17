@@ -21,9 +21,6 @@ import Insights from 'components/modules/post/Insights';
 import ButtonConnect from 'components/common/buttons/Connect';
 import ButtonChat from 'components/common/buttons/Chat';
 import Icon from 'components/common/elements/Icon';
-import ButtonBookmark from 'components/common/buttons/Bookmark';
-import ShareButton from 'components/common/buttons/Share';
-import Social from '../profile/sections/Social';
 
 const Container = ({
   project,
@@ -61,18 +58,16 @@ const Container = ({
           )}
 
         {project?.projectCreator?.userId === user?.userId && (
-          <div className="sticky top-0 left-0 z-50 w-full bg-base-700 px-4 py-4 md:px-8">
-            <div className="sticky top-0 mx-auto flex max-w-screen-2xl items-center justify-end space-x-8">
-              <Link href={`/post?ref=${project?._id}`} passHref>
-                <button className="btn-secondary">
-                  <span>Edit Project</span>
-                </button>
-              </Link>
-            </div>
+          <div className="mx-auto flex max-w-screen-2xl items-center justify-end space-x-8 px-20">
+            <Link href={`/post?ref=${project?._id}`} passHref>
+              <button className="btn btn-secondary">
+                <span>Edit Project</span>
+              </button>
+            </Link>
           </div>
         )}
 
-        <div className="bg-gradient-to-b from-base-50 to-base-200/50 pt-14 dark:from-base-900 dark:to-base-800/90">
+        <div className="bg-gradient-to-b from-base-50 to-base-200/50 pt-10 pb-8 dark:from-base-900 dark:to-base-800/90">
           <div className="relative z-10 mx-auto flex max-w-screen-2xl items-center gap-12 px-20 pb-10">
             <div className="w-5/12 space-y-4">
               <div className="flex items-center space-x-3">
@@ -133,15 +128,8 @@ const Container = ({
                   </a>
                 )}
               </div>
-
-              <div className="flex w-56 pt-8">
-                <Actions
-                  user={user}
-                  project={project}
-                  isLiked={project?.likedByCurrentUser}
-                  nComments={project?.numberOfComments}
-                  setShowComments={setShowComments}
-                />
+              <div>
+                <Insights projectId={project?._id} />
               </div>
             </div>
 
@@ -190,39 +178,25 @@ const Container = ({
           </div>
         </div>
 
-        <div className="sticky top-0 z-50 border-b bg-[#EFEFEF] dark:border-t dark:border-base-700 dark:bg-base-900">
-          <div className="mx-auto flex max-w-screen-2xl items-center justify-between px-20">
-            {project?.hasGitHubReadMe && <GitHubStats project={project} />}
-            <div className="flex items-center space-x-8">
-              {/* <div className="flex items-center space-x-3">
-                <Avatar
-                  href={`/${project?.projectCreator?.displayName}`}
-                  image={project?.projectCreator?.profilePicUrl}
-                  name={project?.projectCreator?.displayName}
-                  dimensions="h-9 w-9"
-                />
-                <Link href={`/${project?.projectCreator?.displayName}`}>
-                  <div className="flex cursor-pointer items-end pt-1">
-                    <p className="text-base font-medium tracking-tight">
-                      {project?.projectCreator?.name}
-                    </p>
-                  </div>
-                </Link>
-              </div>
-              {user && project?.userId !== user?.userId && (
-                <FollowButton
-                  followToUser={project?.projectCreator?.userId}
-                  followFromUser={user?.userId}
-                  followToName={project?.projectCreator?.displayName}
-                />
-              )} */}
+        <div className="sticky top-0 z-50 border-b border-t bg-[#F5F5F5] dark:border-base-700 dark:bg-base-900">
+          <div className="mx-auto flex max-w-screen-2xl items-center justify-center px-20 py-3">
+            <div className="flex space-x-10">
+              <Actions
+                user={user}
+                project={project}
+                isLiked={project?.likedByCurrentUser}
+                nComments={project?.numberOfComments}
+                setShowComments={setShowComments}
+                showLabel={false}
+              />
             </div>
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto flex max-w-screen-2xl items-start justify-between px-20">
-          <div className="w-8/12 py-4">
-            {/* {project?.hasGitHubReadMe && <GitHubStats project={project} />} */}
+        <div className="relative z-10 mx-auto grid h-full max-w-screen-2xl grid-cols-3 items-start gap-20 px-20">
+          <div className="col-span-2 py-4">
+            {project?.hasGitHubReadMe && <GitHubStats project={project} />}
+            <Contributors project={project} />
             {/* {project?.lookingForCollabs &&
             project?.projectCreator?.userId !== user?.userId && (
               <>
@@ -267,7 +241,8 @@ const Container = ({
               </>
             )} */}
 
-            <div className="prose mx-auto mt-4 max-w-4xl dark:prose-dark">
+            <div className="prose mt-4 max-w-4xl dark:prose-dark">
+              {/* <h3 className="text-3xl">Project Description</h3> */}
               {!project?.projectBody.includes('</img>') ? (
                 project?.projectBody && (
                   <Markdown
@@ -293,9 +268,9 @@ const Container = ({
               )}
             </div>
           </div>
-          <div className="sticky top-16 flex w-4/12 flex-col items-end space-y-8 pt-8">
+          <div className="flex h-full flex-col items-end space-y-8 border-l border-base-200/70 dark:border-base-700">
             {/* Profile Card */}
-            <div className="w-96 space-y-5 rounded-md bg-base-200/70 px-4 py-4 dark:bg-base-800">
+            <div className="sticky top-16 w-96 space-y-5 px-6 py-4 pt-8">
               <div className="flex items-center space-x-3">
                 <Avatar
                   href={`/${author?.displayName}`}
@@ -322,7 +297,7 @@ const Container = ({
                   followToUser={project?.projectCreator?.userId}
                   followFromUser={user?.userId}
                   followToName={project?.projectCreator?.displayName}
-                  size={'sm:w-full'}
+                  size={'sm:w-11/12'}
                 />
               )}
 
@@ -339,24 +314,8 @@ const Container = ({
                     )
                 )}
               </div>
-              <Social social={author} />
+              {/* <Social social={author} /> */}
             </div>
-
-            {project?.lookingForCollabs &&
-              project?.projectCreator?.userId !== user?.userId && (
-                <div className="w-full max-w-sm space-y-3 rounded-md bg-base-200/70 px-4 py-4 dark:bg-base-800">
-                  <h4 className="text-lg font-medium">Contributors</h4>
-                  <Contributors project={project} />
-                  <div className="font-light">
-                    This project is{' '}
-                    <span className="font-bold">open to contribution</span> and
-                    actively looking for collaborators.
-                  </div>
-                  <button className="btn btn-secondary w-full">
-                    Want to contribute?
-                  </button>
-                </div>
-              )}
           </div>
         </div>
       </div>

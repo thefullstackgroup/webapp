@@ -28,8 +28,8 @@ const WhoToFollow = ({ user }) => {
   });
 
   return (
-    <div className="rounded-md px-6 pt-4">
-      <ul className="w-full space-y-5 rounded-lg border border-base-200 bg-base-50 px-4 py-4 dark:border-base-700 dark:bg-transparent">
+    <div className="rounded-md px-6">
+      <ul className="w-full space-y-5 border-0 border-base-200 bg-base-50 pl-8 pt-4 dark:border-base-700 dark:bg-transparent">
         <li>
           <span className="text-lg font-semibold">Discover and follow</span>
         </li>

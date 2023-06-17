@@ -20,41 +20,51 @@ const GitHubStats = ({ project }) => {
     <>
       {gitHubStats && gitHubStats.starCount > 0 && (
         <div className="rounded-md py-4">
-          <div className="flex items-center gap-4 text-base">
-            <div className="col-span-1 flex items-center space-x-2 rounded-md border-base-300 p-2 dark:border-base-700">
-              <div className="flex items-center space-x-1">
+          <div className="grid gap-2 text-base sm:grid-cols-3">
+            <div className="col-span-1 flex items-center justify-between rounded-md bg-base-200/70 p-2 px-4 dark:bg-base-700/50">
+              <div className="flex items-center space-x-2">
                 <HiOutlineStar className="h-5 w-auto text-yellow-500" />
-                <span>{gitHubStats.starCount} stars</span>
+                <span className="text-slate-200">Stars</span>
               </div>
+              <div className="font-semibold">{gitHubStats.starCount}</div>
             </div>
-            <div className="col-span-1 flex items-center space-x-2 rounded-md border-base-300 p-2 dark:border-base-700">
-              <div className="flex items-center space-x-1">
+            <div className="col-span-1 flex items-center justify-between rounded-md bg-base-200/70 p-2 px-4 dark:bg-base-700/50">
+              <div className="flex items-center space-x-2">
                 <IoGitCommitOutline className="h-5 w-auto text-red-500" />
-                <span>{gitHubStats.numberOfCommits} commits</span>
+                <span className="text-slate-200">Commits</span>
               </div>
+              <div className="font-semibold">{gitHubStats.numberOfCommits}</div>
             </div>
-            <div className="col-span-1 flex items-center space-x-2 rounded-md border-base-300 p-2 dark:border-base-700">
-              <div className="flex items-center space-x-1">
+            <div className="col-span-1 flex items-center justify-between rounded-md bg-base-200/70 p-2 px-4 dark:bg-base-700/50">
+              <div className="flex items-center space-x-2">
                 <IoStopCircle className="h-5 w-auto text-orange-500" />
-                <span>{gitHubStats.numberOfIssues} issues</span>
+                <span className="text-slate-200">Issues</span>
               </div>
+              <div className="font-semibold">{gitHubStats.numberOfIssues}</div>
             </div>
-            <div className="col-span-1 flex items-center space-x-2 rounded-md border-base-300 p-2 dark:border-base-700">
-              <div className="flex items-center space-x-1">
+            <div className="col-span-1 flex items-center justify-between rounded-md bg-base-200/70 p-2 px-4 dark:bg-base-700/50">
+              <div className="flex items-center space-x-2">
                 <BiGitRepoForked className="h-5 w-auto text-fuchsia-500" />
-                <span>{gitHubStats.numberOfForks} forks</span>
+                <span className="text-slate-200">Forks</span>
               </div>
+              <div className="font-semibold">{gitHubStats.numberOfForks}</div>
             </div>
-            <div className="col-span-1 flex items-center space-x-2 rounded-md border-base-300 p-2 dark:border-base-700">
-              <div className="flex items-center space-x-1">
+            <div className="col-span-1 flex items-center justify-between rounded-md bg-base-200/70 p-2 px-4 dark:bg-base-700/50">
+              <div className="flex items-center space-x-2">
                 <IoPeopleOutline className="h-5 w-auto text-blue-500" />
-                <span>{gitHubStats.numberOfContributors} contributors</span>
+                <span className="text-slate-200">Contributors</span>
+              </div>
+              <div className="font-semibold">
+                {gitHubStats.numberOfContributors}
               </div>
             </div>
-            <div className="col-span-1 flex items-center space-x-2 rounded-md border-base-300 p-2 dark:border-base-700">
-              <div className="flex items-center space-x-1">
+            <div className="col-span-1 flex items-center justify-between rounded-md bg-base-200/70 p-2 px-4 dark:bg-base-700/50">
+              <div className="flex items-center space-x-2">
                 <IoGitPullRequestOutline className="text-tfstertiary-500 h-5 w-auto" />
-                <span>{gitHubStats.numberOfPullRequests} PRs</span>
+                <span className="text-slate-200">Pull Requests</span>
+              </div>
+              <div className="font-semibold">
+                {gitHubStats.numberOfPullRequests}
               </div>
             </div>
           </div>

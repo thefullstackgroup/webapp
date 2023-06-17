@@ -1,22 +1,24 @@
 import { React, useState } from 'react';
-import { IoArrowRedoOutline, IoCopyOutline } from 'react-icons/io5';
+import { IoCopyOutline } from 'react-icons/io5';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import SocialShareLinks from 'components/common/elements/SocialShareLinks';
 import ToolTip from 'components/common/elements/ToolTip';
 import ModalAlert from '../modals/ModalAlert';
+import Icon from '../elements/Icon';
 
-const ShareButton = ({ url, message }) => {
+const ShareButton = ({ url, message, showLabel }) => {
   const [showShareOptions, setShowShareOptions] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
   return (
     <>
       <button
-        className="btn btn-ghost group relative cursor-pointer rounded-xl bg-transparent px-2 text-sm"
+        className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 pl-1 text-sm text-base-800 hover:bg-base-200 hover:text-base-700 dark:text-base-100 dark:hover:bg-base-700 dark:hover:text-base-100"
         onClick={() => setShowShareOptions(!showShareOptions)}
       >
         <ToolTip message="Share" />
-        <IoArrowRedoOutline className="h-auto w-7 sm:group-hover:text-base-300" />
+        <Icon name="FiShare2" className="h-auto w-6" />
+        {showLabel && <span>Share</span>}
       </button>
 
       <ModalAlert

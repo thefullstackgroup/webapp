@@ -20,7 +20,7 @@ const rewards = [
   { amount: 5.0, numberOfDiamonds: 5 },
 ];
 
-const AwardButton = ({ user, post }) => {
+const AwardButton = ({ user, post, showLabel = false }) => {
   const [selectAward, setSelectAward] = useState(false);
   const [sendReward, setSendReward] = useState(false);
   const [coinSent, setCoinSent] = useState(false);
@@ -65,13 +65,13 @@ const AwardButton = ({ user, post }) => {
   return (
     <>
       {user?.userId === post?.projectCreator?.userId ? (
-        <button className="btn btn-ghost btn-with-icon group relative cursor-not-allowed space-x-1 bg-transparent px-2 text-sm hover:bg-transparent">
+        <button className="btn btn-ghost btn-with-icon group relative cursor-not-allowed space-x-1 bg-transparent px-2 text-sm text-base-800 hover:bg-transparent dark:text-base-200">
           <ToolTip message="Award" />
           {post.contentTotalDiamonds != null &&
           post.contentTotalDiamonds > 0 ? (
-            <Icon name={'FiGift'} className="h-6 w-6 dark:text-yellow-500" />
+            <Icon name={'FiStar'} className="h-6 w-6 dark:text-yellow-500" />
           ) : (
-            <Icon name={'FiGift'} className="h-6 w-6" />
+            <Icon name={'FiStar'} className="h-6 w-6" />
           )}
 
           {post.contentTotalDiamonds != null &&
@@ -84,15 +84,15 @@ const AwardButton = ({ user, post }) => {
       ) : (
         <div>
           <button
-            className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm hover:bg-yellow-500/40 hover:text-yellow-600 dark:hover:bg-yellow-500/40 dark:hover:text-yellow-500"
+            className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm text-base-800 hover:bg-yellow-500/40 hover:text-yellow-600 dark:text-base-200 dark:hover:bg-yellow-500/40 dark:hover:text-yellow-500"
             onClick={() => setSelectAward(!selectAward)}
           >
             <ToolTip message="Award" />
             {post.contentTotalDiamonds != null &&
             post.contentTotalDiamonds > 0 ? (
-              <Icon name={'FiGift'} className="h-6 w-6 text-yellow-500" />
+              <Icon name={'FiStar'} className="h-6 w-6 text-yellow-500" />
             ) : (
-              <Icon name={'FiGift'} className="h-6 w-6" />
+              <Icon name={'FiStar'} className="h-6 w-6" />
             )}
 
             {post.contentTotalDiamonds != null &&
@@ -103,6 +103,7 @@ const AwardButton = ({ user, post }) => {
             ) : (
               <span className="">0</span>
             )}
+            {showLabel && <span>Award</span>}
           </button>
 
           <ModalAlert

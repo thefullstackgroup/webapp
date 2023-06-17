@@ -1,9 +1,9 @@
 import { React, useEffect, useState } from 'react';
-import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import axios from 'axios';
 import * as ga from 'lib/ga';
 import ToolTip from 'components/common/elements/ToolTip';
+import Icon from '../elements/Icon';
 
 const ButtonBookmark = (props) => {
   const [isSaved, setIsSaved] = useState(false);
@@ -68,15 +68,16 @@ const ButtonBookmark = (props) => {
   return (
     <>
       <button
-        className="btn btn-ghost group relative cursor-pointer rounded-xl bg-transparent px-2 text-sm"
+        className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 pl-1 text-sm text-base-800 hover:bg-base-200 hover:text-base-700 dark:text-base-100 dark:hover:bg-base-700 dark:hover:text-base-100"
         onClick={() => saveProject(!isSaved ? 'save' : 'remove')}
       >
         <ToolTip message="Bookmark" />
         {isSaved ? (
-          <IoBookmark className="h-auto w-7 sm:group-hover:text-base-300" />
+          <Icon name="FiBookmark" className="h-auto w-6" />
         ) : (
-          <IoBookmarkOutline className="h-auto w-7 sm:group-hover:text-base-300" />
+          <Icon name="FiBookmark" className="h-auto w-6" />
         )}
+        {props.showLabel && <span>Bookmark</span>}
       </button>
     </>
   );

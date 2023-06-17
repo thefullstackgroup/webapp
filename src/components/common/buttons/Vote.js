@@ -5,7 +5,7 @@ import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import ToolTip from 'components/common/elements/ToolTip';
 import Icon from '../elements/Icon';
 
-const ButtonVote = ({ user, post }) => {
+const ButtonVote = ({ user, post, showLabel = false }) => {
   const postId = post._id || post.projectId;
   const [isLiked, setIsLiked] = useState(post.likedByCurrentUser || false);
   const [refreshLikes, setRefreshLikes] = useState(post?.numberOfLikes);
@@ -45,7 +45,7 @@ const ButtonVote = ({ user, post }) => {
 
   return (
     <button
-      className="btn btn-ghost btn-with-icon text-smhover:bg-green-500/20 group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 pl-1 text-sm hover:bg-green-500/20 hover:text-green-600 dark:hover:bg-green-500/20 dark:hover:text-green-400"
+      className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 pl-1 text-sm text-base-800 hover:bg-green-500/20 hover:text-green-600 dark:text-base-100 dark:hover:bg-green-500/20 dark:hover:text-green-400"
       onClick={() => handleVote()}
     >
       <ToolTip message="Upvote" />
@@ -53,11 +53,13 @@ const ButtonVote = ({ user, post }) => {
         <>
           <Icon name={'FiTriangle'} className="h-6 w-6 text-red-500" />
           <span className="text-white">{Math.abs(refreshLikes)}</span>
+          {showLabel && <span>Upvote</span>}
         </>
       ) : (
         <>
           <Icon name={'FiTriangle'} className="h-6 w-6" />
           <span>{Math.abs(refreshLikes)}</span>
+          {showLabel && <span>Upvote</span>}
         </>
       )}
     </button>

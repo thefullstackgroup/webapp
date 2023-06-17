@@ -3,7 +3,6 @@ import { IoHeart } from 'react-icons/io5';
 import Link from 'next/link';
 import Avatar from 'components/common/elements/Avatar';
 import useSWR from 'swr';
-import ModalDialog from 'components/common/modals/ModalDialog';
 import fetcher from 'utils/fetcher';
 import ModalAlert from 'components/common/modals/ModalAlert';
 

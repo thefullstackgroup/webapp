@@ -59,19 +59,17 @@ const Reactions = ({ project, user }) => {
           <ListComments user={user} post={project} />
         </div>
 
-        {user && (
-          <div className="space-y-2 bg-base-50 px-6 py-2 dark:bg-base-900">
-            <Actions
-              user={user}
-              project={project}
-              isLiked={project?.likedByCurrentUser}
-              nComments={project?.numberOfComments}
-            />
-          </div>
-        )}
+        <div className="space-y-2 bg-base-50 px-6 pt-3 dark:bg-base-900">
+          <Actions
+            user={user}
+            project={project}
+            isLiked={project?.likedByCurrentUser}
+            nComments={project?.numberOfComments}
+          />
+        </div>
 
         {/* Post comment */}
-        {user && (
+        {user ? (
           <div className="w-full bg-base-50 px-4 pt-4 dark:bg-base-900">
             <div className="flex items-center pb-6 sm:space-x-2">
               <Avatar
@@ -86,6 +84,19 @@ const Reactions = ({ project, user }) => {
                 readOnly
                 onClick={() => setShowNewComment(true)}
               />
+            </div>
+          </div>
+        ) : (
+          <div className="w-full bg-base-50 px-4 pt-4 dark:bg-base-900">
+            <div className="flex items-center pb-6 sm:space-x-2">
+              <Link href="/signup">
+                <input
+                  type="text"
+                  className="text-input"
+                  placeholder="Sign in to comment"
+                  readOnly
+                />
+              </Link>
             </div>
           </div>
         )}
