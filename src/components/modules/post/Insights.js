@@ -16,7 +16,7 @@ const ProfilePic = ({ profile }) => {
   );
 };
 
-const Insights = ({ projectId, showViews = true, showAvatars = true }) => {
+const Insights = ({ projectId, showAvatars = true }) => {
   const [displayVoteInsights, setDisplayVoteInsights] = useState(false);
   const url = `${process.env.BASEURL}/api/projects/project/insights/getVotes?id=${projectId}`;
   const { data } = useSWR(url, fetcher);

@@ -64,15 +64,14 @@ const ForDevelopers = () => {
           </div>
           <div className="mx-auto max-w-4xl">
             <div className="flex items-center justify-center space-x-6 md:mt-20">
-              <button
-                className="btn-primary rounded-lg py-3 px-6 text-xl"
-                onClick={() => {
-                  setShowSignupModal(true);
-                  sendSlackSignUpMessage('GET STARTED');
-                }}
-              >
-                Get started
-              </button>
+              <Link href="/signup" passHref>
+                <a
+                  href="#"
+                  className="btn-primary rounded-lg py-3 px-6 text-xl"
+                >
+                  Get started
+                </a>
+              </Link>
               <button
                 className="btn-secondary hidden rounded-lg bg-opacity-50 py-3 px-6 text-xl md:block"
                 onClick={() => handleLearnMore()}
@@ -626,15 +625,11 @@ const ForDevelopers = () => {
         </p>
         <div className="mx-auto max-w-4xl">
           <div className="mt-10 flex items-center justify-center space-x-6">
-            <button
-              className="btn-primary rounded-lg py-3 px-6 text-xl"
-              onClick={() => {
-                setShowSignupModal(true);
-                sendSlackSignUpMessage('GET STARTED');
-              }}
-            >
-              Get started
-            </button>
+            <Link href="/signup" passHref>
+              <a href="#" className="btn-primary rounded-lg py-3 px-6 text-xl">
+                Get started
+              </a>
+            </Link>
           </div>
         </div>
       </div>

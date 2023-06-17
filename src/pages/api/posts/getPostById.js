@@ -33,4 +33,4 @@ const handler = async (req, res, AuthUser) => {
   }
 };
 
-export default withAuthUserTokenAPI(handler);
+export default handler;

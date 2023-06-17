@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import Header from 'components/common/layout/Header';
 import Footer from 'components/common/layout/Footer';
-import SignUpModal from 'components/modules/signup/Modal';
 
 const Layout = ({
   user,
@@ -10,8 +8,6 @@ const Layout = ({
   hideFooter,
   fullWidth = false,
 }) => {
-  const [showSignupModal, setShowSignupModal] = useState(false);
-
   return (
     <>
       <main className="min-h-screen bg-base-200/50 dark:bg-black">
@@ -21,10 +17,6 @@ const Layout = ({
         </div>
         <Footer hideFooter={hideFooter} />
       </main>
-
-      {showSignupModal && (
-        <SignUpModal show={showSignupModal} setShow={setShowSignupModal} />
-      )}
     </>
   );
 };

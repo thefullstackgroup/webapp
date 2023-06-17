@@ -9,8 +9,6 @@ const Activity = ({ user, following }) => {
   let url = `${process.env.BASEURL}/api/explore/getActivity?range=100&size=10&following=${following}`;
   const { data } = useSWR(url, fetcher);
 
-  console.log(data);
-
   return (
     <div className="sticky top-20 rounded-md px-6 pt-4">
       <div className="w-full space-y-5 rounded-lg border border-base-200 bg-base-50 px-4 py-4 dark:border-base-700 dark:bg-transparent">

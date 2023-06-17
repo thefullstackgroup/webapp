@@ -326,7 +326,7 @@ const Post = (props) => {
               {/* END URL PREVIEW CARD */}
             </div>
 
-            {props.project.numberOfLikes > 0 && (
+            {props.user && props.project.numberOfLikes > 0 && (
               <div className="px-4 pb-3">
                 <PostInsights
                   projectId={props.project.projectId || props.project._id}
@@ -335,15 +335,14 @@ const Post = (props) => {
               </div>
             )}
           </div>
-          <div className="flex justify-between border-t border-base-200 px-4 py-2 dark:border-base-700">
-            <Actions
-              user={props.user}
-              project={props.project}
-              isLiked={props.isLiked}
-              nComments={props.nComments}
-              setShowPost={setShowPost}
-            />
-          </div>
+
+          <Actions
+            user={props.user}
+            project={props.project}
+            isLiked={props.isLiked}
+            nComments={props.nComments}
+            setShowPost={setShowPost}
+          />
         </article>
       </div>
 

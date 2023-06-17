@@ -14,7 +14,7 @@ import TagPostType from 'components/common/tags/TagPostType';
 
 const sparkCharCount = 300;
 
-const Content = ({
+const Poll = ({
   post,
   user,
   isLiked,
@@ -81,16 +81,9 @@ const Content = ({
       });
   };
 
-  const urlify = (text) => {
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-    return text.replace(urlRegex, (url) => {
-      setLinkPreview(url);
-    });
-  };
-
-  useEffect(() => {
-    urlify(post?.projectBodyPreview);
-  }, [post?.projectName]);
+  // useEffect(() => {
+  //   urlify(post?.projectBodyPreview);
+  // }, [post?.projectName]);
 
   useEffect(() => {
     if (post?.projectType === 'POLL') {
@@ -141,12 +134,12 @@ const Content = ({
               </Link>
             </div>
 
-            {post?.projectType !== 'SPARK' &&
+            {/* {post?.projectType !== 'SPARK' &&
               post?.projectType !== 'ANNOUNCEMENT' && (
                 <div className="">
                   <TagPostType postType={post?.projectType} />
                 </div>
-              )}
+              )} */}
           </div>
           <div className="space-y-2">
             <article className="prose prose-lg mx-0 max-w-full overflow-x-hidden dark:prose-dark">
@@ -281,7 +274,7 @@ const Content = ({
             <Insights projectId={post?.projectId || post?._id} />
           </div>
 
-          <div className="my-4 w-full border-b border-base-200 pt-2 dark:border-base-700 md:w-full">
+          <div className="my-4 flex w-auto justify-between border-t border-b border-base-200 py-2 dark:border-base-700 md:w-full">
             <Actions
               user={user}
               project={post}
@@ -296,4 +289,4 @@ const Content = ({
   );
 };
 
-export default Content;
+export default Poll;

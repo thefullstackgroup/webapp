@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Loader from 'components/common/elements/Loader';
 import { Dialog, Transition } from '@headlessui/react';
 import Reactions from './Reactions';
-import Icon from 'components/common/elements/Icon';
 
 const Main = ({ user, project, author }) => {
   const [isConnectionPending, setIsConnectionPending] = useState(false);

@@ -5,9 +5,11 @@ import initAuth from '../../../../../firebase/initFirebaseApp';
 initAuth();
 
 const handler = async (req, res, AuthUser) => {
-  const accessToken = await AuthUser.getIdToken();
+  const accessToken = await AuthUser?.getIdToken();
+  const requestURL = `${process.env.API_PROJECTS_URL}/project/${req.query.id}/likedList`;
+
   return axios
-    .get(`${process.env.API_PROJECTS_URL}/project/${req.query.id}/likedList`, {
+    .get(requestURL, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },

@@ -89,16 +89,23 @@ const Header = ({ user, headerFixed = false }) => {
                     )}
                   </li>
                 ))}
-                <li>
-                  <Link href="" passHref>
-                    <a
-                      href="#"
-                      className="nav-bar flex items-center space-x-2 "
-                    >
-                      <span>Share</span>
-                    </a>
-                  </Link>
-                </li>
+                {user ? (
+                  <li>
+                    <Link href="/new/post" passHref>
+                      <a href="#" className="nav-bar flex items-center">
+                        <span>Share</span>
+                      </a>
+                    </Link>
+                  </li>
+                ) : (
+                  <li>
+                    <Link href="/signup" passHref>
+                      <a href="#" className="nav-bar flex items-center">
+                        <span>Share</span>
+                      </a>
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
 

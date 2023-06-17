@@ -19,7 +19,6 @@ import Actions from 'components/modules/project/Actions';
 import FollowButton from 'components/common/buttons/Follow';
 import Insights from 'components/modules/post/Insights';
 import ButtonConnect from 'components/common/buttons/Connect';
-import ButtonChat from 'components/common/buttons/Chat';
 import Icon from 'components/common/elements/Icon';
 
 const Container = ({
@@ -30,7 +29,6 @@ const Container = ({
   user,
   setShowComments,
 }) => {
-  console.log(author);
   const [showImageModal, setShowImageModal] = useState(false);
   const [youTubeEmbedID, setYouTubeEmbedID] = useState(
     project?.projectLinkURI ? getVideoId(project?.projectLinkURI) : ''
@@ -128,9 +126,11 @@ const Container = ({
                   </a>
                 )}
               </div>
-              <div>
-                <Insights projectId={project?._id} />
-              </div>
+              {user && (
+                <div>
+                  <Insights projectId={project?._id} />
+                </div>
+              )}
             </div>
 
             <div className="w-7/12">
@@ -179,8 +179,8 @@ const Container = ({
         </div>
 
         <div className="sticky top-0 z-50 border-b border-t bg-[#F5F5F5] dark:border-base-700 dark:bg-base-900">
-          <div className="mx-auto flex max-w-screen-2xl items-center justify-center px-20 py-3">
-            <div className="flex space-x-10">
+          <div className="mx-auto flex max-w-screen-2xl items-center justify-center px-20 py-3.5">
+            <div>
               <Actions
                 user={user}
                 project={project}
@@ -195,8 +195,10 @@ const Container = ({
 
         <div className="relative z-10 mx-auto grid h-full max-w-screen-2xl grid-cols-3 items-start gap-20 px-20">
           <div className="col-span-2 py-4">
-            {project?.hasGitHubReadMe && <GitHubStats project={project} />}
-            <Contributors project={project} />
+            {user && project?.hasGitHubReadMe && (
+              <GitHubStats project={project} />
+            )}
+            {user && <Contributors project={project} />}
             {/* {project?.lookingForCollabs &&
             project?.projectCreator?.userId !== user?.userId && (
               <>
@@ -299,6 +301,13 @@ const Container = ({
                   followToName={project?.projectCreator?.displayName}
                   size={'sm:w-11/12'}
                 />
+              )}
+              {!user && (
+                <Link href="/signup">
+                  <button className="btn btn-secondary sm:w-11/12">
+                    Follow
+                  </button>
+                </Link>
               )}
 
               <div>

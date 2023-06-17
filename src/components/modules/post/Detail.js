@@ -64,28 +64,42 @@ const Detail = ({ postId, user, setShowPost }) => {
 
             {post && (
               <>
-                <div className="flex items-center sm:space-x-3">
-                  {user && (
+                {user ? (
+                  <div className="flex items-center sm:space-x-3">
                     <Avatar
                       image={user.profilePicUrl}
                       name={user.displayName}
                       dimensions="h-10 w-10"
                     />
-                  )}
 
-                  <div className="ml-3 w-auto flex-1 overflow-hidden">
-                    {/* Plain comment textarea for mobile */}
-                    <div className="block">
-                      <input
-                        type="text"
-                        className="text-input"
-                        onClick={() => setShowNewComment(true)}
-                        placeholder="Write a comment..."
-                        readOnly
-                      />
+                    <div className="ml-3 w-auto flex-1 overflow-hidden">
+                      {/* Plain comment textarea for mobile */}
+                      <div className="block">
+                        <input
+                          type="text"
+                          className="text-input"
+                          onClick={() => setShowNewComment(true)}
+                          placeholder="Write a comment..."
+                          readOnly
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="flex items-center sm:space-x-3">
+                    <div className="w-auto flex-1 overflow-hidden">
+                      <div className="block">
+                        <input
+                          type="text"
+                          className="text-input"
+                          placeholder="Sign in to comment..."
+                          readOnly
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <div
                   id="comments"
                   className="mb-10 pb-4 text-left align-bottom sm:my-4 sm:w-full sm:max-w-full sm:px-4 sm:align-middle md:px-4 lg:w-full"

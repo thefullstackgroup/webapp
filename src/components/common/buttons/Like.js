@@ -46,7 +46,7 @@ const ButtonLike = ({ user, post }) => {
   return (
     <>
       <button
-        className="btn btn-ghost btn-with-icon group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm hover:bg-red-500/20 hover:text-red-400 dark:hover:bg-red-500/20 dark:hover:text-red-400"
+        className="btn btn-ghost btn-with-icon group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm text-base-800   hover:bg-red-500/20 hover:text-red-400 dark:text-base-200 dark:hover:bg-red-500/20 dark:hover:text-red-400"
         onClick={() => handleLike()}
       >
         <ToolTip message="Like" />

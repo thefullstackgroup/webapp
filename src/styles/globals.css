@@ -7,7 +7,7 @@
 @layer components {
   /* header */
   .nav-bar {
-    @apply flex items-center rounded-full px-5 py-2 text-base font-medium text-black duration-200 hover:bg-base-200 hover:text-black focus:outline-none focus:ring-0 dark:text-base-100 dark:hover:bg-base-700/80 dark:hover:text-white;
+    @apply flex items-center rounded-full border-0 px-5 py-2 text-base font-medium text-black ring-0 duration-200 hover:bg-base-200 hover:text-black focus:border-0 focus:outline-none focus:ring-0 dark:text-base-100 dark:hover:bg-base-700/80 dark:hover:text-white;
   }
   .nav-bar-icon {
     @apply flex items-center rounded-full px-2 py-2 text-sm font-medium text-black hover:text-base-900;

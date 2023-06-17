@@ -47,19 +47,26 @@ const Reactions = ({ project, user }) => {
                   followToName={project?.projectCreator?.displayName}
                 />
               )}
+              {!user && (
+                <Link href="/signup">
+                  <button className="btn btn-secondary">Follow</button>
+                </Link>
+              )}
             </div>
-            <div className="">
-              <Insights projectId={project?._id} />
-            </div>
+            {user && (
+              <div className="">
+                <Insights projectId={project?._id} />
+              </div>
+            )}
           </div>
         </div>
 
         {/* Comments */}
-        <div className="no-scrollbar relative top-0 h-[74vh] overflow-y-scroll overscroll-contain px-4 pb-4">
+        <div className="no-scrollbar relative top-0 h-[78vh] overflow-y-scroll overscroll-contain px-4 pb-4">
           <ListComments user={user} post={project} />
         </div>
 
-        <div className="space-y-2 bg-base-50 px-6 pt-3 dark:bg-base-900">
+        <div className="bg-base-50 px-6 pt-3 dark:bg-base-900">
           <Actions
             user={user}
             project={project}

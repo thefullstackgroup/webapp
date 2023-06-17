@@ -9,8 +9,6 @@ const Contributors = ({ project }) => {
 
   if (!contributors) return null;
 
-  console.log(contributors);
-
   return (
     <>
       {contributors?.length > 1 && (

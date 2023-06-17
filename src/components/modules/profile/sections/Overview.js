@@ -193,6 +193,16 @@ const Overview = ({
             setUploadVideoIntroPanel={setUploadVideoIntroPanel}
           />
         </div>
+        {!user && (
+          <div className="flex items-center space-x-2">
+            <Link href="/signup">
+              <button className="btn btn-secondary">Follow</button>
+            </Link>
+            <Link href="/signup">
+              <button className="btn btn-primary">Connect</button>
+            </Link>
+          </div>
+        )}
       </div>
 
       <div className="block cursor-pointer text-sm text-base-200 lg:hidden">

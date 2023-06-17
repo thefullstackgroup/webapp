@@ -12,7 +12,6 @@ const defaultTopics =
 const PAGE_SIZE = 10;
 
 const Feed = ({ user, topic, following }) => {
-  console.log(topic);
   const [hasMore, setHasMore] = useState(true);
 
   let url = '';
@@ -55,14 +54,14 @@ const Feed = ({ user, topic, following }) => {
     if (posts.length > PAGE_SIZE) setSize(1);
   }, []);
 
-  if (topic === 'following' && !following) {
-    return (
-      <div className="mt-20 flex w-full flex-col text-center">
-        <span className="text-lg font-bold">You are not following anyone.</span>
-        <span>Find people to follow.</span>
-      </div>
-    );
-  }
+  // if (topic === 'following' && !following) {
+  //   return (
+  //     <div className="mt-20 flex w-full flex-col text-center">
+  //       <span className="text-lg font-bold">You are not following anyone.</span>
+  //       <span>Find people to follow.</span>
+  //     </div>
+  //   );
+  // }
 
   return (
     <>

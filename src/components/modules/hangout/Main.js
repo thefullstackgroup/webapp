@@ -4,14 +4,12 @@ import Topics from 'components/modules/hangout/Topics';
 import WhoToFollow from './WhoToFollow';
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
-import Activity from './Activity';
-import TrendingProjects from './TrendingProjects';
 
 const Main = ({ user, topic }) => {
-  const url = `${process.env.BASEURL}/api/profile/social/following?userId=${user.userId}`;
-  const { data } = useSWR(url, fetcher);
-  const following =
-    (data && data?.map(({ followUserId }) => followUserId).join(',')) || null;
+  // const url = `${process.env.BASEURL}/api/profile/social/following?userId=${user.userId}`;
+  // const { data } = useSWR(url, fetcher);
+  // const following =
+  //   (data && data?.map(({ followUserId }) => followUserId).join(',')) || null;
 
   return (
     <>
@@ -25,8 +23,7 @@ const Main = ({ user, topic }) => {
         </div>
         <div className="w-3/12">
           <div className="sticky top-20 ">
-            {/* <TrendingProjects user={user} /> */}
-            <WhoToFollow user={user} />
+            {user && <WhoToFollow user={user} />}
           </div>
         </div>
       </div>

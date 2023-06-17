@@ -37,8 +37,6 @@ const handler = async (req, res, AuthUser) => {
       : ''
   }&${req.query.range !== undefined && `range=${req.query.range}`}`;
 
-  console.log(requestURL);
-
   if (accessToken) {
     return axios
       .get(requestURL, {
