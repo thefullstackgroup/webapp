@@ -32,7 +32,7 @@ const ProjectCard = ({ project, feature = false, user, type, hideAuthor }) => {
           </div>
 
           {project?.lookingForCollabs && (
-            <div className="absolute top-2 right-2 mb-6 w-min whitespace-nowrap rounded-full bg-highlight-megenta px-2 py-1 text-xs text-white">
+            <div className="absolute top-2 right-2 rounded-full px-2 py-0.5 text-xs font-medium dark:bg-base-900/40">
               Collab
             </div>
           )}

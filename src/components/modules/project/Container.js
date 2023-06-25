@@ -30,9 +30,12 @@ const Container = ({
   setShowComments,
 }) => {
   const [showImageModal, setShowImageModal] = useState(false);
+  const [showConnectModal, setShowConnectModal] = useState(false);
   const [youTubeEmbedID, setYouTubeEmbedID] = useState(
     project?.projectLinkURI ? getVideoId(project?.projectLinkURI) : ''
   );
+
+  console.log(project);
 
   if (!project)
     return (
@@ -66,23 +69,27 @@ const Container = ({
         )}
 
         <div className="bg-gradient-to-b from-base-50 to-base-200/50 pt-10 pb-8 dark:from-base-900 dark:to-base-800/90">
-          <div className="relative z-10 mx-auto flex max-w-screen-2xl items-center gap-12 px-20 pb-10">
+          <div className="relative z-10 mx-auto flex max-w-screen-xl items-center gap-12 pb-10">
             <div className="w-5/12 space-y-4">
               <div className="flex items-center space-x-3">
                 <Avatar
                   href={`/${project?.projectCreator?.displayName}`}
                   image={project?.projectCreator?.profilePicUrl}
                   name={project?.projectCreator?.displayName}
-                  dimensions="h-14 w-14"
+                  dimensions="h-16 w-16"
                 />
                 <Link href={`/${project?.projectCreator?.displayName}`}>
-                  <div className="flex cursor-pointer flex-col -space-y-1">
+                  <div className="flex cursor-pointer flex-col">
                     <span className="text-sm font-light text-base-300 dark:text-base-400">
                       Created by
                     </span>
                     <span className="text-lg font-medium">
                       {project?.projectCreator?.name}
                     </span>
+                    <p className="px-0.5 text-xs font-light text-base-300 dark:text-base-400">
+                      Posted{' '}
+                      {Moment(project?.createdDate).format('MMM Do, YYYY')}
+                    </p>
                   </div>
                 </Link>
               </div>
@@ -90,9 +97,14 @@ const Container = ({
                 <h2 className="text-5xl font-semibold tracking-tight">
                   {project?.projectName}
                 </h2>
-                <p className="px-0.5 text-sm font-light text-base-300 dark:text-base-400">
-                  Posted {Moment(project?.createdDate).format('MMM Do, YYYY')}
-                </p>
+
+                {project?.lookingForCollabs && (
+                  <div className="py-2">
+                    <div className="w-min whitespace-nowrap rounded-full border border-cyan-default px-2 py-1 text-xs font-normal tracking-normal text-cyan-dark dark:border-cyan-dark/40 dark:bg-base-900 dark:text-cyan-default">
+                      Open to collab
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div>
@@ -138,7 +150,7 @@ const Container = ({
 
             <div className="w-7/12">
               {project?.projectVideoURI ? (
-                <div className="h-[200px] w-full overflow-hidden rounded-xl border border-base-300 bg-black dark:border-base-700 md:h-[450px]">
+                <div className="h-[200px] w-full overflow-hidden rounded-xl border border-base-300 bg-black dark:border-base-700 md:h-[430px]">
                   <VideoPlayer
                     src={project?.projectVideoURI}
                     poster={`${project?.projectImgURI}?width=640`}
@@ -196,54 +208,32 @@ const Container = ({
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto grid h-full max-w-screen-2xl grid-cols-3 items-start gap-20 px-20">
-          <div className="col-span-2 py-4">
-            {user && project?.hasGitHubReadMe && (
-              <GitHubStats project={project} />
-            )}
-            {user && <Contributors project={project} />}
-            {/* {project?.lookingForCollabs &&
-            project?.projectCreator?.userId !== user?.userId && (
-              <>
-                {isConnected ? (
-                  <div className="flex flex-col space-y-2 rounded-md bg-base-700 p-4 duration-200 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
-                    <div>
-                      <span className="text-base-200">
-                        This project is{' '}
-                        <span className="font-bold">open to contribution</span>{' '}
-                        and you are both connected.
-                      </span>
-                    </div>
-                    <ButtonChat
-                      profile={project.projectCreator}
-                      myProfile={user}
-                    />
+        <div className="relative z-10 mx-auto grid h-full max-w-screen-xl grid-cols-3 items-start gap-20">
+          <div className="col-span-2 space-y-6 py-4">
+            {/* {user && project?.hasGitHubReadMe && (
+              <div className="space-y-8">
+                <GitHubStats project={project} />
+              </div>
+            )} */}
+
+            {/* {project?.lookingForCollabs && (
+              <div className="pb-4">
+                <div className="flex items-center justify-between rounded-xl border border-base-300 bg-base-50 px-3.5 py-3 text-sm text-base-800 dark:border-cyan-dark/40 dark:bg-base-900 dark:text-cyan-default">
+                  <div className="flex items-center space-x-2">
+                    <Icon name="FiInfo" />
+                    <span>Actively seeking contributors</span>
                   </div>
-                ) : (
-                  <div
-                    className="flex flex-col space-y-2 rounded-md bg-base-700 p-4 duration-200 sm:flex-row sm:items-center sm:justify-between sm:space-y-0"
-                    // onClick={() => {
-                    //   // setDisplayConnection(true);
-                    //   sendSlackMessage(
-                    //     `Clicked on the connect to collaborate button on the project '${project?.projectName}'`
-                    //   );
-                    // }}
-                  >
-                    <div>
-                      <span className="text-base-200">
-                        This project is{' '}
-                        <span className="font-bold">open to contribution</span>.
-                        Connect with me to contribute.
-                      </span>
-                    </div>
+                  <div>
                     <ButtonConnect
                       connectionPending={isConnectionPending}
                       connectFrom={user}
                       connectTo={project.projectCreator}
+                      size="btn-sm btn-ghost dark:text-cyan-default"
+                      label="&rarr; Lets connect"
                     />
                   </div>
-                )}
-              </>
+                </div>
+              </div>
             )} */}
 
             <div className="prose mt-4 max-w-4xl dark:prose-dark">
@@ -273,9 +263,9 @@ const Container = ({
               )}
             </div>
           </div>
-          <div className="flex h-full flex-col items-end space-y-8 border-l border-base-200/70 dark:border-base-700">
+          <div className="h-full w-full space-y-8 border-l border-base-200/70 dark:border-base-700">
             {/* Profile Card */}
-            <div className="sticky top-16 w-96 space-y-5 px-6 py-4 pt-8">
+            <div className="sticky top-16 space-y-5 py-4 pt-8 pl-12">
               <div className="flex items-center space-x-3">
                 <Avatar
                   href={`/${author?.displayName}`}
@@ -313,19 +303,24 @@ const Container = ({
                 </Link>
               )}
 
-              <div>
+              <div className="line-clamp-6">
                 {author?.bio?.aboutUser !== ''
                   ? author?.bio?.aboutUser
                   : 'No bio added'}
               </div>
-              <div className="flex flex-wrap">
+              {/* <div className="flex flex-wrap">
                 {author?.userTechStacks?.map(
                   (stack, index) =>
-                    stack != null && (
+                    stack != null &&
+                    index < 10 && (
                       <TagStack tech={stack} key={index} size="xs" />
                     )
                 )}
-              </div>
+              </div> */}
+
+              {user && <GitHubStats project={project} />}
+              {user && <Contributors project={project} />}
+
               {/* <Social social={author} /> */}
             </div>
           </div>

@@ -6,7 +6,13 @@ import Confetti from 'react-confetti';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import { IoCode } from 'react-icons/io5';
 
-const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
+const ButtonConnect = ({
+  connectionPending,
+  connectFrom,
+  connectTo,
+  size = '',
+  label,
+}) => {
   const [showPendingButton, setShowPendingButton] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [displayConnectionSuccess, setDisplayConnectionSuccess] =
@@ -47,8 +53,11 @@ const ButtonConnect = ({ connectionPending, connectFrom, connectTo }) => {
   return (
     <>
       {!showPendingButton && (
-        <button className="btn btn-primary" onClick={() => setShowModal(true)}>
-          <span>Connect</span>
+        <button
+          className={`btn btn-primary ${size}`}
+          onClick={() => setShowModal(true)}
+        >
+          <span>{label ? label : 'Connect'}</span>
         </button>
       )}
 
