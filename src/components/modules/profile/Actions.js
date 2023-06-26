@@ -42,7 +42,9 @@ const Actions = ({
       )}
 
       {myProfile && profile?.userId !== myProfile?.userId && (
-        <ButtonReport user={myProfile} profile={profile} />
+        <div>
+          <ButtonReport user={myProfile} profile={profile} />
+        </div>
       )}
 
       {profile?.userId === myProfile?.userId && (

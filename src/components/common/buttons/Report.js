@@ -8,6 +8,7 @@ import {
   IoLinkOutline,
 } from 'react-icons/io5';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
+import Icon from '../elements/Icon';
 
 const reasons = [
   'Spam',
@@ -88,7 +89,7 @@ const ButtonReport = ({ user, profile }) => {
                         );
                       }}
                     >
-                      <IoLinkOutline className="h-5 w-5" />
+                      <Icon name="FiLink" className="h-4 w-4" />
                       {isCopied ? (
                         <a className="text-green-500">Link copied!</a>
                       ) : (
@@ -104,7 +105,7 @@ const ButtonReport = ({ user, profile }) => {
                         setShowPanel(false);
                       }}
                     >
-                      <IoFlagOutline className="h-5 w-5" />
+                      <Icon name="FiFlag" className="h-4 w-4" />
                       <a>Report profile</a>
                     </button>
                   </li>
@@ -133,7 +134,7 @@ const ButtonReport = ({ user, profile }) => {
               </p>
 
               <button
-                className="btn-primary w-full"
+                className="btn btn-primary w-full"
                 onClick={() => setShowReportProfile(false)}
               >
                 Done
@@ -179,18 +180,20 @@ const ButtonReport = ({ user, profile }) => {
                   onChange={(e) => setReportComments(e.target.value)}
                 ></textarea>
               </div>
-              <button
-                className="btn-primary w-full"
-                onClick={() => handleSubmitReport()}
-              >
-                Submit report
-              </button>
-              <button
-                className="w-full pt-4 text-center text-sm text-base-500"
-                onClick={() => setShowReportProfile(false)}
-              >
-                Cancel
-              </button>
+              <div className="flex items-center justify-between">
+                <button
+                  className="btn btn-ghost px-0"
+                  onClick={() => setShowReportProfile(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleSubmitReport()}
+                >
+                  Submit report
+                </button>
+              </div>
             </div>
           )}
         </div>

@@ -2,7 +2,6 @@ import { React, useEffect, useState } from 'react';
 import axios from 'axios';
 import * as ga from 'lib/ga';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
-import Icon from '../elements/Icon';
 import ToolTip from '../elements/ToolTip';
 
 const ButtonFollow = ({ followToUser, followFromUser, followToName, size }) => {

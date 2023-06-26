@@ -77,7 +77,7 @@ const Overview = ({
             />
             {user && isConnected && profile?.userId !== user.userId && (
               <div className="group absolute top-0 right-0 flex cursor-pointer items-end rounded-full bg-base-900 py-1 px-2 text-xs text-yellow-400">
-                <ToolTip message={'You are connected'} />
+                <ToolTip message={'You are both connected'} />
                 <HiThumbUp className="h-4 w-4 md:h-5 md:w-5" />
               </div>
             )}
