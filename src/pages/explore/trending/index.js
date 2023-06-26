@@ -22,8 +22,8 @@ const ExplorePopular = ({ user }) => {
         keywords=""
       />
 
-      <Layout user={user}>
-        <div className="min-h-screen space-y-10">
+      <Layout user={user} fullWidth={true}>
+        <div className="min-h-screen space-y-10 px-8">
           <Categories
             category={category}
             setCategory={setCategory}

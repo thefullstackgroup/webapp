@@ -13,7 +13,7 @@ const Home = ({ user }) => {
         keywords="developer, social network, developers, software engineering, full stack, software engineering network, tech community, tech companies, best tech companies, developer portfolio, developer network, professional network, professional community"
       />
 
-      <Layout user={user}>
+      <Layout user={user} fullWidth={true}>
         <Page user={user} />
       </Layout>
     </>

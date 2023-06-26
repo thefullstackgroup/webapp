@@ -13,7 +13,7 @@ const Explore = ({ user }) => {
         keywords=""
       />
 
-      <Layout user={user}>
+      <Layout user={user} fullWidth={true}>
         <Main user={user} />
       </Layout>
     </>

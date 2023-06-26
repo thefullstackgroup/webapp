@@ -13,7 +13,7 @@ const KnockNotificationsComponent = dynamic(() =>
   import('components/modules/account/settings/NotificationsPanel')
 );
 
-const Header = ({ user, headerFixed = false }) => {
+const Header = ({ user, headerFixed = false, setShowCreatePost }) => {
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const [showHeader, setShowHeader] = useState(true);
@@ -58,23 +58,8 @@ const Header = ({ user, headerFixed = false }) => {
         className={'sticky top-0 z-50 w-full'}
       >
         <header className="dark:bg-base/90 z-50 border-b border-base-200 bg-white/90 backdrop-blur-sm dark:border-base-700/50 dark:bg-base-900">
-          <div className="mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-2">
-            <div className="flex items-center space-x-4 text-base">
-              <Link href="/">
-                <div className="mr-6 h-10 w-10 cursor-pointer overflow-hidden rounded-lg">
-                  <Image
-                    src={
-                      currentTheme === 'dark'
-                        ? '/assets/icons/thefullstack-dark.webp'
-                        : '/assets/icons/thefullstack-light.webp'
-                    }
-                    className="object-contain"
-                    alt="The Full Stack"
-                    width={200}
-                    height={200}
-                  />
-                </div>
-              </Link>
+          <div className="mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-3">
+            <div className="flex w-5/12 items-center space-x-4 text-base">
               <ul className="flex items-center justify-center">
                 {navigation.map((item, index) => (
                   <li key={index}>
@@ -95,11 +80,12 @@ const Header = ({ user, headerFixed = false }) => {
                 ))}
                 {user ? (
                   <li>
-                    <Link href="/new/post" passHref>
-                      <a href="#" className="nav-bar flex items-center">
-                        <span>Share</span>
-                      </a>
-                    </Link>
+                    <button
+                      className="nav-bar flex items-center"
+                      onClick={() => setShowCreatePost(true)}
+                    >
+                      <span>Share</span>
+                    </button>
                   </li>
                 ) : (
                   <li>
@@ -113,7 +99,25 @@ const Header = ({ user, headerFixed = false }) => {
               </ul>
             </div>
 
-            <div className="flex items-center space-x-3">
+            <div className="w-2/12">
+              <Link href="/">
+                <div className="mx-auto h-10 w-10 cursor-pointer overflow-hidden rounded-lg">
+                  <Image
+                    src={
+                      currentTheme === 'dark'
+                        ? '/assets/icons/thefullstack-dark.webp'
+                        : '/assets/icons/thefullstack-light.webp'
+                    }
+                    className="object-contain"
+                    alt="The Full Stack"
+                    width={200}
+                    height={200}
+                  />
+                </div>
+              </Link>
+            </div>
+
+            <div className="flex w-5/12 items-center justify-end space-x-3">
               <a
                 href="https://github.com/thefullstackgroup/thefullstack"
                 className="nav-bar flex items-center space-x-2 bg-base-200 text-sm dark:bg-base-700/50"

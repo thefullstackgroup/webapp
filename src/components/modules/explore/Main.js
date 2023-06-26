@@ -46,7 +46,7 @@ const Main = ({ user }) => {
   const reactionsDiff = (numberOfReactionsLastWeek / numberOfReactions) * 100;
 
   return (
-    <div className="min-h-screen space-y-4 pt-6">
+    <div className="min-h-screen space-y-4 px-8 pt-6">
       {!user && (
         <div className="rounded-lg bg-transparent dark:bg-transparent">
           <div className="mx-auto max-w-4xl py-14 text-center">

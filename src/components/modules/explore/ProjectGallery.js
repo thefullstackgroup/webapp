@@ -61,24 +61,16 @@ const ProjectGallery = ({
   const projectCards = useMemo(() => {
     const projectList = posts;
     return projectList.map((project) => (
-      <ProjectCard
-        project={project}
-        user={user}
-        feature={feature}
-        key={project.projectId}
-      />
+      <div className="w-72 grow" key={project.projectId}>
+        <ProjectCard project={project} user={user} feature={feature} />
+      </div>
     ));
   });
 
   return (
     <>
       {posts && !isEmpty && (
-        <div
-          className={
-            'relative grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3 ' +
-            (cols < 5 ? ` 2xl:grid-cols-${cols}` : `2xl:grid-cols-5`)
-          }
-        >
+        <div className={'relative flex flex-wrap gap-x-6 gap-y-6'}>
           {projectCards}
         </div>
       )}

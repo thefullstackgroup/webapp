@@ -39,11 +39,13 @@ const Actions = (props) => {
             project={props.project}
             showLabel={props.showLabel}
           />
-          <ButtonShare
-            url={`${process.env.BASEURL}/u/${props.project?.projectCreator?.displayName}/${props.project?.projectSlug}`}
-            message={props.project?.projectName}
-            showLabel={props.showLabel}
-          />
+          <div>
+            <ButtonShare
+              url={`${process.env.BASEURL}/u/${props.project?.projectCreator?.displayName}/${props.project?.projectSlug}`}
+              message={props.project?.projectName}
+              showLabel={props.showLabel}
+            />
+          </div>
         </div>
       ) : (
         <div className="flex items-center justify-around space-x-10">

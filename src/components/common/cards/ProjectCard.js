@@ -11,7 +11,7 @@ const ProjectCard = ({ project, feature = false, user, type, hideAuthor }) => {
       <Link href={projectLink} shallow={true}>
         <div
           className={
-            'group relative w-full cursor-pointer duration-200  ' +
+            'group relative flex w-full grow cursor-pointer flex-col overflow-hidden duration-200  ' +
             (feature ? 'h-80' : 'h-64')
           }
         >
@@ -37,8 +37,8 @@ const ProjectCard = ({ project, feature = false, user, type, hideAuthor }) => {
             </div>
           )}
 
-          <div className="w-full space-y-0 py-2">
-            <h3 className="truncate pr-4 text-base font-semibold">
+          <div className="space-y-0 py-2">
+            <h3 className="pr-4 text-base font-semibold line-clamp-1">
               {project.projectName}
             </h3>
             <div className="flex items-center space-x-2">

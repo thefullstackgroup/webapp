@@ -1,7 +1,7 @@
 export const navigation = [
   {
     href: false,
-    label: 'Explore',
+    label: 'Discover',
     children: true,
     slug: 'explore',
     childrenOne: [

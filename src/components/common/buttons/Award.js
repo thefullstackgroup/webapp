@@ -139,7 +139,7 @@ const AwardButton = ({ user, post, showLabel = false }) => {
                       {[...Array(reward.numberOfDiamonds)].map(
                         (elementInArray, index) => (
                           <Icon
-                            name={'FiGift'}
+                            name={'FiStar'}
                             key={index}
                             className="h-6 w-6 dark:group-hover:text-yellow-500"
                           />
@@ -165,7 +165,7 @@ const AwardButton = ({ user, post, showLabel = false }) => {
                     {[...Array(transactDiamonds)].map(
                       (elementInArray, index) => (
                         <Icon
-                          name={'FiGift'}
+                          name={'FiStar'}
                           key={index}
                           className="h-10 w-10 text-yellow-400"
                         />
