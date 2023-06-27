@@ -61,8 +61,6 @@ const Main = ({ user, project, author }) => {
         <Page
           project={project}
           author={author}
-          isConnected={isConnected}
-          isConnectionPending={isConnectionPending}
           user={user}
           setShowComments={setShowComments}
         />

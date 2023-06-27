@@ -12,13 +12,13 @@ const ProjectCard = ({ project, feature = false, user, type, hideAuthor }) => {
         <div
           className={
             'group relative flex w-full grow cursor-pointer flex-col overflow-hidden duration-200  ' +
-            (feature ? 'h-80' : 'h-64')
+            (feature ? 'h-80' : 'h-[300px]')
           }
         >
           <div
             className={
               'w-full cursor-pointer overflow-hidden rounded bg-base-200 dark:bg-base-800 ' +
-              (feature ? 'h-56' : 'h-40')
+              (feature ? 'h-56' : 'h-52')
             }
           >
             <Image

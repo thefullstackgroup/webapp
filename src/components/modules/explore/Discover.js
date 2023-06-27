@@ -64,7 +64,7 @@ const Discover = ({ user, count, search }) => {
 
   return (
     <>
-      <div className="max-w-screen-2xl lg:w-full">
+      <div className="w-full">
         {/* <div className="mb-4 hidden px-4 md:px-0 lg:block">
           <h3 className="flex items-center space-x-2">
             <Icon name={'FiStar'} className="h-6 w-6" />

@@ -127,8 +127,8 @@ const Main = ({ user }) => {
         <ProjectGallery
           sort={'mostpopular'}
           range={90}
-          count={4}
-          cols={4}
+          count={5}
+          cols={5}
           feature={true}
         />
       </div>
@@ -140,8 +140,8 @@ const Main = ({ user }) => {
 
       <div className="space-y-4">
         <h3 className="flex items-center space-x-2">
-          <Icon name={'FiTool'} className="h-6 w-6" />
-          <span>New projects added</span>
+          <Icon name={'FiClock'} className="h-6 w-6" />
+          <span>Recently added</span>
         </h3>
 
         <ProjectGallery sort={'newest'} range={30} count={5} cols={5} />

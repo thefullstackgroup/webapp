@@ -61,7 +61,7 @@ const ProjectGallery = ({
   const projectCards = useMemo(() => {
     const projectList = posts;
     return projectList.map((project) => (
-      <div className="w-72 grow" key={project.projectId}>
+      <div className="w-80 grow xl:max-w-[400px]" key={project.projectId}>
         <ProjectCard project={project} user={user} feature={feature} />
       </div>
     ));
@@ -69,55 +69,56 @@ const ProjectGallery = ({
 
   return (
     <>
-      {posts && !isEmpty && (
-        <div className={'relative flex flex-wrap gap-x-6 gap-y-6'}>
-          {projectCards}
-        </div>
-      )}
+      <div>
+        {posts && !isEmpty && (
+          <div className={'relative flex flex-wrap gap-8'}>{projectCards}</div>
+        )}
 
-      {isEmpty && (
-        <div className="relative flex flex-col text-center sm:mt-4">
-          {category.slug === 'following' ? (
-            following ? (
-              <>
-                <span className="text-lg font-bold">
-                  No projects posted by people you&apos;re following.
-                </span>
-                <span>Check back again soon.</span>
-              </>
+        {isEmpty && (
+          <div className="relative flex flex-col text-center sm:mt-4">
+            {category.slug === 'following' ? (
+              following ? (
+                <>
+                  <span className="text-lg font-bold">
+                    No projects posted by people you&apos;re following.
+                  </span>
+                  <span>Check back again soon.</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-lg font-bold">
+                    You are not following anyone.
+                  </span>
+                  <span>Find people to follow.</span>
+                </>
+              )
             ) : (
-              <>
-                <span className="text-lg font-bold">
-                  You are not following anyone.
-                </span>
-                <span>Find people to follow.</span>
-              </>
-            )
-          ) : (
-            <span>
-              No projects returned. Try different filters or a different search.
-            </span>
-          )}
-        </div>
-      )}
+              <span>
+                No projects returned. Try different filters or a different
+                search.
+              </span>
+            )}
+          </div>
+        )}
 
-      {count == 40 && !isReachingEnd && (
-        <div className="my-10 flex justify-center">
-          {isLoadingMore && (
-            <div className="py-1">
-              <Loader />
-            </div>
-          )}
-          {count == 40 && !isLoadingMore && (
-            <button
-              className="btn btn-secondary btn-with-icon"
-              onClick={() => setSize(size + 1)}
-            >
-              <span>Load more</span>
-            </button>
-          )}
-        </div>
-      )}
+        {count == 40 && !isReachingEnd && (
+          <div className="my-10 flex justify-center">
+            {isLoadingMore && (
+              <div className="py-1">
+                <Loader />
+              </div>
+            )}
+            {count == 40 && !isLoadingMore && (
+              <button
+                className="btn btn-secondary btn-with-icon"
+                onClick={() => setSize(size + 1)}
+              >
+                <span>Load more</span>
+              </button>
+            )}
+          </div>
+        )}
+      </div>
     </>
   );
 };

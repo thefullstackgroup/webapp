@@ -18,24 +18,14 @@ import ToolTip from 'components/common/elements/ToolTip';
 import Actions from 'components/modules/project/Actions';
 import FollowButton from 'components/common/buttons/Follow';
 import Insights from 'components/modules/post/Insights';
-import ButtonConnect from 'components/common/buttons/Connect';
 import Icon from 'components/common/elements/Icon';
 
-const Container = ({
-  project,
-  author,
-  isConnected,
-  isConnectionPending,
-  user,
-  setShowComments,
-}) => {
+const Container = ({ project, author, user, setShowComments }) => {
   const [showImageModal, setShowImageModal] = useState(false);
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [youTubeEmbedID, setYouTubeEmbedID] = useState(
     project?.projectLinkURI ? getVideoId(project?.projectLinkURI) : ''
   );
-
-  console.log(project);
 
   if (!project)
     return (
