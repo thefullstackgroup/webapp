@@ -3,15 +3,12 @@ import { useRouter } from 'next/router';
 import Scratch from 'components/modules/create/Scratch';
 import axios from 'axios';
 import { IoClose } from 'react-icons/io5';
-import ModalAlert from 'components/common/modals/ModalAlert';
 import Loader from 'components/common/elements/Loader';
 
 const Main = ({ user }) => {
   const router = useRouter();
   let postId = router.query.ref;
   const [loading, setLoading] = useState(false);
-  const [isDiscardPromptOpen, setIsDiscardPromptOpen] = useState(false);
-  const [isDeletePromptOpen, setIsDeletePromptOpen] = useState(false);
   const [postType, setPostType] = useState('PROJECT');
   const [postData, setPostData] = useState(null);
 
@@ -29,17 +26,6 @@ const Main = ({ user }) => {
       });
   };
 
-  const deletePost = async () => {
-    const data = {
-      projectId: postId,
-    };
-    await axios.post(
-      `${process.env.BASEURL}/api/projects/project/delete`,
-      data
-    );
-    router.push(`/${user.displayName}`);
-  };
-
   useEffect(() => {
     if (postId) getPost();
   }, [postId]);
@@ -54,93 +40,10 @@ const Main = ({ user }) => {
   return (
     <>
       <div className="min-h-screen bg-black">
-        <button
-          className="fixed top-5 left-4 z-50 text-base-400 md:right-4 xl:left-auto"
-          onClick={() => setIsDiscardPromptOpen(true)}
-        >
-          <IoClose className="h-7 w-7 md:h-8 md:w-8" />
-        </button>
-
-        {/* {postType === 'PROJECT' && ( */}
         <div className="relative mx-auto w-full rounded-md">
-          <Scratch
-            user={user}
-            setPostType={setPostType}
-            postData={postData}
-            setIsDeletePromptOpen={setIsDeletePromptOpen}
-          />
+          <Scratch user={user} postData={postData} />
         </div>
-        {/* )} */}
       </div>
-
-      {isDiscardPromptOpen && (
-        <ModalAlert show={isDiscardPromptOpen} setShow={setIsDiscardPromptOpen}>
-          <div className="py-8">
-            <div className="justify-center sm:flex sm:items-start">
-              <div className="mt-3 text-center sm:mt-0">
-                <h3 className="text-xl font-bold text-base-200">Quit?</h3>
-                <div className="mt-2">
-                  <p className="text-sm text-base-300">
-                    Are you sure you want to quit?
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={() => setIsDiscardPromptOpen(false)}
-              >
-                No
-              </button>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={() => router.back()}
-              >
-                Yes
-              </button>
-            </div>
-          </div>
-        </ModalAlert>
-      )}
-
-      {isDeletePromptOpen && (
-        <ModalAlert show={isDeletePromptOpen} setShow={setIsDeletePromptOpen}>
-          <div className="py-8">
-            <div className="justify-center sm:flex sm:items-start">
-              <div className="mt-3 text-center sm:mt-0">
-                <h3 className="text-xl font-bold text-base-200">
-                  Delete post?
-                </h3>
-                <div className="mt-2">
-                  <p className="text-sm text-base-300">
-                    Are you sure you want to delete this post? This action
-                    cannot be undone.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
-              <button
-                type="button"
-                className="btn btn-danger"
-                onClick={() => deletePost()}
-              >
-                Delete
-              </button>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={() => setIsDeletePromptOpen(false)}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </ModalAlert>
-      )}
     </>
   );
 };

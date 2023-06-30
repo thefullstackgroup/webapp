@@ -71,7 +71,7 @@ const ProjectCategory = ({ postCategories, setPostCategories }) => {
 
   return (
     <div className="space-y-2">
-      <span className="text-sm font-medium">Categorize your project</span>
+      <label className="label">Categorize your project</label>
 
       <div className="w-full space-y-6 rounded-md bg-base-600/40 py-4 px-4">
         <div className="flex flex-wrap gap-2">

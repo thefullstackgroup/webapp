@@ -8,7 +8,6 @@ import validator from 'validator';
 import Markdown from 'markdown-to-jsx';
 import CodeBlock from 'components/common/elements/CodeBlock';
 import GitHubStats from 'components/modules/project/GitHubStats';
-import ImportFromGitHub from 'components/modules/create/ImportFromGitHub';
 import TagStack from 'components/common/tags/TagStack';
 import UploadProjectVideo from 'components/common/elements/mux/UploadProjectVideo';
 import VideoPlayer from 'components/common/elements/mux/VideoPlayer';
@@ -16,7 +15,6 @@ import Contributors from 'components/modules/project/Contributors';
 import ProjectTechStack from 'components/modules/create/ProjectTechStack';
 import ProjectSettings from 'components/modules/create/ProjectSettings';
 import ValidationErrors from 'components/modules/create/ValidationErrors';
-import ModalDialog from 'components/common/modals/ModalDialog';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import { FaMarkdown } from 'react-icons/fa';
 import { FiCamera } from 'react-icons/fi';
@@ -24,6 +22,7 @@ import { CgSpinner } from 'react-icons/cg';
 import { RiSettingsLine } from 'react-icons/ri';
 import { IoAddOutline, IoLink } from 'react-icons/io5';
 import Icon from 'components/common/elements/Icon';
+import ModalAlert from 'components/common/modals/ModalAlert';
 
 const customCommand = {
   name: 'markdown-link',
@@ -49,16 +48,14 @@ const sendGAEvent = (eventName) => {
   });
 };
 
-const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
+const Scratch = ({ user, setPostType, postData }) => {
   const router = useRouter();
   let postRef = router.query.ref;
   const [windowSize, setWindowSize] = useState(
     typeof window !== 'undefined' ? getWindowSize() : ''
   );
-  const [projectTypeSelected, setProjectTypeSelected] = useState(
-    postData ? true : false
-  );
-  const [gitHubImportSelected, setGitHubImportSelected] = useState(false);
+  const [isDiscardPromptOpen, setIsDiscardPromptOpen] = useState(false);
+  const [isDeletePromptOpen, setIsDeletePromptOpen] = useState(false);
   const [saving, setSaving] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
@@ -214,314 +211,349 @@ const Scratch = ({ user, setPostType, postData, setIsDeletePromptOpen }) => {
     handleSavePost(false);
   };
 
+  const deletePost = async () => {
+    const data = {
+      projectId: postData?._id,
+    };
+    await axios.post(
+      `${process.env.BASEURL}/api/projects/project/delete`,
+      data
+    );
+    router.push(`/${user.displayName}`);
+  };
+
   return (
     <>
-      {!projectTypeSelected && (
-        <ModalDialog
-          show={true}
-          setShow={() => router.push('/explore')}
-          title="Create Project"
-          disabled
-        >
-          {!gitHubImportSelected && (
-            <div className="space-y-2 py-4">
-              <p className="mx-3 mb-4 text-center text-2xl font-extrabold">
-                Show off your project
-              </p>
-              <p className="mx-6 mb-8 text-center text-sm">
-                Import a project from GitHub or create your project from
-                scratch.
-              </p>
-
-              <div className="space-y-4 py-6">
-                <button
-                  className="btn btn-secondary btn-with-icon w-full justify-center py-3"
-                  onClick={() => setGitHubImportSelected(true)}
-                >
-                  <Icon name="FiGithub" className="h-8 w-8" />
-                  <span className="">Import from GitHub</span>
-                </button>
-
-                <button
-                  className="btn btn-secondary btn-with-icon w-full justify-center py-3"
-                  onClick={() => setProjectTypeSelected(true)}
-                >
-                  <Icon name="FiBox" className="h-8 w-8" />
-                  <span className="">Create from scratch</span>
-                </button>
-              </div>
-            </div>
-          )}
-
-          {gitHubImportSelected && (
-            <ImportFromGitHub
-              setPostType={setPostType}
-              setProjectTypeSelected={setProjectTypeSelected}
-            />
-          )}
-        </ModalDialog>
+      {!postIsPublished && (
+        <div className="w-full cursor-pointer bg-red-500/40 py-3 px-4 font-normal md:px-8">
+          This project is{' '}
+          <span className="font-bold text-base-200">unpublished</span> and not
+          visible to anyone.
+        </div>
       )}
+      <div className="sticky top-0  z-40 border-b border-base-200 bg-base-50 dark:border-base-700 dark:bg-base-900">
+        <div className="left-0 mx-auto w-full max-w-screen-2xl px-4 py-4 md:px-8">
+          <div className="sticky top-0 mx-auto flex max-w-screen-2xl items-center justify-end space-x-4 md:space-x-8">
+            <button
+              className="flex items-center space-x-2 text-base text-base-400"
+              onClick={() => handleSavePost(true)}
+            >
+              {saving ? (
+                <>
+                  <CgSpinner className="h-4 w-4 animate-spin" />
+                  <span>Saving ...</span>
+                </>
+              ) : (
+                <span className="hover:text-base-300">Save draft</span>
+              )}
+            </button>
+            <button
+              className="text-base-400 hover:text-base-300"
+              onClick={() => setShowSettings(true)}
+            >
+              <Icon name="FiSettings" />
+            </button>
+            <button
+              className="btn btn-primary"
+              onClick={() => setShowSettings(true)}
+            >
+              Publish
+            </button>
 
-      {projectTypeSelected && (
-        <>
-          {!postIsPublished && (
-            <div className="w-full cursor-pointer bg-red-500/40 py-3 px-4 font-normal md:px-8">
-              This project is{' '}
-              <span className="font-bold text-base-200">unpublished</span> and
-              not visible to anyone.
-            </div>
-          )}
-          <div className="border-b border-base-200 dark:border-base-700">
-            <div className="sticky top-0 left-0 z-40 mx-auto w-full max-w-screen-2xl px-4 py-4 md:px-8">
-              <div className="sticky top-0 mx-auto flex max-w-screen-2xl items-center justify-end space-x-4 md:space-x-8">
-                <button
-                  className="flex items-center space-x-2 text-base text-base-400"
-                  onClick={() => handleSavePost(true)}
-                >
-                  {saving ? (
-                    <>
-                      <CgSpinner className="h-4 w-4 animate-spin" />
-                      <span>Saving ...</span>
-                    </>
-                  ) : (
-                    <span className="hover:text-base-300">Save draft</span>
-                  )}
-                </button>
-                <button
-                  className="text-base-400 hover:text-base-300"
-                  onClick={() => setShowSettings(true)}
-                >
-                  <RiSettingsLine className="h-6 w-6" />
-                </button>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => setShowSettings(true)}
-                >
-                  Publish
-                </button>
-              </div>
-            </div>
+            <button
+              className="btn btn-ghost"
+              onClick={() => setIsDiscardPromptOpen(true)}
+            >
+              <Icon name="FiX" className="h-7 w-7 md:h-8 md:w-8" />
+            </button>
           </div>
-          <div className="mx-auto flex w-full max-w-screen-2xl flex-col justify-center space-y-4 bg-base-900/40 text-center">
-            {postCoverImage && !postCoverVideo && (
-              <div className="group relative h-96 w-1/2 overflow-hidden">
-                <div className="h-full w-full">
-                  <img
-                    src={postCoverImage}
-                    className="h-full w-full object-cover object-center"
-                    alt=""
-                  />
-                </div>
-                <div className="absolute top-0 left-0 hidden h-full w-full items-center justify-center bg-base-900/40 group-hover:flex">
-                  <button
-                    onClick={() => setPostCoverImage(null)}
-                    className="btn-secondary"
-                  >
-                    <span>Change image</span>
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {postCoverVideo && (
-              <div className="group relative h-4/5 w-full">
-                <div className="flex h-full w-1/2 overflow-hidden">
-                  <VideoPlayer src={postCoverVideo} poster={postCoverImage} />
-                </div>
-                <div className="absolute top-0 left-0 hidden h-20 w-full items-center justify-end bg-transparent px-8 group-hover:flex">
-                  <button
-                    onClick={() => {
-                      setPostCoverImage(null);
-                      setPostCoverVideo(null);
-                    }}
-                    className="btn-secondary"
-                  >
-                    <span>Change video</span>
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {!postCoverImage && (
-              <div className="flex h-96 w-full flex-col">
-                <div className="mx-auto flex h-full w-auto items-center justify-center">
-                  <div className="flex flex-col space-y-4">
-                    <p className="text-base-400">Add a cover image or video</p>
-                    <div className="flex items-center space-x-4">
-                      <div>
-                        <label
-                          htmlFor="file-upload"
-                          className="btn-secondary btn-with-icon cursor-pointer pl-4"
-                        >
-                          <FiCamera className="h-6 w-6" />
-                          <span>Image</span>
-
-                          <input
-                            id="file-upload"
-                            name="image"
-                            type="file"
-                            className="sr-only"
-                            onChange={handleUploadImage}
-                          />
-                        </label>
-                      </div>
-                      <UploadProjectVideo
-                        setCoverImage={setPostCoverImage}
-                        setCoverVideo={setPostCoverVideo}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="space-y-4 p-4 md:p-8">
-            <div className="flex w-full flex-col justify-between md:flex-row md:items-center md:space-x-4">
-              <div className="w-full">
-                <input
-                  className="text-input h-14 bg-transparent p-0 text-2xl font-semibold md:text-4xl"
-                  placeholder="Project title ..."
-                  value={postTitle}
-                  onChange={(e) => setPostTitle(e.target.value)}
-                />
-              </div>
-              <div className="flex items-center space-x-2">
-                {postGitHubRepo !== '' && (
-                  <a href={postGitHubRepo} target="_blank" rel="noreferrer">
-                    <button className="btn-secondary btn-with-icon">
-                      <Icon name="FiGithub" className="h-auto w-6" />
-                    </button>
-                  </a>
-                )}
-                {postProjectLink !== '' && (
-                  <a href={postProjectLink} target="_blank" rel="noreferrer">
-                    <button className="btn-secondary btn-with-icon py-2.5 text-sm">
-                      <IoLink className="h-auto w-5" />
-                      <span className="">Visit</span>
-                    </button>
-                  </a>
-                )}
-              </div>
-            </div>
-
-            <div className="no-scrollbar flex flex-wrap items-center gap-1">
-              {postTechStack?.map((stack, index) => (
-                <button key={index} onClick={() => removeTechStack(stack)}>
-                  <TagStack tech={stack} size={'xs'} />
-                </button>
-              ))}
-
-              <div className="relative">
-                <button
-                  className="btn-primary btn-with-icon mb-1 space-x-1 rounded-full py-1 pl-1 pr-2 text-sm"
-                  onClick={() => setShowTechStackOptions(true)}
-                >
-                  <IoAddOutline className="h-5 w-5" />
-                  <span>Tag Stack</span>
-                </button>
-
-                {showTechStackOptions && (
-                  <div className="absolute top-10 left-0 z-20 w-80">
-                    <div
-                      className="fixed inset-0"
-                      onClick={() =>
-                        setShowTechStackOptions(!showTechStackOptions)
-                      }
-                    ></div>
-
-                    <ProjectTechStack
-                      postTechStack={postTechStack}
-                      setPostTechStack={setPostTechStack}
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {postData?.hasGitHubReadMe && <GitHubStats project={postData} />}
-
-            <div className="markdown dark w-full">
-              <ReactMde
-                value={postBody}
-                onChange={setPostBody}
-                selectedTab={selectedTab}
-                onTabChange={setSelectedTab}
-                generateMarkdownPreview={(markdown) =>
-                  Promise.resolve(
-                    <div className="prose prose-dark mt-4 max-w-full">
-                      <Markdown
-                        options={{
-                          overrides: {
-                            pre: {
-                              component: CodeBlock,
-                            },
-                            a: {
-                              props: { target: '_blank' },
-                            },
-                          },
-                        }}
-                      >
-                        {markdown}
-                      </Markdown>
-                    </div>
-                  )
-                }
-                minEditorHeight={mdEditorHeight}
-                maxEditorHeight={10000}
-                childProps={{
-                  textArea: {
-                    placeholder: 'Describe your project ...',
-                  },
-                }}
-                commands={{
-                  'markdown-link': customCommand,
-                }}
-                toolbarCommands={[
-                  ['header', 'bold', 'italic', 'strikethrough'],
-                  ['quote', 'code', 'image'],
-                  ['unordered-list', 'ordered-list', 'checked-list'],
-                  ['markdown-link'],
-                ]}
+        </div>
+      </div>
+      <div className="mx-auto flex w-full max-w-screen-xl flex-col justify-center space-y-4 text-center">
+        {postCoverImage && !postCoverVideo && (
+          <div className="group relative h-96 overflow-hidden">
+            <div className="h-full w-full">
+              <img
+                src={postCoverImage}
+                className="h-full w-full object-cover object-center"
+                alt=""
               />
             </div>
-
-            {postData && <Contributors project={postData} />}
+            <div className="absolute top-0 left-0 hidden h-full w-full items-center justify-center bg-base-900/40 group-hover:flex">
+              <button
+                onClick={() => setPostCoverImage(null)}
+                className="btn btn-sm btn-secondary"
+              >
+                Remove image
+              </button>
+            </div>
           </div>
+        )}
 
-          {showSettings && (
-            <ProjectSettings
-              showSettings={showSettings}
-              setShowSettings={setShowSettings}
-              postCategories={postCategories}
-              setPostCategories={setPostCategories}
-              postGitHubRepo={postGitHubRepo}
-              setPostGitHubRepo={setPostGitHubRepo}
-              postProjectLink={postProjectLink}
-              setPostProjectLink={setPostProjectLink}
-              postOpenToCollab={postOpenToCollab}
-              setPostOpenToCollab={setPostOpenToCollab}
-              handleSavePost={handleSavePost}
-              handlePublishPost={handlePublishPost}
-              setIsDeletePromptOpen={setIsDeletePromptOpen}
-              postIsPublished={postIsPublished}
-              publishing={publishing}
-            />
-          )}
+        {postCoverVideo && (
+          <div className="group relative h-4/5 w-full">
+            <div className="flex h-full w-1/2 overflow-hidden">
+              <VideoPlayer src={postCoverVideo} poster={postCoverImage} />
+            </div>
+            <div className="absolute top-0 left-0 hidden h-20 w-full items-center justify-end bg-transparent px-8 group-hover:flex">
+              <button
+                onClick={() => {
+                  setPostCoverImage(null);
+                  setPostCoverVideo(null);
+                }}
+                className="btn btn-sm btn-secondary"
+              >
+                Change video
+              </button>
+            </div>
+          </div>
+        )}
 
-          {showValidationErrors && (
-            <ValidationErrors
-              showValidationErrors={showValidationErrors}
-              setShowValidationErrors={setShowValidationErrors}
-              draftSelected={draftSelected}
-              setDraftSelected={setDraftSelected}
-              postTitle={postTitle}
-              postBody={postBody}
-              postTechStack={postTechStack}
-              postCoverImage={postCoverImage}
-              postProjectLink={postProjectLink}
+        {!postCoverImage && (
+          <div className="flex h-96 w-full flex-col">
+            <div className="mx-auto flex h-full w-auto items-center justify-center">
+              <div className="flex flex-col space-y-4">
+                <p className="text-base-400">Add a cover image or video</p>
+                <div className="flex items-center space-x-4">
+                  <div>
+                    <label
+                      htmlFor="file-upload"
+                      className="btn btn-secondary btn-with-icon cursor-pointer pl-4"
+                    >
+                      <Icon name="FiCamera" className="h-6 w-6" />
+                      <span>Image</span>
+
+                      <input
+                        id="file-upload"
+                        name="image"
+                        type="file"
+                        className="sr-only"
+                        onChange={handleUploadImage}
+                      />
+                    </label>
+                  </div>
+                  <UploadProjectVideo
+                    setCoverImage={setPostCoverImage}
+                    setCoverVideo={setPostCoverVideo}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="mx-auto max-w-screen-xl space-y-4 p-4 md:p-8">
+        <div className="flex w-full flex-col justify-between md:flex-row md:items-center md:space-x-4">
+          <div className="w-full">
+            <input
+              className="text-input h-14 bg-transparent p-0 text-2xl font-semibold md:text-4xl"
+              placeholder="Project title ..."
+              value={postTitle}
+              onChange={(e) => setPostTitle(e.target.value)}
             />
-          )}
-        </>
+          </div>
+          <div className="flex items-center space-x-2">
+            {postGitHubRepo !== '' && (
+              <a href={postGitHubRepo} target="_blank" rel="noreferrer">
+                <button className="btn-secondary btn-with-icon">
+                  <Icon name="FiGithub" className="h-auto w-6" />
+                </button>
+              </a>
+            )}
+            {postProjectLink !== '' && (
+              <a href={postProjectLink} target="_blank" rel="noreferrer">
+                <button className="btn-secondary btn-with-icon py-2.5 text-sm">
+                  <IoLink className="h-auto w-5" />
+                  <span className="">Visit</span>
+                </button>
+              </a>
+            )}
+          </div>
+        </div>
+
+        <div className="no-scrollbar flex flex-wrap items-center gap-1">
+          {postTechStack?.map((stack, index) => (
+            <button key={index} onClick={() => removeTechStack(stack)}>
+              <TagStack tech={stack} size={'xs'} />
+            </button>
+          ))}
+
+          <div className="relative">
+            <button
+              className="btn-primary btn-with-icon mb-1 space-x-1 rounded-full py-1 pl-1 pr-2 text-sm"
+              onClick={() => setShowTechStackOptions(true)}
+            >
+              <IoAddOutline className="h-5 w-5" />
+              <span>Tag Stack</span>
+            </button>
+
+            {showTechStackOptions && (
+              <div className="absolute top-10 left-0 z-20 w-80">
+                <div
+                  className="fixed inset-0"
+                  onClick={() => setShowTechStackOptions(!showTechStackOptions)}
+                ></div>
+
+                <ProjectTechStack
+                  postTechStack={postTechStack}
+                  setPostTechStack={setPostTechStack}
+                />
+              </div>
+            )}
+          </div>
+        </div>
+
+        {postData?.hasGitHubReadMe && <GitHubStats project={postData} />}
+
+        <div className="markdown dark w-full overflow-hidden rounded-md border dark:border-base-700">
+          <ReactMde
+            value={postBody}
+            onChange={setPostBody}
+            selectedTab={selectedTab}
+            onTabChange={setSelectedTab}
+            generateMarkdownPreview={(markdown) =>
+              Promise.resolve(
+                <div className="prose prose-dark mt-4 max-w-full">
+                  <Markdown
+                    options={{
+                      overrides: {
+                        pre: {
+                          component: CodeBlock,
+                        },
+                        a: {
+                          props: { target: '_blank' },
+                        },
+                      },
+                    }}
+                  >
+                    {markdown}
+                  </Markdown>
+                </div>
+              )
+            }
+            minEditorHeight={mdEditorHeight}
+            maxEditorHeight={10000}
+            childProps={{
+              textArea: {
+                placeholder: 'Describe your project ...',
+              },
+            }}
+            commands={{
+              'markdown-link': customCommand,
+            }}
+            toolbarCommands={[
+              ['header', 'bold', 'italic', 'strikethrough'],
+              ['quote', 'code', 'image'],
+              ['unordered-list', 'ordered-list', 'checked-list'],
+              ['markdown-link'],
+            ]}
+          />
+        </div>
+
+        {postData && <Contributors project={postData} />}
+      </div>
+
+      {showSettings && (
+        <ProjectSettings
+          showSettings={showSettings}
+          setShowSettings={setShowSettings}
+          postCategories={postCategories}
+          setPostCategories={setPostCategories}
+          postGitHubRepo={postGitHubRepo}
+          setPostGitHubRepo={setPostGitHubRepo}
+          postProjectLink={postProjectLink}
+          setPostProjectLink={setPostProjectLink}
+          postOpenToCollab={postOpenToCollab}
+          setPostOpenToCollab={setPostOpenToCollab}
+          handleSavePost={handleSavePost}
+          handlePublishPost={handlePublishPost}
+          setIsDeletePromptOpen={setIsDeletePromptOpen}
+          postIsPublished={postIsPublished}
+          publishing={publishing}
+        />
+      )}
+
+      {showValidationErrors && (
+        <ValidationErrors
+          showValidationErrors={showValidationErrors}
+          setShowValidationErrors={setShowValidationErrors}
+          draftSelected={draftSelected}
+          setDraftSelected={setDraftSelected}
+          postTitle={postTitle}
+          postBody={postBody}
+          postTechStack={postTechStack}
+          postCoverImage={postCoverImage}
+          postProjectLink={postProjectLink}
+        />
+      )}
+
+      {isDiscardPromptOpen && (
+        <ModalAlert show={isDiscardPromptOpen} setShow={setIsDiscardPromptOpen}>
+          <div className="py-8">
+            <div className="justify-center sm:flex sm:items-start">
+              <div className="mt-3 text-center sm:mt-0">
+                <h3 className="text-xl font-bold text-base-200">Quit?</h3>
+                <div className="mt-2">
+                  <p className="text-sm text-base-300">
+                    Are you sure you want to quit?
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => setIsDiscardPromptOpen(false)}
+              >
+                No
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => router.back()}
+              >
+                Yes
+              </button>
+            </div>
+          </div>
+        </ModalAlert>
+      )}
+
+      {isDeletePromptOpen && (
+        <ModalAlert show={isDeletePromptOpen} setShow={setIsDeletePromptOpen}>
+          <div className="py-8">
+            <div className="justify-center sm:flex sm:items-start">
+              <div className="mt-3 text-center sm:mt-0">
+                <h3 className="text-xl font-bold text-base-200">
+                  Delete post?
+                </h3>
+                <div className="mt-2">
+                  <p className="text-sm text-base-300">
+                    Are you sure you want to delete this post? This action
+                    cannot be undone.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={() => deletePost()}
+              >
+                Delete
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => setIsDeletePromptOpen(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </ModalAlert>
       )}
     </>
   );

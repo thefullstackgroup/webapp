@@ -53,10 +53,10 @@ const ProjectSettings = ({
           </h3>
           <div className="flex items-center space-x-2">
             <button
-              className="btn btn-danger"
+              className="btn btn-sm btn-danger"
               onClick={() => setIsDeletePromptOpen(true)}
             >
-              Delete
+              Delete project
             </button>
 
             {!postIsPublished ? (
@@ -83,7 +83,7 @@ const ProjectSettings = ({
         </div>
 
         <div className="space-y-1">
-          <span className="text-sm font-medium">Project links</span>
+          <label className="label">Project links</label>
           <div>
             <div
               className={

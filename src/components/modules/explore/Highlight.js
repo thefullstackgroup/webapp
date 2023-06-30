@@ -89,7 +89,7 @@ const Slide = ({ data }) => {
 
   return (
     <>
-      <div className="w-80 overflow-hidden rounded-2xl bg-base-800">
+      <div className="flex w-80 flex-1 grow overflow-hidden rounded-2xl bg-base-800">
         <div className="group relative" />
         <div className="h-[400px] w-full bg-base-900">
           <Image

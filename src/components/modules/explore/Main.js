@@ -1,3 +1,5 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import { IoLogoGithub } from 'react-icons/io5';
 import { FcGoogle } from 'react-icons/fc';
 import ProjectGallery from 'components/modules/explore/ProjectGallery';
@@ -28,6 +30,9 @@ export const Greeting = ({ name }) => {
 };
 
 const Main = ({ user }) => {
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  const gitHubProvider = new firebase.auth.GithubAuthProvider();
+
   const viewsURL = `${process.env.BASEURL}/api/stats/profile/getStats`;
   const { data: views } = useSWR(viewsURL, fetcher);
   const numberOfViews = views ? views.totalUniqueProfileViewCount : 0;
@@ -44,6 +49,22 @@ const Main = ({ user }) => {
 
   const viewsDiff = (numberOfViewsLastWeek / numberOfViews) * 100;
   const reactionsDiff = (numberOfReactionsLastWeek / numberOfReactions) * 100;
+
+  const signInWithGoogle = async () => {
+    try {
+      const res = await firebase.auth().signInWithPopup(googleProvider);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const signInWithGitHub = async () => {
+    try {
+      const res = await firebase.auth().signInWithPopup(gitHubProvider);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="min-h-screen space-y-4 px-8 pt-6">
@@ -63,11 +84,17 @@ const Main = ({ user }) => {
                 network of value.
               </h4>
               <div className="flex items-center justify-center space-x-4">
-                <button className="btn btn-secondary btn-with-icon rounded-full py-2">
+                <button
+                  className="btn btn-secondary btn-with-icon rounded-full py-2"
+                  onClick={signInWithGitHub}
+                >
                   <IoLogoGithub className="h-5 w-5" />
                   <span>Continue with GitHub</span>
                 </button>
-                <button className="btn btn-secondary btn-with-icon rounded-full py-2">
+                <button
+                  className="btn btn-secondary btn-with-icon rounded-full py-2"
+                  onClick={signInWithGoogle}
+                >
                   <FcGoogle />
                   <span>Continue with Google</span>
                 </button>
@@ -148,37 +175,6 @@ const Main = ({ user }) => {
       </div>
 
       <DividerShowMore label="Show new projects" href="/explore/new" />
-
-      <div className="space-y-4 pb-6">
-        <h3 className="flex items-center space-x-2">
-          <span>Browse by category</span>
-        </h3>
-        <div className="no-scrollbar mt-6 grid grid-cols-6 gap-4 px-4 md:px-0">
-          {CategoriesFilter.map(
-            (item, index) =>
-              item.slug !== 'datascience' && (
-                <Link href={`/explore/popular/${item.slug}`} key={index}>
-                  <div className="group flex h-32 w-full cursor-pointer flex-col justify-between rounded-lg border border-transparent bg-base-200/50 p-4 text-left duration-200 hover:border-base-700 hover:bg-base-50 dark:border-base-700 dark:bg-base-900 dark:hover:border-base-100 dark:hover:bg-base-900">
-                    <div className="flex flex-col">
-                      <span className="text-base font-medium text-base-700 group-hover:text-base-700 dark:text-base-200 dark:group-hover:text-base-100">
-                        {item.label}
-                      </span>
-                      <span className="text-sm text-base-300 dark:text-base-400">
-                        {item.desc}
-                      </span>
-                    </div>
-                    <div className="flex justify-end">
-                      <Icon
-                        name={'FiChevronRight'}
-                        className="text-base-300 dark:text-base-400"
-                      />
-                    </div>
-                  </div>
-                </Link>
-              )
-          )}
-        </div>
-      </div>
 
       <div className="space-y-4">
         <h3 className="flex items-center space-x-2">
@@ -302,6 +298,37 @@ const Main = ({ user }) => {
         label="Show more open source"
         href="/explore/popular/opensource"
       />
+
+      <div className="space-y-4 pb-20">
+        <h3 className="flex items-center space-x-2">
+          <span>Browse by category</span>
+        </h3>
+        <div className="no-scrollbar mt-6 grid grid-cols-6 gap-4 px-4 md:px-0">
+          {CategoriesFilter.map(
+            (item, index) =>
+              item.slug !== 'datascience' && (
+                <Link href={`/explore/popular/${item.slug}`} key={index}>
+                  <div className="group flex h-32 w-full cursor-pointer flex-col justify-between rounded-lg border border-transparent bg-base-200/50 p-4 text-left duration-200 hover:border-base-700 hover:bg-base-50 dark:border-base-700 dark:bg-base-900 dark:hover:border-base-100 dark:hover:bg-base-900">
+                    <div className="flex flex-col">
+                      <span className="text-base font-medium text-base-700 group-hover:text-base-700 dark:text-base-200 dark:group-hover:text-base-100">
+                        {item.label}
+                      </span>
+                      <span className="text-sm text-base-300 dark:text-base-400">
+                        {item.desc}
+                      </span>
+                    </div>
+                    <div className="flex justify-end">
+                      <Icon
+                        name={'FiChevronRight'}
+                        className="text-base-300 dark:text-base-400"
+                      />
+                    </div>
+                  </div>
+                </Link>
+              )
+          )}
+        </div>
+      </div>
     </div>
   );
 };

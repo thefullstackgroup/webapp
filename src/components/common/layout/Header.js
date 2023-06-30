@@ -97,7 +97,10 @@ const Header = ({ user, headerFixed = false, setShowCreatePost }) => {
 
                 <li>
                   <Link href="/signup" passHref>
-                    <a href="#" className="nav-bar flex items-center space-x-2">
+                    <a
+                      href="#"
+                      className="nav-bar ml-6 flex w-72 items-center space-x-2 dark:bg-base-700/50 dark:text-base-500"
+                    >
                       <Icon name="FiSearch" className="h-4 w-4" />
                       <span>Search</span>
                     </a>

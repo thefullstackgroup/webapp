@@ -41,7 +41,7 @@ const Projects = ({ profile, myProfile }) => {
             {[...Array(totalProjects)].map((elementInArray, index) => (
               <div
                 key={index}
-                className="col-span-1 hidden h-40 space-y-2 md:block"
+                className="col-span-1 hidden h-[240px] space-y-2 md:block"
               >
                 <div className="h-full rounded-md bg-base-800"></div>
               </div>

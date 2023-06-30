@@ -112,13 +112,13 @@ const UploadProjectVideo = ({ setCoverImage, setCoverVideo }) => {
         {isUploading ? (
           <>
             {isPreparing ? (
-              <div className="flex items-center space-x-1 ml-2">
-                <BiLoaderAlt className="w-4 h-auto animate-spin" />
+              <div className="ml-2 flex items-center space-x-1">
+                <BiLoaderAlt className="h-auto w-4 animate-spin" />
                 <span>Preparing video...</span>
               </div>
             ) : (
-              <div className="flex items-center space-x-1 ml-2">
-                <BiLoaderAlt className="w-4 h-auto animate-spin" />
+              <div className="ml-2 flex items-center space-x-1">
+                <BiLoaderAlt className="h-auto w-4 animate-spin" />
                 <span>Uploading...{progress ? `${progress}%` : ''}</span>
               </div>
             )}
@@ -128,9 +128,9 @@ const UploadProjectVideo = ({ setCoverImage, setCoverVideo }) => {
             <button
               type="button"
               onClick={() => inputRef.current.click()}
-              className="btn-secondary btn-with-icon pl-4"
+              className="btn btn-secondary btn-with-icon"
             >
-              <FiVideo className="w-6 h-6" />
+              <FiVideo className="h-6 w-6" />
               <span>Video</span>
             </button>
 

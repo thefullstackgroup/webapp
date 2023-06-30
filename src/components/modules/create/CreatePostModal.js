@@ -24,6 +24,7 @@ import { CgSpinner } from 'react-icons/cg';
 import { RiSettingsLine } from 'react-icons/ri';
 import { IoAddOutline, IoLink } from 'react-icons/io5';
 import Icon from 'components/common/elements/Icon';
+import Link from 'next/link';
 
 const customCommand = {
   name: 'markdown-link',
@@ -241,14 +242,12 @@ const CreatePostModal = ({
                 <Icon name="FiGithub" className="h-7 w-7" />
                 <span className="">Import from GitHub</span>
               </button>
-
-              <button
-                className="btn btn-secondary btn-with-icon w-full justify-center py-3"
-                onClick={() => setProjectTypeSelected(true)}
-              >
-                <Icon name="FiBox" className="h-7 w-7" />
-                <span className="">Create from scratch</span>
-              </button>
+              <Link href="/post">
+                <button className="btn btn-secondary btn-with-icon w-full justify-center py-3">
+                  <Icon name="FiBox" className="h-7 w-7" />
+                  <span className="">Create from scratch</span>
+                </button>
+              </Link>
             </div>
           </div>
         )}

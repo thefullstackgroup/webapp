@@ -372,3 +372,8 @@ ul.mde-suggestions li[aria-selected='true'] {
 aside.EmojiPickerReact.epr-main {
   border: 0px !important;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+}

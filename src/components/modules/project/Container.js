@@ -22,7 +22,6 @@ import Icon from 'components/common/elements/Icon';
 
 const Container = ({ project, author, user, setShowComments }) => {
   const [showImageModal, setShowImageModal] = useState(false);
-  const [showConnectModal, setShowConnectModal] = useState(false);
   const [youTubeEmbedID, setYouTubeEmbedID] = useState(
     project?.projectLinkURI ? getVideoId(project?.projectLinkURI) : ''
   );
