@@ -66,7 +66,7 @@ const EditComment = ({
                     profileCurrentTitle={response.data.content[i].currentTitle}
                   />
                 ),
-                value: `**[@${response.data.content[i].displayName}](/${response.data.content[i].displayName})**`,
+                value: `[@${response.data.content[i].displayName}](/${response.data.content[i].displayName})`,
               });
             }
             setMentionList(results);

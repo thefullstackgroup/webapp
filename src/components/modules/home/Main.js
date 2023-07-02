@@ -96,9 +96,9 @@ const Main = ({ user }) => {
       </div>
 
       <ProjectCarousel
-        title="Popular projects this month"
+        title="Popular projects with the community"
         sort={'mostpopular'}
-        range={90}
+        range={365}
         count={15}
         showMore={'/explore/popular'}
       />

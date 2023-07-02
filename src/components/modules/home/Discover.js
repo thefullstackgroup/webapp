@@ -20,10 +20,10 @@ const SuggestedUserCard = (props) => {
       </div>
       <Link href={`/${props.project.projectCreator.displayName}`}>
         <div className="text-center text-base font-normal sm:font-semibold">
-          <p className="truncate text-xs">
+          <p className="truncate text-sm">
             {props.project.projectCreator.displayName}
           </p>
-          <p className="hidden truncate text-xs font-normal text-base-400 sm:block">
+          <p className="hidden truncate text-xs font-normal text-base-400 dark:text-base-400 sm:block">
             {props.project.projectCreator.currentTitle}
           </p>
         </div>
@@ -73,7 +73,7 @@ const Discover = ({ user, count, search }) => {
         </div>
 
         {!data && (
-          <div className="no-scrollbar flex items-center gap-4 overflow-y-visible overflow-x-scroll px-4 md:gap-6 md:px-0">
+          <div className="no-scrollbar flex items-center gap-4 overflow-y-visible overflow-x-scroll px-4 md:gap-8 md:px-0">
             {[...Array(15)].map((elementInArray, index) => (
               <div className="mx-auto h-32 w-24 sm:h-36 sm:w-24" key={index}>
                 <div className="h-20 w-20 animate-pulse rounded-full bg-base-700 sm:h-24 sm:w-24">
@@ -85,11 +85,11 @@ const Discover = ({ user, count, search }) => {
         )}
 
         {suggestedUsers && (
-          <div className="no-scrollbar flex items-center gap-4 overflow-y-visible overflow-x-scroll px-4 pt-2 md:gap-6 md:px-1">
+          <div className="no-scrollbar flex items-center gap-4 overflow-y-visible overflow-x-scroll px-4 pt-2 md:gap-8 md:px-1">
             {suggestedUsers?.map(
               (project, index) =>
                 user?.userId !== project.userId && (
-                  <div className="h-32 w-24 sm:h-36 sm:w-24" key={index}>
+                  <div className="h-32 w-24 sm:h-auto sm:w-24" key={index}>
                     <SuggestedUserCard project={project} user={user} />
                   </div>
                 )

@@ -5,16 +5,17 @@ import { topics } from './constants';
 const Topics = ({ topic }) => {
   return (
     <div className="rounded-md px-6 pt-4">
-      <div className="mb-4 flex items-center space-x-2">
-        <span className="pl-4 text-lg font-semibold">Filter by #topic</span>
+      <div className="mb-4 flex items-end space-x-2">
+        <span className="pl-4 font-mono text-lg font-medium">Filter</span>
+        <Icon name="FiCornerRightDown" />
       </div>
 
-      <div className="grid w-48 grid-cols-1 gap-1">
+      <div className="grid w-56 grid-cols-1 gap-1">
         <Link href={`/hangout`} passHref>
           <a
             href="#"
             className={
-              'btn btn-with-icon btn-pill whitespace-nowrap bg-transparent dark:bg-transparent ' +
+              'btn btn-with-icon btn-pill whitespace-nowrap bg-transparent text-base dark:bg-transparent ' +
               (!topic
                 ? 'text-base-900 dark:text-base-50'
                 : 'text-base-500 dark:text-base-400 dark:hover:text-base-200')
@@ -29,7 +30,7 @@ const Topics = ({ topic }) => {
             <a
               href="#"
               className={
-                'btn btn-with-icon btn-pill whitespace-nowrap bg-transparent dark:bg-transparent ' +
+                'btn btn-with-icon btn-pill whitespace-nowrap bg-transparent text-base dark:bg-transparent  ' +
                 (topic === item.slug
                   ? 'text-base-900 dark:text-base-50'
                   : 'text-base-500 dark:text-base-400 dark:hover:text-base-200')

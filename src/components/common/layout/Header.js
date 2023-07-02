@@ -9,16 +9,25 @@ import { navigation } from './constants';
 import { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import ProfilePopoverPanel from './ProfilePopoverPanel';
-import ToolTip from '../elements/ToolTip';
+import { useRouter } from 'next/router';
 const KnockNotificationsComponent = dynamic(() =>
   import('components/modules/account/settings/NotificationsPanel')
 );
 
 const Header = ({ user, headerFixed = false, setShowCreatePost }) => {
+  const router = useRouter();
+  const q = router.query.q !== '' ? router.query.q : '';
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [term, setTerm] = useState(q || '');
+  const [query, setQuery] = useState(q || '');
+
+  const handleSearch = (term) => {
+    setQuery(term);
+    router.push(`/search?q=${term}`);
+  };
 
   const controlNavbar = () => {
     if (typeof window !== 'undefined') {
@@ -99,13 +108,25 @@ const Header = ({ user, headerFixed = false, setShowCreatePost }) => {
 
             <div>
               <Link href="/signup" passHref>
-                <a
+                <div
                   href="#"
-                  className="nav-bar ml-6 flex w-96 items-center space-x-2 bg-base-200 text-base-300 dark:bg-base-700/50 dark:text-base-500"
+                  className="nav-bar ml-6 flex w-[400px] items-center space-x-2 bg-base-200 text-base-300 hover:text-base-300 dark:bg-base-700/50 dark:text-base-500"
                 >
                   <Icon name="FiSearch" className="h-4 w-4" />
-                  <span>Search</span>
-                </a>
+                  <input
+                    type="text"
+                    name="q"
+                    placeholder="Search showcase..."
+                    className="text-input m-0 border-0 bg-transparent px-0 py-0.5 text-base font-normal"
+                    value={term || ''}
+                    onChange={(e) => setTerm(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        handleSearch(term);
+                      }
+                    }}
+                  />
+                </div>
               </Link>
             </div>
 

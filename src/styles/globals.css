@@ -382,6 +382,11 @@ aside.EmojiPickerReact.epr-main {
 
 .wmde-markdown {
   background-color: transparent !important;
+  font-size: 1.1rem !important;
+}
+
+.dark .wmde-markdown {
+  color: #f5f5f5 !important;
 }
 
 .wmde-markdown ul {
@@ -398,6 +403,10 @@ aside.EmojiPickerReact.epr-main {
 
 .dark .wmde-markdown pre {
   background-color: #161b22 !important;
+}
+
+.wmde-markdown iframe {
+  width: 100% !important;
 }
 
 /* 

@@ -6,7 +6,7 @@ import ToolTip from 'components/common/elements/ToolTip';
 import ModalAlert from '../modals/ModalAlert';
 import Icon from '../elements/Icon';
 
-const ShareButton = ({ url, message, showLabel, toolTipPosition = top }) => {
+const ShareButton = ({ url, message, showLabel, toolTipPosition = 'top' }) => {
   const [showShareOptions, setShowShareOptions] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 

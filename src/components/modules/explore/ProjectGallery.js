@@ -3,6 +3,7 @@ import useSWRInfinite from 'swr/infinite';
 import ProjectCard from 'components/common/cards/ProjectCard';
 import Loader from 'components/common/elements/Loader';
 import fetcher from 'utils/fetcher';
+import { useRouter } from 'next/router';
 
 let PAGE_SIZE = 40;
 
@@ -15,9 +16,10 @@ const ProjectGallery = ({
   following,
   query,
   count = 40,
-  cols = 5,
   feature = false,
 }) => {
+  const router = useRouter();
+  console.log(router);
   if (count !== null) PAGE_SIZE = count;
 
   let url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&range=${range}`;
@@ -30,18 +32,12 @@ const ProjectGallery = ({
     }
   }
 
-  console.log(url);
-
   if (stack) {
     url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${stack?.terms}`;
   }
 
-  if (stack?.slug === 'following') {
-    url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&connectionUsersIds=${following}&userId=${user.userId}&projectType=PROJECT&range=${range}`;
-  }
-
-  if (stack?.slug === 'search' && query !== '') {
-    url = `${process.env.BASEURL}/api/search/projects?size=${PAGE_SIZE}&sort=${sort}&userId=${user.userId}&projectType=PROJECT&range=${range}&term=${query}`;
+  if (router.pathname === '/search' && query !== '') {
+    url = `${process.env.BASEURL}/api/search/projects?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${query}`;
   }
 
   const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
@@ -76,28 +72,9 @@ const ProjectGallery = ({
 
         {isEmpty && (
           <div className="relative flex flex-col text-center sm:mt-4">
-            {category.slug === 'following' ? (
-              following ? (
-                <>
-                  <span className="text-lg font-bold">
-                    No projects posted by people you&apos;re following.
-                  </span>
-                  <span>Check back again soon.</span>
-                </>
-              ) : (
-                <>
-                  <span className="text-lg font-bold">
-                    You are not following anyone.
-                  </span>
-                  <span>Find people to follow.</span>
-                </>
-              )
-            ) : (
-              <span>
-                No projects returned. Try different filters or a different
-                search.
-              </span>
-            )}
+            <span>
+              No projects returned. Try different filters or a different search.
+            </span>
           </div>
         )}
 

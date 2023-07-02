@@ -149,11 +149,11 @@ const Main = ({ user }) => {
       <div className="space-y-4">
         <h3 className="flex items-center space-x-2">
           <Icon name={'FiStar'} className="h-6 w-6" />
-          <span>Popular projects this month</span>
+          <span>Popular projects upvoted</span>
         </h3>
         <ProjectGallery
           sort={'mostpopular'}
-          range={90}
+          range={365}
           count={5}
           cols={5}
           feature={true}
