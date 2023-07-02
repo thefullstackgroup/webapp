@@ -58,9 +58,9 @@ const Actions = (props) => {
             className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 pl-1 text-sm text-base-800 hover:bg-green-500/20 hover:text-green-600 dark:text-base-100 dark:hover:bg-green-500/20 dark:hover:text-green-400"
             onClick={() => setShowSignUp(!showSignUp)}
           >
-            <ToolTip message="Like" />
+            <ToolTip message="Upvote" position={props.toolTipPosition} />
 
-            <Icon name="FiTriangle" className="h-6 w-6 " />
+            <Icon name="FiTriangle" className="h-6 w-6" />
             <span>{Math.abs(props.project.numberOfLikes)}</span>
           </button>
           <button
@@ -71,7 +71,7 @@ const Actions = (props) => {
                 : setShowSignUp(!showSignUp)
             }
           >
-            <ToolTip message="Comment" />
+            <ToolTip message="Comment" position={props.toolTipPosition} />
             <Icon name="FiMessageSquare" className="h-6 w-6" />
             <span>{Math.abs(props.project.numberOfComments)}</span>
           </button>
@@ -79,7 +79,7 @@ const Actions = (props) => {
             className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm text-base-800 hover:bg-yellow-500/40 hover:text-yellow-600 dark:text-base-200 dark:hover:bg-yellow-500/40 dark:hover:text-yellow-500"
             onClick={() => setShowSignUp(!showSignUp)}
           >
-            <ToolTip message="Award" />
+            <ToolTip message="Award" position={props.toolTipPosition} />
             <Icon name="FiStar" className="h-6 w-6" />
             <span>{Math.abs(props.project.contentTotalDiamonds)}</span>
           </button>
@@ -88,7 +88,7 @@ const Actions = (props) => {
             className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 pl-1 text-sm text-base-800 hover:bg-base-200 hover:text-base-700 dark:text-base-100 dark:hover:bg-base-700 dark:hover:text-base-100"
             onClick={() => setShowSignUp(!showSignUp)}
           >
-            <ToolTip message="Bookmark" />
+            <ToolTip message="Bookmark" position={props.toolTipPosition} />
             <Icon name="FiBookmark" className="h-6 w-6" />
           </button>
 
@@ -96,6 +96,7 @@ const Actions = (props) => {
             url={`${process.env.BASEURL}/u/${props.project?.projectCreator?.displayName}/${props.project?.projectSlug}`}
             message={props.project?.projectName}
             showLabel={props.showLabel}
+            toolTipPosition={props.toolTipPosition}
           />
         </div>
       )}
