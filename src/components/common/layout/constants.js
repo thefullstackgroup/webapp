@@ -29,8 +29,6 @@ export const navigation = [
         desc: 'Projects looking for contributors',
         icon: 'FiUsers',
       },
-    ],
-    childrenTwo: [
       {
         href: '/explore/popular/opensource',
         label: 'Open Source',
@@ -43,11 +41,37 @@ export const navigation = [
         desc: 'Cool apps built by the commmunity',
         icon: 'FiPackage',
       },
+    ],
+    childrenTwo: [
+      {
+        href: '/explore/popular/games',
+        label: 'Games',
+        desc: 'Explore cool games projects showcased',
+        icon: 'FiPlayCircle',
+      },
+      {
+        href: '/explore/popular/ai',
+        label: 'AI',
+        desc: 'The world is obsessed with AI',
+        icon: 'FiCpu',
+      },
       {
         href: '/explore/popular/tools',
         label: 'Tools',
         desc: 'Devs solving their own problems',
         icon: 'FiTool',
+      },
+      {
+        href: '/explore/popular/components',
+        label: 'Components',
+        desc: 'We love components',
+        icon: 'FiBox',
+      },
+      {
+        href: '/explore/popular/frontend',
+        label: 'Frontend',
+        desc: 'Browse projects that are all things frontend',
+        icon: 'FiLayout',
       },
       {
         href: '/explore/popular',

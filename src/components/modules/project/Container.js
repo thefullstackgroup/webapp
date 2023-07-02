@@ -248,7 +248,7 @@ const Container = ({ project, author, user, setShowComments }) => {
           </div>
           <div className="h-full w-full space-y-8 border-l border-base-200/70 dark:border-base-700">
             {/* Profile Card */}
-            <div className="sticky top-16 mb-8 space-y-5 py-4 pt-8 pl-12">
+            <div className="sticky top-4 mb-8 space-y-5 py-4 pt-8 pl-12">
               <div className="flex items-center space-x-3">
                 <Avatar
                   href={`/${author?.displayName}`}
@@ -291,20 +291,17 @@ const Container = ({ project, author, user, setShowComments }) => {
                   ? author?.bio?.aboutUser
                   : 'No bio added'}
               </div>
-              {/* <div className="flex flex-wrap">
+              <div className="flex flex-wrap">
                 {author?.userTechStacks?.map(
                   (stack, index) =>
                     stack != null &&
-                    index < 10 && (
-                      <TagStack tech={stack} key={index} size="xs" />
-                    )
+                    index < 8 && <TagStack tech={stack} key={index} size="xs" />
                 )}
-              </div> */}
+                <span>...</span>
+              </div>
 
               <GitHubStats project={project} />
               {user && <Contributors project={project} />}
-
-              {/* <Social social={author} /> */}
             </div>
           </div>
         </div>
