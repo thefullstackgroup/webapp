@@ -71,7 +71,7 @@ const ButtonBookmark = (props) => {
         className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 pl-1 text-sm text-base-800 hover:bg-base-200 hover:text-base-700 dark:text-base-100 dark:hover:bg-base-700 dark:hover:text-base-100"
         onClick={() => saveProject(!isSaved ? 'save' : 'remove')}
       >
-        <ToolTip message="Bookmark" />
+        <ToolTip message="Bookmark" position={props.toolTipPosition} />
         {isSaved ? (
           <Icon name="FiBookmark" className="h-auto w-6" />
         ) : (

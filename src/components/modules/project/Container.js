@@ -1,12 +1,18 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/future/image';
-import Markdown from 'markdown-to-jsx';
+import dynamic from 'next/dynamic';
+import '@uiw/react-markdown-preview/markdown.css';
+const MarkdownPreview = dynamic(
+  () => import('@uiw/react-markdown-preview').then((mod) => mod.default),
+  { ssr: false }
+);
+import rehypeHighlight from 'rehype-highlight';
+import { useTheme } from 'next-themes';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import getVideoId from 'get-video-id';
 import VideoPlayer from 'components/common/elements/mux/VideoPlayer';
 import TagStack from 'components/common/tags/TagStack';
-import CodeBlock from 'components/common/elements/CodeBlock';
 import Avatar from 'components/common/elements/Avatar';
 import GitHubStats from 'components/modules/project/GitHubStats';
 import Contributors from 'components/modules/project/Contributors';
@@ -21,6 +27,8 @@ import Insights from 'components/modules/post/Insights';
 import Icon from 'components/common/elements/Icon';
 
 const Container = ({ project, author, user, setShowComments }) => {
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === 'system' ? systemTheme : theme;
   const [showImageModal, setShowImageModal] = useState(false);
   const [youTubeEmbedID, setYouTubeEmbedID] = useState(
     project?.projectLinkURI ? getVideoId(project?.projectLinkURI) : ''
@@ -192,6 +200,7 @@ const Container = ({ project, author, user, setShowComments }) => {
                 nComments={project?.numberOfComments}
                 setShowComments={setShowComments}
                 showLabel={false}
+                toolTipPosition={'bottom'}
               />
             </div>
           </div>
@@ -225,36 +234,21 @@ const Container = ({ project, author, user, setShowComments }) => {
               </div>
             )} */}
 
-            <div className="prose mt-4 max-w-4xl dark:prose-dark">
-              {/* <h3 className="text-3xl">Project Description</h3> */}
-              {!project?.projectBody.includes('</img>') ? (
-                project?.projectBody && (
-                  <Markdown
-                    options={{
-                      overrides: {
-                        pre: {
-                          component: CodeBlock,
-                        },
-                        a: {
-                          props: { target: '_blank' },
-                        },
-                      },
-                    }}
-                  >
-                    {project?.projectBody}
-                  </Markdown>
-                )
-              ) : (
-                <span className="italic">
-                  The description for this project cannot be displayed as it
-                  contains invalid markdown or HTML.
-                </span>
+            <div className="wmde-markdown-var mt-4 mb-20 max-w-4xl">
+              {project?.projectBody && (
+                <MarkdownPreview
+                  source={project?.projectBody}
+                  remarkPlugins={[rehypeHighlight, { detect: true }]}
+                  wrapperElement={{
+                    'data-color-mode': currentTheme,
+                  }}
+                />
               )}
             </div>
           </div>
           <div className="h-full w-full space-y-8 border-l border-base-200/70 dark:border-base-700">
             {/* Profile Card */}
-            <div className="sticky top-16 space-y-5 py-4 pt-8 pl-12">
+            <div className="sticky top-16 mb-8 space-y-5 py-4 pt-8 pl-12">
               <div className="flex items-center space-x-3">
                 <Avatar
                   href={`/${author?.displayName}`}

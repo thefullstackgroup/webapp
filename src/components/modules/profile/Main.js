@@ -99,7 +99,7 @@ const Main = (props) => {
 
   return (
     <>
-      <div className="mx-auto max-w-screen-lg">
+      <div className="mx-auto mb-20 max-w-screen-lg">
         <Overview
           profile={profile}
           user={props.myProfile}

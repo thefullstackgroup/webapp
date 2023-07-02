@@ -20,7 +20,12 @@ const rewards = [
   { amount: 5.0, numberOfDiamonds: 5 },
 ];
 
-const AwardButton = ({ user, post, showLabel = false }) => {
+const AwardButton = ({
+  user,
+  post,
+  showLabel = false,
+  toolTipPosition = top,
+}) => {
   const [selectAward, setSelectAward] = useState(false);
   const [sendReward, setSendReward] = useState(false);
   const [coinSent, setCoinSent] = useState(false);
@@ -66,7 +71,7 @@ const AwardButton = ({ user, post, showLabel = false }) => {
     <>
       {user?.userId === post?.projectCreator?.userId ? (
         <button className="btn btn-ghost btn-with-icon group relative cursor-not-allowed space-x-1 bg-transparent px-2 text-sm text-base-800 hover:bg-transparent dark:text-base-200">
-          <ToolTip message="Award" />
+          <ToolTip message="Award" position={toolTipPosition} />
           {post.contentTotalDiamonds != null &&
           post.contentTotalDiamonds > 0 ? (
             <Icon name={'FiStar'} className="h-6 w-6 dark:text-yellow-500" />
@@ -87,7 +92,7 @@ const AwardButton = ({ user, post, showLabel = false }) => {
             className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm text-base-800 hover:bg-yellow-500/40 hover:text-yellow-600 dark:text-base-200 dark:hover:bg-yellow-500/40 dark:hover:text-yellow-500"
             onClick={() => setSelectAward(!selectAward)}
           >
-            <ToolTip message="Award" />
+            <ToolTip message="Award" position={toolTipPosition} />
             {post.contentTotalDiamonds != null &&
             post.contentTotalDiamonds > 0 ? (
               <Icon name={'FiStar'} className="h-6 w-6 text-yellow-500" />

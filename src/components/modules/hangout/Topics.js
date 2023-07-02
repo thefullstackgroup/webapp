@@ -21,7 +21,7 @@ const Topics = ({ topic }) => {
             }
           >
             <Icon name="FiHash" />
-            <span className="relative">All</span>
+            <span className="relative">All topics</span>
           </a>
         </Link>
         {topics.map((item, index) => (

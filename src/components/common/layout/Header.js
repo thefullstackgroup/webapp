@@ -58,8 +58,8 @@ const Header = ({ user, headerFixed = false, setShowCreatePost }) => {
         leaveTo="-translate-y-40 opacity-0"
         className={'sticky top-0 z-50 w-full'}
       >
-        <header className="dark:bg-base/90 z-50 border-b border-base-200 bg-white/90 backdrop-blur-sm dark:border-base-700/50 dark:bg-base-900">
-          <div className="mx-auto flex max-w-full items-center justify-between px-8 py-4">
+        <header className="dark:bg-base/90 z-50 border-b border-base-200 bg-white/90 backdrop-blur dark:border-base-700/50 dark:bg-base-900">
+          <div className="mx-auto flex max-w-full items-center justify-between px-8 py-3">
             <div className="flex w-6/12 items-center space-x-4 text-base">
               <Link href="/">
                 <div className="h-8 w-8 cursor-pointer overflow-hidden rounded-lg">
@@ -94,19 +94,19 @@ const Header = ({ user, headerFixed = false, setShowCreatePost }) => {
                     )}
                   </li>
                 ))}
-
-                <li>
-                  <Link href="/signup" passHref>
-                    <a
-                      href="#"
-                      className="nav-bar ml-6 flex w-72 items-center space-x-2 dark:bg-base-700/50 dark:text-base-500"
-                    >
-                      <Icon name="FiSearch" className="h-4 w-4" />
-                      <span>Search</span>
-                    </a>
-                  </Link>
-                </li>
               </ul>
+            </div>
+
+            <div>
+              <Link href="/signup" passHref>
+                <a
+                  href="#"
+                  className="nav-bar ml-6 flex w-96 items-center space-x-2 bg-base-200 text-base-300 dark:bg-base-700/50 dark:text-base-500"
+                >
+                  <Icon name="FiSearch" className="h-4 w-4" />
+                  <span>Search</span>
+                </a>
+              </Link>
             </div>
 
             <div className="flex w-6/12 items-center justify-end space-x-4">

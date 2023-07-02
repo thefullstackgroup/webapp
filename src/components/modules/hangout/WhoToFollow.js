@@ -52,7 +52,7 @@ const WhoToFollow = ({ user }) => {
 
                     <Link href={`/${project.projectCreator.displayName}`}>
                       <div className="">
-                        <p className="text-sm font-medium">
+                        <p className="truncate text-sm font-medium">
                           {project.projectCreator.name}
                         </p>
                         <p className="truncate text-xs font-normal text-base-500 dark:text-base-400">

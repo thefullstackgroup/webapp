@@ -19,6 +19,7 @@ const Actions = (props) => {
             user={props.user}
             post={props.project}
             showLabel={props.showLabel}
+            toolTipPosition={props.toolTipPosition}
           />
 
           <ButtonComment
@@ -26,24 +27,28 @@ const Actions = (props) => {
             post={props.project}
             action={props.setShowComments}
             showLabel={props.showLabel}
+            toolTipPosition={props.toolTipPosition}
           />
 
           <ButtonAward
             user={props.user}
             post={props.project}
             showLabel={props.showLabel}
+            toolTipPosition={props.toolTipPosition}
           />
 
           <ButtonBookmark
             user={props.user}
             project={props.project}
             showLabel={props.showLabel}
+            toolTipPosition={props.toolTipPosition}
           />
           <div>
             <ButtonShare
               url={`${process.env.BASEURL}/u/${props.project?.projectCreator?.displayName}/${props.project?.projectSlug}`}
               message={props.project?.projectName}
               showLabel={props.showLabel}
+              toolTipPosition={props.toolTipPosition}
             />
           </div>
         </div>

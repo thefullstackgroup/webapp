@@ -5,7 +5,12 @@ import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import ToolTip from 'components/common/elements/ToolTip';
 import Icon from '../elements/Icon';
 
-const ButtonVote = ({ user, post, showLabel = false }) => {
+const ButtonVote = ({
+  user,
+  post,
+  showLabel = false,
+  toolTipPosition = top,
+}) => {
   const postId = post._id || post.projectId;
   const [isLiked, setIsLiked] = useState(post.likedByCurrentUser || false);
   const [refreshLikes, setRefreshLikes] = useState(post?.numberOfLikes);
@@ -48,7 +53,7 @@ const ButtonVote = ({ user, post, showLabel = false }) => {
       className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 pl-1 text-sm text-base-800 hover:bg-green-500/20 hover:text-green-600 dark:text-base-100 dark:hover:bg-green-500/20 dark:hover:text-green-400"
       onClick={() => handleVote()}
     >
-      <ToolTip message="Upvote" />
+      <ToolTip message="Upvote" position={toolTipPosition} />
       {isLiked ? (
         <>
           <Icon name={'FiTriangle'} className="h-12 w-12 text-red-500" />

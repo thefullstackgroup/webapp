@@ -145,7 +145,7 @@
   }
   .prose ul,
   .prose-sm ul {
-    list-style: disc;
+    list-style: inherit !important;
   }
   .prose li {
     margin-top: 0em !important;
@@ -194,9 +194,11 @@
   }
   .prose pre code {
     font-size: 1rem;
-    font-family: 'Roboto Mono' !important;
+    /* font-family: 'Roboto Mono' !important; */
   }
-
+  .prose :where(code):not(:where([class~='not-prose'] *)) {
+    font-weight: 500;
+  }
   .prose img {
     /* width: auto !important; */
     margin-top: 8px;
@@ -377,3 +379,64 @@ aside.EmojiPickerReact.epr-main {
 .swiper-button-prev {
   color: white !important;
 }
+
+.wmde-markdown {
+  background-color: transparent !important;
+}
+
+.wmde-markdown ul {
+  list-style: disc !important;
+}
+
+.wmde-markdown ol {
+  list-style: decimal !important;
+}
+
+.wmde-markdown pre {
+  background-color: #eeeded !important;
+}
+
+.dark .wmde-markdown pre {
+  background-color: #161b22 !important;
+}
+
+/* 
+
+.wmde-markdown h1,
+.wmde-markdown h2 {
+  border-color: #e7e7e7 !important;
+}
+
+.dark .wmde-markdown h1,
+.dark .wmde-markdown h2 {
+  border-color: #212121 !important;
+}
+
+.dark .wmde-markdown {
+  background-color: transparent !important;
+  color: #ececec !important;
+}
+
+.wmde-markdown table tr {
+  background-color: transparent !important;
+}
+
+.wmde-markdown pre > code {
+  padding: 4px !important; 
+}
+
+
+
+.wmde-markdown pre .copied {
+  background-color: #ccc !important;
+}
+
+.wmde-markdown pre:hover .copied:hover {
+  background-color: #7ee787 !important;
+}
+
+.dark .wmde-markdown pre .copied {
+  background-color: #30363d !important;
+}
+
+ */

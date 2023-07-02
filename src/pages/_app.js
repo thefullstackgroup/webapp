@@ -1,4 +1,4 @@
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider, useTheme } from 'next-themes';
 import { UserStateProvider } from '../context/user';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -16,6 +16,8 @@ initAuth();
 function App({ Component, pageProps }) {
   initFirebasePresence();
   const router = useRouter();
+  const { systemTheme, theme, setTheme } = useTheme();
+  setTheme('dark');
 
   useEffect(() => {
     const handleRouteChange = (url) => {

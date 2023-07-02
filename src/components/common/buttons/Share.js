@@ -6,7 +6,7 @@ import ToolTip from 'components/common/elements/ToolTip';
 import ModalAlert from '../modals/ModalAlert';
 import Icon from '../elements/Icon';
 
-const ShareButton = ({ url, message, showLabel }) => {
+const ShareButton = ({ url, message, showLabel, toolTipPosition = top }) => {
   const [showShareOptions, setShowShareOptions] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
@@ -16,7 +16,7 @@ const ShareButton = ({ url, message, showLabel }) => {
         className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 pl-1 text-sm text-base-800 hover:bg-base-200 hover:text-base-700 dark:text-base-100 dark:hover:bg-base-700 dark:hover:text-base-100"
         onClick={() => setShowShareOptions(!showShareOptions)}
       >
-        <ToolTip message="Share" />
+        <ToolTip message="Share" position={toolTipPosition} />
         <Icon name="FiShare2" className="h-auto w-6" />
         {showLabel && <span>Share</span>}
       </button>

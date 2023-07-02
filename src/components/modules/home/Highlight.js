@@ -1,7 +1,6 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
-import React, { useEffect, useRef, useState } from 'react';
-import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
+import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
@@ -94,7 +93,7 @@ const Slide = ({ data }) => {
         <div className="h-[400px] w-full bg-base-900">
           <Image
             src={thumb}
-            className="h-full w-full object-cover opacity-70"
+            className="h-full w-full object-cover"
             alt={title}
             width={400}
             height={400}

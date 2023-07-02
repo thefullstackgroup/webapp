@@ -6,19 +6,13 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
   const [isShowing, setIsShowing] = useState(false);
 
   return (
-    <Popover className="relative z-40">
-      <Popover.Button
-        className={
-          'popover-button ' +
-          (isShowing && `border-base-900 dark:border-base-200`)
-        }
-        onMouseEnter={() => setIsShowing(true)}
-        onMouseLeave={() => setIsShowing(false)}
-      >
-        <Icon name={item.icon} className="h-4 w-4" />
-        <span>{stack ? stack.label : item.label}</span>
-
-        {stack ? (
+    <Popover className="relative z-40 flex items-center">
+      {stack && (
+        <div className="mr-2 flex items-center gap-2">
+          <div className="flex items-center gap-2 text-sm">
+            <Icon name={stack.icon} pack={stack.pack || 'Si'} />
+            <span>{stack ? stack.label : item.label}</span>
+          </div>
           <button
             className="btn-sm btn-ghost btn-with-icon w-full text-xs"
             onClick={() => {
@@ -28,14 +22,18 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
           >
             <Icon name="FiX" className="h-4 w-4" />
           </button>
-        ) : (
-          <Icon
-            name={'FiChevronDown'}
-            className={
-              `h-4 w-4 ` + (isShowing && `rotate-180 transform duration-200`)
-            }
-          />
-        )}
+        </div>
+      )}
+
+      <Popover.Button
+        className={
+          'popover-button ' +
+          (isShowing && `border-base-900 dark:border-base-200`)
+        }
+        onMouseEnter={() => setIsShowing(true)}
+        onMouseLeave={() => setIsShowing(false)}
+      >
+        <Icon name="FiLayers" />
       </Popover.Button>
 
       <Transition
@@ -49,34 +47,180 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
         leaveFrom="transform scale-100 opacity-100"
         leaveTo="transform scale-95 opacity-0"
       >
-        <Popover.Panel className="absolute -top-3 -right-2 z-50">
-          <div className="popover">
-            <div className="popover-arrow left-auto right-14"></div>
+        <Popover.Panel className="absolute -top-52 right-16 z-50">
+          <div className="popover space-y-4">
+            <div className="popover-arrow left-auto top-44 -right-[13px] border-l-0 border-r"></div>
 
-            <div className="grid w-max grid-cols-3">
-              {stacks.map((item, index) => (
-                <div className="w-40" key={index}>
-                  <button
-                    className="popover-items"
-                    onClick={() => {
-                      setStack(item);
-                      setIsShowing(false);
-                    }}
-                  >
-                    <div className="flex items-center gap-3">
-                      <Icon name={item.icon} pack={'Si'} className="h-6 w-6" />
-                      <div className="flex flex-col">
-                        <span className="text-black dark:text-white">
-                          {item.label}
-                        </span>
-                        <span className="font-normal text-gray-500 dark:text-gray-400">
-                          {item.desc}
-                        </span>
+            <div>
+              <h4 className="mb-2 pl-3 font-medium uppercase dark:text-base-400">
+                Frontend
+              </h4>
+              <div className="grid w-max grid-cols-4">
+                {stacks.frontend.map((item, index) => (
+                  <div className="w-40" key={index}>
+                    <button
+                      className="popover-items"
+                      onClick={() => {
+                        setStack(item);
+                        setIsShowing(false);
+                      }}
+                    >
+                      <div className="flex items-center gap-3">
+                        <Icon
+                          name={item.icon}
+                          pack={'Si'}
+                          className="h-6 w-6"
+                        />
+                        <div className="flex flex-col">
+                          <span className="text-black dark:text-white">
+                            {item.label}
+                          </span>
+                          <span className="font-normal text-gray-500 dark:text-gray-400">
+                            {item.desc}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </button>
-                </div>
-              ))}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h4 className="mb-2 pl-3 font-medium uppercase dark:text-base-400">
+                Backend
+              </h4>
+              <div className="grid w-max grid-cols-4">
+                {stacks.backend.map((item, index) => (
+                  <div className="w-40" key={index}>
+                    <button
+                      className="popover-items"
+                      onClick={() => {
+                        setStack(item);
+                        setIsShowing(false);
+                      }}
+                    >
+                      <div className="flex items-center gap-3">
+                        <Icon
+                          name={item.icon}
+                          pack={'Si'}
+                          className="h-6 w-6"
+                        />
+                        <div className="flex flex-col">
+                          <span className="text-black dark:text-white">
+                            {item.label}
+                          </span>
+                          <span className="font-normal text-gray-500 dark:text-gray-400">
+                            {item.desc}
+                          </span>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4 className="mb-2 pl-3 font-medium uppercase dark:text-base-400">
+                Core
+              </h4>
+              <div className="grid w-max grid-cols-4">
+                {stacks.core.map((item, index) => (
+                  <div className="w-40" key={index}>
+                    <button
+                      className="popover-items"
+                      onClick={() => {
+                        setStack(item);
+                        setIsShowing(false);
+                      }}
+                    >
+                      <div className="flex items-center gap-3">
+                        <Icon
+                          name={item.icon}
+                          pack={item.pack || 'Si'}
+                          className="h-6 w-6"
+                        />
+                        <div className="flex flex-col">
+                          <span className="text-black dark:text-white">
+                            {item.label}
+                          </span>
+                          <span className="font-normal text-gray-500 dark:text-gray-400">
+                            {item.desc}
+                          </span>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4 className="mb-2 pl-3 font-medium uppercase dark:text-base-400">
+                Infra
+              </h4>
+              <div className="grid w-max grid-cols-4">
+                {stacks.infra.map((item, index) => (
+                  <div className="w-40" key={index}>
+                    <button
+                      className="popover-items"
+                      onClick={() => {
+                        setStack(item);
+                        setIsShowing(false);
+                      }}
+                    >
+                      <div className="flex items-center gap-3">
+                        <Icon
+                          name={item.icon}
+                          pack={'Si'}
+                          className="h-6 w-6"
+                        />
+                        <div className="flex flex-col">
+                          <span className="text-black dark:text-white">
+                            {item.label}
+                          </span>
+                          <span className="font-normal text-gray-500 dark:text-gray-400">
+                            {item.desc}
+                          </span>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4 className="mb-2 pl-3 font-medium uppercase dark:text-base-400">
+                Misc
+              </h4>
+              <div className="grid w-max grid-cols-4">
+                {stacks.misc.map((item, index) => (
+                  <div className="w-40" key={index}>
+                    <button
+                      className="popover-items"
+                      onClick={() => {
+                        setStack(item);
+                        setIsShowing(false);
+                      }}
+                    >
+                      <div className="flex items-center gap-3">
+                        <Icon
+                          name={item.icon}
+                          pack={'Si'}
+                          className="h-6 w-6"
+                        />
+                        <div className="flex flex-col">
+                          <span className="text-black dark:text-white">
+                            {item.label}
+                          </span>
+                          <span className="font-normal text-gray-500 dark:text-gray-400">
+                            {item.desc}
+                          </span>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </Popover.Panel>

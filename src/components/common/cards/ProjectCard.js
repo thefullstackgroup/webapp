@@ -17,7 +17,7 @@ const ProjectCard = ({ project, feature = false, user, type, hideAuthor }) => {
         >
           <div
             className={
-              'w-full cursor-pointer overflow-hidden rounded bg-base-200 dark:bg-base-800 ' +
+              'w-full cursor-pointer overflow-hidden rounded-md bg-base-200 dark:bg-base-800 ' +
               (feature ? 'h-56' : 'h-[240px]')
             }
           >
@@ -25,14 +25,14 @@ const ProjectCard = ({ project, feature = false, user, type, hideAuthor }) => {
               src={project.projectImgURI}
               className="h-full w-full object-cover object-top duration-200 hover:opacity-100 group-hover:scale-105 group-hover:shadow-xl dark:opacity-90"
               alt={project.title}
-              width={300}
-              height={200}
+              width={400}
+              height={400}
               layout="fill"
             />
           </div>
 
           {project?.lookingForCollabs && (
-            <div className="absolute top-2 right-2 rounded-full px-2 py-0.5 text-xs font-medium dark:bg-base-900/40">
+            <div className="absolute bottom-28 right-2 rounded-lg bg-base-200 px-2 py-0.5 text-xs font-medium dark:bg-base-600">
               Collab
             </div>
           )}

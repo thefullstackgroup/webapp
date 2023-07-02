@@ -1,4 +1,8 @@
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
+const removeImports = require('next-remove-imports')({
+  test: /node_modules([\s\S]*?)\.(tsx|ts|js|mjs|jsx)$/,
+  matchImports: '\\.(less|css|scss|sass|styl)$',
+});
 
 module.exports = (phase) => {
   let FIREBASE_KEY_LOCATION;
@@ -7,7 +11,7 @@ module.exports = (phase) => {
   } else {
     FIREBASE_KEY_LOCATION = '../src/pages/api/firebase/service-account.enc';
   }
-  return {
+  return removeImports({
     webpack: (config, { isServer }) => {
       if (!isServer) {
         // don't resolve 'fs' module on the client to prevent this error on build --> Error: Can't resolve 'fs'
@@ -124,5 +128,5 @@ module.exports = (phase) => {
         },
       ];
     },
-  };
+  });
 };

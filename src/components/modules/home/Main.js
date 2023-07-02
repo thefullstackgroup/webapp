@@ -1,16 +1,18 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { IoLogoGithub } from 'react-icons/io5';
-import { FcGoogle } from 'react-icons/fc';
-import ProjectGallery from 'components/modules/explore/ProjectGallery';
-import Discover from 'components/modules/home/Discover';
-import Icon from 'components/common/elements/Icon';
-import DividerShowMore from 'components/common/elements/DividerShowMore';
-import { CategoriesFilter } from './constants';
 import Link from 'next/link';
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
-import Highlight from '../home/Highlight';
+
+import Icon from 'components/common/elements/Icon';
+import DividerShowMore from 'components/common/elements/DividerShowMore';
+import Highlight from 'components/modules/home/Highlight';
+import Discover from 'components/modules/home/Discover';
+import ProjectCarousel from 'components/modules/home/ProjectCarousel';
+
+import { CategoriesFilter } from 'components/modules/explore/constants';
+import { IoLogoGithub } from 'react-icons/io5';
+import { FcGoogle } from 'react-icons/fc';
 
 export const Greeting = ({ name }) => {
   const myDate = new Date();
@@ -146,157 +148,104 @@ const Main = ({ user }) => {
         <Discover user={user} sort="newest" range={90} />
       </div>
 
-      <div className="space-y-4">
-        <h3 className="flex items-center space-x-2">
-          <Icon name={'FiStar'} className="h-6 w-6" />
-          <span>Popular projects this month</span>
-        </h3>
-        <ProjectGallery
-          sort={'mostpopular'}
-          range={90}
-          count={5}
-          cols={5}
-          feature={true}
-        />
-      </div>
-
-      <DividerShowMore
-        label="Browse popular projects"
-        href="/explore/popular"
+      <ProjectCarousel
+        title="Popular projects this month"
+        icon="FiStar"
+        sort={'mostpopular'}
+        range={90}
+        count={15}
+        showMore={'/explore/popular'}
       />
 
-      <div className="space-y-4">
-        <h3 className="flex items-center space-x-2">
-          <Icon name={'FiClock'} className="h-6 w-6" />
-          <span>Recently added</span>
-        </h3>
-
-        <ProjectGallery sort={'newest'} range={30} count={5} cols={5} />
-      </div>
-
-      <DividerShowMore label="Show new projects" href="/explore/new" />
-
-      <div className="space-y-4">
-        <h3 className="flex items-center space-x-2">
-          <Icon name={'FiTool'} className="h-6 w-6" />
-          <span>Projects open to collaboration</span>
-        </h3>
-
-        <ProjectGallery
-          sort={'mostpopular'}
-          category={{
-            label: 'Open to Collaboration',
-            slug: 'opentocollab',
-            term: 'opentocollab',
-            title: 'Projects open to collaboration',
-            desc: 'Discover and connect to developers actively looking for collaborators',
-          }}
-          range={90}
-          count={5}
-          cols={5}
-        />
-      </div>
-
-      <DividerShowMore
-        label="Show more projects"
-        href="/explore/popular/opentocollab"
+      <ProjectCarousel
+        title="Recently added projects"
+        icon="FiClock"
+        sort={'newest'}
+        range={30}
+        count={15}
+        showMore={'/explore/new'}
       />
 
-      <div className="space-y-4">
-        <h3 className="flex items-center space-x-2">
-          <Icon name={'IoDesktopOutline'} pack={'Io'} className="h-6 w-6" />
-          <span>Awesome apps you&apos;ll like</span>
-        </h3>
-        <ProjectGallery
-          sort={'mostpopular'}
-          category={{
-            label: 'Apps',
-            slug: 'apps',
-            term: 'apps',
-            title: 'Full stack apps projects',
-            desc: 'Cool apps built by the community',
-          }}
-          range={90}
-          count={5}
-          cols={5}
-        />
-      </div>
+      <ProjectCarousel
+        title="Projects open to collaboration"
+        icon="FiUserPlus"
+        sort={'mostpopular'}
+        category={{
+          label: 'Open to Collaboration',
+          slug: 'opentocollab',
+          term: 'opentocollab',
+          title: 'Projects open to collaboration',
+          desc: 'Discover and connect to developers actively looking for collaborators',
+        }}
+        range={90}
+        count={15}
+        showMore={'/explore/popular/opentocollab'}
+      />
 
-      <DividerShowMore label="Show more apps" href="/explore/popular/apps" />
+      <ProjectCarousel
+        title="Awesome apps you'll like"
+        icon="IoDesktopOutline"
+        iconPack="Io"
+        sort={'mostpopular'}
+        category={{
+          label: 'Apps',
+          slug: 'apps',
+          term: 'apps',
+          title: 'Full stack apps projects',
+          desc: 'Cool apps built by the community',
+        }}
+        range={90}
+        count={15}
+        showMore={'/explore/popular/apps'}
+      />
 
-      <div className="space-y-4">
-        <h3 className="flex items-center space-x-2">
-          <Icon
-            name={'IoGameControllerOutline'}
-            pack={'Io'}
-            className="h-7 w-7"
-          />
-          <span>Games projects you&apos;ll like</span>
-        </h3>
-        <ProjectGallery
-          sort={'mostpopular'}
-          category={{
-            label: 'Games',
-            slug: 'games',
-            term: 'games',
-            title: 'Games',
-            desc: '',
-          }}
-          range={365}
-          count={5}
-          cols={5}
-        />
-      </div>
+      <ProjectCarousel
+        title="Games projects you'll like"
+        icon="IoGameControllerOutline"
+        iconPack="Io"
+        sort={'mostpopular'}
+        category={{
+          label: 'Games',
+          slug: 'games',
+          term: 'games',
+          title: 'Games',
+          desc: '',
+        }}
+        range={365}
+        count={15}
+        showMore={'/explore/popular/games'}
+      />
 
-      <DividerShowMore label="Show more games" href="/explore/popular/games" />
+      <ProjectCarousel
+        title="Dev tools projects"
+        icon="FiTool"
+        sort={'mostpopular'}
+        category={{
+          label: 'Tools',
+          slug: 'tools',
+          term: 'tools',
+          title: '',
+          desc: '',
+        }}
+        range={90}
+        count={15}
+        showMore={'/explore/popular/tools'}
+      />
 
-      <div className="space-y-4">
-        <h3 className="flex items-center space-x-2">
-          <Icon name={'FiTool'} className="h-6 w-6" />
-          <span>Dev tool projects</span>
-        </h3>
-
-        <ProjectGallery
-          sort={'mostpopular'}
-          category={{
-            label: 'Tools',
-            slug: 'tools',
-            term: 'tools',
-            title: '',
-            desc: '',
-          }}
-          range={90}
-          count={5}
-          cols={5}
-        />
-      </div>
-
-      <DividerShowMore label="Show more tools" href="/explore/popular/tools" />
-
-      <div className="space-y-4">
-        <h3 className="flex items-center space-x-2">
-          <Icon name={'FiGitPullRequest'} className="h-6 w-6" />
-          <span>Open source projects</span>
-        </h3>
-
-        <ProjectGallery
-          sort={'mostpopular'}
-          category={{
-            label: 'Open Source',
-            slug: 'opensource',
-            term: 'open source',
-            title: '',
-            desc: '',
-          }}
-          range={365}
-          count={5}
-          cols={5}
-        />
-      </div>
-
-      <DividerShowMore
-        label="Show more open source"
-        href="/explore/popular/opensource"
+      <ProjectCarousel
+        title="Open Source projects"
+        icon="FiGitPullRequest"
+        sort={'mostpopular'}
+        category={{
+          label: 'Open Source',
+          slug: 'opensource',
+          term: 'open source',
+          title: '',
+          desc: '',
+        }}
+        range={365}
+        count={15}
+        showMore={'/explore/popular/opensource'}
       />
 
       <div className="space-y-4 pb-20">
