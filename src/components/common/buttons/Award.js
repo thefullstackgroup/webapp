@@ -24,7 +24,7 @@ const AwardButton = ({
   user,
   post,
   showLabel = false,
-  toolTipPosition = top,
+  toolTipPosition = 'top',
 }) => {
   const [selectAward, setSelectAward] = useState(false);
   const [sendReward, setSendReward] = useState(false);

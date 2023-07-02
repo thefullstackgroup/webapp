@@ -14,7 +14,7 @@ const Actions = (props) => {
   return (
     <>
       {props.user ? (
-        <div className="flex w-full items-center justify-around space-x-10">
+        <div className="flex w-full items-center justify-around space-x-2">
           <ButtonVote
             user={props.user}
             post={props.project}
@@ -53,7 +53,7 @@ const Actions = (props) => {
           </div>
         </div>
       ) : (
-        <div className="flex items-center justify-around space-x-10">
+        <div className="flex items-center justify-around space-x-2">
           <button
             className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 pl-1 text-sm text-base-800 hover:bg-green-500/20 hover:text-green-600 dark:text-base-100 dark:hover:bg-green-500/20 dark:hover:text-green-400"
             onClick={() => setShowSignUp(!showSignUp)}

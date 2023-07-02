@@ -6,7 +6,7 @@ const Topics = ({ topic }) => {
   return (
     <div className="rounded-md px-6 pt-4">
       <div className="mb-4 flex items-end space-x-2">
-        <span className="pl-4 font-mono text-lg font-medium">Filter</span>
+        <span className="font-mono text-lg font-medium">Filter by</span>
         <Icon name="FiCornerRightDown" />
       </div>
 
@@ -15,10 +15,10 @@ const Topics = ({ topic }) => {
           <a
             href="#"
             className={
-              'btn btn-with-icon btn-pill whitespace-nowrap bg-transparent text-base dark:bg-transparent ' +
+              'btn btn-with-icon btn-pill whitespace-nowrap bg-transparent ' +
               (!topic
-                ? 'text-base-900 dark:text-base-50'
-                : 'text-base-500 dark:text-base-400 dark:hover:text-base-200')
+                ? 'bg-base-300/20 text-base-900 hover:bg-base-300/20 dark:bg-base-800 dark:text-base-50 dark:hover:bg-base-800'
+                : 'text-base-500 dark:bg-transparent dark:text-base-400 dark:hover:text-base-200')
             }
           >
             <Icon name="FiHash" />
@@ -30,10 +30,10 @@ const Topics = ({ topic }) => {
             <a
               href="#"
               className={
-                'btn btn-with-icon btn-pill whitespace-nowrap bg-transparent text-base dark:bg-transparent  ' +
+                'btn btn-with-icon btn-pill whitespace-nowrap bg-transparent  ' +
                 (topic === item.slug
-                  ? 'text-base-900 dark:text-base-50'
-                  : 'text-base-500 dark:text-base-400 dark:hover:text-base-200')
+                  ? 'bg-base-300/20 text-base-900 hover:bg-base-300/20 dark:bg-base-800 dark:text-base-50 dark:hover:bg-base-800'
+                  : 'text-base-500 dark:bg-transparent dark:text-base-400 dark:hover:text-base-200')
               }
             >
               <Icon name={`${item.icon}`} />

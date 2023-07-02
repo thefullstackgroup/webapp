@@ -1,10 +1,10 @@
 import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
 import Meta from 'components/common/partials/Metadata';
-import Layout from 'components/common/layout/LayoutLoggedIn';
+import Layout from 'components/common/layout/Layout';
 import Profile from 'components/modules/teams/TeamProfile';
 
-const TeamProfile = ({ userTFS, teamId }) => {
+const TeamProfile = ({ user, teamId }) => {
   return (
     <>
       <Meta
@@ -12,8 +12,8 @@ const TeamProfile = ({ userTFS, teamId }) => {
         description={`Team profile`}
         keywords=""
       />
-      <Layout user={userTFS}>
-        <Profile slug={teamId} user={userTFS} />
+      <Layout user={user} headerFixed={true}>
+        <Profile slug={teamId} user={user} />
       </Layout>
     </>
   );
@@ -38,7 +38,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
     if (userProfile) {
       return {
         props: {
-          userTFS: userProfile,
+          user: userProfile,
           teamId: params.teamId,
         },
       };

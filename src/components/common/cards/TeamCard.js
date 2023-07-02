@@ -337,7 +337,7 @@ const TeamCard = ({ team }) => {
             </div>
           )}
           {team.status !== 'ACTIVE' && (
-            <button className="group absolute top-0 left-0 z-0 h-full w-full cursor-not-allowed bg-base-900/80 sm:rounded-lg"></button>
+            <button className="group absolute top-0 left-0 z-0 h-full w-full cursor-not-allowed bg-base-900/50 sm:rounded-lg"></button>
           )}
         </button>
       )}

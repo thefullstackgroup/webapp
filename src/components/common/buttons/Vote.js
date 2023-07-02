@@ -9,7 +9,7 @@ const ButtonVote = ({
   user,
   post,
   showLabel = false,
-  toolTipPosition = top,
+  toolTipPosition = 'top',
 }) => {
   const postId = post._id || post.projectId;
   const [isLiked, setIsLiked] = useState(post.likedByCurrentUser || false);

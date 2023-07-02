@@ -47,7 +47,6 @@ const Post = (props) => {
         if (response) return response.json();
       })
       .then((data) => {
-        console.log(data);
         if (data) {
           setPollData(data);
           const result = data.pollOptions.reduce(

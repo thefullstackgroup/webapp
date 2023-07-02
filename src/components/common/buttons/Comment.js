@@ -8,7 +8,7 @@ const ButtonComment = ({
   post,
   action = false,
   showLabel = false,
-  toolTipPosition = top,
+  toolTipPosition = 'top',
 }) => {
   const [show, setShow] = useState(false);
 

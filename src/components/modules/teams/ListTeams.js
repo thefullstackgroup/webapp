@@ -34,16 +34,16 @@ const ListTeams = ({ user }) => {
 
   return (
     <>
-      <div className="space-y-6 mb-20 xl:max-w-3xl 2xl:xl:max-w-full">
+      <div className="mb-20 space-y-6 xl:max-w-3xl 2xl:xl:max-w-full">
         {teamCards}
 
         {!isReachingEnd && (
-          <div className="flex justify-center my-10">
+          <div className="my-10 flex justify-center">
             {isLoadingMore ? (
               <Loader />
             ) : (
               <button
-                className="btn-secondary btn-with-icon px-4"
+                className="btn btn-secondary btn-with-icon px-4"
                 disabled={isLoadingMore || isReachingEnd}
                 onClick={() => {
                   setSize(size + 1);

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { withAuthUserTokenAPI } from '../auth/withAuthUserTokenAPI';
 import initAuth from '../../../firebase/initFirebaseApp';
 
 initAuth();

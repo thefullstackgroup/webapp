@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
 import { useMemo } from 'react';
 import Avatar from 'components/common/elements/Avatar';
+import Icon from 'components/common/elements/Icon';
 
 const WhoToFollow = ({ user }) => {
   let url = `${process.env.BASEURL}/api/projects/get?page=1&size=10&sort=mostpopular&projectType=PROJECT&range=40`;
@@ -29,8 +30,9 @@ const WhoToFollow = ({ user }) => {
   return (
     <div className="rounded-md px-6">
       <ul className="w-full space-y-5 border-0 border-base-200 pl-8 pt-4 dark:border-base-700 dark:bg-transparent">
-        <li>
-          <span className="text-lg font-semibold">Discover and follow</span>
+        <li className="flex items-end space-x-2">
+          <span className="font-mono text-lg font-medium">Who to follow</span>
+          <Icon name="FiCornerRightDown" />
         </li>
         {suggestedUsers &&
           suggestedUsers?.map(

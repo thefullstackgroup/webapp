@@ -1,18 +1,10 @@
-import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
-import { useEffect } from 'react';
+import { withAuthUserTokenSSR } from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
-import useUserProfile from 'hooks/useUserProfile';
 import Meta from 'components/common/partials/Metadata';
-import Layout from 'components/common/layout/LayoutLoggedIn';
+import Layout from 'components/common/layout/Layout';
 import Main from 'components/modules/teams/Main';
 
-const Teams = () => {
-  const [user, getUser] = useUserProfile();
-
-  useEffect(() => {
-    getUser();
-  }, []);
-
+const Teams = ({ user }) => {
   return (
     <>
       <Meta
@@ -20,16 +12,15 @@ const Teams = () => {
         description="The Developer network"
         keywords=""
       />
-      {user && (
-        <Layout user={user}>
-          <Main user={user} />
-        </Layout>
-      )}
+
+      <Layout user={user}>
+        <Main user={user} />
+      </Layout>
     </>
   );
 };
 
-export default withAuthUser()(Teams);
+export default Teams;
 
 export const getServerSideProps = withAuthUserTokenSSR()(
   async ({ AuthUser, req, res, query }) => {
@@ -46,7 +37,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
     }
 
     return {
-      props: {},
+      props: { user: userProfile || null },
     };
   }
 );

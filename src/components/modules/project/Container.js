@@ -190,7 +190,7 @@ const Container = ({ project, author, user, setShowComments }) => {
           </div>
         </div>
 
-        <div className="sticky top-0 z-50 border-b border-t bg-[#F5F5F5] dark:border-base-700 dark:bg-base-900">
+        {/* <div className="sticky top-0 z-50 border-b border-t bg-[#F5F5F5] dark:border-base-700 dark:bg-base-900">
           <div className="mx-auto flex max-w-screen-2xl items-center justify-center px-20 py-3.5">
             <div>
               <Actions
@@ -204,7 +204,7 @@ const Container = ({ project, author, user, setShowComments }) => {
               />
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="relative z-10 mx-auto grid h-full max-w-screen-xl grid-cols-3 items-start gap-20">
           <div className="col-span-2 space-y-6 py-4">
@@ -301,12 +301,25 @@ const Container = ({ project, author, user, setShowComments }) => {
                 )}
               </div> */}
 
-              {user && <GitHubStats project={project} />}
+              <GitHubStats project={project} />
               {user && <Contributors project={project} />}
 
               {/* <Social social={author} /> */}
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="fixed bottom-14 left-0 z-50 w-full">
+        <div className="mx-auto max-w-sm rounded-full border border-base-300 bg-base-100/90 px-6 py-3 dark:border-base-600 dark:bg-base-800/90">
+          <Actions
+            user={user}
+            project={project}
+            isLiked={project?.likedByCurrentUser}
+            nComments={project?.numberOfComments}
+            setShowComments={setShowComments}
+            showLabel={false}
+          />
         </div>
       </div>
 

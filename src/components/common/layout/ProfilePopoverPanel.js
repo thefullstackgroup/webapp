@@ -51,19 +51,19 @@ const ProfilePopoverPanel = ({ user }) => {
 
             <div className="flex items-start">
               {user ? (
-                <div className="w-64 space-y-2">
+                <div className="w-56 space-y-2">
                   <Link href={`/${user.displayName}`}>
-                    <div className="nav-popover cursor-pointer space-x-0">
+                    <div className="nav-popover cursor-pointer items-center -space-x-1">
                       <Avatar
                         image={user.profilePicUrl}
                         name={user.displayName}
-                        dimensions="h-10 w-10"
+                        dimensions="h-9 w-9"
                       />
                       <div className="flex flex-col text-left">
                         <span className="text-base font-semibold">
                           {user.name}
                         </span>
-                        <span className="font-normal text-base-500 dark:text-base-400">
+                        <span className="text-xs font-normal text-base-500 dark:text-base-400">
                           @{user.displayName}
                         </span>
                       </div>
@@ -76,7 +76,7 @@ const ProfilePopoverPanel = ({ user }) => {
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
                       >
-                        <Icon name={'FiGrid'} className="h-6 w-6" />
+                        <Icon name={'FiGrid'} />
                         <span className="text-black dark:text-white">
                           Dashboard
                         </span>
@@ -87,7 +87,7 @@ const ProfilePopoverPanel = ({ user }) => {
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
                       >
-                        <Icon name={'FiShare2'} className="h-6 w-6" />
+                        <Icon name={'FiShare2'} />
                         <span className="text-black dark:text-white">
                           Network
                         </span>
@@ -98,7 +98,7 @@ const ProfilePopoverPanel = ({ user }) => {
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
                       >
-                        <Icon name={'FiMessageSquare'} className="h-6 w-6" />
+                        <Icon name={'FiMessageSquare'} />
                         <span className="text-black dark:text-white">
                           Messages
                         </span>
@@ -109,7 +109,7 @@ const ProfilePopoverPanel = ({ user }) => {
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
                       >
-                        <Icon name={'FiCreditCard'} className="h-6 w-6" />
+                        <Icon name={'FiCreditCard'} />
                         <span className="text-black dark:text-white">
                           Wallet
                         </span>
@@ -120,7 +120,7 @@ const ProfilePopoverPanel = ({ user }) => {
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
                       >
-                        <Icon name={'FiHeart'} className="h-6 w-6" />
+                        <Icon name={'FiHeart'} />
                         <span className="text-black dark:text-white">
                           Invite friends
                         </span>
@@ -131,7 +131,7 @@ const ProfilePopoverPanel = ({ user }) => {
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
                       >
-                        <Icon name={'FiSettings'} className="h-6 w-6" />
+                        <Icon name={'FiSettings'} />
                         <span className="text-black dark:text-white">
                           Account settings
                         </span>

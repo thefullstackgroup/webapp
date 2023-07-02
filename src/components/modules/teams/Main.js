@@ -53,7 +53,7 @@ const Main = ({ user }) => {
                 </div>
                 <div className="hidden items-center space-x-2 text-right sm:block">
                   <button
-                    className="btn-primary"
+                    className="btn btn-primary"
                     onClick={() => setCreateTeamPanel(true)}
                   >
                     Create a team
