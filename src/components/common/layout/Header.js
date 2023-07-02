@@ -26,7 +26,7 @@ const Header = ({ user, headerFixed = false, setShowCreatePost }) => {
 
   const handleSearch = (term) => {
     setQuery(term);
-    router.push(`/search?q=${term}`);
+    router.replace(`/search?q=${term}`);
   };
 
   const controlNavbar = () => {
@@ -114,27 +114,25 @@ const Header = ({ user, headerFixed = false, setShowCreatePost }) => {
             </div>
 
             <div>
-              <Link href="/signup" passHref>
-                <div
-                  href="#"
-                  className="nav-bar ml-6 flex w-[400px] items-center space-x-2 bg-base-200 text-base-300 hover:text-base-300 dark:bg-base-700/50 dark:text-base-500"
-                >
-                  <Icon name="FiSearch" className="h-4 w-4" />
-                  <input
-                    type="text"
-                    name="q"
-                    placeholder="Search showcase..."
-                    className="text-input m-0 border-0 bg-transparent px-0 py-0.5 text-base font-normal"
-                    value={term || ''}
-                    onChange={(e) => setTerm(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        handleSearch(term);
-                      }
-                    }}
-                  />
-                </div>
-              </Link>
+              <div
+                href="#"
+                className="nav-bar ml-6 flex w-[400px] items-center space-x-2 bg-base-200 text-base-300 hover:text-base-500 dark:bg-base-700/50 dark:text-base-500"
+              >
+                <Icon name="FiSearch" className="h-4 w-4 hover:text-base-300" />
+                <input
+                  type="text"
+                  name="q"
+                  placeholder="Search showcase..."
+                  className="text-input m-0 border-0 bg-transparent px-0 py-0.5 text-base font-normal"
+                  value={term || ''}
+                  onChange={(e) => setTerm(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      handleSearch(term);
+                    }
+                  }}
+                />
+              </div>
             </div>
 
             <div className="flex w-6/12 items-center justify-end space-x-4">

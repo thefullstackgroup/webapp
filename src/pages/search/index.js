@@ -1,7 +1,6 @@
-import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
+import { withAuthUserTokenSSR } from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
-import useUserProfile from 'hooks/useUserProfile';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Meta from 'components/common/partials/Metadata';
 import Layout from 'components/common/layout/Layout';
 import Filters from 'components/modules/explore/Filters';
