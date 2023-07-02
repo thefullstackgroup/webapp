@@ -308,7 +308,7 @@ const Container = ({ project, author, user, setShowComments }) => {
       </div>
 
       <div className="fixed bottom-14 left-0 z-50 w-full">
-        <div className="mx-auto max-w-sm rounded-full border border-base-300 bg-base-50 px-6 py-3 shadow-lg dark:border-base-600 dark:bg-base-800/95 dark:shadow-purple-500/20">
+        <div className="mx-auto max-w-sm rounded-full border border-base-300 bg-base-50 px-6 py-2.5 shadow-lg dark:border-base-500 dark:bg-base-700 dark:shadow-purple-800/30">
           <Actions
             user={user}
             project={project}

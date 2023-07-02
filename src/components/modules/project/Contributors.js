@@ -1,7 +1,6 @@
 import useSWR from 'swr';
 import Avatar from 'components/common/elements/Avatar';
 import fetcher from 'utils/fetcher';
-import Icon from 'components/common/elements/Icon';
 
 const Contributors = ({ project }) => {
   const url = `${process.env.BASEURL}/api/projects/project/contributors?projectId=${project._id}`;
