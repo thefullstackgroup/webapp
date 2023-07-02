@@ -1,11 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import Link from 'next/link';
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
 
 import Icon from 'components/common/elements/Icon';
-import DividerShowMore from 'components/common/elements/DividerShowMore';
 import Highlight from 'components/modules/home/Highlight';
 import Discover from 'components/modules/home/Discover';
 import ProjectCarousel from 'components/modules/home/ProjectCarousel';
@@ -25,7 +22,7 @@ export const Greeting = ({ name }) => {
   else if (hours >= 17 && hours <= 24) greet = 'Good evening';
 
   return (
-    <h4 className="hidden text-2xl font-semibold tracking-tight md:block">
+    <h4 className="hidden font-mono text-xl font-medium tracking-tight md:block">
       {greet}, <span className="capitlize">{firstName[0]}</span> 👋
     </h4>
   );
@@ -34,23 +31,6 @@ export const Greeting = ({ name }) => {
 const Main = ({ user }) => {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
   const gitHubProvider = new firebase.auth.GithubAuthProvider();
-
-  const viewsURL = `${process.env.BASEURL}/api/stats/profile/getStats`;
-  const { data: views } = useSWR(viewsURL, fetcher);
-  const numberOfViews = views ? views.totalUniqueProfileViewCount : 0;
-  const numberOfReactions = views ? views.totalNumberOfReactions : 0;
-  const viewsLastWeekURL = `${process.env.BASEURL}/api/stats/profile/getStats?range=7`;
-  const { data: viewsLastWeek } = useSWR(viewsLastWeekURL, fetcher);
-
-  const numberOfViewsLastWeek = viewsLastWeek
-    ? viewsLastWeek.totalUniqueProfileViewCount
-    : 0;
-  const numberOfReactionsLastWeek = viewsLastWeek
-    ? viewsLastWeek.totalNumberOfReactions
-    : 0;
-
-  const viewsDiff = (numberOfViewsLastWeek / numberOfViews) * 100;
-  const reactionsDiff = (numberOfReactionsLastWeek / numberOfReactions) * 100;
 
   const signInWithGoogle = async () => {
     try {
@@ -69,7 +49,7 @@ const Main = ({ user }) => {
   };
 
   return (
-    <div className="min-h-screen space-y-4 px-8 pt-6">
+    <div className="min-h-screen space-y-8 px-8 pt-6">
       {!user && (
         <div className="rounded-lg bg-transparent dark:bg-transparent">
           <div className="mx-auto max-w-4xl py-14 text-center">
@@ -105,42 +85,9 @@ const Main = ({ user }) => {
           </div>
         </div>
       )}
-      {user && (
-        <div className="flex items-center justify-between">
-          <div>
-            <Greeting name={user?.name} />
-          </div>
-          <div className="flex items-end space-x-6">
-            <div className="flex w-full space-x-2 whitespace-nowrap">
-              <span className="text-sm">Views:</span>
 
-              <div className="text-sm font-medium">
-                {numberOfViews}
-
-                {viewsDiff > 0 && (
-                  <span className="pl-1 text-xs text-green-500">
-                    +{viewsDiff.toFixed(1)}%
-                  </span>
-                )}
-              </div>
-            </div>
-            <div className="flex w-full  space-x-2 whitespace-nowrap">
-              <span className="text-sm">Reactions:</span>
-
-              <div className="text-sm font-medium">
-                {numberOfReactions}
-                {reactionsDiff > 0 && (
-                  <span className="pl-1 text-xs text-green-500">
-                    +{reactionsDiff.toFixed(1)}%
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div className="pt-4 pb-10">
+      <div className="pb-10">
+        {user && <Greeting name={user?.name} />}
         <Highlight />
       </div>
 
@@ -150,7 +97,6 @@ const Main = ({ user }) => {
 
       <ProjectCarousel
         title="Popular projects this month"
-        icon="FiStar"
         sort={'mostpopular'}
         range={90}
         count={15}
@@ -159,7 +105,6 @@ const Main = ({ user }) => {
 
       <ProjectCarousel
         title="Recently added projects"
-        icon="FiClock"
         sort={'newest'}
         range={30}
         count={15}
@@ -168,7 +113,6 @@ const Main = ({ user }) => {
 
       <ProjectCarousel
         title="Projects open to collaboration"
-        icon="FiUserPlus"
         sort={'mostpopular'}
         category={{
           label: 'Open to Collaboration',
@@ -184,8 +128,6 @@ const Main = ({ user }) => {
 
       <ProjectCarousel
         title="Awesome apps you'll like"
-        icon="IoDesktopOutline"
-        iconPack="Io"
         sort={'mostpopular'}
         category={{
           label: 'Apps',
@@ -201,8 +143,6 @@ const Main = ({ user }) => {
 
       <ProjectCarousel
         title="Games projects you'll like"
-        icon="IoGameControllerOutline"
-        iconPack="Io"
         sort={'mostpopular'}
         category={{
           label: 'Games',
@@ -218,7 +158,6 @@ const Main = ({ user }) => {
 
       <ProjectCarousel
         title="Dev tools projects"
-        icon="FiTool"
         sort={'mostpopular'}
         category={{
           label: 'Tools',
@@ -234,7 +173,6 @@ const Main = ({ user }) => {
 
       <ProjectCarousel
         title="Open Source projects"
-        icon="FiGitPullRequest"
         sort={'mostpopular'}
         category={{
           label: 'Open Source',
@@ -248,16 +186,19 @@ const Main = ({ user }) => {
         showMore={'/explore/popular/opensource'}
       />
 
-      <div className="space-y-4 pb-20">
-        <h3 className="flex items-center space-x-2">
-          <span>Browse by category</span>
-        </h3>
-        <div className="no-scrollbar mt-6 grid grid-cols-6 gap-4 px-4 md:px-0">
+      <div className="space-y-3 pb-20">
+        <div className="flex items-center space-x-2">
+          <Icon name="FiTerminal" />
+          <h3 className="font-mono text-base font-medium text-base-300 dark:text-base-200">
+            Browse by category
+          </h3>
+        </div>
+        <div className="no-scrollbar mt-6 flex flex-wrap gap-4 px-4 md:px-0">
           {CategoriesFilter.map(
             (item, index) =>
               item.slug !== 'datascience' && (
                 <Link href={`/explore/popular/${item.slug}`} key={index}>
-                  <div className="group flex h-32 w-full cursor-pointer flex-col justify-between rounded-lg border border-transparent bg-base-200/50 p-4 text-left duration-200 hover:border-base-700 hover:bg-base-50 dark:border-base-700 dark:bg-base-900 dark:hover:border-base-100 dark:hover:bg-base-900">
+                  <div className="group flex h-32 w-72 grow cursor-pointer flex-col justify-between rounded-lg border border-base-200 bg-base-100 p-4 text-left duration-200 hover:border-base-700 hover:bg-base-50 dark:border-base-700 dark:bg-base-900 dark:hover:border-base-100 dark:hover:bg-base-900 xl:max-w-[350px]">
                     <div className="flex flex-col">
                       <span className="text-base font-medium text-base-700 group-hover:text-base-700 dark:text-base-200 dark:group-hover:text-base-100">
                         {item.label}

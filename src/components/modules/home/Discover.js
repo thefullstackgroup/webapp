@@ -64,13 +64,13 @@ const Discover = ({ user, count, search }) => {
 
   return (
     <>
-      <div className="w-full">
-        {/* <div className="mb-4 hidden px-4 md:px-0 lg:block">
-          <h3 className="flex items-center space-x-2">
-            <Icon name={'FiStar'} className="h-6 w-6" />
-            <span>Follow trending users</span>
+      <div className="w-full space-y-3">
+        <div className="flex items-end space-x-2">
+          <h3 className="font-mono text-base font-medium text-base-700 dark:text-base-200">
+            Follow trending builders
           </h3>
-        </div> */}
+          <Icon name="FiCornerRightDown" className="h-5 w-5" />
+        </div>
 
         {!data && (
           <div className="no-scrollbar flex items-center gap-4 overflow-y-visible overflow-x-scroll px-4 md:gap-6 md:px-0">

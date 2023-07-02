@@ -5,157 +5,143 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-
-const slides = [
-  {
-    title: 'Spotify Starfield',
-    thumb:
-      'https://image.mux.com/TJ8PUmvhBpkGCHWs1fZnRnLm9GbPHMqNft4VxZprJPM/animated.gif?width=640',
-    author: 'BenjaminGwynn',
-    slug: 'spotify-starfield',
-  },
-  {
-    title: 'GitHub Data Explorer',
-    thumb:
-      'https://image.mux.com/1l3DnE01iWic00BmEPgqS2daXNAnD3SQ8c8O2SLdkowFg/animated.gif?width=640',
-    author: 'OSSInsight',
-    slug: 'data-explorer-use-gpt-generated-sql-to-explore-5-billion-github-data',
-  },
-  {
-    title: 'vicflix',
-    thumb:
-      'https://terrabyte.fra1.digitaloceanspaces.com/galleries/users/3yFHm3h5X1W72A7Alqokz42aOdh2/profile-3yFHm3h5X1W72A7Alqokz42aOdh2-vicflix..jpeg',
-    author: 'VictorGarcia',
-    slug: 'vicflix',
-  },
-  {
-    title: 'Ultimate-Web-Development-Resources',
-    thumb:
-      'https://terrabyte.fra1.digitaloceanspaces.com/galleries/users/Ijmu9smm2RaLwEsxXbr3ezwcMmQ2/profile-Ijmu9smm2RaLwEsxXbr3ezwcMmQ2-cover..png',
-    author: 'DhanushN',
-    slug: 'ultimate-web-development-resources',
-  },
-  {
-    title: 'ChatGPT Messenger',
-    thumb:
-      'https://terrabyte.fra1.digitaloceanspaces.com/galleries/users/uhGQ8FwyfpQ3O9s8OomNveLS8B13/profile-uhGQ8FwyfpQ3O9s8OomNveLS8B13-Screenshot%202023-03-15%20at%2021.45.20..png',
-    animated:
-      'https://terrabyte.fra1.digitaloceanspaces.com/galleries/users/uhGQ8FwyfpQ3O9s8OomNveLS8B13/profile-uhGQ8FwyfpQ3O9s8OomNveLS8B13-Screenshot%202023-03-15%20at%2021.45.20..png',
-    author: 'Robin',
-    slug: 'chatgpt-messenger-2',
-  },
-  {
-    title: 'Spotify Starfield',
-    thumb:
-      'https://image.mux.com/TJ8PUmvhBpkGCHWs1fZnRnLm9GbPHMqNft4VxZprJPM/animated.gif?width=640',
-    author: 'BenjaminGwynn',
-    slug: 'spotify-starfield',
-  },
-  {
-    title: 'GitHub Data Explorer',
-    thumb:
-      'https://image.mux.com/1l3DnE01iWic00BmEPgqS2daXNAnD3SQ8c8O2SLdkowFg/animated.gif?width=640',
-    author: 'OSSInsight',
-    slug: 'data-explorer-use-gpt-generated-sql-to-explore-5-billion-github-data',
-  },
-  {
-    title: 'vicflix',
-    thumb:
-      'https://terrabyte.fra1.digitaloceanspaces.com/galleries/users/3yFHm3h5X1W72A7Alqokz42aOdh2/profile-3yFHm3h5X1W72A7Alqokz42aOdh2-vicflix..jpeg',
-    author: 'VictorGarcia',
-    slug: 'vicflix',
-  },
-  {
-    title: 'Ultimate-Web-Development-Resources',
-    thumb:
-      'https://terrabyte.fra1.digitaloceanspaces.com/galleries/users/Ijmu9smm2RaLwEsxXbr3ezwcMmQ2/profile-Ijmu9smm2RaLwEsxXbr3ezwcMmQ2-cover..png',
-    author: 'DhanushN',
-    slug: 'ultimate-web-development-resources',
-  },
-  {
-    title: 'ChatGPT Messenger',
-    thumb:
-      'https://terrabyte.fra1.digitaloceanspaces.com/galleries/users/uhGQ8FwyfpQ3O9s8OomNveLS8B13/profile-uhGQ8FwyfpQ3O9s8OomNveLS8B13-Screenshot%202023-03-15%20at%2021.45.20..png',
-    animated:
-      'https://terrabyte.fra1.digitaloceanspaces.com/galleries/users/uhGQ8FwyfpQ3O9s8OomNveLS8B13/profile-uhGQ8FwyfpQ3O9s8OomNveLS8B13-Screenshot%202023-03-15%20at%2021.45.20..png',
-    author: 'Robin',
-    slug: 'chatgpt-messenger-2',
-  },
-];
+import fetcher from 'utils/fetcher';
+import useSWR from 'swr';
+import ToolTip from 'components/common/elements/ToolTip';
+import Icon from 'components/common/elements/Icon';
+import Avatar from 'components/common/elements/Avatar';
 
 const Slide = ({ data }) => {
-  const { thumb, animated, title, author, slug } = data;
-
   return (
     <>
-      <div className="flex w-80 flex-1 grow overflow-hidden rounded-2xl bg-base-800">
-        <div className="group relative" />
-        <div className="h-[400px] w-full bg-base-900">
-          <Image
-            src={thumb}
-            className="h-full w-full object-cover"
-            alt={title}
-            width={400}
-            height={400}
-            layout="fill"
-          />
+      <Link
+        href={`/${data?.projectCreator.displayName}/project/${data?.projectSlug}`}
+      >
+        <div className="group relative flex w-full flex-1 grow cursor-pointer overflow-hidden rounded-lg border border-transparent dark:border-base-700">
+          <div className="group relative" />
+          <div className="h-[440px] w-full">
+            <Image
+              src={data?.projectImgURI}
+              className="h-full w-full object-cover"
+              alt={data?.projectName}
+              width={800}
+              height={800}
+              layout="fill"
+            />
+          </div>
+          <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-base-900/80 duration-200 group-hover:to-base-900/80 dark:to-base-900/90">
+            <div className="absolute bottom-4 w-9/12 px-4 text-base-100 duration-200 group-hover:bottom-6">
+              <h3 className="text-xl font-medium tracking-tight">
+                {data.projectName}
+              </h3>
+              <div className="mt-2 flex items-center space-x-2">
+                <Avatar
+                  image={data.projectCreator?.profilePicUrl}
+                  name={data.projectCreator?.displayName}
+                  dimensions="h-5 w-5"
+                />
+                <span className="text-sm dark:text-base-200">
+                  {data?.projectCreator.name}
+                </span>
+              </div>
+            </div>
+            <div className="absolute bottom-8 right-8 h-10 w-10 duration-200 group-hover:right-4">
+              <Icon
+                name="FiArrowRight"
+                className="h-6 w-6 text-white opacity-0 duration-200 group-hover:opacity-100"
+              />
+            </div>
+          </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 };
 
 const Highlight = ({ user }) => {
-  const ref = useRef();
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  let url = `${process.env.BASEURL}/api/projects/get?size=14&sort=mostpopular&projectType=PROJECT&range=100`;
+  const { data } = useSWR(url, fetcher);
 
   return (
-    <Swiper
-      slidesPerView={5}
-      spaceBetween={50}
-      navigation={true}
-      modules={[Navigation]}
-      className="mySwiper"
-    >
-      {slides.map((slide, index) => (
-        <SwiperSlide key={index}>
-          <Slide data={slide} />
-        </SwiperSlide>
-      ))}
-    </Swiper>
-
-    // <div className="relative mt-10 hidden lg:block">
-    //   <ResponsiveContainer
-    //     carouselRef={ref}
-    //     render={(width, carouselRef) => {
-    //       return (
-    //         <StackedCarousel
-    //           ref={carouselRef}
-    //           slideComponent={Slide}
-    //           slideWidth={750}
-    //           carouselWidth={width}
-    //           height={330}
-    //           data={data}
-    //           maxVisibleSlide={5}
-    //           disableSwipe
-    //           customScales={[1, 0.85, 0.7, 0.55]}
-    //           transitionTime={450}
-    //         />
-    //       );
-    //     }}
-    //   />
-    //   <button
-    //     className="absolute top-28 left-0"
-    //     onClick={() => ref.current?.goBack()}
-    //   >
-    //     <IoChevronBack className="h-10 w-auto" />
-    //   </button>
-    //   <button
-    //     className="absolute top-28 right-0"
-    //     onClick={() => ref.current?.goNext()}
-    //   >
-    //     <IoChevronForward className="h-10 w-auto" />
-    //   </button>
-    // </div>
+    <div>
+      <div className="flex items-center justify-end space-x-2 pb-4">
+        <button
+          ref={prevRef}
+          className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
+        >
+          <ToolTip message="Previous" />
+          <Icon name="FiChevronLeft" className="mx-auto h-4 w-4" />
+        </button>
+        <button
+          ref={nextRef}
+          className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
+        >
+          <ToolTip message="Next" />
+          <Icon name="FiChevronRight" className="mx-auto h-4 w-4" />
+        </button>
+      </div>
+      <Swiper
+        slidesPerView={5}
+        spaceBetween={30}
+        modules={[Navigation]}
+        className="pb-10"
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          600: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          992: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          1200: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+          1400: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+          1700: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+          2200: {
+            slidesPerView: 6,
+            spaceBetween: 30,
+          },
+          2600: {
+            slidesPerView: 7,
+            spaceBetween: 30,
+          },
+          3200: {
+            slidesPerView: 8,
+            spaceBetween: 30,
+          },
+        }}
+      >
+        {data?.map((project, index) => (
+          <SwiperSlide key={index}>
+            <Slide data={project} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 

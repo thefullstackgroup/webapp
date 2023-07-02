@@ -5,15 +5,14 @@ import ProjectCard from 'components/common/cards/ProjectCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
-import 'swiper/css/navigation';
 import DividerShowMore from 'components/common/elements/DividerShowMore';
 import Icon from 'components/common/elements/Icon';
+import ToolTip from 'components/common/elements/ToolTip';
+import Link from 'next/link';
 
 const ProjectCarousel = ({
   user,
   title = '',
-  icon = 'FiX',
-  iconPack = 'Fi',
   category = false,
   sort,
   range,
@@ -36,26 +35,35 @@ const ProjectCarousel = ({
   const { data } = useSWR(url, fetcher);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <h3 className="flex items-center space-x-2 text-xl">
-          {/* <Icon name={icon} pack={iconPack} className="h-6 w-6" /> */}
-          <span>{title}</span>
-        </h3>
-
+        <div className="flex items-end space-x-2">
+          <h3 className="font-mono text-base font-medium text-base-700 dark:text-base-200">
+            {title}
+          </h3>
+          <Icon name="FiCornerRightDown" className="h-5 w-5" />
+        </div>
         <div className="flex items-center space-x-2">
           <button
             ref={prevRef}
-            className="flex h-8 w-8 items-center justify-center rounded-xl bg-base-200 duration-200 disabled:text-base-300 dark:bg-base-700 dark:disabled:text-base-500"
+            className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
           >
-            <Icon name="FiChevronLeft" className="mx-auto h-6 w-6" />
+            <ToolTip message="Previous" />
+            <Icon name="FiChevronLeft" className="mx-auto h-4 w-4" />
           </button>
           <button
             ref={nextRef}
-            className="flex h-8 w-8 items-center justify-center rounded-xl bg-base-200 duration-200 disabled:text-base-300 dark:bg-base-700 dark:disabled:text-base-500"
+            className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
           >
-            <Icon name="FiChevronRight" className="mx-auto h-6 w-6" />
+            <ToolTip message="Next" />
+            <Icon name="FiChevronRight" className="mx-auto h-4 w-4" />
           </button>
+          <Link href={showMore} passHref>
+            <a href="#" className="btn btn-secondary group relative flex px-2">
+              <ToolTip message="Show more" />
+              <Icon name="FiChevronsRight" className="mx-auto h-4 w-4" />
+            </a>
+          </Link>
         </div>
       </div>
       <Swiper
@@ -65,6 +73,48 @@ const ProjectCarousel = ({
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
+        }}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          600: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          992: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          1200: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+          1400: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+          1700: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+          2200: {
+            slidesPerView: 6,
+            spaceBetween: 30,
+          },
+          2600: {
+            slidesPerView: 7,
+            spaceBetween: 30,
+          },
+          3200: {
+            slidesPerView: 8,
+            spaceBetween: 30,
+          },
         }}
       >
         {data?.map((project, index) => (
