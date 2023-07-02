@@ -409,6 +409,10 @@ aside.EmojiPickerReact.epr-main {
   width: 100% !important;
 }
 
+.wmde-markdown h1 {
+  font-size: 1.8rem !important;
+}
+
 /* 
 
 .wmde-markdown h1,

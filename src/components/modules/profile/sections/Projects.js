@@ -43,7 +43,7 @@ const Projects = ({ profile, myProfile }) => {
                 key={index}
                 className="col-span-1 hidden h-[240px] space-y-2 md:block"
               >
-                <div className="h-full rounded-md bg-base-800"></div>
+                <div className="h-full rounded-md bg-base-200 dark:bg-base-800"></div>
               </div>
             ))}
           </div>
