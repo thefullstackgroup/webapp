@@ -89,7 +89,7 @@ const ProfilePopoverPanel = ({ user }) => {
                       >
                         <Icon name={'FiShare2'} />
                         <span className="text-black dark:text-white">
-                          Network
+                          Connections
                         </span>
                       </button>
                     </Link>

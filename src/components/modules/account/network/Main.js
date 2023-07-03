@@ -25,9 +25,9 @@ const Main = ({ user }) => {
 
   return (
     <>
-      <div className="mx-auto mt-0 w-full max-w-5xl justify-center lg:mt-6">
+      <div className="mx-auto mt-0 mb-20 w-full max-w-5xl justify-center lg:mt-6">
         <div className="hidden w-full py-4 text-4xl font-medium tracking-tight sm:block">
-          Network
+          Connections
         </div>
 
         <div className="mb-4 overflow-hidden border border-base-200 pb-4 dark:border-base-700 md:rounded-lg">
