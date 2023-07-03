@@ -10,7 +10,7 @@ const handler = async (req, res, AuthUser) => {
   return axios
     .patch(
       `${process.env.API_PROJECTS_URL}/poll/${req.query.postId}/vote/${req.query.optionId}`,
-      {},
+      { body: '' },
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -18,12 +18,13 @@ const handler = async (req, res, AuthUser) => {
       }
     )
     .then((response) => {
+      console.log(response.data);
       res.status(response.status).json(response.data);
     })
     .catch((error) => {
+      console.log(error.response);
       res.status(error.response.status).json(error.response.data);
     });
 };
 
 export default withAuthUserTokenAPI(handler);
-// export default handler;

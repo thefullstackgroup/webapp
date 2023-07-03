@@ -2,11 +2,10 @@ import axios from 'axios';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 const ReactMde = dynamic(() => import('react-mde'), { ssr: false });
-import EmojiPicker from 'emoji-picker-react';
 import * as ga from 'lib/ga';
 import Avatar from 'components/common/elements/Avatar';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
-import { IoHappy, IoLogoMarkdown } from 'react-icons/io5';
+import { IoLogoMarkdown } from 'react-icons/io5';
 import ModalAlert from 'components/common/modals/ModalAlert';
 import SelectEmoji from 'components/common/elements/SelectEmoji';
 import Icon from 'components/common/elements/Icon';
@@ -18,15 +17,6 @@ const NewComment = ({ user, show, setShow, project }) => {
   const [mentionList, setMentionList] = useState([
     { preview: 'Type name', value: 'Type name' },
   ]);
-
-  const onEmojiClick = (e) => {
-    let sym = e.unified.split('-');
-    let codesArray = [];
-    sym.forEach((el) => codesArray.push('0x' + el));
-    let emoji = String.fromCodePoint(...codesArray);
-    setComment(comment + emoji);
-    setShowEmoji(false);
-  };
 
   const MentionListItem = ({
     profilePicUrl,
@@ -147,6 +137,7 @@ const NewComment = ({ user, show, setShow, project }) => {
                       autoFocus: true,
                     },
                   }}
+                  autoFocus
                   toolbarCommands={[]}
                   loadSuggestions={loadSuggestions}
                 />

@@ -12,6 +12,7 @@ import PostDetail from 'components/modules/post/Detail';
 import extractUrls from 'extract-urls';
 import TagPostType from 'components/common/tags/TagPostType';
 import Icon from '../elements/Icon';
+import PollCard from './PollCard';
 
 const sparkCharCount = 250;
 
@@ -23,13 +24,8 @@ const ContentLink = ({ children, ...props }) => (
 
 const Post = (props) => {
   const [showImageModal, setShowImageModal] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [showPost, setShowPost] = useState(false);
   const projectId = props.project.projectId || props.project._id;
-  const [pollData, setPollData] = useState([]);
-  const [pollVotes, setPollVotes] = useState(0);
-  const [pollUserHasVoted, setPollUserHasVoted] = useState(false);
-  const [leadingVote, setLeadingVote] = useState({});
   const shortPostPreview = props.project.projectBodyPreview.substr(
     0,
     sparkCharCount
@@ -40,54 +36,6 @@ const Post = (props) => {
       ? extractUrls(props.project?.projectBodyPreview)
       : null;
   }, []);
-
-  const getPollData = () => {
-    fetch(`${process.env.BASEURL}/api/posts/polls/getPoll?postId=${projectId}`)
-      .then((response) => {
-        if (response) return response.json();
-      })
-      .then((data) => {
-        if (data) {
-          setPollData(data);
-          const result = data.pollOptions.reduce(
-            (total, currentValue) => (total = total + currentValue.voteCount),
-            0
-          );
-          const max = data.pollOptions.reduce(
-            (prev, current) =>
-              prev.voteCount > current.voteCount ? prev : current,
-            0
-          );
-          setPollUserHasVoted(data.currentUserVoted);
-          setLeadingVote(max);
-          setPollVotes(result);
-          setLoading(false);
-        }
-      });
-  };
-
-  const handleCastVote = (optionId) => {
-    fetch(
-      `${process.env.BASEURL}/api/posts/polls/castVote?postId=${pollData?._id}&optionId=${optionId}`
-    )
-      .then((response) => {
-        if (response.status == 304) {
-          setPollUserHasVoted(true);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data) {
-          setPollUserHasVoted(true);
-        }
-      });
-  };
-
-  useEffect(() => {
-    if (props.project.projectType === 'POLL') {
-      getPollData();
-    }
-  }, [pollUserHasVoted]);
 
   if (!props.project) return '...';
 
@@ -218,78 +166,9 @@ const Post = (props) => {
               </div>
 
               {/* DISPLAY POLL HERE */}
-              {!pollUserHasVoted &&
-                props.project.projectType === 'POLL' &&
-                (loading ? (
-                  <div className="flex w-full flex-col items-center justify-center space-y-2 py-20 text-center">
-                    <Icon
-                      name="FiLoader"
-                      className="mb-1 h-5 w-5 animate-spin"
-                    />
-                  </div>
-                ) : (
-                  <div className="flex w-full flex-col space-y-2 px-4">
-                    {pollData?.pollOptions?.map((option, index) => (
-                      <button
-                        className="btn btn-secondary rounded-full py-3"
-                        key={index}
-                        onClick={() => handleCastVote(option.pollOptionId)}
-                      >
-                        {option.optionText}
-                      </button>
-                    ))}
-
-                    <div className="text-sm text-gray-400">
-                      {pollVotes} {pollVotes == 1 ? 'vote' : 'votes'}
-                    </div>
-                  </div>
-                ))}
-
-              {pollUserHasVoted &&
-                props.project.projectType === 'POLL' &&
-                (loading ? (
-                  <div className="flex w-full flex-col items-center justify-center space-y-2 py-20 text-center">
-                    <Icon
-                      name="FiLoader"
-                      className="mb-1 h-5 w-5 animate-spin"
-                    />
-                  </div>
-                ) : (
-                  <div className="mb-2 flex w-full flex-col space-y-2 px-4">
-                    <div className="my-2 space-y-2 pr-4">
-                      {pollData?.pollOptions?.map((option, index) => (
-                        <div className="relative w-full text-sm" key={index}>
-                          <div
-                            className={
-                              (leadingVote?.pollOptionId == option.pollOptionId
-                                ? 'bg-cyan-default dark:bg-cyan-dark'
-                                : 'bg-base-300/50 dark:bg-base-600') +
-                              ' relative h-10 rounded-r-lg py-2 px-4'
-                            }
-                            style={{
-                              width: `${
-                                (option.voteCount / leadingVote.voteCount) * 100
-                              }%`,
-                            }}
-                          ></div>
-                          <div className="absolute top-0.5 flex w-full items-center space-x-4 py-2 px-3">
-                            <span className="font-semibold">{`${(
-                              (option.voteCount / pollVotes) *
-                              100
-                            ).toFixed(0)}%`}</span>
-                            <span className="truncate text-sm">
-                              {option.optionText}
-                            </span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="text-sm text-gray-400">
-                      {pollVotes} votes
-                    </div>
-                  </div>
-                ))}
-              {/* END DISPLAY POLL HERE */}
+              {props.project.projectType === 'POLL' && (
+                <PollCard postId={projectId} />
+              )}
 
               {props.project.projectType !== 'POLL' &&
                 props.project.projectType !== 'ARTICLE' &&
