@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Scratch from 'components/modules/create/Scratch';
 import axios from 'axios';
-import { IoClose } from 'react-icons/io5';
 import Loader from 'components/common/elements/Loader';
 
 const Main = ({ user }) => {
@@ -39,7 +38,7 @@ const Main = ({ user }) => {
 
   return (
     <>
-      <div className="min-h-screen bg-black">
+      <div className="min-h-screen bg-base-50 dark:bg-black">
         <div className="relative mx-auto w-full rounded-md">
           <Scratch user={user} postData={postData} />
         </div>

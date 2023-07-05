@@ -44,7 +44,7 @@ const ProjectCategory = ({ postCategories, setPostCategories }) => {
       <>
         {categorySelected ? (
           <button
-            className="btn btn-pill relative rounded-full bg-base-500 text-sm text-white"
+            className="btn btn-pill relative"
             onClick={() =>
               removeCategory(category.categoryId, category.categoryName)
             }
@@ -57,7 +57,7 @@ const ProjectCategory = ({ postCategories, setPostCategories }) => {
           </button>
         ) : (
           <button
-            className="btn btn-pill relative rounded-full bg-base-600/70 text-sm text-base-200 hover:bg-base-600/50 "
+            className="btn btn-pill relative"
             onClick={() =>
               selectCategory(category.categoryId, category.categoryName)
             }
@@ -73,12 +73,10 @@ const ProjectCategory = ({ postCategories, setPostCategories }) => {
     <div className="space-y-2">
       <label className="label">Categorize your project</label>
 
-      <div className="w-full space-y-6 rounded-md bg-base-600/40 py-4 px-4">
-        <div className="flex flex-wrap gap-2">
-          {categoriesList.map((category) => (
-            <CategoryPill category={category} key={category.categoryId} />
-          ))}
-        </div>
+      <div className="flex flex-wrap gap-2">
+        {categoriesList.map((category) => (
+          <CategoryPill category={category} key={category.categoryId} />
+        ))}
       </div>
     </div>
   );

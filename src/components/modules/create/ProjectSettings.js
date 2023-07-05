@@ -5,6 +5,7 @@ import { IoClose, IoLinkOutline, IoLogoGithub } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
 import { CgSpinner } from 'react-icons/cg';
 import Icon from 'components/common/elements/Icon';
+import ToolTip from 'components/common/elements/ToolTip';
 
 const ProjectSettings = ({
   showSettings,
@@ -45,43 +46,12 @@ const ProjectSettings = ({
   }, [postProjectLink, postGitHubRepo]);
 
   return (
-    <ModalDialog show={showSettings} setShow={setShowSettings}>
+    <ModalDialog
+      show={showSettings}
+      setShow={setShowSettings}
+      title="Project settings"
+    >
       <div className="mx-auto w-full space-y-6 py-6">
-        <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-bold text-base-100">
-            <span>Settings</span>
-          </h3>
-          <div className="flex items-center space-x-2">
-            <button
-              className="btn btn-sm btn-danger"
-              onClick={() => setIsDeletePromptOpen(true)}
-            >
-              Delete project
-            </button>
-
-            {!postIsPublished ? (
-              <button
-                className="btn-secondary"
-                onClick={() => {
-                  handleSavePost(true);
-                  setShowSettings(!showSettings);
-                }}
-              >
-                Save
-              </button>
-            ) : (
-              <button
-                className=""
-                onClick={() => {
-                  setShowSettings(!showSettings);
-                }}
-              >
-                <IoClose className="h-6 w-6 text-base-400 md:h-8 md:w-8" />
-              </button>
-            )}
-          </div>
-        </div>
-
         <div className="space-y-1">
           <label className="label">Project links</label>
           <div>
@@ -92,13 +62,13 @@ const ProjectSettings = ({
               }
             >
               <div className="pointer-events-none absolute inset-y-2 left-4 flex pt-1">
-                <Icon name="FiGithub" className="h-5 w-5 text-base-200" />
+                <Icon name="SiGithub" pack="Si" className="h-5 w-5" />
               </div>
               <input
                 type="text"
                 name="repo"
                 placeholder="Link to GitHub repo"
-                className="text-input mt-0 pl-12"
+                className="text-input mt-0 border-0 pl-12"
                 value={postGitHubRepo}
                 onChange={(e) => setPostGitHubRepo(e.target.value)}
               />
@@ -117,13 +87,13 @@ const ProjectSettings = ({
               }
             >
               <div className="pointer-events-none absolute inset-y-2 left-4 flex pt-1">
-                <Icon name="FiLink" className="h-5 w-5 text-base-200" />
+                <Icon name="FiLink" className="h-5 w-5" />
               </div>
               <input
                 type="text"
                 name="link"
                 placeholder="Link to demo / project"
-                className="text-input mt-0 pl-12"
+                className="text-input mt-0 border-0 pl-12"
                 value={postProjectLink}
                 onChange={(e) => setPostProjectLink(e.target.value)}
               />
@@ -144,7 +114,7 @@ const ProjectSettings = ({
         <div className="space-y-1">
           <div className="mt-6 mb-2 flex flex-1 items-center justify-between pt-2 sm:mb-0">
             <span className="">
-              <span className="font-medium text-base-100">
+              <span className="font-medium">
                 Is your project open to collaboration?
               </span>
             </span>
@@ -179,7 +149,7 @@ const ProjectSettings = ({
           </div>
         </div>
 
-        <div className="pt-4 pb-20 md:pb-0">
+        <div className="flex flex-col justify-center space-y-4 pt-4 pb-20 md:pb-0">
           {publishing ? (
             <button
               disabled
@@ -196,6 +166,12 @@ const ProjectSettings = ({
               <span>Publish</span>
             </button>
           )}
+          <button
+            className="btn btn-sm btn-danger border-0"
+            onClick={() => setIsDeletePromptOpen(true)}
+          >
+            Delete project
+          </button>
         </div>
       </div>
     </ModalDialog>

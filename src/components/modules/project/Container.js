@@ -56,7 +56,7 @@ const Container = ({ project, author, user, setShowComments }) => {
           )}
 
         {project?.projectCreator?.userId === user?.userId && (
-          <div className="mx-auto mt-8 flex max-w-screen-2xl space-x-8 px-20">
+          <div className="mx-auto flex max-w-screen-xl space-x-8 py-4">
             <Link href={`/post?ref=${project?._id}`} passHref>
               <button className="btn btn-secondary">
                 <span>Edit Project</span>

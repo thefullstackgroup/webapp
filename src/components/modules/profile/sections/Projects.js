@@ -2,8 +2,11 @@ import Link from 'next/link';
 import ProjectCard from 'components/common/cards/ProjectCard';
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
+import CreatePostModal from 'components/modules/create/CreatePostModal';
+import { useState } from 'react';
 
 const Projects = ({ profile, myProfile }) => {
+  const [showCreatePost, setShowCreatePost] = useState(false);
   const url = `${process.env.BASEURL}/api/profile/posts/get?userId=${profile.displayName}&projectType=PROJECT&page=0&size=100`;
   const { data } = useSWR(url, fetcher);
   const projects = data ? data.content : null;
@@ -20,11 +23,12 @@ const Projects = ({ profile, myProfile }) => {
             <span>No projects posted yet.</span>
             {profile?.userId === myProfile?.userId && (
               <div className="mt-4 flex justify-center">
-                <Link href="/post">
-                  <button className="btn btn-primary">
-                    Show off a project
-                  </button>
-                </Link>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => setShowCreatePost(!showCreatePost)}
+                >
+                  Show off a project
+                </button>
               </div>
             )}
           </div>
@@ -49,6 +53,12 @@ const Projects = ({ profile, myProfile }) => {
           </div>
         </div>
       )}
+
+      <CreatePostModal
+        user={myProfile}
+        show={showCreatePost}
+        setShow={setShowCreatePost}
+      />
     </>
   );
 };

@@ -5,7 +5,7 @@ import { IoCodeOutline, IoLogoGithub } from 'react-icons/io5';
 import { CgSpinner } from 'react-icons/cg';
 import Loader from 'components/common/elements/Loader';
 
-const ImportFromGitHub = ({ setProjectTypeSelected }) => {
+const ImportFromGitHub = () => {
   const router = useRouter();
   const [myProfile, setMyProfile] = useState(null);
   const [gitHubUsername, setGitHubUsername] = useState(null);
@@ -80,7 +80,6 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
       )
       .then((response) => {
         router.push(`/post?ref=${response.data._id}`);
-        setProjectTypeSelected(true);
         setImportProcessing(false);
       })
       .catch((error) => {
@@ -118,20 +117,18 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
       {myProfile && !gitHubLinked && (
         <div className="space-y-4 py-4">
           <div>
-            <div className="flex">
-              <span className="mt-1 block rounded-l-md bg-base-600/50 py-3 px-3 text-base focus:outline-none">
-                <IoLogoGithub className="h-6 w-6 text-gray-400" />
-              </span>
+            <div className="flex items-center space-x-2 rounded-lg border border-base-300 px-4 py-1 dark:border-base-700">
+              <IoLogoGithub className="h-8 w-8" />
               <input
                 type="text"
                 placeholder="What's your GitHub username?"
                 value={gitHubUsername}
                 onChange={(e) => setGitHubUsername(e.target.value)}
-                className="text-input rounded-l-none"
+                className="text-input border-0"
               />
             </div>
             {invalidGitHubUsername && (
-              <p className="mt-2 text-xs text-red-500">
+              <p className="mt-2 text-xs text-red-500 dark:text-red-500">
                 Sorry, that is an invalid GitHub username, try again.
               </p>
             )}
@@ -139,13 +136,13 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
 
           {gitHubUsername?.trim().length ? (
             <button
-              className="btn-primary w-full text-lg"
+              className="btn btn-primary w-full text-lg"
               onClick={() => handleSubmitGitHubUsername()}
             >
               Next
             </button>
           ) : (
-            <button className="btn-primary w-full text-lg" disabled>
+            <button className="btn btn-primary w-full text-lg" disabled>
               Next
             </button>
           )}
@@ -165,7 +162,7 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
             <div className="py-4">
               <input
                 type="text"
-                placeholder="Choose repo or search..."
+                placeholder="Search for repo..."
                 className="text-input mb-4"
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -174,10 +171,10 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
                   <button
                     key={repo.id}
                     className={
-                      'flex items-start space-x-4 rounded-md border p-4 text-left ' +
+                      'btn btn-secondary flex items-start space-x-4 p-4 text-left ' +
                       (selectedRepo === repo.html_url
                         ? 'border-green-500 bg-green-600/10'
-                        : 'border-base-600 bg-base-700/50 hover:border-base-300')
+                        : '')
                     }
                     onClick={() => setSelectedRepo(repo.html_url)}
                   >
@@ -201,10 +198,10 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
                     <button
                       key={repo.id}
                       className={
-                        'flex items-start space-x-4 rounded-md border p-4 text-left ' +
+                        'btn btn-secondary flex items-start space-x-4 p-4 text-left ' +
                         (selectedRepo === repo.html_url
                           ? 'border-green-500 bg-green-600/10'
-                          : 'border-base-600 bg-base-600/50 hover:bg-base-600/80')
+                          : '')
                       }
                       onClick={() => setSelectedRepo(repo.html_url)}
                     >
@@ -226,20 +223,23 @@ const ImportFromGitHub = ({ setProjectTypeSelected }) => {
               {!importProcessing &&
                 (selectedRepo ? (
                   <button
-                    className="btn-primary mt-4 w-full text-lg"
+                    className="btn btn-primary mt-4 w-full text-lg"
                     onClick={() => handleImportGitHubRepo(selectedRepo)}
                   >
                     Import
                   </button>
                 ) : (
-                  <button className="btn-primary mt-4 w-full text-lg" disabled>
+                  <button
+                    className="btn btn-primary mt-4 w-full text-lg"
+                    disabled
+                  >
                     Import
                   </button>
                 ))}
 
               {importProcessing && selectedRepo && (
                 <button
-                  className="btn-primary btn-with-icon mt-4 w-full justify-center text-lg"
+                  className="btn btn-primary btn-with-icon mt-4 w-full justify-center text-lg"
                   disabled
                 >
                   <CgSpinner className="animate-spin" />
