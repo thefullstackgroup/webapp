@@ -1,13 +1,13 @@
-import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
-import { getUserProfile } from 'pages/api/auth/userProfile';
-import Meta from 'components/common/partials/Metadata';
-import Main from 'components/modules/create/Main';
+import { withAuthUser, withAuthUserTokenSSR } from "next-firebase-auth";
+import { getUserProfile } from "pages/api/auth/userProfile";
+import Meta from "components/common/partials/Metadata";
+import Main from "components/modules/create/Main";
 
 const CreatePost = ({ user }) => {
   return (
     <div>
       <Meta
-        title={`${process.env.brandName} | Create Post`}
+        title={`${process.env.brandName} | Post`}
         description="The developer network"
         keywords=""
       />

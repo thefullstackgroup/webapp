@@ -1,8 +1,8 @@
-import { withAuthUserTokenSSR } from 'next-firebase-auth';
-import { getUserProfile } from 'pages/api/auth/userProfile';
-import Meta from 'components/common/partials/Metadata';
-import Layout from 'components/common/layout/Layout';
-import Main from 'components/modules/teams/Main';
+import { withAuthUserTokenSSR } from "next-firebase-auth";
+import { getUserProfile } from "pages/api/auth/userProfile";
+import Meta from "components/common/partials/Metadata";
+import Layout from "components/common/layout/Layout";
+import Main from "components/modules/teams/Main";
 
 const Teams = ({ user }) => {
   return (
@@ -13,7 +13,7 @@ const Teams = ({ user }) => {
         keywords=""
       />
 
-      <Layout user={user}>
+      <Layout user={user} headerFixed={true}>
         <Main user={user} />
       </Layout>
     </>

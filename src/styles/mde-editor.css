@@ -15,6 +15,12 @@
 }
 
 .mde-header {
+  background-color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+html.dark .mde-header {
   background-color: #111111;
   color: #121212;
   font-weight: bold;
@@ -46,7 +52,7 @@
   padding: 10px 20px 10px 0px;
 }
 
-.mde-header-item button {
+html.dark .mde-header-item button {
   color: white !important;
   background-color: #30363d;
 }
@@ -63,6 +69,13 @@
 
 .mde-header .mde-tabs button {
   text-decoration: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+}
+
+html.dark .mde-header .mde-tabs button {
+  text-decoration: none;
   color: white;
   border: 0;
   border-bottom: 3px solid transparent;
@@ -71,6 +84,12 @@
 
 .mde-header .mde-tabs button.selected {
   text-decoration: none;
+  border: 0;
+  border-bottom: 3px solid #7f5af0;
+}
+
+html.dark .mde-header .mde-tabs button.selected {
+  text-decoration: none;
   color: white;
   border: 0;
   border-bottom: 3px solid #7f5af0;
@@ -78,7 +97,7 @@
 
 .mde-textarea-wrapper textarea.mde-text {
   background-color: transparent;
-  /* padding: 0px; */
+  padding: 0px;
   resize: none;
 }
 

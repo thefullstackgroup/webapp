@@ -1,37 +1,35 @@
-import axios from 'axios';
-import useSWR, { mutate } from 'swr';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import * as ga from 'lib/ga';
-import { IoArrowUndoOutline, IoHeart, IoHeartOutline } from 'react-icons/io5';
-import Markdown from 'markdown-to-jsx';
-import CodeBlock from 'components/common/elements/CodeBlock';
-import CommentReplies from 'components/modules/comments/CommentReplies';
-import ReplyToComment from 'components/modules/comments/ReplyToComment';
-import EditComment from 'components/modules/comments/EditComment';
-import Avatar from 'components/common/elements/Avatar';
-import Loader from 'components/common/elements/Loader';
-import fetcher from 'utils/fetcher';
-import Icon from 'components/common/elements/Icon';
+import axios from "axios";
+import useSWR, { mutate } from "swr";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import * as ga from "lib/ga";
+import { IoArrowUndoOutline, IoHeart, IoHeartOutline } from "react-icons/io5";
+import Markdown from "markdown-to-jsx";
+import CodeBlock from "components/common/elements/CodeBlock";
+import CommentReplies from "components/modules/comments/CommentReplies";
+import ReplyToComment from "components/modules/comments/ReplyToComment";
+import EditComment from "components/modules/comments/EditComment";
+import Avatar from "components/common/elements/Avatar";
+import Loader from "components/common/elements/Loader";
+import fetcher from "utils/fetcher";
+import Icon from "components/common/elements/Icon";
 
 const ListComments = ({ post, user }) => {
   const [postCommentOpen, setPostCommentOpen] = useState(false);
   const [editCommentOpen, setEditCommentOpen] = useState(false);
-  const [commentReply, setCommentReply] = useState('');
+  const [commentReply, setCommentReply] = useState("");
   const [commentReplyTo, setCommentReplyTo] = useState(null);
   const [commentToUpdate, setCommentToUpdate] = useState(null);
   const postId = post._id || post.projectId;
 
   // get post comments
   let url = `${process.env.BASEURL}/api/posts/comments/getComments?postId=${postId}`;
-  if (!user)
-    url = `${process.env.BASEURL}/api/posts/comments/getPublicComments?postId=${postId}`;
   const { data } = useSWR(url, fetcher);
 
   // post reply
   const handlePostReply = async () => {
     if (!commentReply?.trim().length) {
-      console.log('missing comment');
+      console.log("missing comment");
       return;
     }
 
@@ -42,11 +40,11 @@ const ListComments = ({ post, user }) => {
         commentText: commentReply,
       }
     );
-    setCommentReply('');
+    setCommentReply("");
     mutate(url);
     setPostCommentOpen(false);
     ga.event({
-      action: 'user_comment_reply',
+      action: "user_comment_reply",
     });
   };
 
@@ -70,7 +68,7 @@ const ListComments = ({ post, user }) => {
       );
 
       ga.event({
-        action: 'user_comment_unliked',
+        action: "user_comment_unliked",
       });
     } else {
       await axios.post(
@@ -81,7 +79,7 @@ const ListComments = ({ post, user }) => {
       );
 
       ga.event({
-        action: 'user_comment_liked',
+        action: "user_comment_liked",
       });
     }
     mutate(url);
@@ -134,7 +132,7 @@ const ListComments = ({ post, user }) => {
                                 component: CodeBlock,
                               },
                               a: {
-                                props: { target: '_blank' },
+                                props: { target: "_blank" },
                               },
                             },
                             disableParsingRawHTML: true,

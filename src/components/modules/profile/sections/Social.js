@@ -6,8 +6,8 @@ import {
   FaGithub,
   FaLaptop,
   FaDev,
-} from 'react-icons/fa';
-import { SiHashnode, SiMedium } from 'react-icons/si';
+} from "react-icons/fa";
+import { SiHashnode, SiMedium } from "react-icons/si";
 
 const Social = ({ social }) => {
   return (
@@ -15,7 +15,7 @@ const Social = ({ social }) => {
       {social && social?.personalWebsite && (
         <a
           href={social?.personalWebsite}
-          className="group text-base-400 hover:text-white"
+          className="btn btn-ghost group px-0"
           target="_blank"
           rel="noreferrer"
           title="Personal Website"
@@ -27,7 +27,7 @@ const Social = ({ social }) => {
       {social?.bio?.gitHubAccount && (
         <a
           href={`https://github.com/${social?.bio?.gitHubAccount}`}
-          className="group text-base-400 hover:text-white"
+          className="btn btn-ghost group px-0"
           target="_blank"
           rel="noreferrer"
           title="GitHub"
@@ -39,7 +39,7 @@ const Social = ({ social }) => {
       {social?.bio?.devToAccount && (
         <a
           href={`https://dev.to/${social?.bio?.devToAccount}`}
-          className="group text-base-400 hover:text-white"
+          className="btn btn-ghost group px-0"
           target="_blank"
           rel="noreferrer"
           title="Dev"
@@ -51,7 +51,7 @@ const Social = ({ social }) => {
       {social?.bio?.hashNodeAccount && (
         <a
           href={`https://hashnode.com/@${social?.bio?.hashNodeAccount}`}
-          className="group text-base-400 hover:text-white"
+          className="btn btn-ghost group px-0"
           target="_blank"
           rel="noreferrer"
           title="Hashnode"
@@ -63,7 +63,7 @@ const Social = ({ social }) => {
       {social?.bio?.mediumAccount && (
         <a
           href={`https://medium.com/${social?.bio?.mediumAccount}`}
-          className="group text-base-400 hover:text-white"
+          className="btn btn-ghost group px-0"
           target="_blank"
           rel="noreferrer"
           title="Medium"
@@ -75,7 +75,7 @@ const Social = ({ social }) => {
       {social && social?.bio?.linkedInAccount && (
         <a
           href={social?.bio?.linkedInAccount}
-          className="group text-base-400 hover:text-white"
+          className="btn btn-ghost group px-0"
           target="_blank"
           rel="noreferrer"
           title="LinkedIn"
@@ -87,7 +87,7 @@ const Social = ({ social }) => {
       {social?.bio?.facebookAccount && (
         <a
           href={social?.bio?.facebookAccount}
-          className="group text-base-400 hover:text-white"
+          className="btn btn-ghost group px-0"
           target="_blank"
           rel="noreferrer"
           title="Facebook"
@@ -99,7 +99,7 @@ const Social = ({ social }) => {
       {social?.bio?.instagramAccount && (
         <a
           href={social?.bio?.instagramAccount}
-          className="group text-base-400 hover:text-white"
+          className="btn btn-ghost group px-0"
           target="_blank"
           rel="noreferrer"
           title="Instagram"
@@ -111,7 +111,7 @@ const Social = ({ social }) => {
       {social?.bio?.twitterAccount && (
         <a
           href={social?.bio?.twitterAccount}
-          className="group text-base-400 hover:text-white"
+          className="btn btn-ghost group px-0"
           target="_blank"
           rel="noreferrer"
           title="Twitter"

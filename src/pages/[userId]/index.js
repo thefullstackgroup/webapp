@@ -1,19 +1,20 @@
-import { withAuthUserTokenSSR } from 'next-firebase-auth';
-import { getUserProfile } from 'pages/api/auth/userProfile';
-import Meta from 'components/common/partials/Metadata';
-import Layout from 'components/common/layout/Layout';
-import Profile from 'components/modules/profile/Main';
+import { withAuthUserTokenSSR } from "next-firebase-auth";
+import { getUserProfile } from "pages/api/auth/userProfile";
+import Meta from "components/common/partials/Metadata";
+import Layout from "components/common/layout/Layout";
+import Profile from "components/modules/profile/Main";
+import fetcher from "utils/fetcher";
 
-const UserProfile = ({ user, displayName }) => {
+const UserProfile = ({ user, profile }) => {
   return (
     <>
       <Meta
-        title={`${displayName} on ${process.env.brandName}`}
-        description={`${displayName}'s developer story on The Full Stack`}
+        title={`${profile.name} | ${profile.currentTitle} on ${process.env.brandName}`}
+        description={`${profile.name}'s developer story on The Full Stack`}
         keywords=""
       />
       <Layout user={user}>
-        <Profile displayName={displayName} myProfile={user} />
+        <Profile profile={profile} myProfile={user} />
       </Layout>
     </>
   );
@@ -25,6 +26,12 @@ export const getServerSideProps = withAuthUserTokenSSR()(
   async ({ AuthUser, req, res, params }) => {
     const accessToken = await AuthUser.getIdToken();
     const userProfile = await getUserProfile(accessToken, null, req, res);
+
+    const profile = await fetcher(
+      `${process.env.API_PROFILE_URL}/profile/user/${encodeURIComponent(
+        params.userId
+      )}`
+    );
 
     if (userProfile?.redirect) {
       return {
@@ -38,7 +45,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
     return {
       props: {
         user: userProfile || null,
-        displayName: params.userId,
+        profile: profile,
       },
     };
   }

@@ -1,33 +1,29 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
-import axios from 'axios';
-import * as ga from 'lib/ga';
-import dynamic from 'next/dynamic';
-const ReactMde = dynamic(() => import('react-mde'), { ssr: false });
-import validator from 'validator';
-import Markdown from 'markdown-to-jsx';
-import CodeBlock from 'components/common/elements/CodeBlock';
-import GitHubStats from 'components/modules/project/GitHubStats';
-import TagStack from 'components/common/tags/TagStack';
-import UploadProjectVideo from 'components/common/elements/mux/UploadProjectVideo';
-import VideoPlayer from 'components/common/elements/mux/VideoPlayer';
-import Contributors from 'components/modules/project/Contributors';
-import ProjectTechStack from 'components/modules/create/ProjectTechStack';
-import ProjectSettings from 'components/modules/create/ProjectSettings';
-import ValidationErrors from 'components/modules/create/ValidationErrors';
-import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
-import { FaMarkdown } from 'react-icons/fa';
-import { CgSpinner } from 'react-icons/cg';
-import { IoAddOutline, IoLink } from 'react-icons/io5';
-import Icon from 'components/common/elements/Icon';
-import ModalAlert from 'components/common/modals/ModalAlert';
+import React, { useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
+import * as ga from "lib/ga";
+import dynamic from "next/dynamic";
+const ReactMde = dynamic(() => import("react-mde"), { ssr: false });
+import validator from "validator";
+import Markdown from "markdown-to-jsx";
+import CodeBlock from "components/common/elements/CodeBlock";
+import TagStack from "components/common/tags/TagStack";
+import UploadProjectVideo from "components/common/elements/mux/UploadProjectVideo";
+import VideoPlayer from "components/common/elements/mux/VideoPlayer";
+import ProjectTechStack from "components/modules/create/ProjectTechStack";
+import ProjectSettings from "components/modules/create/ProjectSettings";
+import ValidationErrors from "components/modules/create/ValidationErrors";
+import Icon from "components/common/elements/Icon";
+import ModalAlert from "components/common/modals/ModalAlert";
+import Header from "./Header";
+import { sendSlackMessage } from "utils/slack/sendMessageSlack";
 
 const customCommand = {
-  name: 'markdown-link',
-  icon: () => <FaMarkdown className="h-6 w-6" />,
+  name: "markdown-link",
+  icon: () => <Icon name="FaMarkdown" pack="Fa" className="h-6 w-6" />,
   execute: () => {
     window.open(
-      'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'
+      "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
     );
   },
 };
@@ -46,26 +42,27 @@ const sendGAEvent = (eventName) => {
   });
 };
 
-const Scratch = ({ user, setPostType, postData }) => {
+const Form = ({ user, postData }) => {
+  console.log(postData);
   const router = useRouter();
   let postRef = router.query.ref;
   const [windowSize, setWindowSize] = useState(
-    typeof window !== 'undefined' ? getWindowSize() : ''
+    typeof window !== "undefined" ? getWindowSize() : ""
   );
   const [isDiscardPromptOpen, setIsDiscardPromptOpen] = useState(false);
   const [isDeletePromptOpen, setIsDeletePromptOpen] = useState(false);
   const [saving, setSaving] = useState(false);
   const [publishing, setPublishing] = useState(false);
+  const [showTagTechStack, setShowTagTechStack] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showValidationErrors, setShowValidationErrors] = useState(false);
-  const [showTechStackOptions, setShowTechStackOptions] = useState(false);
-  const [selectedTab, setSelectedTab] = useState('write');
+  const [selectedTab, setSelectedTab] = useState("write");
   const [draftSelected, setDraftSelected] = useState(false);
   const [postIsPublished, setPostIsPublished] = useState(
     !postData?.isDraft || false
   );
-  const [postTitle, setPostTitle] = useState(postData?.projectName || '');
-  const [postBody, setPostBody] = useState(postData?.projectBody || '');
+  const [postTitle, setPostTitle] = useState(postData?.projectName || "");
+  const [postBody, setPostBody] = useState(postData?.projectBody || "");
   const [postTechStack, setPostTechStack] = useState(
     postData?.projectTechStack || []
   );
@@ -75,10 +72,10 @@ const Scratch = ({ user, setPostType, postData }) => {
       : {}
   );
   const [postGitHubRepo, setPostGitHubRepo] = useState(
-    postData?.sourceControlLink || ''
+    postData?.sourceControlLink || ""
   );
   const [postProjectLink, setPostProjectLink] = useState(
-    postData?.projectLinkURI || ''
+    postData?.projectLinkURI || ""
   );
   const [postCoverImage, setPostCoverImage] = useState(
     postData?.projectImgURI || null
@@ -95,13 +92,13 @@ const Scratch = ({ user, setPostType, postData }) => {
     return { innerWidth, innerHeight };
   }
 
-  let mdEditorHeight = windowSize.innerHeight - 400;
+  let mdEditorHeight = windowSize.innerHeight - 500;
 
   const handleUploadImage = async (event) => {
     if (event.target.files.length > 0) {
       const formData = new FormData();
-      formData.append('id', user.userId);
-      formData.append('file', event.target.files[0]);
+      formData.append("id", user.userId);
+      formData.append("file", event.target.files[0]);
 
       await axios
         .post(
@@ -149,8 +146,8 @@ const Scratch = ({ user, setPostType, postData }) => {
     }
 
     if (
-      (postProjectLink != '' && !isValidURL(postProjectLink.toString())) ||
-      (postGitHubRepo != '' && !isValidURL(postGitHubRepo.toString()))
+      (postProjectLink != "" && !isValidURL(postProjectLink.toString())) ||
+      (postGitHubRepo != "" && !isValidURL(postGitHubRepo.toString()))
     ) {
       setSaving(false);
       setPublishing(false);
@@ -168,29 +165,29 @@ const Scratch = ({ user, setPostType, postData }) => {
         projectVideoURI: postCoverVideo,
         sourceControlLink: postGitHubRepo.toString(),
         projectLinkURI: postProjectLink.toString(),
-        shareToNetwork: 'true',
+        shareToNetwork: "true",
         lookingForCollabs: postOpenToCollab.toString(),
-        isOpenSource: 'false',
-        isActive: 'true',
-        customInformation: '',
-        isPublicViewable: 'true',
+        isOpenSource: "false",
+        isActive: "true",
+        customInformation: "",
+        isPublicViewable: "true",
         isDraft: isDraft,
-        projectType: 'PROJECT',
+        projectType: "PROJECT",
       },
     };
 
     const result = await axios.post(
-      `${process.env.BASEURL}/api/projects/project/${postRef ? 'edit' : 'add'}`,
+      `${process.env.BASEURL}/api/projects/project/${postRef ? "edit" : "add"}`,
       data
     );
 
     sendSlackMessage(
       `NEW POST PAGE: A PROJECT has been ` +
-        (postRef ? 'updated' : 'posted') +
+        (postRef ? "updated" : "posted") +
         ` by the username '${
           user.displayName
         }'. \n Project is titled '${postTitle}' ${
-          isDraft ? '(set to draft)' : ''
+          isDraft ? "(set to draft)" : ""
         }`
     );
 
@@ -200,7 +197,7 @@ const Scratch = ({ user, setPostType, postData }) => {
       setPostIsPublished(false);
       if (!postRef) router.push(`/post?ref=${result.data?._id}`);
     } else {
-      sendGAEvent('user_created_project');
+      sendGAEvent("user_created_project");
       router.push(`/${user.displayName}`);
     }
   };
@@ -223,58 +220,18 @@ const Scratch = ({ user, setPostType, postData }) => {
 
   return (
     <>
-      {!postIsPublished && (
-        <div className="w-full cursor-pointer bg-red-500 py-3 px-4 text-center font-normal text-base-100 md:px-8">
-          This project is{' '}
-          <span className="font-bold text-base-200">unpublished</span> and not
-          visible to anyone.
-        </div>
-      )}
-      <div className="sticky top-0 z-40 border-b border-base-200 bg-base-50 dark:border-base-700 dark:bg-base-900">
-        <div className="left-0 mx-auto w-full max-w-screen-lg py-2">
-          <div className="sticky top-0 mx-auto flex max-w-screen-2xl items-center justify-end space-x-4">
-            <button
-              className="btn btn-ghost px-0"
-              onClick={() => setShowSettings(true)}
-            >
-              <Icon name="FiSettings" />
-            </button>
-
-            <button
-              className="btn btn-ghost"
-              onClick={() => handleSavePost(true)}
-            >
-              {saving ? (
-                <>
-                  <CgSpinner className="h-4 w-4 animate-spin" />
-                  <span>Saving ...</span>
-                </>
-              ) : (
-                <span>Save draft</span>
-              )}
-            </button>
-
-            <button
-              className="btn btn-primary"
-              onClick={() => setShowSettings(true)}
-            >
-              Publish
-            </button>
-
-            <button
-              className="btn btn-ghost"
-              onClick={() => setIsDiscardPromptOpen(true)}
-            >
-              <Icon name="FiX" className="h-7 w-7" />
-            </button>
-          </div>
-        </div>
-      </div>
+      <Header
+        isPublished={postIsPublished}
+        setShowSettings={setShowSettings}
+        handleSavePost={handleSavePost}
+        setIsDiscardPromptOpen={setIsDiscardPromptOpen}
+        saving={saving}
+      />
 
       <div className="mx-auto max-w-screen-lg space-y-6 px-4 py-8">
-        <div className="mx-auto flex flex-col justify-center space-y-4 text-center">
+        <div className="relative mx-auto flex flex-col justify-center space-y-4 text-center">
           {postCoverImage && !postCoverVideo && (
-            <div className="group relative h-96 overflow-hidden">
+            <div className="group relative h-auto overflow-hidden rounded-md">
               <div className="h-full w-full">
                 <img
                   src={postCoverImage}
@@ -282,12 +239,13 @@ const Scratch = ({ user, setPostType, postData }) => {
                   alt=""
                 />
               </div>
-              <div className="absolute top-0 left-0 hidden h-full w-full items-center justify-center bg-base-900/40 group-hover:flex">
+              <div className="absolute top-2 right-2">
                 <button
                   onClick={() => setPostCoverImage(null)}
-                  className="btn btn-sm btn-secondary"
+                  className="btn btn-sm btn-with-icon btn-secondary"
                 >
-                  Remove image
+                  <Icon name="FiTrash" className="h-4 w-4" />
+                  <span>Remove</span>
                 </button>
               </div>
             </div>
@@ -295,7 +253,7 @@ const Scratch = ({ user, setPostType, postData }) => {
 
           {postCoverVideo && (
             <div className="group relative h-4/5 w-full">
-              <div className="flex h-full w-1/2 overflow-hidden">
+              <div className="flex h-full w-full overflow-hidden rounded-md">
                 <VideoPlayer src={postCoverVideo} poster={postCoverImage} />
               </div>
               <div className="absolute top-0 left-0 hidden h-20 w-full items-center justify-end bg-transparent px-8 group-hover:flex">
@@ -313,107 +271,60 @@ const Scratch = ({ user, setPostType, postData }) => {
           )}
 
           {!postCoverImage && (
-            <div className="space-y-2">
-              <div className="flex items-end space-x-2 text-base-500 dark:text-base-400">
-                <h3 className="font-mono text-base font-medium">
-                  Add a cover image or video
-                </h3>
-                <Icon name="FiCornerRightDown" className="h-5 w-5" />
-              </div>
-              <div className="flex h-[430px] w-full flex-col overflow-hidden">
-                <div className="mx-auto flex h-full w-full items-center justify-center rounded-md border">
-                  <div className="flex items-center space-x-4">
-                    <div>
-                      <label
-                        htmlFor="file-upload"
-                        className="btn btn-secondary btn-with-icon cursor-pointer pl-4"
-                      >
-                        <Icon name="FiCamera" className="h-6 w-6" />
-                        <span>Image</span>
+            <div className="flex items-center space-x-4">
+              <div>
+                <label
+                  htmlFor="file-upload"
+                  className="btn btn-ghost btn-with-icon cursor-pointer whitespace-nowrap px-0"
+                >
+                  <Icon name="FiImage" className="h-6 w-6" />
+                  <span>Add image</span>
 
-                        <input
-                          id="file-upload"
-                          name="image"
-                          type="file"
-                          className="sr-only"
-                          onChange={handleUploadImage}
-                        />
-                      </label>
-                    </div>
-                    <UploadProjectVideo
-                      setCoverImage={setPostCoverImage}
-                      setCoverVideo={setPostCoverVideo}
-                    />
-                  </div>
-                </div>
+                  <input
+                    id="file-upload"
+                    name="image"
+                    type="file"
+                    className="sr-only"
+                    onChange={handleUploadImage}
+                  />
+                </label>
               </div>
+              <UploadProjectVideo
+                setCoverImage={setPostCoverImage}
+                setCoverVideo={setPostCoverVideo}
+              />
             </div>
           )}
         </div>
-        <div>
-          <div className="flex items-end space-x-2 text-base-500 dark:text-base-400">
-            <h3 className="font-mono text-base font-medium">Project title</h3>
-            <Icon name="FiCornerRightDown" className="h-5 w-5" />
-          </div>
-          <div className="flex w-full flex-col justify-between md:flex-row md:items-center md:space-x-4">
-            <div className="w-full">
-              <input
-                className="text-input h-14 bg-transparent p-0 text-2xl font-semibold md:text-4xl"
-                placeholder="Project title ..."
-                value={postTitle}
-                onChange={(e) => setPostTitle(e.target.value)}
-              />
-            </div>
+        <div className="relative">
+          <div className="w-full">
+            <input
+              className="text-input h-14 bg-transparent p-0 text-2xl font-bold md:text-4xl"
+              placeholder="Type your title here ..."
+              value={postTitle}
+              onChange={(e) => setPostTitle(e.target.value)}
+            />
           </div>
         </div>
 
-        <div className="space-y-2">
-          <div className="flex items-end space-x-2 text-base-500 dark:text-base-400">
-            <h3 className="font-mono text-base font-medium">Tag tech stacks</h3>
-            <Icon name="FiCornerRightDown" className="h-5 w-5" />
-          </div>
-
+        <div className="relative space-y-2">
           <div className="no-scrollbar flex flex-wrap items-center gap-1">
             {postTechStack?.map((stack, index) => (
               <button key={index} onClick={() => removeTechStack(stack)}>
                 <TagStack tech={stack} />
               </button>
             ))}
-
-            <div className="relative">
-              <button
-                className="btn btn-primary mb-1"
-                onClick={() => setShowTechStackOptions(true)}
-              >
-                <IoAddOutline />
-              </button>
-              {showTechStackOptions && (
-                <div className="absolute top-10 left-0 z-20 w-80">
-                  <div
-                    className="fixed inset-0"
-                    onClick={() =>
-                      setShowTechStackOptions(!showTechStackOptions)
-                    }
-                  ></div>
-
-                  <ProjectTechStack
-                    postTechStack={postTechStack}
-                    setPostTechStack={setPostTechStack}
-                  />
-                </div>
-              )}
-            </div>
           </div>
+          <button
+            className="btn btn-sm btn-secondary btn-with-icon"
+            onClick={() => setShowTagTechStack(true)}
+          >
+            <Icon name="FiPlus" />
+            <span>Add tags</span>
+          </button>
         </div>
         <div className="space-y-2">
-          <div className="flex items-end space-x-2 pt-6 text-base-500 dark:text-base-400">
-            <h3 className="font-mono text-base font-medium">
-              Project description or README
-            </h3>
-            <Icon name="FiCornerRightDown" className="h-5 w-5" />
-          </div>
-
-          <div className="markdown dark w-full overflow-hidden rounded-md border dark:border-base-700">
+          <div className="markdown dark w-full overflow-hidden rounded-md">
             <ReactMde
               value={postBody}
               onChange={setPostBody}
@@ -421,7 +332,7 @@ const Scratch = ({ user, setPostType, postData }) => {
               onTabChange={setSelectedTab}
               generateMarkdownPreview={(markdown) =>
                 Promise.resolve(
-                  <div className="prose prose-dark mt-4 max-w-full">
+                  <div className="prose mt-4 max-w-full dark:prose-dark">
                     <Markdown
                       options={{
                         overrides: {
@@ -429,7 +340,7 @@ const Scratch = ({ user, setPostType, postData }) => {
                             component: CodeBlock,
                           },
                           a: {
-                            props: { target: '_blank' },
+                            props: { target: "_blank" },
                           },
                         },
                       }}
@@ -443,45 +354,19 @@ const Scratch = ({ user, setPostType, postData }) => {
               maxEditorHeight={10000}
               childProps={{
                 textArea: {
-                  placeholder: 'Describe your project ...',
+                  placeholder: "Describe your project ...",
                 },
               }}
               commands={{
-                'markdown-link': customCommand,
+                "markdown-link": customCommand,
               }}
               toolbarCommands={[
-                ['header', 'bold', 'italic', 'strikethrough'],
-                ['quote', 'code', 'image'],
-                ['unordered-list', 'ordered-list', 'checked-list'],
-                ['markdown-link'],
+                ["header", "bold", "italic", "strikethrough"],
+                ["quote", "code", "image"],
+                ["unordered-list", "ordered-list", "checked-list"],
+                ["markdown-link"],
               ]}
             />
-          </div>
-
-          {postData && <Contributors project={postData} />}
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-end space-x-2 pt-6 text-base-500 dark:text-base-400">
-            <h3 className="font-mono text-base font-medium">Project links</h3>
-            <Icon name="FiCornerRightDown" className="h-5 w-5" />
-          </div>
-          <div className="flex items-center space-x-2 pb-20">
-            {postGitHubRepo !== '' && (
-              <a href={postGitHubRepo} target="_blank" rel="noreferrer">
-                <button className="btn btn-secondary btn-with-icon">
-                  <span>Code</span>
-                  <Icon name="SiGithub" pack="Si" />
-                </button>
-              </a>
-            )}
-            {postProjectLink !== '' && (
-              <a href={postProjectLink} target="_blank" rel="noreferrer">
-                <button className="btn btn-secondary btn-with-icon whitespace-nowrap">
-                  <span className="">View project</span>
-                  <Icon name="FiExternalLink" />
-                </button>
-              </a>
-            )}
           </div>
         </div>
       </div>
@@ -514,6 +399,13 @@ const Scratch = ({ user, setPostType, postData }) => {
         postTechStack={postTechStack}
         postCoverImage={postCoverImage}
         postProjectLink={postProjectLink}
+      />
+
+      <ProjectTechStack
+        show={showTagTechStack}
+        setShow={setShowTagTechStack}
+        postTechStack={postTechStack}
+        setPostTechStack={setPostTechStack}
       />
 
       <ModalAlert show={isDiscardPromptOpen} setShow={setIsDiscardPromptOpen}>
@@ -577,4 +469,4 @@ const Scratch = ({ user, setPostType, postData }) => {
   );
 };
 
-export default Scratch;
+export default Form;

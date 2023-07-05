@@ -1,9 +1,9 @@
-import React, { useMemo } from 'react';
-import useSWRInfinite from 'swr/infinite';
-import ProjectCard from 'components/common/cards/ProjectCard';
-import Loader from 'components/common/elements/Loader';
-import fetcher from 'utils/fetcher';
-import { useRouter } from 'next/router';
+import React, { useMemo } from "react";
+import useSWRInfinite from "swr/infinite";
+import ProjectCard from "components/common/cards/ProjectCard";
+import Loader from "components/common/elements/Loader";
+import fetcher from "utils/fetcher";
+import { useRouter } from "next/router";
 
 let PAGE_SIZE = 40;
 
@@ -13,19 +13,18 @@ const ProjectGallery = ({
   category = false,
   sort,
   range,
-  following,
   query,
   count = 40,
   feature = false,
 }) => {
   const router = useRouter();
-  console.log(router);
+
   if (count !== null) PAGE_SIZE = count;
 
   let url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&range=${range}`;
 
   if (category) {
-    if (category?.slug === 'opentocollab') {
+    if (category?.slug === "opentocollab") {
       url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&lookingForCollabs=true`;
     } else {
       url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&category=${category.term}`;
@@ -36,7 +35,7 @@ const ProjectGallery = ({
     url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${stack?.terms}`;
   }
 
-  if (router.pathname === '/search' && query !== '') {
+  if (router.pathname === "/search" && query !== "") {
     url = `${process.env.BASEURL}/api/search/projects?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${query}`;
   }
 
@@ -49,7 +48,7 @@ const ProjectGallery = ({
   const isLoadingInitialData = !data && !error;
   const isLoadingMore =
     isLoadingInitialData ||
-    (size > 0 && data && typeof data[size - 1] === 'undefined');
+    (size > 0 && data && typeof data[size - 1] === "undefined");
   const isEmpty = data?.[0]?.length === 0;
   const isReachingEnd =
     isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE);
@@ -67,7 +66,7 @@ const ProjectGallery = ({
     <>
       <div>
         {posts && !isEmpty && (
-          <div className={'relative flex flex-wrap gap-8'}>{projectCards}</div>
+          <div className={"relative flex flex-wrap gap-8"}>{projectCards}</div>
         )}
 
         {isEmpty && (
