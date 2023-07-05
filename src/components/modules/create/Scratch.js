@@ -217,6 +217,7 @@ const Scratch = ({ user, setPostType, postData }) => {
       `${process.env.BASEURL}/api/projects/project/delete`,
       data
     );
+    setIsDeletePromptOpen(false);
     router.push(`/${user.displayName}`);
   };
 
@@ -545,19 +546,16 @@ const Scratch = ({ user, setPostType, postData }) => {
       </ModalAlert>
 
       <ModalAlert show={isDeletePromptOpen} setShow={setIsDeletePromptOpen}>
-        <div className="py-8">
-          <div className="justify-center sm:flex sm:items-start">
-            <div className="mt-3 text-center sm:mt-0">
-              <h3 className="text-xl font-bold text-base-200">Delete post?</h3>
-              <div className="mt-2">
-                <p className="text-sm text-base-300">
-                  Are you sure you want to delete this post? This action cannot
-                  be undone.
-                </p>
-              </div>
-            </div>
+        <div className="space-y-4 py-8">
+          <div className="space-y-2 text-center">
+            <h3 className="text-xl font-bold">Delete post?</h3>
+            <p className="text-sm">
+              Are you sure you want to delete this project? This action cannot
+              be undone.
+            </p>
           </div>
-          <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
+
+          <div className="flex justify-center space-x-2">
             <button
               type="button"
               className="btn btn-danger"
