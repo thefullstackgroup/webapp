@@ -1,7 +1,7 @@
-import { useTheme } from "next-themes";
-import { CgSpinner } from "react-icons/cg";
-import Icon from "components/common/elements/Icon";
-import Image from "next/future/image";
+import { useTheme } from 'next-themes';
+import { CgSpinner } from 'react-icons/cg';
+import Icon from 'components/common/elements/Icon';
+import Image from 'next/future/image';
 
 const Header = ({
   isPublished,
@@ -11,13 +11,13 @@ const Header = ({
   saving,
 }) => {
   const { systemTheme, theme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
+  const currentTheme = theme === 'system' ? systemTheme : theme;
 
   return (
     <>
       {!isPublished && (
         <div className="w-full cursor-pointer bg-red-500 py-3 px-4 text-center font-normal text-base-100 md:px-8">
-          This project is{" "}
+          This project is{' '}
           <span className="font-bold text-base-200">unpublished</span> and not
           visible to anyone.
         </div>
@@ -28,9 +28,9 @@ const Header = ({
             <div className="mt-1 h-9 w-9 cursor-pointer overflow-hidden rounded-sm">
               <Image
                 src={
-                  currentTheme === "dark"
-                    ? "/assets/icons/thefullstack-dark.webp"
-                    : "/assets/icons/thefullstack-light.webp"
+                  currentTheme === 'dark'
+                    ? '/assets/icons/thefullstack-dark.webp'
+                    : '/assets/icons/thefullstack-light.webp'
                 }
                 className="object-center"
                 alt="The Full Stack"

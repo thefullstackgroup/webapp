@@ -1,11 +1,9 @@
 import validator from 'validator';
 import ProjectCategory from 'components/modules/create/ProjectCategory';
 import ModalDialog from 'components/common/modals/ModalDialog';
-import { IoClose, IoLinkOutline, IoLogoGithub } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
 import { CgSpinner } from 'react-icons/cg';
 import Icon from 'components/common/elements/Icon';
-import ToolTip from 'components/common/elements/ToolTip';
 
 const ProjectSettings = ({
   showSettings,
@@ -18,10 +16,8 @@ const ProjectSettings = ({
   setPostProjectLink,
   postOpenToCollab,
   setPostOpenToCollab,
-  handleSavePost,
   handlePublishPost,
   setIsDeletePromptOpen,
-  postIsPublished,
   publishing,
 }) => {
   const [projectLinkError, setProjectLinkError] = useState(false);

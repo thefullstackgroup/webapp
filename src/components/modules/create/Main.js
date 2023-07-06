@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
-import fetcher from "utils/fetcher";
-import useSWR from "swr";
-import Form from "components/modules/create/Form";
+import { useRouter } from 'next/router';
+import fetcher from 'utils/fetcher';
+import useSWR from 'swr';
+import Form from 'components/modules/create/Form';
 
 const Main = ({ user }) => {
   const router = useRouter();

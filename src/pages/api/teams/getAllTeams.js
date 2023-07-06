@@ -1,11 +1,11 @@
-import axios from "axios";
-import initAuth from "../../../firebase/initFirebaseApp";
+import axios from 'axios';
+import initAuth from '../../../firebase/initFirebaseApp';
 
 initAuth();
 
 const handler = async (req, res, AuthUser) => {
   const accessToken = await AuthUser?.getIdToken();
-  const requestURL = `${process.env.API_TEAMS_URL}/teams/all?page=${req.query.page}&size=30`;
+  const requestURL = `${process.env.API_TEAMS_URL}/teams/all?page=${req.query.page}`;
 
   if (accessToken) {
     return axios

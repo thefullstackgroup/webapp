@@ -1,11 +1,9 @@
 import ModalAlert from 'components/common/modals/ModalAlert';
-import { IoClose } from 'react-icons/io5';
 
 const ValidationErrors = ({
   showValidationErrors,
   setShowValidationErrors,
   draftSelected,
-  setDraftSelected,
   postTitle,
   postBody,
   postTechStack,
