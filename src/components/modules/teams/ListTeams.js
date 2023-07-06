@@ -1,8 +1,8 @@
-import { useMemo, useState } from "react";
-import useSWRInfinite from "swr/infinite";
-import TeamCard from "components/common/cards/TeamCard";
-import Loader from "components/common/elements/Loader";
-import fetcher from "utils/fetcher";
+import { useMemo, useState } from 'react';
+import useSWRInfinite from 'swr/infinite';
+import TeamCard from 'components/common/cards/TeamCard';
+import Loader from 'components/common/elements/Loader';
+import fetcher from 'utils/fetcher';
 
 const ListTeams = () => {
   const [page, setPage] = useState(0);
@@ -20,7 +20,7 @@ const ListTeams = () => {
   const isLoadingInitialData = !data && !error;
   const isLoadingMore =
     isLoadingInitialData ||
-    (size > 0 && data && typeof data[size - 1] === "undefined");
+    (size > 0 && data && typeof data[size - 1] === 'undefined');
   const isEmpty = teams.length == 0;
   const isReachingEnd =
     isEmpty || data[size - 1]?.pagination?.totalPages == size;
@@ -34,7 +34,7 @@ const ListTeams = () => {
 
   return (
     <div className="mb-20 space-y-6 xl:max-w-3xl 2xl:xl:max-w-full">
-      <div className="grid grid-cols-4">{teamCards}</div>
+      <div className="grid grid-cols-3 gap-6">{teamCards}</div>
 
       {!isReachingEnd && (
         <div className="my-10 flex justify-center">
