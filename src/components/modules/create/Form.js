@@ -1,29 +1,34 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
-import axios from "axios";
-import * as ga from "lib/ga";
-import dynamic from "next/dynamic";
-const ReactMde = dynamic(() => import("react-mde"), { ssr: false });
-import validator from "validator";
-import Markdown from "markdown-to-jsx";
-import CodeBlock from "components/common/elements/CodeBlock";
-import TagStack from "components/common/tags/TagStack";
-import UploadProjectVideo from "components/common/elements/mux/UploadProjectVideo";
-import VideoPlayer from "components/common/elements/mux/VideoPlayer";
-import ProjectTechStack from "components/modules/create/ProjectTechStack";
-import ProjectSettings from "components/modules/create/ProjectSettings";
-import ValidationErrors from "components/modules/create/ValidationErrors";
-import Icon from "components/common/elements/Icon";
-import ModalAlert from "components/common/modals/ModalAlert";
-import Header from "./Header";
-import { sendSlackMessage } from "utils/slack/sendMessageSlack";
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import * as ga from 'lib/ga';
+import dynamic from 'next/dynamic';
+const ReactMde = dynamic(() => import('react-mde'), { ssr: false });
+import '@uiw/react-markdown-preview/markdown.css';
+const MarkdownPreview = dynamic(
+  () => import('@uiw/react-markdown-preview').then((mod) => mod.default),
+  { ssr: false }
+);
+import { useTheme } from 'next-themes';
+import rehypeHighlight from 'rehype-highlight';
+import validator from 'validator';
+import TagStack from 'components/common/tags/TagStack';
+import UploadProjectVideo from 'components/common/elements/mux/UploadProjectVideo';
+import VideoPlayer from 'components/common/elements/mux/VideoPlayer';
+import ProjectTechStack from 'components/modules/create/ProjectTechStack';
+import ProjectSettings from 'components/modules/create/ProjectSettings';
+import ValidationErrors from 'components/modules/create/ValidationErrors';
+import Icon from 'components/common/elements/Icon';
+import ModalAlert from 'components/common/modals/ModalAlert';
+import Header from './Header';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 
 const customCommand = {
-  name: "markdown-link",
+  name: 'markdown-link',
   icon: () => <Icon name="FaMarkdown" pack="Fa" className="h-6 w-6" />,
   execute: () => {
     window.open(
-      "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
+      'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'
     );
   },
 };
@@ -42,12 +47,27 @@ const sendGAEvent = (eventName) => {
   });
 };
 
+const Preview = ({ markdown, currentTheme }) => {
+  return (
+    <div className="mt-4 max-w-full">
+      <MarkdownPreview
+        source={markdown}
+        remarkPlugins={[rehypeHighlight, { detect: true }]}
+        wrapperElement={{
+          'data-color-mode': currentTheme,
+        }}
+      />
+    </div>
+  );
+};
+
 const Form = ({ user, postData }) => {
-  console.log(postData);
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === 'system' ? systemTheme : theme;
   const router = useRouter();
   let postRef = router.query.ref;
   const [windowSize, setWindowSize] = useState(
-    typeof window !== "undefined" ? getWindowSize() : ""
+    typeof window !== 'undefined' ? getWindowSize() : ''
   );
   const [isDiscardPromptOpen, setIsDiscardPromptOpen] = useState(false);
   const [isDeletePromptOpen, setIsDeletePromptOpen] = useState(false);
@@ -56,13 +76,13 @@ const Form = ({ user, postData }) => {
   const [showTagTechStack, setShowTagTechStack] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showValidationErrors, setShowValidationErrors] = useState(false);
-  const [selectedTab, setSelectedTab] = useState("write");
+  const [selectedTab, setSelectedTab] = useState('write');
   const [draftSelected, setDraftSelected] = useState(false);
   const [postIsPublished, setPostIsPublished] = useState(
     !postData?.isDraft || false
   );
-  const [postTitle, setPostTitle] = useState(postData?.projectName || "");
-  const [postBody, setPostBody] = useState(postData?.projectBody || "");
+  const [postTitle, setPostTitle] = useState(postData?.projectName || '');
+  const [postBody, setPostBody] = useState(postData?.projectBody || '');
   const [postTechStack, setPostTechStack] = useState(
     postData?.projectTechStack || []
   );
@@ -72,10 +92,10 @@ const Form = ({ user, postData }) => {
       : {}
   );
   const [postGitHubRepo, setPostGitHubRepo] = useState(
-    postData?.sourceControlLink || ""
+    postData?.sourceControlLink || ''
   );
   const [postProjectLink, setPostProjectLink] = useState(
-    postData?.projectLinkURI || ""
+    postData?.projectLinkURI || ''
   );
   const [postCoverImage, setPostCoverImage] = useState(
     postData?.projectImgURI || null
@@ -97,8 +117,8 @@ const Form = ({ user, postData }) => {
   const handleUploadImage = async (event) => {
     if (event.target.files.length > 0) {
       const formData = new FormData();
-      formData.append("id", user.userId);
-      formData.append("file", event.target.files[0]);
+      formData.append('id', user.userId);
+      formData.append('file', event.target.files[0]);
 
       await axios
         .post(
@@ -146,8 +166,8 @@ const Form = ({ user, postData }) => {
     }
 
     if (
-      (postProjectLink != "" && !isValidURL(postProjectLink.toString())) ||
-      (postGitHubRepo != "" && !isValidURL(postGitHubRepo.toString()))
+      (postProjectLink != '' && !isValidURL(postProjectLink.toString())) ||
+      (postGitHubRepo != '' && !isValidURL(postGitHubRepo.toString()))
     ) {
       setSaving(false);
       setPublishing(false);
@@ -165,29 +185,29 @@ const Form = ({ user, postData }) => {
         projectVideoURI: postCoverVideo,
         sourceControlLink: postGitHubRepo.toString(),
         projectLinkURI: postProjectLink.toString(),
-        shareToNetwork: "true",
+        shareToNetwork: 'true',
         lookingForCollabs: postOpenToCollab.toString(),
-        isOpenSource: "false",
-        isActive: "true",
-        customInformation: "",
-        isPublicViewable: "true",
+        isOpenSource: 'false',
+        isActive: 'true',
+        customInformation: '',
+        isPublicViewable: 'true',
         isDraft: isDraft,
-        projectType: "PROJECT",
+        projectType: 'PROJECT',
       },
     };
 
     const result = await axios.post(
-      `${process.env.BASEURL}/api/projects/project/${postRef ? "edit" : "add"}`,
+      `${process.env.BASEURL}/api/projects/project/${postRef ? 'edit' : 'add'}`,
       data
     );
 
     sendSlackMessage(
       `NEW POST PAGE: A PROJECT has been ` +
-        (postRef ? "updated" : "posted") +
+        (postRef ? 'updated' : 'posted') +
         ` by the username '${
           user.displayName
         }'. \n Project is titled '${postTitle}' ${
-          isDraft ? "(set to draft)" : ""
+          isDraft ? '(set to draft)' : ''
         }`
     );
 
@@ -197,7 +217,7 @@ const Form = ({ user, postData }) => {
       setPostIsPublished(false);
       if (!postRef) router.push(`/post?ref=${result.data?._id}`);
     } else {
-      sendGAEvent("user_created_project");
+      sendGAEvent('user_created_project');
       router.push(`/${user.displayName}`);
     }
   };
@@ -324,7 +344,7 @@ const Form = ({ user, postData }) => {
           </button>
         </div>
         <div className="space-y-2">
-          <div className="markdown dark w-full overflow-hidden rounded-md">
+          <div className="markdown w-full overflow-hidden rounded-md">
             <ReactMde
               value={postBody}
               onChange={setPostBody}
@@ -332,39 +352,24 @@ const Form = ({ user, postData }) => {
               onTabChange={setSelectedTab}
               generateMarkdownPreview={(markdown) =>
                 Promise.resolve(
-                  <div className="prose mt-4 max-w-full dark:prose-dark">
-                    <Markdown
-                      options={{
-                        overrides: {
-                          pre: {
-                            component: CodeBlock,
-                          },
-                          a: {
-                            props: { target: "_blank" },
-                          },
-                        },
-                      }}
-                    >
-                      {markdown}
-                    </Markdown>
-                  </div>
+                  <Preview markdown={markdown} currentTheme={currentTheme} />
                 )
               }
               minEditorHeight={mdEditorHeight}
               maxEditorHeight={10000}
               childProps={{
                 textArea: {
-                  placeholder: "Describe your project ...",
+                  placeholder: 'Describe your project ...',
                 },
               }}
               commands={{
-                "markdown-link": customCommand,
+                'markdown-link': customCommand,
               }}
               toolbarCommands={[
-                ["header", "bold", "italic", "strikethrough"],
-                ["quote", "code", "image"],
-                ["unordered-list", "ordered-list", "checked-list"],
-                ["markdown-link"],
+                ['header', 'bold', 'italic', 'strikethrough'],
+                ['quote', 'code', 'image'],
+                ['unordered-list', 'ordered-list', 'checked-list'],
+                ['markdown-link'],
               ]}
             />
           </div>
@@ -413,8 +418,10 @@ const Form = ({ user, postData }) => {
           <div className="justify-center sm:flex sm:items-start">
             <div className="mt-3 text-center sm:mt-0">
               <h3 className="text-xl font-bold">Quit?</h3>
-              <div className="mt-2">
-                <p className="text-sm">Are you sure you want to quit?</p>
+              <div className="mt-2 max-w-xs">
+                <p className="text-sm">
+                  You may loose unsaved changes. Are you sure you want to quit?
+                </p>
               </div>
             </div>
           </div>

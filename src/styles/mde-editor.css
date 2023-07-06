@@ -101,7 +101,7 @@ html.dark .mde-header .mde-tabs button.selected {
   resize: none;
 }
 
-.mde-textarea-wrapper textarea.mde-text::placeholder {
+html.dark .mde-textarea-wrapper textarea.mde-text::placeholder {
   color: #cccccc;
 }
 

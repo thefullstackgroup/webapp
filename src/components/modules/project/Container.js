@@ -1,37 +1,37 @@
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/future/image";
-import dynamic from "next/dynamic";
-import "@uiw/react-markdown-preview/markdown.css";
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/future/image';
+import dynamic from 'next/dynamic';
+import '@uiw/react-markdown-preview/markdown.css';
 const MarkdownPreview = dynamic(
-  () => import("@uiw/react-markdown-preview").then((mod) => mod.default),
+  () => import('@uiw/react-markdown-preview').then((mod) => mod.default),
   { ssr: false }
 );
-import rehypeHighlight from "rehype-highlight";
-import { useTheme } from "next-themes";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import getVideoId from "get-video-id";
-import VideoPlayer from "components/common/elements/mux/VideoPlayer";
-import TagStack from "components/common/tags/TagStack";
-import Avatar from "components/common/elements/Avatar";
-import GitHubStats from "components/modules/project/GitHubStats";
-import Contributors from "components/modules/project/Contributors";
-import { BiExpandAlt } from "react-icons/bi";
-import { IoCloseOutline, IoLogoGithub } from "react-icons/io5";
-import Moment from "moment";
-import Loader from "components/common/elements/Loader";
-import ToolTip from "components/common/elements/ToolTip";
-import Actions from "components/modules/project/Actions";
-import FollowButton from "components/common/buttons/Follow";
-import Insights from "components/modules/post/Insights";
-import Icon from "components/common/elements/Icon";
+import rehypeHighlight from 'rehype-highlight';
+import { useTheme } from 'next-themes';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import getVideoId from 'get-video-id';
+import VideoPlayer from 'components/common/elements/mux/VideoPlayer';
+import TagStack from 'components/common/tags/TagStack';
+import Avatar from 'components/common/elements/Avatar';
+import GitHubStats from 'components/modules/project/GitHubStats';
+import Contributors from 'components/modules/project/Contributors';
+import { BiExpandAlt } from 'react-icons/bi';
+import { IoCloseOutline, IoLogoGithub } from 'react-icons/io5';
+import Moment from 'moment';
+import Loader from 'components/common/elements/Loader';
+import ToolTip from 'components/common/elements/ToolTip';
+import Actions from 'components/modules/project/Actions';
+import FollowButton from 'components/common/buttons/Follow';
+import Insights from 'components/modules/post/Insights';
+import Icon from 'components/common/elements/Icon';
 
 const Container = ({ project, author, user, setShowComments }) => {
   const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
+  const currentTheme = theme === 'system' ? systemTheme : theme;
   const [showImageModal, setShowImageModal] = useState(false);
   const [youTubeEmbedID, setYouTubeEmbedID] = useState(
-    project?.projectLinkURI ? getVideoId(project?.projectLinkURI) : ""
+    project?.projectLinkURI ? getVideoId(project?.projectLinkURI) : ''
   );
 
   if (!project)
@@ -48,7 +48,7 @@ const Container = ({ project, author, user, setShowComments }) => {
           project?.projectCreator?.userId === user?.userId && (
             <Link href={`/post?ref=${project?._id}`} passHref>
               <div className="w-full cursor-pointer bg-red-500/40 py-3 px-4 font-normal md:px-8">
-                This project is{" "}
+                This project is{' '}
                 <span className="font-bold text-base-200">unpublished</span> and
                 not visible to anyone. Click to edit.
               </div>
@@ -84,8 +84,8 @@ const Container = ({ project, author, user, setShowComments }) => {
                       {project?.projectCreator?.name}
                     </span>
                     <p className="px-0.5 text-xs font-light text-base-300 dark:text-base-400">
-                      Posted{" "}
-                      {Moment(project?.createdDate).format("MMM Do, YYYY")}
+                      Posted{' '}
+                      {Moment(project?.createdDate).format('MMM Do, YYYY')}
                     </p>
                   </div>
                 </Link>
@@ -112,7 +112,7 @@ const Container = ({ project, author, user, setShowComments }) => {
                 </div>
 
                 <div className="flex w-full flex-row-reverse items-center pt-4 sm:w-auto sm:flex-row sm:space-x-2">
-                  {project?.projectLinkURI !== "" && (
+                  {project?.projectLinkURI !== '' && (
                     <a
                       href={project?.projectLinkURI}
                       target="_blank"
@@ -120,11 +120,11 @@ const Container = ({ project, author, user, setShowComments }) => {
                       className="btn btn-primary btn-with-icon"
                     >
                       <span className="">View project</span>
-                      <Icon name={"FiExternalLink"} className="h-auto w-5" />
+                      <Icon name={'FiExternalLink'} className="h-auto w-5" />
                     </a>
                   )}
 
-                  {project?.sourceControlLink !== "" && (
+                  {project?.sourceControlLink !== '' && (
                     <a
                       href={project?.sourceControlLink}
                       target="_blank"
@@ -198,7 +198,7 @@ const Container = ({ project, author, user, setShowComments }) => {
                   source={project?.projectBody}
                   remarkPlugins={[rehypeHighlight, { detect: true }]}
                   wrapperElement={{
-                    "data-color-mode": currentTheme,
+                    'data-color-mode': currentTheme,
                   }}
                 />
               )}
@@ -223,7 +223,7 @@ const Container = ({ project, author, user, setShowComments }) => {
                     {author?.currentTitle}
                   </p>
                   <p className="text-sm font-light text-base-300 dark:text-base-400">
-                    Joined {Moment(author?.createdDate).format("MMMM YYYY")}
+                    Joined {Moment(author?.createdDate).format('MMMM YYYY')}
                   </p>
                 </div>
               </div>
@@ -233,7 +233,7 @@ const Container = ({ project, author, user, setShowComments }) => {
                   followToUser={project?.projectCreator?.userId}
                   followFromUser={user?.userId}
                   followToName={project?.projectCreator?.displayName}
-                  size={"sm:w-11/12"}
+                  size={'sm:w-11/12'}
                 />
               )}
               {!user && (
@@ -245,9 +245,9 @@ const Container = ({ project, author, user, setShowComments }) => {
               )}
 
               <div className="line-clamp-6">
-                {author?.bio?.aboutUser !== ""
+                {author?.bio?.aboutUser !== ''
                   ? author?.bio?.aboutUser
-                  : "No bio added"}
+                  : 'No bio added'}
               </div>
               <div className="flex flex-wrap">
                 {author?.userTechStacks?.map(
@@ -266,7 +266,7 @@ const Container = ({ project, author, user, setShowComments }) => {
       </div>
 
       <div className="fixed bottom-14 left-0 z-50 w-full">
-        <div className="mx-auto max-w-sm rounded-full border border-base-300 bg-base-50 px-6 py-2.5 shadow-lg dark:border-purple-700 dark:bg-base-700 dark:shadow-purple-800/30">
+        <div className="mx-auto max-w-sm rounded-full border border-base-300 bg-base-50 px-6 py-2.5 shadow-lg dark:border-base-300 dark:bg-base-700 dark:shadow-base-300/30">
           <Actions
             user={user}
             project={project}
