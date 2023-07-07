@@ -8,30 +8,18 @@ const handler = async (req, res, AuthUser) => {
   const accessToken = await AuthUser?.getIdToken();
   const requestURL = `${process.env.API_TEAMS_URL}/teams/members/${req.query.userId}`;
 
-  if (accessToken) {
-    return axios
-      .get(requestURL, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-      .then((response) => {
-        res.status(response.status).json(response.data);
-      })
-      .catch((error) => {
-        res.status(error.response.status).json(error.response.data);
-      });
-  } else {
-    return axios
-      .get(requestURL)
-      .then((response) => {
-        res.status(response.status).json(response.data);
-      })
-      .catch((error) => {
-        res.status(error.response.status).json(error.response.data);
-      });
-  }
+  return axios
+    .get(requestURL, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+    .then((response) => {
+      res.status(response.status).json(response.data);
+    })
+    .catch((error) => {
+      res.status(error.response.status).json(error.response.data);
+    });
 };
 
-export default handler;
-// export default handler;
+export default withAuthUserTokenAPI(handler, true);

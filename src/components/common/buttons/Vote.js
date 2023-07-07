@@ -15,6 +15,8 @@ const ButtonVote = ({
   const [isLiked, setIsLiked] = useState(post.likedByCurrentUser || false);
   const [refreshLikes, setRefreshLikes] = useState(post?.numberOfLikes);
 
+  console.log(post);
+
   const handleVote = async () => {
     setIsLiked(!isLiked);
     setRefreshLikes(!isLiked ? refreshLikes + 1 : refreshLikes - 1);

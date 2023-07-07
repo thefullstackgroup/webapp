@@ -7,14 +7,6 @@ initAuth();
 const handler = async (req, res, AuthUser) => {
   const accessToken = await AuthUser?.getIdToken();
 
-  let headers = {};
-  if (accessToken)
-    headers = {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
-
   return axios
     .get(
       `${process.env.API_SEARCH_URL}/search/projects?page=${
@@ -24,7 +16,11 @@ const handler = async (req, res, AuthUser) => {
       }&orderBy=${req.query.sort}&q=${req.query.term}&userId=${
         req.query.userId
       }&${req.query.range !== undefined && `range=${req.query.range}`}`,
-      headers
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
     )
     .then((response) => {
       res.status(response.status).json(response.data.content);
@@ -34,4 +30,4 @@ const handler = async (req, res, AuthUser) => {
     });
 };
 
-export default handler;
+export default withAuthUserTokenAPI(handler, true);
