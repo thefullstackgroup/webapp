@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { withAuthUserTokenAPI } from '../auth/withAuthUserTokenAPI';
-import initAuth from '../../../firebase/initFirebaseApp';
+import axios from "axios";
+import { withAuthUserTokenAPI } from "../auth/withAuthUserTokenAPI";
+import initAuth from "../../../firebase/initFirebaseApp";
 
 initAuth();
 
@@ -10,6 +10,7 @@ const handler = async (req, res, AuthUser) => {
     process.env.API_PROFILE_URL
   }/profile/user?userId=${encodeURIComponent(req.query.userId)}`;
 
+  console.log(accessToken);
   if (accessToken) {
     return axios
       .get(requestURL, {

@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
-import ListTeams from 'components/modules/teams/ListTeams';
-import FilterTeams from 'components/modules/teams/FilterTeams';
-import { HiOutlineSortDescending } from 'react-icons/hi';
-import Image from 'next/future/image';
-import ModalDialog from 'components/common/modals/ModalDialog';
-import Create from 'components/modules/teams/CreateTeam';
-import Subscribe from 'components/modules/account/settings/subscriptions/Modal';
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
-import Link from 'next/link';
+import React, { useState } from "react";
+import ListTeams from "components/modules/teams/ListTeams";
+import Image from "next/future/image";
+import ModalAlert from "components/common/modals/ModalAlert";
+import Create from "components/modules/teams/CreateTeam";
+import useSWR from "swr";
+import fetcher from "utils/fetcher";
+import Link from "next/link";
+import Faq from "./Faq";
 
 const images = [
-  'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-  'https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-  'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-  'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTI5fHxwZXJzb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+  "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTI5fHxwZXJzb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
 ];
 
 const ImageSample = ({ image }) => {
@@ -80,14 +78,23 @@ const Main = ({ user }) => {
           </div>
 
           <ListTeams user={user} />
+
+          <div className="relative space-y-10 text-center">
+            <h4 className="z-20 text-3xl font-bold">
+              Frequently asked questions
+            </h4>
+            <div className="relative mx-auto max-w-3xl px-4">
+              <Faq />
+            </div>
+          </div>
         </div>
       </>
 
-      <ModalDialog
+      <ModalAlert
         show={createTeamPanel}
         setShow={setCreateTeamPanel}
         title="Let's setup your team"
-        dimensions={'max-w-lg'}
+        dimensions={"max-w-lg"}
         disabled
       >
         <Create
@@ -95,7 +102,7 @@ const Main = ({ user }) => {
           setCreateTeamPanel={setCreateTeamPanel}
           teams={teams}
         />
-      </ModalDialog>
+      </ModalAlert>
 
       {/* <Subscribe
         user={user}

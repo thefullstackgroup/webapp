@@ -1,12 +1,11 @@
-import axios from 'axios';
-import Image from 'next/future/image';
-import Faq from 'components/modules/account/settings/subscriptions/Faq';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { CgSpinner } from 'react-icons/cg';
-import { IoCameraOutline } from 'react-icons/io5';
-import ModalAlert from 'components/common/modals/ModalAlert';
-import Icon from 'components/common/elements/Icon';
+import axios from "axios";
+import Image from "next/future/image";
+import Faq from "components/modules/teams/Faq";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { CgSpinner } from "react-icons/cg";
+import ModalAlert from "components/common/modals/ModalAlert";
+import Icon from "components/common/elements/Icon";
 
 const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
   const router = useRouter();
@@ -14,17 +13,17 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
   const [saving, setSaving] = useState(false);
   const [displaySplash, setDisplaySplash] = useState(true);
   const [formError, setFormError] = useState(false);
-  const [name, setName] = useState('');
-  const [logo, setLogo] = useState('');
-  const [description, setDescription] = useState('');
+  const [name, setName] = useState("");
+  const [logo, setLogo] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleUploadLogo = async (event) => {
     event.preventDefault();
 
     if (event.target.files.length > 0) {
       const formData = new FormData();
-      formData.append('id', user.userId);
-      formData.append('file', event.target.files[0]);
+      formData.append("id", user.userId);
+      formData.append("file", event.target.files[0]);
 
       await axios
         .post(`${process.env.BASEURL}/api/teams/upload`, formData)
@@ -48,35 +47,35 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
     }
     const data = {
       name: name,
-      type: 'BUSINESS',
-      mission: '',
+      type: "BUSINESS",
+      mission: "",
       description: description,
-      url: '',
+      url: "",
       image: logo,
       imagesGallery: [],
       techStack: [],
       details: {
         founded: 2022,
-        category: 'Platform',
+        category: "Platform",
         location: [],
         nrEmployees: 0,
-        stage: '',
+        stage: "",
         socialMediaLinks: {
-          instagram: '',
-          facebook: '',
-          github: '',
-          twitter: '',
-          linkedin: '',
+          instagram: "",
+          facebook: "",
+          github: "",
+          twitter: "",
+          linkedin: "",
         },
-        teamStructure: '',
-        devTools: '',
-        devProcess: '',
-        hiringProcess: '',
+        teamStructure: "",
+        devTools: "",
+        devProcess: "",
+        hiringProcess: "",
         isHiring: false,
-        careersUrl: '',
-        idea: '',
-        ideaDescription: '',
-        timezone: 'string',
+        careersUrl: "",
+        idea: "",
+        ideaDescription: "",
+        timezone: "string",
       },
     };
 
@@ -100,12 +99,12 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
     let message = `TEAMS: ${user.name} has created a new team called '${name}'. Please review team profile.`;
 
     await fetch(`${process.env.BASEURL}/api/notifications/slack/postMessage`, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({
         message: message,
       }),
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
   };
@@ -115,20 +114,15 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
       <div className="py-4 px-4">
         <ol role="list" className="overflow-hidden">
           <li className="relative pb-10">
-            <div className="absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5 bg-violet-600"></div>
-
             <div className="group relative flex items-start">
               <span className="flex h-9 items-center">
-                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-base-50 dark:bg-base-900">
-                  <span className="h-2.5 w-2.5 rounded-full bg-violet-600"></span>
+                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full">
+                  <Icon name="FiCornerDownRight" />
                 </span>
               </span>
               <span className="ml-4 flex min-w-0 flex-col">
                 <span className="mt-1 text-lg font-semibold">
                   Create a team profile
-                  <span className="badge relative -top-1 ml-2 mb-2 px-1.5 py-0.5 text-[0.6em]">
-                    Free
-                  </span>
                 </span>
                 <span className="text-sm text-base-400">
                   Your team profile should answer the questions developers want
@@ -140,20 +134,15 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
           </li>
 
           <li className="relative pb-10">
-            <div className="absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5 bg-violet-600"></div>
-
             <div className="group relative flex items-start">
               <span className="flex h-9 items-center">
-                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-base-50 dark:bg-base-900">
-                  <span className="h-2.5 w-2.5 rounded-full bg-violet-600"></span>
+                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full">
+                  <Icon name="FiCornerDownRight" />
                 </span>
               </span>
               <span className="ml-4 flex min-w-0 flex-col">
                 <span className="mt-1 text-lg font-semibold">
                   Add your teammates
-                  <span className="badge relative -top-1 ml-2 mb-2 px-1.5 py-0.5 text-[0.6em]">
-                    Free
-                  </span>
                 </span>
 
                 <span className="text-sm text-base-400">
@@ -166,23 +155,18 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
             </div>
           </li>
           <li className="relative pb-10">
-            <div className="absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5 bg-violet-600"></div>
-
             <div className="group relative flex items-start">
               <span className="flex h-9 items-center">
-                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-base-50 dark:bg-base-900">
-                  <span className="h-2.5 w-2.5 rounded-full bg-violet-600"></span>
+                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full">
+                  <Icon name="FiCornerDownRight" />
                 </span>
               </span>
               <span className="ml-4 flex min-w-0 flex-col">
                 <span className="mt-1 text-lg font-semibold">
                   Post open roles
-                  <span className="badge relative -top-1 ml-2 mb-2 px-1.5 py-0.5 text-[0.6em]">
-                    Subscription
-                  </span>
                 </span>
                 <span className="text-sm text-base-400">
-                  Looking to connect and hire developers for your team? Post
+                  Looking to connect and find developers for your team? Post
                   open roles to your team profile. We will also share on our
                   weekly newsletter and share across other socials.
                 </span>
@@ -190,14 +174,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
             </div>
           </li>
           <li className="relative pb-10">
-            <div className="absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5"></div>
-
             <div className="group relative flex items-start">
-              <span className="flex h-9 items-center">
-                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-violet-600 bg-base-50 dark:bg-base-900">
-                  <span className="h-2.5 w-2.5 rounded-full bg-violet-600"></span>
-                </span>
-              </span>
               <span className="ml-4 w-full">
                 <button
                   className="btn btn-primary w-full"
@@ -238,7 +215,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
               <Image
                 src={logo}
                 className="h-full w-full object-cover"
-                alt={name || ''}
+                alt={name || ""}
                 title={name}
                 referrerPolicy="no-referrer"
                 width={100}
@@ -298,7 +275,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
             name="username"
             placeholder="Name of your team"
             className="text-input"
-            value={name || ''}
+            value={name || ""}
             onChange={(e) => setName(e.target.value)}
           />
           {formError && !name?.trim().length > 0 && (
@@ -315,7 +292,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
             name="description"
             placeholder="One-liner about your team"
             className="text-input"
-            value={description || ''}
+            value={description || ""}
             onChange={(e) => setDescription(e.target.value)}
           />
           {formError && !description?.trim().length > 0 && (
@@ -325,20 +302,17 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
           )}
         </div>
 
-        <div className="flex justify-between">
-          <button
-            className="btn btn-ghost px-0"
-            onClick={() => setCreateTeamPanel(false)}
-          >
-            Cancel
-          </button>
+        <div className="">
           {saving ? (
-            <button className="btn btn-primary btn-with-icon" disabled>
+            <button className="btn btn-primary btn-with-icon w-full" disabled>
               <CgSpinner className="h-4 w-4 animate-spin" />
               <span>Creating</span>
             </button>
           ) : (
-            <button className="btn btn-primary" onClick={() => handleSubmit()}>
+            <button
+              className="btn btn-primary w-full"
+              onClick={() => handleSubmit()}
+            >
               Create Team
             </button>
           )}

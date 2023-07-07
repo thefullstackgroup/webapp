@@ -1,22 +1,23 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import axios from 'axios';
-import useSWR, { mutate } from 'swr';
-import fetcher from 'utils/fetcher';
-import PostContent from 'components/modules/post/Content';
-import PostComments from 'components/modules/comments/ListComments';
-import NewComment from 'components/modules/comments/NewComment';
-import ModalAlert from 'components/common/modals/ModalAlert';
-import ModalDialog from 'components/common/modals/ModalDialog';
-import EditPost from 'components/modules/hangout/EditPost';
-import Loader from 'components/common/elements/Loader';
-import Avatar from 'components/common/elements/Avatar';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
+import useSWR, { mutate } from "swr";
+import fetcher from "utils/fetcher";
+import PostContent from "components/modules/post/Content";
+import PostComments from "components/modules/comments/ListComments";
+import NewComment from "components/modules/comments/NewComment";
+import ModalAlert from "components/common/modals/ModalAlert";
+import ModalDialog from "components/common/modals/ModalDialog";
+import EditPost from "components/modules/hangout/EditPost";
+import Loader from "components/common/elements/Loader";
+import Avatar from "components/common/elements/Avatar";
 
 const Detail = ({ postId, user, setShowPost }) => {
   const router = useRouter();
   const [showEditPost, setShowEditPost] = useState(false);
   const [isDeletePromptOpen, setIsDeletePromptOpen] = useState(false);
   const [showNewComment, setShowNewComment] = useState(false);
+  console.log(`${process.env.BASEURL}/api/posts/getPostById?postId=${postId}`);
 
   const postUrl = `${process.env.BASEURL}/api/posts/getPostById?postId=${postId}`;
   const { data } = useSWR(postUrl, fetcher);
@@ -132,7 +133,7 @@ const Detail = ({ postId, user, setShowPost }) => {
           show={showEditPost}
           setShow={setShowEditPost}
           title="Edit post"
-          dimensions={'sm:max-w-screen-md'}
+          dimensions={"sm:max-w-screen-md"}
           disabled
         >
           <EditPost
