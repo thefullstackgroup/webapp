@@ -2,7 +2,7 @@ import Icon from '../elements/Icon';
 
 const TagPostType = ({ postType, className }) => {
   let label = '';
-  let icon = '';
+  let icon = 'FiCircle';
 
   if (postType === 'SPARK') {
     label = 'Spark';

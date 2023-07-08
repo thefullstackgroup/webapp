@@ -24,12 +24,17 @@ const handler = async (req, res, AuthUser) => {
       : ''
   }&${req.query.range !== undefined && `range=${req.query.range}`}`;
 
-  return axios
-    .get(requestURL, {
+  let headers = '';
+  if (accessToken) {
+    headers = {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-    })
+    };
+  }
+
+  return axios
+    .get(requestURL, headers)
     .then((response) => {
       res.status(response.status).json(response.data.content);
     })

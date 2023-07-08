@@ -12,12 +12,17 @@ const handler = async (req, res, AuthUser) => {
     req.query.userId
   )}&projectType=${req.query.projectType}&page=0&size=${req.query.size}`;
 
-  return axios
-    .get(requestURL, {
+  let headers = '';
+  if (accessToken) {
+    headers = {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-    })
+    };
+  }
+
+  return axios
+    .get(requestURL, headers)
     .then((response) => {
       res.status(response.status).json(response.data);
     })

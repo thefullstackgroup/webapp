@@ -1,27 +1,26 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import axios from "axios";
-import useSWR, { mutate } from "swr";
-import fetcher from "utils/fetcher";
-import PostContent from "components/modules/post/Content";
-import PostComments from "components/modules/comments/ListComments";
-import NewComment from "components/modules/comments/NewComment";
-import ModalAlert from "components/common/modals/ModalAlert";
-import ModalDialog from "components/common/modals/ModalDialog";
-import EditPost from "components/modules/hangout/EditPost";
-import Loader from "components/common/elements/Loader";
-import Avatar from "components/common/elements/Avatar";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import useSWR, { mutate } from 'swr';
+import fetcher from 'utils/fetcher';
+import Content from 'components/modules/post/Content';
+import PostComments from 'components/modules/comments/ListComments';
+import NewComment from 'components/modules/comments/NewComment';
+import ModalAlert from 'components/common/modals/ModalAlert';
+import ModalDialog from 'components/common/modals/ModalDialog';
+import EditPost from 'components/modules/hangout/EditPost';
+import Loader from 'components/common/elements/Loader';
+import Avatar from 'components/common/elements/Avatar';
+import Icon from 'components/common/elements/Icon';
 
 const Detail = ({ postId, user, setShowPost }) => {
   const router = useRouter();
   const [showEditPost, setShowEditPost] = useState(false);
   const [isDeletePromptOpen, setIsDeletePromptOpen] = useState(false);
   const [showNewComment, setShowNewComment] = useState(false);
-  console.log(`${process.env.BASEURL}/api/posts/getPostById?postId=${postId}`);
 
   const postUrl = `${process.env.BASEURL}/api/posts/getPostById?postId=${postId}`;
-  const { data } = useSWR(postUrl, fetcher);
-  const post = data ? data : null;
+  const { data: post } = useSWR(postUrl, fetcher);
 
   const deletePost = async () => {
     const data = {
@@ -41,6 +40,14 @@ const Detail = ({ postId, user, setShowPost }) => {
     mutate(postUrl);
   }, [showEditPost]);
 
+  if (!post) {
+    return (
+      <div className="mt-4 flex w-full flex-col items-center justify-center space-y-2 py-20 text-center">
+        <Icon name="FiLoader" className="mb-1 h-5 w-5 animate-spin" />
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="relative mt-0 flex">
@@ -53,7 +60,7 @@ const Detail = ({ postId, user, setShowPost }) => {
             )}
 
             {post && (
-              <PostContent
+              <Content
                 post={post}
                 projectContent={post}
                 nComments={post.numberOfComments}
@@ -133,7 +140,7 @@ const Detail = ({ postId, user, setShowPost }) => {
           show={showEditPost}
           setShow={setShowEditPost}
           title="Edit post"
-          dimensions={"sm:max-w-screen-md"}
+          dimensions={'sm:max-w-screen-md'}
           disabled
         >
           <EditPost
@@ -146,40 +153,36 @@ const Detail = ({ postId, user, setShowPost }) => {
         </ModalDialog>
       )}
 
-      {isDeletePromptOpen && (
-        <ModalAlert show={isDeletePromptOpen} setShow={setIsDeletePromptOpen}>
-          <div>
-            <div className="justify-center sm:flex sm:items-start">
-              <div className="mt-3 text-center sm:mt-0">
-                <h3 className="text-xl font-bold text-base-200">
-                  Delete post?
-                </h3>
-                <div className="mt-2">
-                  <p className="text-sm text-base-300">
-                    Are you sure you want to delete this post?
-                  </p>
-                </div>
+      <ModalAlert show={isDeletePromptOpen} setShow={setIsDeletePromptOpen}>
+        <div>
+          <div className="justify-center sm:flex sm:items-start">
+            <div className="mt-3 text-center sm:mt-0">
+              <h3 className="text-xl font-bold text-base-200">Delete post?</h3>
+              <div className="mt-2">
+                <p className="text-sm text-base-300">
+                  Are you sure you want to delete this post?
+                </p>
               </div>
             </div>
-            <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
-              <button
-                type="button"
-                className="btn-primary bg-red-600/80 hover:bg-red-500"
-                onClick={() => deletePost()}
-              >
-                Delete
-              </button>
-              <button
-                type="button"
-                className="btn-secondary"
-                onClick={() => setIsDeletePromptOpen(false)}
-              >
-                Cancel
-              </button>
-            </div>
           </div>
-        </ModalAlert>
-      )}
+          <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
+            <button
+              type="button"
+              className="btn-primary bg-red-600/80 hover:bg-red-500"
+              onClick={() => deletePost()}
+            >
+              Delete
+            </button>
+            <button
+              type="button"
+              className="btn-secondary"
+              onClick={() => setIsDeletePromptOpen(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </ModalAlert>
     </>
   );
 };

@@ -60,8 +60,7 @@ const PollCard = ({ postId }) => {
               onClick={() => handleCastVote(option.pollOptionId)}
             >
               <Icon name="FiCircle" className="h-4 w-4" />
-              <span></span>
-              {option.optionText}
+              <span>{option.optionText}</span>
             </button>
           ))}
 

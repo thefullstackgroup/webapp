@@ -9,8 +9,8 @@ import Actions from 'components/modules/post/Actions';
 import Insights from 'components/modules/post/Insights';
 import OpenGraphPreview from 'components/modules/post/OpenGraphPreview';
 import Avatar from 'components/common/elements/Avatar';
-import Icon from 'components/common/elements/Icon';
 import TagPostType from 'components/common/tags/TagPostType';
+import Poll from './Poll';
 
 const sparkCharCount = 300;
 
@@ -23,8 +23,6 @@ const Content = ({
   setShowEditPost,
 }) => {
   const [linkPreview, setLinkPreview] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const projectId = post?.projectId || post?._id;
   const title = post?.projectName;
   const postBody = post?.projectBody;
   const coverImage = post?.projectImgURI;
@@ -34,52 +32,6 @@ const Content = ({
   const authorName = post?.projectCreator?.name;
   const authorDisplayName = post?.projectCreator?.displayName;
   const profileLink = `/${authorDisplayName}`;
-  const [pollData, setPollData] = useState([]);
-  const [pollVotes, setPollVotes] = useState(0);
-  const [pollUserHasVoted, setPollUserHasVoted] = useState(false);
-  const [leadingVote, setLeadingVote] = useState({});
-
-  const getPollData = () => {
-    fetch(`${process.env.BASEURL}/api/posts/polls/getPoll?postId=${projectId}`)
-      .then((response) => {
-        if (response) return response.json();
-      })
-      .then((data) => {
-        if (data) {
-          setPollData(data);
-          const result = data.pollOptions.reduce(
-            (total, currentValue) => (total = total + currentValue.voteCount),
-            0
-          );
-          const max = data.pollOptions.reduce(
-            (prev, current) =>
-              prev.voteCount > current.voteCount ? prev : current,
-            0
-          );
-          setPollUserHasVoted(data.currentUserVoted);
-          setLeadingVote(max);
-          setPollVotes(result);
-          setLoading(false);
-        }
-      });
-  };
-
-  const handleCastVote = (optionId) => {
-    fetch(
-      `${process.env.BASEURL}/api/posts/polls/castVote?postId=${pollData?._id}&optionId=${optionId}`
-    )
-      .then((response) => {
-        if (response.status == 304) {
-          setPollUserHasVoted(true);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data) {
-          setPollUserHasVoted(true);
-        }
-      });
-  };
 
   const urlify = (text) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -91,12 +43,6 @@ const Content = ({
   useEffect(() => {
     urlify(post?.projectBodyPreview);
   }, [post?.projectName]);
-
-  useEffect(() => {
-    if (post?.projectType === 'POLL') {
-      getPollData();
-    }
-  }, [pollUserHasVoted]);
 
   return (
     <>
@@ -195,70 +141,9 @@ const Content = ({
                   <OpenGraphPreview link={linkPreview} />
                 </div>
               )}
-            {/* END URL PREVIEW CARD */}
 
             {/* DISPLAY POLL HERE */}
-            {!pollUserHasVoted &&
-              post?.projectType === 'POLL' &&
-              (loading ? (
-                <div className="mt-4 flex w-full flex-col items-center justify-center space-y-2 py-20 text-center">
-                  <Icon name="FiLoader" className="mb-1 h-5 w-5 animate-spin" />
-                </div>
-              ) : (
-                <div className="mt-4 flex w-full flex-col space-y-2 px-4 sm:px-0">
-                  {pollData?.pollOptions?.map((option, index) => (
-                    <button
-                      className="hover:bg-primary-600 w-full rounded-full border border-base-700 bg-gray-800 py-3 px-4 text-base font-semibold"
-                      key={index}
-                      onClick={() => handleCastVote(option.pollOptionId)}
-                    >
-                      {option.optionText}
-                    </button>
-                  ))}
-
-                  <div className="text-sm text-base-400">{pollVotes} votes</div>
-                </div>
-              ))}
-
-            {pollUserHasVoted &&
-              post?.projectType === 'POLL' &&
-              (loading ? (
-                <div className="mt-4 flex w-full flex-col items-center justify-center space-y-2 py-20 text-center">
-                  <Icon name="FiLoader" className="mb-1 h-5 w-5 animate-spin" />
-                </div>
-              ) : (
-                <div className="mt-4 flex w-full flex-col space-y-2 px-4 sm:px-0">
-                  {pollData?.pollOptions?.map((option, index) => (
-                    <div className="relative w-full text-sm" key={index}>
-                      <div
-                        className={
-                          (leadingVote?.pollOptionId == option.pollOptionId
-                            ? 'bg-cyan-default dark:bg-cyan-dark'
-                            : 'bg-base-300/50 dark:bg-base-600') +
-                          ' relative h-11 rounded-r-lg py-2 px-4'
-                        }
-                        style={{
-                          width: `${
-                            (option.voteCount / leadingVote.voteCount) * 100
-                          }%`,
-                        }}
-                      ></div>
-                      <div className="absolute top-0.5 flex w-full items-center space-x-4 py-2 px-4">
-                        <span className="font-semibold">{`${(
-                          (option.voteCount / pollVotes) *
-                          100
-                        ).toFixed(0)}%`}</span>
-                        <span className="text-base">{option.optionText}</span>
-                      </div>
-                    </div>
-                  ))}
-
-                  <div className="text-sm text-base-400">
-                    {pollVotes} {pollVotes == 1 ? 'vote' : 'votes'}
-                  </div>
-                </div>
-              ))}
-            {/* END DISPLAY POLL HERE */}
+            {post?.projectType === 'POLL' && <Poll post={post} />}
 
             <div className="mt-6 text-gray-500">
               <p className="flex space-x-3">

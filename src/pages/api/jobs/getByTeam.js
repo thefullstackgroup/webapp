@@ -8,12 +8,17 @@ const handler = async (req, res, AuthUser) => {
   const accessToken = await AuthUser?.getIdToken();
   const requestURL = `${process.env.API_JOBS_URL}/teams/${req.query.teamId}/jobs`;
 
-  return axios
-    .get(requestURL, {
+  let headers = '';
+  if (accessToken) {
+    headers = {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-    })
+    };
+  }
+
+  return axios
+    .get(requestURL, headers)
     .then((response) => {
       res.status(response.status).json(response.data);
     })

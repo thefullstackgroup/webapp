@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { withAuthUserTokenAPI } from '../auth/withAuthUserTokenAPI';
+import { withAuthUserTokenAPI } from '../../auth/withAuthUserTokenAPI';
 import initAuth from '../../../../firebase/initFirebaseApp';
 
 initAuth();
@@ -8,12 +8,17 @@ const handler = async (req, res, AuthUser) => {
   const accessToken = await AuthUser?.getIdToken();
   const requestURL = `${process.env.API_PROJECTS_URL}/poll/${req.query.postId}/details`;
 
-  return axios
-    .get(requestURL, {
+  let headers = '';
+  if (accessToken) {
+    headers = {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-    })
+    };
+  }
+
+  return axios
+    .get(requestURL, headers)
     .then((response) => {
       res.status(response.status).json(response.data);
     })
