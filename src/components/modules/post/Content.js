@@ -143,10 +143,10 @@ const Content = ({
               )}
 
             {/* DISPLAY POLL HERE */}
-            {post?.projectType === 'POLL' && <Poll post={post} />}
+            {post?.projectType === 'POLL' && <Poll user={user} post={post} />}
 
             <div className="mt-6 text-gray-500">
-              <p className="flex space-x-3">
+              <p className="overflow-hidden rounded-md">
                 {webLink && <OpenGraphPreview link={webLink} />}
               </p>
             </div>

@@ -35,14 +35,11 @@ export const getServerSideProps = withAuthUserTokenSSR()(
       };
     }
 
-    if (userProfile) {
-      return {
-        props: {
-          user: userProfile,
-          teamId: params.teamId,
-        },
-      };
-    }
-    return { props: {} };
+    return {
+      props: {
+        user: userProfile || null,
+        teamId: params.teamId,
+      },
+    };
   }
 );

@@ -5,14 +5,20 @@ import initAuth from '../../../firebase/initFirebaseApp';
 initAuth();
 
 const handler = async (req, res, AuthUser) => {
-  const accessToken = await AuthUser.getIdToken();
+  const accessToken = await AuthUser?.getIdToken();
+  const requestURL = `${process.env.API_TEAMS_URL}/teams/${req.query.teamId}`;
 
-  return axios
-    .get(`${process.env.API_TEAMS_URL}/teams/${req.query.teamId}`, {
+  let headers = '';
+  if (accessToken) {
+    headers = {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-    })
+    };
+  }
+
+  return axios
+    .get(requestURL, headers)
     .then((response) => {
       res.status(response.status).json(response.data);
     })
@@ -21,5 +27,4 @@ const handler = async (req, res, AuthUser) => {
     });
 };
 
-export default withAuthUserTokenAPI(handler);
-// export default handler;
+export default withAuthUserTokenAPI(handler, true);

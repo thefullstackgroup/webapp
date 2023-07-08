@@ -5,6 +5,7 @@ import Icon from 'components/common/elements/Icon';
 import ModalAlert from 'components/common/modals/ModalAlert';
 import { useState } from 'react';
 import Link from 'next/link';
+import SignUpPrompt from 'components/common/elements/SignUpPrompt';
 
 const Actions = (props) => {
   const [showSignUp, setShowSignUp] = useState(false);
@@ -77,29 +78,7 @@ const Actions = (props) => {
         </div>
       )}
 
-      <ModalAlert show={showSignUp} setShow={setShowSignUp} title="">
-        <div>
-          <div className="space-y-6 px-6 py-8 text-center">
-            <h4 className="text-xl font-semibold">Join us at The Full Stack</h4>
-            <p className="text-sm">
-              Join us and thousands of developers who have discovered a place to
-              show off projects and grow a network.
-            </p>
-            <div className="items-centet flex justify-center space-x-2">
-              <Link href="/signup">
-                <a href="#" className="btn btn-primary">
-                  Sign up
-                </a>
-              </Link>
-              <Link href="/login">
-                <a href="#" className="btn btn-secondary">
-                  Login
-                </a>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </ModalAlert>
+      <SignUpPrompt show={showSignUp} setShow={setShowSignUp} />
     </>
   );
 };

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import validator from "validator";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import getVideoId from "get-video-id";
-import { FiExternalLink } from "react-icons/fi";
-import Loader from "components/common/elements/Loader";
-import Icon from "components/common/elements/Icon";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import validator from 'validator';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import getVideoId from 'get-video-id';
+import Loader from 'components/common/elements/Loader';
+import Icon from 'components/common/elements/Icon';
 
 const isValidURL = (input) => {
   if (validator.isURL(input, { require_protocol: true })) {
@@ -20,7 +19,7 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
   const [loading, setLoading] = useState(true);
   const [youTubeEmbedID, setYouTubeEmbedID] = useState(null);
 
-  let sizeHeight = "h-auto md:max-h-auto";
+  let sizeHeight = 'h-auto md:max-h-auto';
   if (height) {
     sizeHeight = height;
   }
@@ -31,7 +30,7 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
         .get(`${process.env.BASEURL}/api/posts/getURLPreview?url=${link}`)
         .then((response) => {
           setData(response.data);
-          if (response.data.ogSiteName === "YouTube")
+          if (response.data.ogSiteName === 'YouTube')
             setYouTubeEmbedID(getVideoId(response.data.ogVideo?.url));
           setLoading(false);
         })
@@ -53,10 +52,10 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
         <Loader />
       </div>
     );
-  if (!data?.success) return "";
+  if (!data?.success) return '';
   return (
     <>
-      {data?.ogSiteName === "YouTube" && youTubeEmbedID ? (
+      {data?.ogSiteName === 'YouTube' && youTubeEmbedID ? (
         <div className="h-48 max-h-96 w-full overflow-hidden md:h-96">
           <LiteYouTubeEmbed
             id={youTubeEmbedID.id}

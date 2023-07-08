@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react';
 import Icon from '../elements/Icon';
 import fetcher from 'utils/fetcher';
 import axios from 'axios';
+import SignUpPrompt from '../elements/SignUpPrompt';
 
-const PollCard = ({ postId }) => {
+const PollCard = ({ user, postId }) => {
+  const [showSignUp, setShowSignUp] = useState(false);
   const [pollVotes, setPollVotes] = useState(0);
   const [pollUserHasVoted, setPollUserHasVoted] = useState(false);
   const [leadingVote, setLeadingVote] = useState({});
@@ -13,6 +15,11 @@ const PollCard = ({ postId }) => {
   const { data: poll } = useSWR(url, fetcher);
 
   const handleCastVote = async (optionId) => {
+    if (!user) {
+      setShowSignUp(true);
+      return;
+    }
+
     await axios
       .get(
         `${process.env.BASEURL}/api/posts/polls/castVote?postId=${postId}&optionId=${optionId}`
@@ -99,6 +106,8 @@ const PollCard = ({ postId }) => {
           <div className="text-sm text-gray-400">{pollVotes} votes</div>
         </div>
       )}
+
+      <SignUpPrompt show={showSignUp} setShow={setShowSignUp} />
     </>
   );
 };

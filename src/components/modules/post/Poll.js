@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import Icon from 'components/common/elements/Icon';
 import fetcher from 'utils/fetcher';
 import useSWR from 'swr';
+import SignUpPrompt from 'components/common/elements/SignUpPrompt';
 
-const Poll = ({ post }) => {
+const Poll = ({ user, post }) => {
+  const [showSignUp, setShowSignUp] = useState(false);
   const projectId = post?.projectId || post?._id;
   const [pollVotes, setPollVotes] = useState(0);
   const [pollUserHasVoted, setPollUserHasVoted] = useState(false);
@@ -13,6 +15,10 @@ const Poll = ({ post }) => {
   const { data: pollData } = useSWR(url, fetcher);
 
   const handleCastVote = (optionId) => {
+    if (!user) {
+      setShowSignUp(true);
+      return;
+    }
     fetch(
       `${process.env.BASEURL}/api/posts/polls/castVote?postId=${pollData?._id}&optionId=${optionId}`
     )
@@ -82,7 +88,7 @@ const Poll = ({ post }) => {
                   (leadingVote?.pollOptionId == option.pollOptionId
                     ? 'bg-cyan-default dark:bg-cyan-dark'
                     : 'bg-base-300/50 dark:bg-base-600') +
-                  ' relative h-11 rounded-r-lg py-2 px-4'
+                  ' relative h-11 rounded-r-xl py-2 px-4'
                 }
                 style={{
                   width: `${(option.voteCount / leadingVote.voteCount) * 100}%`,
@@ -103,6 +109,8 @@ const Poll = ({ post }) => {
           </div>
         </div>
       )}
+
+      <SignUpPrompt show={showSignUp} setShow={setShowSignUp} />
     </>
   );
 };

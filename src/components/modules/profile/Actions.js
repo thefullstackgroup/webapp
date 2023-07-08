@@ -4,8 +4,6 @@ import ButtonFollow from 'components/common/buttons/Follow';
 import ButtonReport from 'components/common/buttons/Report';
 import ToolTip from 'components/common/elements/ToolTip';
 import Link from 'next/link';
-import { IoSettingsOutline } from 'react-icons/io5';
-import { MdOutlineSlowMotionVideo } from 'react-icons/md';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import Icon from 'components/common/elements/Icon';
 

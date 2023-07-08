@@ -167,7 +167,7 @@ const Post = (props) => {
 
               {/* DISPLAY POLL HERE */}
               {props.project.projectType === 'POLL' && (
-                <PollCard postId={projectId} />
+                <PollCard user={props.user} postId={projectId} />
               )}
 
               {props.project.projectType !== 'POLL' &&

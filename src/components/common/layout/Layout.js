@@ -1,7 +1,7 @@
-import Header from "components/common/layout/Header";
-import Footer from "components/common/layout/Footer";
-import CreatePostModal from "components/modules/create/CreatePostModal";
-import { useState } from "react";
+import Header from 'components/common/layout/Header';
+import Footer from 'components/common/layout/Footer';
+import CreatePostModal from 'components/modules/create/CreatePostModal';
+import { useState } from 'react';
 
 const Layout = ({
   user,
@@ -19,7 +19,7 @@ const Layout = ({
           headerFixed={headerFixed}
           setShowCreatePost={setShowCreatePost}
         />
-        <div className={!fullWidth && "mx-auto max-w-screen-2xl px-4"}>
+        <div className={!fullWidth && 'mx-auto max-w-screen-2xl px-4'}>
           {children}
         </div>
         <Footer hideFooter={hideFooter} />
