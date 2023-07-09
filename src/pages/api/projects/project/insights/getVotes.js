@@ -8,12 +8,17 @@ const handler = async (req, res, AuthUser) => {
   const accessToken = await AuthUser?.getIdToken();
   const requestURL = `${process.env.API_PROJECTS_URL}/project/${req.query.id}/likedList`;
 
-  return axios
-    .get(requestURL, {
+  let headers = '';
+  if (accessToken) {
+    headers = {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-    })
+    };
+  }
+
+  return axios
+    .get(requestURL, headers)
     .then((response) => {
       res.status(response.status).json(response.data);
     })
@@ -22,5 +27,5 @@ const handler = async (req, res, AuthUser) => {
     });
 };
 
-export default withAuthUserTokenAPI(handler);
+export default withAuthUserTokenAPI(handler, true);
 // export default handler;

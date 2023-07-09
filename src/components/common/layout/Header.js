@@ -14,7 +14,12 @@ const KnockNotificationsComponent = dynamic(() =>
   import('components/modules/account/settings/NotificationsPanel')
 );
 
-const Header = ({ user, headerFixed = false, setShowCreatePost }) => {
+const Header = ({
+  user,
+  headerAutoHide = false,
+  setShowCreatePost,
+  setShowSignOut,
+}) => {
   const router = useRouter();
   const q = router.query.q !== '' ? router.query.q : '';
   const { systemTheme, theme } = useTheme();
@@ -44,7 +49,7 @@ const Header = ({ user, headerFixed = false, setShowCreatePost }) => {
   };
 
   useEffect(() => {
-    if (!headerFixed) {
+    if (headerAutoHide) {
       if (typeof window !== 'undefined') {
         window.addEventListener('scroll', controlNavbar);
 
@@ -166,7 +171,10 @@ const Header = ({ user, headerFixed = false, setShowCreatePost }) => {
 
               <Mode />
 
-              <ProfilePopoverPanel user={user} />
+              <ProfilePopoverPanel
+                user={user}
+                setShowSignOut={setShowSignOut}
+              />
             </div>
           </div>
         </header>

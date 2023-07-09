@@ -10,6 +10,7 @@ import ProjectCarousel from 'components/modules/home/ProjectCarousel';
 import { CategoriesFilter } from 'components/modules/explore/constants';
 import { IoLogoGithub } from 'react-icons/io5';
 import { FcGoogle } from 'react-icons/fc';
+import { useRouter } from 'next/router';
 
 export const Greeting = ({ name }) => {
   const myDate = new Date();
@@ -29,12 +30,14 @@ export const Greeting = ({ name }) => {
 };
 
 const Main = ({ user }) => {
+  const router = useRouter();
   const googleProvider = new firebase.auth.GoogleAuthProvider();
   const gitHubProvider = new firebase.auth.GithubAuthProvider();
 
   const signInWithGoogle = async () => {
     try {
       const res = await firebase.auth().signInWithPopup(googleProvider);
+      if (res && res.user.email) router.reload('/');
     } catch (err) {
       console.error(err);
     }

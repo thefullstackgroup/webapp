@@ -12,7 +12,7 @@ const OurStory = ({ user }) => {
         description="A community and network to discover and connect with developers around the globe."
         keywords="developer, social network, developers, software engineering, full stack, software engineering network, tech community, tech companies, best tech companies, developer portfolio, developer network, professional network, professional community"
       />
-      <Layout user={user} headerFixed={true}>
+      <Layout user={user}>
         <Page />
       </Layout>
     </>

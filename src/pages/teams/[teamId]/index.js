@@ -12,7 +12,7 @@ const TeamProfile = ({ user, teamId }) => {
         description={`Team profile`}
         keywords=""
       />
-      <Layout user={user} headerFixed={true}>
+      <Layout user={user}>
         <Profile slug={teamId} user={user} />
       </Layout>
     </>

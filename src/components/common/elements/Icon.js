@@ -31,7 +31,7 @@ const Icon = (props) => {
     });
   }
 
-  return <div>{icon}</div>;
+  return icon;
 };
 
 export default Icon;

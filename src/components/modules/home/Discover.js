@@ -12,6 +12,7 @@ const SuggestedUserCard = (props) => {
         {props.project.projectCreator.profilePicUrl && (
           <Avatar
             userId={props.project.userId}
+            name={props.project.projectCreator.name}
             href={`/${props.project.projectCreator.displayName}`}
             image={props.project.projectCreator.profilePicUrl}
             dimensions="h-20 w-20 sm:h-24 sm:w-24 opacity-100 sm:group-hover:ring-4 group-hover:ring-primary-500 duration-200"

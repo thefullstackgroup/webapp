@@ -13,7 +13,7 @@ const Hangout = ({ user }) => {
         keywords=""
       />
 
-      <Layout user={user} headerFixed={true} hideFooter={true}>
+      <Layout user={user} hideFooter={true}>
         <Main user={user} />
       </Layout>
     </>

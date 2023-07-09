@@ -22,13 +22,15 @@ const Actions = (props) => {
             toolTipPosition={props.toolTipPosition}
           />
 
-          <ButtonComment
-            user={props.user}
-            post={props.project}
-            action={props.setShowComments}
-            showLabel={props.showLabel}
-            toolTipPosition={props.toolTipPosition}
-          />
+          <div>
+            <ButtonComment
+              user={props.user}
+              post={props.project}
+              action={props.setShowComments}
+              showLabel={props.showLabel}
+              toolTipPosition={props.toolTipPosition}
+            />
+          </div>
 
           <ButtonAward
             user={props.user}

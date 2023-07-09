@@ -1,8 +1,13 @@
-import { withAuthUserTokenSSR } from 'next-firebase-auth';
+import {
+  AuthAction,
+  withAuthUser,
+  withAuthUserTokenSSR,
+} from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
 import Meta from 'components/common/partials/Metadata';
 import Layout from 'components/common/layout/Layout';
 import Page from 'components/modules/home/Main';
+import Loader from 'components/common/elements/Loader';
 
 const Home = ({ user }) => {
   return (
@@ -20,7 +25,15 @@ const Home = ({ user }) => {
   );
 };
 
-export default Home;
+// export default Home;
+
+export default withAuthUser({
+  whenAuthed: AuthAction.RENDER,
+  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+  whenAuthedBeforeRedirect: AuthAction.SHOW_LOADER,
+  whenUnauthedAfterInit: AuthAction.SHOW_LOADER,
+  LoaderComponent: Loader,
+})(Home);
 
 export const getServerSideProps = withAuthUserTokenSSR()(
   async ({ AuthUser, req, res, query }) => {

@@ -13,7 +13,7 @@ const Teams = ({ user }) => {
         keywords=""
       />
 
-      <Layout user={user} headerFixed={true}>
+      <Layout user={user}>
         <Main user={user} />
       </Layout>
     </>

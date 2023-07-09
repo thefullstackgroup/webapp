@@ -34,7 +34,7 @@ const ListTeams = () => {
 
   return (
     <div className="mb-20 space-y-6 xl:max-w-3xl 2xl:xl:max-w-full">
-      <div className="grid grid-cols-3 gap-6">{teamCards}</div>
+      <div className="grid grid-cols-4 gap-6">{teamCards}</div>
 
       {!isReachingEnd && (
         <div className="my-10 flex justify-center">

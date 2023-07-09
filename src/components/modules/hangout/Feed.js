@@ -43,8 +43,8 @@ const Feed = ({ user, topic, following }) => {
         (topic === 'following' ? (
           <FollowingCard post={project} user={user} key={project.id} />
         ) : (
-          <div className="mb-6">
-            <PostCard project={project} user={user} key={project.projectId} />
+          <div className="mb-6" key={project.projectId}>
+            <PostCard project={project} user={user} />
           </div>
         ))
     );

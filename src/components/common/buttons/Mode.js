@@ -12,7 +12,7 @@ const Mode = () => {
       }
       className="nav-bar nav-bar-icon"
     >
-      {theme === 'dark' ? <Icon name="FiSun" /> : <Icon name="FiMoon" />}
+      {currentTheme === 'dark' ? <Icon name="FiSun" /> : <Icon name="FiMoon" />}
     </button>
   );
 };

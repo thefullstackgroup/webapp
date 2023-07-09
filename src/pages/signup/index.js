@@ -15,7 +15,7 @@ const Loading = () => {
 
 const SignUp = () => {
   return (
-    <Layout headerFixed={true}>
+    <Layout>
       <Main />
     </Layout>
   );

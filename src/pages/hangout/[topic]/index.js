@@ -13,7 +13,7 @@ const HangoutTopic = ({ user, topic }) => {
         keywords=""
       />
 
-      <Layout user={user} headerFixed={true} hideFooter={true}>
+      <Layout user={user} hideFooter={true}>
         <Main user={user} topic={topic} />
       </Layout>
     </>

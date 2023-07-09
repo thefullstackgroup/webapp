@@ -4,7 +4,7 @@ import Icon from '../elements/Icon';
 import Link from 'next/link';
 import Avatar from '../elements/Avatar';
 
-const ProfilePopoverPanel = ({ user }) => {
+const ProfilePopoverPanel = ({ user, setShowSignOut }) => {
   const [isShowing, setIsShowing] = useState(false);
 
   return (
@@ -138,20 +138,22 @@ const ProfilePopoverPanel = ({ user }) => {
                       </button>
                     </Link>
                   </div>
-                  <Link href="/account/settings/signout">
-                    <button
-                      className="nav-popover items-center text-base-500 hover:text-base-500 focus:border-none focus:outline-none focus:ring-0 dark:text-base-300 hover:dark:text-base-300"
-                      onClick={() => setIsShowing(false)}
-                    >
-                      <Icon
-                        name={'FiLogOut'}
-                        className="h-6 w-6 hover:text-base-700"
-                      />
-                      <span className="text-base-500 hover:text-base-500 dark:text-base-300 hover:dark:text-base-300">
-                        Sign out
-                      </span>
-                    </button>
-                  </Link>
+
+                  <button
+                    className="nav-popover items-center text-base-500 hover:text-base-500 focus:border-none focus:outline-none focus:ring-0 dark:text-base-300 hover:dark:text-base-300"
+                    onClick={() => {
+                      setShowSignOut(true);
+                      setIsShowing(false);
+                    }}
+                  >
+                    <Icon
+                      name={'FiLogOut'}
+                      className="h-6 w-6 hover:text-base-700"
+                    />
+                    <span className="text-base-500 hover:text-base-500 dark:text-base-300 hover:dark:text-base-300">
+                      Sign out
+                    </span>
+                  </button>
                 </div>
               ) : (
                 <div className="w-64 space-y-2 px-2 py-4 text-center">

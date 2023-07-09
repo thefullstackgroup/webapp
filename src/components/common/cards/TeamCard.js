@@ -30,54 +30,37 @@ const TeamCard = ({ team }) => {
         }
         onClick={() => handleGoToTeam(team.status, team.id)}
       >
-        <div className="w-full space-y-6">
-          <div className="flex w-full space-x-4">
-            <div>
-              <div className="relative h-14 w-20 overflow-hidden rounded-lg sm:h-20 sm:w-20">
-                {team.image && (
-                  <Image
-                    src={team.image}
-                    className="h-full w-full object-cover"
-                    alt={team.name || ''}
-                    title={team.name}
-                    referrerPolicy="no-referrer"
-                    width={100}
-                    height={100}
-                    layout="fill"
-                    priority={true}
-                  />
-                )}
-              </div>
-            </div>
-            <div className="w-full">
-              <div className="flex w-full items-start justify-between">
-                <div className="text-xl font-semibold sm:text-2xl">
-                  {team.name}
-                </div>
-                {team.status !== 'ACTIVE' ? (
-                  <div className="badge badge-xs">Coming soon</div>
-                ) : (
-                  <div className="mt-1 hidden items-end space-y-2 text-xs font-medium sm:flex sm:flex-col">
-                    {teamJobs?.data?.length > 0 && (
-                      <div className="badge badge-xs whitespace-nowrap bg-purple-600 font-medium">
-                        Open roles
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
+        <div className="relative w-full space-y-6">
+          <div className="relative h-14 w-20 overflow-hidden rounded-lg sm:h-20 sm:w-20">
+            {team.image && (
+              <Image
+                src={team.image}
+                className="h-full w-full object-cover"
+                alt={team.name || ''}
+                title={team.name}
+                referrerPolicy="no-referrer"
+                width={100}
+                height={100}
+                layout="fill"
+                priority={true}
+              />
+            )}
+          </div>
 
-              <p className="text-base-600 dark:text-base-400">
-                {team.description}
-              </p>
-              <div className="no-scrollbar flex flex-wrap items-center gap-1 overflow-x-scroll py-2 text-xs">
-                {team.businessDetails?.location?.map((place, index) => (
-                  <div className="badge badge-xs" key={index}>
-                    {place}
-                  </div>
-                ))}
-              </div>
-              {/* {teamOwner && (
+          <div className="w-full">
+            <div className="text-xl font-semibold sm:text-xl">{team.name}</div>
+
+            <p className="text-base-600 dark:text-base-400">
+              {team.description}
+            </p>
+            <div className="no-scrollbar flex flex-wrap items-center gap-1 overflow-x-scroll py-2 text-xs">
+              {team.businessDetails?.location?.map((place, index) => (
+                <div className="badge badge-xs" key={index}>
+                  {place}
+                </div>
+              ))}
+            </div>
+            {/* {teamOwner && (
                 <div className="my-1 flex items-center space-x-2 text-sm font-medium text-base-400">
                   {teamOwner}
                   <Avatar
@@ -98,13 +81,25 @@ const TeamCard = ({ team }) => {
                   </p>
                 </div>
               )} */}
-              <div className="no-scrollbar flex flex-wrap items-center overflow-x-scroll py-2">
-                {team.techStack?.map((stack, index) => (
-                  <TechBadge tech={stack} key={index} size={'xs'} />
-                ))}
-              </div>
+            <div className="no-scrollbar flex flex-wrap items-center overflow-x-scroll py-2">
+              {team.techStack?.map((stack, index) => (
+                <TechBadge tech={stack} key={index} size={'xs'} />
+              ))}
             </div>
           </div>
+        </div>
+        <div className="absolute top-3 right-2">
+          {team.status !== 'ACTIVE' ? (
+            <div className="badge badge-xs">Coming soon</div>
+          ) : (
+            <div className="mt-1 hidden items-end space-y-2 text-xs font-medium sm:flex sm:flex-col">
+              {teamJobs?.data?.length > 0 && (
+                <div className="badge badge-xs whitespace-nowrap bg-purple-600 font-medium">
+                  Open roles
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </button>
     </div>

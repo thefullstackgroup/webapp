@@ -71,7 +71,7 @@ const Page = ({ user, promo }) => {
 
   return (
     <>
-      <div className="mx-auto mt-0 w-full max-w-5xl justify-center lg:mt-6">
+      <div className="mx-auto mt-0 mb-20 w-full max-w-5xl justify-center lg:mt-6">
         <div className="flex items-center justify-between">
           <div className="hidden py-4 text-4xl font-medium tracking-tight sm:block">
             Wallet

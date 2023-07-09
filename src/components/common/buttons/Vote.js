@@ -56,8 +56,13 @@ const ButtonVote = ({
       <ToolTip message="Upvote" position={toolTipPosition} />
       {isLiked ? (
         <>
-          <Icon name={'FiTriangle'} className="h-12 w-12 text-red-500" />
-          <span className="text-white">{Math.abs(refreshLikes)}</span>
+          <Icon
+            name={'FiTriangle'}
+            className="darl:text-green-400 h-6 w-6 text-green-600"
+          />
+          <span className="text-green-600 dark:text-green-400">
+            {Math.abs(refreshLikes)}
+          </span>
           {showLabel && <span>Upvote</span>}
         </>
       ) : (

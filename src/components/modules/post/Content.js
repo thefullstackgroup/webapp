@@ -162,9 +162,11 @@ const Content = ({
             </div>
           </div>
 
-          <div className="mt-6">
-            <Insights projectId={post?.projectId || post?._id} />
-          </div>
+          {user && (
+            <div className="mt-6">
+              <Insights projectId={post?.projectId || post?._id} />
+            </div>
+          )}
 
           <div className="my-4 w-full border-b border-base-200 pt-2 dark:border-base-700 md:w-full">
             <Actions

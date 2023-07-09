@@ -5,7 +5,6 @@ import ProjectCard from 'components/common/cards/ProjectCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
-import DividerShowMore from 'components/common/elements/DividerShowMore';
 import Icon from 'components/common/elements/Icon';
 import ToolTip from 'components/common/elements/ToolTip';
 import Link from 'next/link';
