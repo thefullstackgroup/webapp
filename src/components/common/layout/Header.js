@@ -19,6 +19,7 @@ const Header = ({
   headerAutoHide = false,
   setShowCreatePost,
   setShowSignOut,
+  setShowLogin,
 }) => {
   const router = useRouter();
   const q = router.query.q !== '' ? router.query.q : '';
@@ -174,6 +175,7 @@ const Header = ({
               <ProfilePopoverPanel
                 user={user}
                 setShowSignOut={setShowSignOut}
+                setShowLogin={setShowLogin}
               />
             </div>
           </div>

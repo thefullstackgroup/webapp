@@ -22,7 +22,7 @@ const ExplorePopular = ({ user }) => {
         keywords=""
       />
 
-      <Layout user={user} fullWidth={true}>
+      <Layout user={user} fullWidth={true} headerAutoHide={true}>
         <div className="min-h-screen space-y-10 px-8">
           <Categories
             category={category}

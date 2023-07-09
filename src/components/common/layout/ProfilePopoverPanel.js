@@ -4,7 +4,7 @@ import Icon from '../elements/Icon';
 import Link from 'next/link';
 import Avatar from '../elements/Avatar';
 
-const ProfilePopoverPanel = ({ user, setShowSignOut }) => {
+const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
   const [isShowing, setIsShowing] = useState(false);
 
   return (
@@ -146,10 +146,7 @@ const ProfilePopoverPanel = ({ user, setShowSignOut }) => {
                       setIsShowing(false);
                     }}
                   >
-                    <Icon
-                      name={'FiLogOut'}
-                      className="h-6 w-6 hover:text-base-700"
-                    />
+                    <Icon name={'FiLogOut'} className="h-6 w-6" />
                     <span className="text-base-500 hover:text-base-500 dark:text-base-300 hover:dark:text-base-300">
                       Sign out
                     </span>
@@ -167,11 +164,16 @@ const ProfilePopoverPanel = ({ user, setShowSignOut }) => {
                         <span>Sign up</span>
                       </button>
                     </Link>
-                    <Link href="/login">
-                      <button className="btn btn-secondary btn-with-icon">
-                        <span>Log in</span>
-                      </button>
-                    </Link>
+
+                    <button
+                      className="btn btn-secondary btn-with-icon"
+                      onClick={() => {
+                        setShowLogin(true);
+                        setIsShowing(false);
+                      }}
+                    >
+                      <span>Log in</span>
+                    </button>
                   </div>
                 </div>
               )}

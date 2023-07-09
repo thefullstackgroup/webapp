@@ -51,7 +51,7 @@ const ProjectCategory = ({ postCategories, setPostCategories }) => {
           >
             <span>{category.categoryName}</span>
 
-            <span className="absolute -top-1 -left-1 h-4 w-4 rounded-full bg-green-600 ring-2 ring-white">
+            <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-green-600 ring-2 ring-white">
               <BsCheck className="h-4 w-4 text-white" />
             </span>
           </button>

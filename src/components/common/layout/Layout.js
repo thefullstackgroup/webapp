@@ -3,6 +3,7 @@ import Footer from 'components/common/layout/Footer';
 import CreatePostModal from 'components/modules/create/CreatePostModal';
 import { useState } from 'react';
 import SignOutPrompt from '../elements/SignOutPrompt';
+import LoginModal from 'components/modules/auth/LoginModal';
 
 const Layout = ({
   user,
@@ -13,6 +14,7 @@ const Layout = ({
 }) => {
   const [showCreatePost, setShowCreatePost] = useState(false);
   const [showSignOut, setShowSignOut] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   return (
     <>
       <main className="min-h-screen bg-base-100 dark:bg-base-900">
@@ -21,6 +23,7 @@ const Layout = ({
           headerAutoHide={headerAutoHide}
           setShowCreatePost={setShowCreatePost}
           setShowSignOut={setShowSignOut}
+          setShowLogin={setShowLogin}
         />
         <div className={!fullWidth ? 'mx-auto max-w-screen-2xl px-4' : ''}>
           {children}
@@ -34,7 +37,17 @@ const Layout = ({
         setShow={setShowCreatePost}
       />
 
-      <SignOutPrompt user={user} show={showSignOut} setShow={setShowSignOut} />
+      {user && (
+        <SignOutPrompt
+          user={user}
+          show={showSignOut}
+          setShow={setShowSignOut}
+        />
+      )}
+
+      {!user && (
+        <LoginModal user={user} show={showLogin} setShow={setShowLogin} />
+      )}
     </>
   );
 };

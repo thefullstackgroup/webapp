@@ -34,7 +34,7 @@ const ExploreCategory = ({ user, cat }) => {
         keywords=""
       />
 
-      <Layout user={user} fullWidth={true}>
+      <Layout user={user} fullWidth={true} headerAutoHide={true}>
         <div className="min-h-screen space-y-10 px-8">
           <Categories category={category} setCategory={setCategory} />
           <div className="mt-10 space-y-2 text-center">
