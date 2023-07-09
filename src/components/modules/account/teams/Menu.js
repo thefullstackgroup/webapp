@@ -13,10 +13,10 @@ const Menu = ({ user, team }) => {
   return (
     <>
       <div className="mx-4 space-y-6 md:mx-0">
-        <Link href={`/account/settings`}>
+        <Link href={`/teams/${team.id}`}>
           <div className="mb-4 flex cursor-pointer items-center space-x-2 px-4 md:px-0">
             <IoArrowBack className="h-5 w-5" />
-            <h2 className="text-sm font-bold">Back to account settings</h2>
+            <h2 className="text-sm font-bold">Back to team profile</h2>
           </div>
         </Link>
         <div className="flex justify-between">
@@ -52,55 +52,40 @@ const Menu = ({ user, team }) => {
       </div>
       {team && (
         <>
-          <div className="my-4 flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Link href={`/account/teams/profile/${team?.id}`}>
-                <button
-                  className={
-                    `whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium sm:px-4 sm:py-2 ` +
-                    (menuHighlight[3] === 'profile'
-                      ? `bg-base-600/70 text-white`
-                      : `bg-base-700/70 text-base-400 hover:text-white`)
-                  }
-                >
-                  <span>Edit team profile</span>
-                </button>
-              </Link>
-
-              <Link href={`/account/teams/members/${team?.id}`}>
-                <button
-                  className={
-                    `whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium sm:px-4 sm:py-2 ` +
-                    (menuHighlight[3] === 'members'
-                      ? `bg-base-600/70 text-white`
-                      : `bg-base-700/70 text-base-400 hover:text-white`)
-                  }
-                >
-                  <span>Team members</span>
-                </button>
-              </Link>
-
-              <Link href={`/account/teams/jobs/${team?.id}`}>
-                <button
-                  className={
-                    `whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium sm:px-4 sm:py-2 ` +
-                    (menuHighlight[3] === 'jobs'
-                      ? `bg-base-600/70 text-white`
-                      : `bg-base-700/70 text-base-400 hover:text-white`)
-                  }
-                >
-                  <span>Post a job</span>
-                </button>
-              </Link>
-            </div>
-            <div>
+          <div className="my-4 flex items-center space-x-2">
+            <Link href={`/account/teams/profile/${team?.id}`}>
               <button
-                className="btn-ghost bg-base-700 px-4 text-sm"
-                onClick={() => setViewTeamProfile(true)}
+                className={
+                  menuHighlight[3] === 'profile'
+                    ? `btn-pill-active`
+                    : `btn-pill`
+                }
               >
-                <span>View Profile</span>
+                <span>Edit team profile</span>
               </button>
-            </div>
+            </Link>
+
+            <Link href={`/account/teams/members/${team?.id}`}>
+              <button
+                className={
+                  menuHighlight[3] === 'members'
+                    ? `btn-pill-active`
+                    : `btn-pill`
+                }
+              >
+                <span>Team members</span>
+              </button>
+            </Link>
+
+            <Link href={`/account/teams/jobs/${team?.id}`}>
+              <button
+                className={
+                  menuHighlight[3] === 'jobs' ? `btn-pill-active` : `btn-pill`
+                }
+              >
+                <span>Post open role</span>
+              </button>
+            </Link>
           </div>
         </>
       )}

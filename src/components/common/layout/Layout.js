@@ -13,7 +13,7 @@ const Layout = ({
   const [showCreatePost, setShowCreatePost] = useState(false);
   return (
     <>
-      <main className="min-h-screen bg-base-100 dark:bg-black">
+      <main className="min-h-screen bg-base-100 dark:bg-base-900">
         <Header
           user={user}
           headerFixed={headerFixed}

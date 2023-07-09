@@ -18,31 +18,29 @@ const Members = ({ user, team = null }) => {
   return (
     <>
       <div className="mt-0 flex w-full justify-center lg:mt-12">
-        <div className="w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
-          <div className="relative mx-auto max-w-4xl">
-            <div className="mx-4 mb-20 md:mx-0">
-              <Menu team={team} user={user} />
-              <div className="space-y-4">
-                <div className="w-full rounded-lg bg-base-700 px-4 py-4 sm:px-6">
-                  <InviteMembers
-                    user={user}
-                    teamId={team?.id}
-                    teamName={team?.name}
-                    membersIds={team?.membersIds}
-                    inviteMembersPanel={inviteMembersPanel}
-                    setInviteMembersPanel={setInviteMembersPanel}
-                  />
-                </div>
-                <div className="flex justify-end">
-                  <button
-                    className="btn-primary text-sm"
-                    onClick={() => {
-                      setInviteMembersPanel(!inviteMembersPanel);
-                    }}
-                  >
-                    <span>Add member</span>
-                  </button>
-                </div>
+        <div className="relative mx-auto w-full max-w-4xl">
+          <div className="mx-4 mb-20 md:mx-0">
+            <Menu team={team} user={user} />
+            <div className="space-y-4">
+              <div className="w-full rounded-lg border border-base-200 px-4 py-4 dark:border-base-700 sm:px-6">
+                <InviteMembers
+                  user={user}
+                  teamId={team?.id}
+                  teamName={team?.name}
+                  membersIds={team?.membersIds}
+                  inviteMembersPanel={inviteMembersPanel}
+                  setInviteMembersPanel={setInviteMembersPanel}
+                />
+              </div>
+              <div className="flex justify-end">
+                <button
+                  className="btn btn-primary text-sm"
+                  onClick={() => {
+                    setInviteMembersPanel(!inviteMembersPanel);
+                  }}
+                >
+                  <span>Add member</span>
+                </button>
               </div>
             </div>
           </div>

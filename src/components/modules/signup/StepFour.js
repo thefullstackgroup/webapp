@@ -46,15 +46,15 @@ const StepFour = ({ user }) => {
     <div className="mx-auto mb-14 max-w-screen-xl">
       <div className="flex justify-center sm:w-full">
         <div className="px-4 sm:px-0">
-          <h2 className="text-center text-lg text-base-500 dark:text-base-400">
+          <h4 className="text-center text-lg text-base-500 dark:text-base-400">
             Select at least 3 below.
-          </h2>
+          </h4>
           <Skills user={user} setSkillsSelected={setSkillsSelected} />
 
           <div>
             <button
               type="submit"
-              className="btn-primary w-full py-3"
+              className="btn btn-primary w-full py-2"
               onClick={onSubmit}
             >
               Next &rarr;

@@ -7,8 +7,9 @@ export const EmploymentType = ({ selected, setType }) => {
       {employmentTypeOptions.map((type, index) => (
         <button
           className={
-            'badge w-full whitespace-nowrap bg-base-600/50 px-6 py-1.5 text-base ' +
-            (selected === type && 'bg-primary-500 text-white')
+            'badge ' +
+            (selected === type &&
+              'badge bg-cyan-dark text-white dark:bg-cyan-dark')
           }
           onClick={() => setType(type)}
           key={index}
@@ -26,8 +27,9 @@ export const LocationType = ({ selected, setType }) => {
       {locationTypeOptions.map((type, index) => (
         <button
           className={
-            'badge w-full bg-base-600/50 px-6 py-1.5 text-base ' +
-            (selected === type && 'bg-primary-500 text-white')
+            'badge ' +
+            (selected === type &&
+              'badge bg-cyan-dark text-white dark:bg-cyan-dark')
           }
           onClick={() => {
             setType(type);

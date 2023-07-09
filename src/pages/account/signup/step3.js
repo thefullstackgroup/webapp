@@ -19,7 +19,7 @@ const SignUpStep3 = ({ userData }) => {
 
       <main className="pt-4 sm:pt-10">
         <Header />
-        <div className="mx-auto max-w-2xl rounded-md border border-base-700 bg-black px-0 sm:px-8">
+        <div className="mx-auto max-w-2xl rounded-md border border-base-200 px-0 dark:border-base-700 sm:px-8">
           <Progress step={3} />
           {userData && <Page user={userData} />}
         </div>

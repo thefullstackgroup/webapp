@@ -2,16 +2,6 @@ import Link from 'next/link';
 
 const menuOptions = [
   {
-    label: 'Team profile',
-    desc: 'Manage team profiles, invite members and post jobs.',
-    href: '/account/teams',
-  },
-  {
-    label: 'Subscriptions',
-    desc: 'Manage your subscriptions',
-    href: '/account/settings/subscriptions',
-  },
-  {
     label: 'Work preferences',
     desc: 'Set your work preferences',
     href: '/account/settings/jobpreferences',

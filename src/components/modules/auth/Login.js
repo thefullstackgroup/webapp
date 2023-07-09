@@ -50,13 +50,7 @@ const Page = () => {
 
   return (
     <>
-      <Meta
-        title="The Full Stack | Login"
-        description="Discover and connect with developers sharing their work."
-        keywords="developer, social network, developers, software engineering, full stack, software engineering network, tech community, tech companies, best tech companies, developer portfolio, developer network, professional network, professional community"
-      />
-
-      <div className="my-14 flex items-center">
+      <div className="my-20 flex items-center">
         <div className="mx-auto w-full max-w-md">
           <div className="flex flex-col justify-center space-y-4 text-center">
             <div className="mt-2 text-lg font-semibold sm:text-2xl">

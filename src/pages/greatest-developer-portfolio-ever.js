@@ -1,7 +1,7 @@
 import { AuthAction, withAuthUserTokenSSR } from 'next-firebase-auth';
 import { useEffect, useState } from 'react';
 import Meta from 'components/common/partials/Metadata';
-import SignUpModal from 'components/modules/signup/Modal';
+import SignUpModal from 'components/modules/signup/Main';
 import TechPill from 'components/common/tags/TagStack';
 import {
   IoArrowDown,

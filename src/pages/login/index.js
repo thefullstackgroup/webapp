@@ -2,6 +2,7 @@ import { withAuthUser, AuthAction } from 'next-firebase-auth';
 import Page from 'components/modules/auth/Login';
 import Loader from 'components/common/elements/Loader';
 import Layout from 'components/common/layout/Layout';
+import Metadata from 'components/common/partials/Metadata';
 
 const Loading = () => {
   return (
@@ -13,9 +14,16 @@ const Loading = () => {
 
 const Login = () => {
   return (
-    <Layout>
-      <Page />
-    </Layout>
+    <>
+      <Metadata
+        title={`${process.env.brandName} | Sign in`}
+        description="The Developer network"
+        keywords=""
+      />
+      <Layout>
+        <Page />
+      </Layout>
+    </>
   );
 };
 

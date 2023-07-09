@@ -88,9 +88,9 @@ const StepFive = ({ user, referralCode }) => {
     <div className="mx-auto mb-10 max-w-screen-xl px-4 sm:px-0">
       <div className="flex justify-center sm:w-full md:justify-start">
         <div className="w-full">
-          <h2 className="mb-6 text-center text-sm text-base-400 md:text-lg">
-            We send your introduction when you request a connection.
-          </h2>
+          <h4 className="mb-6 text-center text-base-500 dark:text-base-400">
+            We send your introduction when you make a connection request.
+          </h4>
 
           <div className="mb-6 w-full">
             <div className="">
@@ -99,17 +99,14 @@ const StepFive = ({ user, referralCode }) => {
                   <Avatar
                     image={user?.profilePicUrl}
                     name={user?.name}
-                    dimensions="w-10 h-10 md:w-28 md:h-28 opacity-80 ring-4 ring-primary-500"
+                    dimensions="w-10 h-10 md:w-28 md:h-28 opacity-80 ring-2 ring-base-200 dark:ring-base-700"
                     width={500}
                     height={500}
                   />
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="country"
-                    className="font-semibold text-base-300"
-                  >
+                  <label htmlFor="country" className="label">
                     Your introduction
                   </label>
                   <textarea
@@ -135,7 +132,7 @@ const StepFive = ({ user, referralCode }) => {
                 </div>
 
                 <div className="relative mt-4 w-full text-base tracking-tight sm:mt-8 sm:text-base">
-                  <label className="font-semibold text-base-300">
+                  <label className="label">
                     Lastly, where did you hear about thefullstack?
                   </label>
                   <select
@@ -162,10 +159,10 @@ const StepFive = ({ user, referralCode }) => {
                       className="focus:ring-primary-500 text-primary-600 border-primary-300 h-5 w-5 rounded outline-none focus:outline-none"
                       onChange={() => setNewsletterOptIn(!newsletterOptIn)}
                     />
-                    <label className="text-sm text-base-300">
+                    <label className="text-sm text-base-500 dark:text-base-300">
                       Opt in to receive our community newsletter once a week,
                       showcasing the best projects of the week along with
-                      projects looking for contributors.
+                      projects actively looking for contributors.
                     </label>
                   </div>
                 </div>
@@ -176,13 +173,13 @@ const StepFive = ({ user, referralCode }) => {
           {hearAbout !== 'Select' ? (
             <button
               type="submit"
-              className="btn-primary w-full py-3"
+              className="btn btn-primary w-full py-2"
               onClick={handleSubmit}
             >
               Awesome! Let&apos;s go &rarr;
             </button>
           ) : (
-            <button className="btn-primary w-full py-3" disabled>
+            <button className="btn btn-primary w-full py-2" disabled>
               Finish
             </button>
           )}

@@ -136,252 +136,204 @@ const CreateJob = ({ teamId, setShow }) => {
 
   return (
     <>
-      <div className=" mb-4 p-4 py-1">
-        <div className="no-scrollbar h-[74vh] space-y-4 overflow-y-scroll overscroll-contain py-4">
-          <div className="space-y-6">
-            <div>
-              <label className="text-sm font-medium text-base-400">
-                Job title
-              </label>
-              <input
-                type="text"
-                name="title"
-                placeholder="Full stack developer, frontend developer, etc."
-                className="text-input"
-                value={title}
+      <div className="no-scrollbar h-[85vh] overflow-scroll py-4">
+        <div className="space-y-6">
+          <div>
+            <label className="label text-sm">Job title</label>
+            <input
+              type="text"
+              name="title"
+              placeholder="e.g. Full stack developer, frontend developer, etc."
+              className="text-input"
+              value={title}
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+            />
+            {formError && !title?.trim().length > 0 && (
+              <span className="text-xs text-red-500">
+                Please give a job title.
+              </span>
+            )}
+          </div>
+          <div>
+            <label className="label text-sm">Link to apply</label>
+            <input
+              type="text"
+              name="applyurl"
+              placeholder="URL to apply for role"
+              className="text-input"
+              value={applyURL}
+              onChange={(e) => {
+                setApplyURL(e.target.value);
+              }}
+            />
+            {formError && !applyURL?.trim().length > 0 && (
+              <span className="text-xs text-red-500">
+                Please give a URL to apply for position.
+              </span>
+            )}
+          </div>
+          <div>
+            <label className="label text-sm">Salary range</label>
+            <div className="flex items-start space-x-2">
+              <select
+                className="text-input w-48"
                 onChange={(e) => {
-                  setTitle(e.target.value);
+                  setCurrency(e.target.value);
                 }}
-              />
-              {formError && !title?.trim().length > 0 && (
-                <span className="text-xs text-red-500">
-                  Please give a job title.
-                </span>
-              )}
-            </div>
-            <div>
-              <label className="text-sm font-medium text-base-400">
-                Link to apply
-              </label>
-              <input
-                type="text"
-                name="applyurl"
-                placeholder="URL to apply for role"
-                className="text-input"
-                value={applyURL}
-                onChange={(e) => {
-                  setApplyURL(e.target.value);
-                }}
-              />
-              {formError && !applyURL?.trim().length > 0 && (
-                <span className="text-xs text-red-500">
-                  Please give a URL to apply for position.
-                </span>
-              )}
-            </div>
-            <div>
-              <label className="text-sm font-medium text-base-400">
-                Salary range
-              </label>
-              <div className="flex items-start space-x-2">
+              >
+                {currencies.map((curr, index) => (
+                  <option value={curr} key={index}>
+                    {curr}
+                  </option>
+                ))}
+              </select>
+              <div className="w-full">
                 <select
-                  className="text-input w-48"
+                  className="text-input"
                   onChange={(e) => {
-                    setCurrency(e.target.value);
+                    setSalaryMin(e.target.value);
                   }}
                 >
-                  {currencies.map((curr, index) => (
-                    <option value={curr} key={index}>
-                      {curr}
+                  <option value="">Minimum pay</option>
+                  {salaryRanges.map((range, index) => (
+                    <option value={range.value} key={index}>
+                      {range.label}
                     </option>
                   ))}
                 </select>
-                <div className="w-full">
-                  <select
-                    className="text-input"
-                    onChange={(e) => {
-                      setSalaryMin(e.target.value);
-                    }}
-                  >
-                    <option value="">Minimum pay</option>
-                    {salaryRanges.map((range, index) => (
-                      <option value={range.value} key={index}>
-                        {range.label}
-                      </option>
-                    ))}
-                  </select>
-                  {formError && !salaryMin > 0 && (
-                    <span className="text-xs text-red-500">
-                      Please select min salary.
-                    </span>
-                  )}
-                </div>
-                <div className="w-full">
-                  <select
-                    className="text-input"
-                    onChange={(e) => {
-                      setSalaryMax(e.target.value);
-                    }}
-                  >
-                    <option value="">Maximum pay</option>
-                    {salaryRanges.map((range, index) => (
-                      <option value={range.value} key={index}>
-                        {range.label}
-                      </option>
-                    ))}
-                  </select>
-                  {formError && !salaryMax > 0 && (
-                    <span className="text-xs text-red-500">
-                      Please select max salary.
-                    </span>
-                  )}
-                </div>
+                {formError && !salaryMin > 0 && (
+                  <span className="text-xs text-red-500">
+                    Please select min salary.
+                  </span>
+                )}
               </div>
-              {formError && salaryMin > salaryMax && (
-                <span className="text-xs text-red-500">
-                  Min salary cannot be greater than max salary.
-                </span>
-              )}
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-base-400">
-                Employment type
-              </label>
-              <EmploymentType selected={type} setType={setType} />
-              {formError && !type?.trim().length > 0 && (
-                <span className="text-xs text-red-500">
-                  Please select employment type.
-                </span>
-              )}
-            </div>
-            <div>
-              <label className="text-sm font-medium text-base-400">
-                Location(s)
-              </label>
-
-              <LocationType selected={locationType} setType={setLocationType} />
-
-              {formError && !locationType && (
-                <span className="text-xs text-red-500">
-                  Please select at least one.
-                </span>
-              )}
-
-              {locationType && (
-                <>
-                  <div className="w-1/2">
-                    <CountrySelect setCountryName={addLocation} />
-                  </div>
-
-                  <div className="mt-2 flex flex-wrap items-center">
-                    {locations?.map((location, index) => (
-                      <button
-                        key={index}
-                        className="badge badge-with-icon"
-                        onClick={() => removeLocation(location)}
-                      >
-                        <span>{location}</span>
-                        <IoCloseOutline />
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-
-            <div>
-              <label className="text-sm font-medium text-base-400">
-                Tech Stack:
-              </label>
-              <div className="no-scrollbar mt-2 flex flex-wrap items-center">
-                {techStack?.map((stack, index) => (
-                  <button key={index} onClick={() => removeTechStack(stack)}>
-                    <TechBadge tech={stack} size={'sm'} />
-                  </button>
-                ))}
-
-                <div className="relative">
-                  <button
-                    className="btn-primary mb-1 space-x-1 rounded-md py-1.5 text-sm"
-                    onClick={() => setShowTechStackOptions(true)}
-                  >
-                    <span>Add tech stack</span>
-                  </button>
-                  {showTechStackOptions && (
-                    <div className="absolute top-10 left-0 z-20 w-80">
-                      <div
-                        className="fixed inset-0"
-                        onClick={() =>
-                          setShowTechStackOptions(!showTechStackOptions)
-                        }
-                      ></div>
-
-                      <TeamTech
-                        postTechStack={techStack}
-                        setPostTechStack={setTechStack}
-                      />
-                    </div>
-                  )}
-                </div>
-              </div>
-              {formError && !techStack?.length > 0 && (
-                <span className="text-xs text-red-500">
-                  Please select tech stack.
-                </span>
-              )}
-            </div>
-
-            <div>
-              <label className="text-sm font-medium text-base-400">
-                Job description
-              </label>
-              <div className="rounded-md bg-base-600/50">
-                <ReactMde
-                  value={description}
-                  onChange={setDescription}
-                  selectedTab={selectedTab}
-                  onTabChange={setSelectedTab}
-                  generateMarkdownPreview={(markdown) =>
-                    Promise.resolve(
-                      <div className="prose prose-dark mt-4 max-w-full">
-                        <Markdown
-                          options={{
-                            overrides: {
-                              a: {
-                                props: { target: '_blank' },
-                              },
-                            },
-                          }}
-                        >
-                          {markdown}
-                        </Markdown>
-                      </div>
-                    )
-                  }
-                  minEditorHeight={350}
-                  maxEditorHeight={10000}
-                  childProps={{
-                    textArea: {
-                      placeholder: 'Describe the job position ...',
-                    },
+              <div className="w-full">
+                <select
+                  className="text-input"
+                  onChange={(e) => {
+                    setSalaryMax(e.target.value);
                   }}
-                  commands={{
-                    'markdown-link': customCommand,
-                  }}
-                  toolbarCommands={[
-                    ['header', 'bold', 'italic', 'strikethrough'],
-                    ['quote', 'code'],
-                    ['unordered-list', 'ordered-list', 'checked-list'],
-                    ['markdown-link'],
-                  ]}
-                />
+                >
+                  <option value="">Maximum pay</option>
+                  {salaryRanges.map((range, index) => (
+                    <option value={range.value} key={index}>
+                      {range.label}
+                    </option>
+                  ))}
+                </select>
+                {formError && !salaryMax > 0 && (
+                  <span className="text-xs text-red-500">
+                    Please select max salary.
+                  </span>
+                )}
               </div>
-              {formError && !description?.length > 0 && (
-                <span className="text-xs text-red-500">
-                  Please give job description.
-                </span>
+            </div>
+            {formError && salaryMin > salaryMax && (
+              <span className="text-xs text-red-500">
+                Min salary cannot be greater than max salary.
+              </span>
+            )}
+          </div>
+          <div>
+            <label className="label text-sm">Employment type</label>
+            <EmploymentType selected={type} setType={setType} />
+            {formError && !type?.trim().length > 0 && (
+              <span className="text-xs text-red-500">
+                Please select employment type.
+              </span>
+            )}
+          </div>
+          <div>
+            <label className="label text-sm">Location(s)</label>
+
+            <LocationType selected={locationType} setType={setLocationType} />
+
+            {formError && !locationType && (
+              <span className="text-xs text-red-500">
+                Please select at least one.
+              </span>
+            )}
+
+            {locationType && (
+              <>
+                <div className="w-1/2">
+                  <CountrySelect setCountryName={addLocation} />
+                </div>
+
+                <div className="mt-2 flex flex-wrap items-center">
+                  {locations?.map((location, index) => (
+                    <button
+                      key={index}
+                      className="badge badge-with-icon"
+                      onClick={() => removeLocation(location)}
+                    >
+                      <span>{location}</span>
+                      <IoCloseOutline />
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+
+          <div>
+            <label className="label text-sm">Tech Stack:</label>
+            <div className="no-scrollbar flex flex-wrap items-center">
+              {techStack?.map((stack, index) => (
+                <button key={index} onClick={() => removeTechStack(stack)}>
+                  <TechBadge tech={stack} size={'sm'} />
+                </button>
+              ))}
+            </div>
+            <div className="relative">
+              <button
+                className="btn btn-secondary space-x-1 rounded-md py-1.5 text-sm"
+                onClick={() => setShowTechStackOptions(true)}
+              >
+                <span>Add tech stack</span>
+              </button>
+              {showTechStackOptions && (
+                <div className="absolute top-10 left-0 z-20 w-80">
+                  <div
+                    className="fixed inset-0"
+                    onClick={() =>
+                      setShowTechStackOptions(!showTechStackOptions)
+                    }
+                  ></div>
+
+                  <TeamTech
+                    postTechStack={techStack}
+                    setPostTechStack={setTechStack}
+                  />
+                </div>
               )}
             </div>
+            {formError && !techStack?.length > 0 && (
+              <span className="text-xs text-red-500">
+                Please select tech stack.
+              </span>
+            )}
+          </div>
+
+          <div>
+            <label className="label text-sm">Job description</label>
+
+            <textarea
+              className="text-input"
+              rows={5}
+              onChange={setDescription}
+              placeholder="Describe the role ..."
+            >
+              {description}
+            </textarea>
+
+            {formError && !description?.length > 0 && (
+              <span className="text-xs text-red-500">
+                Please give job description.
+              </span>
+            )}
           </div>
         </div>
 
@@ -394,12 +346,12 @@ const CreateJob = ({ teamId, setShow }) => {
             </span>
           </div>
           {saving ? (
-            <button className="btn-primary btn-with-icon" disabled>
+            <button className="btn btn-primary btn-with-icon" disabled>
               <CgSpinner className="h-4 w-4 animate-spin" />
               <span>Saving</span>
             </button>
           ) : (
-            <button className="btn-primary" onClick={() => handleSubmit()}>
+            <button className="btn btn-primary" onClick={() => handleSubmit()}>
               <span className="hidden sm:block">Submit</span>
               <span className="block sm:hidden">Submit</span>
             </button>

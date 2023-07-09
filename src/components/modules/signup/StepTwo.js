@@ -41,9 +41,9 @@ const StepTwo = ({ user }) => {
     <div className="mx-auto mb-14 max-w-screen-xl px-4 sm:px-0">
       <div className="flex justify-center sm:w-full">
         <div className="w-full">
-          <h2 className="text-center text-lg text-base-400">
+          <h4 className="text-center text-lg text-base-500 dark:text-base-400">
             Choose one goal below.
-          </h2>
+          </h4>
           <fieldset className="mt-6 mb-6">
             <legend className="sr-only">Goals</legend>
             <div className="space-y-4">
@@ -51,17 +51,15 @@ const StepTwo = ({ user }) => {
                 <label
                   key={goalIndex}
                   className={
-                    'relative flex cursor-pointer items-center rounded-xl border-2 py-4 px-4 md:px-6 ' +
+                    'relative flex cursor-pointer items-center rounded-xl border py-4 px-4 duration-200 md:px-6 ' +
                     (selectedGoal == goal.id
-                      ? 'border-2 border-green-600'
-                      : 'border-base-600 hover:bg-base-700')
+                      ? 'border-green-600'
+                      : 'border-base-200 hover:bg-base-200/50 dark:border-base-700 dark:hover:bg-base-800')
                   }
                   htmlFor={`goal-${goal.id}`}
                 >
                   <div className="min-w-0 flex-1 text-sm">
-                    <span className="text-xl font-bold text-base-100">
-                      {goal.title}
-                    </span>
+                    <span className="text-xl font-semibold">{goal.title}</span>
                     <p
                       id={`goal-${goal.id}-description`}
                       className="text-base-400"
@@ -79,7 +77,7 @@ const StepTwo = ({ user }) => {
                         goal.id === selectedGoal ? 'checking' : ''
                       }
                       onChange={(e) => setSelectedGoal(goal.id)}
-                      className="h-5 w-5 border-base-500 text-green-600 focus:hidden focus:ring-0"
+                      className="h-5 w-5 border-base-700 text-green-600 focus:hidden focus:ring-0"
                     />
                   </div>
                 </label>
@@ -90,13 +88,13 @@ const StepTwo = ({ user }) => {
           {selectedGoal ? (
             <button
               type="submit"
-              className="btn-primary w-full py-3"
+              className="btn btn-primary w-full py-2"
               onClick={handleSubmit}
             >
               Next &rarr;
             </button>
           ) : (
-            <button className="btn-primary w-full py-3" disabled>
+            <button className="btn btn-primary w-full py-2" disabled>
               Next
             </button>
           )}

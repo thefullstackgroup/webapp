@@ -118,7 +118,7 @@ const StepOne = ({ user, referralCode }) => {
     <div className="mx-auto max-w-screen-xl sm:px-0">
       <div className="flex justify-center sm:w-full md:justify-start">
         <div className="my-8 mx-auto w-full max-w-3xl space-y-8 px-4 sm:px-0">
-          <div className="flex w-full justify-center text-base tracking-tight sm:mb-8 sm:text-base">
+          <div className="flex w-full justify-center text-base tracking-tight sm:mb-8">
             <label
               htmlFor="avatar"
               className="relative flex cursor-pointer flex-col justify-center text-center text-xs font-medium focus:outline-none focus:ring-0"
@@ -127,13 +127,11 @@ const StepOne = ({ user, referralCode }) => {
                 <Avatar
                   image={profilePicUrl}
                   name={user?.name}
-                  dimensions="w-20 h-20 md:w-36 md:h-36 opacity-80 ring-4 ring-primary-500"
+                  dimensions="w-20 h-20 md:w-32 md:h-32 opacity-80 ring-2 ring-base-700"
                   width={500}
                   height={500}
                 />
-                <span className="text-base-300 hover:text-white">
-                  Change avatar
-                </span>
+                <span className="btn btn-sm btn-ghost px-0">Change avatar</span>
                 <input
                   id="avatar"
                   name="avatar"
@@ -144,10 +142,8 @@ const StepOne = ({ user, referralCode }) => {
               </div>
             </label>
           </div>
-          <div className="relative w-full space-y-1 text-base tracking-tight sm:mb-8 sm:text-base">
-            <label className="font-semibold text-base-300">
-              What&apos;s your name?
-            </label>
+          <div className="relative w-full text-base tracking-tight sm:mb-8 sm:text-base">
+            <label className="label">What&apos;s your name?</label>
             <input
               name="fullName"
               type="text"
@@ -159,19 +155,15 @@ const StepOne = ({ user, referralCode }) => {
             />
           </div>
 
-          <div className="relative mt-4 w-full space-y-1  text-base tracking-tight sm:mb-8 sm:mt-8 sm:text-base">
-            <label className="font-semibold text-base-300">
-              Where are you from?
-            </label>
+          <div className="relative mt-4 w-full text-base tracking-tight sm:mb-8 sm:mt-8 sm:text-base">
+            <label className="label">Where are you from?</label>
             <CountrySelect
               countryName={countryName || user.countryName}
               setCountryName={setCountryName}
             />
           </div>
-          <div className="mt-4 w-full  space-y-1 text-base tracking-tight sm:mb-8 sm:mt-8 sm:text-base">
-            <label className="font-semibold text-gray-500 dark:text-gray-300">
-              What do you do?
-            </label>
+          <div className="mt-4 w-full text-base tracking-tight sm:mb-8 sm:mt-8 sm:text-base">
+            <label className="label">What do you do?</label>
 
             <select
               className="text-input"
@@ -193,13 +185,17 @@ const StepOne = ({ user, referralCode }) => {
           {!fullName?.trim().length ||
           !currentTitle?.trim().length ||
           !countryName?.trim().length ? (
-            <button type="button" className="btn-primary w-full py-3" disabled>
+            <button
+              type="button"
+              className="btn btn-primary w-full py-2"
+              disabled
+            >
               Next
             </button>
           ) : (
             <button
               type="submit"
-              className="btn-primary w-full py-3"
+              className="btn btn-primary w-full py-2"
               onClick={handleSubmit}
             >
               Next &rarr;
@@ -210,7 +206,7 @@ const StepOne = ({ user, referralCode }) => {
               AuthUser.signOut();
               router.push('/login');
             }}
-            className="text-primary-500 w-full text-sm tracking-tight"
+            className="btn btn-ghost w-full px-0"
           >
             Already have an account?
           </button>

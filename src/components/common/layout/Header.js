@@ -98,13 +98,6 @@ const Header = ({ user, headerFixed = false, setShowCreatePost }) => {
                       <Link href={item.href} passHref>
                         <a href="#" className="nav-bar relative">
                           <span>{item.label}</span>
-                          {item.label === 'Teams' && (
-                            <div className="absolute top-0 -right-4">
-                              <span className="rounded-xl border border-green-700 bg-base-50 py-0.5 px-1 text-[0.6em] text-green-600 dark:bg-base-900">
-                                Beta
-                              </span>
-                            </div>
-                          )}
                         </a>
                       </Link>
                     )}

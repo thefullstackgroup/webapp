@@ -2,18 +2,18 @@ import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
 import useSWR from 'swr';
 import Meta from 'components/common/partials/Metadata';
-import Layout from 'components/common/layout/LayoutLoggedIn';
+import Layout from 'components/common/layout/Layout';
 import TeamProfile from 'components/modules/account/teams/TeamProfile';
 import Loader from 'components/common/elements/Loader';
 import fetcher from 'utils/fetcher';
 
-const ManageTeamProfile = ({ userProfile, teamId }) => {
+const ManageTeamProfile = ({ user, teamId }) => {
   const teamsURL = `${process.env.BASEURL}/api/teams/getTeam?teamId=${teamId}`;
   const { data: team } = useSWR(teamsURL, fetcher);
 
   if (!team)
     return (
-      <div className="flex flex-1 justify-center items-center h-96">
+      <div className="flex h-96 flex-1 items-center justify-center">
         <Loader />
       </div>
     );
@@ -25,11 +25,10 @@ const ManageTeamProfile = ({ userProfile, teamId }) => {
         description="The developer network"
         keywords=""
       />
-      {userProfile && team && (
-        <Layout user={userProfile}>
-          <TeamProfile user={userProfile} team={team} />
-        </Layout>
-      )}
+
+      <Layout user={user}>
+        <TeamProfile user={user} team={team} />
+      </Layout>
     </div>
   );
 };
@@ -52,7 +51,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
 
     return {
       props: {
-        userProfile: userProfile,
+        user: userProfile,
         teamId: params.teamId,
       },
     };

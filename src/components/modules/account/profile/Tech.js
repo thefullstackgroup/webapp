@@ -122,7 +122,7 @@ const Tech = ({ user, setSkillsSelected }) => {
     })
   );
 
-  const [userSkill, setUserSkill] = useState(null);
+  const [userSkill, setUserSkill] = useState([]);
 
   const fetchProfileSkills = async () => {
     await axios
@@ -158,7 +158,7 @@ const Tech = ({ user, setSkillsSelected }) => {
         <Icon iconName={tech.icon} className="h-5 w-5" />
         <span>{tech.label}</span>
         {techSelected && (
-          <span className="absolute -top-1 -left-1 h-4 w-4 rounded-full bg-green-600 text-white ring-2 ring-white">
+          <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-green-600 text-white ring-2 ring-white">
             <BsCheck className="h-4 w-4" />
           </span>
         )}
@@ -167,7 +167,7 @@ const Tech = ({ user, setSkillsSelected }) => {
   };
 
   const saveTech = async (tech) => {
-    const techExist = userSkill.find(function (item) {
+    const techExist = userSkill?.find(function (item) {
       return tech._id === item._id;
     });
 
@@ -239,10 +239,7 @@ const Tech = ({ user, setSkillsSelected }) => {
     <>
       <div className="w-full">
         {techStacks.map((type, index) => (
-          <div
-            className="my-6 rounded-lg border border-base-300 p-4 dark:border-base-700"
-            key={index}
-          >
+          <div className="my-6" key={index}>
             <h4 className="text-sm font-semibold uppercase">{type.label}</h4>
             <div className="my-4 flex w-full flex-wrap gap-1">
               {type.stacks.map((tech) => (

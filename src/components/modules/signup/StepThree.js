@@ -24,18 +24,12 @@ const StepThree = ({ user }) => {
 
     return (
       <div
-        className={
-          'relative flex cursor-pointer items-center space-x-1 rounded-full py-2 px-3 text-sm font-medium ' +
-          (interestSelected
-            ? 'bg-base-500/70 text-white'
-            : 'bg-base-600/40 text-base-300')
-        }
+        className="badge relative cursor-pointer"
         onClick={() => saveInterest(interest.id)}
       >
-        {/* <Icon iconName={tech.icon} className={'w-6 h-6 ' + (techSelected ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-base-300')} /> */}
         <span>{interest.interestName}</span>
         {interestSelected && (
-          <span className="absolute -top-1 -left-1 h-4 w-4 rounded-full bg-green-600 ring-2 ring-white">
+          <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-green-600 ring-2 ring-white">
             <BsCheck className="h-4 w-4 text-white" />
           </span>
         )}
@@ -155,16 +149,16 @@ const StepThree = ({ user }) => {
     <div className="mx-auto mb-14 max-w-screen-xl">
       <div className="flex justify-center sm:w-full">
         <div className="w-full px-4 sm:px-0">
-          <h2 className="text-center text-lg text-base-400">
+          <h4 className="text-center text-lg text-base-400">
             Select at least 3 below.
-          </h2>
-          {categories?.map((category, index) => (
-            <div key={index}>
-              <div className="my-8 rounded-xl bg-base-700/50 p-3 pb-2">
-                <h4 className="pl-2 text-sm font-semibold uppercase text-base-100">
+          </h4>
+          <div className="my-8 space-y-8">
+            {categories?.map((category, index) => (
+              <div className="space-y-2" key={index}>
+                <h4 className="text-sm font-medium uppercase">
                   {category.categoryName}
                 </h4>
-                <div className="my-4 flex w-full flex-wrap gap-3">
+                <div className="flex w-full flex-wrap gap-1">
                   {interests[category.id] &&
                     Object.entries(interests[category.id]).map(
                       ([key, interest]) => (
@@ -173,19 +167,19 @@ const StepThree = ({ user }) => {
                     )}
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
           <div>
             {interests && savedInterests.length > 2 ? (
               <button
                 type="submit"
-                className="btn-primary w-full py-3"
+                className="btn btn-primary w-full py-2"
                 onClick={onSubmit}
               >
                 Next &rarr;
               </button>
             ) : (
-              <button className="btn-primary w-full py-3" disabled>
+              <button className="btn btn-primary w-full py-2" disabled>
                 Next
               </button>
             )}

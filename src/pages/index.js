@@ -32,7 +32,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
       AuthUser,
       req,
       res,
-      false //TRUE only used on this page
+      true //TRUE only used on this page
     );
 
     if (userProfile?.redirect) {

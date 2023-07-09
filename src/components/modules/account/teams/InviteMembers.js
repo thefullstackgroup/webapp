@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useAuthUser } from 'next-firebase-auth';
 import axios from 'axios';
 import Avatar from 'components/common/elements/Avatar';
-import ModalDialog from 'components/common/modals/ModalDialog';
 import Loader from 'components/common/elements/Loader';
+import ModalAlert from 'components/common/modals/ModalAlert';
 
 const InviteMembers = ({
   user,
@@ -154,7 +154,7 @@ const InviteMembers = ({
     <>
       <div>
         <div className="">
-          <div className="items-center divide-y divide-base-700">
+          <div className="items-center divide-y divide-base-200 dark:divide-base-700">
             <div className="flex items-center justify-between py-2">
               <div className="flex cursor-pointer items-center space-x-3">
                 <Avatar
@@ -167,7 +167,7 @@ const InviteMembers = ({
                 <h4>{user.name}</h4>
                 <span className="text-base-400">{user.currentTitle}</span>
               </div>
-              <button className="btn-ghost text-left text-xs">
+              <button className="btn btn-ghost px-0 text-left text-xs">
                 Team owner
               </button>
             </div>
@@ -188,7 +188,7 @@ const InviteMembers = ({
                   <span className="text-base-400">{member.currentTitle}</span>
                 </div>
                 <button
-                  className="btn-ghost text-left text-xs text-red-500"
+                  className="btn btn-secondary text-left text-xs"
                   onClick={() => removeTeamMember(member.userId)}
                 >
                   Remove
@@ -210,7 +210,7 @@ const InviteMembers = ({
         </div>
       </div>
 
-      <ModalDialog
+      <ModalAlert
         show={inviteMembersPanel}
         setShow={setInviteMembersPanel}
         title="Add team members"
@@ -247,7 +247,7 @@ const InviteMembers = ({
               />
 
               {showLoadingResults && (
-                <div className="-mt-1 flex h-72 w-full flex-1 items-center justify-center bg-base-700">
+                <div className="-mt-1 flex h-72 w-full flex-1 items-center justify-center">
                   <Loader />
                 </div>
               )}
@@ -314,16 +314,7 @@ const InviteMembers = ({
               )}
             </div>
           </div>
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-base-600"></div>
-            </div>
-            <div className="relative flex justify-center">
-              <span className="bg-base-900 px-2 text-sm text-base-400">
-                Can&apos;t find them? Send an invite
-              </span>
-            </div>
-          </div>
+          <div className="relative my-6"></div>
           {emailInvitesSent && (
             <div className="relative mt-2 mb-4 w-full rounded-md bg-green-500/20 py-1.5 px-2 text-center text-sm text-green-500">
               Invite sent
@@ -339,14 +330,14 @@ const InviteMembers = ({
           ></textarea>
           <div className="flex justify-end py-4">
             <button
-              className="btn-primary text-sm"
+              className="btn btn-primary text-sm"
               onClick={() => inviteTeamMembers()}
             >
               Send invites
             </button>
           </div>
         </div>
-      </ModalDialog>
+      </ModalAlert>
     </>
   );
 };

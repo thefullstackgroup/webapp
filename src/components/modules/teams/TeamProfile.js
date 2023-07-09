@@ -13,6 +13,8 @@ import Subscribe from 'components/modules/account/settings/subscriptions/Modal';
 import ModalDialog from 'components/common/modals/ModalDialog';
 import Loader from 'components/common/elements/Loader';
 import fetcher from 'utils/fetcher';
+import ToolTip from 'components/common/elements/ToolTip';
+import Icon from 'components/common/elements/Icon';
 
 const TeamProfile = ({ user, slug }) => {
   const router = useRouter();
@@ -64,9 +66,7 @@ const TeamProfile = ({ user, slug }) => {
               <div className="mt-0 flex min-h-screen w-full items-start justify-between gap-12 px-4 pb-20 md:mt-0 md:px-0">
                 <div className="relative w-full space-y-6 sm:space-y-8 lg:w-8/12">
                   <Link href="/teams">
-                    <button className="mt-2 text-sm text-base-400 hover:text-white sm:mt-6 sm:text-base">
-                      &larr; Back
-                    </button>
+                    <button className="btn btn-ghost px-0">&larr; Back</button>
                   </Link>
                   <div className="flex items-start justify-between space-y-2">
                     <div className="space-y-1">
@@ -87,13 +87,11 @@ const TeamProfile = ({ user, slug }) => {
                           <h2 className="text-2xl font-semibold md:text-3xl">
                             {team.name}
                           </h2>
-                          <p className="text-sm text-base-400 md:text-base">
-                            {team.description}
-                          </p>
+                          <p className="text-sm">{team.description}</p>
                           <a
                             href={team.url}
                             target="_blank"
-                            className="flex items-center space-x-2 text-sm text-base-500 hover:text-white md:text-base"
+                            className="flex items-center space-x-2 text-base"
                             rel="noreferrer"
                           >
                             <span>{team.url.replace(/(^\w+:|^)\/\//, '')}</span>
@@ -105,12 +103,12 @@ const TeamProfile = ({ user, slug }) => {
                     {team.ownerId === user?.userId && (
                       <div>
                         <button
-                          className="btn-ghost"
+                          className="btn btn-secondary"
                           onClick={() =>
                             router.push(`/account/teams/profile/${team.id}`)
                           }
                         >
-                          <IoSettingsOutline className="h-6 w-6" />
+                          Edit profile
                         </button>
                       </div>
                     )}
@@ -135,20 +133,18 @@ const TeamProfile = ({ user, slug }) => {
                     )} */}
 
                     <div className="space-y-2">
-                      <h3 className="font-semibold text-white">
+                      <h3 className="font-semibold">
                         What is your team mission?
                       </h3>
-                      <p className="text-base-300">{team.mission}</p>
+                      <p>{team.mission}</p>
                     </div>
 
                     {team.businessDetails?.teamStructure !== '' && (
                       <div className="space-y-2">
-                        <h3 className="font-semibold text-white">
+                        <h3 className="font-semibold">
                           How are the teams structured?
                         </h3>
-                        <p className="text-base-300">
-                          {team.businessDetails?.teamStructure}
-                        </p>
+                        <p>{team.businessDetails?.teamStructure}</p>
                       </div>
                     )}
 
@@ -221,40 +217,34 @@ const TeamProfile = ({ user, slug }) => {
 
                     {team.businessDetails?.devProcess !== '' && (
                       <div className="space-y-2">
-                        <h3 className="font-semibold text-white">
+                        <h3 className="font-semibold">
                           How does the development process work?
                         </h3>
-                        <p className="text-base-300">
-                          {team.businessDetails?.devProcess}
-                        </p>
+                        <p>{team.businessDetails?.devProcess}</p>
                       </div>
                     )}
 
                     {team.businessDetails?.devTools !== '' && (
                       <div className="space-y-2">
-                        <h3 className="font-semibold text-white">
+                        <h3 className="font-semibold">
                           What tools do developers use?
                         </h3>
-                        <p className="text-base-300">
-                          {team.businessDetails?.devTools}
-                        </p>
+                        <p>{team.businessDetails?.devTools}</p>
                       </div>
                     )}
 
                     {team.businessDetails?.hiringProcess !== '' && (
                       <div className="space-y-2">
-                        <h3 className="font-semibold text-white">
+                        <h3 className="font-semibold">
                           What does your hiring process look like?
                         </h3>
-                        <p className="text-base-300">
-                          {team.businessDetails?.hiringProcess}
-                        </p>
+                        <p>{team.businessDetails?.hiringProcess}</p>
                       </div>
                     )}
                   </div>
                 </div>
-                <div className="sticky top-20 hidden w-3/12 lg:block">
-                  <div className="fixed top-24 w-72">
+                <div className="hidden w-3/12 lg:block">
+                  <div className="fixed top-40 w-72">
                     <div className="relative ml-6 h-28 w-28 overflow-hidden rounded-xl">
                       <Image
                         src={team.image}
@@ -267,28 +257,22 @@ const TeamProfile = ({ user, slug }) => {
                         layout="fill"
                       />
                     </div>
-                    <div className="-mt-14 grid w-full grid-cols-5 gap-3 rounded-md border border-base-600/50 bg-base-800 pt-20 pb-10 pl-8 pr-10 text-sm text-base-400">
-                      <div className="col-span-2 font-medium text-white">
-                        Founded:
-                      </div>
+                    <div className="-mt-14 grid w-full grid-cols-5 gap-3 rounded-md border bg-base-50 pt-20 pb-10 pl-8 pr-10 text-sm dark:border-base-700 dark:bg-base-800">
+                      <div className="col-span-2 font-medium">Founded:</div>
                       <div className="col-span-3">
                         {team.businessDetails?.founded}
                       </div>
 
                       {team.businessDetails?.stage !== '' && (
                         <>
-                          <div className="col-span-2 font-medium text-white">
-                            Stage:
-                          </div>
+                          <div className="col-span-2 font-medium">Stage:</div>
                           <div className="col-span-3">
                             {team.businessDetails?.stage}
                           </div>
                         </>
                       )}
 
-                      <div className="col-span-2 font-medium text-white">
-                        Members:
-                      </div>
+                      <div className="col-span-2 font-medium">Members:</div>
                       <div className="col-span-3">
                         {team?.businessDetails?.nrEmployees >
                         teamMembers?.length + 1
@@ -296,14 +280,10 @@ const TeamProfile = ({ user, slug }) => {
                           : teamMembers?.length + 1}
                       </div>
 
-                      <div className="col-span-2 font-medium text-white">
-                        Team lead:
-                      </div>
+                      <div className="col-span-2 font-medium">Team lead:</div>
                       {/* <div className="col-span-3">{teamOwner?.name}</div> */}
 
-                      <div className="col-span-2 font-medium text-white">
-                        Location(s):
-                      </div>
+                      <div className="col-span-2 font-medium">Location(s):</div>
                       <div className="col-span-3">
                         {team.businessDetails?.location.map((place, index) => (
                           <span className="" key={index}>
@@ -315,23 +295,27 @@ const TeamProfile = ({ user, slug }) => {
 
                       {team.businessDetails?.socialMediaLinks?.github && (
                         <>
-                          <div className="col-span-2 font-medium text-white">
-                            Links:
-                          </div>
+                          <div className="col-span-2 font-medium">Links:</div>
                           <div className="col-span-3">
-                            <a
-                              href={
-                                team.businessDetails?.socialMediaLinks?.github
-                              }
-                              target="_blank"
-                              rel="noreferrer"
-                              className="group relative"
-                            >
-                              <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-base-600 px-2 py-1 text-white opacity-0 transition before:absolute before:left-1/2 before:top-full before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-base-600 before:content-[''] group-hover:opacity-100">
-                                {team.businessDetails?.socialMediaLinks?.github}
-                              </span>
-                              <IoLogoGithub className="h-5 w-5 hover:text-white" />
-                            </a>
+                            <div>
+                              <a
+                                href={
+                                  team.businessDetails?.socialMediaLinks?.github
+                                }
+                                target="_blank"
+                                rel="noreferrer"
+                                className="btn btn-ghost group relative"
+                              >
+                                <ToolTip
+                                  message={
+                                    team.businessDetails?.socialMediaLinks
+                                      ?.github
+                                  }
+                                />
+
+                                <Icon name="SiGithub" pack="Si" />
+                              </a>
+                            </div>
                           </div>
                         </>
                       )}
@@ -358,16 +342,10 @@ const TeamProfile = ({ user, slug }) => {
                     </div>
 
                     {team.ownerId === user?.userId && (
-                      <div className="my-6 space-y-2">
+                      <div className="my-6 flex items-center space-x-2">
                         <Link href={`/account/teams/jobs/${team.id}`}>
-                          <button className="btn-primary w-full">
+                          <button className="btn btn-primary w-full">
                             Post a job
-                          </button>
-                        </Link>
-
-                        <Link href={`/account/teams/profile/${team.id}`}>
-                          <button className="btn-secondary w-full">
-                            Manage team
                           </button>
                         </Link>
                       </div>

@@ -1,18 +1,6 @@
-import Link from 'next/link';
-import { IoChevronForward, IoPerson } from 'react-icons/io5';
 import Menu from './Menu';
 
 const settingsOptions = [
-  {
-    label: 'Teams',
-    desc: 'Manage team profiles, invite members and post jobs.',
-    href: '/account/teams',
-  },
-  {
-    label: 'Subscriptions',
-    desc: 'Manage your subscriptions',
-    href: '/account/settings/subscriptions',
-  },
   {
     label: 'Work Preferences',
     desc: 'Set your work preferences',
