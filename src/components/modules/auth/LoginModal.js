@@ -13,7 +13,6 @@ const LoginModal = ({ show, setShow }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState(false);
-  console.log(router);
 
   const googleProvider = new firebase.auth.GoogleAuthProvider();
   const gitHubProvider = new firebase.auth.GithubAuthProvider();
