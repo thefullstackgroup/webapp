@@ -126,12 +126,11 @@ const ProjectCarousel = ({
               </div>
             </SwiperSlide>
           ))}
-        {data &&
-          data?.map((project, index) => (
-            <SwiperSlide key={index}>
-              <ProjectCard project={project} user={user} />
-            </SwiperSlide>
-          ))}
+        {data?.map((project, index) => (
+          <SwiperSlide key={index}>
+            <ProjectCard project={project} user={user} />
+          </SwiperSlide>
+        ))}
       </Swiper>
 
       {/* <DividerShowMore label="Show more" href={showMore} /> */}
