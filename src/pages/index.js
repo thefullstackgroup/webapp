@@ -25,15 +25,15 @@ const Home = ({ user }) => {
   );
 };
 
-// export default Home;
+export default Home;
 
-export default withAuthUser({
-  whenAuthed: AuthAction.RENDER,
-  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
-  whenAuthedBeforeRedirect: AuthAction.SHOW_LOADER,
-  whenUnauthedAfterInit: AuthAction.SHOW_LOADER,
-  LoaderComponent: Loader,
-})(Home);
+// export default withAuthUser({
+//   whenAuthed: AuthAction.RENDER,
+//   whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+//   whenAuthedBeforeRedirect: AuthAction.SHOW_LOADER,
+//   whenUnauthedAfterInit: AuthAction.SHOW_LOADER,
+//   LoaderComponent: Loader,
+// })(Home);
 
 export const getServerSideProps = withAuthUserTokenSSR()(
   async ({ AuthUser, req, res, query }) => {
