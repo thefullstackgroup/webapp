@@ -4,7 +4,7 @@ import ModalAlert from 'components/common/modals/ModalAlert';
 import Icon from 'components/common/elements/Icon';
 import Link from 'next/link';
 
-const CreatePostModal = ({ user, show, setShow, setPostType }) => {
+const CreatePostModal = ({ user, show, setShow }) => {
   const [gitHubImportSelected, setGitHubImportSelected] = useState(false);
 
   return (

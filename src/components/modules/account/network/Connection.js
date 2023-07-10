@@ -1,12 +1,12 @@
-import Avatar from "components/common/elements/Avatar";
-import { useAuthUser } from "next-firebase-auth";
-import Link from "next/link";
-import { sendSlackMessage } from "utils/slack/sendMessageSlack";
+import Avatar from 'components/common/elements/Avatar';
+import { useAuthUser } from 'next-firebase-auth';
+import Link from 'next/link';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import {
   IoChatbubblesOutline,
   IoCheckmark,
   IoCloseSharp,
-} from "react-icons/io5";
+} from 'react-icons/io5';
 
 const CardConnection = ({
   connection,
@@ -24,14 +24,14 @@ const CardConnection = ({
 
     const accessToken = await AuthUser.getIdToken();
     await fetch(`${process.env.BASEURL}/api/accounts/connections/reject`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(formData),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: accessToken,
       },
     });
-    setToastMessage("Connection removed");
+    setToastMessage('Connection removed');
     setShowToast(true);
     sendSlackMessage(`Removed a connection request`);
   };
@@ -45,14 +45,14 @@ const CardConnection = ({
     };
 
     await fetch(`${process.env.BASEURL}/api/accounts/connections/reject`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(formData),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: accessToken,
       },
     });
-    setToastMessage("Connection invite declined");
+    setToastMessage('Connection invite declined');
     setShowToast(true);
     sendSlackMessage(`Declined a connection request`);
   };
@@ -66,14 +66,14 @@ const CardConnection = ({
     const accessToken = await AuthUser.getIdToken();
 
     await fetch(`${process.env.BASEURL}/api/accounts/connections/approve`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(formData),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: accessToken,
       },
     });
-    setToastMessage("Connection invite accepted");
+    setToastMessage('Connection invite accepted');
     setShowToast(true);
     sendSlackMessage(`Approved a connection request`);
   };
@@ -100,7 +100,7 @@ const CardConnection = ({
             </p>
           </div>
 
-          {type === "APPROVED" && (
+          {type === 'APPROVED' && (
             <div className="flex items-center space-x-2">
               <Link href={`${process.env.BASEURL}/${connection.username}`}>
                 <button className="btn btn-sm btn-secondary">
@@ -118,7 +118,7 @@ const CardConnection = ({
             </div>
           )}
 
-          {type === "INVITE" && (
+          {type === 'INVITE' && (
             <div className="flex items-center space-x-2">
               <button
                 className="btn btn-sm btn-primary"
@@ -138,7 +138,7 @@ const CardConnection = ({
             </div>
           )}
 
-          {type === "REQUEST" && (
+          {type === 'REQUEST' && (
             <div className="btn btn-sm btn-ghost px-0">Request pending...</div>
           )}
         </div>

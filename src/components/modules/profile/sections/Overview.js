@@ -1,21 +1,21 @@
-import { useState } from "react";
-import axios from "axios";
-import Link from "next/link";
-import Moment from "moment";
-import lookup from "country-code-lookup";
-import Actions from "components/modules/profile/Actions";
-import Avatar from "components/common/elements/Avatar";
-import TagStack from "components/common/tags/TagStack";
-import Social from "components/modules/profile/sections/Social";
-import { countryCodeEmoji } from "country-code-emoji";
-import { HiThumbUp } from "react-icons/hi";
+import { useState } from 'react';
+import axios from 'axios';
+import Link from 'next/link';
+import Moment from 'moment';
+import lookup from 'country-code-lookup';
+import Actions from 'components/modules/profile/Actions';
+import Avatar from 'components/common/elements/Avatar';
+import TagStack from 'components/common/tags/TagStack';
+import Social from 'components/modules/profile/sections/Social';
+import { countryCodeEmoji } from 'country-code-emoji';
+import { HiThumbUp } from 'react-icons/hi';
 import {
   IoCalendarNumberOutline,
   IoCameraOutline,
   IoChevronDown,
   IoChevronUp,
-} from "react-icons/io5";
-import ToolTip from "components/common/elements/ToolTip";
+} from 'react-icons/io5';
+import ToolTip from 'components/common/elements/ToolTip';
 
 const Overview = ({
   profile,
@@ -35,8 +35,8 @@ const Overview = ({
 
     if (event.target.files.length > 0) {
       const formData = new FormData();
-      formData.append("id", user.userId);
-      formData.append("file", event.target.files[0]);
+      formData.append('id', user.userId);
+      formData.append('file', event.target.files[0]);
 
       await axios
         .post(`${process.env.BASEURL}/api/profile/avatar/upload`, formData)
@@ -50,7 +50,7 @@ const Overview = ({
             `${process.env.BASEURL}/api/profile/update`,
             profileData,
             {
-              headers: { "Content-Type": "application/json" },
+              headers: { 'Content-Type': 'application/json' },
             }
           );
         });
@@ -77,7 +77,7 @@ const Overview = ({
             />
             {user && isConnected && profile?.userId !== user.userId && (
               <div className="group absolute top-0 right-0 flex cursor-pointer items-end rounded-full bg-base-900 py-1 px-2 text-xs text-yellow-400">
-                <ToolTip message={"You are both connected"} />
+                <ToolTip message={'You are both connected'} />
                 <HiThumbUp className="h-4 w-4 md:h-5 md:w-5" />
               </div>
             )}
@@ -121,7 +121,7 @@ const Overview = ({
               <div className="flex items-center space-x-1">
                 <IoCalendarNumberOutline className="h-4 w-4" />
                 <span>
-                  Joined {Moment(profile?.createdDate).format("MMMM YYYY")}
+                  Joined {Moment(profile?.createdDate).format('MMMM YYYY')}
                 </span>
               </div>
               {/* {teams?.data[0]?.status === 'ACTIVE' &&
@@ -222,10 +222,10 @@ const Overview = ({
         )}
         <div className="flex items-center space-x-1">
           <IoCalendarNumberOutline className="h-4 w-4" />
-          <span>Joined {Moment(profile?.createdDate).format("MMMM YYYY")}</span>
+          <span>Joined {Moment(profile?.createdDate).format('MMMM YYYY')}</span>
         </div>
 
-        {teams?.data[0]?.status === "ACTIVE" && teams?.data?.length > 0 && (
+        {teams?.data[0]?.status === 'ACTIVE' && teams?.data?.length > 0 && (
           <Link href={`/teams/${teams.data[0].id}`} passHref>
             <a className="group flex items-center space-x-1">
               <span className="rounded-full border border-base-600 px-1.5 text-[0.7em] text-base-400">

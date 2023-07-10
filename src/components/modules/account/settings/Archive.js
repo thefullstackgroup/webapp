@@ -1,8 +1,6 @@
-import Menu from "./Menu";
-
 const Archive = ({ user }) => {
   const defaultSubject = `The Full Stack - I wish to request my data archive ${user.displayName}`;
-  const defaultMail = "support@thefullstackgroup.com";
+  const defaultMail = 'support@thefullstackgroup.com';
 
   return (
     <>

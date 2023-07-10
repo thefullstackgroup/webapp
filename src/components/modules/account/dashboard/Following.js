@@ -1,14 +1,14 @@
-import Loader from "components/common/elements/Loader";
-import Avatar from "components/common/elements/Avatar";
-import Link from "next/link";
-import useSWR from "swr";
-import fetcher from "utils/fetcher";
+import Loader from 'components/common/elements/Loader';
+import Avatar from 'components/common/elements/Avatar';
+import Link from 'next/link';
+import useSWR from 'swr';
+import fetcher from 'utils/fetcher';
 
 const Following = ({ user }) => {
   const followingUrl = `${process.env.BASEURL}/api/profile/social/following`;
   const { data: following } = useSWR(followingUrl, fetcher);
   const followingIds =
-    following?.map(({ followUserId }) => followUserId).join(",") || null;
+    following?.map(({ followUserId }) => followUserId).join(',') || null;
 
   const followingProfilesUrl = `${process.env.BASEURL}/api/profile/getUsers?userIds=${followingIds}`;
   const { data: followingProfiles } = useSWR(followingProfilesUrl, fetcher);

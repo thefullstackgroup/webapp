@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
-import useSWR, { mutate } from "swr";
-import Connection from "components/modules/account/network/Connection";
-import Toast from "components/common/elements/Toast";
-import fetcher from "utils/fetcher";
-import Loader from "components/common/elements/Loader";
+import { useState, useEffect } from 'react';
+import useSWR, { mutate } from 'swr';
+import Connection from 'components/modules/account/network/Connection';
+import Toast from 'components/common/elements/Toast';
+import fetcher from 'utils/fetcher';
+import Loader from 'components/common/elements/Loader';
 
 const tabs = [
-  { tab: 1, label: "Connections" },
-  { tab: 2, label: "Requests" },
-  { tab: 3, label: "Invites sent" },
+  { tab: 1, label: 'Connections' },
+  { tab: 2, label: 'Requests' },
+  { tab: 3, label: 'Invites sent' },
 ];
 
 const Main = ({ user }) => {
@@ -31,13 +31,13 @@ const Main = ({ user }) => {
           {tabs.map((option, index) => (
             <button
               className={
-                tab == option.tab ? "tab-item tab-item-active" : "tab-item "
+                tab == option.tab ? 'tab-item tab-item-active' : 'tab-item '
               }
               onClick={() => setTab(option.tab)}
               key={index}
             >
               <span className="relative">
-                {option.label}{" "}
+                {option.label}{' '}
                 <span className="hidden sm:inline-flex">
                   {option.tab == 1 &&
                     data?.connections?.length > 0 &&

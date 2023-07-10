@@ -161,12 +161,9 @@ const Interests = ({ user }) => {
 
   return (
     <>
-      <div className="w-full">
+      <div className="my-6 w-full space-y-6">
         {categories?.map((category, index) => (
-          <div
-            className="my-6 rounded-lg border border-base-300 p-4 dark:border-base-700"
-            key={index}
-          >
+          <div className="" key={index}>
             <h4 className="text-sm font-semibold uppercase">
               {category.categoryName}
             </h4>

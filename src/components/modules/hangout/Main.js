@@ -2,8 +2,6 @@ import Feed from 'components/modules/hangout/Feed';
 import CreatePost from 'components/modules/hangout/CreatePost';
 import Topics from 'components/modules/hangout/Topics';
 import WhoToFollow from './WhoToFollow';
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
 import Link from 'next/link';
 
 const Main = ({ user, topic }) => {

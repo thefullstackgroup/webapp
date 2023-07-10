@@ -1,14 +1,13 @@
-import axios from "axios";
-import { useAuthUser } from "next-firebase-auth";
-import { useState } from "react";
-import Menu from "./Menu";
+import axios from 'axios';
+import { useAuthUser } from 'next-firebase-auth';
+import { useState } from 'react';
 
 const Page = ({ user }) => {
   const AuthUser = useAuthUser();
-  const defaultMail = "support@thefullstackgroup.com";
+  const defaultMail = 'support@thefullstackgroup.com';
   const [disabledDelete, setDisabledDelete] = useState(true);
   const [deleteAccountRequested, setDeleteAccountRequested] = useState(false);
-  const [reason, setReason] = useState("");
+  const [reason, setReason] = useState('');
 
   const sendSlackMessage = async () => {
     await axios.post(
@@ -49,7 +48,7 @@ const Page = ({ user }) => {
                       id="delete"
                       className="text-input w-1/2"
                       onChange={(e) => {
-                        if (e.target.value === "DELETE") {
+                        if (e.target.value === 'DELETE') {
                           setDisabledDelete(false);
                         } else {
                           setDisabledDelete(true);
@@ -69,53 +68,53 @@ const Page = ({ user }) => {
                     <div className="flex flex-col gap-2">
                       <button
                         className={
-                          reason === "I signed up by accident"
-                            ? "btn-pill-active text-left"
-                            : "btn-pill text-left"
+                          reason === 'I signed up by accident'
+                            ? 'btn-pill-active text-left'
+                            : 'btn-pill text-left'
                         }
-                        onClick={() => setReason("I signed up by accident")}
+                        onClick={() => setReason('I signed up by accident')}
                       >
                         I signed up by accident
                       </button>
                       <button
                         className={
-                          reason === "The Full Stack is not for me"
-                            ? "btn-pill-active text-left"
-                            : "btn-pill text-left"
+                          reason === 'The Full Stack is not for me'
+                            ? 'btn-pill-active text-left'
+                            : 'btn-pill text-left'
                         }
                         onClick={() =>
-                          setReason("The Full Stack is not for me")
+                          setReason('The Full Stack is not for me')
                         }
                       >
                         The Full Stack is not for me
                       </button>
                       <button
                         className={
-                          reason === "I received too many emails"
-                            ? "btn-pill-active text-left"
-                            : "btn-pill text-left"
+                          reason === 'I received too many emails'
+                            ? 'btn-pill-active text-left'
+                            : 'btn-pill text-left'
                         }
-                        onClick={() => setReason("I received too many emails")}
+                        onClick={() => setReason('I received too many emails')}
                       >
                         I received too many emails
                       </button>
                       <button
                         className={
-                          reason === "Duplicate account"
-                            ? "btn-pill-active text-left"
-                            : "btn-pill text-left"
+                          reason === 'Duplicate account'
+                            ? 'btn-pill-active text-left'
+                            : 'btn-pill text-left'
                         }
-                        onClick={() => setReason("Duplicate account")}
+                        onClick={() => setReason('Duplicate account')}
                       >
                         Duplicate account
                       </button>
                       <button
                         className={
-                          reason === "Other"
-                            ? "btn-pill-active text-left"
-                            : "btn-pill text-left"
+                          reason === 'Other'
+                            ? 'btn-pill-active text-left'
+                            : 'btn-pill text-left'
                         }
-                        onClick={() => setReason("Other")}
+                        onClick={() => setReason('Other')}
                       >
                         Other
                       </button>

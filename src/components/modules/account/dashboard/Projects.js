@@ -1,7 +1,7 @@
-import Loader from "components/common/elements/Loader";
-import Link from "next/link";
-import useSWR from "swr";
-import fetcher from "utils/fetcher";
+import Loader from 'components/common/elements/Loader';
+import Link from 'next/link';
+import useSWR from 'swr';
+import fetcher from 'utils/fetcher';
 
 const ProjectCard = ({ project }) => {
   return (

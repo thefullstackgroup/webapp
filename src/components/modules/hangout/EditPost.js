@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TextareaAutosize from 'react-textarea-autosize';
-import { Transition } from '@headlessui/react';
 import TagPost from 'components/common/tags/TagPostType';
 import TagTech from 'components/modules/hangout/TagTech';
 import Loader from 'components/common/elements/Loader';
-import {
-  IoCodeSlash,
-  IoImageOutline,
-  IoPricetagOutline,
-  IoTrashOutline,
-  IoCodeOutline,
-  IoCloseOutline,
-} from 'react-icons/io5';
+import { IoCodeSlash, IoTrashOutline, IoCloseOutline } from 'react-icons/io5';
 import * as ga from 'lib/ga';
 import { useRouter } from 'next/router';
 import { postTypeOptions, topics } from './constants';

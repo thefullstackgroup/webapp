@@ -1,35 +1,35 @@
-import { useState } from "react";
-import Projects from "components/modules/account/dashboard/Projects";
-import Followers from "components/modules/account/dashboard/Followers";
-import Following from "components/modules/account/dashboard/Following";
-import Saved from "components/modules/account/dashboard/Saved";
-import useSWR from "swr";
-import fetcher from "utils/fetcher";
-import ToolTip from "components/common/elements/ToolTip";
-import Icon from "components/common/elements/Icon";
+import { useState } from 'react';
+import Projects from 'components/modules/account/dashboard/Projects';
+import Followers from 'components/modules/account/dashboard/Followers';
+import Following from 'components/modules/account/dashboard/Following';
+import Saved from 'components/modules/account/dashboard/Saved';
+import useSWR from 'swr';
+import fetcher from 'utils/fetcher';
+import ToolTip from 'components/common/elements/ToolTip';
+import Icon from 'components/common/elements/Icon';
 
 const tabs = [
   {
-    label: "My Projects",
+    label: 'My Projects',
     tab: 1,
   },
   {
-    label: "Bookmarks",
+    label: 'Bookmarks',
     tab: 2,
   },
   {
-    label: "Followers",
+    label: 'Followers',
     tab: 3,
   },
   {
-    label: "Following",
+    label: 'Following',
     tab: 4,
   },
 ];
 
 const Main = ({ user }) => {
   const [selectedTab, setSelectedTab] = useState({
-    label: "Projects",
+    label: 'Projects',
     tab: 1,
   });
 
@@ -63,7 +63,7 @@ const Main = ({ user }) => {
         <div className="grid grid-cols-4 items-center justify-evenly gap-4">
           <div className="box flex w-full flex-col space-y-2">
             <div className="flex items-center space-x-1 whitespace-nowrap">
-              <Icon name={"FiEye"} className="h-4 w-4" />
+              <Icon name={'FiEye'} className="h-4 w-4" />
               <span className="text-sm font-semibold">Profile views</span>
             </div>
             <div className="text-2xl font-medium sm:text-3xl">
@@ -82,7 +82,7 @@ const Main = ({ user }) => {
           </div>
           <div className="box flex w-full flex-col space-y-2">
             <div className="flex items-center space-x-1 whitespace-nowrap">
-              <Icon name={"FiHeart"} className="h-4 w-4" />
+              <Icon name={'FiHeart'} className="h-4 w-4" />
               <span className="text-sm font-semibold">Reactions</span>
             </div>
             <div className="text-2xl font-medium sm:text-3xl">
@@ -102,15 +102,15 @@ const Main = ({ user }) => {
 
           <div className="box group relative space-y-2">
             <div className="flex items-center space-x-1 whitespace-nowrap">
-              <Icon name={"FiShare2"} className="h-4 w-4" />
+              <Icon name={'FiShare2'} className="h-4 w-4" />
               <span className="text-sm font-semibold">Shares</span>
             </div>
             <div className="text-2xl font-medium sm:text-3xl">--</div>
-            <ToolTip message={"Profile shares coming soon"} />
+            <ToolTip message={'Profile shares coming soon'} />
           </div>
           <div className="box flex w-full flex-col space-y-2">
             <div className="flex items-center space-x-1 whitespace-nowrap">
-              <Icon name={"FiUsers"} className="h-4 w-4" />
+              <Icon name={'FiUsers'} className="h-4 w-4" />
               <span className="text-sm font-semibold">Followers</span>
             </div>
             <div className="text-2xl font-medium sm:text-3xl">

@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import useSWR, { mutate } from 'swr';
 import Link from 'next/link';
-import { IoArrowUndoOutline, IoHeart, IoHeartOutline } from 'react-icons/io5';
 import Markdown from 'markdown-to-jsx';
 import CodeBlock from 'components/common/elements/CodeBlock';
 import Avatar from 'components/common/elements/Avatar';

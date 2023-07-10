@@ -119,7 +119,7 @@ const About = ({ user }) => {
 
   return (
     <>
-      <div className="mt-4 w-full">
+      <div className="mt-2 w-full">
         {successAlert && (
           <div className="relative w-full rounded-md bg-green-500/20 py-1.5 px-2 text-center text-sm text-green-500">
             Changes saved!

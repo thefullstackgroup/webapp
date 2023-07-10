@@ -1,38 +1,37 @@
-import { useState } from "react";
-import axios from "axios";
-import Toast from "components/common/elements/Toast";
-import { CgSpinner } from "react-icons/cg";
-import Menu from "./Menu";
-import Icon from "components/common/elements/Icon";
-import ToolTip from "components/common/elements/ToolTip";
+import { useState } from 'react';
+import axios from 'axios';
+import Toast from 'components/common/elements/Toast';
+import { CgSpinner } from 'react-icons/cg';
+import Icon from 'components/common/elements/Icon';
+import ToolTip from 'components/common/elements/ToolTip';
 import {
   currencies,
   salaryRanges,
-} from "components/modules/account/teams/constants";
+} from 'components/modules/account/teams/constants';
 
 const roles = [
-  "Junior Full Stack Developer",
-  "Junior Frontend Stack Developer",
-  "Junior Backend Stack Developer",
-  "Full Stack Developer",
-  "Frontend Developer",
-  "Backend Developer",
-  "Senior Full Stack Developer",
-  "Senior Frontend Developer",
-  "Senior Backend Developer",
-  "Principal Architect",
-  "Team Lead",
-  "Engineering Manager",
+  'Junior Full Stack Developer',
+  'Junior Frontend Stack Developer',
+  'Junior Backend Stack Developer',
+  'Full Stack Developer',
+  'Frontend Developer',
+  'Backend Developer',
+  'Senior Full Stack Developer',
+  'Senior Frontend Developer',
+  'Senior Backend Developer',
+  'Principal Architect',
+  'Team Lead',
+  'Engineering Manager',
 ];
 
 const workTypes = [
-  { label: "Full Time", value: "FULL_TIME" },
-  { label: "Part Time", value: "PART_TIME" },
-  { label: "Contract", value: "CONTRACT" },
-  { label: "Remote", value: "REMOTE" },
-  { label: "Hybrid", value: "HYBRID" },
-  { label: "In Office", value: "ONSITE" },
-  { label: "No preference", value: "ANY" },
+  { label: 'Full Time', value: 'FULL_TIME' },
+  { label: 'Part Time', value: 'PART_TIME' },
+  { label: 'Contract', value: 'CONTRACT' },
+  { label: 'Remote', value: 'REMOTE' },
+  { label: 'Hybrid', value: 'HYBRID' },
+  { label: 'In Office', value: 'ONSITE' },
+  { label: 'No preference', value: 'ANY' },
 ];
 
 const PreferredWorkType = ({ selected, addChoice, removeChoice }) => {
@@ -69,8 +68,8 @@ const OpenToJobOpportunityChoice = ({ selected, setChoice }) => {
     <div className="flex items-center space-x-2">
       <button
         className={
-          "badge relative cursor-pointer px-2.5 py-1.5 " +
-          (selected == true && "badge-highlight")
+          'badge relative cursor-pointer px-2.5 py-1.5 ' +
+          (selected == true && 'badge-highlight')
         }
         onClick={() => setChoice(true)}
       >
@@ -83,8 +82,8 @@ const OpenToJobOpportunityChoice = ({ selected, setChoice }) => {
       </button>
       <button
         className={
-          "badge relative cursor-pointer px-2.5 py-1.5 " +
-          (selected == false && "badge-highlight")
+          'badge relative cursor-pointer px-2.5 py-1.5 ' +
+          (selected == false && 'badge-highlight')
         }
         onClick={() => setChoice(false)}
       >
@@ -104,8 +103,8 @@ const RelocationChoice = ({ selected, setChoice }) => {
     <div className="flex items-center space-x-2">
       <button
         className={
-          "badge relative cursor-pointer px-2.5 py-1.5 " +
-          (selected == true && "badge-highlight")
+          'badge relative cursor-pointer px-2.5 py-1.5 ' +
+          (selected == true && 'badge-highlight')
         }
         onClick={() => setChoice(true)}
       >
@@ -118,8 +117,8 @@ const RelocationChoice = ({ selected, setChoice }) => {
       </button>
       <button
         className={
-          "badge relative cursor-pointer px-2.5 py-1.5 " +
-          (selected == false && "badge-highlight")
+          'badge relative cursor-pointer px-2.5 py-1.5 ' +
+          (selected == false && 'badge-highlight')
         }
         onClick={() => setChoice(false)}
       >
@@ -138,7 +137,7 @@ const JobPreferences = ({ user }) => {
   const [saving, setSaving] = useState(false);
   const [formError, setFormError] = useState(false);
   const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState("");
+  const [toastMessage, setToastMessage] = useState('');
 
   const [openToJobOpportunities, setOpenToJobOpportunities] = useState(
     user.openToJobOpportunities
@@ -148,13 +147,13 @@ const JobPreferences = ({ user }) => {
     user.jobPreferences?.openToRelocation
   );
   const [openToRelocationDescription, setOpenToRelocationDescription] =
-    useState(user.jobPreferences?.openToRelocationDescription || "");
+    useState(user.jobPreferences?.openToRelocationDescription || '');
 
   const [preferredWorkTypes, setPreferredWorkTypes] = useState(
     user.jobPreferences?.preferredWorkTypes || []
   );
 
-  const [dreamJob, setDreamJob] = useState(user.jobPreferences?.dreamJob || "");
+  const [dreamJob, setDreamJob] = useState(user.jobPreferences?.dreamJob || '');
 
   const [interestedRoles, setInteretedRoles] = useState(
     user.jobPreferences?.interestedRoles || []
@@ -165,7 +164,7 @@ const JobPreferences = ({ user }) => {
   );
 
   const [localCurrency, setLocalCurrency] = useState(
-    user.jobPreferences?.localCurrency || "EUR"
+    user.jobPreferences?.localCurrency || 'EUR'
   );
 
   const [baseSalary, setBaseSalary] = useState(
@@ -176,7 +175,7 @@ const JobPreferences = ({ user }) => {
   );
 
   const [notableAccomplishment, setNotableAccomplishment] = useState(
-    user.jobPreferences?.notableAccomplishment || ""
+    user.jobPreferences?.notableAccomplishment || ''
   );
 
   const addWorkType = (term) => {
@@ -242,7 +241,7 @@ const JobPreferences = ({ user }) => {
     await axios
       .post(`${process.env.BASEURL}/api/profile/update`, data)
       .then((response) => {
-        setToastMessage("Preferences saved");
+        setToastMessage('Preferences saved');
         setShowToast(true);
         setSaving(false);
         sendSlackMessage();
@@ -404,7 +403,7 @@ const JobPreferences = ({ user }) => {
                       key={index}
                       onClick={() => removeInterestedRole(interestedRole)}
                     >
-                      <ToolTip message={"Click to remove"} />
+                      <ToolTip message={'Click to remove'} />
 
                       {interestedRole}
                     </div>
@@ -465,7 +464,7 @@ const JobPreferences = ({ user }) => {
           </div>
 
           <div className="mt-8 flex items-center space-x-2 text-sm text-base-500 dark:text-base-400">
-            <Icon name={"FiInfo"} className="h-5 w-5" />
+            <Icon name={'FiInfo'} className="h-5 w-5" />
             <span>
               Your details are private by default and will not be displayed on
               your profile.

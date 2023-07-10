@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import Moment from "moment";
-import Confetti from "react-confetti";
-import { sendSlackMessage } from "utils/slack/sendMessageSlack";
-import { CgSpinner } from "react-icons/cg";
-import { IoCheckmark } from "react-icons/io5";
-import Icon from "components/common/elements/Icon";
-import ModalAlert from "components/common/modals/ModalAlert";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Moment from 'moment';
+import Confetti from 'react-confetti';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
+import { CgSpinner } from 'react-icons/cg';
+import Icon from 'components/common/elements/Icon';
+import ModalAlert from 'components/common/modals/ModalAlert';
 
 const Page = ({ user, promo }) => {
   const [wallet, setWallet] = useState(null);
@@ -74,7 +73,7 @@ const Page = ({ user, promo }) => {
             <h2>Wallet</h2>
             <p className="text-sm text-base-300 dark:text-base-500">
               Your wallet contains virtual coin that you can use to reward and
-              endorse others.{" "}
+              endorse others.{' '}
               {!promoRedeemed && (
                 <button
                   className="btn btn-sm btn-ghost btn-with-icon inline-flex p-0 font-semibold"
@@ -106,11 +105,11 @@ const Page = ({ user, promo }) => {
                       <div className="grid grid-cols-8">
                         <div className="col-span-4">
                           {Moment(transaction.createdDate).format(
-                            "DD-MMM-YYYY"
+                            'DD-MMM-YYYY'
                           )}
                         </div>
                         <div className="col-span-2 text-right">
-                          {transaction.transactionType === "CREDIT"
+                          {transaction.transactionType === 'CREDIT'
                             ? `+$${transaction.transactionAmount.toFixed(2)}`
                             : `-$${transaction.transactionAmount.toFixed(2)}`}
                         </div>
@@ -119,10 +118,10 @@ const Page = ({ user, promo }) => {
                         </div>
                       </div>
                       <p className="py-1 text-sm text-base-300 dark:text-base-500">
-                        {transaction.transactionMessage}{" "}
-                        {transaction.transactionType === "DEBIT" &&
+                        {transaction.transactionMessage}{' '}
+                        {transaction.transactionType === 'DEBIT' &&
                           `(sent coin to @${transaction.outGoingPaymentFromUserDisplayName})`}
-                        {transaction.transactionType === "CREDIT" &&
+                        {transaction.transactionType === 'CREDIT' &&
                           `(${transaction.customMessage})`}
                       </p>
                     </div>

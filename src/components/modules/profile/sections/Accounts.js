@@ -193,16 +193,13 @@ const Card = ({ channel, profile }) => {
   return (
     <>
       <div
-        className={
-          'mb-2 flex h-20 w-full cursor-pointer items-start gap-4 rounded-md border border-base-300/40 bg-base-200/40 px-3 py-2 duration-200 hover:border-base-500 dark:border-base-700 dark:bg-base-900 dark:hover:border-base-300 sm:h-16 lg:mb-0 lg:h-44 lg:w-1/4 lg:py-3 ' +
-          (connected ? 'opacity-70' : '')
-        }
+        className={'box box-link ' + (connected ? 'opacity-70' : '')}
         onClick={() => {
           setConnection(channel);
           setShowConnect(true);
         }}
       >
-        <div className="relative hidden h-full lg:block">
+        <div className="relative hidden h-full space-y-4 lg:block">
           <div className="mb-2 flex items-center space-x-2">
             {channel.name === 'GITHUB' && (
               <FaGithub className="h-10 w-10 sm:h-8 sm:w-8" />
@@ -221,7 +218,7 @@ const Card = ({ channel, profile }) => {
           <p className="text-xs text-base-600 dark:text-base-300 md:text-sm">
             {channel.desc}
           </p>
-          <div className="absolute bottom-2 left-0 mt-2">
+          <div className="mt-2">
             {connected ? (
               <div className="flex w-min space-x-1 py-1.5 text-xs text-green-600">
                 <IoCheckmark className="h-4 w-4" />

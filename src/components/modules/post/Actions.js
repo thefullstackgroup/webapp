@@ -2,9 +2,7 @@ import ButtonAward from 'components/common/buttons/Award';
 import ButtonLike from 'components/common/buttons/Like';
 import ToolTip from 'components/common/elements/ToolTip';
 import Icon from 'components/common/elements/Icon';
-import ModalAlert from 'components/common/modals/ModalAlert';
 import { useState } from 'react';
-import Link from 'next/link';
 import SignUpPrompt from 'components/common/elements/SignUpPrompt';
 
 const Actions = (props) => {

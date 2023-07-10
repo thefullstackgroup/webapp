@@ -1,8 +1,8 @@
-import Link from "next/link";
-import useSWR from "swr";
-import Loader from "components/common/elements/Loader";
-import fetcher from "utils/fetcher";
-import ShareButton from "components/common/buttons/Share";
+import Link from 'next/link';
+import useSWR from 'swr';
+import Loader from 'components/common/elements/Loader';
+import fetcher from 'utils/fetcher';
+import ShareButton from 'components/common/buttons/Share';
 
 const ProjectCard = ({ project }) => {
   return (

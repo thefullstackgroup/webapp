@@ -7,7 +7,7 @@ import TagTech from 'components/modules/hangout/TagTech';
 import Loader from 'components/common/elements/Loader';
 import { CgSpinner } from 'react-icons/cg';
 import { FiSend } from 'react-icons/fi';
-import { IoTrashOutline, IoClose } from 'react-icons/io5';
+import { IoTrashOutline } from 'react-icons/io5';
 import TagStack from 'components/common/tags/TagStack';
 import Avatar from 'components/common/elements/Avatar';
 import Icon from 'components/common/elements/Icon';

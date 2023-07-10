@@ -1,43 +1,43 @@
-import Link from "next/link";
-import Menu from "./Menu";
-import Icon from "components/common/elements/Icon";
+import Link from 'next/link';
+import Menu from './Menu';
+import Icon from 'components/common/elements/Icon';
 
 const settingsOptions = [
   {
-    label: "Dashboard",
-    desc: "View your profile stats, project stats, bookmarks and followers",
-    href: "/account/dashboard",
-    icon: "FiGrid",
+    label: 'Dashboard',
+    desc: 'View your profile stats, project stats, bookmarks and followers',
+    href: '/account/dashboard',
+    icon: 'FiGrid',
   },
   {
-    label: "Wallet",
-    desc: "Your wallet contains virtual coin that you can use to reward and endorse others",
-    href: "/account/wallet",
-    icon: "FiCreditCard",
+    label: 'Wallet',
+    desc: 'Your wallet contains virtual coin that you can use to reward and endorse others',
+    href: '/account/wallet',
+    icon: 'FiCreditCard',
   },
   {
-    label: "Work Preferences",
-    desc: "The Full Stack can help you find and connect to tech teams with open positions matched to your preferences",
-    href: "/account/settings/jobpreferences",
-    icon: "FiBriefcase",
+    label: 'Work Preferences',
+    desc: 'The Full Stack can help you find and connect to tech teams with open positions matched to your preferences',
+    href: '/account/settings/jobpreferences',
+    icon: 'FiBriefcase',
+  },
+  // {
+  //   label: 'Notification Preferences',
+  //   desc: 'Configure your email notification preferences',
+  //   href: '/account/settings/notifications',
+  //   icon: 'FiBell',
+  // },
+  {
+    label: 'Request Your Data',
+    desc: 'Your data belongs to you and you can request an archive of your data anytime',
+    href: '/account/settings/archive',
+    icon: 'FiHardDrive',
   },
   {
-    label: "Notification Preferences",
-    desc: "Configure your email notification preferences",
-    href: "/account/settings/notifications",
-    icon: "FiBell",
-  },
-  {
-    label: "Request Your Data",
-    desc: "Your data belongs to you and you can request an archive of your data anytime",
-    href: "/account/settings/archive",
-    icon: "FiHardDrive",
-  },
-  {
-    label: "Danger Zone",
-    desc: "Looking to delete your account?",
-    href: "/account/settings/danger",
-    icon: "FiAlertTriangle",
+    label: 'Danger Zone',
+    desc: 'Looking to delete your account?',
+    href: '/account/settings/danger',
+    icon: 'FiAlertTriangle',
   },
 ];
 

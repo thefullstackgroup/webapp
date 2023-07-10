@@ -1,12 +1,12 @@
-import { React, useState } from "react";
-import { IoCopyOutline } from "react-icons/io5";
-import { sendSlackMessage } from "utils/slack/sendMessageSlack";
-import SocialShareLinks from "components/common/elements/SocialShareLinks";
-import ToolTip from "components/common/elements/ToolTip";
-import ModalAlert from "../modals/ModalAlert";
-import Icon from "../elements/Icon";
+import { React, useState } from 'react';
+import { IoCopyOutline } from 'react-icons/io5';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
+import SocialShareLinks from 'components/common/elements/SocialShareLinks';
+import ToolTip from 'components/common/elements/ToolTip';
+import ModalAlert from '../modals/ModalAlert';
+import Icon from '../elements/Icon';
 
-const ShareButton = ({ url, message, showLabel, toolTipPosition = "top" }) => {
+const ShareButton = ({ url, message, showLabel, toolTipPosition = 'top' }) => {
   const [showShareOptions, setShowShareOptions] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 

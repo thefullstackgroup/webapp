@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { firebase } from 'firebase/firebaseApp';
-import { IoPaperPlaneOutline } from 'react-icons/io5';
 import Textarea from 'react-expanding-textarea';
 import axios from 'axios';
 import * as ga from 'lib/ga';
