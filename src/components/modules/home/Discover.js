@@ -77,7 +77,7 @@ const Discover = ({ user, count, search }) => {
           <div className="no-scrollbar flex items-center gap-4 overflow-y-visible overflow-x-scroll px-4 md:gap-8 md:px-0">
             {[...Array(15)].map((elementInArray, index) => (
               <div className="mx-auto h-32 w-24 sm:h-36 sm:w-24" key={index}>
-                <div className="h-20 w-20 animate-pulse rounded-full bg-base-700 sm:h-24 sm:w-24">
+                <div className="h-20 w-20 animate-pulse rounded-full bg-base-300/20 dark:bg-base-700/50 sm:h-24 sm:w-24">
                   <span className="hidden">Loading</span>
                 </div>
               </div>

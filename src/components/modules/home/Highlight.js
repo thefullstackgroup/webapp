@@ -139,7 +139,7 @@ const Highlight = ({ user }) => {
           [...Array(15)].map((elementInArray, index) => (
             <SwiperSlide key={index}>
               <div className="w-full animate-pulse space-y-2 sm:h-[300px] xl:h-[440px]">
-                <div className="animate-pulse rounded-md bg-base-300 sm:h-[200px] xl:h-full"></div>
+                <div className="animate-pulse rounded-md bg-base-300/20 dark:bg-base-700/50 sm:h-[200px] xl:h-full"></div>
               </div>
             </SwiperSlide>
           ))}
