@@ -135,6 +135,14 @@ const Highlight = ({ user }) => {
           },
         }}
       >
+        {!data &&
+          [...Array(15)].map((elementInArray, index) => (
+            <SwiperSlide key={index}>
+              <div className="w-full animate-pulse space-y-2 sm:h-[300px] xl:h-[440px]">
+                <div className="animate-pulse rounded-md bg-base-300 sm:h-[200px] xl:h-full"></div>
+              </div>
+            </SwiperSlide>
+          ))}
         {data?.map((project, index) => (
           <SwiperSlide key={index}>
             <Slide data={project} />

@@ -117,7 +117,7 @@ const Page = () => {
                       type="submit"
                       className="btn btn-primary w-full py-2.5"
                     >
-                      Continue
+                      Continue with email
                     </button>
                   </div>
                 </div>

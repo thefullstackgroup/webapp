@@ -23,9 +23,12 @@ export const Greeting = ({ name }) => {
   else if (hours >= 17 && hours <= 24) greet = 'Good evening';
 
   return (
-    <h4 className="hidden text-lg font-medium tracking-tight md:block">
-      {greet}, <span className="capitlize">{firstName[0]}</span> 👋
-    </h4>
+    <div className="absolute flex items-center space-x-2 font-mono font-semibold tracking-tight">
+      <Icon name="FiTerminal" />
+      <span>
+        {greet},<span className="capitlize">{firstName[0]}</span>
+      </span>
+    </div>
   );
 };
 
@@ -37,7 +40,7 @@ const Main = ({ user }) => {
   const signInWithGoogle = async () => {
     try {
       const res = await firebase.auth().signInWithPopup(googleProvider);
-      if (res && res.user.email) router.reload('/');
+      if (res) router.reload('/');
     } catch (err) {
       console.error(err);
     }
@@ -46,6 +49,7 @@ const Main = ({ user }) => {
   const signInWithGitHub = async () => {
     try {
       const res = await firebase.auth().signInWithPopup(gitHubProvider);
+      if (res) router.reload('/');
     } catch (err) {
       console.error(err);
     }
@@ -89,7 +93,7 @@ const Main = ({ user }) => {
         </div>
       )}
 
-      <div className="pb-10">
+      <div className="relative pb-10">
         {user && <Greeting name={user?.name} />}
         <Highlight />
       </div>

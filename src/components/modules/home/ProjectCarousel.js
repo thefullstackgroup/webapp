@@ -116,11 +116,22 @@ const ProjectCarousel = ({
           },
         }}
       >
-        {data?.map((project, index) => (
-          <SwiperSlide key={index}>
-            <ProjectCard project={project} user={user} />
-          </SwiperSlide>
-        ))}
+        {!data &&
+          [...Array(15)].map((elementInArray, index) => (
+            <SwiperSlide key={index}>
+              <div className="w-80 animate-pulse space-y-2 sm:h-[300px] xl:h-[334px]">
+                <div className="w-80 animate-pulse rounded-md bg-base-300 sm:h-[200px] xl:h-[240px]"></div>
+                <div className="w-64 animate-pulse rounded-md bg-base-300 sm:h-10 xl:h-4"></div>
+                <div className="w-48 animate-pulse rounded-md bg-base-300 sm:h-10 xl:h-4"></div>
+              </div>
+            </SwiperSlide>
+          ))}
+        {data &&
+          data?.map((project, index) => (
+            <SwiperSlide key={index}>
+              <ProjectCard project={project} user={user} />
+            </SwiperSlide>
+          ))}
       </Swiper>
 
       {/* <DividerShowMore label="Show more" href={showMore} /> */}
