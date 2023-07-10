@@ -48,18 +48,18 @@ const ForDevelopers = ({ user }) => {
       <div className="relative z-10 mx-auto max-w-screen-xl lg:mt-16 lg:min-h-screen">
         <div className="max-w-7xl space-y-6 px-4 pt-24 md:pt-32 lg:px-0">
           <Link href="/about/our-story">
-            <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-200 px-6 py-1 text-sm text-base-300 hover:text-white dark:border-base-700 dark:bg-base-800/40">
+            <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-200 px-6 py-1 text-sm text-base-500 hover:text-base-900 dark:border-base-700 dark:bg-base-800/40 dark:text-base-300 dark:hover:text-white">
               Created by developers. See our story &rarr;
             </div>
           </Link>
           <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-orange-400 via-pink-500 to-blue-600 bg-clip-text text-center font-intertight text-6xl font-bold tracking-tight text-transparent dark:from-base-300 dark:via-violet-200 dark:to-white md:text-9xl">
             Share. Network. Grow.
           </h1>
-          <div className="mx-auto max-w-5xl">
-            <h4 className="text-center text-lg font-light text-base-400 md:text-2xl">
-              The Full Stack is the platform for developers, providing a
-              supportive dev community to share your work, grow your network and
-              help you make your best career moves.
+          <div className="mx-auto max-w-3xl">
+            <h4 className="text-center text-lg font-light dark:text-base-200/80 md:text-2xl">
+              The Full Stack is an open source platform for developers,
+              providing a supportive community to share projects and grow your
+              network.
             </h4>
           </div>
           {!user && (

@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Menu from './Menu';
 import Icon from 'components/common/elements/Icon';
 
 const settingsOptions = [
@@ -48,7 +47,7 @@ const Main = ({ user }) => {
         <h2>Account settings</h2>
         <div className="grid grid-cols-3 gap-4">
           {settingsOptions.map((option, index) => (
-            <Link href={option.href}>
+            <Link href={option.href} key={index}>
               <div className="box box-link space-y-1 pb-4">
                 <Icon name={option.icon} className="mb-4 h-8 w-8" />
 
