@@ -1,11 +1,11 @@
-import axios from "axios";
-import Image from "next/future/image";
-import Faq from "components/modules/teams/Faq";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { CgSpinner } from "react-icons/cg";
-import ModalAlert from "components/common/modals/ModalAlert";
-import Icon from "components/common/elements/Icon";
+import axios from 'axios';
+import Image from 'next/future/image';
+import Faq from 'components/modules/teams/Faq';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { CgSpinner } from 'react-icons/cg';
+import ModalAlert from 'components/common/modals/ModalAlert';
+import Icon from 'components/common/elements/Icon';
 
 const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
   const router = useRouter();
@@ -13,17 +13,17 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
   const [saving, setSaving] = useState(false);
   const [displaySplash, setDisplaySplash] = useState(true);
   const [formError, setFormError] = useState(false);
-  const [name, setName] = useState("");
-  const [logo, setLogo] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState('');
+  const [logo, setLogo] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleUploadLogo = async (event) => {
     event.preventDefault();
 
     if (event.target.files.length > 0) {
       const formData = new FormData();
-      formData.append("id", user.userId);
-      formData.append("file", event.target.files[0]);
+      formData.append('id', user.userId);
+      formData.append('file', event.target.files[0]);
 
       await axios
         .post(`${process.env.BASEURL}/api/teams/upload`, formData)
@@ -47,35 +47,35 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
     }
     const data = {
       name: name,
-      type: "BUSINESS",
-      mission: "",
+      type: 'BUSINESS',
+      mission: '',
       description: description,
-      url: "",
+      url: '',
       image: logo,
       imagesGallery: [],
       techStack: [],
       details: {
         founded: 2022,
-        category: "Platform",
+        category: 'Platform',
         location: [],
         nrEmployees: 0,
-        stage: "",
+        stage: '',
         socialMediaLinks: {
-          instagram: "",
-          facebook: "",
-          github: "",
-          twitter: "",
-          linkedin: "",
+          instagram: '',
+          facebook: '',
+          github: '',
+          twitter: '',
+          linkedin: '',
         },
-        teamStructure: "",
-        devTools: "",
-        devProcess: "",
-        hiringProcess: "",
+        teamStructure: '',
+        devTools: '',
+        devProcess: '',
+        hiringProcess: '',
         isHiring: false,
-        careersUrl: "",
-        idea: "",
-        ideaDescription: "",
-        timezone: "string",
+        careersUrl: '',
+        idea: '',
+        ideaDescription: '',
+        timezone: 'string',
       },
     };
 
@@ -99,21 +99,21 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
     let message = `TEAMS: ${user.name} has created a new team called '${name}'. Please review team profile.`;
 
     await fetch(`${process.env.BASEURL}/api/notifications/slack/postMessage`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({
         message: message,
       }),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
   };
 
   return displaySplash ? (
     <>
-      <div className="py-4 px-4">
-        <ol role="list" className="overflow-hidden">
-          <li className="relative pb-10">
+      <div className="py-4">
+        <ol role="list" className="space-y-6 overflow-hidden">
+          <li className="relative">
             <div className="group relative flex items-start">
               <span className="flex h-9 items-center">
                 <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full">
@@ -133,7 +133,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
             </div>
           </li>
 
-          <li className="relative pb-10">
+          <li className="relative">
             <div className="group relative flex items-start">
               <span className="flex h-9 items-center">
                 <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full">
@@ -154,7 +154,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
               </span>
             </div>
           </li>
-          <li className="relative pb-10">
+          <li className="relative">
             <div className="group relative flex items-start">
               <span className="flex h-9 items-center">
                 <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full">
@@ -215,7 +215,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
               <Image
                 src={logo}
                 className="h-full w-full object-cover"
-                alt={name || ""}
+                alt={name || ''}
                 title={name}
                 referrerPolicy="no-referrer"
                 width={100}
@@ -275,7 +275,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
             name="username"
             placeholder="Name of your team"
             className="text-input"
-            value={name || ""}
+            value={name || ''}
             onChange={(e) => setName(e.target.value)}
           />
           {formError && !name?.trim().length > 0 && (
@@ -292,7 +292,7 @@ const CreateTeam = ({ user, setCreateTeamPanel, teams }) => {
             name="description"
             placeholder="One-liner about your team"
             className="text-input"
-            value={description || ""}
+            value={description || ''}
             onChange={(e) => setDescription(e.target.value)}
           />
           {formError && !description?.trim().length > 0 && (

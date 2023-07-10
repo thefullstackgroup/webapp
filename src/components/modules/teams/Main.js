@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import ListTeams from "components/modules/teams/ListTeams";
-import Image from "next/future/image";
-import ModalAlert from "components/common/modals/ModalAlert";
-import Create from "components/modules/teams/CreateTeam";
-import useSWR from "swr";
-import fetcher from "utils/fetcher";
-import Link from "next/link";
-import Faq from "./Faq";
+import React, { useState } from 'react';
+import ListTeams from 'components/modules/teams/ListTeams';
+import Image from 'next/future/image';
+import ModalAlert from 'components/common/modals/ModalAlert';
+import Create from 'components/modules/teams/CreateTeam';
+import useSWR from 'swr';
+import fetcher from 'utils/fetcher';
+import Link from 'next/link';
+import Faq from './Faq';
 
 const images = [
-  "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-  "https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-  "https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-  "https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTI5fHxwZXJzb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+  'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTI5fHxwZXJzb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
 ];
 
 const ImageSample = ({ image }) => {
@@ -53,10 +53,10 @@ const Main = ({ user }) => {
               </div>
             </div>
             <div className="mx-auto mt-4 max-w-2xl">
-              <h4 className="px-4 text-center text-lg text-base-400 dark:text-base-300 md:text-xl">
+              <p className="px-4 text-center text-lg text-base-400 dark:text-base-300">
                 Building something cool with your team? Create your team profile
                 and show off what your team is building.
-              </h4>
+              </p>
             </div>
             <div className="mx-auto mt-10 max-w-4xl">
               <div className="flex items-center justify-center space-x-4">
@@ -101,7 +101,7 @@ const Main = ({ user }) => {
         show={createTeamPanel}
         setShow={setCreateTeamPanel}
         title="Let's setup your team"
-        dimensions={"max-w-lg"}
+        dimensions={'max-w-lg'}
         disabled
       >
         <Create

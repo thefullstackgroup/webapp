@@ -31,7 +31,7 @@ const SideBar = ({ user, chatId }) => {
         <button
           key={chat.id}
           className={
-            `relative flex w-full items-start justify-between border-b border-base-200 p-4 outline-none duration-200 dark:border-base-700 sm:border-r sm:border-b-0  ` +
+            `relative flex w-full items-start justify-between border-b border-base-200 p-4 outline-none duration-200 dark:border-base-700 sm:border-b-0  ` +
             (chat.id === chatId
               ? 'border-primary-500 bg-base-200 dark:bg-base-800'
               : chatNotifications[chat.id]?.unreadMessages === 1

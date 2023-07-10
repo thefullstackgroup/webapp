@@ -7,9 +7,7 @@ import OpenRoles from 'components/modules/teams/ListJobs';
 import TeamMembers from 'components/modules/teams/TeamMembers';
 import Avatar from 'components/common/elements/Avatar';
 import TechBadge from 'components/common/tags/TagStack';
-import { IoLogoGithub, IoSettingsOutline } from 'react-icons/io5';
 import { FiLink } from 'react-icons/fi';
-import Subscribe from 'components/modules/account/settings/subscriptions/Modal';
 import ModalDialog from 'components/common/modals/ModalDialog';
 import Loader from 'components/common/elements/Loader';
 import fetcher from 'utils/fetcher';
@@ -357,14 +355,6 @@ const TeamProfile = ({ user, slug }) => {
           </div>
         </div>
       </div>
-
-      {subscribePanel && (
-        <Subscribe
-          user={user}
-          show={subscribePanel}
-          setShow={setSubscribePanel}
-        />
-      )}
 
       {showImageOne && (
         <ModalDialog

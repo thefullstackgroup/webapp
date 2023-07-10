@@ -1,16 +1,16 @@
-import { isMobile } from "react-device-detect";
-import { updateChatNotifications } from "components/modules/chat/Notifications";
-import { firebase } from "firebase/firebaseApp";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/router";
-import axios from "axios";
-import SideBar from "./SideBar";
-import TopBar from "./TopBar";
-import Loader from "components/common/elements/Loader";
-import Icon from "components/common/elements/Icon";
-import Message from "./Message";
-import BottomBar from "./BottomBar";
+import { isMobile } from 'react-device-detect';
+import { updateChatNotifications } from 'components/modules/chat/Notifications';
+import { firebase } from 'firebase/firebaseApp';
+import { useCollection } from 'react-firebase-hooks/firestore';
+import { useEffect, useState, useRef } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import SideBar from './SideBar';
+import TopBar from './TopBar';
+import Loader from 'components/common/elements/Loader';
+import Icon from 'components/common/elements/Icon';
+import Message from './Message';
+import BottomBar from './BottomBar';
 
 const Main = ({ user, chatId }) => {
   const bottomOfChat = useRef(null);
@@ -20,7 +20,7 @@ const Main = ({ user, chatId }) => {
   const firestoreDB = firebase.firestore();
   const router = useRouter();
   const { id } = router.query;
-  const docRef = firestoreDB.collection("chats").doc(id);
+  const docRef = firestoreDB.collection('chats').doc(id);
 
   const getChatDoc = () => {
     docRef.get().then((doc) => {
@@ -34,7 +34,7 @@ const Main = ({ user, chatId }) => {
 
   // get messages for chat ID
   const [messages, loading] = useCollection(
-    firestoreDB.collection(`chats/${id}/messages`).orderBy("timestamp", "asc"),
+    firestoreDB.collection(`chats/${id}/messages`).orderBy('timestamp', 'asc'),
     {}
   );
 
@@ -65,8 +65,8 @@ const Main = ({ user, chatId }) => {
   useEffect(() => {
     setTimeout(
       bottomOfChat?.current?.scrollIntoView({
-        behavior: "auto",
-        block: "start",
+        behavior: 'auto',
+        block: 'start',
       }),
       10
     );
@@ -79,7 +79,7 @@ const Main = ({ user, chatId }) => {
         <div className="hidden w-1/3 md:block">
           {!isMobile && <SideBar user={user} chatId={chatId} />}
         </div>
-        <div className="relative left-0 flex w-full flex-col justify-between bg-base-50 dark:bg-base-900 sm:pt-0 md:w-2/3">
+        <div className="relative left-0 flex w-full flex-col justify-between border-l border-base-200 bg-base-50 dark:border-base-700 dark:bg-base-900 sm:pt-0 md:w-2/3">
           <div>
             {!loading && chatId && (
               <TopBar chatUserInfo={chatUserInfo} user={user} />
@@ -95,7 +95,7 @@ const Main = ({ user, chatId }) => {
                 {!messages?.docs?.length > 0 && !loading && (
                   <div className="mt-40 flex flex-col items-center justify-center space-y-4">
                     <Icon
-                      name={"FiMessageSquare"}
+                      name={'FiMessageSquare'}
                       className="h-24 w-24 text-base-200 dark:text-base-500"
                     />
                     <p className="text-2xl font-medium tracking-tight text-base-200 dark:text-base-500">
