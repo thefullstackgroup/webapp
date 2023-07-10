@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Popover, Transition } from '@headlessui/react';
-import Icon from '../elements/Icon';
-import Link from 'next/link';
-import Avatar from '../elements/Avatar';
+import { useState } from "react";
+import { Popover, Transition } from "@headlessui/react";
+import Icon from "../elements/Icon";
+import Link from "next/link";
+import Avatar from "../elements/Avatar";
 
 const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
   const [isShowing, setIsShowing] = useState(false);
@@ -11,7 +11,7 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
     <Popover className="relative">
       {user ? (
         <Popover.Button
-          className={'btn px-1'}
+          className={"btn px-1"}
           onMouseEnter={() => setIsShowing(true)}
           onMouseLeave={() => setIsShowing(false)}
         >
@@ -24,13 +24,13 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
       ) : (
         <Popover.Button
           className={
-            'nav-bar nav-bar-icon bg-base-200 dark:bg-base-700 ' +
+            "nav-bar nav-bar-icon bg-base-200 dark:bg-base-700 " +
             (isShowing && ` bg-base-200 dark:bg-base-700 dark:text-white`)
           }
           onMouseEnter={() => setIsShowing(true)}
           onMouseLeave={() => setIsShowing(false)}
         >
-          <Icon name={'FiUser'} />
+          <Icon name={"FiUser"} />
         </Popover.Button>
       )}
 
@@ -76,7 +76,7 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
                       >
-                        <Icon name={'FiGrid'} />
+                        <Icon name={"FiGrid"} />
                         <span className="text-black dark:text-white">
                           Dashboard
                         </span>
@@ -87,9 +87,9 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
                       >
-                        <Icon name={'FiShare2'} />
+                        <Icon name={"FiUsers"} />
                         <span className="text-black dark:text-white">
-                          Connections
+                          My Network
                         </span>
                       </button>
                     </Link>
@@ -98,7 +98,7 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
                       >
-                        <Icon name={'FiMessageSquare'} />
+                        <Icon name={"FiMessageSquare"} />
                         <span className="text-black dark:text-white">
                           Messages
                         </span>
@@ -109,7 +109,7 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
                       >
-                        <Icon name={'FiCreditCard'} />
+                        <Icon name={"FiCreditCard"} />
                         <span className="text-black dark:text-white">
                           Wallet
                         </span>
@@ -120,7 +120,7 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
                       >
-                        <Icon name={'FiHeart'} />
+                        <Icon name={"FiHeart"} />
                         <span className="text-black dark:text-white">
                           Invite friends
                         </span>
@@ -131,7 +131,7 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
                         className="nav-popover items-center"
                         onClick={() => setIsShowing(false)}
                       >
-                        <Icon name={'FiSettings'} />
+                        <Icon name={"FiSettings"} />
                         <span className="text-black dark:text-white">
                           Account settings
                         </span>
@@ -146,7 +146,7 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
                       setIsShowing(false);
                     }}
                   >
-                    <Icon name={'FiLogOut'} className="h-6 w-6" />
+                    <Icon name={"FiLogOut"} className="h-6 w-6" />
                     <span className="text-base-500 hover:text-base-500 dark:text-base-300 hover:dark:text-base-300">
                       Sign out
                     </span>
@@ -155,7 +155,7 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
               ) : (
                 <div className="w-64 space-y-2 px-2 py-4 text-center">
                   <div className="mx-auto h-20 w-20 rounded-full bg-base-200 p-4 dark:bg-base-700">
-                    <Icon name={'FiUser'} className="h-12 w-12" />
+                    <Icon name={"FiUser"} className="h-12 w-12" />
                   </div>
                   <p className="">Sign up or login to your account.</p>
                   <div className="flex items-center justify-center space-x-2">

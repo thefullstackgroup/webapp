@@ -1,12 +1,12 @@
-import { React, useState } from 'react';
-import { IoCopyOutline } from 'react-icons/io5';
-import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
-import SocialShareLinks from 'components/common/elements/SocialShareLinks';
-import ToolTip from 'components/common/elements/ToolTip';
-import ModalAlert from '../modals/ModalAlert';
-import Icon from '../elements/Icon';
+import { React, useState } from "react";
+import { IoCopyOutline } from "react-icons/io5";
+import { sendSlackMessage } from "utils/slack/sendMessageSlack";
+import SocialShareLinks from "components/common/elements/SocialShareLinks";
+import ToolTip from "components/common/elements/ToolTip";
+import ModalAlert from "../modals/ModalAlert";
+import Icon from "../elements/Icon";
 
-const ShareButton = ({ url, message, showLabel, toolTipPosition = 'top' }) => {
+const ShareButton = ({ url, message, showLabel, toolTipPosition = "top" }) => {
   const [showShareOptions, setShowShareOptions] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
@@ -26,7 +26,7 @@ const ShareButton = ({ url, message, showLabel, toolTipPosition = 'top' }) => {
         setShow={setShowShareOptions}
         title="Share this project"
       >
-        <div className="mx-auto p-2 py-4 text-center shadow-xl sm:max-w-xl">
+        <div className="mx-auto p-2 py-4 text-center sm:max-w-xl">
           <div className="max-w-xs space-y-3 text-left md:max-w-full">
             <h4 className="text-sm font-semibold">Copy link</h4>
             <div

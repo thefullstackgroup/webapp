@@ -1,13 +1,13 @@
-import Loader from 'components/common/elements/Loader';
-import Avatar from 'components/common/elements/Avatar';
-import Link from 'next/link';
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
+import Loader from "components/common/elements/Loader";
+import Avatar from "components/common/elements/Avatar";
+import Link from "next/link";
+import useSWR from "swr";
+import fetcher from "utils/fetcher";
 
 const Followers = ({ user }) => {
   const followersUrl = `${process.env.BASEURL}/api/profile/social/followers`;
   const { data: followers } = useSWR(followersUrl, fetcher);
-  const followersIds = followers?.map(({ userId }) => userId).join(',') || null;
+  const followersIds = followers?.map(({ userId }) => userId).join(",") || null;
 
   const followersProfilesUrl = `${process.env.BASEURL}/api/profile/getUsers?userIds=${followersIds}`;
   const { data: followersProfiles } = useSWR(followersProfilesUrl, fetcher);
@@ -23,32 +23,30 @@ const Followers = ({ user }) => {
   return (
     <>
       {followersProfiles && followersProfiles?.length > 0 && (
-        <div className="mt-4 w-full rounded-md border border-base-200 dark:border-base-700">
+        <div className="grid grid-cols-3 gap-4">
           {followersProfiles?.map((profile, index) => (
-            <div
-              className="w-full p-4 duration-200 hover:bg-base-200/50 dark:hover:bg-base-800"
-              key={index}
-            >
-              <div className="flex items-center space-x-4">
-                <Avatar
-                  href={`/${profile.displayName}`}
-                  image={profile.profilePicUrl}
-                />
-                <Link href={`/${profile.displayName}`}>
-                  <div className="flex cursor-pointer flex-col truncate">
+            <Link href={`/${profile.displayName}`} key={index}>
+              <div className="box box-link">
+                <div className="flex items-start space-x-3">
+                  <Avatar
+                    href={`/${profile.displayName}`}
+                    image={profile.profilePicUrl}
+                  />
+
+                  <div className="flex cursor-pointer flex-col whitespace-normal">
                     <p className="whitespace-nowrap font-semibold">
                       {profile.name}
-                      <span className="ml-2 font-normal text-base-400">
-                        @{profile.displayName}
-                      </span>
                     </p>
-                    <p className="text-sm text-base-400">
+                    <p className="text-sm text-base-300 dark:text-base-400">
+                      @{profile.displayName}
+                    </p>
+                    <p className="text-sm text-base-300 dark:text-base-400">
                       {profile.currentTitle}
                     </p>
                   </div>
-                </Link>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}

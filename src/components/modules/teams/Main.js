@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import ListTeams from 'components/modules/teams/ListTeams';
-import Image from 'next/future/image';
-import ModalAlert from 'components/common/modals/ModalAlert';
-import Create from 'components/modules/teams/CreateTeam';
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
-import Link from 'next/link';
-import Faq from './Faq';
+import React, { useState } from "react";
+import ListTeams from "components/modules/teams/ListTeams";
+import Image from "next/future/image";
+import ModalAlert from "components/common/modals/ModalAlert";
+import Create from "components/modules/teams/CreateTeam";
+import useSWR from "swr";
+import fetcher from "utils/fetcher";
+import Link from "next/link";
+import Faq from "./Faq";
 
 const images = [
-  'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-  'https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-  'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-  'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTI5fHxwZXJzb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+  "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTI5fHxwZXJzb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
 ];
 
 const ImageSample = ({ image }) => {
@@ -43,7 +43,7 @@ const Main = ({ user }) => {
         <div className="mx-auto mb-20 w-full max-w-screen-2xl space-y-20">
           <div className="mx-auto max-w-7xl px-4 pt-24 md:pt-14 lg:px-0">
             <div className="relative mx-auto max-w-lg">
-              <h1 className="flex justify-center bg-gradient-to-b from-base-900 via-base-800 to-base-200 bg-clip-text py-2 text-center font-intertight text-6xl font-bold tracking-tight text-transparent dark:from-base-800 dark:via-base-200 dark:to-base-800 md:text-7xl">
+              <h1 className="flex justify-center bg-clip-text py-2 text-center text-6xl font-bold tracking-tighter text-base-900 dark:text-base-200 md:text-7xl">
                 Team Profiles
               </h1>
               <div className="absolute top-3 -right-6">
@@ -101,7 +101,7 @@ const Main = ({ user }) => {
         show={createTeamPanel}
         setShow={setCreateTeamPanel}
         title="Let's setup your team"
-        dimensions={'max-w-lg'}
+        dimensions={"max-w-lg"}
         disabled
       >
         <Create

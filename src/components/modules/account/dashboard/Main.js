@@ -1,43 +1,35 @@
-import { useState } from 'react';
-import Avatar from 'components/common/elements/Avatar';
-import Projects from 'components/modules/account/dashboard/Projects';
-import Followers from 'components/modules/account/dashboard/Followers';
-import Following from 'components/modules/account/dashboard/Following';
-import Saved from 'components/modules/account/dashboard/Saved';
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
-import {
-  IoApps,
-  IoArrowRedoOutline,
-  IoEyeOutline,
-  IoHeartOutline,
-  IoPersonAddOutline,
-} from 'react-icons/io5';
-import ToolTip from 'components/common/elements/ToolTip';
-import Icon from 'components/common/elements/Icon';
+import { useState } from "react";
+import Projects from "components/modules/account/dashboard/Projects";
+import Followers from "components/modules/account/dashboard/Followers";
+import Following from "components/modules/account/dashboard/Following";
+import Saved from "components/modules/account/dashboard/Saved";
+import useSWR from "swr";
+import fetcher from "utils/fetcher";
+import ToolTip from "components/common/elements/ToolTip";
+import Icon from "components/common/elements/Icon";
 
 const tabs = [
   {
-    label: 'My Projects',
+    label: "My Projects",
     tab: 1,
   },
   {
-    label: 'Saved Projects',
+    label: "Bookmarks",
     tab: 2,
   },
   {
-    label: 'Followers',
+    label: "Followers",
     tab: 3,
   },
   {
-    label: 'Following',
+    label: "Following",
     tab: 4,
   },
 ];
 
 const Main = ({ user }) => {
   const [selectedTab, setSelectedTab] = useState({
-    label: 'Projects',
+    label: "Projects",
     tab: 1,
   });
 
@@ -65,15 +57,13 @@ const Main = ({ user }) => {
 
   return (
     <>
-      <div className="mx-auto mt-0 w-full max-w-5xl justify-center lg:mt-6">
-        <div className="hidden w-full py-4 text-4xl font-medium tracking-tight sm:block">
-          Dashboard
-        </div>
+      <div className="page page-6xl space-y-6">
+        <h2 className="">Dashboard</h2>
 
-        <div className="mb-6 grid grid-cols-2 items-center justify-evenly gap-4 lg:grid-cols-4">
-          <div className="flex w-full flex-col space-y-2 rounded-md border border-base-200 px-4 py-3 dark:border-base-700">
-            <div className="flex items-center space-x-1 whitespace-nowrap text-base-400">
-              <Icon name={'FiEye'} className="h-4 w-4" />
+        <div className="grid grid-cols-4 items-center justify-evenly gap-4">
+          <div className="box flex w-full flex-col space-y-2">
+            <div className="flex items-center space-x-1 whitespace-nowrap">
+              <Icon name={"FiEye"} className="h-4 w-4" />
               <span className="text-sm font-semibold">Profile views</span>
             </div>
             <div className="text-2xl font-medium sm:text-3xl">
@@ -90,9 +80,9 @@ const Main = ({ user }) => {
               )}
             </div>
           </div>
-          <div className="flex w-full flex-col space-y-2 rounded-md border border-base-200 px-4 py-3 dark:border-base-700">
-            <div className="flex items-center space-x-1 whitespace-nowrap text-base-400">
-              <Icon name={'FiHeart'} className="h-4 w-4" />
+          <div className="box flex w-full flex-col space-y-2">
+            <div className="flex items-center space-x-1 whitespace-nowrap">
+              <Icon name={"FiHeart"} className="h-4 w-4" />
               <span className="text-sm font-semibold">Reactions</span>
             </div>
             <div className="text-2xl font-medium sm:text-3xl">
@@ -110,17 +100,17 @@ const Main = ({ user }) => {
             </div>
           </div>
 
-          <div className="group relative flex w-full flex-col space-y-2 rounded-md border border-base-200 px-4 py-3 dark:border-base-700">
-            <div className="flex items-center space-x-1 whitespace-nowrap text-base-400">
-              <Icon name={'FiShare2'} className="h-4 w-4" />
+          <div className="box group relative space-y-2">
+            <div className="flex items-center space-x-1 whitespace-nowrap">
+              <Icon name={"FiShare2"} className="h-4 w-4" />
               <span className="text-sm font-semibold">Shares</span>
             </div>
             <div className="text-2xl font-medium sm:text-3xl">--</div>
-            <ToolTip message={'Profile shares coming soon'} />
+            <ToolTip message={"Profile shares coming soon"} />
           </div>
-          <div className="flex w-full flex-col space-y-2 rounded-md border border-base-200 px-4 py-3 dark:border-base-700">
-            <div className="flex items-center space-x-1 whitespace-nowrap text-base-400">
-              <Icon name={'FiUsers'} className="h-4 w-4" />
+          <div className="box flex w-full flex-col space-y-2">
+            <div className="flex items-center space-x-1 whitespace-nowrap">
+              <Icon name={"FiUsers"} className="h-4 w-4" />
               <span className="text-sm font-semibold">Followers</span>
             </div>
             <div className="text-2xl font-medium sm:text-3xl">
@@ -129,11 +119,13 @@ const Main = ({ user }) => {
           </div>
         </div>
 
-        <div className="no-scrollbar flex w-auto gap-2 overflow-x-scroll px-0">
+        <div className="tabs">
           {tabs.map((tab, index) => (
             <button
               className={
-                tab.tab == selectedTab?.tab ? `btn-pill-active` : `btn-pill`
+                tab.tab == selectedTab?.tab
+                  ? `tab-item tab-item-active`
+                  : `tab-item`
               }
               key={index}
               onClick={() => setSelectedTab(tab)}

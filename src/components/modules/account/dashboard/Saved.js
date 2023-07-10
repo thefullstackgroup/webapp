@@ -1,35 +1,45 @@
-import Link from 'next/link';
-import useSWR from 'swr';
-import Loader from 'components/common/elements/Loader';
-import fetcher from 'utils/fetcher';
+import Link from "next/link";
+import useSWR from "swr";
+import Loader from "components/common/elements/Loader";
+import fetcher from "utils/fetcher";
+import ShareButton from "components/common/buttons/Share";
 
 const ProjectCard = ({ project }) => {
   return (
-    <Link
-      href={`/${project.contentOwnerUserName}/project/${project.projectSlug}`}
-    >
-      <button className="flex w-full items-center space-x-4 p-4 text-left duration-200 hover:bg-base-200/50 dark:hover:bg-base-800">
-        <div>
-          <div className="h-16 w-20 cursor-pointer overflow-hidden rounded-md">
-            <img
-              src={project.projectImageURI}
-              alt={project.projectName}
-              className="h-full w-full object-cover"
-            />
-          </div>
+    <button className="box box-link relative flex w-full items-start space-x-4 text-left">
+      <Link
+        href={`/${project.contentOwnerUserName}/project/${project.projectSlug}`}
+      >
+        <div className="h-32 w-36 shrink-0 cursor-pointer overflow-hidden rounded-md">
+          <img
+            src={project.projectImageURI}
+            alt={project.projectName}
+            className="h-full w-full object-cover"
+          />
         </div>
-        <div className="flex flex-col text-base-400">
-          <p className="text-lg font-semibold">{project.projectName}</p>
-          <p className="text-sm text-base-400">
-            Posted by @{project.contentOwnerUserName}
-          </p>
-        </div>
-      </button>
-    </Link>
+      </Link>
+      <div>
+        <Link
+          href={`/${project.contentOwnerUserName}/project/${project.projectSlug}`}
+        >
+          <h3>{project.projectName}</h3>
+        </Link>
+        <p className="text-sm text-base-300 dark:text-base-400">
+          Posted by @{project.contentOwnerUserName}
+        </p>
+      </div>
+      <div className="absolute bottom-2 right-2">
+        <ShareButton
+          url={`${process.env.BASEURL}/u/${project?.contentOwnerUserName}/${project?.projectSlug}`}
+          message={project?.projectName}
+          showLabel={false}
+        />
+      </div>
+    </button>
   );
 };
 
-const Saved = ({ user }) => {
+const Saved = () => {
   const url = `${process.env.BASEURL}/api/projects/saved/get`;
   const { data } = useSWR(url, fetcher);
   const projects = data ? data.projects : null;
@@ -45,7 +55,7 @@ const Saved = ({ user }) => {
   return (
     <>
       {projects?.content?.length > 0 && (
-        <div className="mt-4 w-full rounded-md border border-base-200 dark:border-base-700">
+        <div className="grid grid-cols-2 gap-4">
           {projects?.content?.map((project, index) => (
             <ProjectCard project={project} key={index} />
           ))}

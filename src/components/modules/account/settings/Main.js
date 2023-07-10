@@ -1,38 +1,64 @@
-import Menu from './Menu';
+import Link from "next/link";
+import Menu from "./Menu";
+import Icon from "components/common/elements/Icon";
 
 const settingsOptions = [
   {
-    label: 'Work Preferences',
-    desc: 'Set your work preferences',
-    href: '/account/settings/jobpreferences',
+    label: "Dashboard",
+    desc: "View your profile stats, project stats, bookmarks and followers",
+    href: "/account/dashboard",
+    icon: "FiGrid",
   },
   {
-    label: 'Notification Preferences',
-    desc: 'Configure your email notification preferences.',
-    href: '/account/settings/notifications',
+    label: "Wallet",
+    desc: "Your wallet contains virtual coin that you can use to reward and endorse others",
+    href: "/account/wallet",
+    icon: "FiCreditCard",
   },
   {
-    label: 'Request Data Archive',
-    desc: 'Download an archive of your data anytime.',
-    href: '/account/settings/archive',
+    label: "Work Preferences",
+    desc: "The Full Stack can help you find and connect to tech teams with open positions matched to your preferences",
+    href: "/account/settings/jobpreferences",
+    icon: "FiBriefcase",
   },
   {
-    label: 'Danger Zone',
-    desc: 'Want to delete your account?',
-    href: '/account/settings/danger',
+    label: "Notification Preferences",
+    desc: "Configure your email notification preferences",
+    href: "/account/settings/notifications",
+    icon: "FiBell",
+  },
+  {
+    label: "Request Your Data",
+    desc: "Your data belongs to you and you can request an archive of your data anytime",
+    href: "/account/settings/archive",
+    icon: "FiHardDrive",
+  },
+  {
+    label: "Danger Zone",
+    desc: "Looking to delete your account?",
+    href: "/account/settings/danger",
+    icon: "FiAlertTriangle",
   },
 ];
 
 const Main = ({ user }) => {
   return (
     <>
-      <div className="mx-auto mt-0 w-full max-w-5xl justify-center lg:mt-6">
-        <div className="hidden w-full py-4 text-4xl font-medium tracking-tight sm:block">
-          Account settings
-        </div>
-        <div className="flex items-start space-x-4">
-          <Menu />
-          <div>HERE</div>
+      <div className="page page-6xl space-y-6">
+        <h2>Account settings</h2>
+        <div className="grid grid-cols-3 gap-4">
+          {settingsOptions.map((option, index) => (
+            <Link href={option.href}>
+              <div className="box box-link space-y-1 pb-4">
+                <Icon name={option.icon} className="mb-4 h-8 w-8" />
+
+                <h4>{option.label}</h4>
+                <p className="text-base-300 dark:text-base-400">
+                  {option.desc}
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </>

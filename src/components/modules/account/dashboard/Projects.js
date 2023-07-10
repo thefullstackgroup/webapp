@@ -1,15 +1,17 @@
-import Loader from 'components/common/elements/Loader';
-import Link from 'next/link';
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
+import Loader from "components/common/elements/Loader";
+import Link from "next/link";
+import useSWR from "swr";
+import fetcher from "utils/fetcher";
 
 const ProjectCard = ({ project }) => {
   return (
     <>
-      <div className="grid w-full gap-4 sm:grid-cols-2">
+      <div className="grid w-full grid-cols-2 gap-4">
         <div className="col-span-1 flex items-center space-x-4">
-          <Link href={`/post?ref=${project._id}`}>
-            <div className="flex h-20 w-24 flex-shrink-0 cursor-pointer overflow-hidden rounded-md">
+          <Link
+            href={`/${project.projectCreator.displayName}/project/${project.projectSlug}`}
+          >
+            <div className="flex h-24 w-28 flex-shrink-0 cursor-pointer overflow-hidden rounded-md">
               <img
                 src={project.projectImgURI}
                 alt={project.projectName}
@@ -18,12 +20,27 @@ const ProjectCard = ({ project }) => {
             </div>
           </Link>
 
-          <div className="font-intertight text-xl font-medium">
+          <div className="flex flex-col space-y-2">
             <Link
               href={`/${project.projectCreator.displayName}/project/${project.projectSlug}`}
             >
-              {project.projectName}
+              <h3>{project.projectName}</h3>
             </Link>
+
+            <div className="flex items-center space-x-2">
+              <Link
+                href={`/${project.projectCreator.displayName}/project/${project.projectSlug}`}
+              >
+                <button className="btn btn-xs btn-secondary">
+                  View project
+                </button>
+              </Link>
+              <Link href={`/post?ref=${project._id}`}>
+                <button className="btn btn-xs btn-secondary">
+                  Edit project
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
         <div className="col-span-1 flex items-center justify-start space-x-6 sm:justify-end sm:space-x-10">
@@ -75,10 +92,10 @@ const TabProjects = ({ user }) => {
   return (
     <>
       {projects?.length > 0 && (
-        <div className="mt-4 w-full space-y-4">
+        <div className="space-y-4">
           {projects?.map((project, index) => (
             <div
-              className="flex w-full items-center justify-between rounded-md border border-base-200 p-4 duration-200 hover:bg-base-200/50 dark:border-base-700 dark:hover:bg-base-800"
+              className="box box-link flex w-full items-center justify-between"
               key={index}
             >
               <ProjectCard project={project} />

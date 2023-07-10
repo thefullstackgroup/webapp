@@ -1,37 +1,38 @@
-import { React, useState } from 'react';
-import axios from 'axios';
-import ModalDialog from 'components/common/modals/ModalDialog';
-import { Transition } from '@headlessui/react';
+import { React, useState } from "react";
+import axios from "axios";
+import ModalDialog from "components/common/modals/ModalDialog";
+import { Transition } from "@headlessui/react";
 import {
   IoEllipsisHorizontal,
   IoFlagOutline,
   IoLinkOutline,
-} from 'react-icons/io5';
-import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
-import Icon from '../elements/Icon';
+} from "react-icons/io5";
+import { sendSlackMessage } from "utils/slack/sendMessageSlack";
+import Icon from "../elements/Icon";
+import ModalAlert from "../modals/ModalAlert";
 
 const reasons = [
-  'Spam',
-  'Incorrect Connection Request',
-  'Plagiarism',
-  'Harrasment',
-  'False Information',
-  'Hate Speech',
-  'Racist Activity',
-  'Other',
+  "Spam",
+  "Incorrect Connection Request",
+  "Plagiarism",
+  "Harrasment",
+  "False Information",
+  "Hate Speech",
+  "Racist Activity",
+  "Other",
 ];
 
 const ButtonReport = ({ user, profile }) => {
   const [showPanel, setShowPanel] = useState(false);
   const [showReportProfile, setShowReportProfile] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-  const [reportReason, setReportReason] = useState('');
-  const [reportComments, setReportComments] = useState('');
+  const [reportReason, setReportReason] = useState("");
+  const [reportComments, setReportComments] = useState("");
   const [reportSubmitted, setReportSubmitted] = useState(false);
 
   const handleSubmitReport = async () => {
     if (!reportReason.trim().length) {
-      alert('Please select reason');
+      alert("Please select reason");
       return;
     }
 
@@ -42,9 +43,9 @@ const ButtonReport = ({ user, profile }) => {
     <br/><br/>Please reach out to user and investigate.`;
 
     const data = {
-      email: 'legal@thefullstack.network',
-      name: 'Support',
-      subject: '!Important: Profile Reported',
+      email: "legal@thefullstack.network",
+      name: "Support",
+      subject: "!Important: Profile Reported",
       client_message: message,
     };
 
@@ -116,35 +117,36 @@ const ButtonReport = ({ user, profile }) => {
         </Transition>
       </div>
 
-      <ModalDialog
+      <ModalAlert
         show={showReportProfile}
         setShow={setShowReportProfile}
         title={`Report ${profile.name}`}
         disabled
       >
-        <div className="mx-auto p-2 py-4 text-center shadow-xl sm:max-w-xl">
+        <div className="mx-auto p-2 py-4">
           {reportSubmitted ? (
             <div className="space-y-3 text-left">
-              <p className="mb-6 font-bold">Report submitted.</p>
-              <p className="mb-6 pb-6 text-sm">
+              <p className="font-medium">Report submitted.</p>
+              <p className="text-sm">
                 Thank you for notifying us and we will investigate as soon as
                 possible. Please make sure you have included any information you
                 think could help us with our investigation, including
-                screenshots. Thank you!
+                screenshots.
               </p>
+              <p className="pb-6 text-sm">Thank you!</p>
 
               <button
                 className="btn btn-primary w-full"
                 onClick={() => setShowReportProfile(false)}
               >
-                Done
+                Ok
               </button>
             </div>
           ) : (
             <div className="space-y-3 text-left">
               <p className="mb-6 text-sm">
                 Help us keep The Full Stack community safe by reporting any
-                content or users you see that violates our{' '}
+                content or users you see that violates our{" "}
                 <a
                   href={`${process.env.BASEURL}/code-of-conduct`}
                   target="_blank"
@@ -163,7 +165,7 @@ const ButtonReport = ({ user, profile }) => {
                   className="text-input"
                   onChange={(e) => setReportReason(e.target.value)}
                 >
-                  <option value={''}>Please select a reason ...</option>
+                  <option value={""}>Please select a reason ...</option>
                   {reasons.map((reason, index) => (
                     <option value={reason} key={index}>
                       {reason}
@@ -197,7 +199,7 @@ const ButtonReport = ({ user, profile }) => {
             </div>
           )}
         </div>
-      </ModalDialog>
+      </ModalAlert>
     </>
   );
 };
