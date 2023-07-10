@@ -5,6 +5,7 @@ import {
   NotificationFeedPopover,
 } from '@knocklabs/react-notification-feed';
 import { useAuthUser } from 'next-firebase-auth';
+import { useTheme } from 'next-themes';
 
 // Required CSS import, unless you're overriding the styling
 import '@knocklabs/react-notification-feed/dist/index.css';
@@ -13,6 +14,8 @@ import Icon from 'components/common/elements/Icon';
 const KNOCK_FEED_ID = '0790851e-ba77-4863-b919-c45f384ef8ad';
 
 const NotificationsPanel = ({ userId }) => {
+  const { systemTheme, theme } = useTheme();
+  const currentTheme = theme === 'system' ? systemTheme : theme;
   const [isVisible, setIsVisible] = useState(false);
   const notifButtonRef = useRef(null);
   const [token, setToken] = useState('');
@@ -54,7 +57,7 @@ const NotificationsPanel = ({ userId }) => {
           feedId={KNOCK_FEED_ID}
           userToken={token}
           userId={userId}
-          colorMode="dark"
+          colorMode={currentTheme}
         >
           <>
             <button

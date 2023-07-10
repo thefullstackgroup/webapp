@@ -24,7 +24,7 @@
 
   /* Header */
   .nav-bar {
-    @apply flex items-center rounded-full border-0 px-5 py-2 text-base font-medium text-black ring-0 duration-200 hover:bg-base-200 hover:text-black focus:border-0 focus:outline-none focus:ring-0 dark:text-base-100 dark:hover:bg-base-700/80 dark:hover:text-white;
+    @apply flex items-center rounded-full px-5 py-2 text-base font-medium text-black duration-200 hover:bg-base-200 hover:text-black dark:text-base-100 dark:hover:bg-base-700/80 dark:hover:text-white;
   }
   .nav-bar-icon {
     @apply flex items-center rounded-full px-2 py-2 text-sm font-medium text-black hover:text-base-900;
@@ -182,7 +182,7 @@
     font-weight: 600;
   }
   .prose {
-    font-family: "Inter";
+    font-family: 'Inter';
   }
   .prose p {
     margin-top: 0.8em;
@@ -243,7 +243,7 @@
     font-size: 1rem;
     /* font-family: 'Roboto Mono' !important; */
   }
-  .prose :where(code):not(:where([class~="not-prose"] *)) {
+  .prose :where(code):not(:where([class~='not-prose'] *)) {
     font-weight: 500;
   }
   .prose img {
@@ -332,7 +332,7 @@ ul.mde-suggestions li:hover {
   color: #999999 !important;
 }
 
-ul.mde-suggestions li[aria-selected="true"] {
+ul.mde-suggestions li[aria-selected='true'] {
   background-color: transparent !important;
 }
 
@@ -349,7 +349,7 @@ ul.mde-suggestions li[aria-selected="true"] {
 
 /* gradient */
 .yt-lite::before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: 0;
@@ -366,7 +366,7 @@ ul.mde-suggestions li[aria-selected="true"] {
   thanks https://css-tricks.com/responsive-iframes/
 */
 .yt-lite::after {
-  content: "";
+  content: '';
   display: block;
   padding-bottom: calc(100% / (16 / 9));
 }
@@ -394,7 +394,7 @@ ul.mde-suggestions li[aria-selected="true"] {
 }
 /* play button triangle */
 .yt-lite > .lty-playbtn:before {
-  content: "";
+  content: '';
   border-style: solid;
   border-width: 11px 0 11px 19px;
   border-color: transparent transparent transparent #fff;

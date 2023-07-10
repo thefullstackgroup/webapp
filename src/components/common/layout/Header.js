@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import ProfilePopoverPanel from './ProfilePopoverPanel';
 import { useRouter } from 'next/router';
+import ToolTip from '../elements/ToolTip';
 const KnockNotificationsComponent = dynamic(() =>
   import('components/modules/account/settings/NotificationsPanel')
 );
@@ -146,19 +147,21 @@ const Header = ({
                 <Link href="/signup" passHref>
                   <a
                     href="#"
-                    className="btn btn-primary rounded-full font-medium"
+                    className="btn btn-primary rounded-full px-5 font-medium"
                   >
                     Share project
                   </a>
                 </Link>
               )}
-              {/* <a
+              <a
                 href="https://github.com/thefullstackgroup/thefullstack"
+                target="_blank"
                 className="nav-bar nav-bar-icon group relative"
+                rel="noreferrer"
               >
                 <ToolTip message="Star us on GitHub" position={'bottom'} />
-                <Icon name={'FiGithub'} />
-              </a> */}
+                <Icon name={'SiGithub'} pack="Si" />
+              </a>
 
               {user ? (
                 <div className="w-8">
