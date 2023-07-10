@@ -49,10 +49,10 @@
     @apply text-xl font-semibold tracking-tight;
   }
   h4 {
-    @apply text-lg font-semibold tracking-tight;
+    @apply text-lg font-medium;
   }
   h5 {
-    @apply text-base font-semibold tracking-tight;
+    @apply text-base font-medium;
   }
 
   p {

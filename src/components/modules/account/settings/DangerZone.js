@@ -1,14 +1,14 @@
-import axios from 'axios';
-import { useAuthUser } from 'next-firebase-auth';
-import { useState } from 'react';
-import Menu from './Menu';
+import axios from "axios";
+import { useAuthUser } from "next-firebase-auth";
+import { useState } from "react";
+import Menu from "./Menu";
 
 const Page = ({ user }) => {
   const AuthUser = useAuthUser();
-  const defaultMail = 'support@thefullstackgroup.com';
+  const defaultMail = "support@thefullstackgroup.com";
   const [disabledDelete, setDisabledDelete] = useState(true);
   const [deleteAccountRequested, setDeleteAccountRequested] = useState(false);
-  const [reason, setReason] = useState('');
+  const [reason, setReason] = useState("");
 
   const sendSlackMessage = async () => {
     await axios.post(
@@ -26,17 +26,13 @@ const Page = ({ user }) => {
 
   return (
     <>
-      <div className="mx-auto mt-0 w-full max-w-5xl justify-center lg:mt-6">
-        <div className="hidden w-full pt-4 pb-10 text-4xl font-medium tracking-tight sm:block">
-          Account settings
-        </div>
-        <div className="flex min-h-[60vh] items-start space-x-4">
-          <div className="w-3/12">
-            <Menu selected="Danger zone" />
-          </div>
+      <div className="page page-6xl space-y-6">
+        <h2>Danger zone</h2>
+
+        <div className="box py-4">
           {!deleteAccountRequested && (
-            <div className="mb-4 w-full rounded-lg border border-base-200 bg-base-50 px-4 py-4 dark:border-base-700 dark:bg-base-900 sm:px-6">
-              <h4 className="mb-6 text-2xl font-medium">Danger zone</h4>
+            <div>
+              <h4>Looking to delete your account?</h4>
               <p className="mt-1 mb-6">
                 Complete the step below if you wish to remove your account
                 entirely.
@@ -53,7 +49,7 @@ const Page = ({ user }) => {
                       id="delete"
                       className="text-input w-1/2"
                       onChange={(e) => {
-                        if (e.target.value === 'DELETE') {
+                        if (e.target.value === "DELETE") {
                           setDisabledDelete(false);
                         } else {
                           setDisabledDelete(true);
@@ -63,63 +59,63 @@ const Page = ({ user }) => {
                   </div>
                 </div>
                 {!disabledDelete && (
-                  <div className="space-y-10">
-                    <p className="mt-2 text-base">
-                      <i>We&apos;re really sorry to see you go.</i> 😔
-                    </p>
+                  <div className="mt-10 space-y-4">
                     <p>
-                      We would love any feedback you could provide in order to
-                      help us improve. Please select an option below and hit the
-                      button to delete your account.
+                      We&apos;re really sorry to see you go 😔. We would love
+                      any feedback you could provide in order to help us
+                      improve. Please select an option below and hit the button
+                      to delete your account.
                     </p>
-                    <div className="flex flex-col space-y-2">
+                    <div className="flex flex-col gap-2">
                       <button
                         className={
-                          reason === 'I signed up by accident'
-                            ? 'btn-pill-active'
-                            : 'btn-pill'
+                          reason === "I signed up by accident"
+                            ? "btn-pill-active text-left"
+                            : "btn-pill text-left"
                         }
-                        onClick={() => setReason('I signed up by accident')}
+                        onClick={() => setReason("I signed up by accident")}
                       >
                         I signed up by accident
                       </button>
                       <button
                         className={
-                          reason === 'The Full Stack is not for me'
-                            ? 'btn-pill-active'
-                            : 'btn-pill'
+                          reason === "The Full Stack is not for me"
+                            ? "btn-pill-active text-left"
+                            : "btn-pill text-left"
                         }
                         onClick={() =>
-                          setReason('The Full Stack is not for me')
+                          setReason("The Full Stack is not for me")
                         }
                       >
                         The Full Stack is not for me
                       </button>
                       <button
                         className={
-                          reason === 'I received too many emails'
-                            ? 'btn-pill-active'
-                            : 'btn-pill'
+                          reason === "I received too many emails"
+                            ? "btn-pill-active text-left"
+                            : "btn-pill text-left"
                         }
-                        onClick={() => setReason('I received too many emails')}
+                        onClick={() => setReason("I received too many emails")}
                       >
                         I received too many emails
                       </button>
                       <button
                         className={
-                          reason === 'Duplicate account'
-                            ? 'btn-pill-active'
-                            : 'btn-pill'
+                          reason === "Duplicate account"
+                            ? "btn-pill-active text-left"
+                            : "btn-pill text-left"
                         }
-                        onClick={() => setReason('Duplicate account')}
+                        onClick={() => setReason("Duplicate account")}
                       >
                         Duplicate account
                       </button>
                       <button
                         className={
-                          reason === 'Other' ? 'btn-pill-active' : 'btn-pill'
+                          reason === "Other"
+                            ? "btn-pill-active text-left"
+                            : "btn-pill text-left"
                         }
-                        onClick={() => setReason('Other')}
+                        onClick={() => setReason("Other")}
                       >
                         Other
                       </button>
