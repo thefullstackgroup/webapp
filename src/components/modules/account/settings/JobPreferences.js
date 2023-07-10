@@ -253,7 +253,7 @@ const JobPreferences = ({ user }) => {
 
   return (
     <>
-      <div className="page page-6xl space-y-6">
+      <div className="page page-5xl space-y-6">
         <h2>Work preferences</h2>
         <p>
           The Full Stack can help you find and connect to tech teams with open

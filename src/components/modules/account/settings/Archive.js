@@ -4,7 +4,7 @@ const Archive = ({ user }) => {
 
   return (
     <>
-      <div className="page page-6xl space-y-6">
+      <div className="page page-5xl space-y-6">
         <h2>Request your data</h2>
 
         <div className="box py-4">

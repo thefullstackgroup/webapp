@@ -67,7 +67,7 @@ const Page = ({ user, promo }) => {
 
   return (
     <>
-      <div className="page page-6xl space-y-6">
+      <div className="page page-5xl space-y-6">
         <div className="flex items-end justify-between">
           <div>
             <h2>Wallet</h2>

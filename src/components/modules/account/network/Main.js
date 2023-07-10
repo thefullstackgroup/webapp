@@ -7,8 +7,8 @@ import Loader from 'components/common/elements/Loader';
 
 const tabs = [
   { tab: 1, label: 'Connections' },
-  { tab: 2, label: 'Requests' },
-  { tab: 3, label: 'Invites sent' },
+  { tab: 2, label: 'Pending requests' },
+  { tab: 3, label: 'Invites received' },
 ];
 
 const Main = ({ user }) => {
@@ -25,7 +25,7 @@ const Main = ({ user }) => {
 
   return (
     <>
-      <div className="page page-6xl space-y-6">
+      <div className="page page-5xl space-y-6">
         <h2 className="">My Network</h2>
         <div className="tabs">
           {tabs.map((option, index) => (
@@ -50,7 +50,7 @@ const Main = ({ user }) => {
                     `(${data?.received_pending?.length})`}
                 </span>
                 {data?.received_pending?.length > 0 && option.tab == 3 && (
-                  <span className="absolute top-0 -right-4 h-3 w-3 rounded-full bg-highlight-alert px-1"></span>
+                  <span className="absolute top-0 -right-4 h-2 w-2 rounded-full bg-highlight-alert px-1"></span>
                 )}
               </span>
             </button>

@@ -73,7 +73,7 @@ const Main = ({ user, chatId }) => {
   }, [messages]);
 
   return (
-    <div className="page page-6xl min-h-min">
+    <div className="page page-5xl min-h-min">
       <h2>Messages</h2>
       <div className="box flex p-0">
         <div className="hidden w-1/3 md:block">

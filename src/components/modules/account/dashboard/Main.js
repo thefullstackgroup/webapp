@@ -57,7 +57,7 @@ const Main = ({ user }) => {
 
   return (
     <>
-      <div className="page page-6xl space-y-6">
+      <div className="page page-5xl space-y-6">
         <h2 className="">Dashboard</h2>
 
         <div className="grid grid-cols-4 items-center justify-evenly gap-4">

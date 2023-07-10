@@ -5,10 +5,10 @@ const tabs = ['Projects', 'Snippets', 'Sparks'];
 
 const Tabs = ({ tab, setTab, profile }) => {
   return (
-    <div className="relative mx-4 flex w-full justify-between space-x-2 md:mx-0 md:justify-start">
+    <div className="tabs">
       {tabs.map((tabButton, index) => (
         <button
-          className={tab == index ? 'btn-pill-active' : 'btn-pill'}
+          className={tab == index ? 'tab-item tab-item-active' : 'tab-item'}
           key={index}
           onClick={() => setTab(index)}
         >
@@ -19,7 +19,7 @@ const Tabs = ({ tab, setTab, profile }) => {
         <button
           className={
             'flex items-center space-x-1 ' +
-            (tab == 3 ? 'btn-pill-active' : 'btn-pill')
+            (tab == 3 ? 'tab-item tab-item-active' : 'tab-item')
           }
           onClick={() => setTab(3)}
         >
@@ -32,7 +32,7 @@ const Tabs = ({ tab, setTab, profile }) => {
           <button
             className={
               'flex items-center space-x-1 ' +
-              (tab == 4 ? 'btn-pill-active' : 'btn-pill')
+              (tab == 4 ? 'tab-item tab-item-active' : 'tab-item')
             }
             onClick={() => setTab(4)}
           >
@@ -44,7 +44,7 @@ const Tabs = ({ tab, setTab, profile }) => {
         <button
           className={
             'flex items-center space-x-1 ' +
-            (tab == 5 ? 'btn-pill-active' : 'btn-pill')
+            (tab == 5 ? 'tab-item tab-item-active' : 'tab-item')
           }
           onClick={() => setTab(5)}
         >
