@@ -20,7 +20,7 @@ const TestimonialsSection = () => {
                   .sort(() => Math.random() - 0.5)
                   .map((testimonial, index) => (
                     <div key={index}>
-                      <div className="mr-8 flex h-80 w-80 flex-col space-y-4 rounded-md border border-purple-600/20 bg-black/20 p-6 md:w-96">
+                      <div className="mr-8 flex h-80 w-80 flex-col space-y-4 rounded-md border border-base-200 bg-base-200/20 p-6 dark:border-purple-600/20 dark:bg-black/20 md:w-96">
                         <div className="flex items-center space-x-4">
                           <img
                             className="h-14 w-14 rounded-full object-cover"
@@ -36,7 +36,7 @@ const TestimonialsSection = () => {
                             </span>
                           </div>
                         </div>
-                        <div className="text-base">{testimonial.comment}</div>
+                        <p className="text-base">{testimonial.comment}</p>
                       </div>
                     </div>
                   ))}
@@ -50,7 +50,7 @@ const TestimonialsSection = () => {
                   .sort(() => Math.random() - 0.5)
                   .map((testimonial, index) => (
                     <div key={index}>
-                      <div className="mr-8 flex h-80 w-96 flex-col space-y-4 rounded-md border border-purple-600/20 bg-black/20 p-6">
+                      <div className="mr-8 flex h-80 w-80 flex-col space-y-4 rounded-md border border-base-200 bg-base-200/20 p-6 dark:border-purple-600/20 dark:bg-black/20 md:w-96">
                         <div className="flex items-center space-x-4">
                           <img
                             className="h-14 w-14 rounded-full object-cover"
@@ -66,7 +66,7 @@ const TestimonialsSection = () => {
                             </span>
                           </div>
                         </div>
-                        <div className="text-base">{testimonial.comment}</div>
+                        <p>{testimonial.comment}</p>
                       </div>
                     </div>
                   ))}

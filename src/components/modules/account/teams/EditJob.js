@@ -2,8 +2,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
 import { FaMarkdown } from 'react-icons/fa';
-const ReactMde = dynamic(() => import('react-mde'), { ssr: false });
-import Markdown from 'markdown-to-jsx';
 import CountrySelect from 'components/common/elements/CountrySelect';
 import { IoCloseOutline } from 'react-icons/io5';
 import { CgSpinner } from 'react-icons/cg';
@@ -345,45 +343,15 @@ const EditJob = ({ user, job, teamId, setShow }) => {
                 Job description
               </label>
               <div className="rounded-md bg-base-600/50">
-                <ReactMde
+                <textarea
                   value={description}
+                  className="text-input"
+                  rows={5}
                   onChange={setDescription}
-                  selectedTab={selectedTab}
-                  onTabChange={setSelectedTab}
-                  generateMarkdownPreview={(markdown) =>
-                    Promise.resolve(
-                      <div className="prose prose-dark mt-4 max-w-full">
-                        <Markdown
-                          options={{
-                            overrides: {
-                              a: {
-                                props: { target: '_blank' },
-                              },
-                            },
-                          }}
-                        >
-                          {markdown}
-                        </Markdown>
-                      </div>
-                    )
-                  }
-                  minEditorHeight={350}
-                  maxEditorHeight={10000}
-                  childProps={{
-                    textArea: {
-                      placeholder: 'Describe the job position ...',
-                    },
-                  }}
-                  commands={{
-                    'markdown-link': customCommand,
-                  }}
-                  toolbarCommands={[
-                    ['header', 'bold', 'italic', 'strikethrough'],
-                    ['quote', 'code'],
-                    ['unordered-list', 'ordered-list', 'checked-list'],
-                    ['markdown-link'],
-                  ]}
-                />
+                  placeholder="Describe the role ..."
+                >
+                  {description}
+                </textarea>
               </div>
               {formError && !description?.length > 0 && (
                 <span className="text-xs text-red-500">

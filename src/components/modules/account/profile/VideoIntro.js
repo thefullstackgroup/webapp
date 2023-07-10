@@ -4,7 +4,6 @@ import Toast from 'components/common/elements/Toast';
 import { CgSpinner } from 'react-icons/cg';
 import UploadIntroVideo from 'components/common/elements/mux/UploadIntroVideo';
 import VideoPlayerProfile from 'components/common/elements/mux/ProfileVideoPlayer';
-import { IoVideocamOutline } from 'react-icons/io5';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import Icon from 'components/common/elements/Icon';
 

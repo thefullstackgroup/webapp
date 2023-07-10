@@ -7,16 +7,13 @@ import OpenRoles from 'components/modules/teams/ListJobs';
 import TeamMembers from 'components/modules/teams/TeamMembers';
 import Avatar from 'components/common/elements/Avatar';
 import TechBadge from 'components/common/tags/TagStack';
-import { FiLink } from 'react-icons/fi';
 import ModalDialog from 'components/common/modals/ModalDialog';
 import Loader from 'components/common/elements/Loader';
 import fetcher from 'utils/fetcher';
-import ToolTip from 'components/common/elements/ToolTip';
 import Icon from 'components/common/elements/Icon';
 
 const TeamProfile = ({ user, slug }) => {
   const router = useRouter();
-  const [subscribePanel, setSubscribePanel] = useState(false);
   const [showImageOne, setShowImageOne] = useState(false);
   const [showImageTwo, setShowImageTwo] = useState(false);
   const [showImageThree, setShowImageThree] = useState(false);
@@ -66,51 +63,35 @@ const TeamProfile = ({ user, slug }) => {
                   <Link href="/teams">
                     <button className="btn btn-ghost px-0">&larr; Back</button>
                   </Link>
-                  <div className="flex items-start justify-between space-y-2">
-                    <div className="space-y-1">
-                      <div className="flex items-start space-x-4">
-                        <div className="block h-20 w-20 overflow-hidden rounded-lg">
-                          <Image
-                            src={team.image}
-                            className="h-full w-full object-contain object-top"
-                            alt={team.name || ''}
-                            title={team.name}
-                            referrerPolicy="no-referrer"
-                            width={100}
-                            height={100}
-                            layout="fill"
-                          />
-                        </div>
-                        <div>
-                          <h2 className="text-2xl font-semibold md:text-3xl">
-                            {team.name}
-                          </h2>
-                          <p className="text-sm">{team.description}</p>
-                          <a
-                            href={team.url}
-                            target="_blank"
-                            className="flex items-center space-x-2 text-base"
-                            rel="noreferrer"
-                          >
-                            <span>{team.url.replace(/(^\w+:|^)\/\//, '')}</span>
-                            <FiLink className="h-4 w-4" />
-                          </a>
-                        </div>
-                      </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="block h-20 w-20 overflow-hidden rounded-lg">
+                      <Image
+                        src={team.image}
+                        className="h-full w-full object-contain object-top"
+                        alt={team.name || ''}
+                        title={team.name}
+                        referrerPolicy="no-referrer"
+                        width={100}
+                        height={100}
+                        layout="fill"
+                      />
                     </div>
-                    {team.ownerId === user?.userId && (
-                      <div>
-                        <button
-                          className="btn btn-secondary"
-                          onClick={() =>
-                            router.push(`/account/teams/profile/${team.id}`)
-                          }
-                        >
-                          Edit profile
-                        </button>
-                      </div>
-                    )}
+                    <div>
+                      <h2 className="mb-0">{team.name}</h2>
+                      <p>{team.description}</p>
+                      <a
+                        href={team.url}
+                        target="_blank"
+                        className="flex items-center space-x-2 text-base-300 dark:text-base-400"
+                        rel="noreferrer"
+                      >
+                        <span>{team.url.replace(/(^\w+:|^)\/\//, '')}</span>
+                        <Icon name="FiExternalLink" className="h-4 w-4" />
+                      </a>
+                    </div>
                   </div>
+
                   <div className="space-y-10">
                     <div className="no-scrollbar flex items-center overflow-x-scroll sm:flex-wrap">
                       {team.techStack?.map((stack, index) => (
@@ -255,7 +236,7 @@ const TeamProfile = ({ user, slug }) => {
                         layout="fill"
                       />
                     </div>
-                    <div className="-mt-14 grid w-full grid-cols-5 gap-3 rounded-md border bg-base-50 pt-20 pb-10 pl-8 pr-10 text-sm dark:border-base-700 dark:bg-base-800">
+                    <div className="-mt-14 grid w-full grid-cols-5 gap-3 rounded-md border bg-base-50 px-4 pt-20 pb-10 text-sm dark:border-base-700 dark:bg-base-800">
                       <div className="col-span-2 font-medium">Founded:</div>
                       <div className="col-span-3">
                         {team.businessDetails?.founded}
@@ -279,7 +260,9 @@ const TeamProfile = ({ user, slug }) => {
                       </div>
 
                       <div className="col-span-2 font-medium">Team lead:</div>
-                      {/* <div className="col-span-3">{teamOwner?.name}</div> */}
+                      <div className="col-span-3">
+                        {/* {teamOwner?.name} */}
+                      </div>
 
                       <div className="col-span-2 font-medium">Location(s):</div>
                       <div className="col-span-3">
@@ -291,27 +274,29 @@ const TeamProfile = ({ user, slug }) => {
                         ))}
                       </div>
 
-                      {team.businessDetails?.socialMediaLinks?.github && (
+                      {team.url && (
                         <>
-                          <div className="col-span-2 font-medium">Links:</div>
-                          <div className="col-span-3">
-                            <div>
+                          <div className="col-span-5 space-y-2">
+                            <div className="truncate">
+                              <a
+                                href={team.url}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="btn btn-sm btn-ghost px-0"
+                              >
+                                {team.url}
+                              </a>
+                            </div>
+                            <div className="truncate">
                               <a
                                 href={
                                   team.businessDetails?.socialMediaLinks?.github
                                 }
                                 target="_blank"
                                 rel="noreferrer"
-                                className="btn btn-ghost group relative"
+                                className="btn btn-sm btn-ghost truncate px-0"
                               >
-                                <ToolTip
-                                  message={
-                                    team.businessDetails?.socialMediaLinks
-                                      ?.github
-                                  }
-                                />
-
-                                <Icon name="SiGithub" pack="Si" />
+                                {team.businessDetails?.socialMediaLinks?.github}
                               </a>
                             </div>
                           </div>
@@ -340,9 +325,17 @@ const TeamProfile = ({ user, slug }) => {
                     </div>
 
                     {team.ownerId === user?.userId && (
-                      <div className="my-6 flex items-center space-x-2">
+                      <div className="my-6 flex flex-col items-center space-y-2">
+                        <button
+                          className="btn btn-primary w-full"
+                          onClick={() =>
+                            router.push(`/account/teams/profile/${team.id}`)
+                          }
+                        >
+                          Edit team profile
+                        </button>
                         <Link href={`/account/teams/jobs/${team.id}`}>
-                          <button className="btn btn-primary w-full">
+                          <button className="btn btn-secondary w-full">
                             Post a job
                           </button>
                         </Link>

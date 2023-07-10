@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import dynamic from 'next/dynamic';
 import { FaMarkdown } from 'react-icons/fa';
-const ReactMde = dynamic(() => import('react-mde'), { ssr: false });
-import Markdown from 'markdown-to-jsx';
 import CountrySelect from 'components/common/elements/CountrySelect';
 import { IoCloseOutline, IoInformationCircleSharp } from 'react-icons/io5';
 import { CgSpinner } from 'react-icons/cg';
@@ -15,16 +12,6 @@ import {
 } from 'components/modules/account/teams/constants';
 import TechBadge from 'components/common/tags/TagStack';
 import TeamTech from 'components/modules/account/teams/TeamTech';
-
-const customCommand = {
-  name: 'markdown-link',
-  icon: () => <FaMarkdown className="h-6 w-6" />,
-  execute: () => {
-    window.open(
-      'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'
-    );
-  },
-};
 
 const CreateJob = ({ teamId, setShow }) => {
   const [saving, setSaving] = useState(false);

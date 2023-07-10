@@ -3,8 +3,7 @@ import CookieConsent from 'react-cookie-consent';
 import { FaLinkedin, FaInstagram, FaTwitter, FaGithub } from 'react-icons/fa';
 
 const links = [
-  { url: '/for/developers', label: 'For Developers' },
-  { url: '/for/teams', label: 'For Teams' },
+  { url: 'https://developer.thefullstack.network', label: 'Developer API' },
   { url: '/about/our-story', label: 'About' },
   { url: '/privacy-policy', label: 'Privacy' },
   { url: '/cookie-policy', label: 'Cookie Policy' },

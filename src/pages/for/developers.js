@@ -13,7 +13,7 @@ const ForDevelopers = ({ user }) => {
         keywords="developer, social network, developers, software engineering, full stack, software engineering network, tech community, tech companies, best tech companies, developer portfolio, developer network, professional network, professional community"
       />
       <Layout user={user}>
-        <Page />
+        <Page user={user} />
       </Layout>
     </>
   );

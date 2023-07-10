@@ -257,11 +257,11 @@ export const images = [
 
 export const ImageSample = ({ image }) => {
   return (
-    <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-black">
+    <div className="h-14 w-14 overflow-hidden rounded-full ring-2 ring-white dark:ring-black">
       <Image
         src={image}
         alt="Teams"
-        className="w-full h-full object-cover object-center"
+        className="h-full w-full object-cover object-center"
         width={200}
         height={200}
         layout="fill"

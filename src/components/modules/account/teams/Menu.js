@@ -12,53 +12,46 @@ const Menu = ({ user, team }) => {
 
   return (
     <>
-      <div className="mx-4 space-y-6 md:mx-0">
+      <div className="">
         <Link href={`/teams/${team.id}`}>
-          <div className="mb-4 flex cursor-pointer items-center space-x-2 px-4 md:px-0">
+          <button className="btn btn-sm btn-with-icon btn-ghost mb-4 px-0">
             <IoArrowBack className="h-5 w-5" />
-            <h2 className="text-sm font-bold">Back to team profile</h2>
-          </div>
+            <span>Back to team profile</span>
+          </button>
         </Link>
-        <div className="flex justify-between">
-          <div className="relative flex w-min items-center space-x-4 whitespace-nowrap">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-3xl">
-              {team?.name || 'Teams'}
-            </h2>
-            {team && (
-              <>
-                {team?.status === 'ACTIVE' ? (
-                  <div className="flex items-center space-x-1 text-sm text-green-500 sm:text-base">
-                    <IoInformationCircleSharp className="hidden h-5 w-5 sm:block" />
-                    <h2 className="hidden text-xs sm:block">
-                      Your team profile is live
-                    </h2>
-                    <h2 className="block pl-6 sm:hidden">Profile is live</h2>
-                  </div>
-                ) : (
-                  <div className="flex items-center space-x-2 text-xs text-orange-400">
-                    <IoInformationCircleSharp className="hidden h-5 w-5 sm:block" />
-                    <h2 className="hidden sm:block">
-                      Your team profile is pending review
-                    </h2>
-                    <h2 className="block pl-6 sm:hidden">
-                      Profile awaiting review
-                    </h2>
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+
+        <div className="relative flex items-center justify-between">
+          <h2>
+            Manage Team{' '}
+            <span className="text-lg font-normal">({team?.name})</span>
+          </h2>
+          {team && (
+            <>
+              {team?.status !== 'ACTIVE' && (
+                <div className="inline-flex items-center space-x-2 text-xs text-orange-400">
+                  <IoInformationCircleSharp className="hidden h-5 w-5 sm:block" />
+                  <span className="hidden sm:block">
+                    Your team profile is pending review
+                  </span>
+                  <span className="block pl-6 sm:hidden">
+                    Profile awaiting review
+                  </span>
+                </div>
+              )}
+            </>
+          )}
         </div>
       </div>
+
       {team && (
         <>
-          <div className="my-4 flex items-center space-x-2">
+          <div className="tabs mb-4">
             <Link href={`/account/teams/profile/${team?.id}`}>
               <button
                 className={
                   menuHighlight[3] === 'profile'
-                    ? `btn-pill-active`
-                    : `btn-pill`
+                    ? `tab-item tab-item-active`
+                    : `tab-item`
                 }
               >
                 <span>Edit team profile</span>
@@ -69,8 +62,8 @@ const Menu = ({ user, team }) => {
               <button
                 className={
                   menuHighlight[3] === 'members'
-                    ? `btn-pill-active`
-                    : `btn-pill`
+                    ? `tab-item tab-item-active`
+                    : `tab-item`
                 }
               >
                 <span>Team members</span>
@@ -80,7 +73,9 @@ const Menu = ({ user, team }) => {
             <Link href={`/account/teams/jobs/${team?.id}`}>
               <button
                 className={
-                  menuHighlight[3] === 'jobs' ? `btn-pill-active` : `btn-pill`
+                  menuHighlight[3] === 'jobs'
+                    ? `tab-item tab-item-active`
+                    : `tab-item`
                 }
               >
                 <span>Post open role</span>

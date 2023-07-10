@@ -34,7 +34,7 @@ const Testimonials = dynamic(() =>
   import('components/modules/static/shared/TestimonialsSection')
 );
 
-const ForDevelopers = () => {
+const ForDevelopers = ({ user }) => {
   const handleLearnMore = () => {
     const element = document.getElementById('learnmore');
     if (element) {
@@ -43,16 +43,16 @@ const ForDevelopers = () => {
   };
 
   return (
-    <div className="bg-black">
-      <div className="fixed top-0 left-0 mx-auto mt-16 flex min-h-screen w-full justify-between bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/40 via-black to-black"></div>
+    <div className="dark:bg-base-900">
+      <div className="fixed top-0 left-0 mx-auto mt-16 flex min-h-screen w-full justify-between bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] dark:from-purple-900/40 dark:via-black dark:to-black"></div>
       <div className="relative z-10 mx-auto max-w-screen-xl lg:mt-16 lg:min-h-screen">
         <div className="max-w-7xl space-y-6 px-4 pt-24 md:pt-32 lg:px-0">
           <Link href="/about/our-story">
-            <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-700 bg-base-800/40 px-6 py-1 text-sm text-base-300 hover:text-white">
+            <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-200 px-6 py-1 text-sm text-base-300 hover:text-white dark:border-base-700 dark:bg-base-800/40">
               Created by developers. See our story &rarr;
             </div>
           </Link>
-          <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-base-300 via-violet-200 to-white bg-clip-text text-center font-intertight text-6xl font-bold tracking-tight text-transparent md:text-9xl">
+          <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-orange-400 via-pink-500 to-blue-600 bg-clip-text text-center font-intertight text-6xl font-bold tracking-tight text-transparent dark:from-base-300 dark:via-violet-200 dark:to-white md:text-9xl">
             Share. Network. Grow.
           </h1>
           <div className="mx-auto max-w-5xl">
@@ -62,27 +62,30 @@ const ForDevelopers = () => {
               help you make your best career moves.
             </h4>
           </div>
-          <div className="mx-auto max-w-4xl">
-            <div className="flex items-center justify-center space-x-6 md:mt-20">
-              <Link href="/signup" passHref>
-                <a
-                  href="#"
-                  className="btn-primary rounded-lg py-3 px-6 text-xl"
+          {!user && (
+            <div className="mx-auto max-w-4xl">
+              <div className="flex items-center justify-center space-x-6 md:mt-20">
+                <Link href="/signup" passHref>
+                  <a
+                    href="#"
+                    className="btn btn-primary rounded-lg py-2.5 px-6 text-lg"
+                  >
+                    Get started
+                  </a>
+                </Link>
+
+                <button
+                  className="btn btn-secondary hidden rounded-lg bg-opacity-50 py-2.5 px-6 text-lg md:block"
+                  onClick={() => handleLearnMore()}
                 >
-                  Get started
-                </a>
-              </Link>
-              <button
-                className="btn-secondary hidden rounded-lg bg-opacity-50 py-3 px-6 text-xl md:block"
-                onClick={() => handleLearnMore()}
-              >
-                Learn more
-              </button>
+                  Learn more
+                </button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
-        <div className="absolute bottom-20 z-10 hidden w-full text-center md:bottom-20 md:block">
-          <IoArrowDown className="mx-auto h-8 w-auto animate-bounce text-base-100 md:h-12" />
+        <div className="absolute bottom-40 z-10 hidden w-full text-center md:block">
+          <IoArrowDown className="mx-auto h-8 w-auto animate-bounce md:h-12" />
         </div>
       </div>
 
@@ -91,7 +94,7 @@ const ForDevelopers = () => {
         <div className="mx-auto max-w-screen-xl space-y-20 pl-6 pr-4 md:min-h-screen md:space-y-80 md:px-20">
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="flex flex-col pt-20 font-intertight text-2xl tracking-wide md:h-[100vh] md:space-y-10 md:pt-80 md:text-3xl">
+              <div className="flex flex-col pt-20 text-2xl tracking-tight md:h-[100vh] md:space-y-10 md:pt-80 md:text-3xl">
                 <p>
                   We as developers love solving problems. And we especially{' '}
                   <span className="text-purple-400">love building</span>{' '}
@@ -121,7 +124,7 @@ const ForDevelopers = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
+              <div className="flex flex-col space-y-10 pt-20 text-2xl tracking-tight md:h-[80vh] md:pt-80 md:text-3xl">
                 <p>
                   Your <span className="text-purple-400">developer story</span>{' '}
                   deserves more than just a CV. Express yourself through what
@@ -158,8 +161,8 @@ const ForDevelopers = () => {
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
+              <div className="h-[60vh] w-full rounded-lg border border-base-300 bg-base-200 shadow-2xl shadow-purple-700/20 dark:border-purple-900/60 dark:bg-purple-500/10 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-xl border border-base-600 bg-black opacity-90 duration-300">
                   <div className="ml-4 flex h-8 items-center space-x-2 bg-base-700/20">
                     <div className="h-3 w-3 rounded-full bg-red-500"></div>
                     <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
@@ -180,7 +183,7 @@ const ForDevelopers = () => {
 
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[100vh] md:pt-80 md:text-3xl">
+              <div className="flex flex-col space-y-10 pt-20 text-2xl tracking-tight md:h-[100vh] md:pt-80 md:text-3xl">
                 <p className=" leading-snug">
                   With our seamless{' '}
                   <span className="text-purple-400">integration to GitHub</span>
@@ -190,16 +193,16 @@ const ForDevelopers = () => {
                 </p>
                 <p>
                   <div className="flex items-center space-x-4">
-                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                      <IoLogoGithub className="h-11 w-11 text-base-200" />
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                      <IoLogoGithub className="h-11 w-11" />
                     </div>
-                    <span className="text-lg font-medium text-base-300">
+                    <span className="text-lg font-medium">
                       GitHub integration
                     </span>
                   </div>
                 </p>
               </div>
-              <div className="flex h-[80vh] flex-col space-y-10 pt-20 font-intertight text-2xl md:pt-80 md:text-3xl">
+              <div className="flex h-[80vh] flex-col space-y-10 pt-20 text-2xl tracking-tight md:pt-80 md:text-3xl">
                 <p className=" leading-snug">
                   Add{' '}
                   <span className="text-purple-400">
@@ -213,17 +216,17 @@ const ForDevelopers = () => {
 
                 <p>
                   <div className="flex items-center space-x-2 md:space-x-6">
-                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                      <IoVideocamOutline className="h-11 w-11 text-base-200" />
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                      <IoVideocamOutline className="h-11 w-11" />
                     </div>
-                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                      <IoImageOutline className="h-11 w-11 text-base-200" />
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                      <IoImageOutline className="h-11 w-11" />
                     </div>
-                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                      <FiLink className="h-11 w-11 text-base-200" />
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                      <FiLink className="h-11 w-11" />
                     </div>
-                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                      <IoTerminalOutline className="h-11 w-11 text-base-200" />
+                    <div className="flex w-min whitespace-nowrap rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                      <IoTerminalOutline className="h-11 w-11" />
                     </div>
                   </div>
                 </p>
@@ -231,8 +234,8 @@ const ForDevelopers = () => {
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
+              <div className="h-[60vh] w-full rounded-lg border border-base-300 bg-base-200 shadow-2xl shadow-purple-700/20 dark:border-purple-900/60 dark:bg-purple-500/10 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-xl border border-base-600 bg-black opacity-90 duration-300">
                   <div className="ml-4 flex h-8 items-center space-x-2 bg-base-700/20">
                     <div className="h-3 w-3 rounded-full bg-red-500"></div>
                     <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
@@ -253,7 +256,7 @@ const ForDevelopers = () => {
 
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[100vh] md:pt-80 md:text-3xl">
+              <div className="flex flex-col space-y-10 pt-20 text-2xl tracking-tight md:h-[100vh] md:pt-80 md:text-3xl">
                 <p className=" leading-snug">
                   Publish your projects on the community showcase and let people{' '}
                   <span className="text-purple-400">follow you</span>. Get
@@ -273,7 +276,7 @@ const ForDevelopers = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
+              <div className="flex flex-col space-y-10 pt-20 text-2xl tracking-tight md:h-[80vh] md:pt-80 md:text-3xl">
                 <p className=" leading-snug">
                   <span className="text-purple-400">Seek inspiration</span> from
                   others. Discover projects by catgeory, tech stack or similar{' '}
@@ -292,7 +295,7 @@ const ForDevelopers = () => {
                   </div>
                 </p>
               </div>
-              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
+              <div className="flex flex-col space-y-10 pt-20 text-2xl tracking-tight md:h-[80vh] md:pt-80 md:text-3xl">
                 <p className=" leading-snug">
                   <span className="text-purple-400">Looking for projects</span>{' '}
                   to contribute to? No problem. Simply explore the huge growing
@@ -314,8 +317,8 @@ const ForDevelopers = () => {
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
+              <div className="h-[60vh] w-full rounded-lg border border-base-300 bg-base-200 shadow-2xl shadow-purple-700/20 dark:border-purple-900/60 dark:bg-purple-500/10 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-xl border border-base-600 bg-black opacity-90 duration-300">
                   <div className="ml-4 flex h-8 items-center space-x-2 bg-base-700/20">
                     <div className="h-3 w-3 rounded-full bg-red-500"></div>
                     <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
@@ -336,7 +339,7 @@ const ForDevelopers = () => {
 
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl tracking-wide md:h-[100vh] md:pt-80 md:text-3xl">
+              <div className="flex flex-col space-y-10 pt-20 text-2xl tracking-tight md:h-[100vh] md:pt-80 md:text-3xl">
                 <p>
                   In our community{' '}
                   <span className="text-purple-400">Hangout</span> area you can
@@ -389,7 +392,7 @@ const ForDevelopers = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
+              <div className="flex flex-col space-y-10 pt-20 text-2xl tracking-tight md:h-[80vh] md:pt-80 md:text-3xl">
                 <p>
                   <span className="text-purple-400">Say hello</span> and
                   introduce yourself! We&apos;re super proud of our community
@@ -413,8 +416,8 @@ const ForDevelopers = () => {
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
+              <div className="h-[60vh] w-full rounded-lg border border-base-300 bg-base-200 shadow-2xl shadow-purple-700/20 dark:border-purple-900/60 dark:bg-purple-500/10 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-xl border border-base-600 bg-black opacity-90 duration-300">
                   <div className="ml-4 flex h-8 items-center space-x-2 bg-base-700/20">
                     <div className="h-3 w-3 rounded-full bg-red-500"></div>
                     <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
@@ -435,7 +438,7 @@ const ForDevelopers = () => {
 
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl tracking-wide md:h-[100vh] md:pt-80 md:text-3xl">
+              <div className="flex flex-col space-y-10 pt-20 text-2xl tracking-tight md:h-[100vh] md:pt-80 md:text-3xl">
                 <p>
                   On <span className="text-purple-400">your profile</span>,
                   highlight your projects, code snippets, sparks (kinda like
@@ -445,21 +448,21 @@ const ForDevelopers = () => {
                   <span className="text-purple-400">recruiter spam</span>.
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-6">
-                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                    <IoCubeOutline className="h-11 w-11 text-base-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                    <IoCubeOutline className="h-11 w-11" />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                    <IoCodeSlashSharp className="h-11 w-11 text-base-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                    <IoCodeSlashSharp className="h-11 w-11" />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                    <IoFlashOutline className="h-11 w-11 text-base-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                    <IoFlashOutline className="h-11 w-11" />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                    <IoBriefcaseOutline className="h-11 w-11 text-base-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                    <IoBriefcaseOutline className="h-11 w-11" />
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
+              <div className="flex flex-col space-y-10 pt-20 text-2xl tracking-tight md:h-[80vh] md:pt-80 md:text-3xl">
                 <p>
                   Not only GitHub, but with our integrations to{' '}
                   <span className="text-purple-400">DEV, Hashnode</span> and{' '}
@@ -469,22 +472,22 @@ const ForDevelopers = () => {
                   <span className="text-purple-400">discoverablity</span>.
                 </p>
                 <div className="flex items-center space-x-2 md:space-x-6">
-                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                    <SiDevdotto className="h-11 w-11 text-base-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                    <SiDevdotto className="h-11 w-11" />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                    <SiHashnode className="h-11 w-11 text-base-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                    <SiHashnode className="h-11 w-11" />
                   </div>
-                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                    <SiMedium className="h-11 w-11 text-base-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                    <SiMedium className="h-11 w-11" />
                   </div>
                 </div>
               </div>
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
+              <div className="h-[60vh] w-full rounded-lg border border-base-300 bg-base-200 shadow-2xl shadow-purple-700/20 dark:border-purple-900/60 dark:bg-purple-500/10 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-xl border border-base-600 bg-black opacity-90 duration-300">
                   <div className="ml-4 flex h-8 items-center space-x-2 bg-base-700/20">
                     <div className="h-3 w-3 rounded-full bg-red-500"></div>
                     <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
@@ -505,7 +508,7 @@ const ForDevelopers = () => {
 
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl tracking-wide md:h-[100vh] md:pt-80 md:text-3xl">
+              <div className="flex flex-col space-y-10 pt-20 text-2xl tracking-tight md:h-[100vh] md:pt-80 md:text-3xl">
                 <p>
                   People make{' '}
                   <span className="text-purple-400">real connections</span> with
@@ -514,12 +517,12 @@ const ForDevelopers = () => {
                   from your profile.
                 </p>
                 <p>
-                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                    <MdOutlineSlowMotionVideo className="h-11 w-11 text-base-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                    <MdOutlineSlowMotionVideo className="h-11 w-11" />
                   </div>
                 </p>
               </div>
-              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
+              <div className="flex flex-col space-y-10 pt-20 text-2xl tracking-tight md:h-[80vh] md:pt-80 md:text-3xl">
                 <p>
                   With a <span className="text-purple-400">video intro</span> on
                   your profile, you&apos;re 2x more likely to make better
@@ -530,16 +533,16 @@ const ForDevelopers = () => {
                   .
                 </p>
                 <p>
-                  <div className="flex w-min space-x-2 rounded-xl bg-base-500/20 px-4 py-3 text-base">
-                    <MdOutlineSlowMotionVideo className="h-11 w-11 text-base-200" />
+                  <div className="flex w-min space-x-2 rounded-xl bg-base-200 px-4 py-3 text-base dark:bg-base-500/20">
+                    <MdOutlineSlowMotionVideo className="h-11 w-11" />
                   </div>
                 </p>
               </div>
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="relative h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
+              <div className="h-[60vh] w-full rounded-lg border border-base-300 bg-base-200 shadow-2xl shadow-purple-700/20 dark:border-purple-900/60 dark:bg-purple-500/10 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-xl border border-base-600 bg-black opacity-90 duration-300">
                   <VideoPlayerProfile
                     src={`https://stream.mux.com/OGgHsrxVO6KHXUBDdtsVPCMMnJej3tuPszF3L00K00m8U.m3u8`}
                     controls={false}
@@ -556,7 +559,7 @@ const ForDevelopers = () => {
 
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl tracking-wide md:h-[100vh] md:pt-80 md:text-3xl">
+              <div className="flex flex-col space-y-10 pt-20 text-2xl tracking-tight md:h-[100vh] md:pt-80 md:text-3xl">
                 <p>
                   <span className="text-purple-400">Team profiles</span> make
                   strong connections with people looking to collaborate or find
@@ -570,7 +573,7 @@ const ForDevelopers = () => {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col space-y-10 pt-20 font-intertight text-2xl md:h-[80vh] md:pt-80 md:text-3xl">
+              <div className="flex flex-col space-y-10 pt-20 text-2xl tracking-tight md:h-[80vh] md:pt-80 md:text-3xl">
                 <p>
                   Browse and discover{' '}
                   <span className="text-purple-400">teams</span> building great
@@ -589,8 +592,8 @@ const ForDevelopers = () => {
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="h-[60vh] w-full rounded-lg border border-purple-900/60 bg-purple-500/10 shadow-2xl shadow-purple-700/20 md:sticky md:top-48 md:w-[28vw]">
-                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-t-xl border border-base-600 bg-black opacity-90 duration-300">
+              <div className="h-[60vh] w-full rounded-lg border border-base-300 bg-base-200 shadow-2xl shadow-purple-700/20 dark:border-purple-900/60 dark:bg-purple-500/10 md:sticky md:top-48 md:w-[28vw]">
+                <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-xl border border-base-600 bg-black opacity-90 duration-300">
                   <div className="ml-4 flex h-8 items-center space-x-2 bg-base-700/20">
                     <div className="h-3 w-3 rounded-full bg-red-500"></div>
                     <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
@@ -615,18 +618,16 @@ const ForDevelopers = () => {
         <Testimonials />
       </div>
 
-      <div className="relative mx-auto max-w-3xl space-y-6 px-4 pt-28 pb-48 text-center font-intertight">
-        <h4 className="text-3xl font-bold">
-          Opportunity comes when you expand your network.
-        </h4>
-        <p className="text-2xl text-base-400">
+      <div className="relative mx-auto max-w-3xl space-y-6 px-4 pt-28 pb-48 text-center">
+        <h2>Opportunity comes when you expand your network.</h2>
+        <p className="text-2xl tracking-tight text-base-400">
           Connect with like-minded developers and grow your network. This is
           truly the best way to strengthen your career as a developer.
         </p>
         <div className="mx-auto max-w-4xl">
           <div className="mt-10 flex items-center justify-center space-x-6">
             <Link href="/signup" passHref>
-              <a href="#" className="btn-primary rounded-lg py-3 px-6 text-xl">
+              <a href="#" className="btn btn-primary text-lg">
                 Get started
               </a>
             </Link>

@@ -86,39 +86,35 @@ const Page = ({ user, teamId }) => {
 
   return (
     <>
-      <div className="mt-0 flex w-full justify-center lg:mt-12">
-        <div className="relative mx-auto w-full max-w-4xl">
-          <div className="mx-4 mb-20 md:mx-0">
-            <Menu team={team} user={user} />
-            <div className="space-y-4">
-              <div className="w-full rounded-lg border border-base-200 px-4 py-4 dark:border-base-700 sm:px-6">
-                {jobs && !jobs.length > 0 && (
-                  <div className="space-y-16 py-10 text-center">
-                    <div className="space-y-6">
-                      <div className="mx-auto w-2/3 text-lg font-semibold">
-                        You have no open roles listed.
-                      </div>
+      <div className="page page-4xl">
+        <div className="mx-4 mb-20 md:mx-0">
+          <Menu team={team} user={user} />
+          <div className="space-y-4">
+            <div className="box">
+              {jobs && !jobs.length > 0 && (
+                <div className="space-y-16 py-10 text-center">
+                  <div className="space-y-6">
+                    <div className="mx-auto w-2/3 text-lg">
+                      You have no open roles listed.
                     </div>
                   </div>
-                )}
+                </div>
+              )}
 
-                {jobs && jobs.length > 0 && (
-                  <>
-                    <div className="divide-y divide-base-600/50">
-                      {jobsList}
-                    </div>
-                  </>
-                )}
-              </div>
+              {jobs && jobs.length > 0 && (
+                <>
+                  <div className="divide-y divide-base-600/50">{jobsList}</div>
+                </>
+              )}
+            </div>
 
-              <div className="flex items-center justify-end">
-                <button
-                  className="btn btn-primary"
-                  onClick={() => setNewJob(true)}
-                >
-                  Post open role
-                </button>
-              </div>
+            <div className="flex items-center justify-end">
+              <button
+                className="btn btn-primary"
+                onClick={() => setNewJob(true)}
+              >
+                Post open role
+              </button>
             </div>
           </div>
         </div>

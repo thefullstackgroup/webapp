@@ -222,7 +222,7 @@ const InviteMembers = ({
               Team member added
             </div>
           )}
-          <p className="font-semibold">Search for user</p>
+          <p className="label">Search for user</p>
           <div className="w-full">
             {showSearchResults && (
               <div
@@ -320,7 +320,7 @@ const InviteMembers = ({
               Invite sent
             </div>
           )}
-          <p className="font-semibold">Invite by email</p>
+          <p className="label">Invite by email</p>
           <textarea
             rows={3}
             className="text-input"

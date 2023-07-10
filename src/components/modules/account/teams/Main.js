@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { IoSettingsOutline } from 'react-icons/io5';
 import useSWR from 'swr';
-import Tabs from 'components/modules/account/teams/Menu';
 import CreateTeam from 'components/modules/teams/CreateTeam';
 import fetcher from 'utils/fetcher';
 import Menu from '../settings/Menu';

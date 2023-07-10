@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { sendSlackMessage } from "utils/slack/sendMessageSlack";
-import SocialShareLinks from "components/common/elements/SocialShareLinks";
-import Icon from "components/common/elements/Icon";
+import { useState } from 'react';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
+import SocialShareLinks from 'components/common/elements/SocialShareLinks';
+import Icon from 'components/common/elements/Icon';
 
 const InviteFriends = ({ user }) => {
   const [isCopied, setIsCopied] = useState(false);
