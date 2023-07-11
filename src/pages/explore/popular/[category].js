@@ -38,7 +38,7 @@ const ExploreCategory = ({ user, cat }) => {
         <div className="min-h-screen space-y-10 px-8">
           <Categories category={category} setCategory={setCategory} />
           <div className="mt-10 space-y-2 text-center">
-            <h2 className="font-manrope text-5xl font-bold tracking-tight">
+            <h2 className="font-manrope text-5xl font-extrabold tracking-tight">
               {category.title || `${category.label} projects`}
             </h2>
             <h4 className="mx-auto max-w-2xl text-xl font-normal tracking-tight text-gray-400 dark:text-gray-400">

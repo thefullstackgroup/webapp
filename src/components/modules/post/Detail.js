@@ -12,12 +12,14 @@ import EditPost from 'components/modules/hangout/EditPost';
 import Loader from 'components/common/elements/Loader';
 import Avatar from 'components/common/elements/Avatar';
 import Icon from 'components/common/elements/Icon';
+import SignUpPrompt from 'components/common/elements/SignUpPrompt';
 
 const Detail = ({ postId, user, setShowPost }) => {
   const router = useRouter();
   const [showEditPost, setShowEditPost] = useState(false);
   const [isDeletePromptOpen, setIsDeletePromptOpen] = useState(false);
   const [showNewComment, setShowNewComment] = useState(false);
+  const [showSignUpPrompt, setShowSignUpPrompt] = useState(false);
 
   const postUrl = `${process.env.BASEURL}/api/posts/getPostById?postId=${postId}`;
   const { data: post } = useSWR(postUrl, fetcher);
@@ -102,6 +104,7 @@ const Detail = ({ postId, user, setShowPost }) => {
                           className="text-input"
                           placeholder="Sign in to comment..."
                           readOnly
+                          onClick={() => setShowSignUpPrompt(true)}
                         />
                       </div>
                     </div>
@@ -110,7 +113,7 @@ const Detail = ({ postId, user, setShowPost }) => {
 
                 <div
                   id="comments"
-                  className="mb-10 pb-4 text-left align-bottom sm:my-4 sm:w-full sm:max-w-full sm:px-4 sm:align-middle md:px-4 lg:w-full"
+                  className="mb-10 pb-4 text-left align-bottom sm:my-4 sm:w-full sm:max-w-full sm:px-4 sm:align-middle md:px-0 lg:w-full"
                 >
                   <PostComments
                     post={post}
@@ -183,6 +186,8 @@ const Detail = ({ postId, user, setShowPost }) => {
           </div>
         </div>
       </ModalAlert>
+
+      <SignUpPrompt show={showSignUpPrompt} setShow={setShowSignUpPrompt} />
     </>
   );
 };

@@ -116,7 +116,7 @@ const Header = ({
             <div>
               <div
                 href="#"
-                className="nav-bar ml-6 flex w-[400px] items-center space-x-2 bg-base-200 font-sans text-base-300 hover:text-base-500 dark:bg-base-700/50 dark:text-base-500"
+                className="nav-bar ml-6 flex w-[400px] items-center space-x-2 bg-base-200/50 font-sans text-base-300 hover:text-base-500 dark:bg-base-700/50 dark:text-base-500"
               >
                 <Icon name="FiSearch" className="h-4 w-4 hover:text-base-300" />
                 <input

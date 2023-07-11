@@ -94,12 +94,14 @@ const Actions = (props) => {
             <Icon name="FiBookmark" className="h-6 w-6" />
           </button>
 
-          <ButtonShare
-            url={`${process.env.BASEURL}/u/${props.project?.projectCreator?.displayName}/${props.project?.projectSlug}`}
-            message={props.project?.projectName}
-            showLabel={props.showLabel}
-            toolTipPosition={props.toolTipPosition}
-          />
+          <div>
+            <ButtonShare
+              url={`${process.env.BASEURL}/u/${props.project?.projectCreator?.displayName}/${props.project?.projectSlug}`}
+              message={props.project?.projectName}
+              showLabel={props.showLabel}
+              toolTipPosition={props.toolTipPosition}
+            />
+          </div>
         </div>
       )}
 

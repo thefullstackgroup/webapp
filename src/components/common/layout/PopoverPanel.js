@@ -11,7 +11,7 @@ const PopoverPanel = ({ item, childrenOne, childrenTwo }) => {
       <Popover.Button
         className={
           'nav-bar flex items-center space-x-1 pr-3 ' +
-          (isShowing && ` bg-base-200 dark:bg-base-700/80 dark:text-white`)
+          (isShowing && ` bg-base-200/50 dark:bg-base-700/80 dark:text-white`)
         }
         onMouseEnter={() => setIsShowing(true)}
         onMouseLeave={() => setIsShowing(false)}

@@ -77,7 +77,7 @@ const Insights = ({ projectId, showAvatars = true }) => {
       >
         <div className="no-scrollbar h-4/5 w-full overflow-x-visible overflow-y-scroll overscroll-contain sm:h-96 sm:py-4">
           {votes?.map((profile, index) => (
-            <div key={index} className="mb-6 flex items-center space-x-4">
+            <div key={index} className="mb-6 flex items-center space-x-4 px-1">
               <Avatar
                 href={`/${profile?.userProfile?.displayName}`}
                 image={profile?.userProfile?.profilePicUrl}

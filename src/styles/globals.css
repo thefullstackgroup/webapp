@@ -24,13 +24,13 @@
 
   /* Header */
   .nav-bar {
-    @apply flex items-center rounded-full px-5 py-2 font-manrope text-base font-semibold text-black duration-200 hover:bg-base-200 hover:text-black dark:text-base-100 dark:hover:bg-base-700/80 dark:hover:text-white;
+    @apply flex items-center rounded-full px-5 py-2 font-manrope text-base font-semibold text-black duration-200 hover:bg-base-200/50 hover:text-black dark:text-base-100 dark:hover:bg-base-700/80 dark:hover:text-white;
   }
   .nav-bar-icon {
     @apply flex items-center rounded-full px-2 py-2 text-sm font-medium text-black hover:text-base-900;
   }
   .nav-popover {
-    @apply flex w-full items-start gap-3 space-x-1 whitespace-nowrap rounded-md px-3 py-2 text-left text-sm font-medium text-black outline-none duration-200 hover:bg-base-200 hover:bg-gray-200/80 hover:text-black focus:outline-none focus:ring-0 dark:text-base-100 dark:hover:bg-base-700 dark:hover:text-white;
+    @apply flex w-full items-start gap-3 space-x-1 whitespace-nowrap rounded-md px-3 py-2 text-left text-sm font-medium text-black outline-none duration-200 hover:bg-base-200 hover:bg-gray-200/50 hover:text-black focus:outline-none focus:ring-0 dark:text-base-100 dark:hover:bg-base-700 dark:hover:text-white;
   }
 
   /* Footer */
@@ -475,7 +475,7 @@ html.dark .wmde-markdown pre {
 }
 
 .anim-typewriter {
-  animation: typewriter 2s steps(44) 1s 1 normal both,
+  animation: typewriter 1.5s steps(44) 1s 1 normal both,
     blinkTextCursor 500ms steps(44) infinite normal;
 }
 @keyframes typewriter {

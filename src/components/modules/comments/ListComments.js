@@ -90,8 +90,8 @@ const ListComments = ({ post, user }) => {
 
   return (
     <>
-      <div className="relative mx-auto max-w-4xl px-0 md:px-0">
-        <div className="relative max-w-4xl text-lg ">
+      <div className="relative mx-auto px-0 md:px-0">
+        <div className="relative text-lg ">
           {!data && (
             <div className="mt-20 flex flex-1 items-center justify-center text-sm">
               <Loader />

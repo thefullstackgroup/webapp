@@ -62,43 +62,45 @@ const Overview = ({
       <div className="mt-2 items-start justify-between border-base-700 pb-4 md:mt-10 md:border-none lg:mb-8 lg:flex lg:space-x-4 lg:pb-4">
         <div className="flex w-full items-center space-x-4 md:space-x-8 lg:items-start">
           <div className="relative mt-1 rounded-full bg-gradient-to-r from-purple-400 via-pink-500 to-blue-600 p-1">
-            <Avatar
-              userId={profile?.userId}
-              image={
-                profile?.userId === user?.userId
-                  ? myProfileImage
-                  : profile?.profilePicUrl
-              }
-              name={profile?.name}
-              dimensions="w-20 h-20 md:w-36 md:h-36"
-              width={500}
-              height={500}
-              layout="fill"
-            />
-            {user && isConnected && profile?.userId !== user.userId && (
-              <div className="group absolute top-0 right-0 flex cursor-pointer items-end rounded-full bg-base-900 py-1 px-2 text-xs text-yellow-400">
-                <ToolTip message={'You are both connected'} />
-                <HiThumbUp className="h-4 w-4 md:h-5 md:w-5" />
-              </div>
-            )}
-            {user && profile?.userId === user.userId && (
-              <div className="absolute top-4 left-5 h-8 w-10 md:top-10 md:left-12 md:h-12 md:w-12">
-                <label
-                  htmlFor="avatar"
-                  className="relative flex cursor-pointer flex-col justify-center text-center text-xs font-medium focus:outline-none focus:ring-0"
-                >
-                  <IoCameraOutline className="mx-auto h-8 w-8 text-white opacity-90 md:h-full md:w-full" />
-                  <span className="text-white">Edit</span>
-                  <input
-                    id="avatar"
-                    name="avatar"
-                    type="file"
-                    className="sr-only"
-                    onChange={(e) => handleFileChange(e)}
-                  />
-                </label>
-              </div>
-            )}
+            <div className="relative rounded-full bg-base-50 dark:bg-base-900">
+              <Avatar
+                userId={profile?.userId}
+                image={
+                  profile?.userId === user?.userId
+                    ? myProfileImage
+                    : profile?.profilePicUrl
+                }
+                name={profile?.name}
+                dimensions="w-20 h-20 md:w-36 md:h-36"
+                width={500}
+                height={500}
+                layout="fill"
+              />
+              {user && isConnected && profile?.userId !== user.userId && (
+                <div className="group absolute top-0 right-0 flex cursor-pointer items-end rounded-full bg-base-900 py-1 px-2 text-xs text-yellow-400">
+                  <ToolTip message={'You are both connected'} />
+                  <HiThumbUp className="h-4 w-4 md:h-5 md:w-5" />
+                </div>
+              )}
+              {user && profile?.userId === user.userId && (
+                <div className="absolute top-4 left-5 h-8 w-10 md:top-10 md:left-12 md:h-12 md:w-12">
+                  <label
+                    htmlFor="avatar"
+                    className="relative flex cursor-pointer flex-col justify-center text-center text-xs font-medium focus:outline-none focus:ring-0"
+                  >
+                    <IoCameraOutline className="mx-auto h-8 w-8 text-white opacity-90 md:h-full md:w-full" />
+                    <span className="text-white">Edit</span>
+                    <input
+                      id="avatar"
+                      name="avatar"
+                      type="file"
+                      className="sr-only"
+                      onChange={(e) => handleFileChange(e)}
+                    />
+                  </label>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="w-full md:pr-4">

@@ -34,6 +34,15 @@ const ListTeams = () => {
 
   return (
     <div className="mb-20 space-y-6 xl:max-w-3xl 2xl:xl:max-w-full">
+      {!teams && (
+        <div className="grid grid-cols-4 gap-6">
+          {[...Array(16)].map((elementInArray, index) => (
+            <div className="h-[350px] w-full">
+              <div className="h-full w-full animate-pulse rounded-md bg-base-300/20 dark:bg-base-700/50"></div>
+            </div>
+          ))}
+        </div>
+      )}
       <div className="grid grid-cols-4 gap-6">{teamCards}</div>
 
       {!isReachingEnd && (

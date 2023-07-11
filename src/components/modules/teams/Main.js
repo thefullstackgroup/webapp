@@ -43,7 +43,7 @@ const Main = ({ user }) => {
         <div className="mx-auto mb-20 w-full max-w-screen-2xl space-y-20">
           <div className="mx-auto max-w-7xl px-4 pt-24 md:pt-14 lg:px-0">
             <div className="relative mx-auto max-w-lg">
-              <h1 className="flex justify-center bg-clip-text py-2 text-center text-6xl font-bold tracking-tighter text-base-900 dark:text-base-200 md:text-7xl">
+              <h1 className="flex justify-center bg-clip-text py-2 text-center font-manrope text-6xl font-bold tracking-tighter text-base-900 dark:text-base-200 md:text-7xl">
                 Team Profiles
               </h1>
               <div className="absolute top-3 -right-6">
