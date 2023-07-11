@@ -55,23 +55,22 @@ const Main = ({ user }) => {
   };
 
   return (
-    <div className="min-h-screen space-y-8 px-8 pt-6">
+    <div className="min-h-screen space-y-8 px-4 pt-6">
       {!user && (
         <div className="rounded-lg bg-transparent dark:bg-transparent">
           <div className="mx-auto max-w-4xl py-14 text-center">
-            <div className="relative space-y-10">
-              <h2 className="font-manrope text-6xl font-extrabold tracking-tighter">
+            <div className="relative space-y-10 px-4">
+              <h2 className="font-manrope text-3xl font-extrabold tracking-tighter xl:text-6xl">
                 <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-blue-600 bg-clip-text text-transparent">
                   Discover and connect
                 </span>{' '}
                 with developers sharing projects.
               </h2>
-              <h4 className="mx-auto max-w-3xl text-xl font-normal text-base-400 dark:text-base-400">
+              <h4 className="mx-auto max-w-3xl text-base font-normal text-base-400 dark:text-base-400 xl:text-xl">
                 The Full Stack is an open source platform for developers to
-                share projects with a supportive dev community and grow a
-                network of value.
+                share projects and grow a network of value.
               </h4>
-              <div className="flex items-center justify-center space-x-4">
+              <div className="flex flex-col items-center justify-center space-y-4 xl:flex-row xl:space-y-0 xl:space-x-4">
                 <button
                   className="btn btn-secondary btn-with-icon rounded-full py-2"
                   onClick={signInWithGitHub}
@@ -199,7 +198,7 @@ const Main = ({ user }) => {
             Browse by category
           </h3>
         </div>
-        <div className="no-scrollbar mt-6 flex flex-wrap gap-4 px-4 md:px-0">
+        <div className="no-scrollbar mt-6 flex flex-wrap gap-4">
           {CategoriesFilter.map(
             (item, index) =>
               item.slug !== 'datascience' && (

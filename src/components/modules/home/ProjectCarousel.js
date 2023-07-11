@@ -42,7 +42,7 @@ const ProjectCarousel = ({
           </h3>
           <Icon name="FiCornerRightDown" className="h-5 w-5" />
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="hidden items-center space-x-2 xl:flex">
           <button
             ref={prevRef}
             className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"

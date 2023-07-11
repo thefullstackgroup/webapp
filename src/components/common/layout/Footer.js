@@ -43,7 +43,7 @@ const Footer = ({ hideFooter }) => {
             <div className="flex w-full flex-col justify-center space-y-4">
               <ul className="flex flex-wrap items-center justify-center space-x-4 md:space-x-6">
                 {links.map((link, index) => (
-                  <li className=" whitespace-nowrap" key={index}>
+                  <li className="whitespace-nowrap" key={index}>
                     {link.newWindow ? (
                       <a
                         href={link.url}
