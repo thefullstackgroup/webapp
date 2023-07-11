@@ -25,11 +25,13 @@ import Actions from 'components/modules/project/Actions';
 import FollowButton from 'components/common/buttons/Follow';
 import Insights from 'components/modules/post/Insights';
 import Icon from 'components/common/elements/Icon';
+import ModalDialog from 'components/common/modals/ModalDialog';
 
 const Container = ({ project, author, user, setShowComments }) => {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const [showImageModal, setShowImageModal] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   const [youTubeEmbedID, setYouTubeEmbedID] = useState(
     project?.projectLinkURI ? getVideoId(project?.projectLinkURI) : ''
   );
@@ -66,8 +68,8 @@ const Container = ({ project, author, user, setShowComments }) => {
         )}
 
         <div className="bg-gradient-to-b from-base-50 to-base-200/50 pt-10 pb-8 dark:from-base-900 dark:to-base-800/90">
-          <div className="relative z-10 mx-auto flex max-w-screen-xl items-center gap-12 pb-10">
-            <div className="w-5/12 space-y-4">
+          <div className="relative z-10 mx-auto flex max-w-screen-2xl items-center gap-12 pb-10">
+            <div className="w-5/12 space-y-4 pr-20">
               <div className="flex items-center space-x-3">
                 <Avatar
                   href={`/${project?.projectCreator?.displayName}`}
@@ -91,7 +93,7 @@ const Container = ({ project, author, user, setShowComments }) => {
                 </Link>
               </div>
               <div className="space-y-1">
-                <h2 className="text-5xl font-semibold tracking-tight">
+                <h2 className="font-manrope text-5xl font-bold tracking-tight">
                   {project?.projectName}
                 </h2>
 
@@ -147,14 +149,31 @@ const Container = ({ project, author, user, setShowComments }) => {
 
             <div className="w-7/12">
               {project?.projectVideoURI ? (
-                <div className="h-[200px] w-full overflow-hidden rounded-xl border border-base-300 bg-black dark:border-base-700 md:h-[430px]">
-                  <VideoPlayer
-                    src={project?.projectVideoURI}
-                    poster={`${project?.projectImgURI}?width=640`}
+                // <div className="h-[200px] w-full overflow-hidden rounded-xl border border-base-300 bg-black dark:border-base-700 md:h-[500px]">
+                //   <VideoPlayer
+                //     src={project?.projectVideoURI}
+                //     poster={`${project?.projectImgURI}?width=640`}
+                //   />
+                // </div>
+                <div
+                  className="relative h-52 w-auto cursor-pointer overflow-hidden rounded-lg border border-base-300 bg-base-800 dark:border-base-700 md:h-[500px]"
+                  onClick={() => setShowVideo(!showVideo)}
+                >
+                  <Image
+                    src={project?.projectImgURI}
+                    className="h-full w-full object-cover opacity-90"
+                    alt={project?.projectName}
+                    width={900}
+                    height={900}
+                    layout="fill"
+                    priority={true}
                   />
+                  <button className="absolute top-4 right-6 hidden rounded-lg bg-black bg-opacity-40 p-2 lg:block">
+                    <BiExpandAlt className="h-6 w-6 text-white" />
+                  </button>
                 </div>
               ) : youTubeEmbedID.id ? (
-                <div className="relative h-[200px] w-auto cursor-pointer overflow-hidden rounded-xl border border-base-300 bg-base-800 dark:border-base-700 md:h-[450px]">
+                <div className="relative h-[200px] w-auto cursor-pointer overflow-hidden rounded-xl border border-base-300 bg-base-800 dark:border-base-700 md:h-[500px]">
                   <div className="h-full w-full overflow-hidden">
                     <LiteYouTubeEmbed
                       id={youTubeEmbedID.id}
@@ -168,7 +187,7 @@ const Container = ({ project, author, user, setShowComments }) => {
               ) : (
                 project?.projectImgURI && (
                   <div
-                    className="relative h-52 w-auto cursor-pointer overflow-hidden rounded-lg border border-base-300 bg-base-800 dark:border-base-700 md:h-[450px]"
+                    className="relative h-52 w-auto cursor-pointer overflow-hidden rounded-lg border border-base-300 bg-base-800 dark:border-base-700 md:h-[500px]"
                     onClick={() => setShowImageModal(!showImageModal)}
                   >
                     <Image
@@ -190,7 +209,7 @@ const Container = ({ project, author, user, setShowComments }) => {
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto grid h-full max-w-screen-xl grid-cols-3 items-start gap-20">
+        <div className="relative z-10 mx-auto grid h-full max-w-screen-2xl grid-cols-3 items-start gap-20">
           <div className="col-span-2 space-y-6 py-4">
             <div className="wmde-markdown-var mt-4 mb-20 max-w-4xl">
               {project?.projectBody && (
@@ -277,6 +296,15 @@ const Container = ({ project, author, user, setShowComments }) => {
           />
         </div>
       </div>
+
+      <ModalDialog show={showVideo} setShow={setShowVideo}>
+        <div className="h-[200px] w-full overflow-hidden rounded-xl border border-base-300 bg-black dark:border-base-700 md:h-[500px]">
+          <VideoPlayer
+            src={project?.projectVideoURI}
+            poster={`${project?.projectImgURI}?width=640`}
+          />
+        </div>
+      </ModalDialog>
 
       {/* Image Modal */}
       {showImageModal && (

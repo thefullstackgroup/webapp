@@ -1,12 +1,10 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import Link from 'next/link';
-
 import Icon from 'components/common/elements/Icon';
 import Highlight from 'components/modules/home/Highlight';
 import Discover from 'components/modules/home/Discover';
 import ProjectCarousel from 'components/modules/home/ProjectCarousel';
-
 import { CategoriesFilter } from 'components/modules/explore/constants';
 import { IoLogoGithub } from 'react-icons/io5';
 import { FcGoogle } from 'react-icons/fc';
@@ -23,11 +21,13 @@ export const Greeting = ({ name }) => {
   else if (hours >= 17 && hours <= 24) greet = 'Good evening';
 
   return (
-    <div className="absolute flex items-center space-x-2 font-mono font-semibold tracking-tight">
-      <Icon name="FiTerminal" />
-      <span>
-        {greet},<span className="capitlize">{firstName[0]}</span>
-      </span>
+    <div className="absolute font-mono font-semibold">
+      <div className="greeting-line anim-typewriter">
+        <span>
+          {greet},<span className="capitlize">{firstName[0]}</span>... happy
+          coding!
+        </span>
+      </div>
     </div>
   );
 };
@@ -40,7 +40,7 @@ const Main = ({ user }) => {
   const signInWithGoogle = async () => {
     try {
       const res = await firebase.auth().signInWithPopup(googleProvider);
-      if (res) router.reload('/');
+      if (res) router.push('/login');
     } catch (err) {
       console.error(err);
     }
@@ -49,7 +49,7 @@ const Main = ({ user }) => {
   const signInWithGitHub = async () => {
     try {
       const res = await firebase.auth().signInWithPopup(gitHubProvider);
-      if (res) router.reload('/');
+      if (res) router.push('/login');
     } catch (err) {
       console.error(err);
     }
@@ -61,7 +61,7 @@ const Main = ({ user }) => {
         <div className="rounded-lg bg-transparent dark:bg-transparent">
           <div className="mx-auto max-w-4xl py-14 text-center">
             <div className="relative space-y-6">
-              <h2 className="text-6xl font-bold tracking-tighter">
+              <h2 className="font-manrope text-6xl font-extrabold tracking-tighter">
                 <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-blue-600 bg-clip-text text-transparent">
                   Discover and connect
                 </span>{' '}
@@ -77,7 +77,7 @@ const Main = ({ user }) => {
                   className="btn btn-secondary btn-with-icon rounded-full py-2"
                   onClick={signInWithGitHub}
                 >
-                  <IoLogoGithub className="h-5 w-5" />
+                  <Icon name="SiGithub" pack="Si" className="h-5 w-5" />
                   <span>Continue with GitHub</span>
                 </button>
                 <button
@@ -196,7 +196,7 @@ const Main = ({ user }) => {
       <div className="space-y-3 pb-20">
         <div className="flex items-center space-x-2">
           <Icon name="FiTerminal" />
-          <h3 className="font-mono text-base font-medium text-base-300 dark:text-base-200">
+          <h3 className="font-mono text-base font-medium text-base-700 dark:text-base-200">
             Browse by category
           </h3>
         </div>

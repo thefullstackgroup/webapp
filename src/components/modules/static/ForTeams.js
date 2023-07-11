@@ -38,7 +38,7 @@ const ForTeams = () => {
               Why this matters? See our story &rarr;
             </div>
           </Link>
-          <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-orange-600 via-orange-200 to-yellow-200 bg-clip-text text-center font-intertight text-6xl font-bold tracking-tight text-transparent md:text-9xl">
+          <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-orange-600 via-orange-200 to-yellow-200 bg-clip-text text-center text-6xl font-bold tracking-tight text-transparent md:text-9xl">
             Team Profiles.
           </h1>
           <div className="mx-auto max-w-3xl">
@@ -65,7 +65,7 @@ const ForTeams = () => {
         </div>
       </div>
       <div className="pt-28" id="learnmore"></div>
-      <div className="relative mx-auto max-w-7xl space-y-20 text-center font-intertight md:h-[70vh]">
+      <div className="relative mx-auto max-w-7xl space-y-20 text-center md:h-[70vh]">
         <h4 className="text-3xl font-semibold">
           Why should you have a team profile?
         </h4>
@@ -130,7 +130,7 @@ const ForTeams = () => {
         <div className="mx-auto max-w-screen-xl space-y-80 pl-6 pr-4 md:h-[80vh] md:px-20">
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="flex flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
+              <div className="flex flex-col space-y-10 pt-10 text-3xl tracking-tighter">
                 <h4 className="text-lg font-semibold uppercase text-base-400">
                   Your mission
                 </h4>
@@ -181,7 +181,7 @@ const ForTeams = () => {
         <div className="mx-auto max-w-screen-xl space-y-80 pl-6 pr-4 md:h-[80vh] md:px-20">
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="flex h-[90vh] flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
+              <div className="flex h-[90vh] flex-col space-y-10 pt-10 text-3xl tracking-tight">
                 <h4 className="text-lg font-semibold uppercase text-base-400">
                   Teammates
                 </h4>
@@ -227,7 +227,7 @@ const ForTeams = () => {
         <div className="mx-auto max-w-screen-xl space-y-80 pl-6 pr-4 md:h-[80vh] md:px-20">
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="flex flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
+              <div className="flex flex-col space-y-10 pt-10 text-3xl tracking-tighter">
                 <h4 className="text-lg font-semibold uppercase text-base-400">
                   Dev Tools &middot; Dev process
                 </h4>
@@ -289,7 +289,7 @@ const ForTeams = () => {
         <div className="mx-auto max-w-screen-xl space-y-80 pl-6 pr-4 md:h-[80vh] md:px-20">
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="flex flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
+              <div className="flex flex-col space-y-10 pt-10 text-3xl tracking-tight">
                 <h4 className="text-lg font-semibold uppercase text-base-400">
                   Free to use
                 </h4>
@@ -339,7 +339,7 @@ const ForTeams = () => {
         <div className="mx-auto max-w-screen-xl space-y-80 pl-6 pr-4 md:h-[80vh] md:px-20">
           <div className="flex flex-col-reverse justify-between md:flex-row md:space-x-20">
             <div className="relative max-w-md">
-              <div className="flex flex-col space-y-10 pt-10 font-intertight text-3xl tracking-wide">
+              <div className="flex flex-col space-y-10 pt-10 text-3xl tracking-tight">
                 <h4 className="text-lg font-semibold uppercase text-base-400">
                   Post Open roles
                 </h4>
@@ -430,7 +430,7 @@ const ForTeams = () => {
         <Testimonials />
       </div>
       <div className="relative mx-auto max-w-3xl space-y-6 px-4 pt-28 pb-48 text-center">
-        <h4 className="font-intertight text-4xl font-medium">
+        <h4 className="text-4xl font-medium tracking-tight">
           Right now, there are great developers wondering if a{' '}
           <span className="text-orange-400">team like yours</span> even exists.
         </h4>

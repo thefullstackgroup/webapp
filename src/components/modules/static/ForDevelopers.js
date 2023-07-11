@@ -52,7 +52,7 @@ const ForDevelopers = ({ user }) => {
               Created by developers. See our story &rarr;
             </div>
           </Link>
-          <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-orange-400 via-pink-500 to-blue-600 bg-clip-text text-center font-intertight text-6xl font-bold tracking-tight text-transparent dark:from-base-300 dark:via-violet-200 dark:to-white md:text-9xl">
+          <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-orange-400 via-pink-500 to-blue-600 bg-clip-text text-center font-manrope text-6xl font-extrabold tracking-tighter text-transparent dark:from-base-300 dark:via-violet-200 dark:to-white md:text-9xl">
             Share. Network. Grow.
           </h1>
           <div className="mx-auto max-w-3xl">
@@ -62,9 +62,10 @@ const ForDevelopers = ({ user }) => {
               network.
             </h4>
           </div>
-          {!user && (
-            <div className="mx-auto max-w-4xl">
-              <div className="flex items-center justify-center space-x-6 md:mt-20">
+
+          <div className="mx-auto max-w-4xl">
+            <div className="flex items-center justify-center space-x-6 md:mt-20">
+              {!user && (
                 <Link href="/signup" passHref>
                   <a
                     href="#"
@@ -73,16 +74,16 @@ const ForDevelopers = ({ user }) => {
                     Get started
                   </a>
                 </Link>
+              )}
 
-                <button
-                  className="btn btn-secondary hidden rounded-lg bg-opacity-50 py-2.5 px-6 text-lg md:block"
-                  onClick={() => handleLearnMore()}
-                >
-                  Learn more
-                </button>
-              </div>
+              <button
+                className="btn btn-secondary hidden rounded-lg bg-opacity-50 py-2.5 px-6 text-lg md:block"
+                onClick={() => handleLearnMore()}
+              >
+                Learn more
+              </button>
             </div>
-          )}
+          </div>
         </div>
         <div className="absolute bottom-40 z-10 hidden w-full text-center md:block">
           <IoArrowDown className="mx-auto h-8 w-auto animate-bounce md:h-12" />

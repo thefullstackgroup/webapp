@@ -6,7 +6,7 @@ const TestimonialsSection = () => {
     <section className="">
       <div className="relative w-full">
         <div className="mx-auto mt-20 max-w-screen-xl md:mt-40 md:p-12">
-          <h4 className="mb-10 px-4 text-center font-intertight text-2xl font-semibold md:text-4xl">
+          <h4 className="mb-10 px-4 text-center text-2xl font-semibold tracking-tight md:text-4xl">
             What the{' '}
             <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-blue-600 bg-clip-text text-transparent">
               #community

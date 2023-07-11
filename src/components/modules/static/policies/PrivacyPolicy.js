@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
       <div className="fixed top-0 left-0 mx-auto mt-12 flex min-h-screen w-full justify-between bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-base-300/40 via-black to-base-900"></div>
       <div className="relative z-10 mx-auto mb-20 max-w-4xl">
         <div className="mb-10 space-y-6 px-4 pt-14 text-center sm:mb-28 md:pt-10 lg:px-0">
-          <h1 className="font-intertight text-3xl font-bold tracking-tight text-base-100 md:text-6xl">
+          <h1 className="text-3xl font-bold tracking-tighter text-base-100 md:text-6xl">
             Privacy Policy
           </h1>
           <p>Last updated: February 13th 2023</p>

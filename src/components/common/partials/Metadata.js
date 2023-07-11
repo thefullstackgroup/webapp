@@ -69,10 +69,11 @@ const Metadata = (props) => {
         />
 
         {/* eslint-disable-next-line @next/next/no-page-custom-font, @next/next/google-font-display */}
+
         <link
           rel="preload stylesheet"
           as="style"
-          href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
         />
       </Head>
     </>

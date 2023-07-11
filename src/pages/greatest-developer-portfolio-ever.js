@@ -226,7 +226,7 @@ export default function GreatestPortfolio() {
           <div className="mx-4 flex max-w-7xl flex-col md:mx-auto md:flex-row">
             <div className="pt-10 md:pt-28 md:pr-14 lg:w-7/12">
               <div>
-                <h1 className="text-center font-intertight text-3xl font-bold tracking-tight text-base-100 md:text-left md:text-6xl">
+                <h1 className="text-center text-3xl font-bold tracking-tight text-base-100 md:text-left md:text-6xl">
                   Greatest Developer Portfolio ...ever
                 </h1>
               </div>

@@ -460,43 +460,37 @@ html.dark .wmde-markdown pre {
   font-size: 1.8rem !important;
 }
 
-/* 
-
-.wmde-markdown h1,
-.wmde-markdown h2 {
-  border-color: #e7e7e7 !important;
+.greeting-line {
+  position: relative;
+  top: 0%;
+  margin: 0 auto;
+  border-right: 2px solid #666666;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.dark .wmde-markdown h1,
-.dark .wmde-markdown h2 {
-  border-color: #212121 !important;
+.dark .greeting-line {
+  border-right: 2px solid red;
 }
 
-.dark .wmde-markdown {
-  background-color: transparent !important;
-  color: #ececec !important;
+.anim-typewriter {
+  animation: typewriter 4s steps(44) 1s 1 normal both,
+    blinkTextCursor 500ms steps(44) infinite normal;
 }
-
-.wmde-markdown table tr {
-  background-color: transparent !important;
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
-
-.wmde-markdown pre > code {
-  padding: 4px !important; 
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: rgba(255, 255, 255, 0.75);
+  }
+  to {
+    border-right-color: transparent;
+  }
 }
-
-
-
-.wmde-markdown pre .copied {
-  background-color: #ccc !important;
-}
-
-.wmde-markdown pre:hover .copied:hover {
-  background-color: #7ee787 !important;
-}
-
-.dark .wmde-markdown pre .copied {
-  background-color: #30363d !important;
-}
-
- */

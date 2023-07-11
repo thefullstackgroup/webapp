@@ -15,7 +15,7 @@ const NewsletterSection = () => {
     <div className="space-y-4 rounded-lg border border-base-700 bg-base-800/20 p-4 md:p-8">
       <div className="space-y-4 text-center">
         <div className="w-full space-y-2">
-          <h4 className="font-intertight text-2xl font-bold uppercase md:text-4xl">
+          <h4 className="text-2xl font-bold uppercase md:text-4xl">
             Join 10000+ developers
           </h4>
           <p className="text-sm text-base-400 md:text-base">

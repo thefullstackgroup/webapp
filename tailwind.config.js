@@ -61,7 +61,7 @@ module.exports = {
         };
       },
       fontFamily: {
-        intertight: ['Inter Tight', 'sans-serif'],
+        manrope: ['Manrope', 'sans-serif'],
       },
       padding: { 'fluid-video': '56.25%' },
       colors: {
