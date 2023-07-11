@@ -17,7 +17,7 @@ const Slide = ({ data }) => {
       <Link
         href={`/${data?.projectCreator.displayName}/project/${data?.projectSlug}`}
       >
-        <div className="group relative flex w-full flex-1 grow cursor-pointer overflow-hidden rounded-lg border border-transparent dark:border-base-700">
+        <div className="group relative flex w-full flex-1 grow cursor-pointer overflow-hidden rounded-lg border border-transparent duration-200 dark:border-base-700 dark:hover:border-base-300">
           <div className="group relative" />
           <div className="h-[440px] w-full">
             <Image
@@ -30,8 +30,8 @@ const Slide = ({ data }) => {
             />
           </div>
           <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-base-900/80 duration-200 group-hover:to-base-900/80 dark:to-base-900/90">
-            <div className="absolute bottom-4 w-9/12 px-4 text-base-100 duration-200 group-hover:bottom-6">
-              <h3 className="text-xl font-medium tracking-tight">
+            <div className="w-12/12 absolute bottom-4 px-4 text-base-100 duration-200 group-hover:bottom-6">
+              <h3 className="font-manrope text-2xl font-semibold">
                 {data.projectName}
               </h3>
               <div className="mt-2 flex items-center space-x-2">
@@ -45,7 +45,7 @@ const Slide = ({ data }) => {
                 </span>
               </div>
             </div>
-            <div className="absolute bottom-8 right-8 h-10 w-10 duration-200 group-hover:right-4">
+            <div className="absolute bottom-2 right-8 h-10 w-10 duration-200 group-hover:right-4">
               <Icon
                 name="FiArrowRight"
                 className="h-6 w-6 text-white opacity-0 duration-200 group-hover:opacity-100"

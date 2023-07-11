@@ -3,12 +3,25 @@ import CookieConsent from 'react-cookie-consent';
 import { FaLinkedin, FaInstagram, FaTwitter, FaGithub } from 'react-icons/fa';
 
 const links = [
-  { url: 'https://developer.thefullstack.network', label: 'Developer API' },
-  { url: '/about/our-story', label: 'About' },
-  { url: '/privacy-policy', label: 'Privacy' },
-  { url: '/cookie-policy', label: 'Cookie Policy' },
-  { url: '/code-of-conduct', label: 'Code of Conduct' },
-  { url: `${process.env.BASEURL}/resources/contact/general`, label: 'Contact' },
+  {
+    url: 'https://developer.thefullstack.network',
+    label: 'Developer API',
+    newWindow: true,
+  },
+  { url: '/about/our-story', label: 'About', newWindow: false },
+  {
+    url: 'https://cdn.forms-content.sg-form.com/9d844234-926d-11ed-b182-82896c15a735',
+    label: 'Newsletter',
+    newWindow: true,
+  },
+  { url: '/privacy-policy', label: 'Privacy', newWindow: false },
+  { url: '/cookie-policy', label: 'Cookie Policy', newWindow: false },
+  { url: '/code-of-conduct', label: 'Code of Conduct', newWindow: false },
+  {
+    url: `${process.env.BASEURL}/resources/contact/general`,
+    label: 'Contact',
+    newWindow: true,
+  },
 ];
 
 const socials = [
@@ -31,11 +44,23 @@ const Footer = ({ hideFooter }) => {
               <ul className="flex flex-wrap items-center justify-center space-x-4 md:space-x-6">
                 {links.map((link, index) => (
                   <li className=" whitespace-nowrap" key={index}>
-                    <Link href={link.url} passHref>
-                      <a href="#" className="ftr-link">
+                    {link.newWindow ? (
+                      <a
+                        href={link.url}
+                        className="ftr-link"
+                        target="_blank"
+                        rel="noreferrer"
+                        title={link.label}
+                      >
                         {link.label}
                       </a>
-                    </Link>
+                    ) : (
+                      <Link href={link.url} passHref>
+                        <a href="#" className="ftr-link">
+                          {link.label}
+                        </a>
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

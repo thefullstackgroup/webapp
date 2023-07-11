@@ -103,7 +103,9 @@ const Overview = ({
 
           <div className="w-full md:pr-4">
             <div className="items-baseline md:space-x-2 lg:flex">
-              <h2 className="text-xl font-bold md:text-3xl">{profile?.name}</h2>
+              <h2 className="mb-0 text-xl font-bold md:text-3xl">
+                {profile?.name}
+              </h2>
               <p className="text-sm text-base-500 md:text-base">
                 @{profile?.displayName}
               </p>
@@ -111,7 +113,12 @@ const Overview = ({
             <div className="text-sm text-base-700 dark:text-base-300 lg:text-base">
               {profile?.currentTitle}
             </div>
-            <div className="mt-2 mb-3 hidden items-center space-x-3 text-sm text-base-500 lg:flex">
+
+            <div className="mt-3 hidden cursor-pointer text-base lg:block">
+              {profile?.bio?.aboutUser}
+            </div>
+
+            <div className="mt-3 mb-3 hidden items-center space-x-3 text-sm text-base-500 lg:flex">
               {profile?.country && countryCode && (
                 <div className="flex items-center space-x-1">
                   <span>{countryCodeEmoji(countryCode.iso2)}</span>
@@ -137,10 +144,6 @@ const Overview = ({
                     </a>
                   </Link>
                 )} */}
-            </div>
-
-            <div className="mt-3 hidden cursor-pointer text-base lg:block">
-              {profile?.bio?.aboutUser}
             </div>
 
             <div

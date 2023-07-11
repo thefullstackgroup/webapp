@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import useUserProfile from 'hooks/useUserProfile';
 import Meta from 'components/common/partials/Metadata';
-import Layout from 'components/common/layout/LayoutLoggedIn';
+import Layout from 'components/common/layout/Layout';
 import PostContainer from 'components/modules/post/Container';
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
 import { RiEmotionSadLine } from 'react-icons/ri';
 
-const Project = () => {
+const Project = ({ user }) => {
   const router = useRouter();
   const { postId, userId } = router.query;
   const [user, getUser] = useUserProfile();
@@ -37,9 +37,9 @@ const Project = () => {
 
       {user && !project && (
         <Layout user={user}>
-          <div className="mt-20 md:mt-40 flex relative">
-            <div className="relative w-full md:max-w-3xl mx-auto flex flex-col text-center px-4">
-              <RiEmotionSadLine className="h-20 w-20 mx-auto mb-8" />
+          <div className="relative mt-20 flex md:mt-40">
+            <div className="relative mx-auto flex w-full flex-col px-4 text-center md:max-w-3xl">
+              <RiEmotionSadLine className="mx-auto mb-8 h-20 w-20" />
               <div className="text-lg">
                 This post has been removed by the author.
               </div>

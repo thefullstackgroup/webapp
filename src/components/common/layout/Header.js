@@ -76,7 +76,7 @@ const Header = ({
       >
         <header className="dark:bg-base/90 z-50 border-b border-base-200 bg-white/90 backdrop-blur dark:border-base-700/50 dark:bg-base-900">
           <div className="mx-auto flex max-w-full items-center justify-between px-8 py-3">
-            <div className="flex w-6/12 items-center space-x-4 text-base">
+            <div className="flex w-6/12 items-center space-x-8 text-base">
               <Link href="/">
                 <div className="h-8 w-8 cursor-pointer overflow-hidden rounded-lg">
                   <Image
@@ -116,7 +116,7 @@ const Header = ({
             <div>
               <div
                 href="#"
-                className="nav-bar ml-6 flex w-[400px] items-center space-x-2 bg-base-200 text-base-300 hover:text-base-500 dark:bg-base-700/50 dark:text-base-500"
+                className="nav-bar ml-6 flex w-[400px] items-center space-x-2 bg-base-200 font-sans text-base-300 hover:text-base-500 dark:bg-base-700/50 dark:text-base-500"
               >
                 <Icon name="FiSearch" className="h-4 w-4 hover:text-base-300" />
                 <input
@@ -160,7 +160,7 @@ const Header = ({
                 rel="noreferrer"
               >
                 <ToolTip message="Star us on GitHub" position={'bottom'} />
-                <Icon name={'SiGithub'} pack="Si" />
+                <Icon name="FaGithub" pack="Fa" />
               </a>
 
               {user ? (

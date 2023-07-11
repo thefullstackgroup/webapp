@@ -58,7 +58,7 @@ const Container = ({ project, author, user, setShowComments }) => {
           )}
 
         {project?.projectCreator?.userId === user?.userId && (
-          <div className="mx-auto flex max-w-screen-xl space-x-8 py-4">
+          <div className="mx-auto flex max-w-screen-2xl space-x-8 py-4">
             <Link href={`/post?ref=${project?._id}`} passHref>
               <button className="btn btn-secondary">
                 <span>Edit Project</span>
@@ -149,18 +149,12 @@ const Container = ({ project, author, user, setShowComments }) => {
 
             <div className="w-7/12">
               {project?.projectVideoURI ? (
-                // <div className="h-[200px] w-full overflow-hidden rounded-xl border border-base-300 bg-black dark:border-base-700 md:h-[500px]">
-                //   <VideoPlayer
-                //     src={project?.projectVideoURI}
-                //     poster={`${project?.projectImgURI}?width=640`}
-                //   />
-                // </div>
                 <div
                   className="relative h-52 w-auto cursor-pointer overflow-hidden rounded-lg border border-base-300 bg-base-800 dark:border-base-700 md:h-[500px]"
                   onClick={() => setShowVideo(!showVideo)}
                 >
                   <Image
-                    src={project?.projectImgURI}
+                    src={`${project?.projectImgURI}?width=640`}
                     className="h-full w-full object-cover opacity-90"
                     alt={project?.projectName}
                     width={900}
@@ -297,42 +291,35 @@ const Container = ({ project, author, user, setShowComments }) => {
         </div>
       </div>
 
-      <ModalDialog show={showVideo} setShow={setShowVideo}>
-        <div className="h-[200px] w-full overflow-hidden rounded-xl border border-base-300 bg-black dark:border-base-700 md:h-[500px]">
+      <ModalDialog
+        show={showVideo}
+        setShow={setShowVideo}
+        dimensions={'max-w-screen-xl'}
+        edge={true}
+      >
+        <div className="h-[200px] w-full overflow-hidden rounded-xl border border-base-300 bg-black dark:border-base-700 md:h-[80vh]">
           <VideoPlayer
             src={project?.projectVideoURI}
             poster={`${project?.projectImgURI}?width=640`}
+            autoplay={true}
           />
         </div>
       </ModalDialog>
 
-      {/* Image Modal */}
-      {showImageModal && (
-        <div className="fixed top-0 left-0 z-50 mx-auto flex h-screen w-full items-center">
-          <div
-            className="fixed inset-0 bg-base-900 bg-opacity-90"
-            onClick={() => setShowImageModal(!showImageModal)}
-          ></div>
-          <div className="absolute top-4 right-2 z-50 md:right-4">
-            <button
-              className="group relative h-10 w-10 rounded-xl bg-black/40"
-              onClick={() => setShowImageModal(!showImageModal)}
-            >
-              <ToolTip message="Close" position="bottom" />
-              <IoCloseOutline className="h-10 w-10" />
-            </button>
-          </div>
-          <div className="relative my-auto mx-auto flex h-[90vh] max-h-screen max-w-7xl justify-center bg-transparent bg-black md:rounded-xl">
-            <div className="relative flex max-w-7xl flex-1 rounded-xl">
-              <img
-                src={project?.projectImgURI}
-                className="h-full w-full object-contain object-center"
-                alt={project?.projectName}
-              />
-            </div>
-          </div>
+      <ModalDialog
+        show={showImageModal}
+        setShow={setShowImageModal}
+        dimensions={'max-w-screen-xl'}
+        edge={true}
+      >
+        <div className="relative flex max-w-7xl flex-1 rounded-xl">
+          <img
+            src={project?.projectImgURI}
+            className="h-full w-full object-contain object-center"
+            alt={project?.projectName}
+          />
         </div>
-      )}
+      </ModalDialog>
     </>
   );
 };

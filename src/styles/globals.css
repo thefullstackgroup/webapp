@@ -24,7 +24,7 @@
 
   /* Header */
   .nav-bar {
-    @apply flex items-center rounded-full px-5 py-2 text-base font-medium text-black duration-200 hover:bg-base-200 hover:text-black dark:text-base-100 dark:hover:bg-base-700/80 dark:hover:text-white;
+    @apply flex items-center rounded-full px-5 py-2 font-manrope text-base font-semibold text-black duration-200 hover:bg-base-200 hover:text-black dark:text-base-100 dark:hover:bg-base-700/80 dark:hover:text-white;
   }
   .nav-bar-icon {
     @apply flex items-center rounded-full px-2 py-2 text-sm font-medium text-black hover:text-base-900;
@@ -35,7 +35,7 @@
 
   /* Footer */
   .ftr-link {
-    @apply flex items-center text-sm text-base-500 duration-200 hover:text-black focus:outline-none focus:ring-0 dark:text-base-500 dark:hover:text-white;
+    @apply flex items-center text-sm text-base-500 outline-none duration-200 hover:text-black focus:outline-none focus:ring-0 dark:text-base-500 dark:hover:text-white;
   }
   .ftr-link-icon {
     @apply flex items-center rounded-full px-2 py-2 text-sm font-medium text-base-400 duration-200 hover:scale-110 hover:text-black dark:text-base-500 dark:hover:text-white;
@@ -475,7 +475,7 @@ html.dark .wmde-markdown pre {
 }
 
 .anim-typewriter {
-  animation: typewriter 4s steps(44) 1s 1 normal both,
+  animation: typewriter 2s steps(44) 1s 1 normal both,
     blinkTextCursor 500ms steps(44) infinite normal;
 }
 @keyframes typewriter {

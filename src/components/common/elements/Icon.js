@@ -4,14 +4,17 @@ import * as FaIcons from 'react-icons/fa';
 import * as SiIcons from 'react-icons/si';
 import * as IoIcons from 'react-icons/io5';
 
-const Icon = (props) => {
-  const { name, pack, className } = props;
+const Icon = ({ name, pack = 'Fi', className }) => {
   let style = 'h-5 w-5';
   if (className) style = className;
 
-  let icon = createElement(FiIcons[name], {
-    className: style,
-  });
+  let icon = '';
+
+  if (pack === 'Fi') {
+    icon = createElement(FiIcons[name], {
+      className: style,
+    });
+  }
 
   if (pack === 'Si') {
     icon = createElement(SiIcons[name], {

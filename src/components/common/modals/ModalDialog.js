@@ -8,6 +8,7 @@ const ModalDialog = ({
   setShow,
   title,
   dimensions,
+  edge = false,
   disabled = false,
 }) => {
   const cancelButtonRef = useRef(null);
@@ -45,7 +46,12 @@ const ModalDialog = ({
               className={`w-full ${modalSize}`}
             >
               <Dialog.Panel
-                className={`relative w-full overflow-hidden rounded-lg border bg-white text-left shadow-xl dark:border-base-600  dark:bg-base-900 sm:my-8`}
+                className={
+                  `relative w-full overflow-hidden rounded-lg text-left shadow-xl dark:border-base-600   sm:my-8 ` +
+                  (edge
+                    ? 'border-0 bg-transparent'
+                    : 'border bg-white dark:bg-base-900')
+                }
               >
                 {title && (
                   <div className="sticky top-0 z-10 border-b border-base-200 bg-white px-4 py-3 dark:border-base-600 dark:bg-base-900 md:px-6">
@@ -65,7 +71,7 @@ const ModalDialog = ({
                     </div>
                   </div>
                 )}
-                <div className="px-6 pb-0">{children}</div>
+                <div className={edge ? 'px-0' : 'px-6'}>{children}</div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
