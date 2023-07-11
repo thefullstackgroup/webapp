@@ -9,7 +9,7 @@ import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
 import { RiEmotionSadLine } from 'react-icons/ri';
 
-const Project = ({ user }) => {
+const Project = () => {
   const router = useRouter();
   const { postId, userId } = router.query;
   const [user, getUser] = useUserProfile();
