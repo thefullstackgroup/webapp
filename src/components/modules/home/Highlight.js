@@ -19,7 +19,7 @@ const Slide = ({ data }) => {
       >
         <div className="group relative flex w-full flex-1 grow cursor-pointer overflow-hidden rounded-lg border border-transparent duration-200 dark:border-base-700 dark:hover:border-base-300">
           <div className="group relative" />
-          <div className="h-[440px] w-full">
+          <div className="h-[340px] w-full 2xl:h-[440px]">
             <Image
               src={data?.projectImgURI}
               className="h-full w-full object-cover"

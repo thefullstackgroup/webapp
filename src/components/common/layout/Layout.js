@@ -1,5 +1,6 @@
 import Header from 'components/common/layout/Header';
 import Footer from 'components/common/layout/Footer';
+import Drawer from 'components/common/layout/Drawer';
 import CreatePostModal from 'components/modules/create/CreatePostModal';
 import { useState } from 'react';
 import SignOutPrompt from '../elements/SignOutPrompt';
@@ -12,6 +13,7 @@ const Layout = ({
   hideFooter,
   fullWidth = false,
 }) => {
+  const [showDrawer, setShowDrawer] = useState(false);
   const [showCreatePost, setShowCreatePost] = useState(false);
   const [showSignOut, setShowSignOut] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
@@ -21,6 +23,7 @@ const Layout = ({
         <Header
           user={user}
           headerAutoHide={headerAutoHide}
+          setShowDrawer={setShowDrawer}
           setShowCreatePost={setShowCreatePost}
           setShowSignOut={setShowSignOut}
           setShowLogin={setShowLogin}
@@ -48,6 +51,8 @@ const Layout = ({
       {!user && (
         <LoginModal user={user} show={showLogin} setShow={setShowLogin} />
       )}
+
+      <Drawer show={showDrawer} setShow={setShowDrawer} />
     </>
   );
 };

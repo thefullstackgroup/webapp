@@ -11,6 +11,7 @@ import { Transition } from '@headlessui/react';
 import ProfilePopoverPanel from './ProfilePopoverPanel';
 import { useRouter } from 'next/router';
 import ToolTip from '../elements/ToolTip';
+import { HiOutlineMenuAlt2 } from 'react-icons/hi';
 const KnockNotificationsComponent = dynamic(() =>
   import('components/modules/account/settings/NotificationsPanel')
 );
@@ -18,6 +19,7 @@ const KnockNotificationsComponent = dynamic(() =>
 const Header = ({
   user,
   headerAutoHide = false,
+  setShowDrawer,
   setShowCreatePost,
   setShowSignOut,
   setShowLogin,
@@ -64,6 +66,49 @@ const Header = ({
 
   return (
     <>
+      <div className="sticky top-0 z-50 bg-white px-4 py-2 lg:hidden">
+        <div className="flex items-center">
+          <div className="w-1/5">
+            <button
+              className="flex justify-start text-gray-900 outline-none focus:bg-transparent focus:outline-none"
+              onClick={() => setShowDrawer(true)}
+              aria-label="Open menu"
+            >
+              <HiOutlineMenuAlt2 className="h-7 w-7" />
+            </button>
+          </div>
+
+          <div className="flex w-3/5 justify-center">
+            <Link href="/">
+              <div className="h-8 w-8 cursor-pointer overflow-hidden rounded-lg">
+                <Image
+                  src={
+                    currentTheme === 'dark'
+                      ? '/assets/icons/thefullstack-dark.webp'
+                      : '/assets/icons/thefullstack-light.webp'
+                  }
+                  className="object-contain"
+                  alt="The Full Stack"
+                  width={200}
+                  height={200}
+                />
+              </div>
+            </Link>
+          </div>
+          <div className="flex w-1/5 justify-end">
+            {user ? (
+              <div className="w-8">
+                <KnockNotificationsComponent userId={user?.userId} />
+              </div>
+            ) : (
+              <button className="nav-bar nav-bar-icon">
+                <Icon name={'FiBell'} className="h-6 w-6" />
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+
       <Transition
         show={showHeader}
         enter="transition duration-200 ease-out"
@@ -72,11 +117,11 @@ const Header = ({
         leave="transition duration-200 ease-in"
         leaveFrom="translate-y-0 opacity-100"
         leaveTo="-translate-y-40 opacity-0"
-        className={'sticky top-0 z-50 w-full'}
+        className={'sticky top-0 z-50 hidden w-full lg:block'}
       >
         <header className="dark:bg-base/90 z-50 border-b border-base-200 bg-white/90 backdrop-blur dark:border-base-700/50 dark:bg-base-900">
           <div className="mx-auto flex max-w-full items-center justify-between px-8 py-3">
-            <div className="flex w-6/12 items-center space-x-8 text-base">
+            <div className="flex w-6/12 items-center space-x-4 text-base 2xl:space-x-8">
               <Link href="/">
                 <div className="h-8 w-8 cursor-pointer overflow-hidden rounded-lg">
                   <Image
@@ -116,14 +161,14 @@ const Header = ({
             <div>
               <div
                 href="#"
-                className="nav-bar ml-6 flex w-[400px] items-center space-x-2 bg-base-200/50 font-sans text-base-300 hover:text-base-500 dark:bg-base-700/50 dark:text-base-500"
+                className="nav-bar ml-6 hidden w-64 items-center space-x-2 bg-base-200/50 font-sans text-base-300 hover:text-base-500 dark:bg-base-700/50 dark:text-base-500 2xl:flex 2xl:w-[400px]"
               >
                 <Icon name="FiSearch" className="h-4 w-4 hover:text-base-300" />
                 <input
                   type="text"
                   name="q"
                   placeholder="Search showcase..."
-                  className="text-input m-0 border-0 bg-transparent px-0 py-0.5 text-base font-normal"
+                  className="text-input m-0 border-0 bg-transparent px-0 py-0 text-base font-normal"
                   value={term || ''}
                   onChange={(e) => setTerm(e.target.value)}
                   onKeyDown={(e) => {
