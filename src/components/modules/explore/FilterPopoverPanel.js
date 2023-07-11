@@ -9,7 +9,7 @@ const FilterPopoverPanel = ({ filters, filter, setFilter }) => {
     <Popover className="relative z-40">
       <Popover.Button
         className={
-          'popover-button ' +
+          'popover-button border ' +
           (isShowing && `border-base-900 dark:border-base-200`)
         }
         onMouseEnter={() => setIsShowing(true)}
@@ -22,7 +22,9 @@ const FilterPopoverPanel = ({ filters, filter, setFilter }) => {
           <Icon name={'FiClock'} className="h-4 w-4" />
         )}
 
-        <span>{filter ? filter.label : filters[0].label}</span>
+        <span className="hidden lg:block">
+          {filter ? filter.label : filters[0].label}
+        </span>
         <Icon
           name={'FiChevronDown'}
           className={

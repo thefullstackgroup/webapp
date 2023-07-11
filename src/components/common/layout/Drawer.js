@@ -7,7 +7,7 @@ import Avatar from '../elements/Avatar';
 import Image from 'next/future/image';
 import { useTheme } from 'next-themes';
 
-const Drawer = ({ user, show, setShow }) => {
+const Drawer = ({ user, show, setShow, setShowSignOut }) => {
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const [activeDisclosurePanel, setActiveDisclosurePanel] = useState(null);
@@ -57,7 +57,7 @@ const Drawer = ({ user, show, setShow }) => {
               leave="ease-in duration-200"
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
-              className={`fixed left-0 top-0 h-screen w-[80vw] bg-base-50 dark:bg-base-900 md:w-[40vw]`}
+              className={`fixed left-0 top-0 h-screen w-[85vw] bg-base-50 dark:bg-base-900 md:w-[40vw]`}
             >
               <Dialog.Panel
                 className={`relative h-full w-full overflow-hidden px-1 py-0 text-left shadow-xl dark:border-base-600`}
@@ -80,10 +80,10 @@ const Drawer = ({ user, show, setShow }) => {
                       </div>
                     </Link>
                     <button onClick={() => setShow(false)} aria-label="Close">
-                      <Icon name={'FiX'} className="h-6 w-6" />
+                      <Icon name={'FiX'} className="h-8 w-8" />
                     </button>
                   </div>
-                  <div className="no-scrollbar h-[72vh] space-y-4 overflow-hidden overflow-y-scroll px-4 py-4">
+                  <div className="no-scrollbar h-[68vh] space-y-4 overflow-hidden overflow-y-scroll px-4 py-4">
                     <div className="flex flex-col space-y-3 ">
                       {navigation.map((item, index) => (
                         <Disclosure key={index}>
@@ -163,23 +163,36 @@ const Drawer = ({ user, show, setShow }) => {
                       </Link>
                     </div>
                   </div>
-                  <div className="absolute bottom-4 left-0 w-full px-4 pt-8">
+                  <div className="sticky bottom-10 left-0 w-full px-4 pt-8">
                     {user ? (
-                      <Link href={`/${user.displayName}`}>
-                        <button className="btn btn-with-icon px-0">
-                          <Avatar
-                            image={user.profilePicUrl}
-                            name={user.displayName}
-                            dimensions="h-10 w-10"
-                          />
-                          <div className="flex flex-col text-left leading-5">
-                            <p>{user.name}</p>
-                            <p className="text-sm text-base-400 dark:text-base-500">
-                              @{user.displayName}
-                            </p>
-                          </div>
-                        </button>
-                      </Link>
+                      <div className="flex justify-between">
+                        <Link href={`/${user.displayName}`}>
+                          <button
+                            className="btn btn-with-icon px-0"
+                            onClick={() => setShow(false)}
+                          >
+                            <Avatar
+                              image={user.profilePicUrl}
+                              name={user.displayName}
+                              dimensions="h-10 w-10"
+                            />
+                            <div className="flex flex-col text-left leading-5">
+                              <p>{user.name}</p>
+                              <p className="text-sm text-base-400 dark:text-base-500">
+                                @{user.displayName}
+                              </p>
+                            </div>
+                          </button>
+                        </Link>
+                        <Link href="#">
+                          <button
+                            className="btn btn-with-icon px-0"
+                            onClick={() => setShowSignOut(true)}
+                          >
+                            <Icon name="FiLogOut" />
+                          </button>
+                        </Link>
+                      </div>
                     ) : (
                       <div className="flex w-full flex-col space-y-2">
                         <Link href={'/signup'}>

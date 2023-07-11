@@ -27,18 +27,18 @@ const ModalAlert = ({ children, title = false, show, setShow, dimensions }) => {
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 flex justify-center">
-          <div className="flex w-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div className="flex w-full items-start justify-center text-center sm:items-center lg:items-end">
             <Transition.Child
               enter="ease-out duration-300"
-              enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              enterTo="opacity-100 translate-y-0 sm:scale-100"
+              enterFrom="opacity-0 translate-y-4 sm:translate-y-0 lg:scale-95"
+              enterTo="opacity-100 translate-y-0 lg:scale-100"
               leave="ease-in duration-200"
-              leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              leaveFrom="opacity-100 translate-y-0 lg:scale-100"
+              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 lg:scale-95"
               className={`w-full ${modalSize}`}
             >
               <Dialog.Panel
-                className={`relative w-full overflow-hidden rounded-lg border bg-white text-left shadow-xl dark:border-base-600 dark:bg-base-900 sm:my-8`}
+                className={`relative h-screen w-full overflow-hidden bg-white text-left shadow-xl dark:border-base-600 dark:bg-base-900 sm:my-8 lg:h-auto lg:rounded-lg lg:border`}
               >
                 {title && (
                   <div className="sticky top-0 z-10 border-b border-base-200 bg-white px-4 py-3 dark:border-base-600 dark:bg-base-900 md:px-6">

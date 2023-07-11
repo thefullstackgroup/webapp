@@ -130,7 +130,7 @@
     @apply bg-base-300/50 dark:bg-base-500;
   }
   .popover-button {
-    @apply flex min-w-min resize-none items-center space-x-2 rounded-lg border border-base-300/50 bg-transparent py-1.5 px-3 text-sm text-base-600 placeholder-base-300 outline-none ring-0 hover:border-base-600 focus:border-0 focus:border-base-600 focus:outline-none focus:ring-0 dark:border-base-500 dark:text-base-100 dark:hover:border-base-200 dark:focus:border-base-300;
+    @apply flex min-w-min resize-none items-center space-x-2 rounded-lg border border-base-300/50 bg-transparent py-1.5 px-3 text-sm text-base-600 placeholder-base-300 outline-none ring-0 hover:border-base-600 focus:border-base-600 focus:outline-none focus:ring-0 dark:border-base-500 dark:text-base-100 dark:hover:border-base-200 dark:focus:border-base-300;
   }
   .popover {
     @apply relative mt-6 rounded-xl border border-base-400 bg-white px-2 py-2 text-sm shadow-xl shadow-base-600/20 dark:border-base-600 dark:bg-base-900/95;

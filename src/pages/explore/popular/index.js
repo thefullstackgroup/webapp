@@ -23,18 +23,18 @@ const ExplorePopular = ({ user }) => {
       />
 
       <Layout user={user} fullWidth={true} headerAutoHide={true}>
-        <div className="min-h-screen space-y-10 px-8">
+        <div className="min-h-screen space-y-10 px-4 xl:px-8">
           <Categories
             category={category}
             setCategory={setCategory}
             enableState={false}
           />
           <div className="mt-10 space-y-2 text-center">
-            <h2 className="font-manrope text-5xl font-extrabold tracking-tight">
+            <h2 className="font-manrope text-4xl font-bold tracking-tight xl:text-5xl">
               Popular projects
             </h2>
-            <h4 className="mx-auto max-w-2xl text-xl font-normal tracking-tight text-gray-400 dark:text-gray-400">
-              Discover awesome projects from the developer showcase
+            <h4 className="mx-auto max-w-2xl text-base font-normal tracking-tight text-gray-400 dark:text-gray-400 xl:text-xl">
+              Explore awesome projects from the dev community showcase
             </h4>
           </div>
 

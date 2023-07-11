@@ -9,11 +9,11 @@ const ProjectCard = ({ project }) => {
   return (
     <>
       <Link href={projectLink} shallow={true}>
-        <div className="group relative flex h-[400px] w-full grow cursor-pointer flex-col overflow-hidden duration-200 sm:h-[300px] xl:h-[334px]">
-          <div className="h-[280px] w-full cursor-pointer overflow-hidden rounded-md bg-base-200 dark:bg-base-800 sm:h-[200px] xl:h-[240px]">
+        <div className="group relative flex h-[350px] w-full grow cursor-pointer flex-col overflow-hidden duration-200 xl:h-[334px]">
+          <div className="h-[280px] w-full cursor-pointer overflow-hidden rounded-md bg-base-200 dark:bg-base-800 xl:h-[240px]">
             <Image
               src={project.projectImgURI}
-              className="h-full w-full object-cover object-top duration-200 hover:opacity-100 group-hover:scale-105 group-hover:shadow-xl dark:opacity-90"
+              className="h-full w-full object-cover object-top duration-200 hover:opacity-100 group-hover:shadow-xl dark:opacity-90 xl:group-hover:scale-105"
               alt={project.projectName}
               width={400}
               height={400}
@@ -22,7 +22,7 @@ const ProjectCard = ({ project }) => {
           </div>
 
           {project?.lookingForCollabs && (
-            <div className="absolute bottom-28 right-2 rounded-lg bg-base-200 px-2 py-0.5 text-xs font-medium dark:bg-base-600">
+            <div className="absolute bottom-20 right-2 rounded-lg bg-base-200 px-2 py-0.5 text-xs font-medium dark:bg-base-600 xl:bottom-28">
               Collab
             </div>
           )}

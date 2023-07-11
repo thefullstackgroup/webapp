@@ -194,14 +194,14 @@ const Main = ({ profile, myProfile }) => {
         </>
       )}
 
-      {profile?.profileVideoUrl && !hideVideoIntro && (
+      {/* {profile?.profileVideoUrl && !hideVideoIntro && (
         <Intro
           profile={profile}
           showVideoIntro={showVideoIntro}
           setShowVideoIntro={setShowVideoIntro}
           setHideVideoIntro={setHideVideoIntro}
         />
-      )}
+      )} */}
     </>
   );
 };

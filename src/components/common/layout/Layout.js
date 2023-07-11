@@ -52,7 +52,12 @@ const Layout = ({
         <LoginModal user={user} show={showLogin} setShow={setShowLogin} />
       )}
 
-      <Drawer user={user} show={showDrawer} setShow={setShowDrawer} />
+      <Drawer
+        user={user}
+        show={showDrawer}
+        setShow={setShowDrawer}
+        setShowSignOut={setShowSignOut}
+      />
     </>
   );
 };
