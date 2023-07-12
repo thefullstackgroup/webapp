@@ -100,7 +100,7 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
             {!hideDescription && (
               <div className="w-full px-4 py-4 text-sm font-normal text-white dark:bg-base-700/70">
                 <div className="flex items-center space-x-2">
-                  <div className="truncate text-base font-bold">
+                  <div className="truncate whitespace-normal text-base font-bold">
                     {data?.ogTitle}
                   </div>
                   <Icon name="FiExternalLink" className="h-4 w-4" />

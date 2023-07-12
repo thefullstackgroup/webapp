@@ -75,7 +75,7 @@ const Content = ({
                       <span className="group-hover:text-link font-semibold tracking-tight">
                         {authorName}
                       </span>
-                      <span className="ml-1 text-base-500 sm:mt-0">
+                      <span className="ml-1 hidden text-base-500 sm:mt-0 lg:block">
                         · @{authorDisplayName}
                       </span>
                     </button>
@@ -137,7 +137,7 @@ const Content = ({
             {post?.projectType != 'POST' &&
               post?.projectBodyPreview?.length < sparkCharCount &&
               linkPreview != null && (
-                <div className="mx-4 md:mx-0">
+                <div className="mx-0">
                   <OpenGraphPreview link={linkPreview} />
                 </div>
               )}

@@ -21,7 +21,7 @@ export const Greeting = ({ name }) => {
 
   return (
     <div className="w-min font-mono text-base">
-      <div className="greeting-line anim-typewriter">
+      <div className="greeting-line anim-typewriter flex">
         <span>
           {greet},<span className="capitlize">{firstName[0]}</span>...
         </span>
