@@ -8,7 +8,7 @@ import Image from 'next/future/image';
 import { useTheme } from 'next-themes';
 
 const Drawer = ({ user, show, setShow, setShowSignOut }) => {
-  const { systemTheme, theme } = useTheme();
+  const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const [activeDisclosurePanel, setActiveDisclosurePanel] = useState(null);
   const cancelButtonRef = useRef(null);
@@ -88,8 +88,8 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                         <Icon name={'FiX'} className="h-8 w-8" />
                       </button>
                     </div>
-                    <div className="space-y-4 px-4 py-4">
-                      <div className="no-scrollbar flex h-[55vh] flex-col space-y-3 overflow-y-scroll">
+                    <div className="no-scrollbar h-[80vh] space-y-4 overflow-y-scroll px-4 py-4">
+                      <div className="flex flex-col space-y-3">
                         {navigation.map((item, index) => (
                           <Disclosure key={index}>
                             {(panel) => {
@@ -133,7 +133,7 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                                         enterTo="opacity-100"
                                       >
                                         <Disclosure.Panel className="text-base-600 dark:text-base-200">
-                                          <ul className="mb-2 ml-4 space-y-2">
+                                          <ul className="mb-2 ml-2 space-y-2">
                                             {item.childrenOne.map(
                                               (navItem, index) => (
                                                 <li key={index}>
@@ -209,54 +209,69 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                             <span>Search</span>
                           </button>
                         </Link>
+                        <button
+                          onClick={() =>
+                            currentTheme === 'dark'
+                              ? setTheme('light')
+                              : setTheme('dark')
+                          }
+                          className="nav-bar nav-bar-icon"
+                        >
+                          <span className="capitalize">{currentTheme}</span>
+                          {currentTheme === 'dark' ? (
+                            <Icon name="FiSun" />
+                          ) : (
+                            <Icon name="FiMoon" />
+                          )}
+                        </button>
+
+                        <div className="w-full py-8">
+                          {user ? (
+                            <div className="flex justify-between">
+                              <Link href={`/${user.displayName}`}>
+                                <button
+                                  className="btn btn-with-icon px-0"
+                                  onClick={() => setShow(false)}
+                                >
+                                  <Avatar
+                                    image={user.profilePicUrl}
+                                    name={user.displayName}
+                                    dimensions="h-10 w-10"
+                                  />
+                                  <div className="flex flex-col text-left leading-5">
+                                    <p>{user.name}</p>
+                                    <p className="text-sm text-base-400 dark:text-base-500">
+                                      @{user.displayName}
+                                    </p>
+                                  </div>
+                                </button>
+                              </Link>
+                              <Link href="#">
+                                <button
+                                  className="btn btn-with-icon px-0"
+                                  onClick={() => setShowSignOut(true)}
+                                >
+                                  <Icon name="FiLogOut" />
+                                </button>
+                              </Link>
+                            </div>
+                          ) : (
+                            <div className="flex w-full flex-col space-y-2">
+                              <Link href={'/signup'}>
+                                <button className="btn btn-primary rounded-full">
+                                  Sign up
+                                </button>
+                              </Link>
+                              <Link href={'/login'}>
+                                <button className="btn btn-secondary rounded-full">
+                                  Login
+                                </button>
+                              </Link>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-
-                  <div className="w-full px-4 py-8">
-                    {user ? (
-                      <div className="flex justify-between">
-                        <Link href={`/${user.displayName}`}>
-                          <button
-                            className="btn btn-with-icon px-0"
-                            onClick={() => setShow(false)}
-                          >
-                            <Avatar
-                              image={user.profilePicUrl}
-                              name={user.displayName}
-                              dimensions="h-10 w-10"
-                            />
-                            <div className="flex flex-col text-left leading-5">
-                              <p>{user.name}</p>
-                              <p className="text-sm text-base-400 dark:text-base-500">
-                                @{user.displayName}
-                              </p>
-                            </div>
-                          </button>
-                        </Link>
-                        <Link href="#">
-                          <button
-                            className="btn btn-with-icon px-0"
-                            onClick={() => setShowSignOut(true)}
-                          >
-                            <Icon name="FiLogOut" />
-                          </button>
-                        </Link>
-                      </div>
-                    ) : (
-                      <div className="flex w-full flex-col space-y-2">
-                        <Link href={'/signup'}>
-                          <button className="btn btn-primary rounded-full">
-                            Sign up
-                          </button>
-                        </Link>
-                        <Link href={'/login'}>
-                          <button className="btn btn-secondary rounded-full">
-                            Login
-                          </button>
-                        </Link>
-                      </div>
-                    )}
                   </div>
                 </div>
               </Dialog.Panel>

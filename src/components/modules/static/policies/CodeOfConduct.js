@@ -2,17 +2,17 @@ import { FaHeart } from 'react-icons/fa';
 
 const CodeOfConduct = () => {
   return (
-    <div className="bg-black">
-      <div className="fixed top-0 left-0 mx-auto mt-12 flex min-h-screen w-full justify-between bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-base-300/40 via-black to-base-900"></div>
+    <div className="bg-transparent dark:bg-black">
+      <div className="fixed top-0 left-0 mx-auto mt-12 flex min-h-screen w-full justify-between dark:bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] dark:from-base-300/40 dark:via-black dark:to-base-900"></div>
       <div className="relative z-10 mx-auto mb-20 max-w-4xl">
-        <div className="mb-10 space-y-6 px-4 pt-14 text-center sm:mb-28 md:pt-10 lg:px-0">
-          <h1 className="text-3xl font-bold tracking-tighter text-base-100 md:text-6xl">
+        <div className="mb-10 space-y-6 px-4 pt-0 text-center sm:mb-28 md:pt-10 lg:px-0">
+          <h1 className="text-3xl font-bold tracking-tighter md:text-6xl">
             Code of Conduct
           </h1>
           <p>Last updated: July 04, 2022</p>
         </div>
 
-        <div className="prose prose-dark max-w-full space-y-4 px-4">
+        <div className="prose max-w-full space-y-4 px-4 dark:prose-dark">
           <p>
             Like the technical community as a whole, The Full Stack team and
             community is made up of a mixture of professionals and volunteers

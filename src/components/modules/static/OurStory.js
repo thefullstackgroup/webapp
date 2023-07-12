@@ -4,9 +4,9 @@ import { SiGithub, SiLinkedin, SiTwitter } from 'react-icons/si';
 
 const Main = () => {
   return (
-    <div className="bg-transparent dark:bg-base-900">
+    <div className="bg-transparent px-2 dark:bg-base-900 lg:px-0">
       <div className="fixed top-0 left-0 mx-auto mt-16 flex min-h-screen w-full justify-between bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] dark:from-base-300/40 dark:via-black dark:to-base-900"></div>
-      <div className="fixed top-0 right-0 w-1/2 opacity-20">
+      <div className="fixed top-0 right-0 w-full opacity-20 lg:w-1/2">
         <Image
           src="/assets/landing/about/nodes.webp"
           className="h-full w-full object-cover grayscale"
@@ -17,17 +17,17 @@ const Main = () => {
         />
       </div>
       <div className="relative z-10 mx-auto max-w-6xl">
-        <div className="max-w-7xl space-y-6 px-4 pt-24 md:max-w-4xl md:pt-20 lg:px-0">
+        <div className="max-w-7xl space-y-6 px-4 pt-10 md:max-w-4xl md:pt-20 lg:px-0">
           <Link href="/about/our-story">
-            <div className="mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-200 bg-base-100 px-4 py-1 text-sm text-base-500 dark:border-base-700 dark:bg-base-800/40 dark:text-base-300">
+            <div className="mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-300 bg-base-100 px-4 py-1 text-sm text-base-500 dark:border-base-700 dark:bg-base-800/40 dark:text-base-300">
               Our mission
             </div>
           </Link>
-          <h1 className="flex justify-center -space-y-4 text-5xl font-bold tracking-tighter text-base-800 dark:text-base-100 md:text-7xl">
+          <h1 className="flex justify-center -space-y-4 font-manrope text-5xl font-bold tracking-tighter text-base-800 dark:text-base-100 md:text-7xl">
             Connecting developers to build awesome things.
           </h1>
           <div className="mx-auto max-w-3xl md:mx-0">
-            <h4 className="text-2xl font-light text-base-300">
+            <h4 className="text-2xl font-light dark:text-base-300">
               Building platforms that enable developers to grow a network and
               connect to teams to build the most amazing things.
             </h4>
@@ -35,7 +35,7 @@ const Main = () => {
         </div>
 
         <div className="max-w-4xl space-y-10 px-4 md:px-0">
-          <div className="mt-20 mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-200 bg-base-100 px-4 py-1 text-sm text-base-500 dark:border-base-700 dark:bg-base-800/40 dark:text-base-300">
+          <div className="mt-20 mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-300 bg-base-100 px-4 py-1 text-sm text-base-500 dark:border-base-700 dark:bg-base-800/40 dark:text-base-300">
             Our purpose
           </div>
           <h4 className="text-4xl font-semibold tracking-tight">

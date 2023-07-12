@@ -216,9 +216,9 @@ const Container = ({ project, author, user, setShowComments }) => {
               )}
             </div>
           </div>
-          <div className="hidden h-full w-full space-y-8 border-l border-base-200/70 dark:border-base-700 lg:block">
+          <div className="hidden h-full w-full space-y-8 border-l border-base-200/70 dark:border-base-700/70 lg:block">
             {/* Profile Card */}
-            <div className="sticky top-14 mb-8 space-y-5 py-4 pt-8 pl-12">
+            <div className="sticky top-14 mb-8 space-y-5 py-4 px-12 pt-8">
               <div className="flex items-center space-x-3">
                 <Avatar
                   href={`/${author?.displayName}`}

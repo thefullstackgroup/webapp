@@ -49,7 +49,7 @@ const ForDevelopers = ({ user }) => {
         <div className="mx-auto max-w-7xl space-y-6 px-4 pt-10 lg:pt-32">
           <Link href="/about/our-story">
             <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-200 px-6 py-1 text-sm text-base-500 hover:text-base-900 dark:border-base-700 dark:bg-base-800/40 dark:text-base-300 dark:hover:text-white">
-              Created by developers. See our story &rarr;
+              Why this matters &rarr;
             </div>
           </Link>
           <h1 className="flex justify-center -space-y-4 bg-gradient-to-r from-orange-400 via-pink-500 to-blue-600 bg-clip-text text-center font-manrope text-6xl font-extrabold tracking-tighter text-transparent dark:from-base-300 dark:via-violet-200 dark:to-white md:text-9xl">
