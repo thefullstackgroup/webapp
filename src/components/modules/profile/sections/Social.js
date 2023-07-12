@@ -6,8 +6,8 @@ import {
   FaGithub,
   FaLaptop,
   FaDev,
-} from "react-icons/fa";
-import { SiHashnode, SiMedium } from "react-icons/si";
+} from 'react-icons/fa';
+import { SiHashnode, SiMedium } from 'react-icons/si';
 
 const Social = ({ social }) => {
   return (

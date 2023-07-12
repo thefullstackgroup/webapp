@@ -18,7 +18,7 @@ const Projects = ({ profile, myProfile }) => {
   return (
     <>
       {!projects?.length > 0 && (
-        <div className="mt-8 flex w-full flex-col items-center px-2 md:px-8">
+        <div className="mt-8 flex w-full flex-col items-center px-4 md:px-8">
           <div className="flex w-full flex-col items-center justify-evenly py-10 text-base-400 md:py-36">
             <span>No projects posted yet.</span>
             {profile?.userId === myProfile?.userId && (
@@ -35,7 +35,7 @@ const Projects = ({ profile, myProfile }) => {
         </div>
       )}
       {projects?.length > 0 && (
-        <div className="mt-8 flex w-full items-center">
+        <div className="mt-8 flex w-full items-center px-4 lg:px-0">
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {projects?.map((project) => (
               <div className="col-span-1" key={project._id}>

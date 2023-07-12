@@ -92,7 +92,7 @@ const Container = ({ project, author, user, setShowComments }) => {
                 </Link>
               </div>
               <div className="space-y-1">
-                <h2 className="font-manrope text-4xl font-bold tracking-tight lg:text-5xl">
+                <h2 className="break-words font-manrope text-4xl font-bold tracking-tight lg:text-5xl">
                   {project?.projectName}
                 </h2>
 
@@ -108,7 +108,7 @@ const Container = ({ project, author, user, setShowComments }) => {
               <div>
                 <div className="mt-6 flex flex-wrap items-center gap-0.5">
                   {project?.projectTechStack?.map((stack, index) => (
-                    <TagStack tech={stack} key={index} />
+                    <TagStack tech={stack} key={index} size={'xs'} />
                   ))}
                 </div>
 

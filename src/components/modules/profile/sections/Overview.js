@@ -58,10 +58,10 @@ const Overview = ({
   };
 
   return (
-    <div className="relative mb-4 border-b border-base-700 px-2 md:mb-0 md:border-none md:px-0">
+    <div className="relative mb-4 border-b border-base-200 px-4 dark:border-base-700 md:mb-0 md:border-none lg:px-0">
       <div className="mt-2 items-start justify-between border-base-700 pb-4 md:mt-10 md:border-none lg:mb-8 lg:flex lg:space-x-4 lg:pb-4">
-        <div className="flex w-full items-center space-x-4 md:space-x-8 lg:items-start">
-          <div className="relative mt-1 rounded-full bg-gradient-to-r from-purple-400 via-pink-500 to-blue-600 p-1">
+        <div className="flex w-full items-center space-x-3 lg:flex-row lg:items-start lg:space-x-8">
+          <div className="relative mt-1 rounded-full bg-gradient-to-r from-purple-400 via-pink-500 to-blue-600 p-0.5 lg:p-1">
             <div className="relative rounded-full bg-base-50 dark:bg-base-900">
               <Avatar
                 userId={profile?.userId}
@@ -103,8 +103,8 @@ const Overview = ({
             </div>
           </div>
 
-          <div className="w-full md:pr-4">
-            <div className="items-baseline md:space-x-2 lg:flex">
+          <div className="w-full lg:pr-4">
+            <div className="items-baseline lg:flex lg:space-x-2">
               <h2 className="mb-0 text-xl font-bold md:text-3xl">
                 {profile?.name}
               </h2>
@@ -133,7 +133,7 @@ const Overview = ({
                   Joined {Moment(profile?.createdDate).format('MMMM YYYY')}
                 </span>
               </div>
-              {/* {teams?.data[0]?.status === 'ACTIVE' &&
+              {teams?.data[0]?.status === 'ACTIVE' &&
                 teams?.data?.length > 0 && (
                   <Link href={`/teams/${teams.data[0].id}`} passHref>
                     <a className="group flex items-center space-x-1">
@@ -145,7 +145,7 @@ const Overview = ({
                       </span>
                     </a>
                   </Link>
-                )} */}
+                )}
             </div>
 
             <div
@@ -199,7 +199,7 @@ const Overview = ({
           />
         </div>
         {!user && (
-          <div className="flex items-center space-x-2">
+          <div className="hidden items-center space-x-2 lg:flex">
             <Link href="/signup">
               <button className="btn btn-secondary">Follow</button>
             </Link>
@@ -210,7 +210,7 @@ const Overview = ({
         )}
       </div>
 
-      <div className="block cursor-pointer text-sm text-base-200 lg:hidden">
+      <div className="block cursor-pointer text-sm text-base-600 dark:text-base-300 lg:hidden">
         {profile?.bio?.aboutUser}
       </div>
 
@@ -245,7 +245,7 @@ const Overview = ({
       </div>
 
       <div
-        className="no-scrollbar mt-3 -ml-1 flex w-full cursor-pointer overflow-x-scroll lg:hidden"
+        className="no-scrollbar mt-3 -ml-1 flex w-full cursor-pointer overflow-x-scroll px-1 lg:hidden"
         onClick={() => setShowStacks(!showStacks)}
       >
         {profile?.userTechStacks?.map(
@@ -263,6 +263,17 @@ const Overview = ({
           setShowEditProfile={setShowEditProfile}
           setUploadVideoIntroPanel={setUploadVideoIntroPanel}
         />
+
+        {!user && (
+          <div className="flex items-center space-x-2 lg:hidden">
+            <Link href="/signup">
+              <button className="btn btn-secondary w-full">Follow</button>
+            </Link>
+            <Link href="/signup">
+              <button className="btn btn-primary">Connect</button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

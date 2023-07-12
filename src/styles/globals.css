@@ -76,7 +76,7 @@
     @apply border border-base-400 bg-white text-base-600 hover:border-base-900 hover:bg-base-200/50 hover:text-base-900 focus:outline-none disabled:cursor-not-allowed disabled:bg-base-700 disabled:text-base-400 dark:border-base-500 dark:bg-base-800 dark:text-base-200 dark:hover:border-base-200 dark:hover:bg-base-800 dark:hover:text-base-50;
   }
   .btn-ghost {
-    @apply border-transparent bg-transparent text-base-400 hover:border-transparent hover:bg-transparent hover:text-black dark:border-transparent dark:bg-transparent dark:bg-none dark:text-base-300 dark:hover:bg-transparent dark:hover:text-white;
+    @apply border-transparent bg-transparent text-base-500 hover:border-transparent hover:bg-transparent hover:text-black dark:border-transparent dark:bg-transparent dark:bg-none dark:text-base-300 dark:hover:bg-transparent dark:hover:text-white;
   }
   .btn-danger {
     @apply border border-transparent border-red-500 bg-base-50 text-red-500 hover:border-red-400 hover:bg-white hover:text-red-400 dark:border-red-500 dark:bg-base-900 dark:text-red-500 dark:hover:border-red-500 dark:hover:bg-red-500/20 dark:hover:text-red-400;

@@ -108,7 +108,7 @@ const Main = ({ profile, myProfile }) => {
         )}
 
         {profile?.gitHubUserName && (
-          <div className="relative mx-auto mb-8 max-w-screen-lg px-4 sm:mb-10 md:px-0">
+          <div className="relative mx-auto mb-8 max-w-screen-lg px-4 sm:mb-10 lg:px-0">
             <GitHubCalendar
               username={profile?.gitHubUserName}
               blockSize={16}
@@ -124,7 +124,7 @@ const Main = ({ profile, myProfile }) => {
         )}
 
         <div className="relative mx-auto max-w-screen-lg">
-          <div className="no-scrollbar flex items-center justify-between overflow-y-scroll">
+          <div className="no-scrollbar flex items-center justify-between overflow-y-scroll px-4 lg:px-0">
             <Menu tab={tab} setTab={setTab} profile={profile} />
             <div className="hidden md:block">
               <Social social={profile} />

@@ -58,13 +58,13 @@ const TeamProfile = ({ user, slug }) => {
         <div className="min-h-screen w-full px-0 md:ml-6 lg:ml-20 lg:max-w-full xl:ml-52 xl:px-4 2xl:ml-56 2xl:px-0">
           <div className="relative mx-auto max-w-6xl">
             {team && (
-              <div className="mt-0 flex min-h-screen w-full items-start justify-between gap-12 px-4 pb-20 md:mt-0 md:px-0">
+              <div className="mt-4 flex min-h-screen w-full items-start justify-between gap-12 px-4 pb-20 md:mt-0 md:px-0">
                 <div className="relative w-full space-y-6 sm:space-y-8 lg:w-8/12">
                   <Link href="/teams">
                     <button className="btn btn-ghost px-0">&larr; Back</button>
                   </Link>
 
-                  <div className="flex items-start space-x-4">
+                  <div className="flex flex-col items-start space-y-2 lg:flex-row lg:space-y-0 lg:space-x-4">
                     <div className="block h-20 w-20 overflow-hidden rounded-lg">
                       <Image
                         src={team.image}
