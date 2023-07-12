@@ -3,6 +3,7 @@ import CreatePost from 'components/modules/hangout/CreatePost';
 import Topics from 'components/modules/hangout/Topics';
 import WhoToFollow from './WhoToFollow';
 import Link from 'next/link';
+import Icon from 'components/common/elements/Icon';
 
 const Main = ({ user, topic }) => {
   // const url = `${process.env.BASEURL}/api/profile/social/following?userId=${user.userId}`;
@@ -12,29 +13,27 @@ const Main = ({ user, topic }) => {
 
   return (
     <>
-      <div className="mx-auto flex max-w-screen-2xl gap-10">
-        <div className="w-3/12">
+      <div className="mx-auto flex max-w-screen-2xl lg:gap-10">
+        <div className="hidden w-3/12 lg:block">
           <div className="sticky top-20">
             <Topics topic={topic} />
           </div>
         </div>
-        <div className="mt-8 min-h-screen w-6/12 max-w-2xl">
+        <div className="mt-6 min-h-screen w-full max-w-2xl lg:mt-8 lg:w-6/12">
           {user && <CreatePost user={user} />}
           {!user && (
-            <div className="mb-6 rounded-md">
+            <div className="mb-6 rounded-md px-4 lg:px-0">
               <Link href="/signup">
-                <input
-                  type="text"
-                  className="text-input"
-                  disabled
-                  placeholder="Sign in to share something ..."
-                />
+                <div className="box box-link flex justify-between bg-transparent text-base-300">
+                  <span>Sign in to share something ...</span>
+                  <Icon name="FiSend" />
+                </div>
               </Link>
             </div>
           )}
           <Feed user={user} topic={topic} following={null} />
         </div>
-        <div className="w-3/12">
+        <div className="hidden w-3/12 lg:block">
           <div className="sticky top-20 space-y-8">
             <WhoToFollow user={user} />
           </div>

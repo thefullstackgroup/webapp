@@ -41,7 +41,7 @@ const Post = (props) => {
 
   return (
     <>
-      <div className="w-full cursor-pointer rounded-lg border border-base-200 bg-base-50 duration-200 hover:border-base-300/50 dark:border-base-700 dark:bg-black dark:hover:border-base-500">
+      <div className="w-full cursor-pointer border-t border-b bg-base-50 duration-200 dark:border-base-700 dark:bg-black lg:rounded-lg lg:border lg:border-base-200 lg:hover:border-base-300/50 dark:lg:hover:border-base-500">
         <article>
           <div className="space-y-4">
             <div className="flex items-start justify-between px-4 pt-3">

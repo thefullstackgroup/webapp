@@ -75,14 +75,14 @@ const Detail = ({ postId, user, setShowPost }) => {
             {post && (
               <>
                 {user ? (
-                  <div className="flex items-center sm:space-x-3">
+                  <div className="flex items-center space-x-2">
                     <Avatar
                       image={user.profilePicUrl}
                       name={user.displayName}
-                      dimensions="h-10 w-10"
+                      dimensions="h-8 w-8 sm:h-10 sm:w-10"
                     />
 
-                    <div className="ml-3 w-auto flex-1 overflow-hidden">
+                    <div className="w-auto flex-1 overflow-hidden">
                       {/* Plain comment textarea for mobile */}
                       <div className="block">
                         <input

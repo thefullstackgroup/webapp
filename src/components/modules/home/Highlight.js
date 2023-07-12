@@ -17,9 +17,9 @@ const Slide = ({ data }) => {
       <Link
         href={`/${data?.projectCreator.displayName}/project/${data?.projectSlug}`}
       >
-        <div className="group relative flex w-full flex-1 grow cursor-pointer overflow-hidden rounded-lg border border-transparent duration-200 dark:border-base-700 dark:hover:border-base-300">
+        <div className="group relative flex h-[400px] w-full flex-1 grow cursor-pointer overflow-hidden rounded-lg border border-transparent duration-200 dark:border-base-700 dark:hover:border-base-300 2xl:h-[440px]">
           <div className="group relative" />
-          <div className="h-[340px] w-full 2xl:h-[440px]">
+          <div className="h-[400px] w-full 2xl:h-[440px]">
             <Image
               src={data?.projectImgURI}
               className="h-full w-full object-cover"
@@ -45,7 +45,7 @@ const Slide = ({ data }) => {
                 </span>
               </div>
             </div>
-            <div className="absolute bottom-2 right-8 h-10 w-10 duration-200 group-hover:right-4">
+            <div className="absolute bottom-2 right-8 hidden h-10 w-10 duration-200 group-hover:right-4 lg:block">
               <Icon
                 name="FiArrowRight"
                 className="h-6 w-6 text-white opacity-0 duration-200 group-hover:opacity-100"
@@ -68,26 +68,33 @@ const Highlight = ({ user }) => {
   return (
     <div>
       <div className="flex items-center justify-end space-x-2 pb-4">
-        <button
-          ref={prevRef}
-          className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
-        >
-          <ToolTip message="Previous" />
-          <Icon name="FiChevronLeft" className="mx-auto h-4 w-4" />
-        </button>
-        <button
-          ref={nextRef}
-          className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
-        >
-          <ToolTip message="Next" />
-          <Icon name="FiChevronRight" className="mx-auto h-4 w-4" />
-        </button>
+        {/* <div className="flex items-end space-x-2">
+          <h3 className="font-mono text-base font-medium text-base-700 dark:text-base-200">
+            Check these out
+          </h3>
+          <Icon name="FiCornerRightDown" className="h-5 w-5" />
+        </div> */}
+        <div className="hidden items-end space-x-2 lg:flex">
+          <button
+            ref={prevRef}
+            className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
+          >
+            <ToolTip message="Previous" />
+            <Icon name="FiChevronLeft" className="mx-auto h-4 w-4" />
+          </button>
+          <button
+            ref={nextRef}
+            className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
+          >
+            <ToolTip message="Next" />
+            <Icon name="FiChevronRight" className="mx-auto h-4 w-4" />
+          </button>
+        </div>
       </div>
       <Swiper
         slidesPerView={5}
         spaceBetween={30}
         modules={[Navigation]}
-        className="pb-10"
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
@@ -149,6 +156,8 @@ const Highlight = ({ user }) => {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <div className="swiper-pagination"></div>
     </div>
   );
 };

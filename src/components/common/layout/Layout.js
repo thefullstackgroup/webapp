@@ -28,7 +28,9 @@ const Layout = ({
           setShowSignOut={setShowSignOut}
           setShowLogin={setShowLogin}
         />
-        <div className={!fullWidth ? 'mx-auto max-w-screen-2xl px-4' : ''}>
+        <div
+          className={!fullWidth ? 'mx-auto max-w-screen-2xl lg:px-4' : 'px-0'}
+        >
           {children}
         </div>
         <Footer hideFooter={hideFooter} />

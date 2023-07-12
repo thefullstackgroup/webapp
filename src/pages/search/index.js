@@ -47,9 +47,9 @@ const Search = ({ user }) => {
       />
 
       <Layout user={user} fullWidth={true}>
-        <div className="mt-10 min-h-screen space-y-10 px-8">
-          <div className="mx-auto max-w-2xl px-4 md:px-0">
-            <div className="flex w-full items-center rounded-lg border border-base-300 py-0 px-4 dark:border-base-700">
+        <div className="mt-10 min-h-screen px-4 lg:px-8">
+          <div className="space-y-10">
+            <div className="mx-auto flex w-full max-w-2xl items-center rounded-lg border border-base-300 py-0 px-4 dark:border-base-700">
               <Icon name="FiSearch" className="h-6 w-6 sm:h-8 sm:w-8" />
               <input
                 type="text"
@@ -65,24 +65,24 @@ const Search = ({ user }) => {
                 }}
               />
             </div>
-          </div>
 
-          <Filters
-            range={range}
-            setRange={setRange}
-            stack={stack}
-            setStack={setStack}
-            sort={sort}
-            setSort={setSort}
-          />
-          <ProjectGallery
-            sort={sort.orderBy}
-            range={range.days}
-            stack={stack}
-            category={category}
-            setCategory={setCategory}
-            query={query}
-          />
+            <Filters
+              range={range}
+              setRange={setRange}
+              stack={stack}
+              setStack={setStack}
+              sort={sort}
+              setSort={setSort}
+            />
+            <ProjectGallery
+              sort={sort.orderBy}
+              range={range.days}
+              stack={stack}
+              category={category}
+              setCategory={setCategory}
+              query={query}
+            />
+          </div>
         </div>
       </Layout>
     </>

@@ -40,26 +40,26 @@ const Main = ({ user }) => {
   return (
     <>
       <>
-        <div className="mx-auto mb-20 w-full max-w-screen-2xl space-y-20">
-          <div className="mx-auto max-w-7xl px-4 pt-24 md:pt-14 lg:px-0">
-            <div className="relative mx-auto max-w-lg">
-              <h1 className="flex justify-center bg-clip-text py-2 text-center font-manrope text-6xl font-bold tracking-tighter text-base-900 dark:text-base-200 md:text-7xl">
+        <div className="mx-auto mb-20 w-full max-w-screen-2xl space-y-20 px-4 lg:px-0">
+          <div className="mx-auto max-w-7xl pt-10 md:pt-14 lg:pt-24">
+            <div className="relative mx-auto w-min whitespace-nowrap">
+              <h1 className="flex justify-center bg-clip-text py-2 text-center font-manrope text-5xl font-extrabold tracking-tighter text-base-900 dark:text-base-200 md:text-7xl lg:text-7xl">
                 Team Profiles
               </h1>
-              <div className="absolute top-3 -right-6">
+              <div className="absolute top-1 -right-10">
                 <span className="rounded-xl border border-green-500 bg-base-50 py-0.5 px-1.5 text-xs text-green-500 dark:bg-base-900">
                   Beta
                 </span>
               </div>
             </div>
-            <div className="mx-auto mt-4 max-w-2xl">
-              <p className="px-4 text-center text-lg text-base-400 dark:text-base-300">
+            <div className="mx-auto mt-4 max-w-xl">
+              <p className="text-center text-xl font-light text-base-400 dark:text-base-300">
                 Building something cool with your team? Create your team profile
                 and show off what your team is building.
               </p>
             </div>
             <div className="mx-auto mt-10 max-w-4xl">
-              <div className="flex items-center justify-center space-x-4">
+              <div className="flex items-center justify-center space-x-2">
                 {user ? (
                   <button
                     className="btn btn-primary py-2.5 px-6"
@@ -87,10 +87,10 @@ const Main = ({ user }) => {
           <ListTeams user={user} />
 
           <div className="relative space-y-10 text-center">
-            <h4 className="z-20 text-3xl font-bold">
+            <h4 className="z-20 text-2xl font-bold lg:text-3xl">
               Frequently asked questions
             </h4>
-            <div className="relative mx-auto max-w-3xl px-4">
+            <div className="relative mx-auto max-w-3xl">
               <Faq />
             </div>
           </div>
@@ -110,12 +110,6 @@ const Main = ({ user }) => {
           teams={teams}
         />
       </ModalAlert>
-
-      {/* <Subscribe
-        user={user}
-        show={subscribePanel}
-        setShow={setSubscribePanel}
-      /> */}
     </>
   );
 };

@@ -427,6 +427,14 @@ aside.EmojiPickerReact.epr-main {
   color: white !important;
 }
 
+.swiper-container {
+  padding-bottom: 35px;
+}
+.swiper-horizontal > .swiper-pagination {
+  position: absolute !important;
+  bottom: -20px !important;
+}
+
 .wmde-markdown {
   background-color: transparent !important;
   font-size: 1.1rem !important;

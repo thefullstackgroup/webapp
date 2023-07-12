@@ -35,22 +35,22 @@ const ModalDialog = ({
         </Transition.Child>
 
         <div className="fixed inset-0 z-10">
-          <div className="flex w-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div className="flex w-full items-end justify-center text-center sm:items-center">
             <Transition.Child
               enter="ease-out duration-200"
-              enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              enterFrom="opacity-0 translate-y-48 lg:translate-y-4 sm:translate-y-0 sm:scale-95"
               enterTo="opacity-100 translate-y-0 sm:scale-100"
-              leave="ease-in duration-200"
+              leave="ease-in lg:duration-200"
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              leaveTo="opacity-0 lg:translate-y-4 sm:translate-y-0 sm:scale-95"
               className={`w-full ${modalSize}`}
             >
               <Dialog.Panel
                 className={
-                  `relative w-full overflow-hidden rounded-lg text-left shadow-xl dark:border-base-600   sm:my-8 ` +
+                  `relative w-full overflow-hidden text-left shadow-xl dark:border-base-600 sm:my-8 lg:rounded-lg ` +
                   (edge
                     ? 'border-0 bg-transparent'
-                    : 'border bg-white dark:bg-base-900')
+                    : 'bg-white dark:bg-base-900 lg:border')
                 }
               >
                 {title && (
@@ -71,7 +71,7 @@ const ModalDialog = ({
                     </div>
                   </div>
                 )}
-                <div className={edge ? 'px-0' : 'px-6'}>{children}</div>
+                <div className={edge ? 'px-0' : 'px-4 lg:px-6'}>{children}</div>
               </Dialog.Panel>
             </Transition.Child>
           </div>

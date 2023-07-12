@@ -134,7 +134,12 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                                               (navItem, index) => (
                                                 <li key={index}>
                                                   <Link href={navItem.href}>
-                                                    <button className="btn btn-with-icon btn-ghost px-0">
+                                                    <button
+                                                      className="btn btn-with-icon btn-ghost w-full px-0"
+                                                      onClick={() =>
+                                                        setShow(false)
+                                                      }
+                                                    >
                                                       <Icon
                                                         name={navItem.icon}
                                                       />
@@ -150,7 +155,12 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                                               (navItem, index) => (
                                                 <li key={index}>
                                                   <Link href={navItem.href}>
-                                                    <button className="btn btn-with-icon btn-ghost px-0">
+                                                    <button
+                                                      className="btn btn-with-icon btn-ghost w-full px-0"
+                                                      onClick={() =>
+                                                        setShow(false)
+                                                      }
+                                                    >
                                                       <Icon
                                                         name={navItem.icon}
                                                       />

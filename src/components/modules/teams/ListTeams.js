@@ -43,7 +43,7 @@ const ListTeams = () => {
           ))}
         </div>
       )}
-      <div className="grid grid-cols-4 gap-6">{teamCards}</div>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">{teamCards}</div>
 
       {!isReachingEnd && (
         <div className="my-10 flex justify-center">

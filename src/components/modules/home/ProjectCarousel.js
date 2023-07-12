@@ -40,7 +40,7 @@ const ProjectCarousel = ({
           <h3 className="font-mono text-base font-medium text-base-700 dark:text-base-200">
             {title}
           </h3>
-          <Icon name="FiCornerRightDown" className="h-5 w-5" />
+          <Icon name="FiCornerRightDown" className="h-4 w-4" />
         </div>
         <div className="hidden items-center space-x-2 xl:flex">
           <button
@@ -59,7 +59,6 @@ const ProjectCarousel = ({
           </button>
           <Link href={showMore} passHref>
             <a href="#" className="btn btn-secondary group relative flex px-2">
-              <ToolTip message="Show more" />
               <Icon name="FiChevronsRight" className="mx-auto h-4 w-4" />
             </a>
           </Link>

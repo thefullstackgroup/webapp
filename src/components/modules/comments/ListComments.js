@@ -115,7 +115,7 @@ const ListComments = ({ post, user }) => {
                         dimensions="h-8 w-8 sm:h-10 sm:w-10"
                       />
                     </div>
-                    <div className="w-full overflow-hidden rounded-md bg-base-200/70 px-3 py-2 dark:bg-base-600/50 sm:px-3">
+                    <div className="w-full overflow-hidden rounded-md bg-base-200/70 px-3 pt-1 pb-2 dark:bg-base-600/50 sm:px-3">
                       <div>
                         <Link href={`/${comment.authorName}`} passHref>
                           <a href="#" className="text-sm font-medium">

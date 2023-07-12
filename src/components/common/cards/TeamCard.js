@@ -22,16 +22,16 @@ const TeamCard = ({ team }) => {
   };
 
   return (
-    <div className="relative w-full px-4 sm:px-0">
+    <div className="relative w-full">
       <button
         className={
-          'group relative flex h-full w-full flex-col items-start rounded-lg border border-base-200 bg-base-50 p-2 text-left duration-300 hover:border-base-600 dark:border-base-700 dark:bg-base-900 sm:p-4 sm:dark:hover:border-base-200 ' +
-          (team.status === 'ACTIVE' ? 'cursor-pointer' : 'cursor-not-allowed')
+          'box box-link group relative flex h-full w-full text-left ' +
+          (team.status === 'ACTIVE' && 'cursor-not-allowed')
         }
         onClick={() => handleGoToTeam(team.status, team.id)}
       >
         <div className="relative w-full space-y-6">
-          <div className="relative h-14 w-20 overflow-hidden rounded-lg sm:h-20 sm:w-20">
+          <div className="relative h-20 w-20 overflow-hidden rounded-lg">
             {team.image && (
               <Image
                 src={team.image}

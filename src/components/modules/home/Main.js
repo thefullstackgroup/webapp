@@ -20,11 +20,14 @@ export const Greeting = ({ name }) => {
   else if (hours >= 17 && hours <= 24) greet = 'Good evening';
 
   return (
-    <div className="absolute font-mono font-semibold">
+    <div className="w-min font-mono text-base">
       <div className="greeting-line anim-typewriter">
         <span>
-          {greet},<span className="capitlize">{firstName[0]}</span>... happy
-          coding!
+          {greet},<span className="capitlize">{firstName[0]}</span>...
+        </span>
+        <span className="hidden lg:block">
+          check these out{' '}
+          <Icon name="FiCornerRightDown" className={'inline-flex'} />
         </span>
       </div>
     </div>
