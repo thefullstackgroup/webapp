@@ -57,7 +57,7 @@ const Container = ({ project, author, user, setShowComments }) => {
           )}
 
         {project?.projectCreator?.userId === user?.userId && (
-          <div className="mx-auto flex max-w-screen-2xl space-x-8 py-4">
+          <div className="mx-auto flex max-w-screen-2xl space-x-8 py-4 px-4 lg:px-0">
             <Link href={`/post?ref=${project?._id}`} passHref>
               <button className="btn btn-secondary">
                 <span>Edit Project</span>
@@ -66,9 +66,9 @@ const Container = ({ project, author, user, setShowComments }) => {
           </div>
         )}
 
-        <div className="bg-gradient-to-b from-base-50 to-base-200/50 pt-10 pb-8 dark:from-base-900 dark:to-base-800/90">
-          <div className="relative z-10 mx-auto flex max-w-screen-2xl items-center gap-12 pb-10">
-            <div className="w-5/12 space-y-4 pr-20">
+        <div className="bg-gradient-to-b from-base-50 to-base-200/50 pt-6 pb-8 dark:from-base-900 dark:to-base-800/90 lg:pt-10">
+          <div className="relative z-10 mx-auto flex max-w-screen-2xl flex-col items-center gap-12 px-4 pb-10 lg:flex-row lg:px-0">
+            <div className="w-full space-y-4 lg:w-5/12 lg:pr-20">
               <div className="flex items-center space-x-3">
                 <Avatar
                   href={`/${project?.projectCreator?.displayName}`}
@@ -92,7 +92,7 @@ const Container = ({ project, author, user, setShowComments }) => {
                 </Link>
               </div>
               <div className="space-y-1">
-                <h2 className="font-manrope text-5xl font-bold tracking-tight">
+                <h2 className="font-manrope text-4xl font-bold tracking-tight lg:text-5xl">
                   {project?.projectName}
                 </h2>
 
@@ -112,7 +112,7 @@ const Container = ({ project, author, user, setShowComments }) => {
                   ))}
                 </div>
 
-                <div className="flex w-full flex-row-reverse items-center pt-4 sm:w-auto sm:flex-row sm:space-x-2">
+                <div className="flex w-full flex-row items-center space-x-2 pt-4">
                   {project?.projectLinkURI !== '' && (
                     <a
                       href={project?.projectLinkURI}
@@ -120,7 +120,7 @@ const Container = ({ project, author, user, setShowComments }) => {
                       rel="noreferrer"
                       className="btn btn-primary btn-with-icon"
                     >
-                      <span className="">View project</span>
+                      <span>View project</span>
                       <Icon name={'FiExternalLink'} className="h-auto w-5" />
                     </a>
                   )}
@@ -132,7 +132,7 @@ const Container = ({ project, author, user, setShowComments }) => {
                       rel="noreferrer"
                       className="btn btn-secondary btn-with-icon"
                     >
-                      <span className="hidden sm:block">Code</span>
+                      <span>Code</span>
                       <IoLogoGithub className="h-auto w-5" />
                     </a>
                   )}
@@ -146,10 +146,10 @@ const Container = ({ project, author, user, setShowComments }) => {
               )}
             </div>
 
-            <div className="w-7/12">
+            <div className="w-full lg:w-7/12">
               {project?.projectVideoURI ? (
                 <div
-                  className="relative h-52 w-auto cursor-pointer overflow-hidden rounded-lg border border-base-300 bg-base-800 dark:border-base-700 md:h-[500px]"
+                  className="relative h-64 w-auto cursor-pointer overflow-hidden rounded-lg border border-base-300 bg-base-800 dark:border-base-700 md:h-[500px]"
                   onClick={() => setShowVideo(!showVideo)}
                 >
                   <Image
@@ -202,8 +202,8 @@ const Container = ({ project, author, user, setShowComments }) => {
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto grid h-full max-w-screen-2xl grid-cols-3 items-start gap-20">
-          <div className="col-span-2 space-y-6 py-4">
+        <div className="relative z-10 mx-auto grid h-full max-w-screen-2xl grid-cols-1 items-start gap-20 px-4 lg:grid-cols-3 lg:px-0">
+          <div className="col-span-1 space-y-6 py-4 lg:col-span-2">
             <div className="wmde-markdown-var mt-4 mb-20 max-w-4xl">
               {project?.projectBody && (
                 <MarkdownPreview
@@ -216,7 +216,7 @@ const Container = ({ project, author, user, setShowComments }) => {
               )}
             </div>
           </div>
-          <div className="h-full w-full space-y-8 border-l border-base-200/70 dark:border-base-700">
+          <div className="hidden h-full w-full space-y-8 border-l border-base-200/70 dark:border-base-700 lg:block">
             {/* Profile Card */}
             <div className="sticky top-14 mb-8 space-y-5 py-4 pt-8 pl-12">
               <div className="flex items-center space-x-3">
@@ -278,7 +278,7 @@ const Container = ({ project, author, user, setShowComments }) => {
       </div>
 
       <div className="fixed bottom-14 left-0 z-50 w-full">
-        <div className="mx-auto max-w-sm rounded-full border border-base-300 bg-base-50 px-6 py-2.5 shadow-lg dark:border-base-300 dark:bg-base-700 dark:shadow-base-300/30">
+        <div className="mx-auto max-w-xs rounded-full border border-base-300 bg-base-50 px-6 py-2.5 shadow-lg dark:border-base-300 dark:bg-base-700 dark:shadow-base-300/30 lg:max-w-sm">
           <Actions
             user={user}
             project={project}
@@ -296,7 +296,7 @@ const Container = ({ project, author, user, setShowComments }) => {
         dimensions={'max-w-screen-xl'}
         edge={true}
       >
-        <div className="h-[200px] w-full overflow-hidden rounded-xl border border-base-300 bg-black dark:border-base-700 md:h-[80vh]">
+        <div className="h-[200px] w-full overflow-hidden border-base-300 bg-black dark:border-base-700 md:h-[80vh] lg:rounded-xl lg:border">
           <VideoPlayer
             src={project?.projectVideoURI}
             poster={`${project?.projectImgURI}?width=640`}

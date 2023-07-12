@@ -46,7 +46,7 @@ const ForDevelopers = ({ user }) => {
     <div className="dark:bg-base-900">
       <div className="fixed top-0 left-0 mx-auto mt-16 flex min-h-screen w-full justify-between bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] dark:from-purple-900/40 dark:via-black dark:to-black"></div>
       <div className="relative z-10 mx-auto max-w-screen-2xl lg:mt-16 lg:min-h-screen">
-        <div className="mx-auto max-w-7xl space-y-6 px-4 pt-32">
+        <div className="mx-auto max-w-7xl space-y-6 px-4 pt-10 lg:pt-32">
           <Link href="/about/our-story">
             <div className="mx-auto mb-10 w-min cursor-pointer whitespace-nowrap rounded-full border border-base-200 px-6 py-1 text-sm text-base-500 hover:text-base-900 dark:border-base-700 dark:bg-base-800/40 dark:text-base-300 dark:hover:text-white">
               Created by developers. See our story &rarr;
@@ -542,7 +542,7 @@ const ForDevelopers = ({ user }) => {
             </div>
 
             <Fade duration={1500} delay={600}>
-              <div className="h-[60vh] w-full rounded-lg border border-base-300 bg-base-200 shadow-2xl shadow-purple-700/20 dark:border-purple-900/60 dark:bg-purple-500/10 md:sticky md:top-48 md:w-[600px]">
+              <div className="relative h-[60vh] w-full rounded-lg border border-base-300 bg-base-200 shadow-2xl shadow-purple-700/20 dark:border-purple-900/60 dark:bg-purple-500/10 md:sticky md:top-48 md:w-[600px]">
                 <div className="-ml-3 mt-3 h-full w-full overflow-hidden rounded-xl border border-base-600 bg-black duration-300 dark:opacity-90">
                   <VideoPlayerProfile
                     src={`https://stream.mux.com/OGgHsrxVO6KHXUBDdtsVPCMMnJej3tuPszF3L00K00m8U.m3u8`}

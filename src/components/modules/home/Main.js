@@ -207,7 +207,7 @@ const Main = ({ user }) => {
             (item, index) =>
               item.slug !== 'datascience' && (
                 <Link href={`/explore/popular/${item.slug}`} key={index}>
-                  <div className="group flex h-32 w-72 grow cursor-pointer flex-col justify-between rounded-lg border border-base-200 bg-base-100 p-4 text-left duration-200 hover:border-base-700 hover:bg-base-50 dark:border-base-700 dark:bg-base-900 dark:hover:border-base-100 dark:hover:bg-base-900 xl:max-w-[350px]">
+                  <div className="group flex w-72 grow cursor-pointer flex-col justify-between rounded-lg border border-base-200 bg-base-100 p-4 text-left duration-200 hover:border-base-700 hover:bg-base-50 dark:border-base-700 dark:bg-base-900 dark:hover:border-base-100 dark:hover:bg-base-900 lg:h-32 xl:max-w-[350px]">
                     <div className="flex flex-col">
                       <span className="text-base font-medium text-base-700 group-hover:text-base-700 dark:text-base-200 dark:group-hover:text-base-100">
                         {item.label}
@@ -216,7 +216,7 @@ const Main = ({ user }) => {
                         {item.desc}
                       </span>
                     </div>
-                    <div className="flex justify-end">
+                    <div className="hidden justify-end lg:flex">
                       <Icon
                         name={'FiChevronRight'}
                         className="text-base-300 dark:text-base-400"
