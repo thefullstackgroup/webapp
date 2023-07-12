@@ -46,7 +46,7 @@ const Main = ({ user }) => {
               <h1 className="flex justify-center bg-clip-text py-2 text-center font-manrope text-5xl font-extrabold tracking-tighter text-base-900 dark:text-base-200 md:text-7xl lg:text-7xl">
                 Team Profiles
               </h1>
-              <div className="absolute top-1 -right-10">
+              <div className="absolute -top-2 -right-6 lg:top-1 lg:-right-10">
                 <span className="rounded-xl border border-green-500 bg-base-50 py-0.5 px-1.5 text-xs text-green-500 dark:bg-base-900">
                   Beta
                 </span>
