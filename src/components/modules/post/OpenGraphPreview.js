@@ -47,7 +47,7 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
   if (loading)
     return (
       <div
-        className={`flex h-36 w-full items-center justify-center overflow-hidden bg-base-900 text-center text-xs text-base-400`}
+        className={`flex h-36 w-full items-center justify-center overflow-hidden bg-base-800 text-center text-xs text-base-400`}
       >
         <Loader />
       </div>
@@ -67,7 +67,7 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
         </div>
       ) : (
         <div
-          className={`w-full overflow-hidden bg-base-600/60 sm:bg-base-900 ${sizeHeight}`}
+          className={`w-full overflow-hidden bg-base-900 dark:bg-base-700 ${sizeHeight}`}
         >
           <a href={data?.requestUrl} target="_blank" rel="noreferrer">
             {data?.ogImage && (
@@ -93,17 +93,17 @@ const OpenGraphPreview = ({ link, height, hideDescription = false }) => {
               </div>
             )}
             {!data?.ogImage && (
-              <div className="flex h-20 w-full items-center justify-center bg-base-700/50 text-center sm:h-44">
+              <div className="flex h-20 w-full items-center justify-center bg-base-200 text-center dark:bg-base-800 sm:h-44">
                 <p className="text-sm text-base-500">No preview image</p>
               </div>
             )}
             {!hideDescription && (
-              <div className="w-full px-4 py-4 text-sm font-normal text-white dark:bg-base-700/70">
+              <div className="w-full p-4 text-sm font-normal text-white dark:bg-base-700/70">
                 <div className="flex items-center space-x-2">
-                  <div className="truncate whitespace-normal text-base font-bold">
+                  <div className="text-base font-bold line-clamp-1">
                     {data?.ogTitle}
                   </div>
-                  <Icon name="FiExternalLink" className="h-4 w-4" />
+                  <Icon name="FiExternalLink" className="h-4 w-4 shrink-0" />
                 </div>
                 <div className="dark:text-base-200">{data?.ogDescription}</div>
                 {/* <div className="hidden items-center space-x-1 truncate dark:text-base-200 md:flex">

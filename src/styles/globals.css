@@ -284,6 +284,7 @@
   .dark .dark\:prose-dark a {
     color: #0070f3;
     text-decoration: none;
+    overflow-wrap: anywhere;
   }
   .dark .dark\:prose-dark a:hover {
     color: #0070f3;
