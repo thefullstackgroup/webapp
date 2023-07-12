@@ -61,7 +61,7 @@ const Main = ({ user }) => {
     <div className="min-h-screen space-y-8 px-4 pt-6">
       {!user && (
         <div className="rounded-lg bg-transparent dark:bg-transparent">
-          <div className="mx-auto max-w-4xl py-14 text-center">
+          <div className="mx-auto max-w-4xl py-10 text-center lg:py-14">
             <div className="relative space-y-10">
               <h2 className="font-manrope text-6xl font-extrabold tracking-tighter text-base-800 dark:text-base-200 xl:text-8xl">
                 Unleash your{' '}
@@ -74,7 +74,7 @@ const Main = ({ user }) => {
                 The Full Stack is an open source platform for developers to
                 share projects and grow your developer network.
               </h4>
-              <div className="flex flex-col items-center justify-center space-y-4 xl:flex-row xl:space-y-0 xl:space-x-4">
+              <div className="flex flex-col items-center justify-center space-y-2 xl:flex-row xl:space-y-0 xl:space-x-4">
                 <button
                   className="btn btn-secondary btn-with-icon rounded-full py-2"
                   onClick={signInWithGitHub}

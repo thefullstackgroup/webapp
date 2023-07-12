@@ -62,11 +62,11 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
               <Dialog.Panel
                 className={`relative h-full w-full overflow-hidden px-1 py-0 text-left shadow-xl dark:border-base-600`}
               >
-                <div className="relative flex min-h-screen flex-col justify-between overflow-scroll">
+                <div className="relative flex min-h-screen flex-col overflow-scroll">
                   <div>
                     <div className="flex items-center justify-between px-4 py-4">
                       <Link href="/">
-                        <div className="h-7 w-7 cursor-pointer overflow-hidden">
+                        <div className="h-10 w-10 cursor-pointer overflow-hidden">
                           <Image
                             src={
                               currentTheme === 'dark'
@@ -80,12 +80,16 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                           />
                         </div>
                       </Link>
-                      <button onClick={() => setShow(false)} aria-label="Close">
+                      <button
+                        className="btn btn-ghost px-0"
+                        onClick={() => setShow(false)}
+                        aria-label="Close"
+                      >
                         <Icon name={'FiX'} className="h-8 w-8" />
                       </button>
                     </div>
-                    <div className="no-scrollbar h-[68vh] space-y-4 overflow-hidden overflow-y-scroll px-4 py-4">
-                      <div className="flex flex-col space-y-3 ">
+                    <div className="space-y-4 px-4 py-4">
+                      <div className="no-scrollbar flex h-[55vh] flex-col space-y-3 overflow-y-scroll">
                         {navigation.map((item, index) => (
                           <Disclosure key={index}>
                             {(panel) => {
@@ -95,7 +99,7 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                                   {item.label !== 'Teams' &&
                                     item.label !== 'Developers' && (
                                       <Disclosure.Button
-                                        className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
+                                        className="flex items-center justify-between pr-2 text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
                                         onClick={() => {
                                           if (!open) {
                                             close();
@@ -129,13 +133,13 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                                         enterTo="opacity-100"
                                       >
                                         <Disclosure.Panel className="text-base-600 dark:text-base-200">
-                                          <ul className="mb-2 ml-2 space-y-2">
+                                          <ul className="mb-2 ml-4 space-y-2">
                                             {item.childrenOne.map(
                                               (navItem, index) => (
                                                 <li key={index}>
                                                   <Link href={navItem.href}>
                                                     <button
-                                                      className="btn btn-with-icon btn-ghost w-full px-0"
+                                                      className="btn btn-with-icon btn-ghost w-full px-0 text-base-600 dark:text-base-200"
                                                       onClick={() =>
                                                         setShow(false)
                                                       }
@@ -156,7 +160,7 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                                                 <li key={index}>
                                                   <Link href={navItem.href}>
                                                     <button
-                                                      className="btn btn-with-icon btn-ghost w-full px-0"
+                                                      className="btn btn-with-icon btn-ghost w-full px-0 text-base-600 dark:text-base-200"
                                                       onClick={() =>
                                                         setShow(false)
                                                       }
