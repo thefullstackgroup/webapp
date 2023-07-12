@@ -28,6 +28,7 @@ const handler = async (req, res, AuthUser) => {
         profilePicUrl: response.data.profilePicUrl,
         currentTitle: response.data.currentTitle,
       };
+
       res.status(response.status).json(obj);
     })
     .catch((error) => {

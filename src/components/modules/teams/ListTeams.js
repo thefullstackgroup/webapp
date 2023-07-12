@@ -34,7 +34,7 @@ const ListTeams = () => {
 
   return (
     <div className="mb-20 space-y-6 xl:max-w-3xl 2xl:xl:max-w-full">
-      {!teams && (
+      {!data && (
         <div className="grid grid-cols-4 gap-6">
           {[...Array(16)].map((elementInArray, index) => (
             <div className="h-[350px] w-full" key={index}>

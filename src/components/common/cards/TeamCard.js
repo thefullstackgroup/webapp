@@ -7,8 +7,8 @@ import { useRouter } from 'next/router';
 
 const TeamCard = ({ team }) => {
   const router = useRouter();
-  // const url = `${process.env.BASEURL}/api/profile/getUser?userId=${team.ownerId}`;
-  // const { data: teamOwner } = useSWR(url, fetcher);
+  const url = `${process.env.BASEURL}/api/profile/getUser?userId=${team?.ownerId}`;
+  const { data: teamOwner } = useSWR(url, fetcher);
 
   const jobsUrl = `${process.env.BASEURL}/api/jobs/getByTeam?teamId=${team.id}`;
   const { data: teamJobs } = useSWR(jobsUrl, fetcher);
@@ -25,8 +25,8 @@ const TeamCard = ({ team }) => {
     <div className="relative w-full">
       <button
         className={
-          'box box-link group relative flex h-full w-full text-left ' +
-          (team.status === 'ACTIVE' && 'cursor-not-allowed')
+          'box group relative flex h-full w-full text-left ' +
+          (team.status === 'ACTIVE' ? 'box-link' : 'cursor-not-allowed')
         }
         onClick={() => handleGoToTeam(team.status, team.id)}
       >
@@ -60,27 +60,21 @@ const TeamCard = ({ team }) => {
                 </div>
               ))}
             </div>
-            {/* {teamOwner && (
-                <div className="my-1 flex items-center space-x-2 text-sm font-medium text-base-400">
-                  {teamOwner}
-                  <Avatar
-                    image={teamOwner?.profilePicUrl}
-                    dimensions="h-6 w-6"
-                  />
+            {teamOwner && (
+              <div className="my-1 flex items-center space-x-2 text-sm font-medium text-base-400">
+                <Avatar image={teamOwner?.profilePicUrl} dimensions="h-6 w-6" />
 
-                  <p className="text-base-200">
-                    {teamOwner?.name}{' '}
-                    {team?.membersIds.length > 0 && (
-                      <span className="font-normal text-base-400">
-                        and {team?.membersIds.length} other{' '}
-                        {team?.membersIds.length == 1
-                          ? 'teammate'
-                          : 'teammates'}
-                      </span>
-                    )}
-                  </p>
-                </div>
-              )} */}
+                <p className="text-base-200">
+                  {teamOwner?.name}{' '}
+                  {team?.membersIds.length > 0 && (
+                    <span className="font-normal text-base-400">
+                      and {team?.membersIds.length} other{' '}
+                      {team?.membersIds.length == 1 ? 'teammate' : 'teammates'}
+                    </span>
+                  )}
+                </p>
+              </div>
+            )}
             <div className="no-scrollbar flex flex-wrap items-center overflow-x-scroll py-2">
               {team.techStack?.map((stack, index) => (
                 <TechBadge tech={stack} key={index} size={'xs'} />

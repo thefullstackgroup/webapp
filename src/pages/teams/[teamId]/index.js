@@ -19,7 +19,7 @@ const TeamProfile = ({ user, teamId }) => {
   );
 };
 
-export default withAuthUser()(TeamProfile);
+export default TeamProfile;
 
 export const getServerSideProps = withAuthUserTokenSSR()(
   async ({ AuthUser, req, res, params }) => {

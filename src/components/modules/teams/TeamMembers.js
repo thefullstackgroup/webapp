@@ -4,9 +4,9 @@ import Link from 'next/link';
 const TeamMembers = ({ title, teamOwner, teamMembers }) => {
   return (
     <div className="space-y-2">
-      <p className="font-semibold text-white">{title}</p>
-      <div className="divide-base-600/50 rounded-md border border-base-600 bg-base-800 px-5 py-1">
-        <div className="mt-4 flex flex-wrap items-center">
+      <h3 className="font-semibold">{title}</h3>
+      <div className="box">
+        <div className="mt-2 flex flex-wrap items-center">
           {teamOwner && (
             <div className="mb-4 flex items-center space-x-3 pr-4 sm:w-1/2">
               <Avatar
@@ -19,7 +19,7 @@ const TeamMembers = ({ title, teamOwner, teamMembers }) => {
                 <div className="cursor-pointer">
                   <h4 className="font-semibold">
                     {teamOwner.name}
-                    <span className="relative -top-2 ml-2 rounded-full bg-base-600 px-2 py-1 text-[0.6em]">
+                    <span className="relative -top-2 ml-2 rounded-full bg-base-200 px-2 py-1 text-[0.6em] dark:bg-base-600">
                       Team Owner
                     </span>
                   </h4>

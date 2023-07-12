@@ -21,8 +21,8 @@ const TeamProfile = ({ user, slug }) => {
   const teamUrl = `${process.env.BASEURL}/api/teams/getTeam?teamId=${slug}`;
   const { data: team } = useSWR(teamUrl, fetcher);
 
-  // const teamOwnerUrl = `${process.env.BASEURL}/api/profile/getUser?userId=${team?.ownerId}`;
-  // const { data: teamOwner } = useSWR(teamOwnerUrl, fetcher);
+  const teamOwnerUrl = `${process.env.BASEURL}/api/profile/getUser?userId=${team?.ownerId}`;
+  const { data: teamOwner } = useSWR(teamOwnerUrl, fetcher);
 
   const membersIds = team
     ? team.membersIds?.map((membersIds) => membersIds).join(',') || null
@@ -99,17 +99,17 @@ const TeamProfile = ({ user, slug }) => {
                       ))}
                     </div>
 
-                    {/* {team && teamOwner && (
+                    {team && teamOwner && (
                       <OpenRoles teamId={team.id} teamOwner={teamOwner} />
-                    )} */}
+                    )}
 
-                    {/* {team && teamMembers && (
+                    {team && teamMembers && (
                       <TeamMembers
                         teamMembers={teamMembers}
                         teamOwner={teamOwner}
                         title="Who's on the team?"
                       />
-                    )} */}
+                    )}
 
                     <div className="space-y-2">
                       <h3 className="font-semibold">
@@ -303,7 +303,7 @@ const TeamProfile = ({ user, slug }) => {
                         </>
                       )}
 
-                      {/* {team && teamMembers && (
+                      {team && teamMembers && (
                         <div className="col-span-5 mt-2 flex space-x-2">
                           <Avatar
                             href={`/${teamOwner?.displayName}`}
@@ -321,7 +321,7 @@ const TeamProfile = ({ user, slug }) => {
                             </div>
                           ))}
                         </div>
-                      )} */}
+                      )}
                     </div>
 
                     {team.ownerId === user?.userId && (
@@ -355,6 +355,7 @@ const TeamProfile = ({ user, slug }) => {
           setShow={setShowImageOne}
           title={team?.name}
           dimensions={'max-w-5xl'}
+          edge={true}
         >
           <Image
             src={team?.imagesGallery[0]}
@@ -375,6 +376,7 @@ const TeamProfile = ({ user, slug }) => {
           setShow={setShowImageTwo}
           title={team?.name}
           dimensions={'max-w-5xl'}
+          edge={true}
         >
           <Image
             src={team?.imagesGallery[1]}
@@ -395,6 +397,7 @@ const TeamProfile = ({ user, slug }) => {
           setShow={setShowImageThree}
           title={team?.name}
           dimensions={'max-w-5xl'}
+          edge={true}
         >
           <Image
             src={team?.imagesGallery[2]}
