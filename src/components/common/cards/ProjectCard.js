@@ -34,7 +34,7 @@ const ProjectCard = ({ project }) => {
                 name={project.projectCreator?.displayName}
                 dimensions="h-5 w-5"
               />
-              <h3 className="pr-4 text-base font-semibold line-clamp-1">
+              <h3 className="pr-4 text-base font-medium line-clamp-1">
                 {project.projectName}
               </h3>
             </div>

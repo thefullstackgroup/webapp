@@ -62,108 +62,144 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
               <Dialog.Panel
                 className={`relative h-full w-full overflow-hidden px-1 py-0 text-left shadow-xl dark:border-base-600`}
               >
-                <div className="relative flex min-h-screen flex-col overflow-scroll">
-                  <div className="flex items-center justify-between px-4 py-4">
-                    <Link href="/">
-                      <div className="h-7 w-7 cursor-pointer overflow-hidden">
-                        <Image
-                          src={
-                            currentTheme === 'dark'
-                              ? '/assets/icons/thefullstack-dark.webp'
-                              : '/assets/icons/thefullstack-light.webp'
-                          }
-                          className="object-contain"
-                          alt="The Full Stack"
-                          width={200}
-                          height={200}
-                        />
-                      </div>
-                    </Link>
-                    <button onClick={() => setShow(false)} aria-label="Close">
-                      <Icon name={'FiX'} className="h-8 w-8" />
-                    </button>
-                  </div>
-                  <div className="no-scrollbar h-[68vh] space-y-4 overflow-hidden overflow-y-scroll px-4 py-4">
-                    <div className="flex flex-col space-y-3 ">
-                      {navigation.map((item, index) => (
-                        <Disclosure key={index}>
-                          {(panel) => {
-                            const { open, close } = panel;
-                            return (
-                              <>
-                                <Disclosure.Button
-                                  className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
-                                  onClick={() => {
-                                    if (!open) {
-                                      close();
-                                    }
-                                    togglePanels({ ...panel, key: index });
-                                  }}
-                                >
-                                  <span>{item.label}</span>
+                <div className="relative flex min-h-screen flex-col justify-between overflow-scroll">
+                  <div>
+                    <div className="flex items-center justify-between px-4 py-4">
+                      <Link href="/">
+                        <div className="h-7 w-7 cursor-pointer overflow-hidden">
+                          <Image
+                            src={
+                              currentTheme === 'dark'
+                                ? '/assets/icons/thefullstack-dark.webp'
+                                : '/assets/icons/thefullstack-light.webp'
+                            }
+                            className="object-contain"
+                            alt="The Full Stack"
+                            width={200}
+                            height={200}
+                          />
+                        </div>
+                      </Link>
+                      <button onClick={() => setShow(false)} aria-label="Close">
+                        <Icon name={'FiX'} className="h-8 w-8" />
+                      </button>
+                    </div>
+                    <div className="no-scrollbar h-[68vh] space-y-4 overflow-hidden overflow-y-scroll px-4 py-4">
+                      <div className="flex flex-col space-y-3 ">
+                        {navigation.map((item, index) => (
+                          <Disclosure key={index}>
+                            {(panel) => {
+                              const { open, close } = panel;
+                              return (
+                                <>
                                   {item.label !== 'Teams' &&
                                     item.label !== 'Developers' && (
-                                      <Icon
-                                        name="FiChevronDown"
-                                        className={
-                                          'h-5 w-5 text-base-600 dark:text-base-200 ' +
-                                          (open
-                                            ? 'rotate-180 transform duration-200'
-                                            : '')
-                                        }
-                                      />
+                                      <Disclosure.Button
+                                        className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
+                                        onClick={() => {
+                                          if (!open) {
+                                            close();
+                                          }
+                                          togglePanels({
+                                            ...panel,
+                                            key: index,
+                                          });
+                                        }}
+                                      >
+                                        <span>{item.label}</span>
+                                        {item.label !== 'Teams' &&
+                                          item.label !== 'Developers' && (
+                                            <Icon
+                                              name="FiChevronDown"
+                                              className={
+                                                'h-5 w-5 text-base-600 dark:text-base-200 ' +
+                                                (open
+                                                  ? 'rotate-180 transform duration-200'
+                                                  : '')
+                                              }
+                                            />
+                                          )}
+                                      </Disclosure.Button>
                                     )}
-                                </Disclosure.Button>
-                                {item.label !== 'Teams' &&
-                                  item.label !== 'Developers' && (
-                                    <Transition
-                                      enter="transition duration-300 ease-out"
-                                      enterFrom="opacity-0"
-                                      enterTo="opacity-100"
-                                    >
-                                      <Disclosure.Panel className="text-base-600 dark:text-base-200">
-                                        <ul className="mb-2 ml-2 space-y-2">
-                                          {item.childrenOne.map(
-                                            (navItem, index) => (
-                                              <li key={index}>
-                                                <Link href={navItem.href}>
-                                                  <button className="btn btn-with-icon btn-ghost px-0">
-                                                    <Icon name={navItem.icon} />
-                                                    <span>{navItem.label}</span>
-                                                  </button>
-                                                </Link>
-                                              </li>
-                                            )
-                                          )}
-                                          {item.childrenTwo.map(
-                                            (navItem, index) => (
-                                              <li key={index}>
-                                                <Link href={navItem.href}>
-                                                  <button className="btn btn-with-icon btn-ghost px-0">
-                                                    <Icon name={navItem.icon} />
-                                                    <span>{navItem.label}</span>
-                                                  </button>
-                                                </Link>
-                                              </li>
-                                            )
-                                          )}
-                                        </ul>
-                                      </Disclosure.Panel>
-                                    </Transition>
-                                  )}
-                              </>
-                            );
-                          }}
-                        </Disclosure>
-                      ))}
-                      <Link href={'/search'}>
-                        <button className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200">
-                          <span>Search</span>
-                        </button>
-                      </Link>
+                                  {item.label !== 'Teams' &&
+                                    item.label !== 'Developers' && (
+                                      <Transition
+                                        enter="transition duration-300 ease-out"
+                                        enterFrom="opacity-0"
+                                        enterTo="opacity-100"
+                                      >
+                                        <Disclosure.Panel className="text-base-600 dark:text-base-200">
+                                          <ul className="mb-2 ml-2 space-y-2">
+                                            {item.childrenOne.map(
+                                              (navItem, index) => (
+                                                <li key={index}>
+                                                  <Link href={navItem.href}>
+                                                    <button className="btn btn-with-icon btn-ghost px-0">
+                                                      <Icon
+                                                        name={navItem.icon}
+                                                      />
+                                                      <span>
+                                                        {navItem.label}
+                                                      </span>
+                                                    </button>
+                                                  </Link>
+                                                </li>
+                                              )
+                                            )}
+                                            {item.childrenTwo.map(
+                                              (navItem, index) => (
+                                                <li key={index}>
+                                                  <Link href={navItem.href}>
+                                                    <button className="btn btn-with-icon btn-ghost px-0">
+                                                      <Icon
+                                                        name={navItem.icon}
+                                                      />
+                                                      <span>
+                                                        {navItem.label}
+                                                      </span>
+                                                    </button>
+                                                  </Link>
+                                                </li>
+                                              )
+                                            )}
+                                          </ul>
+                                        </Disclosure.Panel>
+                                      </Transition>
+                                    )}
+                                </>
+                              );
+                            }}
+                          </Disclosure>
+                        ))}
+                        <Link href={'/for/developers'}>
+                          <button
+                            className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
+                            onClick={() => setShow(false)}
+                          >
+                            <span>Developers</span>
+                          </button>
+                        </Link>
+                        <Link href={'/teams'}>
+                          <button
+                            className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
+                            onClick={() => setShow(false)}
+                          >
+                            <span>Teams</span>
+                          </button>
+                        </Link>
+                        <Link href={'/search'}>
+                          <button
+                            className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
+                            onClick={() => setShow(false)}
+                          >
+                            <span>Search</span>
+                          </button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                  <div className="sticky bottom-10 left-0 w-full px-4 pt-8">
+
+                  <div className="w-full px-4 py-8">
                     {user ? (
                       <div className="flex justify-between">
                         <Link href={`/${user.displayName}`}>

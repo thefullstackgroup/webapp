@@ -8,14 +8,14 @@ import Icon from 'components/common/elements/Icon';
 const SuggestedUserCard = (props) => {
   return (
     <>
-      <div className="mx-auto sm:h-28 sm:w-24">
+      <div className="mx-auto sm:h-28 sm:w-28">
         {props.project.projectCreator.profilePicUrl && (
           <Avatar
             userId={props.project.userId}
             name={props.project.projectCreator.name}
             href={`/${props.project.projectCreator.displayName}`}
             image={props.project.projectCreator.profilePicUrl}
-            dimensions="h-20 w-20 sm:h-24 sm:w-24 opacity-100 sm:group-hover:ring-4 group-hover:ring-primary-500 duration-200"
+            dimensions="h-20 w-20 sm:h-28 sm:w-28 opacity-100 sm:group-hover:ring-4 group-hover:ring-primary-500 duration-200"
           />
         )}
       </div>
@@ -86,11 +86,14 @@ const Discover = ({ user, count, search }) => {
         )}
 
         {suggestedUsers && (
-          <div className="no-scrollbar flex items-center gap-4 overflow-y-visible overflow-x-scroll px-4 pt-2 md:gap-8 md:px-1">
+          <div className="no-scrollbar flex items-center gap-4 overflow-y-visible overflow-x-scroll px-4 pt-2 md:gap-4 md:px-1">
             {suggestedUsers?.map(
               (project, index) =>
                 user?.userId !== project.userId && (
-                  <div className="h-32 w-24 sm:h-auto sm:w-24" key={index}>
+                  <div
+                    className="h-32 w-24 space-y-2 sm:h-auto sm:w-28"
+                    key={index}
+                  >
                     <SuggestedUserCard project={project} user={user} />
                   </div>
                 )

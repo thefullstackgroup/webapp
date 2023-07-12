@@ -59,16 +59,17 @@ const Main = ({ user }) => {
       {!user && (
         <div className="rounded-lg bg-transparent dark:bg-transparent">
           <div className="mx-auto max-w-4xl py-14 text-center">
-            <div className="relative space-y-10 px-4">
-              <h2 className="font-manrope text-3xl font-extrabold tracking-tighter xl:text-6xl">
+            <div className="relative space-y-10">
+              <h2 className="font-manrope text-6xl font-extrabold tracking-tighter text-base-800 dark:text-base-200 xl:text-8xl">
+                Unleash your{' '}
                 <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-blue-600 bg-clip-text text-transparent">
-                  Discover and connect
+                  Developer
                 </span>{' '}
-                with developers sharing projects.
+                projects.
               </h2>
-              <h4 className="mx-auto max-w-3xl text-base font-normal text-base-400 dark:text-base-400 xl:text-xl">
+              <h4 className="mx-auto max-w-2xl text-base font-light tracking-tight text-base-500 dark:text-base-400 xl:text-2xl">
                 The Full Stack is an open source platform for developers to
-                share projects and grow a network of value.
+                share projects and grow your developer network.
               </h4>
               <div className="flex flex-col items-center justify-center space-y-4 xl:flex-row xl:space-y-0 xl:space-x-4">
                 <button
