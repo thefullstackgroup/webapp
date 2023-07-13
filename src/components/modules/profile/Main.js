@@ -39,7 +39,7 @@ const GitHubCalendarDarkTheme = {
 };
 
 const Main = ({ profile, myProfile }) => {
-  const { systemTheme, theme, setTheme } = useTheme();
+  const { systemTheme, theme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const [tab, setTab] = useState(0);
   const [createTeamPanel, setCreateTeamPanel] = useState(false);
@@ -49,8 +49,6 @@ const Main = ({ profile, myProfile }) => {
   const [showEditProfile, setShowEditProfile] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [isConnectionPending, setIsConnectionPending] = useState(false);
-
-  console.log(myProfile);
 
   const checkIfConnected = async () => {
     axios
