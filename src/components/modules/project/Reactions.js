@@ -15,11 +15,11 @@ const Reactions = ({ project, user }) => {
 
   return (
     <>
-      <div className="no-scrollbar sticky hidden h-full w-full flex-1 flex-col overflow-scroll overscroll-contain bg-base-50 dark:bg-base-900 lg:flex">
+      <div className="no-scrollbar sticky h-full w-full flex-1 flex-col overflow-scroll overscroll-contain bg-base-50 dark:bg-base-900 lg:flex">
         {/* Profile */}
-        <div className="sticky top-0 z-10 w-full">
+        <div className="top-0 z-10 hidden w-full sm:sticky">
           <div className="space-y-4 border-b border-base-200/50 bg-base-50 px-6 pt-4 pb-4 dark:border-base-700 dark:bg-base-900">
-            <div className="flex lg:flex-col lg:space-y-4 2xl:flex-row 2xl:items-center 2xl:justify-between 2xl:space-y-0">
+            <div className="flex flex-col space-y-4 2xl:flex-row 2xl:items-center 2xl:justify-between 2xl:space-y-0">
               <div className="flex items-center space-x-3">
                 <Avatar
                   href={`/${project?.projectCreator?.displayName}`}
@@ -61,12 +61,45 @@ const Reactions = ({ project, user }) => {
           </div>
         </div>
 
+        {/* Post comment */}
+        {user ? (
+          <div className="w-full bg-base-50 px-4 pt-4 dark:bg-base-900 sm:hidden">
+            <div className="flex items-center pb-6 sm:space-x-2">
+              <Avatar
+                image={user.profilePicUrl}
+                name={user.displayName}
+                dimensions="h-10 w-10 hidden md:block"
+              />
+              <input
+                type="text"
+                className="text-input"
+                placeholder="Add your comment"
+                readOnly
+                onClick={() => setShowNewComment(true)}
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="w-full bg-base-50 px-8 pt-4 dark:bg-base-900">
+            <div className="flex items-center pb-6 sm:space-x-2">
+              <Link href="/signup">
+                <input
+                  type="text"
+                  className="text-input"
+                  placeholder="Sign in to comment"
+                  readOnly
+                />
+              </Link>
+            </div>
+          </div>
+        )}
+
         {/* Comments */}
         <div className="no-scrollbar relative top-0 h-[78vh] overflow-y-scroll overscroll-contain px-4 pb-4">
           <ListComments user={user} post={project} />
         </div>
 
-        <div className="bg-base-50 px-6 pt-3 dark:bg-base-900">
+        <div className="hidden bg-base-50 px-6 pt-3 dark:bg-base-900 sm:block">
           <Actions
             user={user}
             project={project}
@@ -77,7 +110,7 @@ const Reactions = ({ project, user }) => {
 
         {/* Post comment */}
         {user ? (
-          <div className="w-full bg-base-50 px-4 pt-4 dark:bg-base-900">
+          <div className="hidden w-full bg-base-50 px-4 pt-4 dark:bg-base-900 sm:block">
             <div className="flex items-center pb-6 sm:space-x-2">
               <Avatar
                 image={user.profilePicUrl}
@@ -108,20 +141,6 @@ const Reactions = ({ project, user }) => {
           </div>
         )}
       </div>
-
-      {isMobile && user && (
-        <div className="fixed bottom-12 left-0 z-10 w-full lg:hidden">
-          <div className="mx-auto flex w-min items-center space-x-6 rounded-full border border-base-600 bg-base-800/90 py-2 px-4">
-            <Actions
-              user={user}
-              project={project}
-              isLiked={project?.likedByCurrentUser}
-              nComments={project?.numberOfComments}
-              setShowCommentsModal={setShowCommentsModal}
-            />
-          </div>
-        </div>
-      )}
 
       {isMobile && showCommentsModal && (
         <div className="absolute">

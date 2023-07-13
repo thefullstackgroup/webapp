@@ -68,7 +68,7 @@ const Discover = ({ user, count, search }) => {
       <div className="w-full space-y-3">
         <div className="flex items-end space-x-2">
           <h3 className="font-mono text-base font-medium text-base-700 dark:text-base-200">
-            Follow trending builders
+            Who to follow
           </h3>
           <Icon name="FiCornerRightDown" className="h-5 w-5" />
         </div>

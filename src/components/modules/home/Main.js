@@ -105,7 +105,7 @@ const Main = ({ user }) => {
       </div>
 
       <ProjectCarousel
-        title="Popular projects with the community"
+        title="Popular projects"
         sort={'mostpopular'}
         range={365}
         count={15}
@@ -113,7 +113,7 @@ const Main = ({ user }) => {
       />
 
       <ProjectCarousel
-        title="Recently added projects"
+        title="Recently added"
         sort={'newest'}
         range={30}
         count={15}
@@ -121,7 +121,7 @@ const Main = ({ user }) => {
       />
 
       <ProjectCarousel
-        title="Projects open to collaboration"
+        title="Open to collaboration"
         sort={'mostpopular'}
         category={{
           label: 'Open to Collaboration',

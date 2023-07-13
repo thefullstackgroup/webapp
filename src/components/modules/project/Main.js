@@ -88,15 +88,15 @@ const Main = ({ user, project, author }) => {
             <div className="flex w-full items-end justify-center text-center sm:items-center sm:p-0">
               <Transition.Child
                 enter="ease-out duration-300"
-                enterFrom="translate-x-full"
-                enterTo="translate-x-0"
+                enterFrom="translate-y-full sm:translate-x-full sm:translate-y-0"
+                enterTo="translate-y-16 sm:translate-x-0 sm:translate-y-0"
                 leave="ease-in duration-200"
-                leaveFrom="translate-x-0"
-                leaveTo="translate-x-full"
+                leaveFrom="translate-y-16 sm:translate-x-0 sm:translate-y-0"
+                leaveTo="translate-y-full sm:translate-x-full sm:translate-y-0"
                 className={`fixed right-0 top-0 h-screen w-full max-w-lg`}
               >
                 <Dialog.Panel
-                  className={`relative h-full w-full overflow-hidden border-l bg-white text-left shadow-xl dark:border-base-600 dark:bg-base-900`}
+                  className={`relative h-full w-full overflow-hidden border-0 bg-white text-left shadow-xl dark:border-base-600 dark:bg-base-900 sm:border-l`}
                 >
                   <Reactions
                     project={project}

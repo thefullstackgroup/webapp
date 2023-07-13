@@ -10,7 +10,7 @@ const Topics = ({ topic }) => {
         <Icon name="FiCornerRightDown" />
       </div>
 
-      <div className="grid w-56 grid-cols-1 gap-1">
+      <div className="sm:w-40 lg:w-56">
         <Link href={`/hangout`} passHref>
           <a
             href="#"

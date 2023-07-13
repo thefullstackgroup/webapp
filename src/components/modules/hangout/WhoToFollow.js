@@ -29,7 +29,7 @@ const WhoToFollow = ({ user }) => {
 
   return (
     <div className="rounded-md px-6">
-      <ul className="w-full space-y-5 border-0 border-base-200 pl-8 pt-4 dark:border-base-700 dark:bg-transparent">
+      <ul className="w-full space-y-5 border-0 border-base-200 pt-4 dark:border-base-700 dark:bg-transparent xl:pl-7">
         <li className="flex items-end space-x-2">
           <span className="font-mono text-lg font-medium">Who to follow</span>
           <Icon name="FiCornerRightDown" />
@@ -39,10 +39,10 @@ const WhoToFollow = ({ user }) => {
             (project, index) =>
               user?.userId !== project.userId && (
                 <li
-                  className="flex items-center justify-between gap-4"
+                  className="grid grid-cols-5 items-center justify-between gap-4"
                   key={index}
                 >
-                  <div className="group flex cursor-pointer items-center gap-3">
+                  <div className="group col-span-4 flex cursor-pointer items-center gap-2">
                     {project.projectCreator.profilePicUrl && (
                       <Avatar
                         userId={project.userId}
@@ -63,11 +63,13 @@ const WhoToFollow = ({ user }) => {
                       </div>
                     </Link>
                   </div>
-                  <Link href={`/${project.projectCreator.displayName}`}>
-                    <button className="btn btn-secondary btn-sm rounded-full">
-                      Follow
-                    </button>
-                  </Link>
+                  <div className="col-span-1 hidden 2xl:block">
+                    <Link href={`/${project.projectCreator.displayName}`}>
+                      <button className="btn btn-secondary btn-sm rounded-full">
+                        Follow
+                      </button>
+                    </Link>
+                  </div>
                 </li>
               )
           )}
