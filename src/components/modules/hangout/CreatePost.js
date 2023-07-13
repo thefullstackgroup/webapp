@@ -157,7 +157,7 @@ const CreatePost = ({ user }) => {
 
   return (
     <>
-      <div className="box mx-0 mb-6 flex rounded-none border-0 border-t border-b py-4 px-4 lg:rounded-lg lg:border">
+      <div className="box mx-0 mb-6 flex rounded-none border-0 border-b py-4 px-4 lg:rounded-lg lg:border lg:border-t">
         <div className="relative w-full">
           <div className="text-lg text-base-500">
             <div className="mb-6 flex items-start space-x-4">

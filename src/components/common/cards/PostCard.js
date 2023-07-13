@@ -41,7 +41,7 @@ const Post = (props) => {
 
   return (
     <>
-      <div className="w-full cursor-pointer border-t border-b bg-base-50 duration-200 dark:border-base-700 dark:bg-black lg:rounded-lg lg:border lg:border-base-200 lg:hover:border-base-300/50 dark:lg:hover:border-base-500">
+      <div className="w-full cursor-pointer border-t border-b bg-base-50 duration-200 dark:border-base-700/70 dark:bg-black lg:rounded-lg lg:border lg:border-base-200 lg:hover:border-base-300/50 dark:lg:hover:border-base-500">
         <article>
           <div className="space-y-4">
             <div className="flex items-start justify-between px-4 pt-3">
@@ -153,7 +153,7 @@ const Post = (props) => {
                 )}
               </button>
 
-              <div className="mt-2 flex w-full flex-wrap px-4 pb-2">
+              <div className="mt-2 flex w-full flex-wrap px-4">
                 {props.project?.projectTechStack?.map((stack, index) => (
                   <div key={index}>
                     {stack !== 'Tech' &&

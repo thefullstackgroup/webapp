@@ -45,7 +45,7 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-base-800/50" />
+          <div className="fixed inset-0 bg-base-800/50 backdrop-blur-sm" />
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 flex justify-center">

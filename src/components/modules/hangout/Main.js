@@ -19,7 +19,7 @@ const Main = ({ user, topic }) => {
             <Topics topic={topic} />
           </div>
         </div>
-        <div className="mt-6 min-h-screen w-full lg:mt-8 lg:w-7/12 lg:max-w-2xl xl:w-6/12">
+        <div className="mt-0 min-h-screen w-full lg:mt-8 lg:w-7/12 lg:max-w-2xl xl:w-6/12">
           {user && <CreatePost user={user} />}
           {!user && (
             <div className="mb-6 rounded-md px-4 lg:px-0">
