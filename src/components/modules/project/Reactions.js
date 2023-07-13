@@ -17,7 +17,7 @@ const Reactions = ({ project, user }) => {
     <>
       <div className="no-scrollbar sticky h-full w-full flex-1 flex-col overflow-scroll overscroll-contain bg-base-50 dark:bg-base-900 lg:flex">
         {/* Profile */}
-        <div className="top-0 z-10 hidden w-full sm:sticky">
+        <div className="top-0 z-10 hidden w-full sm:sticky lg:block">
           <div className="space-y-4 border-b border-base-200/50 bg-base-50 px-6 pt-4 pb-4 dark:border-base-700 dark:bg-base-900">
             <div className="flex flex-col space-y-4 2xl:flex-row 2xl:items-center 2xl:justify-between 2xl:space-y-0">
               <div className="flex items-center space-x-3">
