@@ -27,9 +27,18 @@ export const getServerSideProps = withAuthUserTokenSSR()(
     const accessToken = await AuthUser.getIdToken();
     const userProfile = await getUserProfile(accessToken, null, req, res);
 
+    if (!userProfile || userProfile?.redirect) {
+      return {
+        redirect: {
+          destination: '/login',
+          permanent: false,
+        },
+      };
+    }
+
     return {
       props: {
-        user: userProfile || null,
+        user: userProfile,
         promo: {
           code: 'EARLYADOPTER',
           value: 20,

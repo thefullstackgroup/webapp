@@ -16,7 +16,6 @@ const Page = ({ user, promo }) => {
     user.promosClaimed.includes(promo.code)
   );
 
-  console.log(walletTransactions);
   const getWallet = async () => {
     await axios
       .get(`${process.env.BASEURL}/api/profile/wallet/get`)

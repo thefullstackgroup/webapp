@@ -88,7 +88,7 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                         <Icon name={'FiX'} className="h-8 w-8" />
                       </button>
                     </div>
-                    <div className="no-scrollbar h-[80vh] space-y-4 overflow-y-scroll px-4 py-4">
+                    <div className="no-scrollbar h-[82vh] space-y-4 overflow-y-scroll px-4 py-2">
                       <div className="flex flex-col space-y-3">
                         {navigation.map((item, index) => (
                           <Disclosure key={index}>
@@ -210,38 +210,50 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                           </button>
                         </Link>
                       </div>
-                      <div className="flex flex-col border-t border-base-200 pt-2 dark:border-base-700">
-                        <button
-                          className="btn btn-ghost px-0 text-left font-medium"
-                          onClick={() => setShow(false)}
-                        >
-                          Dashboard
-                        </button>
-                        <button
-                          className="btn btn-ghost px-0 text-left font-medium"
-                          onClick={() => setShow(false)}
-                        >
-                          Network
-                        </button>
-                        <button
-                          className="btn btn-ghost px-0 text-left font-medium"
-                          onClick={() => setShow(false)}
-                        >
-                          Messages
-                        </button>
-                        <button
-                          className="btn btn-ghost px-0 text-left font-medium"
-                          onClick={() => setShow(false)}
-                        >
-                          Wallet
-                        </button>
-                        <button
-                          className="btn btn-ghost px-0 text-left font-medium"
-                          onClick={() => setShow(false)}
-                        >
-                          Invite friends
-                        </button>
-                      </div>
+                      {user && (
+                        <div className="flex flex-col border-t border-base-200 pt-2 dark:border-base-700">
+                          <Link href="/account/dashboard">
+                            <button
+                              className="btn btn-ghost px-0 text-left font-medium"
+                              onClick={() => setShow(false)}
+                            >
+                              Dashboard
+                            </button>
+                          </Link>
+                          <Link href="/account/network">
+                            <button
+                              className="btn btn-ghost px-0 text-left font-medium"
+                              onClick={() => setShow(false)}
+                            >
+                              Network
+                            </button>
+                          </Link>
+                          <Link href="/chat">
+                            <button
+                              className="btn btn-ghost px-0 text-left font-medium"
+                              onClick={() => setShow(false)}
+                            >
+                              Messages
+                            </button>
+                          </Link>
+                          <Link href="/account/wallet">
+                            <button
+                              className="btn btn-ghost px-0 text-left font-medium"
+                              onClick={() => setShow(false)}
+                            >
+                              Wallet
+                            </button>
+                          </Link>
+                          <Link href="/account/profile/invite">
+                            <button
+                              className="btn btn-ghost px-0 text-left font-medium"
+                              onClick={() => setShow(false)}
+                            >
+                              Invite friends
+                            </button>
+                          </Link>
+                        </div>
+                      )}
                       <div>
                         <div className="flex space-x-4">
                           <a
@@ -272,7 +284,7 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                           </button>
                         </div>
 
-                        <div className="w-full py-8">
+                        <div className="w-full py-4">
                           {user ? (
                             <div className="flex justify-between">
                               <Link href={`/${user.displayName}`}>

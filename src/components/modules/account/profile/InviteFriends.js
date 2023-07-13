@@ -12,12 +12,12 @@ const InviteFriends = ({ user }) => {
 
   return (
     <>
-      <div className="page page-4xl my-20">
+      <div className="page page-4xl my-10 lg:my-20">
         <div className="relative mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-4xl">
           <div className="flex justify-between pb-20">
-            <div className="space-y-10 text-center">
+            <div className="space-y-4 text-center lg:space-y-10">
               <Icon name="FiHeart" className="mx-auto h-16 w-16" />
-              <h2 className="font-bold tracking-tighter lg:text-6xl">
+              <h2 className="font-manrope text-4xl font-bold tracking-tighter lg:text-6xl">
                 Invite your friends
               </h2>
               <p>
