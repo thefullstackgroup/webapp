@@ -34,7 +34,7 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
       <Dialog
         as="div"
         className="relative z-50"
-        initialFocus={cancelButtonRef}
+        initialFocus={''}
         onClose={setShow}
       >
         <Transition.Child

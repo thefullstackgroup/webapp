@@ -83,7 +83,7 @@ const Main = ({ profile, myProfile }) => {
 
   return (
     <>
-      <div className="mx-auto mb-20 max-w-screen-lg pt-4">
+      <div className="mx-auto mb-20 max-w-screen-lg">
         <Overview
           profile={profile}
           user={myProfile}

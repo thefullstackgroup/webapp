@@ -29,7 +29,11 @@ const Layout = ({
           setShowLogin={setShowLogin}
         />
         <div
-          className={!fullWidth ? 'mx-auto max-w-screen-2xl lg:px-4' : 'px-0'}
+          className={
+            !fullWidth
+              ? 'mx-auto mt-4 max-w-screen-2xl lg:mt-0 lg:px-4'
+              : 'px-0'
+          }
         >
           {children}
         </div>
