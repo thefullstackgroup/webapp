@@ -65,7 +65,7 @@ const NotificationsPanel = ({ userId }) => {
               ref={notifButtonRef}
               onClick={(e) => setIsVisible(!isVisible)}
             >
-              <Icon name={'FiBell'} />
+              <Icon name={'FiBell'} className={'h-6 w-6'} />
             </button>
             {/* <NotificationIconButton /> */}
             <NotificationFeedPopover

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { IoCodeOutline, IoLogoGithub } from 'react-icons/io5';
 import { CgSpinner } from 'react-icons/cg';
 import Loader from 'components/common/elements/Loader';
+import Icon from 'components/common/elements/Icon';
 
 const ImportFromGitHub = () => {
   const router = useRouter();
@@ -171,15 +172,15 @@ const ImportFromGitHub = () => {
                   <button
                     key={repo.id}
                     className={
-                      'btn btn-secondary flex items-start space-x-4 p-4 text-left ' +
+                      'box box-link flex items-start space-x-4 p-4 text-left ' +
                       (selectedRepo === repo.html_url
-                        ? 'border-green-500 bg-green-600/10'
+                        ? 'border-green-500 bg-green-600/10 hover:border-green-500'
                         : '')
                     }
                     onClick={() => setSelectedRepo(repo.html_url)}
                   >
                     <div>
-                      <IoCodeOutline className="h-8 w-8 text-base-400" />
+                      <Icon name="FiCircle" className="h-8 w-8 text-base-400" />
                     </div>
                     <div className="flex w-4/5 flex-col">
                       <span className="font-medium">{repo.name}</span>
@@ -198,15 +199,18 @@ const ImportFromGitHub = () => {
                     <button
                       key={repo.id}
                       className={
-                        'btn btn-secondary flex items-start space-x-4 p-4 text-left ' +
+                        'box box-link flex items-start space-x-4 p-4 text-left ' +
                         (selectedRepo === repo.html_url
-                          ? 'border-green-500 bg-green-600/10'
+                          ? 'border-green-500 bg-green-600/10 hover:border-green-500'
                           : '')
                       }
                       onClick={() => setSelectedRepo(repo.html_url)}
                     >
                       <div>
-                        <IoCodeOutline className="h-8 w-8 text-base-400" />
+                        <Icon
+                          name="FiCircle"
+                          className="h-8 w-8 text-base-400"
+                        />
                       </div>
                       <div className="flex w-4/5 flex-col">
                         <span className="font-medium">{repo.name}</span>

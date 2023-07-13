@@ -75,7 +75,7 @@ const Insights = ({ projectId, showAvatars = true }) => {
         setShow={setDisplayVoteInsights}
         title="Liked by"
       >
-        <div className="no-scrollbar h-4/5 w-full overflow-x-visible overflow-y-scroll overscroll-contain py-4 sm:h-96">
+        <div className="no-scrollbar h-[92vh] w-full overflow-x-visible overflow-y-scroll overscroll-contain py-4 sm:h-96">
           {votes?.map((profile, index) => (
             <div key={index} className="mb-6 flex items-center space-x-4 px-1">
               <Avatar

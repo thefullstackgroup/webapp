@@ -6,7 +6,7 @@ import fetcher from 'utils/fetcher';
 const ProjectCard = ({ project }) => {
   return (
     <>
-      <div className="grid w-full grid-cols-2 gap-4">
+      <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="col-span-1 flex items-center space-x-4">
           <Link
             href={`/${project.projectCreator.displayName}/project/${project.projectSlug}`}
@@ -24,21 +24,17 @@ const ProjectCard = ({ project }) => {
             <Link
               href={`/${project.projectCreator.displayName}/project/${project.projectSlug}`}
             >
-              <h3>{project.projectName}</h3>
+              <h3 className="leading-5">{project.projectName}</h3>
             </Link>
 
             <div className="flex items-center space-x-2">
               <Link
                 href={`/${project.projectCreator.displayName}/project/${project.projectSlug}`}
               >
-                <button className="btn btn-xs btn-secondary">
-                  View project
-                </button>
+                <button className="btn btn-xs btn-secondary">View</button>
               </Link>
               <Link href={`/post?ref=${project._id}`}>
-                <button className="btn btn-xs btn-secondary">
-                  Edit project
-                </button>
+                <button className="btn btn-xs btn-secondary">Edit</button>
               </Link>
             </div>
           </div>

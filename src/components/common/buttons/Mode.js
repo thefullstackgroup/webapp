@@ -12,7 +12,11 @@ const Mode = () => {
       }
       className="nav-bar nav-bar-icon"
     >
-      {currentTheme === 'dark' ? <Icon name="FiSun" /> : <Icon name="FiMoon" />}
+      {currentTheme === 'dark' ? (
+        <Icon name="FiSun" className={'h-6 w-6'} />
+      ) : (
+        <Icon name="FiMoon" className={'h-6 w-6'} />
+      )}
     </button>
   );
 };

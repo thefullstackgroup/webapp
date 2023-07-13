@@ -45,7 +45,7 @@ const Main = ({ user }) => {
     <>
       <div className="page page-5xl space-y-6">
         <h2>Account settings</h2>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
           {settingsOptions.map((option, index) => (
             <Link href={option.href} key={index}>
               <div className="box box-link space-y-1 pb-4">

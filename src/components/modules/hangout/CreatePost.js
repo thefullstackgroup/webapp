@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import TextareaAutosize from 'react-textarea-autosize';
-import TagTech from 'components/modules/hangout/TagTech';
 import Loader from 'components/common/elements/Loader';
 import { CgSpinner } from 'react-icons/cg';
 import { FiSend } from 'react-icons/fi';
@@ -12,9 +11,10 @@ import TagStack from 'components/common/tags/TagStack';
 import Avatar from 'components/common/elements/Avatar';
 import Icon from 'components/common/elements/Icon';
 import ToolTip from 'components/common/elements/ToolTip';
-import ModalDialog from 'components/common/modals/ModalDialog';
 import TagPostType from 'components/common/tags/TagPostType';
 import { topics } from './constants';
+import ModalAlert from 'components/common/modals/ModalAlert';
+import TagTechStack from './TagTechStack';
 
 const sparkCharCount = 300;
 const initialPollOptions = ['', ''];
@@ -259,7 +259,7 @@ const CreatePost = ({ user }) => {
               </div>
             )}
 
-            <div className="flex items-center">
+            <div className="flex flex-wrap items-center">
               {savedSkills.map((savedSkill, index) => (
                 <button
                   onClick={() => {
@@ -334,7 +334,7 @@ const CreatePost = ({ user }) => {
               )}
             </div>
 
-            <ModalDialog
+            <ModalAlert
               show={showFlair}
               setShow={setShowFlair}
               title="Tag a topic to your post"
@@ -345,14 +345,14 @@ const CreatePost = ({ user }) => {
                   className="fixed inset-0"
                   onClick={() => setShowFlair(!showFlair)}
                 ></div>
-                <div className="relative grid grid-cols-3 gap-4 py-6">
+                <div className="relative grid grid-cols-2 gap-4 py-6 lg:grid-cols-3">
                   {topics.map((item, index) => (
                     <button
                       onClick={() => {
                         setPostType(item.slug.toUpperCase());
                         setShowFlair(!showFlair);
                       }}
-                      className="btn btn-sm btn-ghost btn-with-icon whitespace-nowrap"
+                      className="btn btn-sm btn-secondary btn-with-icon whitespace-nowrap rounded-full"
                       key={index}
                     >
                       <Icon name={item.icon} />
@@ -361,22 +361,15 @@ const CreatePost = ({ user }) => {
                   ))}
                 </div>
               </div>
-            </ModalDialog>
+            </ModalAlert>
 
             {showTech && (
-              <div className="absolute top-10 z-20 w-72 md:left-64">
-                <div
-                  className="fixed inset-0"
-                  onClick={() => setShowTech(!showTech)}
-                ></div>
-                <div className="relative flex flex-col rounded-lg border bg-base-100 px-2 shadow-xl dark:border-base-800 dark:bg-base-900">
-                  <TagTech
-                    savedSkills={savedSkills}
-                    setSavedSkills={setSavedSkills}
-                    setShowTech={setShowTech}
-                  />
-                </div>
-              </div>
+              <TagTechStack
+                postTechStack={savedSkills}
+                setPostTechStack={setSavedSkills}
+                show={showTech}
+                setShow={setShowTech}
+              />
             )}
           </div>
         </div>

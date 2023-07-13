@@ -69,7 +69,7 @@ const Actions = ({
 
           <Link href="/account/settings">
             <button className="btn btn-ghost group relative px-0">
-              <ToolTip message="Account settings" />
+              <ToolTip message="Settings" />
               <Icon name="FiSettings" className="h-6 w-6" />
             </button>
           </Link>

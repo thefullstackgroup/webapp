@@ -36,7 +36,7 @@ const workTypes = [
 
 const PreferredWorkType = ({ selected, addChoice, removeChoice }) => {
   return (
-    <div className="flex flex-wrap items-center space-x-2">
+    <div className="flex flex-wrap items-center gap-1">
       {workTypes.map((type, index) =>
         selected.includes(type.value) ? (
           <button
@@ -65,7 +65,7 @@ const PreferredWorkType = ({ selected, addChoice, removeChoice }) => {
 
 const OpenToJobOpportunityChoice = ({ selected, setChoice }) => {
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-2">
       <button
         className={
           'badge relative cursor-pointer px-2.5 py-1.5 ' +
@@ -100,7 +100,7 @@ const OpenToJobOpportunityChoice = ({ selected, setChoice }) => {
 
 const RelocationChoice = ({ selected, setChoice }) => {
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-2">
       <button
         className={
           'badge relative cursor-pointer px-2.5 py-1.5 ' +
@@ -261,7 +261,7 @@ const JobPreferences = ({ user }) => {
           matches based upon your profile. Your details are private by default
           and not displayed on your profile. No recruiter spam.
         </p>
-        <div className="box px-6 py-4">
+        <div className="box py-4">
           <div className="space-y-6">
             <div>
               <label className="label">Are you open to opportunties?</label>

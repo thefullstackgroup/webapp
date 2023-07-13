@@ -113,7 +113,7 @@ const Detail = ({ postId, user, setShowPost }) => {
 
                 <div
                   id="comments"
-                  className="mb-10 pb-4 text-left align-bottom sm:my-4 sm:w-full sm:max-w-full sm:px-4 sm:align-middle md:px-0 lg:w-full"
+                  className="my-4 pb-4 text-left align-bottom sm:w-full sm:max-w-full sm:px-4 sm:align-middle md:px-0 lg:w-full"
                 >
                   <PostComments
                     post={post}

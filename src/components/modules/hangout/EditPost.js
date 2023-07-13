@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TextareaAutosize from 'react-textarea-autosize';
 import TagPost from 'components/common/tags/TagPostType';
-import TagTech from 'components/modules/hangout/TagTech';
+import TagTechStack from 'components/modules/hangout/TagTechStack';
 import Loader from 'components/common/elements/Loader';
-import { IoCodeSlash, IoTrashOutline, IoCloseOutline } from 'react-icons/io5';
+import { IoTrashOutline, IoCloseOutline } from 'react-icons/io5';
 import * as ga from 'lib/ga';
-import { useRouter } from 'next/router';
-import { postTypeOptions, topics } from './constants';
+import { topics } from './constants';
 import Icon from 'components/common/elements/Icon';
 import ToolTip from 'components/common/elements/ToolTip';
-import ModalDialog from 'components/common/modals/ModalDialog';
+import ModalAlert from 'components/common/modals/ModalAlert';
+import TagStack from 'components/common/tags/TagStack';
 
 const sparkCharCount = 300;
 
@@ -21,7 +21,6 @@ const EditPost = ({
   setShowEditPost,
   setIsDeletePromptOpen,
 }) => {
-  const router = useRouter();
   const [postButtonDisabled, setPostButtonDisabled] = useState(true);
   const [showFlair, setShowFlair] = useState(false);
   const [showTech, setShowTech] = useState(false);
@@ -172,17 +171,21 @@ const EditPost = ({
 
   return (
     <>
-      <div className="relative flex h-full w-full flex-col space-y-3 bg-transparent py-4 sm:px-2">
+      <div className="relative flex h-full w-full flex-col space-y-3 bg-transparent py-4">
         <div className="no-scrollbar h-full w-full overflow-scroll">
           <div className="flex items-start">
             <div className="relative mt-1 w-full">
               <div className="mb-6 h-96 overflow-y-scroll border-gray-800 text-lg text-gray-500">
-                {postType !== 'SPARK' && <TagPost postType={postType} />}
+                {postType !== 'SPARK' && (
+                  <div className="w-min">
+                    <TagPost postType={postType} />
+                  </div>
+                )}
 
                 <TextareaAutosize
                   name="postBody"
                   rows={1}
-                  className="mt-2 h-auto w-full resize-none border-0 bg-transparent p-0 text-lg text-white placeholder-gray-400 focus:border-0 focus:outline-none focus:ring-0"
+                  className="text-input border-0 px-0 text-lg"
                   placeholder="What's happening in your dev world? ..."
                   value={postBody}
                   onChange={(e) => {
@@ -223,29 +226,18 @@ const EditPost = ({
                   </div>
                 )}
 
-                {savedSkills.map((savedSkill, index) => (
-                  <div
-                    className="mt-1 mr-1 inline-flex items-center overflow-hidden rounded-full bg-base-600 pl-1 text-xs"
-                    key={index}
-                  >
-                    <TagTech tech={savedSkill} />
-                    <span
-                      className="flex max-w-xs items-center space-x-1 truncate px-1 leading-relaxed text-base-400"
-                      x-text="tag"
+                <div className="flex flex-wrap items-center">
+                  {savedSkills.map((savedSkill, index) => (
+                    <button
+                      onClick={() => {
+                        removeSkill(savedSkill);
+                      }}
+                      key={index}
                     >
-                      <Icon name={savedSkill} />
-                      <span>{savedSkill}</span>
-                    </span>
-                    <button className="inline-block h-8 w-6 bg-base-600 align-middle text-base-400 focus:outline-none">
-                      <IoCloseOutline
-                        className="mx-auto h-4 w-4 fill-current"
-                        onClick={() => {
-                          removeSkill(savedSkill);
-                        }}
-                      />
+                      <TagStack tech={savedSkill} size="xs" />
                     </button>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -295,41 +287,10 @@ const EditPost = ({
               </button>
             </div>
 
-            {/* <label
-              htmlFor="coverImage"
-              className="flex cursor-pointer items-center space-x-2 font-semibold"
-            >
-              <IoImageOutline className="mx-auto h-6 w-auto text-base-400" />
-              <span className="hidden text-sm md:block">Image</span>
-              <input
-                id="coverImage"
-                name="coverImage"
-                type="file"
-                className="sr-only"
-                onChange={(e) => handleUploadImage(e)}
-              />
-            </label>
-
-            <button
-              className="flex items-center space-x-2 font-semibold"
-              onClick={() => setShowFlair(!showFlair)}
-            >
-              <IoPricetagOutline className="h-5 w-auto text-base-400" />
-              <span className="hidden whitespace-nowrap text-sm md:block">
-                Topic
-              </span>
-            </button> */}
-            <button
-              className="flex items-center space-x-2 font-semibold"
-              onClick={() => setShowTech(!showTech)}
-            >
-              <IoCodeSlash className="mx-auto h-5 w-auto text-base-400" />
-              <span className="hidden text-sm md:block">Tech</span>
-            </button>
             <div className="flex w-full items-center justify-end space-x-2">
               <button
                 onClick={() => setIsDeletePromptOpen(true)}
-                className="btn btn-secondary btn-danger bg-transparent text-base-500 hover:bg-transparent hover:text-red-500"
+                className="btn btn-danger"
               >
                 <span>Delete</span>
               </button>
@@ -348,8 +309,7 @@ const EditPost = ({
               )}
             </div>
           </div>
-
-          <ModalDialog
+          <ModalAlert
             show={showFlair}
             setShow={setShowFlair}
             title="Tag a topic to your post"
@@ -367,7 +327,7 @@ const EditPost = ({
                       setPostType(item.slug.toUpperCase());
                       setShowFlair(!showFlair);
                     }}
-                    className="btn btn-sm btn-ghost btn-with-icon whitespace-nowrap"
+                    className="btn btn-sm btn-secondary btn-with-icon whitespace-nowrap rounded-full"
                     key={index}
                   >
                     <Icon name={item.icon} />
@@ -376,62 +336,14 @@ const EditPost = ({
                 ))}
               </div>
             </div>
-          </ModalDialog>
+          </ModalAlert>
 
-          {showTech && (
-            <div className="absolute top-10 z-20 w-72 md:left-64">
-              <div
-                className="fixed inset-0"
-                onClick={() => setShowTech(!showTech)}
-              ></div>
-              <div className="relative flex flex-col rounded-lg border bg-base-100 px-2 shadow-xl dark:border-base-800 dark:bg-base-900">
-                <TagTech
-                  savedSkills={savedSkills}
-                  setSavedSkills={setSavedSkills}
-                  setShowTech={setShowTech}
-                />
-              </div>
-            </div>
-          )}
-
-          {/* <Transition show={showFlair}>
-            <div className="absolute bottom-10 left-48 z-20 w-auto">
-              <div
-                className="fixed inset-0"
-                onClick={() => setShowFlair(!showFlair)}
-              ></div>
-              <div className="relative flex h-40 w-auto flex-col divide-y-2 divide-base-700 overflow-scroll rounded-lg border border-base-800 bg-base-900 py-1 font-mono text-sm shadow-xl">
-                {postTypeOptions.map((item, index) => (
-                  <button
-                    onClick={() => {
-                      setPostType(item.type);
-                      setShowFlair(!showFlair);
-                    }}
-                    className="flex py-2 px-3"
-                    key={index}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </Transition> */}
-
-          {/* <Transition show={showTech}>
-            <div className="absolute bottom-10 left-64 z-20 w-72">
-              <div
-                className="fixed inset-0"
-                onClick={() => setShowTech(!showTech)}
-              ></div>
-              <div className="relative flex flex-col rounded-lg border border-base-800 bg-base-900 py-2 px-2 shadow-xl">
-                <TagTech
-                  savedSkills={savedSkills}
-                  setSavedSkills={setSavedSkills}
-                  setShowTech={setShowTech}
-                />
-              </div>
-            </div>
-          </Transition> */}
+          <TagTechStack
+            postTechStack={savedSkills}
+            setPostTechStack={setSavedSkills}
+            show={showTech}
+            setShow={setShowTech}
+          />
         </div>
       </div>
     </>

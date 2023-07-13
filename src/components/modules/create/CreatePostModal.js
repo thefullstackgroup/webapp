@@ -13,8 +13,8 @@ const CreatePostModal = ({ user, show, setShow }) => {
         {gitHubImportSelected ? (
           <ImportFromGitHub />
         ) : (
-          <div className="space-y-2 py-4">
-            <p className="mx-3 mb-4 text-center text-2xl font-extrabold">
+          <div className="space-y-2 py-6">
+            <p className="mx-3 mb-4 text-center font-manrope text-3xl font-extrabold">
               Show off your project
             </p>
             <p className="mx-6 mb-8 text-center text-sm">

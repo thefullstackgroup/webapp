@@ -14,7 +14,7 @@ const Actions = (props) => {
   return (
     <>
       {props.user ? (
-        <div className="flex justify-between border-t border-base-200 px-4 py-2 dark:border-base-700">
+        <div className="flex justify-between border-base-200 px-4 py-2 dark:border-base-700 lg:border-t">
           <ButtonLike user={props.user} post={props.project} />
 
           {props.setShowCommentsModal ? (

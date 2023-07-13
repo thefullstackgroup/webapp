@@ -68,10 +68,10 @@ const Page = ({ user, promo }) => {
   return (
     <>
       <div className="page page-5xl space-y-6">
-        <div className="flex items-end justify-between">
+        <div className="flex flex-col justify-between space-y-2 lg:flex-row lg:items-end lg:space-y-0">
           <div>
             <h2>Wallet</h2>
-            <p className="text-sm text-base-300 dark:text-base-500">
+            <p className="text-sm text-base-300 dark:text-base-400">
               Your wallet contains virtual coin that you can use to reward and
               endorse others.{' '}
               {!promoRedeemed && (
@@ -93,7 +93,7 @@ const Page = ({ user, promo }) => {
         <div className="box">
           {walletTransactions?.length > 0 && (
             <div className="text-base">
-              <div className="grid grid-cols-8 px-2 py-4 text-sm font-bold sm:text-base">
+              <div className="grid grid-cols-8 py-2 text-sm font-bold sm:text-base">
                 <div className="col-span-4">Date</div>
                 <div className="col-span-2 text-right">Amount</div>
                 <div className="col-span-2 text-right">Type</div>
@@ -101,7 +101,7 @@ const Page = ({ user, promo }) => {
               <div>
                 {walletTransactions?.map((transaction) => (
                   <div key={transaction.transactionId}>
-                    <div className="border-t border-base-200 px-2 py-2 text-sm dark:border-base-700 sm:text-base">
+                    <div className="border-t border-base-200 py-2 text-sm dark:border-base-700 sm:text-base">
                       <div className="grid grid-cols-8">
                         <div className="col-span-4">
                           {Moment(transaction.createdDate).format(

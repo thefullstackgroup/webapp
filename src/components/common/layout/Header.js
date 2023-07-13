@@ -66,7 +66,7 @@ const Header = ({
 
   return (
     <>
-      <div className="sticky top-0 z-50 border-b border-base-200 bg-white px-4 py-2 dark:border-base-800 dark:bg-base-900 lg:hidden">
+      <div className="sticky top-0 z-50 h-14 border-b border-base-200 bg-white px-4 py-2 dark:border-base-800 dark:bg-base-900 lg:hidden">
         <div className="flex items-center">
           <div className="w-1/5">
             <button
@@ -205,7 +205,7 @@ const Header = ({
                 rel="noreferrer"
               >
                 <ToolTip message="Star us on GitHub" position={'bottom'} />
-                <Icon name="FaGithub" pack="Fa" />
+                <Icon name="FaGithub" pack="Fa" className={'h-6 w-6'} />
               </a>
 
               {user ? (
@@ -214,7 +214,7 @@ const Header = ({
                 </div>
               ) : (
                 <button className="nav-bar nav-bar-icon">
-                  <Icon name={'FiBell'} />
+                  <Icon name={'FiBell'} className={'h-6 w-6'} />
                 </button>
               )}
 

@@ -210,7 +210,7 @@ const Overview = ({
         )}
       </div>
 
-      <div className="block cursor-pointer text-sm text-base-600 dark:text-base-300 lg:hidden">
+      <div className="block cursor-pointer text-sm lg:hidden">
         {profile?.bio?.aboutUser}
       </div>
 
@@ -218,7 +218,7 @@ const Overview = ({
         <Social social={profile} />
       </div>
 
-      <div className="mt-2 flex items-center space-x-4 text-xs text-base-500 lg:hidden">
+      <div className="mt-2 flex items-center space-x-4 text-xs text-base-500 dark:text-base-300 lg:hidden">
         {profile?.country && countryCode && (
           <div className="flex items-center space-x-1">
             <span>{countryCodeEmoji(countryCode.iso2)}</span>

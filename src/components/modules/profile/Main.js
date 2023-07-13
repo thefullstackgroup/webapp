@@ -124,9 +124,9 @@ const Main = ({ profile, myProfile }) => {
         )}
 
         <div className="relative mx-auto max-w-screen-lg">
-          <div className="no-scrollbar flex items-center justify-between overflow-y-scroll px-4 lg:px-0">
+          <div className="no-scrollbar flex items-center justify-between overflow-y-scroll">
             <Menu tab={tab} setTab={setTab} profile={profile} />
-            <div className="hidden md:block">
+            <div className="hidden px-4 md:block lg:px-0">
               <Social social={profile} />
             </div>
           </div>

@@ -3,9 +3,6 @@ import useSWR, { mutate } from 'swr';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import * as ga from 'lib/ga';
-// import Markdown from 'markdown-to-jsx';
-// import CodeBlock from 'components/common/elements/CodeBlock';
-
 import dynamic from 'next/dynamic';
 import '@uiw/react-markdown-preview/markdown.css';
 const MarkdownPreview = dynamic(
@@ -24,7 +21,7 @@ import Icon from 'components/common/elements/Icon';
 import { useTheme } from 'next-themes';
 
 const ListComments = ({ post, user }) => {
-  const { systemTheme, theme, setTheme } = useTheme();
+  const { systemTheme, theme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const [postCommentOpen, setPostCommentOpen] = useState(false);
   const [editCommentOpen, setEditCommentOpen] = useState(false);

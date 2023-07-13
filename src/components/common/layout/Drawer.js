@@ -96,8 +96,8 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                               const { open, close } = panel;
                               return (
                                 <>
-                                  {item.label !== 'Teams' &&
-                                    item.label !== 'Developers' && (
+                                  {item.slug !== 'teams' &&
+                                    item.slug !== 'developers' && (
                                       <Disclosure.Button
                                         className="flex items-center justify-between pr-2 text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
                                         onClick={() => {
@@ -125,8 +125,8 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                                           )}
                                       </Disclosure.Button>
                                     )}
-                                  {item.label !== 'Teams' &&
-                                    item.label !== 'Developers' && (
+                                  {item.slug !== 'teams' &&
+                                    item.slug !== 'developers' && (
                                       <Transition
                                         enter="transition duration-300 ease-out"
                                         enterFrom="opacity-0"
@@ -190,7 +190,7 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                             className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
                             onClick={() => setShow(false)}
                           >
-                            <span>Developers</span>
+                            <span>About</span>
                           </button>
                         </Link>
                         <Link href={'/teams'}>

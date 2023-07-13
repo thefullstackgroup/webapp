@@ -22,10 +22,10 @@ const ProjectCard = ({ project }) => {
         <Link
           href={`/${project.contentOwnerUserName}/project/${project.projectSlug}`}
         >
-          <h3>{project.projectName}</h3>
+          <h3 className="leading-5">{project.projectName}</h3>
         </Link>
         <p className="text-sm text-base-300 dark:text-base-400">
-          Posted by @{project.contentOwnerUserName}
+          @{project.contentOwnerUserName}
         </p>
       </div>
       <div className="absolute bottom-2 right-2">
@@ -55,7 +55,7 @@ const Saved = () => {
   return (
     <>
       {projects?.content?.length > 0 && (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           {projects?.content?.map((project, index) => (
             <ProjectCard project={project} key={index} />
           ))}

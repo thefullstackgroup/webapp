@@ -5,7 +5,7 @@ const tabs = ['Projects', 'Snippets', 'Sparks'];
 
 const Tabs = ({ tab, setTab, profile }) => {
   return (
-    <div className="tabs">
+    <div className="tabs border-b border-base-200 dark:border-base-700 lg:border-b-0">
       {tabs.map((tabButton, index) => (
         <button
           className={tab == index ? 'tab-item tab-item-active' : 'tab-item'}

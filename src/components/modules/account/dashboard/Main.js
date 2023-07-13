@@ -60,7 +60,7 @@ const Main = ({ user }) => {
       <div className="page page-5xl space-y-6">
         <h2 className="">Dashboard</h2>
 
-        <div className="grid grid-cols-4 items-center justify-evenly gap-4">
+        <div className="grid grid-cols-2 items-center justify-evenly gap-2 lg:grid-cols-4 lg:gap-4">
           <div className="box flex w-full flex-col space-y-2">
             <div className="flex items-center space-x-1 whitespace-nowrap">
               <Icon name={'FiEye'} className="h-4 w-4" />

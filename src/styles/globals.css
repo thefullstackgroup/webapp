@@ -7,7 +7,7 @@
 @layer components {
   /* Layout */
   .page {
-    @apply mx-auto mb-20 mt-6 min-h-screen w-full;
+    @apply mx-auto mb-20 mt-6 min-h-screen w-full px-4 lg:px-0;
   }
   .page-4xl {
     @apply max-w-4xl;
@@ -43,10 +43,10 @@
 
   /* Text */
   h2 {
-    @apply mb-4 text-3xl font-semibold tracking-tight;
+    @apply mb-4 text-2xl font-semibold tracking-tight lg:text-3xl;
   }
   h3 {
-    @apply text-xl font-semibold tracking-tight;
+    @apply text-lg font-semibold tracking-tight lg:text-xl;
   }
   h4 {
     @apply text-lg font-medium;
@@ -96,10 +96,10 @@
 
   /* Tabs */
   .tabs {
-    @apply no-scrollbar flex w-auto gap-8 overflow-x-scroll px-0;
+    @apply no-scrollbar flex w-full justify-evenly gap-2 overflow-x-scroll px-0 lg:w-auto lg:justify-start lg:gap-8;
   }
   .tab-item {
-    @apply border-b-[2px] border-transparent py-2.5 text-sm font-medium text-base-300 hover:text-base-900 dark:text-base-400 dark:hover:text-base-100;
+    @apply whitespace-nowrap border-b-[2px] border-transparent py-2.5 text-sm font-medium text-base-300 hover:text-base-900 dark:text-base-400 dark:hover:text-base-100;
   }
   .tab-item-active {
     @apply border-base-900 text-base-900 hover:text-base-900 dark:border-base-100 dark:text-base-100 dark:hover:text-base-100;
