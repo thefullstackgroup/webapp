@@ -363,14 +363,12 @@ const CreatePost = ({ user }) => {
               </div>
             </ModalAlert>
 
-            {showTech && (
-              <TagTechStack
-                postTechStack={savedSkills}
-                setPostTechStack={setSavedSkills}
-                show={showTech}
-                setShow={setShowTech}
-              />
-            )}
+            <TagTechStack
+              postTechStack={savedSkills}
+              setPostTechStack={setSavedSkills}
+              show={showTech}
+              setShow={setShowTech}
+            />
           </div>
         </div>
       </div>

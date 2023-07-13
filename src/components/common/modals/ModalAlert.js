@@ -19,7 +19,7 @@ const ModalAlert = ({ children, title = false, show, setShow, dimensions }) => {
           enter="ease-out duration-300"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave="ease-in duration-200"
+          leave="ease-in lg:duration-200"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
@@ -32,7 +32,7 @@ const ModalAlert = ({ children, title = false, show, setShow, dimensions }) => {
               enter="ease-out duration-200"
               enterFrom="opacity-0 translate-y-40 lg:translate-y-4 sm:translate-y-0 lg:scale-95"
               enterTo="opacity-100 translate-y-0 lg:scale-100"
-              leave="ease-in duration-150"
+              leave="ease-in lg:duration-150"
               leaveFrom="opacity-100 translate-y-0 lg:scale-100"
               leaveTo="opacity-0 lg:translate-y-4 sm:translate-y-0 lg:scale-95"
               className={`w-full ${modalSize}`}

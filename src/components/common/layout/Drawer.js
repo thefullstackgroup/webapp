@@ -66,7 +66,7 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                   <div>
                     <div className="flex items-center justify-between px-4 py-4">
                       <Link href="/">
-                        <div className="h-10 w-10 cursor-pointer overflow-hidden">
+                        <div className="h-10 w-10 cursor-pointer overflow-hidden rounded">
                           <Image
                             src={
                               currentTheme === 'dark'
@@ -209,21 +209,35 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                             <span>Search</span>
                           </button>
                         </Link>
-                        <button
-                          onClick={() =>
-                            currentTheme === 'dark'
-                              ? setTheme('light')
-                              : setTheme('dark')
-                          }
-                          className="nav-bar nav-bar-icon"
-                        >
-                          <span className="capitalize">{currentTheme}</span>
-                          {currentTheme === 'dark' ? (
-                            <Icon name="FiSun" />
-                          ) : (
-                            <Icon name="FiMoon" />
-                          )}
-                        </button>
+
+                        <div className="flex space-x-4">
+                          <a
+                            href="https://github.com/thefullstackgroup/thefullstack"
+                            target="_blank"
+                            className="btn btn-ghost px-0"
+                            rel="noreferrer"
+                          >
+                            <Icon
+                              name="FaGithub"
+                              pack="Fa"
+                              className={'h-6 w-6'}
+                            />
+                          </a>
+                          <button
+                            onClick={() =>
+                              currentTheme === 'dark'
+                                ? setTheme('light')
+                                : setTheme('dark')
+                            }
+                            className="btn btn-ghost px-0"
+                          >
+                            {currentTheme === 'dark' ? (
+                              <Icon name="FiSun" className={'h-6 w-6'} />
+                            ) : (
+                              <Icon name="FiMoon" className={'h-6 w-6'} />
+                            )}
+                          </button>
+                        </div>
 
                         <div className="w-full py-8">
                           {user ? (
