@@ -9,27 +9,26 @@ const Intro = ({
   setHideVideoIntro,
 }) => {
   return showVideoIntro ? (
-    <div
-      className="fixed inset-0 left-0 top-0"
-      onClick={() => setShowVideoIntro(false)}
-    >
-      <div className="fixed bottom-20 right-4 h-96 w-56 sm:bottom-4 sm:right-8">
-        <div
-          className="h-full w-full cursor-pointer overflow-hidden rounded-xl border-2 border-purple-700 bg-black shadow-xl shadow-purple-700/30"
-          onClick={() => setShowVideoIntro(false)}
-        >
+    <div className="fixed inset-0 left-0 top-0">
+      <div className="fixed bottom-8 right-4 h-96 w-56 sm:right-8 lg:bottom-4">
+        <div className="h-full w-full cursor-pointer overflow-hidden rounded-xl border-2 border-purple-700 bg-black shadow-xl shadow-purple-700/30">
           <VideoPlayerProfile
             src={`https://stream.mux.com/${profile?.profileVideoUrl}.m3u8`}
-            controls={false}
+            controls={true}
             muted={false}
-            autoPlay={true}
+            autoPlay={false}
           />
+        </div>
+        <div className="absolute -top-3 -right-2">
+          <button onClick={() => setHideVideoIntro(true)}>
+            <IoCloseCircle className="h-7 w-7 text-white" />
+          </button>
         </div>
       </div>
     </div>
   ) : (
     <div
-      className="fixed bottom-20 right-4 h-40 w-28 cursor-pointer sm:bottom-4 sm:right-8 sm:h-56 sm:w-40"
+      className="fixed bottom-8 right-4 h-40 w-28 cursor-pointer sm:right-8 sm:h-56 sm:w-40 lg:bottom-4"
       onClick={() => setShowVideoIntro(true)}
     >
       <div className="h-full w-full overflow-hidden rounded-xl">

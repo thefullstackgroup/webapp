@@ -30,18 +30,17 @@ const Goals = ({ goal, setCreateTeamPanel }) => {
       {goal === 'FIND_WORK' && (
         <Link href="/account/settings/jobpreferences">
           <div className="relative mx-auto mb-8 w-full max-w-screen-lg cursor-pointer gap-4 px-4 sm:mb-10 md:px-0 lg:flex">
-            <div className="w-full items-center justify-between space-y-4 rounded-md border border-base-300/40 bg-base-200/40 px-4 py-3 dark:border-base-700 dark:bg-base-900 md:space-y-0 md:px-4 lg:flex">
-              <div className="flex flex-col space-y-4 md:w-2/3">
+            <div className="box items-center justify-between space-y-4 md:space-y-0 md:px-4 lg:flex">
+              <div className="flex flex-col space-y-2 md:w-2/3">
                 <div className="flex items-end space-x-6">
                   <h4 className="text-xl font-medium md:text-2xl">
-                    Looking for work opportunties?
+                    Open to work opportunties?
                   </h4>
                 </div>
                 <div className="text-sm text-base-600 dark:text-base-300">
-                  The Full Stack can help you find and connect to tech teams
-                  matched to your preferences. Set the criteria for matches
-                  based upon your profile in your work preferences. Your details
-                  are private by default and not displayed on your profile -{' '}
+                  Update your work preferences in order to match your profile to
+                  the right opportunities. All your details are private by
+                  default and not displayed on your profile -{' '}
                   <span className="font-bold">No recruiter spam</span>.
                 </div>
               </div>
@@ -49,7 +48,7 @@ const Goals = ({ goal, setCreateTeamPanel }) => {
                 <button className="btn btn-sm btn-secondary">
                   Set your preferences
                 </button>
-                <div className="flex items-center -space-x-2 md:justify-end">
+                <div className="hidden items-center -space-x-2 md:justify-end lg:flex">
                   {images.map((image, index) => (
                     <ImageSample image={image} key={index} />
                   ))}

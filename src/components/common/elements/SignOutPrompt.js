@@ -2,11 +2,14 @@ import ModalAlert from '../modals/ModalAlert';
 import Image from 'next/future/image';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import { useAuthUser } from 'next-firebase-auth';
 
 const SignOutPrompt = ({ show, setShow }) => {
+  const AuthUser = useAuthUser();
   const router = useRouter();
 
   const handleLogout = async () => {
+    AuthUser.signOut();
     axios.get(`/api/auth/logout`).then((response) => router.reload('/'));
   };
 

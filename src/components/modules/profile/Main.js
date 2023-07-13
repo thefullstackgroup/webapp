@@ -50,6 +50,8 @@ const Main = ({ profile, myProfile }) => {
   const [isConnected, setIsConnected] = useState(false);
   const [isConnectionPending, setIsConnectionPending] = useState(false);
 
+  console.log(myProfile);
+
   const checkIfConnected = async () => {
     axios
       .get(
@@ -102,7 +104,7 @@ const Main = ({ profile, myProfile }) => {
         )}
 
         {profile?.userId === myProfile?.userId && (
-          <div className="relative mx-auto mb-8 max-w-screen-lg gap-4 px-4 sm:mb-10 md:px-0 lg:flex">
+          <div className="relative mx-auto mb-8 hidden max-w-screen-lg gap-4 px-4 sm:mb-10 md:px-0 lg:flex">
             <AccountsSection profile={profile} />
           </div>
         )}
@@ -181,27 +183,25 @@ const Main = ({ profile, myProfile }) => {
       </ModalAlert>
 
       {profile.userId === myProfile?.userId && (
-        <>
-          <ModalAlert
-            show={uploadVideoIntroPanel}
-            setShow={setUploadVideoIntroPanel}
-            title="Introduce yourself"
-            dimensions={'sm:max-w-3xl'}
-            disabled
-          >
-            <VideoIntro user={myProfile} />
-          </ModalAlert>
-        </>
+        <ModalAlert
+          show={uploadVideoIntroPanel}
+          setShow={setUploadVideoIntroPanel}
+          title="Introduce yourself"
+          dimensions={'sm:max-w-3xl'}
+          disabled
+        >
+          <VideoIntro user={myProfile} />
+        </ModalAlert>
       )}
 
-      {/* {profile?.profileVideoUrl && !hideVideoIntro && (
+      {profile?.profileVideoUrl && !hideVideoIntro && (
         <Intro
           profile={profile}
           showVideoIntro={showVideoIntro}
           setShowVideoIntro={setShowVideoIntro}
           setHideVideoIntro={setHideVideoIntro}
         />
-      )} */}
+      )}
     </>
   );
 };

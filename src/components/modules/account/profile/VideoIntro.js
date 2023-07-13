@@ -84,9 +84,9 @@ const VideoIntro = ({ user }) => {
               <div className="relative mt-2 h-96 w-64 overflow-hidden rounded-xl">
                 <VideoPlayerProfile
                   src={`https://stream.mux.com/OGgHsrxVO6KHXUBDdtsVPCMMnJej3tuPszF3L00K00m8U.m3u8`}
-                  controls={false}
+                  controls={true}
                   muted={true}
-                  autoPlay={true}
+                  autoPlay={false}
                 />
               </div>
 
@@ -149,14 +149,14 @@ const VideoIntro = ({ user }) => {
                     <div className="relative mx-auto mt-2 h-96 w-64 overflow-hidden rounded-xl border-2 border-base-600 p-2">
                       <VideoPlayerProfile
                         src={`https://stream.mux.com/${muxAssetId}.m3u8`}
-                        controls={false}
+                        controls={true}
                         muted={true}
-                        autoPlay={true}
+                        autoPlay={false}
                       />
                     </div>
                     <div>
                       <button
-                        className="btn-secondary w-full"
+                        className="btn btn-secondary w-full"
                         onClick={() => {
                           setMuxAssetId('');
                           handleDelete();
@@ -176,7 +176,7 @@ const VideoIntro = ({ user }) => {
                         </button>
                       ) : (
                         <button
-                          className="btn-primary w-full"
+                          className="btn btn-primary w-full"
                           onClick={() => handleSubmit()}
                         >
                           <span className="hidden sm:block">

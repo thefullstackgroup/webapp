@@ -255,7 +255,55 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                         </div>
                       )}
                       <div>
-                        <div className="flex space-x-4">
+                        <div className="w-full pb-4">
+                          {user ? (
+                            <div className="flex justify-between pr-2">
+                              <Link href={`/${user.displayName}`}>
+                                <button
+                                  className="btn btn-with-icon px-0"
+                                  onClick={() => setShow(false)}
+                                >
+                                  <Avatar
+                                    image={user.profilePicUrl}
+                                    name={user.displayName}
+                                    dimensions="h-10 w-10"
+                                  />
+                                  <div className="flex flex-col text-left text-sm leading-5">
+                                    <p>{user.name}</p>
+                                    <p className="text-sm text-base-400 dark:text-base-500">
+                                      @{user.displayName}
+                                    </p>
+                                  </div>
+                                </button>
+                              </Link>
+                              <div className="flex items-center space-x-6">
+                                <Link href="#">
+                                  <button
+                                    className="btn btn-ghost btn-with-icon px-0"
+                                    onClick={() => setShowSignOut(true)}
+                                  >
+                                    <Icon name="FiLogOut" />
+                                  </button>
+                                </Link>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="flex w-full flex-col space-y-2">
+                              <Link href={'/signup'}>
+                                <button className="btn btn-primary rounded-full">
+                                  Sign up
+                                </button>
+                              </Link>
+                              <Link href={'/login'}>
+                                <button className="btn btn-secondary rounded-full">
+                                  Login
+                                </button>
+                              </Link>
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="flex space-x-6">
                           <a
                             href="https://discord.com/invite/D7qzPTD5"
                             target="_blank"
@@ -294,62 +342,6 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                               <Icon name="FiMoon" className={'h-6 w-6'} />
                             )}
                           </button>
-                        </div>
-
-                        <div className="w-full py-4">
-                          {user ? (
-                            <div className="flex justify-between pr-2">
-                              <Link href={`/${user.displayName}`}>
-                                <button
-                                  className="btn btn-with-icon px-0"
-                                  onClick={() => setShow(false)}
-                                >
-                                  <Avatar
-                                    image={user.profilePicUrl}
-                                    name={user.displayName}
-                                    dimensions="h-10 w-10"
-                                  />
-                                  <div className="flex flex-col text-left text-sm leading-5">
-                                    <p>{user.name}</p>
-                                    <p className="text-sm text-base-400 dark:text-base-500">
-                                      @{user.displayName}
-                                    </p>
-                                  </div>
-                                </button>
-                              </Link>
-                              <div className="flex items-center space-x-6">
-                                <Link href="/account/settings">
-                                  <button
-                                    className="btn btn-ghost btn-with-icon px-0"
-                                    onClick={() => setShow(false)}
-                                  >
-                                    <Icon name="FiSettings" />
-                                  </button>
-                                </Link>
-                                <Link href="#">
-                                  <button
-                                    className="btn btn-ghost btn-with-icon px-0"
-                                    onClick={() => setShowSignOut(true)}
-                                  >
-                                    <Icon name="FiLogOut" />
-                                  </button>
-                                </Link>
-                              </div>
-                            </div>
-                          ) : (
-                            <div className="flex w-full flex-col space-y-2">
-                              <Link href={'/signup'}>
-                                <button className="btn btn-primary rounded-full">
-                                  Sign up
-                                </button>
-                              </Link>
-                              <Link href={'/login'}>
-                                <button className="btn btn-secondary rounded-full">
-                                  Login
-                                </button>
-                              </Link>
-                            </div>
-                          )}
                         </div>
                       </div>
                     </div>

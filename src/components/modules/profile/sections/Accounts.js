@@ -199,7 +199,7 @@ const Card = ({ channel, profile }) => {
           setShowConnect(true);
         }}
       >
-        <div className="relative hidden h-full space-y-4 lg:block">
+        <div className="relative h-full space-y-4">
           <div className="mb-2 flex items-center space-x-2">
             {channel.name === 'GITHUB' && (
               <FaGithub className="h-10 w-10 sm:h-8 sm:w-8" />
