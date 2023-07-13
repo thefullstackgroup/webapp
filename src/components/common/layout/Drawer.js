@@ -257,6 +257,18 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                       <div>
                         <div className="flex space-x-4">
                           <a
+                            href="https://discord.com/invite/D7qzPTD5"
+                            target="_blank"
+                            className="btn btn-ghost px-0"
+                            rel="noreferrer"
+                          >
+                            <Icon
+                              name="FaDiscord"
+                              pack="Fa"
+                              className={'h-7 w-7'}
+                            />
+                          </a>
+                          <a
                             href="https://github.com/thefullstackgroup/thefullstack"
                             target="_blank"
                             className="btn btn-ghost px-0"
@@ -286,7 +298,7 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
 
                         <div className="w-full py-4">
                           {user ? (
-                            <div className="flex justify-between">
+                            <div className="flex justify-between pr-2">
                               <Link href={`/${user.displayName}`}>
                                 <button
                                   className="btn btn-with-icon px-0"
@@ -297,7 +309,7 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                                     name={user.displayName}
                                     dimensions="h-10 w-10"
                                   />
-                                  <div className="flex flex-col text-left leading-5">
+                                  <div className="flex flex-col text-left text-sm leading-5">
                                     <p>{user.name}</p>
                                     <p className="text-sm text-base-400 dark:text-base-500">
                                       @{user.displayName}
@@ -305,14 +317,24 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                                   </div>
                                 </button>
                               </Link>
-                              <Link href="#">
-                                <button
-                                  className="btn btn-with-icon px-0"
-                                  onClick={() => setShowSignOut(true)}
-                                >
-                                  <Icon name="FiLogOut" />
-                                </button>
-                              </Link>
+                              <div className="flex items-center space-x-6">
+                                <Link href="/account/settings">
+                                  <button
+                                    className="btn btn-ghost btn-with-icon px-0"
+                                    onClick={() => setShow(false)}
+                                  >
+                                    <Icon name="FiSettings" />
+                                  </button>
+                                </Link>
+                                <Link href="#">
+                                  <button
+                                    className="btn btn-ghost btn-with-icon px-0"
+                                    onClick={() => setShowSignOut(true)}
+                                  >
+                                    <Icon name="FiLogOut" />
+                                  </button>
+                                </Link>
+                              </div>
                             </div>
                           ) : (
                             <div className="flex w-full flex-col space-y-2">
