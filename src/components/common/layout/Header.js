@@ -67,7 +67,7 @@ const Header = ({
   return (
     <>
       <div className="sticky top-0 z-50 h-14 border-b border-base-200 bg-white px-4 dark:border-base-800 dark:bg-base-900 lg:hidden">
-        <div className="flex h-14 items-center">
+        <div className="flex h-14 items-center py-2">
           <div className="w-1/5">
             <button
               className="flex justify-start text-base-900 outline-none focus:bg-transparent focus:outline-none dark:text-gray-100"

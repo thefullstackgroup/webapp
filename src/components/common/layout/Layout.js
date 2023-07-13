@@ -19,7 +19,7 @@ const Layout = ({
   const [showLogin, setShowLogin] = useState(false);
   return (
     <>
-      <main className="min-h-screen bg-base-100 dark:bg-base-900">
+      <main className="bg-base-100 dark:bg-base-900 lg:min-h-screen">
         <Header
           user={user}
           headerAutoHide={headerAutoHide}
