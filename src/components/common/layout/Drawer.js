@@ -7,7 +7,7 @@ import Avatar from '../elements/Avatar';
 import Image from 'next/future/image';
 import { useTheme } from 'next-themes';
 
-const Drawer = ({ user, show, setShow, setShowSignOut }) => {
+const Drawer = ({ user, show, setShow, setShowSignOut, setShowCreatePost }) => {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const [activeDisclosurePanel, setActiveDisclosurePanel] = useState(null);
@@ -212,6 +212,12 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                       </div>
                       {user && (
                         <div className="flex flex-col border-t border-base-200 pt-2 dark:border-base-700">
+                          <button
+                            className="btn btn-ghost px-0 text-left font-medium"
+                            onClick={() => setShowCreatePost(true)}
+                          >
+                            Share project
+                          </button>
                           <Link href="/account/dashboard">
                             <button
                               className="btn btn-ghost px-0 text-left font-medium"
@@ -242,14 +248,6 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                               onClick={() => setShow(false)}
                             >
                               Wallet
-                            </button>
-                          </Link>
-                          <Link href="/account/profile/invite">
-                            <button
-                              className="btn btn-ghost px-0 text-left font-medium"
-                              onClick={() => setShow(false)}
-                            >
-                              Invite friends
                             </button>
                           </Link>
                         </div>
@@ -303,7 +301,15 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                           )}
                         </div>
 
-                        <div className="flex space-x-6">
+                        <div className="flex items-center space-x-6">
+                          <Link href="/account/profile/invite">
+                            <button
+                              className="btn btn-ghost px-0 text-left font-medium"
+                              onClick={() => setShow(false)}
+                            >
+                              <Icon name="FiHeart" className={'h-6 w-6'} />
+                            </button>
+                          </Link>
                           <a
                             href="https://discord.com/invite/D7qzPTD5"
                             target="_blank"

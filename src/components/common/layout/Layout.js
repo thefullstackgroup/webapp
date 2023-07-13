@@ -63,6 +63,7 @@ const Layout = ({
         show={showDrawer}
         setShow={setShowDrawer}
         setShowSignOut={setShowSignOut}
+        setShowCreatePost={setShowCreatePost}
       />
     </>
   );
