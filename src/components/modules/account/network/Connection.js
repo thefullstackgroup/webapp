@@ -86,7 +86,7 @@ const CardConnection = ({
           href={`/${connection.username}`}
           name={connection.username}
           userId={connection.user_id}
-          dimensions=""
+          dimensions="w-14 h-14"
         />
 
         <div className="space-y-2">
@@ -104,8 +104,7 @@ const CardConnection = ({
             <div className="flex items-center space-x-2">
               <Link href={`${process.env.BASEURL}/${connection.username}`}>
                 <button className="btn btn-sm btn-secondary">
-                  <IoChatbubblesOutline className="block h-5 w-5 sm:hidden" />
-                  <span className="hidden sm:block">Send message</span>
+                  <span>Send message</span>
                 </button>
               </Link>
               {/* <button

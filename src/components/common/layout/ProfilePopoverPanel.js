@@ -89,7 +89,7 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
                       >
                         <Icon name={'FiUsers'} />
                         <span className="text-black dark:text-white">
-                          My Network
+                          Network
                         </span>
                       </button>
                     </Link>

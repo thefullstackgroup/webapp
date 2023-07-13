@@ -7,8 +7,8 @@ import Loader from 'components/common/elements/Loader';
 
 const tabs = [
   { tab: 1, label: 'Connections' },
-  { tab: 2, label: 'Pending requests' },
-  { tab: 3, label: 'Invites received' },
+  { tab: 2, label: 'Sent' },
+  { tab: 3, label: 'Received' },
 ];
 
 const Main = ({ user }) => {
@@ -26,8 +26,8 @@ const Main = ({ user }) => {
   return (
     <>
       <div className="page page-5xl space-y-6">
-        <h2 className="">My Network</h2>
-        <div className="tabs">
+        <h2>Network</h2>
+        <div className="tabs justify-start space-x-6">
           {tabs.map((option, index) => (
             <button
               className={
@@ -38,7 +38,7 @@ const Main = ({ user }) => {
             >
               <span className="relative">
                 {option.label}{' '}
-                <span className="hidden sm:inline-flex">
+                <span className="inline-flex">
                   {option.tab == 1 &&
                     data?.connections?.length > 0 &&
                     `(${data?.connections?.length})`}
@@ -68,7 +68,7 @@ const Main = ({ user }) => {
                 <div className="box">You currently have no connections</div>
               )}
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
                 {data?.connections?.map((connection, index) => (
                   <Connection
                     connection={connection}
@@ -90,7 +90,7 @@ const Main = ({ user }) => {
                 </div>
               )}
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
                 {data?.requested_pending?.map((connection, index) => (
                   <Connection
                     connection={connection}
@@ -110,7 +110,7 @@ const Main = ({ user }) => {
                 <div className="box">You have no connection invites.</div>
               )}
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
                 {data?.received_pending?.map((connection, index) => (
                   <Connection
                     connection={connection}

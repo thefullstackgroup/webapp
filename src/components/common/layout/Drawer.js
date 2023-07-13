@@ -209,7 +209,40 @@ const Drawer = ({ user, show, setShow, setShowSignOut }) => {
                             <span>Search</span>
                           </button>
                         </Link>
-
+                      </div>
+                      <div className="flex flex-col border-t border-base-200 pt-2 dark:border-base-700">
+                        <button
+                          className="btn btn-ghost px-0 text-left font-medium"
+                          onClick={() => setShow(false)}
+                        >
+                          Dashboard
+                        </button>
+                        <button
+                          className="btn btn-ghost px-0 text-left font-medium"
+                          onClick={() => setShow(false)}
+                        >
+                          Network
+                        </button>
+                        <button
+                          className="btn btn-ghost px-0 text-left font-medium"
+                          onClick={() => setShow(false)}
+                        >
+                          Messages
+                        </button>
+                        <button
+                          className="btn btn-ghost px-0 text-left font-medium"
+                          onClick={() => setShow(false)}
+                        >
+                          Wallet
+                        </button>
+                        <button
+                          className="btn btn-ghost px-0 text-left font-medium"
+                          onClick={() => setShow(false)}
+                        >
+                          Invite friends
+                        </button>
+                      </div>
+                      <div>
                         <div className="flex space-x-4">
                           <a
                             href="https://github.com/thefullstackgroup/thefullstack"
