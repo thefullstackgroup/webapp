@@ -128,13 +128,13 @@ const LoginModal = ({ show, setShow }) => {
                   </div>
                 </div>
               </form>
-              <div className="flex items-center justify-center space-x-1 whitespace-nowrap pt-6 text-xs sm:space-x-2 sm:text-sm">
-                <div className="text-center">
+              <div className="flex items-center justify-center space-x-1 whitespace-nowrap pt-6 text-sm sm:space-x-2 sm:text-sm">
+                {/* <div className="text-center">
                   <Link href="/login/forgotpassword" passHref>
                     <a href="#">Forgot your password?</a>
                   </Link>
                 </div>
-                <span>&middot;</span>
+                <span>&middot;</span> */}
                 <div className="text-center">
                   <Link href="/signup" passHref>
                     <a href="#">Need an account?</a>

@@ -16,7 +16,7 @@ initAuth();
 function App({ Component, pageProps }) {
   initFirebasePresence();
   const router = useRouter();
-  const { systemTheme, theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
   setTheme('dark');
 
   useEffect(() => {

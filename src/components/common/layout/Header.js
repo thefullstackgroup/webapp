@@ -101,8 +101,11 @@ const Header = ({
                 <KnockNotificationsComponent userId={user?.userId} />
               </div>
             ) : (
-              <button className="nav-bar nav-bar-icon">
-                <Icon name={'FiBell'} className="h-6 w-6" />
+              <button
+                className="btn btn-ghost px-0 text-base-700 dark:text-base-200"
+                onClick={() => setShowLogin(true)}
+              >
+                <Icon name={'FiUser'} className="h-6 w-6" />
               </button>
             )}
           </div>
