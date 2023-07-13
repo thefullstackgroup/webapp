@@ -32,7 +32,8 @@ const ProjectGallery = ({
   }
 
   if (stack) {
-    url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${stack?.terms}`;
+    // url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${stack?.terms}`;
+    url = `${process.env.BASEURL}/api/search/projects?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${stack?.terms}`;
   }
 
   if (router.pathname === '/search' && query !== '') {

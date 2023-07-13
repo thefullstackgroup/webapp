@@ -11,7 +11,9 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
         <div className="mr-2 flex items-center gap-2">
           <div className="flex items-center gap-2 text-sm">
             <Icon name={stack.icon} pack={stack.pack || 'Si'} />
-            <span>{stack ? stack.label : item.label}</span>
+            <span className="whitespace-nowrap">
+              {stack ? stack.label : item.label}
+            </span>
           </div>
           <button
             className="btn-sm btn-ghost btn-with-icon w-full text-xs"
@@ -52,7 +54,7 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
             <div className="popover-arrow left-auto top-44 -right-[13px] border-l-0 border-r"></div>
 
             <div>
-              <h4 className="mb-2 pl-3 font-medium uppercase dark:text-base-400">
+              <h4 className="mb-2 pl-3 text-base font-medium uppercase dark:text-base-400">
                 Frontend
               </h4>
               <div className="grid w-max grid-cols-4">
@@ -87,7 +89,7 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
             </div>
 
             <div>
-              <h4 className="mb-2 pl-3 font-medium uppercase dark:text-base-400">
+              <h4 className="mb-2 pl-3 text-base font-medium uppercase dark:text-base-400">
                 Backend
               </h4>
               <div className="grid w-max grid-cols-4">
@@ -121,7 +123,7 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
               </div>
             </div>
             <div>
-              <h4 className="mb-2 pl-3 font-medium uppercase dark:text-base-400">
+              <h4 className="mb-2 pl-3 text-base font-medium uppercase dark:text-base-400">
                 Core
               </h4>
               <div className="grid w-max grid-cols-4">
@@ -155,7 +157,7 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
               </div>
             </div>
             <div>
-              <h4 className="mb-2 pl-3 font-medium uppercase dark:text-base-400">
+              <h4 className="mb-2 pl-3 text-base font-medium uppercase dark:text-base-400">
                 Infra
               </h4>
               <div className="grid w-max grid-cols-4">
@@ -189,7 +191,7 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
               </div>
             </div>
             <div>
-              <h4 className="mb-2 pl-3 font-medium uppercase dark:text-base-400">
+              <h4 className="mb-2 pl-3 text-base font-medium uppercase dark:text-base-400">
                 Misc
               </h4>
               <div className="grid w-max grid-cols-4">
