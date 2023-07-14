@@ -21,12 +21,12 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+// export default SignUp;
 
-// export default withAuthUser({
-//   whenAuthed: AuthAction.REDIRECT_TO_APP,
-//   whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
-//   whenAuthedBeforeRedirect: AuthAction.SHOW_LOADER,
-//   whenUnauthedAfterInit: AuthAction.RENDER,
-//   LoaderComponent: Loading,
-// })(SignUp);
+export default withAuthUser({
+  whenAuthed: AuthAction.REDIRECT_TO_APP,
+  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+  whenAuthedBeforeRedirect: AuthAction.SHOW_LOADER,
+  whenUnauthedAfterInit: AuthAction.RENDER,
+  LoaderComponent: Loading,
+})(SignUp);
