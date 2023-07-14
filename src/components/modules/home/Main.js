@@ -68,7 +68,7 @@ const Main = ({ user }) => {
         </div>
       )}
 
-      <div className="relative mt-6 pb-10">
+      <div className="relative pb-10 lg:mt-6">
         {user && (
           <div className="hidden lg:block">
             <Greeting name={user?.name} />
