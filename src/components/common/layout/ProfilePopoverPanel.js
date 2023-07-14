@@ -161,7 +161,7 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
                       </button>
                     </Link>
 
-                    <Link href="/signup">
+                    <Link href="/login">
                       <button className="btn btn-secondary btn-with-icon">
                         <span>Log in</span>
                       </button>
