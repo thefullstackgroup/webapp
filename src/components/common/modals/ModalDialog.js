@@ -60,7 +60,7 @@ const ModalDialog = ({
                     </h4>
                     <div className="absolute top-3 right-2 md:right-4">
                       <button
-                        className="btn-with-icon-only"
+                        className="btn btn-with-icon-only"
                         onClick={() => setShow(false)}
                       >
                         <Icon
