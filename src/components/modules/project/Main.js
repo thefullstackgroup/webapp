@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
+import { useRef, useState } from 'react';
 import Page from 'components/modules/project/Container';
 import Link from 'next/link';
 import Loader from 'components/common/elements/Loader';
@@ -7,30 +6,8 @@ import { Dialog, Transition } from '@headlessui/react';
 import Reactions from './Reactions';
 
 const Main = ({ user, project, author }) => {
-  const [isConnectionPending, setIsConnectionPending] = useState(false);
-  const [isConnected, setIsConnected] = useState(false);
   const [showComments, setShowComments] = useState(false);
   const cancelButtonRef = useRef(null);
-
-  const checkIfConnected = async () => {
-    axios
-      .get(
-        `${process.env.BASEURL}/api/profile/verify_connection?userId=${project?.userId}&connectedTo=${user.userId}`
-      )
-      .then((res) => {
-        if (res.data.success === true) {
-          setIsConnected(true);
-        } else if (res.data.message === 'Pending') {
-          setIsConnectionPending(true);
-        } else {
-          setIsConnected(false);
-        }
-      });
-  };
-
-  useEffect(() => {
-    if (user) checkIfConnected();
-  }, []);
 
   if (!project)
     return (
@@ -89,21 +66,16 @@ const Main = ({ user, project, author }) => {
               <Transition.Child
                 enter="ease-out duration-300"
                 enterFrom="translate-y-full sm:translate-x-full sm:translate-y-0"
-                enterTo="translate-y-16 sm:translate-x-0 sm:translate-y-0"
+                enterTo="translate-y-36 sm:translate-x-0 sm:translate-y-0"
                 leave="ease-in duration-200"
-                leaveFrom="translate-y-16 sm:translate-x-0 sm:translate-y-0"
+                leaveFrom="translate-y-36 sm:translate-x-0 sm:translate-y-0"
                 leaveTo="translate-y-full sm:translate-x-full sm:translate-y-0"
                 className={`fixed right-0 top-0 h-screen w-full max-w-lg`}
               >
                 <Dialog.Panel
                   className={`relative h-full w-full overflow-hidden border-0 bg-white text-left shadow-xl dark:border-base-600 dark:bg-base-900 sm:border-l`}
                 >
-                  <Reactions
-                    project={project}
-                    isConnected={isConnected}
-                    isConnectionPending={isConnectionPending}
-                    user={user}
-                  />
+                  <Reactions project={project} user={user} />
                 </Dialog.Panel>
               </Transition.Child>
             </div>

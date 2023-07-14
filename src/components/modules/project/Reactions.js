@@ -95,7 +95,7 @@ const Reactions = ({ project, user }) => {
         )}
 
         {/* Comments */}
-        <div className="no-scrollbar relative top-0 h-[78vh] overflow-y-scroll overscroll-contain px-4 pb-4">
+        <div className="no-scrollbar relative top-0 h-[78vh] overflow-y-scroll overscroll-contain px-4 pb-20 lg:pb-4">
           <ListComments user={user} post={project} />
         </div>
 

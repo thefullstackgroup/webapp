@@ -24,7 +24,7 @@ const Tabs = ({ tab, setTab, profile }) => {
           onClick={() => setTab(3)}
         >
           <FaDev className="mx-auto h-5 w-5" />
-          <span>DEV</span>
+          <span className="hidden lg:block">DEV</span>
         </button>
       )}
       {profile?.bio?.hashNodeAccount &&
@@ -37,7 +37,7 @@ const Tabs = ({ tab, setTab, profile }) => {
             onClick={() => setTab(4)}
           >
             <SiHashnode className="mx-auto h-5 w-5" />
-            <span>Hashnode</span>
+            <span className="hidden lg:block">Hashnode</span>
           </button>
         )}
       {profile?.bio?.mediumAccount && profile?.bio?.mediumAccount !== '' && (
@@ -49,7 +49,7 @@ const Tabs = ({ tab, setTab, profile }) => {
           onClick={() => setTab(5)}
         >
           <FaMedium className="mx-auto h-5 w-5" />
-          <span>Medium</span>
+          <span className="hidden lg:block">Medium</span>
         </button>
       )}
     </div>

@@ -25,6 +25,7 @@ import FollowButton from 'components/common/buttons/Follow';
 import Insights from 'components/modules/post/Insights';
 import Icon from 'components/common/elements/Icon';
 import ModalDialog from 'components/common/modals/ModalDialog';
+import Reactions from './Reactions';
 
 const Container = ({ project, author, user, setShowComments }) => {
   const { systemTheme, theme, setTheme } = useTheme();
@@ -161,8 +162,13 @@ const Container = ({ project, author, user, setShowComments }) => {
                     layout="fill"
                     priority={true}
                   />
-                  <button className="absolute top-4 right-6 hidden rounded-lg bg-black bg-opacity-40 p-2 lg:block">
-                    <BiExpandAlt className="h-6 w-6 text-white" />
+                  <button className="absolute top-0 left-0 h-full w-full rounded-lg bg-black bg-opacity-40 p-2">
+                    <div>
+                      <Icon
+                        name="FiPlay"
+                        className="mx-auto h-14 w-14 text-white lg:h-20 lg:w-20"
+                      />
+                    </div>
                   </button>
                 </div>
               ) : youTubeEmbedID.id ? (
@@ -293,30 +299,44 @@ const Container = ({ project, author, user, setShowComments }) => {
       <ModalDialog
         show={showVideo}
         setShow={setShowVideo}
-        dimensions={'max-w-screen-xl'}
+        dimensions={'max-w-screen-3xl'}
         edge={true}
       >
-        <div className="h-[200px] w-full overflow-hidden border-base-300 bg-black dark:border-base-700 md:h-[80vh] lg:rounded-xl lg:border">
-          <VideoPlayer
-            src={project?.projectVideoURI}
-            poster={`${project?.projectImgURI}?width=640`}
-            autoplay={true}
-          />
+        <div className="h-[200px] w-full overflow-hidden border-base-300 bg-black dark:border-base-700 md:h-[90vh] lg:rounded-xl lg:border">
+          <div className="flex h-full flex-col items-center lg:flex-row">
+            <div className="w-full lg:w-9/12">
+              <VideoPlayer
+                src={project?.projectVideoURI}
+                poster={`${project?.projectImgURI}?width=640`}
+                autoplay={true}
+              />
+            </div>
+            <div className="hidden lg:block lg:h-[90vh] lg:w-3/12">
+              <Reactions project={project} user={user} />
+            </div>
+          </div>
         </div>
       </ModalDialog>
 
       <ModalDialog
         show={showImageModal}
         setShow={setShowImageModal}
-        dimensions={'max-w-screen-xl'}
+        dimensions={'max-w-screen-3xl'}
         edge={true}
       >
-        <div className="relative flex max-w-7xl flex-1 rounded-xl">
-          <img
-            src={project?.projectImgURI}
-            className="h-full w-full object-contain object-center"
-            alt={project?.projectName}
-          />
+        <div className="h-[200px] w-full overflow-hidden border-base-300 bg-black dark:border-base-700 md:h-[90vh] lg:rounded-xl lg:border">
+          <div className="flex h-full flex-col items-center lg:flex-row">
+            <div className="w-full lg:w-9/12">
+              <img
+                src={project?.projectImgURI}
+                className="h-full w-full object-contain object-center"
+                alt={project?.projectName}
+              />
+            </div>
+            <div className="hidden lg:block lg:h-[90vh] lg:w-3/12">
+              <Reactions project={project} user={user} />
+            </div>
+          </div>
         </div>
       </ModalDialog>
     </>

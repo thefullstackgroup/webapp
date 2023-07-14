@@ -1,41 +1,41 @@
-import useSWR from "swr";
-import Moment from "moment";
-import fetcher from "utils/fetcher";
+import useSWR from 'swr';
+import Moment from 'moment';
+import fetcher from 'utils/fetcher';
 
-const fileExtentions = ["jpg", "jpeg", "png", "webp", "gif"];
+const fileExtentions = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
 
 const Card = ({ post }) => {
   const openLink = () => {
-    window.open(post.contentURI, "_blank");
+    window.open(post.contentURI, '_blank');
   };
 
   const isValidImage = () => {
-    const imageSource = post.contentImageURI?.split(".").pop();
+    const imageSource = post.contentImageURI?.split('.').pop();
     if (fileExtentions.includes(imageSource)) return true;
     return false;
   };
 
   return (
-    <div className="flex items-start">
+    <div className="box box-link w-full rounded-none border-l-0 border-r-0 lg:rounded-md lg:border">
       <button
-        className="mb-6 flex w-full flex-row items-start space-x-8 overflow-hidden rounded-md border border-base-200 bg-base-50 px-6 py-6 text-left duration-200 hover:border-base-600 dark:border-base-700 dark:bg-base-900 dark:hover:border-base-100"
+        className="flex w-full flex-col-reverse items-start gap-4 text-left lg:flex-row lg:gap-6"
         onClick={openLink}
       >
-        <div className="w-8/12 space-y-2">
+        <div className="w-full space-y-2 lg:w-8/12">
           <div>
             <h4 className="text-xl font-semibold">{post.contentTitle}</h4>
             <p className="text-xs text-base-300 dark:text-base-400">
               Published on
-              {post.contentSource === "DEV_TO" && "DEV "}{" "}
-              {post.contentSource === "HASH_NODE" && "Hashnode "}{" "}
-              {post.contentSource === "MEDIUM" && "Medium "} on{" "}
-              {Moment(post.publishedAt).format("MMM Do")}
+              {post.contentSource === 'DEV_TO' && 'DEV '}{' '}
+              {post.contentSource === 'HASH_NODE' && 'Hashnode '}{' '}
+              {post.contentSource === 'MEDIUM' && 'Medium '} on{' '}
+              {Moment(post.publishedAt).format('MMM Do')}
             </p>
           </div>
           <p className="text-base">{post.contentDescription}</p>
         </div>
         {isValidImage(post.contentImageURI) && (
-          <div className="mb-4 w-full md:mb-0 md:w-4/12">
+          <div className="flex w-full items-end md:mb-0 lg:mb-4 lg:w-4/12">
             <div className="h-40 w-full overflow-hidden rounded-md md:h-48">
               <img
                 src={post.contentImageURI}
@@ -69,7 +69,7 @@ const Articles = ({ profile, source }) => {
         ))}
       {posts && (
         <div className="w-full xl:w-full">
-          <div className="mt-8 w-full items-start gap-8 overflow-hidden md:rounded-lg">
+          <div className="mt-8 w-full items-start gap-8 space-y-6 overflow-hidden md:rounded-lg">
             {posts?.map((post, index) => (
               <Card post={post} key={index} />
             ))}
