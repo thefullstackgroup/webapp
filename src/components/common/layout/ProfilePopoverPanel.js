@@ -139,18 +139,14 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
                     </Link>
                   </div>
 
-                  <button
-                    className="nav-popover items-center text-base-500 hover:text-base-500 focus:border-none focus:outline-none focus:ring-0 dark:text-base-300 hover:dark:text-base-300"
-                    onClick={() => {
-                      setShowSignOut(true);
-                      setIsShowing(false);
-                    }}
-                  >
-                    <Icon name={'FiLogOut'} className="h-6 w-6" />
-                    <span className="text-base-500 hover:text-base-500 dark:text-base-300 hover:dark:text-base-300">
-                      Sign out
-                    </span>
-                  </button>
+                  <Link href="/account/settings/signout">
+                    <button className="nav-popover items-center text-base-500 hover:text-base-500 focus:border-none focus:outline-none focus:ring-0 dark:text-base-300 hover:dark:text-base-300">
+                      <Icon name={'FiLogOut'} className="h-6 w-6" />
+                      <span className="text-base-500 hover:text-base-500 dark:text-base-300 hover:dark:text-base-300">
+                        Sign out
+                      </span>
+                    </button>
+                  </Link>
                 </div>
               ) : (
                 <div className="w-64 space-y-2 px-2 py-4 text-center">
@@ -165,15 +161,11 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
                       </button>
                     </Link>
 
-                    <button
-                      className="btn btn-secondary btn-with-icon"
-                      onClick={() => {
-                        setShowLogin(true);
-                        setIsShowing(false);
-                      }}
-                    >
-                      <span>Log in</span>
-                    </button>
+                    <Link href="/signup">
+                      <button className="btn btn-secondary btn-with-icon">
+                        <span>Log in</span>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               )}

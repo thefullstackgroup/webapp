@@ -275,11 +275,8 @@ const Drawer = ({ user, show, setShow, setShowSignOut, setShowCreatePost }) => {
                                 </button>
                               </Link>
                               <div className="flex items-center space-x-6">
-                                <Link href="#">
-                                  <button
-                                    className="btn btn-ghost btn-with-icon px-0"
-                                    onClick={() => setShowSignOut(true)}
-                                  >
+                                <Link href="/account/settings/signout">
+                                  <button className="btn btn-ghost btn-with-icon px-0">
                                     <Icon name="FiLogOut" />
                                   </button>
                                 </Link>
