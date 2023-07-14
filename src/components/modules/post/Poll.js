@@ -80,7 +80,7 @@ const Poll = ({ user, post }) => {
       )}
 
       {pollUserHasVoted && post?.projectType === 'POLL' && (
-        <div className="mt-4 flex w-full flex-col space-y-2 px-4 sm:px-0">
+        <div className="mt-4 flex w-full flex-col space-y-2">
           {pollData?.pollOptions?.map((option, index) => (
             <div className="relative w-full text-sm" key={index}>
               <div

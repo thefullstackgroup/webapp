@@ -4,6 +4,8 @@ import PostComments from 'components/modules/comments/ListComments';
 import ModalDialog from 'components/common/modals/ModalDialog';
 import EditPost from 'components/modules/hangout/EditPost';
 import NewComment from 'components/modules/comments/NewComment';
+import Topics from '../hangout/Topics';
+import WhoToFollow from '../hangout/WhoToFollow';
 
 const Container = (props) => {
   const [showEditPost, setShowEditPost] = useState(false);
@@ -27,9 +29,14 @@ const Container = (props) => {
 
   return (
     <>
-      <div className="mt-4 flex md:mt-12">
-        <div className="mx-auto w-full max-w-2xl overflow-hidden lg:max-w-3xl">
-          <div className="overflow-hidden px-4 pt-4 pb-20 sm:bg-base-700 sm:px-0 md:rounded-lg">
+      <div className="mx-auto flex max-w-screen-2xl lg:gap-10">
+        <div className="hidden lg:block lg:w-3/12">
+          <div className="sticky top-20">
+            <Topics topic={''} />
+          </div>
+        </div>
+        <div className="mt-0 min-h-screen w-full lg:mt-8 lg:w-7/12 lg:max-w-2xl xl:w-6/12">
+          <div className="overflow-hidden bg-base-50 px-4 pt-4 pb-20 dark:bg-base-900 md:rounded-lg">
             <PostContent
               post={props.project}
               projectContent={props.projectContent}
@@ -49,6 +56,11 @@ const Container = (props) => {
                 setShowNewComment={setShowNewComment}
               />
             </div>
+          </div>
+        </div>
+        <div className="hidden w-3/12 xl:block">
+          <div className="sticky top-20 space-y-8">
+            <WhoToFollow user={props.user} />
           </div>
         </div>
       </div>

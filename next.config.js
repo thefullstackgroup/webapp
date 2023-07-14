@@ -40,6 +40,11 @@ module.exports = (phase) => {
         //   permanent: true,
         // },
         {
+          source: '/explore',
+          destination: '/explore/popular',
+          permanent: false,
+        },
+        {
           source: '/welcome',
           destination:
             '/?utm_source=reddit&utm_medium=chat&utm_campaign=message1',
