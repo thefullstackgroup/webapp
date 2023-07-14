@@ -35,7 +35,7 @@ const initAuth = () => {
 
       // By default, go to the index page if the destination URL
       // is invalid or unspecified.
-      let destURL = '/';
+      let destURL = '/explore';
 
       if (destinationParamVal) {
         const allowedHosts = ['localhost:3000', `${process.env.BASEURL}`];

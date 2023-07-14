@@ -39,11 +39,11 @@ module.exports = (phase) => {
           destination: '/cookie-policy',
           permanent: true,
         },
-        {
-          source: '/explore',
-          destination: '/explore/popular',
-          permanent: false,
-        },
+        // {
+        //   source: '/explore',
+        //   destination: '/explore/popular',
+        //   permanent: false,
+        // },
         {
           source: '/welcome',
           destination:

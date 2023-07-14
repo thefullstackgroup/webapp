@@ -39,7 +39,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
       return {
         redirect: {
           destination: userProfile.redirect,
-          permanent: false,
+          permanent: true,
         },
       };
     }
