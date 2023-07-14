@@ -5,7 +5,7 @@ const Categories = ({ category, setCategory, enableState = true }) => {
   const router = useRouter();
 
   return (
-    <div className="no-scrollbar mx-auto mt-6 flex w-auto max-w-fit gap-2 overflow-hidden overflow-x-scroll">
+    <div className="no-scrollbar mx-auto flex w-auto max-w-fit gap-2 overflow-hidden overflow-x-scroll pt-6">
       {CategoriesFilter.map((item, index) => (
         <button
           className={

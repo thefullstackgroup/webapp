@@ -3,8 +3,9 @@ import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
 import ProjectCard from 'components/common/cards/ProjectCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Pagination, Navigation } from 'swiper';
 import 'swiper/css';
+import 'swiper/css/pagination';
 import Icon from 'components/common/elements/Icon';
 import ToolTip from 'components/common/elements/ToolTip';
 import Link from 'next/link';
@@ -70,7 +71,8 @@ const ProjectCarousel = ({
       <Swiper
         slidesPerView={5}
         spaceBetween={30}
-        modules={[Navigation]}
+        modules={[Pagination, Navigation]}
+        pagination={true}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
@@ -129,7 +131,7 @@ const ProjectCarousel = ({
             </SwiperSlide>
           ))}
         {data?.map((project, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} style={{ paddingBottom: '28px' }}>
             <ProjectCard project={project} user={user} />
           </SwiperSlide>
         ))}

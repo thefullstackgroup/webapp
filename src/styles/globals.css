@@ -429,11 +429,25 @@ aside.EmojiPickerReact.epr-main {
 }
 
 .swiper-container {
+  border: 1px solid red !important;
   padding-bottom: 35px;
 }
 .swiper-horizontal > .swiper-pagination {
   position: absolute !important;
-  bottom: -20px !important;
+  bottom: -6px !important;
+  margin-bottom: 10px;
+}
+
+.dark .swiper-pagination-bullet {
+  background-color: #eaeaea !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #000 !important;
+}
+
+.dark .swiper-pagination-bullet-active {
+  background-color: #fff !important;
 }
 
 .wmde-markdown {

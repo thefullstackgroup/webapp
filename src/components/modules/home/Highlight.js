@@ -2,9 +2,10 @@ import Image from 'next/future/image';
 import Link from 'next/link';
 import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Pagination, Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import fetcher from 'utils/fetcher';
 import useSWR from 'swr';
 import ToolTip from 'components/common/elements/ToolTip';
@@ -17,7 +18,7 @@ const Slide = ({ data }) => {
       <Link
         href={`/${data?.projectCreator.displayName}/project/${data?.projectSlug}`}
       >
-        <div className="group relative flex h-[400px] w-full flex-1 grow cursor-pointer overflow-hidden rounded-lg border border-transparent duration-200 dark:border-base-700 dark:hover:border-base-300 2xl:h-[440px]">
+        <div className="group relative mb-8 flex h-[400px] w-full flex-1 grow cursor-pointer overflow-hidden rounded-lg border border-transparent duration-200 dark:border-base-700 dark:hover:border-base-300 2xl:h-[440px]">
           <div className="group relative" />
           <div className="h-[400px] w-full 2xl:h-[440px]">
             <Image
@@ -67,13 +68,13 @@ const Highlight = ({ user }) => {
 
   return (
     <div>
-      <div className="flex items-center justify-end space-x-2 pb-4">
-        {/* <div className="flex items-end space-x-2">
+      <div className="flex items-center justify-between space-x-2 pb-4 lg:justify-end">
+        <div className="flex items-end space-x-2 lg:hidden">
           <h3 className="font-mono text-base font-medium text-base-700 dark:text-base-200">
             Check these out
           </h3>
           <Icon name="FiCornerRightDown" className="h-5 w-5" />
-        </div> */}
+        </div>
         <div className="hidden items-end space-x-2 lg:flex">
           <button
             ref={prevRef}
@@ -94,7 +95,8 @@ const Highlight = ({ user }) => {
       <Swiper
         slidesPerView={5}
         spaceBetween={30}
-        modules={[Navigation]}
+        modules={[Pagination, Navigation]}
+        pagination={true}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,

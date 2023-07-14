@@ -1,5 +1,3 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
 import Link from 'next/link';
 import Icon from 'components/common/elements/Icon';
 import Highlight from 'components/modules/home/Highlight';
@@ -7,7 +5,6 @@ import Discover from 'components/modules/home/Discover';
 import ProjectCarousel from 'components/modules/home/ProjectCarousel';
 import { CategoriesFilter } from 'components/modules/explore/constants';
 import { FcGoogle } from 'react-icons/fc';
-import { useRouter } from 'next/router';
 
 export const Greeting = ({ name }) => {
   const myDate = new Date();
@@ -20,13 +17,13 @@ export const Greeting = ({ name }) => {
   else if (hours >= 17 && hours <= 24) greet = 'Good evening';
 
   return (
-    <div className="w-min font-mono text-base">
-      <div className="greeting-line anim-typewriter flex">
+    <div className="w-min font-mono text-base lg:mt-0 lg:-mb-6">
+      <div className="greeting-line anim-typewriter flex items-center space-x-2">
         <span>
-          {greet},<span className="capitlize">{firstName[0]}</span>...
+          {greet},<span className="capitlize">{firstName[0]}!</span>
         </span>
         <span className="hidden lg:block">
-          check these out{' '}
+          Check these out{' '}
           <Icon name="FiCornerRightDown" className={'inline-flex'} />
         </span>
       </div>
@@ -35,30 +32,8 @@ export const Greeting = ({ name }) => {
 };
 
 const Main = ({ user }) => {
-  const router = useRouter();
-  const googleProvider = new firebase.auth.GoogleAuthProvider();
-  const gitHubProvider = new firebase.auth.GithubAuthProvider();
-
-  const signInWithGoogle = async () => {
-    try {
-      const res = await firebase.auth().signInWithPopup(googleProvider);
-      if (res) router.push('/login');
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const signInWithGitHub = async () => {
-    try {
-      const res = await firebase.auth().signInWithPopup(gitHubProvider);
-      if (res) router.push('/login');
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   return (
-    <div className="min-h-screen space-y-8 px-4 pt-6">
+    <div className="min-h-screen space-y-8 px-4 pt-6 lg:pt-0">
       {!user && (
         <div className="rounded-lg bg-transparent dark:bg-transparent">
           <div className="mx-auto max-w-4xl py-10 text-center lg:py-14">
@@ -93,8 +68,12 @@ const Main = ({ user }) => {
         </div>
       )}
 
-      <div className="relative pb-10">
-        {user && <Greeting name={user?.name} />}
+      <div className="relative mt-6 pb-10">
+        {user && (
+          <div className="hidden lg:block">
+            <Greeting name={user?.name} />
+          </div>
+        )}
         <Highlight />
       </div>
 
