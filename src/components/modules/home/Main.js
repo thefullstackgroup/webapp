@@ -75,20 +75,18 @@ const Main = ({ user }) => {
                 share projects and grow your developer network.
               </h4>
               <div className="flex flex-col items-center justify-center space-y-2 xl:flex-row xl:space-y-0 xl:space-x-4">
-                <button
-                  className="btn btn-secondary btn-with-icon rounded-full py-2"
-                  onClick={signInWithGitHub}
-                >
-                  <Icon name="SiGithub" pack="Si" className="h-5 w-5" />
-                  <span>Continue with GitHub</span>
-                </button>
-                <button
-                  className="btn btn-secondary btn-with-icon rounded-full py-2"
-                  onClick={signInWithGoogle}
-                >
-                  <FcGoogle />
-                  <span>Continue with Google</span>
-                </button>
+                <Link href="/signup">
+                  <button className="btn btn-secondary btn-with-icon rounded-full py-2">
+                    <Icon name="SiGithub" pack="Si" className="h-5 w-5" />
+                    <span>Continue with GitHub</span>
+                  </button>
+                </Link>
+                <Link href="/signup">
+                  <button className="btn btn-secondary btn-with-icon rounded-full py-2">
+                    <FcGoogle />
+                    <span>Continue with Google</span>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -29,16 +29,16 @@ module.exports = (phase) => {
           destination: '/code-of-conduct',
           permanent: true,
         },
-        // {
-        //   source: '/legal/privacy-policy',
-        //   destination: '/privacy-policy',
-        //   permanent: true,
-        // },
-        // {
-        //   source: '/legal/cookie-policy',
-        //   destination: '/cookie-policy',
-        //   permanent: true,
-        // },
+        {
+          source: '/legal/privacy-policy',
+          destination: '/privacy-policy',
+          permanent: true,
+        },
+        {
+          source: '/legal/cookie-policy',
+          destination: '/cookie-policy',
+          permanent: true,
+        },
         {
           source: '/explore',
           destination: '/explore/popular',

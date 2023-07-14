@@ -31,8 +31,8 @@ const Layout = ({
         <div
           className={
             !fullWidth
-              ? 'relative mx-auto max-w-screen-2xl lg:mt-0 lg:px-4'
-              : 'px-0'
+              ? 'relative mx-auto mt-14 max-w-screen-2xl sm:mt-0 lg:px-4'
+              : 'mt-14 px-0 sm:mt-0'
           }
         >
           {children}

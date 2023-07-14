@@ -299,19 +299,19 @@ const Container = ({ project, author, user, setShowComments }) => {
       <ModalDialog
         show={showVideo}
         setShow={setShowVideo}
-        dimensions={'max-w-screen-3xl'}
+        dimensions={'sm:mx-8 max-w-screen-3xl'}
         edge={true}
       >
-        <div className="h-[200px] w-full overflow-hidden border-base-300 bg-black dark:border-base-700 md:h-[90vh] lg:rounded-xl lg:border">
-          <div className="flex h-full flex-col items-center lg:flex-row">
-            <div className="w-full lg:w-9/12">
+        <div className="h-auto w-full overflow-hidden border-base-300 bg-black dark:border-base-700 md:h-[90vh] lg:rounded-xl lg:border">
+          <div className="flex h-full items-center">
+            <div className="w-full xl:w-9/12">
               <VideoPlayer
                 src={project?.projectVideoURI}
                 poster={`${project?.projectImgURI}?width=640`}
                 autoplay={true}
               />
             </div>
-            <div className="hidden lg:block lg:h-[90vh] lg:w-3/12">
+            <div className="hidden lg:h-[90vh] xl:block xl:w-3/12">
               <Reactions project={project} user={user} />
             </div>
           </div>

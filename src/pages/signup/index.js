@@ -7,7 +7,7 @@ import Main from 'components/modules/signup/Main';
 
 const Loading = () => {
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-base-800">
+    <div className="flex min-h-screen w-full items-center justify-center bg-base-50 dark:bg-base-900">
       <Loader />
     </div>
   );
@@ -21,10 +21,12 @@ const SignUp = () => {
   );
 };
 
-export default withAuthUser({
-  whenAuthed: AuthAction.REDIRECT_TO_APP,
-  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
-  whenAuthedBeforeRedirect: AuthAction.SHOW_LOADER,
-  whenUnauthedAfterInit: AuthAction.RENDER,
-  LoaderComponent: Loading,
-})(SignUp);
+export default SignUp;
+
+// export default withAuthUser({
+//   whenAuthed: AuthAction.REDIRECT_TO_APP,
+//   whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+//   whenAuthedBeforeRedirect: AuthAction.SHOW_LOADER,
+//   whenUnauthedAfterInit: AuthAction.RENDER,
+//   LoaderComponent: Loading,
+// })(SignUp);

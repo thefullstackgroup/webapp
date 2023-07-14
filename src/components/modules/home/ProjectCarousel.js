@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
 import ProjectCard from 'components/common/cards/ProjectCard';
@@ -20,6 +20,9 @@ const ProjectCarousel = ({
 }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const [carouselReady] = useState(
+    typeof window !== 'undefined' ? true : false
+  );
 
   let url = `${process.env.BASEURL}/api/projects/get?size=${count}&sort=${sort}&projectType=PROJECT&range=${range}`;
 
