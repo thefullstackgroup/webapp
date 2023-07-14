@@ -1,6 +1,9 @@
+import { useTheme } from 'next-themes';
 import Head from 'next/head';
 
 const Metadata = (props) => {
+  const { systemTheme, theme } = useTheme();
+  const currentTheme = theme === 'system' ? systemTheme : theme;
   const { title, description, keywords, openGraphImage = '' } = props;
   return (
     <>
@@ -52,7 +55,10 @@ const Metadata = (props) => {
         />
 
         <meta name="keywords" content={keywords} />
-        <meta name="theme-color" content="#18191c" />
+        <meta
+          name="theme-color"
+          content={`(prefers-color-scheme: ${currentTheme})`}
+        />
 
         <link rel="manifest" href="/manifest.json" />
         <link

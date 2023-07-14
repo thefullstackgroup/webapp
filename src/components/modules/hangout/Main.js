@@ -22,7 +22,7 @@ const Main = ({ user, topic }) => {
         <div className="mt-0 min-h-screen w-full lg:mt-8 lg:w-7/12 lg:max-w-2xl xl:w-6/12">
           {user && <CreatePost user={user} />}
           {!user && (
-            <div className="mb-6 rounded-md px-4 lg:px-0">
+            <div className="mt-4 mb-6 rounded-md px-4 lg:px-0">
               <Link href="/signup">
                 <div className="box box-link flex justify-between bg-transparent text-base-300">
                   <span>Sign in to share something ...</span>
