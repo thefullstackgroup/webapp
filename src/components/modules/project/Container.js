@@ -49,7 +49,7 @@ const Container = ({ project, author, user, setShowComments }) => {
         {project?.isDraft &&
           project?.projectCreator?.userId === user?.userId && (
             <Link href={`/post?ref=${project?._id}`} passHref>
-              <div className="w-full cursor-pointer bg-red-500/40 py-3 px-4 font-normal md:px-8">
+              <div className="w-full cursor-pointer bg-red-500/40 py-3 px-4 font-normal xl:px-8">
                 This project is{' '}
                 <span className="font-bold text-base-200">unpublished</span> and
                 not visible to anyone. Click to edit.
@@ -58,7 +58,7 @@ const Container = ({ project, author, user, setShowComments }) => {
           )}
 
         {project?.projectCreator?.userId === user?.userId && (
-          <div className="mx-auto flex max-w-screen-2xl space-x-8 py-4 px-4 lg:px-0">
+          <div className="mx-auto flex max-w-screen-2xl space-x-8 py-4 px-4 xl:px-0">
             <Link href={`/post?ref=${project?._id}`} passHref>
               <button className="btn btn-secondary">
                 <span>Edit Project</span>
@@ -68,7 +68,7 @@ const Container = ({ project, author, user, setShowComments }) => {
         )}
 
         <div className="bg-gradient-to-b from-base-50 to-base-200/50 pt-6 pb-8 dark:from-base-900 dark:to-base-800/90 lg:pt-10">
-          <div className="relative z-10 mx-auto flex max-w-screen-2xl flex-col items-center gap-12 px-4 pb-10 lg:flex-row lg:px-0">
+          <div className="relative z-10 mx-auto flex max-w-screen-2xl flex-col items-center gap-12 px-4 pb-10 lg:flex-row 2xl:px-0">
             <div className="w-full space-y-4 lg:w-5/12 lg:pr-20">
               <div className="flex items-center space-x-3">
                 <Avatar
@@ -208,8 +208,8 @@ const Container = ({ project, author, user, setShowComments }) => {
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto grid h-full max-w-screen-2xl grid-cols-1 items-start gap-20 px-4 lg:grid-cols-3 lg:px-0">
-          <div className="col-span-1 space-y-6 py-4 lg:col-span-2">
+        <div className="relative z-10 mx-auto grid h-full max-w-screen-2xl grid-cols-1 items-start gap-20 px-4 xl:grid-cols-3 2xl:px-0">
+          <div className="col-span-1 space-y-6 py-4 xl:col-span-2">
             <div className="wmde-markdown-var mt-4 mb-20 max-w-4xl">
               {project?.projectBody && (
                 <MarkdownPreview
@@ -222,7 +222,7 @@ const Container = ({ project, author, user, setShowComments }) => {
               )}
             </div>
           </div>
-          <div className="hidden h-full w-full space-y-8 border-l border-base-200/70 dark:border-base-700/70 lg:block">
+          <div className="hidden h-full w-full space-y-8 border-l border-base-200/70 dark:border-base-700/70 xl:block">
             {/* Profile Card */}
             <div className="sticky top-14 mb-8 space-y-5 py-4 px-12 pt-8">
               <div className="flex items-center space-x-3">
