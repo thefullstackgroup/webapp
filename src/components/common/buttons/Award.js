@@ -5,7 +5,6 @@ import axios from 'axios';
 import Link from 'next/link';
 import Confetti from 'react-confetti';
 import * as ga from 'lib/ga';
-import { IoCheckmarkSharp } from 'react-icons/io5';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import ToolTip from 'components/common/elements/ToolTip';
 import fetcher from 'utils/fetcher';
@@ -128,7 +127,7 @@ const AwardButton = ({
                 {rewards.map((reward, index) => (
                   <button
                     key={index}
-                    className="btn btn-with-icon btn-secondary group justify-between hover:border-yellow-500 hover:text-yellow-500"
+                    className="btn btn-with-icon btn-secondary group justify-between hover:border-yellow-500 hover:bg-base-50 hover:text-yellow-500 dark:hover:border-yellow-500 dark:hover:text-yellow-500"
                     onClick={() => {
                       setTransactMessage(
                         `@${
@@ -197,7 +196,7 @@ const AwardButton = ({
                     </p>
                   </span>
 
-                  <div className="mt-6 flex flex-col-reverse items-center justify-center space-y-4 space-y-reverse sm:flex-row sm:space-y-0 sm:space-x-2">
+                  <div className="my-6 flex flex-col-reverse items-center justify-center space-y-4 space-y-reverse sm:flex-row sm:space-y-0 sm:space-x-2">
                     <button
                       className="btn btn-secondary w-full sm:w-auto"
                       onClick={() => {
@@ -226,13 +225,20 @@ const AwardButton = ({
                     <Confetti />
                     <div className="mx-auto max-w-7xl py-4 px-2 sm:py-4 sm:px-6 lg:px-8">
                       <div>
-                        <IoCheckmarkSharp className="mx-auto h-12 w-12 text-green-500" />
-                        <p className="p-4 text-center text-xl font-semibold text-gray-100">
+                        <Icon
+                          name="IoCheckmarkSharp"
+                          pack="Io"
+                          className="mx-auto h-12 w-12 text-green-500"
+                        />
+                        <p className="p-4 text-center text-xl font-semibold">
                           Reward sent to {post.projectCreator.name}
                         </p>
-                        <p>Your balance is now ${walletBalance.toFixed(2)}</p>
+                        <p>
+                          You are awesome! <br />
+                          Your balance is now ${walletBalance.toFixed(2)}.
+                        </p>
                         <button
-                          className="btn-primary mt-6"
+                          className="btn btn-primary mt-6"
                           onClick={() => setSendReward(false)}
                         >
                           <span>Done</span>
