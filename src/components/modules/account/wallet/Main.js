@@ -85,7 +85,7 @@ const Page = ({ user, promo }) => {
           </div>
 
           <div className="text-base font-medium">
-            Wallet balance: ${wallet?.total.toFixed(2)}
+            Balance: ${wallet?.total.toFixed(2)}
           </div>
         </div>
 
