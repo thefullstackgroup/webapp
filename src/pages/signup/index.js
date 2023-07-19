@@ -4,6 +4,7 @@ import 'firebase/auth';
 import Loader from 'components/common/elements/Loader';
 import Layout from 'components/common/layout/Layout';
 import Main from 'components/modules/signup/Main';
+import Metadata from 'components/common/partials/Metadata';
 
 const Loading = () => {
   return (
@@ -15,9 +16,16 @@ const Loading = () => {
 
 const SignUp = () => {
   return (
-    <Layout>
-      <Main />
-    </Layout>
+    <>
+      <Metadata
+        title={`${process.env.brandName} | Join us`}
+        description="The Developer network"
+        keywords=""
+      />
+      <Layout>
+        <Main />
+      </Layout>
+    </>
   );
 };
 

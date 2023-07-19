@@ -50,12 +50,10 @@ const Page = () => {
 
   return (
     <>
-      <div className="my-20 flex items-center">
+      <div className="my-12 flex items-center lg:my-20">
         <div className="mx-auto w-full max-w-md">
           <div className="flex flex-col justify-center space-y-4 text-center">
-            <div className="mt-2 text-lg font-semibold sm:text-2xl">
-              Welcome back, sign in
-            </div>
+            <h2 className="mt-2 font-manrope">Welcome back, sign in</h2>
           </div>
           <div className="p-8">
             <div className="space-y-4">

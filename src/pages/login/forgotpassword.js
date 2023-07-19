@@ -1,6 +1,8 @@
 import { withAuthUser, AuthAction } from 'next-firebase-auth';
 import Page from 'components/modules/auth/ForgotPassword';
 import Loader from 'components/common/elements/Loader';
+import Metadata from 'components/common/partials/Metadata';
+import Layout from 'components/common/layout/Layout';
 
 const Loading = () => {
   return (
@@ -11,7 +13,18 @@ const Loading = () => {
 };
 
 const Login = () => {
-  return <Page />;
+  return (
+    <>
+      <Metadata
+        title={`${process.env.brandName} | Forgot password`}
+        description="The Developer network"
+        keywords=""
+      />
+      <Layout>
+        <Page />
+      </Layout>
+    </>
+  );
 };
 
 export default withAuthUser({

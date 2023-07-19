@@ -76,11 +76,9 @@ const Main = () => {
   };
 
   return (
-    <div className="mx-auto my-20 w-full max-w-md">
+    <div className="mx-auto my-12 w-full max-w-md lg:my-20">
       <div className="mb-2 flex flex-col justify-center space-y-6 text-center md:mb-0">
-        <div className="mt-2 text-2xl font-semibold">
-          Sign up to The Full Stack
-        </div>
+        <h2 className="mt-2 font-manrope">Sign up to The Full Stack</h2>
       </div>
       <div className="p-4 md:p-8">
         <div className="space-y-4">
@@ -116,7 +114,7 @@ const Main = () => {
             <span>Continue with LinkedIn</span>
           </button>
 
-          <div className="py-2 text-center text-sm text-base-600 dark:text-base-400">
+          {/* <div className="py-2 text-center text-sm text-base-600 dark:text-base-400">
             Or sign up using email
           </div>
           <input
@@ -158,14 +156,14 @@ const Main = () => {
             >
               Continue
             </button>
-          </div>
+          </div> */}
 
-          <div className="text-xs">
-            By continuing, you agree to our{' '}
+          <div className="pt-6 text-center text-xs">
+            By continuing, you agree to the{' '}
             <Link href="/code-of-conduct" passHref>
               <a className="font-bold">Code of Conduct</a>
             </Link>{' '}
-            and confirm that you have read our{' '}
+            and confirm that you have read the{' '}
             <Link href="/privacy-policy" passHref>
               <a className="font-bold">Privacy Policy</a>
             </Link>{' '}
