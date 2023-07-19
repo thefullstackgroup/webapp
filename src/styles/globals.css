@@ -472,7 +472,8 @@ html.dark .wmde-markdown {
 }
 
 .wmde-markdown pre {
-  background-color: #eeeded !important;
+  background-color: #e6e5e5 !important;
+  color: #161b22;
 }
 
 html.dark .wmde-markdown pre {

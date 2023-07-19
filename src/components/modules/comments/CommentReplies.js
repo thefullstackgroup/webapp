@@ -13,6 +13,7 @@ import Avatar from 'components/common/elements/Avatar';
 import fetcher from 'utils/fetcher';
 import Icon from 'components/common/elements/Icon';
 import { useTheme } from 'next-themes';
+import LikeComment from './LikeComment';
 
 const CommentReplies = ({
   commentId,
@@ -39,25 +40,6 @@ const CommentReplies = ({
         commentId: comment.id,
       }
     );
-    mutate(url);
-  };
-
-  const performLike = async (comment) => {
-    if (comment.likedByYou) {
-      await axios.post(
-        `${process.env.BASEURL}/api/posts/comments/unlikeComment`,
-        {
-          commentId: comment.id,
-        }
-      );
-    } else {
-      await axios.post(
-        `${process.env.BASEURL}/api/posts/comments/likeComment`,
-        {
-          commentId: comment.id,
-        }
-      );
-    }
     mutate(url);
   };
 
@@ -103,29 +85,7 @@ const CommentReplies = ({
               {user && (
                 <div className="mt-2 ml-10 flex items-center space-x-6">
                   <div className="text-xs">
-                    <button className="flex items-center text-base-400 hover:text-base-500 focus:outline-none">
-                      {comment.likedByYou ? (
-                        <>
-                          <Icon
-                            name="FiHeart"
-                            className="mr-1 h-4 w-4 text-red-500"
-                            onClick={() => performLike(comment)}
-                          />
-                          <span className="text-red-500">
-                            {comment.commentLikeCount}
-                          </span>
-                        </>
-                      ) : (
-                        <>
-                          <Icon
-                            name="FiHeart"
-                            className="mr-1 h-4 w-4"
-                            onClick={() => performLike(comment)}
-                          />
-                          <span className="">{comment.commentLikeCount}</span>
-                        </>
-                      )}
-                    </button>
+                    <LikeComment comment={comment} />
                   </div>
                   <div className="text-xs">
                     <button
@@ -174,7 +134,6 @@ const CommentReplies = ({
                   setEditCommentOpen={setEditCommentOpen}
                   user={user}
                   handleDeleteComment={handleDeleteReply}
-                  performLike={performLike}
                   projectId={projectId}
                   commentToUpdate={commentToUpdate}
                   handlePostReply={handlePostReply}
