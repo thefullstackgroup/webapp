@@ -115,7 +115,7 @@ const Main = ({ profile, myProfile }) => {
         )}
 
         {profile?.gitHubUserName && (
-          <div className="relative mx-auto mb-8 max-w-screen-lg px-4 sm:mb-10 lg:px-0">
+          <div className="relative mx-auto mb-4 max-w-screen-lg px-4 sm:mb-10 lg:px-0">
             <GitHubCalendar
               username={profile?.gitHubUserName}
               blockSize={16}

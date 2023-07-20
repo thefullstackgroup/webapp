@@ -8,7 +8,11 @@ const Tabs = ({ tab, setTab, profile }) => {
     <div className="tabs border-t border-b border-base-200 dark:border-base-700 sm:border-t-0 lg:border-b-0">
       {tabs.map((tabButton, index) => (
         <button
-          className={tab == index ? 'tab-item tab-item-active' : 'tab-item'}
+          className={
+            tab == index
+              ? 'tab-item tab-item-active py-4 sm:py-2'
+              : 'tab-item py-4 sm:py-2'
+          }
           key={index}
           onClick={() => setTab(index)}
         >
@@ -19,7 +23,9 @@ const Tabs = ({ tab, setTab, profile }) => {
         <button
           className={
             'flex items-center space-x-1 ' +
-            (tab == 3 ? 'tab-item tab-item-active' : 'tab-item')
+            (tab == 3
+              ? 'tab-item tab-item-active py-4 sm:py-2'
+              : 'tab-item py-4 sm:py-2')
           }
           onClick={() => setTab(3)}
         >
@@ -32,7 +38,9 @@ const Tabs = ({ tab, setTab, profile }) => {
           <button
             className={
               'flex items-center space-x-1 ' +
-              (tab == 4 ? 'tab-item tab-item-active' : 'tab-item')
+              (tab == 4
+                ? 'tab-item tab-item-active py-4 sm:py-2'
+                : 'tab-item py-4 sm:py-2')
             }
             onClick={() => setTab(4)}
           >
@@ -44,7 +52,9 @@ const Tabs = ({ tab, setTab, profile }) => {
         <button
           className={
             'flex items-center space-x-1 ' +
-            (tab == 5 ? 'tab-item tab-item-active' : 'tab-item')
+            (tab == 5
+              ? 'tab-item tab-item-active py-4 sm:py-2'
+              : 'tab-item py-4 sm:py-2')
           }
           onClick={() => setTab(5)}
         >

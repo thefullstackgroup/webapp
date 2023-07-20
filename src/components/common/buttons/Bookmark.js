@@ -73,7 +73,7 @@ const ButtonBookmark = (props) => {
       >
         <ToolTip message="Bookmark" position={props.toolTipPosition} />
         {isSaved ? (
-          <Icon name="FiBookmark" className="h-auto w-6" />
+          <Icon name="FaBookmark" pack="Fa" className="h-auto w-6" />
         ) : (
           <Icon name="FiBookmark" className="h-auto w-6" />
         )}
