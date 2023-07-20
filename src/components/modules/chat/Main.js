@@ -88,7 +88,7 @@ const Main = ({ user, chatId }) => {
         {chatId && (
           <>
             <div className="flex w-full px-4 pt-4 sm:px-6">
-              <div className="no-scrollbar flex h-[75vh] w-full flex-col overflow-hidden overflow-y-scroll overscroll-contain">
+              <div className="no-scrollbar flex h-[65vh] w-full flex-col overflow-hidden overflow-y-scroll overscroll-contain">
                 {loading && (
                   <div className="mt-40 flex flex-col items-center justify-center space-y-4">
                     <Loader />
@@ -118,7 +118,7 @@ const Main = ({ user, chatId }) => {
               </div>
             </div>
 
-            <div className="absolute bottom-4 w-full bg-base-800">
+            <div className="absolute bottom-20 w-full bg-base-800">
               <BottomBar user={user} id={chatId} />
             </div>
           </>
