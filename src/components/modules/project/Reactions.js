@@ -180,7 +180,7 @@ const Reactions = ({ project, user }) => {
                   </div>
                 </div>
               )}
-              <div className="no-scrollbar w-full overflow-y-scroll overscroll-contain px-4 pb-28 md:px-8">
+              <div className="no-scrollbar w-full overflow-y-scroll overscroll-contain px-4 pb-36 md:px-8">
                 <ListComments user={user} post={project} />
               </div>
             </div>
