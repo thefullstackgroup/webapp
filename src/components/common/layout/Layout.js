@@ -5,6 +5,7 @@ import CreatePostModal from 'components/modules/create/CreatePostModal';
 import { useState } from 'react';
 import SignOutPrompt from '../elements/SignOutPrompt';
 import LoginModal from 'components/modules/auth/LoginModal';
+import { getChatNotificationsTotal } from 'components/modules/chat/Notifications';
 
 const Layout = ({
   user,
@@ -17,6 +18,8 @@ const Layout = ({
   const [showCreatePost, setShowCreatePost] = useState(false);
   const [showSignOut, setShowSignOut] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const totalChatNotifications = getChatNotificationsTotal(user?.userId);
+
   return (
     <>
       <main className="bg-base-100 dark:bg-base-900 lg:min-h-screen">
@@ -27,6 +30,7 @@ const Layout = ({
           setShowCreatePost={setShowCreatePost}
           setShowSignOut={setShowSignOut}
           setShowLogin={setShowLogin}
+          totalChatNotifications={totalChatNotifications}
         />
         <div
           className={
@@ -64,6 +68,7 @@ const Layout = ({
         setShow={setShowDrawer}
         setShowSignOut={setShowSignOut}
         setShowCreatePost={setShowCreatePost}
+        totalChatNotifications={totalChatNotifications}
       />
     </>
   );

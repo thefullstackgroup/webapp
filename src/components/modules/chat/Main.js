@@ -98,10 +98,10 @@ const Main = ({ user, chatId }) => {
                   <div className="mt-40 flex flex-col items-center justify-center space-y-4">
                     <Icon
                       name={'FiMessageSquare'}
-                      className="h-24 w-24 text-base-200 dark:text-base-500"
+                      className="h-24 w-24 text-base-300 dark:text-base-500"
                     />
-                    <p className="text-2xl font-medium tracking-tight text-base-200 dark:text-base-500">
-                      Select conversation
+                    <p className="text-2xl font-medium tracking-tight text-base-300 dark:text-base-500">
+                      Select chat
                     </p>
                   </div>
                 )}
@@ -114,7 +114,7 @@ const Main = ({ user, chatId }) => {
                     currentMessageIndex={index}
                   />
                 ))}
-                <div ref={bottomOfChat} className="py-10 md:py-8"></div>
+                <div ref={bottomOfChat} className="py-4 md:py-8"></div>
               </div>
             </div>
 
@@ -147,10 +147,10 @@ const Main = ({ user, chatId }) => {
                     <div className="mt-40 flex flex-col items-center justify-center space-y-4">
                       <Icon
                         name={'FiMessageSquare'}
-                        className="h-24 w-24 text-base-200 dark:text-base-500"
+                        className="h-24 w-24 text-base-300 dark:text-base-500"
                       />
-                      <p className="text-2xl font-medium tracking-tight text-base-200 dark:text-base-500">
-                        Select conversation
+                      <p className="text-2xl font-medium tracking-tight text-base-300 dark:text-base-500">
+                        Select chat
                       </p>
                     </div>
                   )}

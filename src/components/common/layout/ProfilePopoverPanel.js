@@ -4,7 +4,12 @@ import Icon from '../elements/Icon';
 import Link from 'next/link';
 import Avatar from '../elements/Avatar';
 
-const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
+const ProfilePopoverPanel = ({
+  user,
+  setShowSignOut,
+  setShowLogin,
+  totalChatNotifications,
+}) => {
   const [isShowing, setIsShowing] = useState(false);
 
   return (
@@ -95,13 +100,20 @@ const ProfilePopoverPanel = ({ user, setShowSignOut, setShowLogin }) => {
                     </Link>
                     <Link href="/chat">
                       <button
-                        className="nav-popover items-center"
+                        className="nav-popover relative items-center"
                         onClick={() => setIsShowing(false)}
                       >
                         <Icon name={'FiMessageSquare'} />
                         <span className="text-black dark:text-white">
                           Messages
                         </span>
+
+                        {totalChatNotifications > 0 && (
+                          <div
+                            className="absolute left-6 top-1 flex h-3 w-3 justify-center rounded-full bg-red-600 text-center font-semibold text-white"
+                            style={{ fontSize: '11px' }}
+                          ></div>
+                        )}
                       </button>
                     </Link>
                     <Link href="/account/wallet">

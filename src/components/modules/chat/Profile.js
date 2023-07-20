@@ -20,35 +20,35 @@ const Profile = ({ users, user, lastChatMessage, unRead }) => {
   if (!chatUser) return null;
 
   return (
-    <div className="flex items-start space-x-2">
-      <div className="group relative">
+    <div className="flex items-start space-x-3">
+      <div className="relative">
         <Avatar
           image={chatUser?.profilePicUrl}
           name={chatUser?.name}
           dimensions="h-11 w-11"
         />
       </div>
-      <div className="flex flex-col text-left">
-        <div
+      <div className="overflow-hidden text-left">
+        <p
           className={
-            'items-center space-x-2 text-left text-base font-medium ' +
+            'items-center space-x-2 truncate text-left text-base font-medium ' +
             (unRead
               ? 'text-base-900 dark:text-white'
               : 'text-base-900 dark:text-base-200')
           }
         >
           {chatUser?.name}
-        </div>
-        <span
+        </p>
+        <p
           className={
-            'text-sm font-normal line-clamp-1 ' +
+            'truncate text-sm font-normal ' +
             (unRead ? 'dark:text-white' : 'dark:text-base-400')
           }
         >
           {lastChatMessage
             ? lastChatMessage.replace(/(.{29})..+/, '$1…')
             : 'Start a conversation…'}
-        </span>
+        </p>
       </div>
     </div>
   );

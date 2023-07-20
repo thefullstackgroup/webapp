@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import { firebase } from 'firebase/firebaseApp';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import Profile from 'components/modules/chat/Profile';
-import { IoChatbubblesOutline } from 'react-icons/io5';
 import { getChatNotificationsPerChannel } from 'components/modules/chat/Notifications';
 import Moment from 'moment';
 import { useMemo } from 'react';
@@ -31,7 +30,7 @@ const SideBar = ({ user, chatId }) => {
         <button
           key={chat.id}
           className={
-            `relative flex w-full items-start justify-between border-b border-base-200 p-4 outline-none duration-200 dark:border-base-700 sm:rounded-md sm:border-b-0 ` +
+            `relative grid w-full grid-cols-5 items-start border-b border-base-200 p-4 outline-none duration-200 dark:border-base-700 sm:rounded-md sm:border-b-0 ` +
             (chat.id === chatId
               ? 'border-primary-500 bg-base-200 dark:bg-base-800'
               : chatNotifications[chat.id]?.unreadMessages === 1
@@ -40,24 +39,28 @@ const SideBar = ({ user, chatId }) => {
           }
           onClick={() => redirect(chat.id)}
         >
-          <Profile
-            user={user}
-            users={chat.users}
-            lastChatMessage={
-              chatNotifications[chat.id]?.lastMessage?.messageDetails.text
-            }
-            unRead={chatNotifications[chat.id]?.unreadMessages === 1}
-          />
+          <div className="col-span-4">
+            <Profile
+              user={user}
+              users={chat.users}
+              lastChatMessage={
+                chatNotifications[chat.id]?.lastMessage?.messageDetails.text
+              }
+              unRead={chatNotifications[chat.id]?.unreadMessages === 1}
+            />
+          </div>
 
-          {chatNotifications[chat.id]?.unreadMessages === 1 ? (
-            <div className="h-3 w-3 rounded-full bg-red-500 text-xs font-medium text-white"></div>
-          ) : (
-            <div className="mt-0.5 flex flex-shrink-0 text-xs text-base-400 dark:text-base-500">
-              {Moment(new Date(chat?.timestamp?.seconds * 1000)).format(
-                'MMM DD'
-              )}
-            </div>
-          )}
+          <div className="col-span-1 pl-4">
+            {chatNotifications[chat.id]?.unreadMessages === 1 ? (
+              <div className="h-3 w-3 rounded-full bg-red-500 text-xs font-medium text-white"></div>
+            ) : (
+              <div className="mt-0.5 flex shrink-0 text-xs text-base-400 dark:text-base-500">
+                {Moment(new Date(chat?.timestamp?.seconds * 1000)).format(
+                  'MMM DD'
+                )}
+              </div>
+            )}
+          </div>
         </button>
       ));
   }, [chats]);
@@ -74,7 +77,7 @@ const SideBar = ({ user, chatId }) => {
             <Loader />
           </div>
         )}
-        {!chatsLoading && chatsList}
+        {!chatsLoading && <div className="space-y-1">{chatsList}</div>}
 
         {!chatsLoading && !chats?.length > 0 && (
           <div className="mt-20 flex flex-1 flex-col items-center justify-center space-y-4 sm:hidden">

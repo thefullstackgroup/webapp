@@ -60,14 +60,17 @@ const NotificationsPanel = ({ userId }) => {
           colorMode={currentTheme}
         >
           <>
-            <button
+            {/* <button
               className="nav-bar nav-bar-icon"
               ref={notifButtonRef}
               onClick={(e) => setIsVisible(!isVisible)}
             >
               <Icon name={'FiBell'} className={'h-6 w-6'} />
-            </button>
-            {/* <NotificationIconButton /> */}
+            </button> */}
+            <NotificationIconButton
+              ref={notifButtonRef}
+              onClick={(e) => setIsVisible(!isVisible)}
+            />
             <NotificationFeedPopover
               buttonRef={notifButtonRef}
               isVisible={isVisible}

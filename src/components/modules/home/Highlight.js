@@ -31,7 +31,7 @@ const Slide = ({ data }) => {
             />
           </div>
           <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-base-900/80 duration-200 group-hover:to-base-900/80 dark:to-base-900/90">
-            <div className="w-12/12 absolute bottom-4 px-4 text-base-100 duration-200 group-hover:bottom-6">
+            <div className="w-12/12 absolute bottom-4 px-4 text-base-100 duration-200 sm:group-hover:bottom-6">
               <h3 className="font-manrope text-2xl font-semibold">
                 {data.projectName}
               </h3>
@@ -46,10 +46,10 @@ const Slide = ({ data }) => {
                 </span>
               </div>
             </div>
-            <div className="absolute bottom-2 right-8 hidden h-10 w-10 duration-200 group-hover:right-4 lg:block">
+            <div className="absolute bottom-2 right-8 hidden h-10 w-10 duration-200 sm:group-hover:right-4 lg:block">
               <Icon
                 name="FiArrowRight"
-                className="h-6 w-6 text-white opacity-0 duration-200 group-hover:opacity-100"
+                className="h-6 w-6 text-white opacity-0 duration-200 sm:group-hover:opacity-100"
               />
             </div>
           </div>

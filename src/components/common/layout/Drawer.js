@@ -7,7 +7,14 @@ import Avatar from '../elements/Avatar';
 import Image from 'next/future/image';
 import { useTheme } from 'next-themes';
 
-const Drawer = ({ user, show, setShow, setShowSignOut, setShowCreatePost }) => {
+const Drawer = ({
+  user,
+  show,
+  setShow,
+  setShowSignOut,
+  setShowCreatePost,
+  totalChatNotifications,
+}) => {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const [activeDisclosurePanel, setActiveDisclosurePanel] = useState(null);
@@ -236,10 +243,16 @@ const Drawer = ({ user, show, setShow, setShowSignOut, setShowCreatePost }) => {
                           </Link>
                           <Link href="/chat">
                             <button
-                              className="btn btn-ghost px-0 text-left font-medium"
+                              className="btn btn-ghost relative px-0 text-left font-medium"
                               onClick={() => setShow(false)}
                             >
                               Messages
+                              {totalChatNotifications > 0 && (
+                                <div
+                                  className="absolute left-20 top-2 ml-1 flex h-3 w-3 justify-center rounded-full bg-red-600 text-center font-semibold text-white"
+                                  style={{ fontSize: '11px' }}
+                                ></div>
+                              )}
                             </button>
                           </Link>
                           <Link href="/account/wallet">
