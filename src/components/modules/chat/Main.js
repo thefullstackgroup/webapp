@@ -118,7 +118,7 @@ const Main = ({ user, chatId }) => {
               </div>
             </div>
 
-            <div className="absolute bottom-20 w-full bg-base-800">
+            <div className="absolute bottom-32 w-full bg-base-800">
               <BottomBar user={user} id={chatId} />
             </div>
           </>
