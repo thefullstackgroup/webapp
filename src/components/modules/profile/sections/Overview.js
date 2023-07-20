@@ -58,7 +58,7 @@ const Overview = ({
   };
 
   return (
-    <div className="relative mb-4 border-b border-base-200 px-4 dark:border-base-700 md:mb-0 md:border-none lg:px-0">
+    <div className="relative mb-4 border-b-0 border-base-200 px-4 dark:border-base-700 md:mb-0 md:border-none lg:px-0">
       <div className="mt-2 items-start justify-between border-base-700 pb-4 md:mt-10 md:border-none lg:mb-8 lg:flex lg:space-x-4 lg:pb-4">
         <div className="flex w-full items-center space-x-3 lg:flex-row lg:items-start lg:space-x-8">
           <div className="relative mt-1 rounded-full bg-gradient-to-r from-purple-400 via-pink-500 to-blue-600 p-0.5 lg:p-1">

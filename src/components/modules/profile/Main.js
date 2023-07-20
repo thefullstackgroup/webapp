@@ -42,6 +42,7 @@ const Main = ({ profile, myProfile }) => {
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const [tab, setTab] = useState(0);
+  const [gitHubCalendarLegend, setGitHubCalendarLegend] = useState(false);
   const [createTeamPanel, setCreateTeamPanel] = useState(false);
   const [uploadVideoIntroPanel, setUploadVideoIntroPanel] = useState(false);
   const [showVideoIntro, setShowVideoIntro] = useState(false);
@@ -69,6 +70,12 @@ const Main = ({ profile, myProfile }) => {
   useEffect(() => {
     if (myProfile) checkIfConnected(profile?.userId);
   }, [isConnected, profile]);
+
+  useEffect(() => {
+    if (isMobile) {
+      setGitHubCalendarLegend(true);
+    }
+  }, []);
 
   if (!profile)
     return (
@@ -117,7 +124,7 @@ const Main = ({ profile, myProfile }) => {
                   ? GitHubCalendarDarkTheme
                   : GitHubCalendarLightTheme
               }
-              hideColorLegend={isMobile ? true : false}
+              hideColorLegend={gitHubCalendarLegend}
               hideMonthLabels={isMobile ? true : false}
             />
           </div>
