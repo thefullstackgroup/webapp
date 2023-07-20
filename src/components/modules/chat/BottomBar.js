@@ -45,7 +45,7 @@ const BottomBar = ({ user, id }) => {
 
   return (
     <div className="relative flex w-full bg-base-900">
-      <div className="absolute bottom-0 flex w-full items-end space-x-2 px-4 pb-4">
+      <div className="absolute bottom-0 flex w-full items-center space-x-2 px-4 pb-4">
         <Textarea
           type="text"
           placeholder="Type your message ..."
@@ -55,11 +55,12 @@ const BottomBar = ({ user, id }) => {
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && sendMessage(e)}
         />
-        <button type="submit" onClick={(e) => sendMessage(e)}>
-          <Icon
-            name={'FiSend'}
-            className="mb-2 h-7 w-7 text-base-700 dark:text-white sm:mb-2"
-          />
+        <button
+          className="btn btn-with-icon-only"
+          type="submit"
+          onClick={(e) => sendMessage(e)}
+        >
+          <Icon name={'FiSend'} className="h-7 w-7" />
         </button>
       </div>
     </div>

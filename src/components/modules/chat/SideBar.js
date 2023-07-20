@@ -31,11 +31,11 @@ const SideBar = ({ user, chatId }) => {
         <button
           key={chat.id}
           className={
-            `relative flex w-full items-start justify-between border-b border-base-200 p-4 outline-none duration-200 dark:border-base-700 sm:border-b-0  ` +
+            `relative flex w-full items-start justify-between rounded-md border-b border-base-200 p-4 outline-none duration-200 dark:border-base-700 sm:border-b-0 ` +
             (chat.id === chatId
               ? 'border-primary-500 bg-base-200 dark:bg-base-800'
               : chatNotifications[chat.id]?.unreadMessages === 1
-              ? 'border-transparent bg-highlight-alert'
+              ? 'border-transparent'
               : 'border-transparent hover:bg-base-200 dark:hover:bg-base-800')
           }
           onClick={() => redirect(chat.id)}
@@ -50,9 +50,9 @@ const SideBar = ({ user, chatId }) => {
           />
 
           {chatNotifications[chat.id]?.unreadMessages === 1 ? (
-            <div className="h-3 w-3 rounded-full bg-purple-500 text-xs font-medium text-white"></div>
+            <div className="h-3 w-3 rounded-full bg-red-500 text-xs font-medium text-white"></div>
           ) : (
-            <div className="mt-1 flex flex-shrink-0 text-sm">
+            <div className="mt-0.5 flex flex-shrink-0 text-xs text-base-400 dark:text-base-500">
               {Moment(new Date(chat?.timestamp?.seconds * 1000)).format(
                 'MMM DD'
               )}
@@ -68,7 +68,7 @@ const SideBar = ({ user, chatId }) => {
 
   return (
     <div className="flex h-full w-full flex-col items-start pt-0 sm:w-full sm:pt-0">
-      <div className="no-scrollbar h-full w-full overflow-scroll sm:h-[75vh]">
+      <div className="no-scrollbar h-full w-full overflow-scroll px-2 py-2 sm:h-[75vh]">
         {chatsLoading && (
           <div className="mt-10 flex items-center justify-center align-middle">
             <Loader />

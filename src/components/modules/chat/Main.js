@@ -73,20 +73,22 @@ const Main = ({ user, chatId }) => {
   }, [messages]);
 
   return (
-    <div className="page page-5xl min-h-min">
-      <h2>Messages</h2>
-      <div className="box flex p-0">
-        <div className="hidden w-1/3 md:block">
-          {!isMobile && <SideBar user={user} chatId={chatId} />}
+    <>
+      <div className="fixed left-0 top-0 z-50 block h-screen w-full bg-base-50 dark:bg-base-900 lg:hidden">
+        <div className="flex w-full items-center space-x-4 py-3 px-2">
+          <button
+            className="btn btn-with-icon-only"
+            onClick={() => router.back()}
+          >
+            <Icon name="FiChevronLeft" className="h-7 w-7" />
+          </button>
+          <h2 className="my-0">Messages</h2>
         </div>
-        <div className="relative left-0 flex w-full flex-col justify-between border-l border-base-200 bg-base-50 dark:border-base-700 dark:bg-base-900 sm:pt-0 md:w-2/3">
-          <div>
-            {!loading && chatId && (
-              <TopBar chatUserInfo={chatUserInfo} user={user} />
-            )}
-
+        {!chatId && <SideBar user={user} chatId={chatId} />}
+        {chatId && (
+          <>
             <div className="flex w-full px-4 pt-4 sm:px-6">
-              <div className="no-scrollbar flex h-[60vh] w-full flex-col overflow-hidden overflow-y-scroll overscroll-contain md:h-[60vh]">
+              <div className="no-scrollbar flex h-[75vh] w-full flex-col overflow-hidden overflow-y-scroll overscroll-contain">
                 {loading && (
                   <div className="mt-40 flex flex-col items-center justify-center space-y-4">
                     <Loader />
@@ -115,15 +117,65 @@ const Main = ({ user, chatId }) => {
                 <div ref={bottomOfChat} className="py-10 md:py-8"></div>
               </div>
             </div>
-          </div>
-          {chatId && (
-            <div className="h-auto w-full bg-base-800">
+
+            <div className="absolute bottom-4 w-full bg-base-800">
               <BottomBar user={user} id={chatId} />
             </div>
-          )}
+          </>
+        )}
+      </div>
+      <div className="page page-5xl hidden min-h-min lg:block">
+        <h2>Messages</h2>
+        <div className="box flex overflow-hidden rounded-lg p-0">
+          <div className="hidden w-1/3 md:block">
+            {!isMobile && <SideBar user={user} chatId={chatId} />}
+          </div>
+          <div className="relative left-0 flex w-full flex-col justify-between border-l border-base-200 bg-base-50 dark:border-base-700 dark:bg-base-900 sm:pt-0 md:w-2/3">
+            <div>
+              {!loading && chatId && (
+                <TopBar chatUserInfo={chatUserInfo} user={user} />
+              )}
+
+              <div className="flex w-full px-4 pt-4 sm:px-6">
+                <div className="no-scrollbar flex h-[60vh] w-full flex-col overflow-hidden overflow-y-scroll overscroll-contain md:h-[60vh]">
+                  {loading && (
+                    <div className="mt-40 flex flex-col items-center justify-center space-y-4">
+                      <Loader />
+                    </div>
+                  )}
+                  {!messages?.docs?.length > 0 && !loading && (
+                    <div className="mt-40 flex flex-col items-center justify-center space-y-4">
+                      <Icon
+                        name={'FiMessageSquare'}
+                        className="h-24 w-24 text-base-200 dark:text-base-500"
+                      />
+                      <p className="text-2xl font-medium tracking-tight text-base-200 dark:text-base-500">
+                        Select conversation
+                      </p>
+                    </div>
+                  )}
+                  {messages?.docs?.map((msg, index) => (
+                    <Message
+                      user={user}
+                      message={msg.data()}
+                      key={index}
+                      numberOfMessages={messages?.docs?.length}
+                      currentMessageIndex={index}
+                    />
+                  ))}
+                  <div ref={bottomOfChat} className="py-10 md:py-8"></div>
+                </div>
+              </div>
+            </div>
+            {chatId && (
+              <div className="h-auto w-full bg-base-800">
+                <BottomBar user={user} id={chatId} />
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
