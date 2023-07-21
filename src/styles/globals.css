@@ -478,6 +478,7 @@ html.dark .wmde-markdown {
 
 html.dark .wmde-markdown pre {
   background-color: #161b22 !important;
+  color: #e1e1e1;
 }
 
 .wmde-markdown iframe {
