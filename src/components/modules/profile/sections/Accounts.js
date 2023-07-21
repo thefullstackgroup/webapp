@@ -273,14 +273,14 @@ const Card = ({ channel, profile }) => {
                   />
                   {!connecting ? (
                     <button
-                      className="btn-primary w-full"
+                      className="btn btn-primary w-full"
                       onClick={() => handleSave(true)}
                     >
                       Save
                     </button>
                   ) : (
                     <button
-                      className="btn-primary btn-with-icon w-full justify-center"
+                      className="btn btn-primary btn-with-icon w-full justify-center"
                       disabled
                     >
                       <CgSpinner className="h-6 w-6 animate-spin" />
@@ -374,9 +374,9 @@ const Card = ({ channel, profile }) => {
 
 const Accounts = ({ profile }) => {
   return channels.map((channel, index) => (
-    <>
+    <div>
       <Card channel={channel} profile={profile} key={index} />
-    </>
+    </div>
   ));
 };
 
