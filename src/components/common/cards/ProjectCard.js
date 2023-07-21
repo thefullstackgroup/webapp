@@ -11,14 +11,16 @@ const ProjectCard = ({ project }) => {
       <Link href={projectLink} shallow={true}>
         <div className="group relative flex h-[350px] w-full grow cursor-pointer flex-col overflow-hidden duration-200 xl:h-[334px]">
           <div className="h-[280px] w-full cursor-pointer overflow-hidden rounded-md bg-base-200 dark:bg-base-800 xl:h-[240px]">
-            <Image
-              src={project.projectImgURI}
-              className="h-full w-full object-cover object-top duration-200 hover:opacity-100 group-hover:shadow-xl dark:opacity-90 xl:group-hover:scale-105"
-              alt={project.projectName}
-              width={400}
-              height={400}
-              layout="fill"
-            />
+            {project.projectImgURI && (
+              <Image
+                src={project.projectImgURI}
+                className="h-full w-full object-cover object-top duration-200 hover:opacity-100 group-hover:shadow-xl dark:opacity-90 xl:group-hover:scale-105"
+                alt={project.projectName}
+                width={400}
+                height={400}
+                layout="fill"
+              />
+            )}
           </div>
 
           {project?.lookingForCollabs && (

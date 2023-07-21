@@ -10,6 +10,7 @@ const Projects = ({ profile, myProfile }) => {
   const url = `${process.env.BASEURL}/api/profile/posts/get?userId=${profile.displayName}&projectType=PROJECT&page=0&size=100`;
   const { data } = useSWR(url, fetcher);
   const projects = data ? data.content : null;
+
   let totalProjects = 3;
   if (projects?.length == 1) totalProjects = 2;
   if (projects?.length == 2) totalProjects = 1;
