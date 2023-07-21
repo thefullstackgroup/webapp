@@ -16,9 +16,8 @@ const Header = ({
   return (
     <>
       {!isPublished && (
-        <div className="w-full cursor-pointer bg-red-500 py-3 px-4 text-center font-normal text-base-100 md:px-8">
-          This project is{' '}
-          <span className="font-bold text-base-200">unpublished</span> and not
+        <div className="w-full cursor-pointer bg-red-500/40 py-3 px-4 font-normal md:px-8">
+          This project is <span className="font-bold">unpublished</span> and not
           visible to anyone.
         </div>
       )}

@@ -50,9 +50,8 @@ const Container = ({ project, author, user, setShowComments }) => {
           project?.projectCreator?.userId === user?.userId && (
             <Link href={`/post?ref=${project?._id}`} passHref>
               <div className="w-full cursor-pointer bg-red-500/40 py-3 px-4 font-normal xl:px-8">
-                This project is{' '}
-                <span className="font-bold text-base-200">unpublished</span> and
-                not visible to anyone. Click to edit.
+                This project is <span className="font-bold">unpublished</span>{' '}
+                and not visible to anyone. Click to edit.
               </div>
             </Link>
           )}

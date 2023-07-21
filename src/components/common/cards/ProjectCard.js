@@ -10,7 +10,7 @@ const ProjectCard = ({ project }) => {
     <>
       <Link href={projectLink} shallow={true}>
         <div className="group relative flex h-[350px] w-full grow cursor-pointer flex-col overflow-hidden duration-200 xl:h-[334px]">
-          <div className="h-[280px] w-full cursor-pointer overflow-hidden rounded-md bg-base-200 dark:bg-base-800 xl:h-[240px]">
+          <div className="relative h-[280px] w-full cursor-pointer overflow-hidden rounded-md bg-base-200 dark:bg-base-800 xl:h-[240px]">
             {project.projectImgURI && (
               <Image
                 src={project.projectImgURI}
@@ -26,6 +26,15 @@ const ProjectCard = ({ project }) => {
           {project?.lookingForCollabs && (
             <div className="absolute bottom-20 right-2 rounded-lg bg-base-200 px-2 py-0.5 text-xs font-medium dark:bg-base-600 xl:bottom-28">
               Collab
+            </div>
+          )}
+
+          {project.isDraft && (
+            <div className="group absolute top-0 flex h-[280px] w-full flex-col items-center justify-center overflow-hidden rounded bg-base-800/70 xl:h-[240px]">
+              <p className="font-semibold text-white">Draft</p>
+              <p className="px-8 text-center text-sm text-white">
+                This project is unpublished and not visible to anyone.
+              </p>
             </div>
           )}
 

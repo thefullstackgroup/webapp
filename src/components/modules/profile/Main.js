@@ -101,12 +101,12 @@ const Main = ({ profile, myProfile }) => {
           setUploadVideoIntroPanel={setUploadVideoIntroPanel}
         />
 
-        {/* {profile.userId === myProfile?.userId && (
+        {profile.userId === myProfile?.userId && (
           <Goals
             goal={myProfile?.profileGoal}
-            setCreateTeamPanel=x{setCreateTeamPanel}
+            setCreateTeamPanel={setCreateTeamPanel}
           />
-        )} */}
+        )}
 
         {profile?.userId === myProfile?.userId && (
           <div className="relative mx-auto mb-8 hidden max-w-screen-lg gap-4 px-4 sm:mb-10 md:px-0 lg:flex">

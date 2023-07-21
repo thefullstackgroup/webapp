@@ -1,5 +1,5 @@
 import axios from 'axios';
-import ModalDialog from 'components/common/modals/ModalDialog';
+import ModalAlert from 'components/common/modals/ModalAlert';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { CgSpinner } from 'react-icons/cg';
@@ -234,8 +234,8 @@ const Card = ({ channel, profile }) => {
         </div>
       </div>
 
-      {showConnect && !connected && (
-        <ModalDialog
+      {!connected && (
+        <ModalAlert
           show={showConnect}
           setShow={setShowConnect}
           title={`Connect your ${channel.title} account`}
@@ -262,7 +262,7 @@ const Card = ({ channel, profile }) => {
                   </div>
                   <div className="text-base-400">{channel.desc}</div>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2 pb-4">
                   <label>Your {channel.title} username</label>
                   <input
                     type="text"
@@ -291,11 +291,11 @@ const Card = ({ channel, profile }) => {
               </div>
             </div>
           </div>
-        </ModalDialog>
+        </ModalAlert>
       )}
 
-      {showConnect && connected && (
-        <ModalDialog
+      {connected && (
+        <ModalAlert
           show={showConnect}
           setShow={setShowConnect}
           title={`Disconnect ${channel.title} account`}
@@ -321,25 +321,25 @@ const Card = ({ channel, profile }) => {
                     )}
                   </div>
                   <div>
-                    <p className="text-base-400">
+                    <p>
                       Do you want to disconnect the {channel.title} account
                       {channel.name === 'GITHUB' && (
-                        <span className="inline-flex px-1 font-mono text-base-100">
+                        <span className="mx-1 font-bold">
                           {profile.bio.gitHubAccount}
                         </span>
                       )}
                       {channel.name === 'DEV_TO' && (
-                        <span className="inline-flex px-1 font-mono text-base-100">
+                        <span className="mx-1 font-bold">
                           {profile.bio.devToAccount}
                         </span>
                       )}
                       {channel.name === 'HASH_NODE' && (
-                        <span className="inline-flex px-1 font-mono text-base-100">
+                        <span className="mx-1 font-bold">
                           {profile.bio.hashNodeAccount}
                         </span>
                       )}
                       {channel.name === 'MEDIUM' && (
-                        <span className="inline-flex px-1 font-mono text-base-100">
+                        <span className="mx-1 font-bold">
                           {profile.bio.mediumAccount}
                         </span>
                       )}
@@ -349,14 +349,14 @@ const Card = ({ channel, profile }) => {
                 </div>
                 {!disconnecting ? (
                   <button
-                    className="btn-primary w-full"
+                    className="btn btn-primary w-full"
                     onClick={() => handleSave(false)}
                   >
                     Yes, disconnect
                   </button>
                 ) : (
                   <button
-                    className="btn-primary btn-with-icon w-full justify-center"
+                    className="btn btn-primary btn-with-icon w-full justify-center"
                     disabled
                   >
                     <CgSpinner className="h-6 w-6 animate-spin" />
@@ -366,7 +366,7 @@ const Card = ({ channel, profile }) => {
               </div>
             </div>
           </div>
-        </ModalDialog>
+        </ModalAlert>
       )}
     </>
   );
