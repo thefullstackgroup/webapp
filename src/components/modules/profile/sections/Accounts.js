@@ -374,8 +374,8 @@ const Card = ({ channel, profile }) => {
 
 const Accounts = ({ profile }) => {
   return channels.map((channel, index) => (
-    <div>
-      <Card channel={channel} profile={profile} key={index} />
+    <div key={index}>
+      <Card channel={channel} profile={profile} />
     </div>
   ));
 };
