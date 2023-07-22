@@ -75,7 +75,6 @@ const Metadata = (props) => {
         />
 
         {/* eslint-disable-next-line @next/next/no-page-custom-font, @next/next/google-font-display */}
-
         <link
           rel="preload stylesheet"
           as="style"

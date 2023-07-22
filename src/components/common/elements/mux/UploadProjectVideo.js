@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-import * as UpChunk from "@mux/upchunk";
-import useSwr from "swr";
-import axios from "axios";
-import ErrorMessage from "./ErrorMessage";
-import { BiLoaderAlt } from "react-icons/bi";
-import fetcher from "utils/fetcher";
-import Icon from "../Icon";
+import { useEffect, useRef, useState } from 'react';
+import * as UpChunk from '@mux/upchunk';
+import useSwr from 'swr';
+import axios from 'axios';
+import ErrorMessage from './ErrorMessage';
+import { BiLoaderAlt } from 'react-icons/bi';
+import fetcher from 'utils/fetcher';
+import Icon from '../Icon';
 
 const UploadProjectVideo = ({ setCoverImage, setCoverVideo }) => {
   const [isUploading, setIsUploading] = useState(false);
@@ -13,8 +13,8 @@ const UploadProjectVideo = ({ setCoverImage, setCoverVideo }) => {
   const [uploadId, setUploadId] = useState(null);
   const [progress, setProgress] = useState(null);
   const [isCompleted, setIsCompleted] = useState(false);
-  const [asset, setAsset] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [asset, setAsset] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [check, setCheck] = useState(0);
   const inputRef = useRef(null);
 
@@ -54,11 +54,11 @@ const UploadProjectVideo = ({ setCoverImage, setCoverVideo }) => {
 
   useEffect(() => {
     if (isCompleted) {
-      if (asset && asset.playback_id && asset.status === "ready") {
+      if (asset && asset.playback_id && asset.status === 'ready') {
         setIsUploading(false);
         setCoverVideo(`https://stream.mux.com/${asset.playback_id}.m3u8`);
         setCoverImage(
-          `https://image.mux.com/${asset.playback_id}/animated.gif`
+          `https://image.mux.com/${asset.playback_id}/animated.webp`
         );
       }
     }
@@ -69,8 +69,8 @@ const UploadProjectVideo = ({ setCoverImage, setCoverVideo }) => {
 
   const createUpload = async () => {
     try {
-      return fetch("/api/video/upload", {
-        method: "POST",
+      return fetch('/api/video/upload', {
+        method: 'POST',
       })
         .then((res) => res.json())
         .then(({ id, url }) => {
@@ -78,8 +78,8 @@ const UploadProjectVideo = ({ setCoverImage, setCoverVideo }) => {
           return url;
         });
     } catch (e) {
-      console.error("Error in createUpload", e);
-      setErrorMessage("Error creating upload");
+      console.error('Error in createUpload', e);
+      setErrorMessage('Error creating upload');
     }
   };
 
@@ -91,15 +91,15 @@ const UploadProjectVideo = ({ setCoverImage, setCoverVideo }) => {
       file: inputRef.current.files[0],
     });
 
-    upload.on("error", (err) => {
+    upload.on('error', (err) => {
       setErrorMessage(err.detail);
     });
 
-    upload.on("progress", (progress) => {
+    upload.on('progress', (progress) => {
       setProgress(Math.floor(progress.detail));
     });
 
-    upload.on("success", () => {
+    upload.on('success', () => {
       setIsPreparing(true);
     });
   };
@@ -119,7 +119,7 @@ const UploadProjectVideo = ({ setCoverImage, setCoverVideo }) => {
             ) : (
               <div className="ml-2 flex items-center space-x-1">
                 <BiLoaderAlt className="h-auto w-4 animate-spin" />
-                <span>Uploading...{progress ? `${progress}%` : ""}</span>
+                <span>Uploading...{progress ? `${progress}%` : ''}</span>
               </div>
             )}
           </>
