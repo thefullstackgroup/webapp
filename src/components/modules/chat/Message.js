@@ -8,8 +8,8 @@ const Message = ({ user, message, numberOfMessages, currentMessageIndex }) => {
         <div
           className={
             !sender
-              ? `my-1 mb-2 w-4/5 max-w-max break-words rounded-lg rounded-bl-none bg-base-200 py-2 px-2 text-base dark:bg-base-700 sm:w-auto sm:max-w-lg sm:px-4 sm:text-sm`
-              : `my-1 mb-2 w-4/5 max-w-max break-words rounded-lg rounded-br-none bg-blue-600 py-2 px-2 text-base text-white sm:w-auto sm:max-w-lg sm:px-4 sm:text-sm`
+              ? `my-1 mb-2 w-4/5 max-w-max break-words rounded-lg rounded-bl-none bg-base-200 py-2 px-2.5 text-base dark:bg-base-700 sm:w-auto sm:max-w-lg sm:px-4 sm:text-sm`
+              : `my-1 mb-2 w-4/5 max-w-max break-words rounded-lg rounded-br-none bg-blue-600 py-2 px-2.5 text-base text-white sm:w-auto sm:max-w-lg sm:px-4 sm:text-sm`
           }
         >
           {message.text}

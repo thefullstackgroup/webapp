@@ -57,9 +57,14 @@ const Main = ({ user, chatId }) => {
   useEffect(() => {
     if (id) {
       getChatDoc();
+    }
+  }, [id]);
+
+  useEffect(() => {
+    if (id) {
       getChatUserProfile();
     }
-  }, [id, chatUser]);
+  }, [chatUser]);
 
   useEffect(() => {
     setTimeout(
@@ -74,23 +79,25 @@ const Main = ({ user, chatId }) => {
   return (
     <>
       <div className="fixed left-0 top-0 z-50 block h-screen w-full bg-base-50 dark:bg-base-900 lg:hidden">
-        <div className="flex w-full items-center space-x-4 py-3.5 px-2">
+        <div className="flex h-16 w-full items-center space-x-4 py-3.5 px-2">
           <button
             className="btn btn-with-icon-only"
             onClick={() => router.back()}
           >
             <Icon name="FiChevronLeft" className="h-7 w-7" />
           </button>
-          {chatId ? (
-            <TopBar chatUserInfo={chatUserInfo} user={user} />
-          ) : (
-            <h2 className="my-0">Messages</h2>
-          )}
+          <div className="w-full">
+            {chatId ? (
+              <TopBar chatUserInfo={chatUserInfo} user={user} />
+            ) : (
+              <h2 className="my-0">Messages</h2>
+            )}
+          </div>
         </div>
         {!chatId && <SideBar user={user} chatId={chatId} />}
         {chatId && (
           <>
-            <div className="flex w-full px-4 pt-4 sm:px-6">
+            <div className="flex w-full px-4">
               <div className="no-scrollbar flex h-[65vh] w-full flex-col overflow-hidden overflow-y-scroll overscroll-contain">
                 {loading && (
                   <div className="mt-40 flex flex-col items-center justify-center space-y-4">

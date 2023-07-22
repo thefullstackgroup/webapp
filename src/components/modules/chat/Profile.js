@@ -1,21 +1,14 @@
-import axios from 'axios';
 import Avatar from 'components/common/elements/Avatar';
-import { useEffect, useState } from 'react';
+import useSWR from 'swr';
+import fetcher from 'utils/fetcher';
 
 const Profile = ({ users, user, lastChatMessage, unRead }) => {
-  const [chatUser, setChatUser] = useState();
   const userToDisplay = users?.filter(
     (otherUser) => otherUser !== user.userId
   )[0];
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.BASEURL}/api/profile/getUser?userId=${userToDisplay}`)
-      .then((res) => {
-        setChatUser(res.data);
-      })
-      .catch((error) => setChatUser(null));
-  }, [userToDisplay]);
+  const url = `${process.env.BASEURL}/api/profile/getUser?userId=${userToDisplay}`;
+  const { data: chatUser } = useSWR(url, fetcher);
 
   if (!chatUser) return null;
 
