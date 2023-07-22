@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import Icon from '../elements/Icon';
 import Avatar from '../elements/Avatar';
 

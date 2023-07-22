@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -19,7 +19,6 @@ const Slide = ({ data }) => {
         href={`/${data?.projectCreator.displayName}/project/${data?.projectSlug}`}
       >
         <div className="group relative mb-8 flex h-[400px] w-full flex-1 grow cursor-pointer overflow-hidden rounded-lg border border-transparent duration-200 dark:border-base-700 sm:dark:hover:border-base-300 2xl:h-[440px]">
-          <div className="group relative" />
           <div className="h-[400px] w-full 2xl:h-[440px]">
             <Image
               src={data?.projectImgURI}
@@ -66,6 +65,8 @@ const Highlight = ({ user }) => {
 
   let url = `${process.env.BASEURL}/api/projects/get?size=14&sort=mostpopular&projectType=PROJECT&range=100`;
   const { data } = useSWR(url, fetcher);
+  const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+  const projects = data && shuffle(data);
 
   useEffect(() => {
     setCarouselReady(true);
@@ -159,7 +160,7 @@ const Highlight = ({ user }) => {
               </div>
             </SwiperSlide>
           ))}
-        {data?.map((project, index) => (
+        {projects?.map((project, index) => (
           <SwiperSlide key={index}>
             <Slide data={project} />
           </SwiperSlide>

@@ -79,7 +79,7 @@ const Main = ({ user, chatId }) => {
   return (
     <>
       <div className="fixed left-0 top-0 z-50 block h-screen w-full bg-base-50 dark:bg-base-900 lg:hidden">
-        <div className="flex h-16 w-full items-center space-x-4 py-3.5 px-2">
+        <div className="flex h-16 w-full items-center space-x-4 border-b border-base-200 py-3.5 px-2 dark:border-base-700">
           <button
             className="btn btn-with-icon-only"
             onClick={() => router.back()}
