@@ -11,8 +11,8 @@ const Categories = ({ category, setCategory, enableState = true }) => {
         <button
           className={
             category && item.slug === category.slug
-              ? `btn-pill-active`
-              : `btn-pill`
+              ? `btn-pill-active text-sm`
+              : `btn-pill text-sm`
           }
           key={index}
           onClick={() => {
