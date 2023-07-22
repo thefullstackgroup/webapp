@@ -8,8 +8,8 @@ const ForDevelopers = ({ user }) => {
   return (
     <>
       <Meta
-        title="The Full Stack | For Developers | Discover and connect with developers sharing their work."
-        description="A community and network to discover and connect with developers around the globe."
+        title="About"
+        description="The Full Stack is an open source platform for developers, providing a supportive community to share projects and grow your network."
         keywords="developer, social network, developers, software engineering, full stack, software engineering network, tech community, tech companies, best tech companies, developer portfolio, developer network, professional network, professional community"
       />
       <Layout user={user}>

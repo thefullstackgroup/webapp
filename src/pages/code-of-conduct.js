@@ -8,8 +8,8 @@ const CodeOfConduct = ({ user }) => {
   return (
     <>
       <Meta
-        title="The Full Stack | Code of conduct."
-        description="A community and network to discover and connect with developers around the globe."
+        title="The Full Stack - Code of conduct."
+        description="Read the code of conduct for The Full Stack community platform for Developers"
         keywords="developer, social network, developers, software engineering, full stack, software engineering network, tech community, tech companies, best tech companies, developer portfolio, developer network, professional network, professional community"
       />
       <Layout user={user}>

@@ -8,8 +8,8 @@ const PrivacyPolicy = ({ user }) => {
   return (
     <>
       <Meta
-        title="The Full Stack | Privacy policy."
-        description="A community and network to discover and connect with developers around the globe."
+        title="The Full Stack - Privacy policy"
+        description="Read the privacy policy for The Full Stack community platform for Developers"
         keywords="developer, social network, developers, software engineering, full stack, software engineering network, tech community, tech companies, best tech companies, developer portfolio, developer network, professional network, professional community"
       />
       <Layout user={user}>

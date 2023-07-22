@@ -1,20 +1,15 @@
-import {
-  AuthAction,
-  withAuthUser,
-  withAuthUserTokenSSR,
-} from 'next-firebase-auth';
+import { withAuthUserTokenSSR } from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
 import Meta from 'components/common/partials/Metadata';
 import Layout from 'components/common/layout/Layout';
 import Page from 'components/modules/home/Main';
-import Loader from 'components/common/elements/Loader';
 
 const Home = ({ user }) => {
   return (
     <>
       <Meta
-        title="The Full Stack | Discover and connect with developers sharing their work."
-        description="A community and network to discover and connect with developers around the globe."
+        title="The Full Stack - Discover and connect with developers sharing projects"
+        description="A open source platform for developers to share projects and grow a developer network around the globe."
         keywords="developer, social network, developers, software engineering, full stack, software engineering network, tech community, tech companies, best tech companies, developer portfolio, developer network, professional network, professional community"
       />
 

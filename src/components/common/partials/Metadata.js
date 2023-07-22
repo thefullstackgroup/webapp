@@ -31,7 +31,7 @@ const Metadata = (props) => {
           name="twitter:image"
           content={
             openGraphImage ||
-            `https://thefullstack.network/assets/og-thefullstack.png`
+            `https://thefullstack.network/assets/og-thefullstack-2.png`
           }
         />
 
