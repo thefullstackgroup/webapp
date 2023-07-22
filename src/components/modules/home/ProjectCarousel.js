@@ -131,7 +131,7 @@ const ProjectCarousel = ({
             </SwiperSlide>
           ))}
         {data?.map((project, index) => (
-          <SwiperSlide key={index} style={{ paddingBottom: '28px' }}>
+          <SwiperSlide key={index} style={{ paddingBottom: '14px' }}>
             <ProjectCard project={project} user={user} />
           </SwiperSlide>
         ))}

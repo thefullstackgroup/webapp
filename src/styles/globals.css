@@ -435,7 +435,7 @@ aside.EmojiPickerReact.epr-main {
 .swiper-horizontal > .swiper-pagination {
   position: absolute !important;
   bottom: -6px !important;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .dark .swiper-pagination-bullet {
