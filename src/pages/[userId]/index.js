@@ -6,17 +6,6 @@ import Profile from 'components/modules/profile/Main';
 import fetcher from 'utils/fetcher';
 
 const UserProfile = ({ user, profile }) => {
-  console.log(profile);
-  if (!profile) {
-    return (
-      <>
-        <Meta title="The Full Stack" description="" keywords="" />
-        <Layout user={user}>
-          <div>User does not exist</div>
-        </Layout>
-      </>
-    );
-  }
   return (
     <>
       <Meta
