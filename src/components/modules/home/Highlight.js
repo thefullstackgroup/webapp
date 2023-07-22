@@ -1,6 +1,6 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper';
 import 'swiper/css';
@@ -62,9 +62,14 @@ const Slide = ({ data }) => {
 const Highlight = ({ user }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const [carouselReady, setCarouselReady] = useState(false);
 
   let url = `${process.env.BASEURL}/api/projects/get?size=14&sort=mostpopular&projectType=PROJECT&range=100`;
   const { data } = useSWR(url, fetcher);
+
+  useEffect(() => {
+    setCarouselReady(true);
+  }, []);
 
   return (
     <div>
@@ -75,22 +80,24 @@ const Highlight = ({ user }) => {
           </h3>
           <Icon name="FiCornerRightDown" className="h-5 w-5" />
         </div>
-        <div className="hidden items-end space-x-2 lg:flex">
-          <button
-            ref={prevRef}
-            className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
-          >
-            <ToolTip message="Previous" />
-            <Icon name="FiChevronLeft" className="mx-auto h-4 w-4" />
-          </button>
-          <button
-            ref={nextRef}
-            className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
-          >
-            <ToolTip message="Next" />
-            <Icon name="FiChevronRight" className="mx-auto h-4 w-4" />
-          </button>
-        </div>
+        {prevRef && nextRef && (
+          <div className="hidden items-end space-x-2 lg:flex">
+            <button
+              ref={prevRef}
+              className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
+            >
+              <ToolTip message="Previous" />
+              <Icon name="FiChevronLeft" className="mx-auto h-4 w-4" />
+            </button>
+            <button
+              ref={nextRef}
+              className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
+            >
+              <ToolTip message="Next" />
+              <Icon name="FiChevronRight" className="mx-auto h-4 w-4" />
+            </button>
+          </div>
+        )}
       </div>
       <Swiper
         slidesPerView={5}

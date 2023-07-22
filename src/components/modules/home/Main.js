@@ -51,13 +51,13 @@ const Main = ({ user }) => {
               </h2>
               <div className="flex flex-col items-center justify-center space-y-2 xl:flex-row xl:space-y-0 xl:space-x-4">
                 <Link href="/signup">
-                  <button className="btn btn-secondary btn-with-icon rounded-full py-2">
+                  <button className="btn btn-secondary btn-with-icon w-64 justify-center rounded-full py-2 lg:w-auto">
                     <Icon name="SiGithub" pack="Si" className="h-5 w-5" />
                     <span>Continue with GitHub</span>
                   </button>
                 </Link>
                 <Link href="/signup">
-                  <button className="btn btn-secondary btn-with-icon rounded-full py-2">
+                  <button className="btn btn-secondary btn-with-icon w-64 justify-center rounded-full py-2 lg:w-auto">
                     <FcGoogle />
                     <span>Continue with Google</span>
                   </button>

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
 import ProjectCard from 'components/common/cards/ProjectCard';
@@ -9,6 +9,32 @@ import 'swiper/css/pagination';
 import Icon from 'components/common/elements/Icon';
 import ToolTip from 'components/common/elements/ToolTip';
 import Link from 'next/link';
+
+const NavigationButtons = ({ prevRef, nextRef, showMore }) => {
+  return (
+    <div className="hidden items-center space-x-2 xl:flex">
+      <button
+        ref={prevRef}
+        className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
+      >
+        <ToolTip message="Previous" />
+        <Icon name="FiChevronLeft" className="mx-auto h-4 w-4" />
+      </button>
+      <button
+        ref={nextRef}
+        className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
+      >
+        <ToolTip message="Next" />
+        <Icon name="FiChevronRight" className="mx-auto h-4 w-4" />
+      </button>
+      <Link href={showMore} passHref>
+        <a href="#" className="btn btn-secondary group relative flex px-2">
+          <Icon name="FiChevronsRight" className="mx-auto h-4 w-4" />
+        </a>
+      </Link>
+    </div>
+  );
+};
 
 const ProjectCarousel = ({
   user,
@@ -21,9 +47,7 @@ const ProjectCarousel = ({
 }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-  const [carouselReady] = useState(
-    typeof window !== 'undefined' ? true : false
-  );
+  const [carouselReady, setCarouselReady] = useState(false);
 
   let url = `${process.env.BASEURL}/api/projects/get?size=${count}&sort=${sort}&projectType=PROJECT&range=${range}`;
 
@@ -34,6 +58,10 @@ const ProjectCarousel = ({
       url = `${process.env.BASEURL}/api/projects/find?size=${count}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&category=${category.term}`;
     }
   }
+
+  useEffect(() => {
+    setCarouselReady(true);
+  }, []);
 
   const { data } = useSWR(url, fetcher);
 
@@ -46,27 +74,13 @@ const ProjectCarousel = ({
           </h3>
           <Icon name="FiCornerRightDown" className="h-4 w-4" />
         </div>
-        <div className="hidden items-center space-x-2 xl:flex">
-          <button
-            ref={prevRef}
-            className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
-          >
-            <ToolTip message="Previous" />
-            <Icon name="FiChevronLeft" className="mx-auto h-4 w-4" />
-          </button>
-          <button
-            ref={nextRef}
-            className="btn btn-secondary group relative flex px-2 disabled:border-base-200 disabled:bg-transparent disabled:text-base-300 disabled:dark:border-base-700 dark:disabled:text-base-500"
-          >
-            <ToolTip message="Next" />
-            <Icon name="FiChevronRight" className="mx-auto h-4 w-4" />
-          </button>
-          <Link href={showMore} passHref>
-            <a href="#" className="btn btn-secondary group relative flex px-2">
-              <Icon name="FiChevronsRight" className="mx-auto h-4 w-4" />
-            </a>
-          </Link>
-        </div>
+        {prevRef && nextRef && (
+          <NavigationButtons
+            prevRef={prevRef}
+            nextRef={nextRef}
+            showMore={showMore}
+          />
+        )}
       </div>
       <Swiper
         slidesPerView={5}

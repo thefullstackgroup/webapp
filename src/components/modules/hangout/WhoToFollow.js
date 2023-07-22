@@ -49,6 +49,7 @@ const WhoToFollow = ({ user }) => {
                         href={`/${project.projectCreator.displayName}`}
                         image={project.projectCreator.profilePicUrl}
                         dimensions="h-10 w-10 opacity-100 duration-200 group-hover:ring-4 group-hover:ring-purple-500"
+                        name={`${project.projectCreator.displayName}`}
                       />
                     )}
 
