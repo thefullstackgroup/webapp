@@ -49,6 +49,7 @@ const About = ({ user }) => {
       displayName === 'account' ||
       displayName === 'code-of-conduct' ||
       displayName === 'privacy-policy' ||
+      displayName === 'privacy' ||
       displayName === 'cookie-policy'
     ) {
       setIsDisplayNameValid(false);

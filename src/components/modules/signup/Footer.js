@@ -6,7 +6,7 @@ const Footer = () => {
       <Link href="/" passHref>
         <a href="">Home</a>
       </Link>
-      <Link href="/privacy-policy" passHref>
+      <Link href="/privacy" passHref>
         <a href="">Privacy Policy</a>
       </Link>
       <Link href="/cookie-policy" passHref>

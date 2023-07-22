@@ -14,7 +14,7 @@ const links = [
     label: 'Newsletter',
     newWindow: true,
   },
-  { url: '/privacy-policy', label: 'Privacy', newWindow: false },
+  { url: '/privacy', label: 'Privacy', newWindow: false },
   { url: '/cookie-policy', label: 'Cookie Policy', newWindow: false },
   { url: '/code-of-conduct', label: 'Code of Conduct', newWindow: false },
   {

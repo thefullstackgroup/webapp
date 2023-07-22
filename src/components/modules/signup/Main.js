@@ -164,7 +164,7 @@ const Main = () => {
               <a className="font-bold">Code of Conduct</a>
             </Link>{' '}
             and confirm that you have read the{' '}
-            <Link href="/privacy-policy" passHref>
+            <Link href="/privacy" passHref>
               <a className="font-bold">Privacy Policy</a>
             </Link>{' '}
             .
