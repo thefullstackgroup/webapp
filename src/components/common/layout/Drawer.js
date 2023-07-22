@@ -223,7 +223,7 @@ const Drawer = ({
                             className="btn btn-ghost px-0 text-left font-medium"
                             onClick={() => setShowCreatePost(true)}
                           >
-                            Share project
+                            Add your project
                           </button>
                           <Link href="/account/dashboard">
                             <button
