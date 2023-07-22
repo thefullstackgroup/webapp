@@ -55,12 +55,11 @@ const Main = ({ user, chatId }) => {
   };
 
   useEffect(() => {
-    if (id) getChatDoc();
-  }, [id]);
-
-  useEffect(() => {
-    if (id) getChatUserProfile();
-  }, [chatUser]);
+    if (id) {
+      getChatDoc();
+      getChatUserProfile();
+    }
+  }, [id, chatUser]);
 
   useEffect(() => {
     setTimeout(
@@ -75,14 +74,18 @@ const Main = ({ user, chatId }) => {
   return (
     <>
       <div className="fixed left-0 top-0 z-50 block h-screen w-full bg-base-50 dark:bg-base-900 lg:hidden">
-        <div className="flex w-full items-center space-x-4 py-3 px-2">
+        <div className="flex w-full items-center space-x-4 py-3.5 px-2">
           <button
             className="btn btn-with-icon-only"
             onClick={() => router.back()}
           >
             <Icon name="FiChevronLeft" className="h-7 w-7" />
           </button>
-          <h2 className="my-0">Messages</h2>
+          {chatId ? (
+            <TopBar chatUserInfo={chatUserInfo} user={user} />
+          ) : (
+            <h2 className="my-0">Messages</h2>
+          )}
         </div>
         {!chatId && <SideBar user={user} chatId={chatId} />}
         {chatId && (

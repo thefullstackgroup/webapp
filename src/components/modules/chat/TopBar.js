@@ -8,7 +8,7 @@ const TopBar = ({ user, chatUserInfo }) => {
       <div className="px-8 pt-4 text-xs text-base-500">Loading user...</div>
     );
   return (
-    <div className="flex w-full items-center space-x-2 px-4 pt-4 sm:px-6">
+    <div className="flex w-full items-center space-x-2 px-0 sm:px-6 sm:pt-4">
       <div className="flex w-full items-center justify-between">
         <div className="flex w-full justify-start space-x-2">
           {chatUserInfo && (
