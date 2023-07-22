@@ -4,13 +4,6 @@ import axios from 'axios';
 import * as ga from 'lib/ga';
 import dynamic from 'next/dynamic';
 const ReactMde = dynamic(() => import('react-mde'), { ssr: false });
-import '@uiw/react-markdown-preview/markdown.css';
-const MarkdownPreview = dynamic(
-  () => import('@uiw/react-markdown-preview').then((mod) => mod.default),
-  { ssr: false }
-);
-import { useTheme } from 'next-themes';
-import rehypeHighlight from 'rehype-highlight';
 import validator from 'validator';
 import TagStack from 'components/common/tags/TagStack';
 import UploadProjectVideo from 'components/common/elements/mux/UploadProjectVideo';
@@ -22,6 +15,7 @@ import Icon from 'components/common/elements/Icon';
 import ModalAlert from 'components/common/modals/ModalAlert';
 import Header from './Header';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
+import MarkdownContent from 'components/common/elements/MarkdownContent';
 
 const customCommand = {
   name: 'markdown-link',
@@ -47,23 +41,7 @@ const sendGAEvent = (eventName) => {
   });
 };
 
-const Preview = ({ markdown, currentTheme }) => {
-  return (
-    <div className="mt-4 max-w-full">
-      <MarkdownPreview
-        source={markdown}
-        remarkPlugins={[rehypeHighlight, { detect: true }]}
-        wrapperElement={{
-          'data-color-mode': currentTheme,
-        }}
-      />
-    </div>
-  );
-};
-
 const Form = ({ user, postData }) => {
-  const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === 'system' ? systemTheme : theme;
   const router = useRouter();
   let postRef = router.query.ref;
   const [windowSize, setWindowSize] = useState(
@@ -352,7 +330,9 @@ const Form = ({ user, postData }) => {
               onTabChange={setSelectedTab}
               generateMarkdownPreview={(markdown) =>
                 Promise.resolve(
-                  <Preview markdown={markdown} currentTheme={currentTheme} />
+                  <div className="mt-4 max-w-full">
+                    <MarkdownContent content={markdown} />
+                  </div>
                 )
               }
               minEditorHeight={mdEditorHeight}

@@ -2,18 +2,11 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import useSWR, { mutate } from 'swr';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import '@uiw/react-markdown-preview/markdown.css';
-const MarkdownPreview = dynamic(
-  () => import('@uiw/react-markdown-preview').then((mod) => mod.default),
-  { ssr: false }
-);
-import rehypeHighlight from 'rehype-highlight';
 import Avatar from 'components/common/elements/Avatar';
 import fetcher from 'utils/fetcher';
 import Icon from 'components/common/elements/Icon';
-import { useTheme } from 'next-themes';
 import LikeComment from './LikeComment';
+import MarkdownContent from 'components/common/elements/MarkdownContent';
 
 const CommentReplies = ({
   commentId,
@@ -26,8 +19,6 @@ const CommentReplies = ({
   commentToUpdate,
   handlePostReply,
 }) => {
-  const { systemTheme, theme } = useTheme();
-  const currentTheme = theme === 'system' ? systemTheme : theme;
   let url = `${process.env.BASEURL}/api/posts/comments/getReplies?commentId=${commentId}`;
   if (!user)
     url = `${process.env.BASEURL}/api/posts/comments/getPublicReplies?commentId=${commentId}`;
@@ -71,13 +62,7 @@ const CommentReplies = ({
                     </Link>
                   </div>
                   <div className="prose-comments no-scrollbar prose max-w-full overflow-x-scroll dark:prose-dark">
-                    <MarkdownPreview
-                      source={comment.commentText}
-                      remarkPlugins={[rehypeHighlight, { detect: true }]}
-                      wrapperElement={{
-                        'data-color-mode': currentTheme,
-                      }}
-                    />
+                    <MarkdownContent content={comment.commentText} />
                   </div>
                 </div>
               </div>

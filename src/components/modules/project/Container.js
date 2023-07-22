@@ -1,14 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/future/image';
-import dynamic from 'next/dynamic';
-import '@uiw/react-markdown-preview/markdown.css';
-const MarkdownPreview = dynamic(
-  () => import('@uiw/react-markdown-preview').then((mod) => mod.default),
-  { ssr: false }
-);
-import rehypeHighlight from 'rehype-highlight';
-import { useTheme } from 'next-themes';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import getVideoId from 'get-video-id';
 import VideoPlayer from 'components/common/elements/mux/VideoPlayer';
@@ -26,10 +18,9 @@ import Insights from 'components/modules/post/Insights';
 import Icon from 'components/common/elements/Icon';
 import ModalDialog from 'components/common/modals/ModalDialog';
 import Reactions from './Reactions';
+import MarkdownContent from 'components/common/elements/MarkdownContent';
 
 const Container = ({ project, author, user, setShowComments }) => {
-  const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === 'system' ? systemTheme : theme;
   const [showImageModal, setShowImageModal] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [youTubeEmbedID, setYouTubeEmbedID] = useState(
@@ -211,13 +202,7 @@ const Container = ({ project, author, user, setShowComments }) => {
           <div className="col-span-1 space-y-6 py-4 xl:col-span-2">
             <div className="wmde-markdown-var mt-4 mb-20 max-w-4xl">
               {project?.projectBody && (
-                <MarkdownPreview
-                  source={project?.projectBody}
-                  remarkPlugins={[rehypeHighlight, { detect: true }]}
-                  wrapperElement={{
-                    'data-color-mode': currentTheme,
-                  }}
-                />
+                <MarkdownContent content={project?.projectBody} />
               )}
             </div>
           </div>

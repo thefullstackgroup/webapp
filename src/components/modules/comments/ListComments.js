@@ -3,14 +3,6 @@ import useSWR, { mutate } from 'swr';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import * as ga from 'lib/ga';
-import dynamic from 'next/dynamic';
-import '@uiw/react-markdown-preview/markdown.css';
-const MarkdownPreview = dynamic(
-  () => import('@uiw/react-markdown-preview').then((mod) => mod.default),
-  { ssr: false }
-);
-import rehypeHighlight from 'rehype-highlight';
-
 import CommentReplies from 'components/modules/comments/CommentReplies';
 import ReplyToComment from 'components/modules/comments/ReplyToComment';
 import EditComment from 'components/modules/comments/EditComment';
@@ -18,12 +10,10 @@ import Avatar from 'components/common/elements/Avatar';
 import Loader from 'components/common/elements/Loader';
 import fetcher from 'utils/fetcher';
 import Icon from 'components/common/elements/Icon';
-import { useTheme } from 'next-themes';
 import LikeComment from './LikeComment';
+import MarkdownContent from 'components/common/elements/MarkdownContent';
 
 const ListComments = ({ post, user }) => {
-  const { systemTheme, theme } = useTheme();
-  const currentTheme = theme === 'system' ? systemTheme : theme;
   const [postCommentOpen, setPostCommentOpen] = useState(false);
   const [editCommentOpen, setEditCommentOpen] = useState(false);
   const [commentReply, setCommentReply] = useState('');
@@ -106,13 +96,7 @@ const ListComments = ({ post, user }) => {
                         </Link>
                       </div>
                       <div className="prose-comments no-scrollbar prose overflow-x-scroll dark:prose-dark">
-                        <MarkdownPreview
-                          source={comment.commentText}
-                          remarkPlugins={[rehypeHighlight, { detect: true }]}
-                          wrapperElement={{
-                            'data-color-mode': currentTheme,
-                          }}
-                        />
+                        <MarkdownContent content={comment.commentText} />
                       </div>
                     </div>
                   </div>
