@@ -57,7 +57,7 @@ const Metadata = (props) => {
         <meta name="keywords" content={keywords} />
         <meta
           name="theme-color"
-          content={`(prefers-color-scheme: ${currentTheme})`}
+          content={currentTheme === 'dark' ? '#000000' : '#FFFFFF'}
         />
 
         <link rel="manifest" href="/manifest.json" />
