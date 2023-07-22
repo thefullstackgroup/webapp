@@ -3,7 +3,7 @@ import Image from 'next/future/image';
 const PrivacyPolicy = () => {
   return (
     <div className="bg-transparent dark:bg-black">
-      <div className="fixed top-0 left-0 mx-auto mt-12 flex min-h-screen w-full justify-between bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-base-300/40 via-black to-base-900"></div>
+      <div className="fixed top-0 left-0 mx-auto mt-12 flex min-h-screen w-full justify-between"></div>
       <div className="relative z-10 mx-auto mb-20 max-w-4xl">
         <div className="mb-10 space-y-6 px-4 pt-0 text-center sm:mb-28 md:pt-10 lg:px-0">
           <h1 className="text-3xl font-bold tracking-tighter md:text-6xl">
@@ -26,7 +26,7 @@ const PrivacyPolicy = () => {
             <p>Hey there! 👋</p>
             <p>
               My name is Noel Maher and I&apos;m one of the founders of The Full
-              Stack. I maintain our privacy policy so if you have any questions
+              Stack. I maintain the privacy policy so if you have any questions
               or ideas on how we can make The Full Stack or this policy better
               please let me know. You can email me at any time, send me a DM on
               the site or you can find me on{' '}
@@ -54,7 +54,7 @@ const PrivacyPolicy = () => {
               importantly, we believe in human connection, resulting in a better
               and more inclusive experience for all. In order to harness this,
               we want to help you own, build and strengthen your developer
-              network. This document, and our privacy values in general, are all
+              network. This document, and the privacy values in general, are all
               focused on how we do that in a way that respects, and hopefully
               enhances, your privacy.
             </p>
@@ -75,7 +75,7 @@ const PrivacyPolicy = () => {
               in advance and we will work to fix these and keep you updated. We
               don&apos;t see privacy, data legislation, governance etc... as
               cost centres or a tick the box exercise. We see protecting your
-              privacy as part of our core USP and our own durable advantage.
+              privacy as part of our core values.
             </p>
             <p>Thank you for being part of this.</p>
             <p>

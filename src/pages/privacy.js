@@ -4,7 +4,7 @@ import Meta from 'components/common/partials/Metadata';
 import Layout from 'components/common/layout/Layout';
 import Page from 'components/modules/static/policies/PrivacyPolicy';
 
-const PrivacyPolicy = ({ user }) => {
+const Privacy = ({ user }) => {
   return (
     <>
       <Meta
@@ -21,7 +21,7 @@ const PrivacyPolicy = ({ user }) => {
   );
 };
 
-export default PrivacyPolicy;
+export default Privacy;
 
 export const getServerSideProps = withAuthUserTokenSSR()(
   async ({ AuthUser, req, res }) => {
