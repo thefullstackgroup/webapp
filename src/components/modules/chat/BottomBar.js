@@ -1,21 +1,12 @@
 import { useState } from 'react';
 import { firebase } from 'firebase/firebaseApp';
 import Textarea from 'react-expanding-textarea';
-import axios from 'axios';
 import * as ga from 'lib/ga';
 import Icon from 'components/common/elements/Icon';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 
 const BottomBar = ({ user, id }) => {
   const [input, setInput] = useState('');
-
-  const sendSlackMessage = async () => {
-    await axios.post(
-      `${process.env.BASEURL}/api/notifications/slack/postMessage`,
-      {
-        message: `@${user.displayName} is sending a message within chat app.`,
-      }
-    );
-  };
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -36,7 +27,7 @@ const BottomBar = ({ user, id }) => {
         console.error('Error sending message');
       });
     setInput('');
-    sendSlackMessage();
+    sendSlackMessage('Sent a message in chat');
 
     ga.event({
       action: 'user_sent_chat_message',
@@ -49,7 +40,7 @@ const BottomBar = ({ user, id }) => {
         <Textarea
           type="text"
           placeholder="Type your message ..."
-          className="text-input bg-white dark:bg-base-900"
+          className="text-input bg-white text-base dark:bg-base-900"
           autoComplete="off"
           value={input}
           onChange={(e) => setInput(e.target.value)}

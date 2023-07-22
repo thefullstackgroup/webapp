@@ -11,7 +11,6 @@ import { Transition } from '@headlessui/react';
 import ProfilePopoverPanel from './ProfilePopoverPanel';
 import { useRouter } from 'next/router';
 import ToolTip from '../elements/ToolTip';
-import { HiOutlineMenu, HiOutlineMenuAlt2 } from 'react-icons/hi';
 const KnockNotificationsComponent = dynamic(() =>
   import('components/modules/account/settings/NotificationsPanel')
 );
@@ -98,7 +97,10 @@ const Header = ({
           <div className="flex w-1/5 justify-end">
             {user ? (
               <div className="w-8">
-                <KnockNotificationsComponent userId={user?.userId} />
+                <KnockNotificationsComponent
+                  userId={user?.userId}
+                  theme={currentTheme}
+                />
               </div>
             ) : (
               <button
@@ -213,12 +215,17 @@ const Header = ({
 
               {user ? (
                 <div className="w-8">
-                  <KnockNotificationsComponent userId={user?.userId} />
+                  <KnockNotificationsComponent
+                    userId={user?.userId}
+                    theme={currentTheme}
+                  />
                 </div>
               ) : (
-                <button className="nav-bar nav-bar-icon">
-                  <Icon name={'FiBell'} className={'h-6 w-6'} />
-                </button>
+                <Link href="/signup">
+                  <button className="nav-bar nav-bar-icon">
+                    <Icon name={'FiBell'} className={'h-6 w-6'} />
+                  </button>
+                </Link>
               )}
 
               <Mode />
