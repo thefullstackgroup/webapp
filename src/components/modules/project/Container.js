@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import getVideoId from 'get-video-id';
 import VideoPlayer from 'components/common/elements/mux/VideoPlayer';

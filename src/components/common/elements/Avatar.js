@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { checkIfUserOnline } from 'firebase/firebasePresence';
-import Image from 'next/future/image';
+import Image from 'next/image';
 
 const avatarSize = 'h-11 w-11 sm:h-14 sm:w-14';
 const avatarWidth = 100;
@@ -11,7 +11,7 @@ const ProfileImage = ({ src, setSrc, width, height, name }) => {
   return (
     <Image
       src={src}
-      className="h-full w-full object-cover"
+      className="h-full w-full overflow-hidden rounded-full object-cover"
       alt={name || ''}
       title={name || ''}
       referrerPolicy="no-referrer"
