@@ -17,7 +17,7 @@ const Actions = ({
 }) => {
   return (
     <div className="flex items-center justify-start space-x-3">
-      {myProfile && profile?.userId !== myProfile?.userId && (
+      {myProfile && !isConnected && profile?.userId !== myProfile?.userId && (
         <ButtonFollow
           followToUser={profile?.userId}
           followFromUser={myProfile?.userId}
@@ -26,11 +26,13 @@ const Actions = ({
       )}
 
       {myProfile && !isConnected && profile?.userId !== myProfile?.userId && (
-        <ButtonConnect
-          connectionPending={isConnectionPending}
-          connectFrom={myProfile}
-          connectTo={profile}
-        />
+        <div>
+          <ButtonConnect
+            connectionPending={isConnectionPending}
+            connectFrom={myProfile}
+            connectTo={profile}
+          />
+        </div>
       )}
 
       {myProfile && isConnected && profile?.userId !== myProfile?.userId && (
