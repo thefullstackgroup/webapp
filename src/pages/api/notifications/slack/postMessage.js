@@ -6,7 +6,7 @@ initAuth();
 
 const handler = async (req, res, AuthUser) => {
   let environment = '';
-  let actor = AuthUser.email + ` [${AuthUser.id}]`;
+  let actor = AuthUser?.email + ` [${AuthUser?.id}]`;
 
   if (process.env.SLACK_NOTIFICATIONS_ENABLED === 'FALSE') return;
 
@@ -16,7 +16,9 @@ const handler = async (req, res, AuthUser) => {
     environment = 'Production';
   }
 
-  const message = `ENV: ${environment} \nUSER: ${actor} \nACTION: ${req.body.message} \n------------------------`;
+  let message = `ANONYMOUS USER \nACTION: ${req.body.message} \n------------------------`;
+  if (AuthUser)
+    message = `ENV: ${environment} \nUSER: ${actor} \nACTION: ${req.body.message} \n------------------------`;
 
   await axios
     .post(
@@ -38,4 +40,4 @@ const handler = async (req, res, AuthUser) => {
     });
 };
 
-export default withAuthUserTokenAPI(handler);
+export default withAuthUserTokenAPI(handler, true);

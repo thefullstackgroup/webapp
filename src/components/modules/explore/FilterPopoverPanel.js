@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import Icon from 'components/common/elements/Icon';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 
 const FilterPopoverPanel = ({ filters, filter, setFilter }) => {
   const [isShowing, setIsShowing] = useState(false);
@@ -56,6 +57,9 @@ const FilterPopoverPanel = ({ filters, filter, setFilter }) => {
                     onClick={() => {
                       setFilter(item);
                       setIsShowing(false);
+                      sendSlackMessage(
+                        `Filtered projects by - "${item.label}"`
+                      );
                     }}
                   >
                     <span className="text-black dark:text-white">

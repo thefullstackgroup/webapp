@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { CategoriesFilter } from './constants';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 
 const Categories = ({ category, setCategory, enableState = true }) => {
   const router = useRouter();
@@ -19,6 +20,9 @@ const Categories = ({ category, setCategory, enableState = true }) => {
             router.push(`/explore/popular/${item.slug}`, undefined, {
               shallow: true,
             });
+            sendSlackMessage(
+              `Clicked the category ${item.label} on the explore page`
+            );
           }}
         >
           {item.label}

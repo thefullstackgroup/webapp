@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import Icon from 'components/common/elements/Icon';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 
 const PopoverPanel = ({ item, stacks, stack, setStack }) => {
   const [isShowing, setIsShowing] = useState(false);
@@ -65,6 +66,9 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
                       onClick={() => {
                         setStack(item);
                         setIsShowing(false);
+                        sendSlackMessage(
+                          `Filtered projects by stack - "${item.label}"`
+                        );
                       }}
                     >
                       <div className="flex items-center gap-3">
@@ -100,6 +104,9 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
                       onClick={() => {
                         setStack(item);
                         setIsShowing(false);
+                        sendSlackMessage(
+                          `Filtered projects by stack - "${item.label}"`
+                        );
                       }}
                     >
                       <div className="flex items-center gap-3">
@@ -134,6 +141,9 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
                       onClick={() => {
                         setStack(item);
                         setIsShowing(false);
+                        sendSlackMessage(
+                          `Filtered projects by stack - "${item.label}"`
+                        );
                       }}
                     >
                       <div className="flex items-center gap-3">
@@ -168,6 +178,9 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
                       onClick={() => {
                         setStack(item);
                         setIsShowing(false);
+                        sendSlackMessage(
+                          `Filtered projects by stack - "${item.label}"`
+                        );
                       }}
                     >
                       <div className="flex items-center gap-3">
@@ -202,6 +215,9 @@ const PopoverPanel = ({ item, stacks, stack, setStack }) => {
                       onClick={() => {
                         setStack(item);
                         setIsShowing(false);
+                        sendSlackMessage(
+                          `Filtered projects by stack - "${item.label}"`
+                        );
                       }}
                     >
                       <div className="flex items-center gap-3">
