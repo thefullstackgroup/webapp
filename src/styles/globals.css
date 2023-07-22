@@ -85,7 +85,7 @@
     @apply flex items-center space-x-2;
   }
   .btn-with-icon-only {
-    @apply rounded-xl bg-transparent py-0 px-0 hover:bg-base-200 dark:hover:bg-base-600/50;
+    @apply rounded-xl bg-transparent py-0 px-0 sm:hover:bg-base-200 sm:dark:hover:bg-base-600/50;
   }
   .btn-pill {
     @apply cursor-pointer whitespace-nowrap rounded-lg border border-transparent bg-base-200 py-2 px-4 text-xs text-base-500 duration-200 hover:bg-base-200 dark:border-transparent dark:bg-base-700/80 dark:text-base-200 dark:hover:bg-base-600 sm:text-sm;
@@ -146,7 +146,7 @@
     @apply rounded-md border border-base-200 bg-base-50 px-4 py-3 shadow-lg shadow-base-200/20 dark:border-base-700 dark:bg-base-900 dark:shadow-none;
   }
   .box-link {
-    @apply cursor-pointer duration-200 hover:border-base-600 dark:hover:border-base-100;
+    @apply cursor-pointer duration-200 sm:hover:border-base-600 sm:dark:hover:border-base-100;
   }
 
   /* Utilities */

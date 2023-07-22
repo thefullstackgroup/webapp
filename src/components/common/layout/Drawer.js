@@ -87,13 +87,24 @@ const Drawer = ({
                           />
                         </div>
                       </Link>
-                      <button
-                        className="btn btn-ghost px-0"
-                        onClick={() => setShow(false)}
-                        aria-label="Close"
-                      >
-                        <Icon name={'FiX'} className="h-8 w-8" />
-                      </button>
+                      <div className="flex items-center space-x-6">
+                        <Link href={'/search'}>
+                          <button
+                            className="btn btn-ghost px-0"
+                            onClick={() => setShow(false)}
+                            aria-label="Search"
+                          >
+                            <Icon name={'FiSearch'} className="h-6 w-6" />
+                          </button>
+                        </Link>
+                        <button
+                          className="btn btn-ghost px-0"
+                          onClick={() => setShow(false)}
+                          aria-label="Close"
+                        >
+                          <Icon name={'FiX'} className="h-8 w-8" />
+                        </button>
+                      </div>
                     </div>
                     <div className="no-scrollbar h-[82vh] space-y-4 overflow-y-scroll px-4 py-2">
                       <div className="flex flex-col space-y-3">
@@ -208,23 +219,29 @@ const Drawer = ({
                             <span>Teams</span>
                           </button>
                         </Link>
-                        <Link href={'/search'}>
+
+                        {user ? (
                           <button
                             className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
-                            onClick={() => setShow(false)}
+                            onClick={() => {
+                              setShowCreatePost(true);
+                            }}
                           >
-                            <span>Search</span>
+                            <span>Add your project</span>
                           </button>
-                        </Link>
+                        ) : (
+                          <Link href={'/signup'}>
+                            <button
+                              className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
+                              onClick={() => setShow(false)}
+                            >
+                              <span>Add your project</span>
+                            </button>
+                          </Link>
+                        )}
                       </div>
                       {user && (
                         <div className="flex flex-col border-t border-base-200 pt-2 dark:border-base-700">
-                          <button
-                            className="btn btn-ghost px-0 text-left font-medium"
-                            onClick={() => setShowCreatePost(true)}
-                          >
-                            Add your project
-                          </button>
                           <Link href="/account/dashboard">
                             <button
                               className="btn btn-ghost px-0 text-left font-medium"

@@ -44,6 +44,11 @@ export const getServerSideProps = withAuthUserTokenSSR()(
         },
       };
     }
-    return { props: {} };
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
   }
 );

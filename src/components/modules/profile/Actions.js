@@ -36,7 +36,7 @@ const Actions = ({
       )}
 
       {myProfile && isConnected && profile?.userId !== myProfile?.userId && (
-        <div>
+        <div className="w-full">
           <ButtonChat profile={profile} myProfile={myProfile} />
         </div>
       )}
@@ -57,7 +57,7 @@ const Actions = ({
           </button>
 
           <button
-            className="btn btn-ghost group relative px-4"
+            className="btn btn-ghost btn-with-icon-only group relative px-2"
             onClick={() => {
               setUploadVideoIntroPanel(true);
               sendSlackMessage(

@@ -2,7 +2,6 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { firebase } from 'firebase/firebaseApp';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { IoChatbubblesOutline } from 'react-icons/io5';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import Icon from '../elements/Icon';
 
@@ -47,7 +46,10 @@ const ChatButton = ({ profile, myProfile }) => {
 
   return (
     <div className="relative">
-      <button className="btn btn-primary btn-with-icon" onClick={newChat}>
+      <button
+        className="btn btn-primary btn-with-icon w-full justify-center"
+        onClick={newChat}
+      >
         <Icon name={'FiMessageSquare'} className="h-5 w-5" />
         <span>Message</span>
       </button>

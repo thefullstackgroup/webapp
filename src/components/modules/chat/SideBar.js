@@ -50,9 +50,9 @@ const SideBar = ({ user, chatId }) => {
             />
           </div>
 
-          <div className="col-span-1 pl-4">
+          <div className="col-span-1 flex justify-end pl-4">
             {chatNotifications[chat.id]?.unreadMessages === 1 ? (
-              <div className="h-3 w-3 rounded-full bg-red-500 text-xs font-medium text-white"></div>
+              <div className="mt-2 h-3 w-3 rounded-full bg-red-500 text-xs font-medium text-white"></div>
             ) : (
               <div className="mt-0.5 flex shrink-0 justify-end text-xs text-base-400 dark:text-base-500">
                 {Moment(new Date(chat?.timestamp?.seconds * 1000)).format(

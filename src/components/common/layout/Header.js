@@ -11,7 +11,7 @@ import { Transition } from '@headlessui/react';
 import ProfilePopoverPanel from './ProfilePopoverPanel';
 import { useRouter } from 'next/router';
 import ToolTip from '../elements/ToolTip';
-import { HiOutlineMenuAlt2 } from 'react-icons/hi';
+import { HiOutlineMenu, HiOutlineMenuAlt2 } from 'react-icons/hi';
 const KnockNotificationsComponent = dynamic(() =>
   import('components/modules/account/settings/NotificationsPanel')
 );
@@ -74,7 +74,7 @@ const Header = ({
               onClick={() => setShowDrawer(true)}
               aria-label="Open menu"
             >
-              <HiOutlineMenuAlt2 className="h-7 w-7" />
+              <Icon name="FiMenu" className="h-7 w-7" />
             </button>
           </div>
 
