@@ -189,7 +189,7 @@ const Header = ({
                   className="btn btn-primary rounded-full font-medium"
                   onClick={() => setShowCreatePost(true)}
                 >
-                  Share project
+                  Add your project
                 </button>
               ) : (
                 <Link href="/signup" passHref>
@@ -197,7 +197,7 @@ const Header = ({
                     href="#"
                     className="btn btn-primary rounded-full px-5 font-medium"
                   >
-                    Share project
+                    Add your project
                   </a>
                 </Link>
               )}

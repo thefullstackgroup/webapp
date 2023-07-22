@@ -9,16 +9,21 @@ const CreatePostModal = ({ user, show, setShow }) => {
 
   return (
     <>
-      <ModalAlert show={show} setShow={setShow} title="Share Project" disabled>
+      <ModalAlert
+        show={show}
+        setShow={setShow}
+        title="Add your project"
+        disabled
+      >
         {gitHubImportSelected ? (
           <ImportFromGitHub />
         ) : (
           <div className="space-y-2 py-6">
             <p className="mx-3 mb-4 text-center font-manrope text-3xl font-extrabold">
-              Show off your project
+              Unleash your project
             </p>
             <p className="mx-6 mb-8 text-center text-sm">
-              Import a project from GitHub or create your project from scratch.
+              Import your project from GitHub or create from scratch.
             </p>
 
             <div className="space-y-4 py-6">

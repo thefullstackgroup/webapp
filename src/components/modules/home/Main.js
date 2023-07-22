@@ -38,17 +38,17 @@ const Main = ({ user }) => {
         <div className="rounded-lg bg-transparent dark:bg-transparent">
           <div className="mx-auto max-w-4xl py-10 text-center lg:py-14">
             <div className="relative space-y-10">
-              <h2 className="font-manrope text-6xl font-extrabold tracking-tighter text-base-800 dark:text-base-200 xl:text-8xl">
+              <h1 className="font-manrope text-6xl font-extrabold tracking-tighter text-base-800 dark:text-base-200 xl:text-8xl">
                 Unleash your{' '}
                 <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-blue-600 bg-clip-text text-transparent">
                   Developer
                 </span>{' '}
                 projects.
-              </h2>
-              <h4 className="mx-auto max-w-2xl text-base font-light tracking-tight text-base-500 dark:text-base-400 xl:text-2xl">
+              </h1>
+              <h2 className="mx-auto max-w-2xl text-base font-light tracking-tight text-base-500 dark:text-base-400 xl:text-2xl">
                 The Full Stack is an open source platform for developers to
                 share projects and grow your developer network.
-              </h4>
+              </h2>
               <div className="flex flex-col items-center justify-center space-y-2 xl:flex-row xl:space-y-0 xl:space-x-4">
                 <Link href="/signup">
                   <button className="btn btn-secondary btn-with-icon rounded-full py-2">
