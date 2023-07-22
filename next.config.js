@@ -35,6 +35,11 @@ module.exports = (phase) => {
           permanent: true,
         },
         {
+          source: '/privacy-policy',
+          destination: '/privacy',
+          permanent: true,
+        },
+        {
           source: '/legal/cookie-policy',
           destination: '/cookie-policy',
           permanent: true,
