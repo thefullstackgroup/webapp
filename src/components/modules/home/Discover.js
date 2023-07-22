@@ -15,18 +15,16 @@ const SuggestedUserCard = (props) => {
             name={props.project.projectCreator.name}
             href={`/${props.project.projectCreator.displayName}`}
             image={props.project.projectCreator.profilePicUrl}
-            dimensions="h-24 sm:h-28 w-full opacity-100 sm:group-hover:ring-4 group-hover:ring-primary-500 duration-200"
+            dimensions="h-24 w-24 sm:h-28 sm:w-28 w-full opacity-100 sm:group-hover:ring-4 group-hover:ring-primary-500 duration-200"
           />
         )}
       </div>
       <Link href={`/${props.project.projectCreator.displayName}`}>
-        <div className="text-center text-base font-medium">
-          <p className="truncate text-sm">
-            {props.project.projectCreator.displayName}
-          </p>
-          <p className="truncate text-xs font-normal text-base-400 dark:text-base-400">
+        <div className="text-center text-sm">
+          <p className="truncate">{props.project.projectCreator.displayName}</p>
+          {/* <p className="truncate text-xs font-normal text-base-400 dark:text-base-400">
             {props.project.projectCreator.currentTitle}
-          </p>
+          </p> */}
         </div>
       </Link>
     </>
