@@ -64,11 +64,11 @@ const Reactions = ({ project, user }) => {
         {/* Post comment */}
         {user ? (
           <div className="w-full bg-base-50 px-4 pt-4 dark:bg-base-900 sm:hidden">
-            <div className="flex items-center pb-6 sm:space-x-2">
+            <div className="flex items-center space-x-2 pb-4">
               <Avatar
                 image={user.profilePicUrl}
                 name={user.displayName}
-                dimensions="h-10 w-10 hidden md:block"
+                dimensions="h-8 w-8 sm:h-10 sm:w-10"
               />
               <input
                 type="text"
@@ -95,7 +95,7 @@ const Reactions = ({ project, user }) => {
         )}
 
         {/* Comments */}
-        <div className="no-scrollbar relative top-0 h-[78vh] overflow-y-scroll overscroll-contain px-4 pb-32 lg:pb-4">
+        <div className="no-scrollbar relative top-0 h-[78vh] overflow-y-scroll overscroll-contain px-4 pb-40 lg:pb-4">
           <ListComments user={user} post={project} />
         </div>
 

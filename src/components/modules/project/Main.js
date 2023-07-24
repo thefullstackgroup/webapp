@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Loader from 'components/common/elements/Loader';
 import { Dialog, Transition } from '@headlessui/react';
 import Reactions from './Reactions';
+import Icon from 'components/common/elements/Icon';
 
 const Main = ({ user, project, author }) => {
   const [showComments, setShowComments] = useState(false);
@@ -58,7 +59,7 @@ const Main = ({ user, project, author }) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-base-400/50 dark:bg-base-900/40" />
+            <div className="fixed inset-0 bg-base-400/50 dark:bg-base-900/70" />
           </Transition.Child>
 
           <div className="fixed inset-0 z-10 flex justify-center">
@@ -72,6 +73,10 @@ const Main = ({ user, project, author }) => {
                 leaveTo="translate-y-full sm:translate-x-full sm:translate-y-0"
                 className={`fixed right-0 top-0 h-screen w-full max-w-lg`}
               >
+                <button className="btn btn-xs btn-with-icon btn-secondary absolute -top-10 right-4 rounded-full">
+                  <span>Close</span>
+                  <Icon name="FiX" className={'h-4 w-4'} />
+                </button>
                 <Dialog.Panel
                   className={`relative h-full w-full overflow-hidden border-0 bg-white text-left shadow-xl dark:border-base-600 dark:bg-base-900 sm:border-l`}
                 >
