@@ -52,7 +52,7 @@ const ButtonLike = ({ user, post }) => {
         <ToolTip message="Like" />
         {isLiked ? (
           <>
-            <Icon name="FiHeart" className="h-5 w-5 text-red-500" />
+            <Icon name="FaHeart" pack="Fa" className="h-5 w-5 text-red-500" />
             <span className="flex items-center text-sm text-red-400">
               {Math.abs(refreshLikes)}
             </span>
