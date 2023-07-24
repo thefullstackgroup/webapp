@@ -73,8 +73,7 @@ const Main = ({ user, project, author }) => {
                 leaveTo="translate-y-full sm:translate-x-full sm:translate-y-0"
                 className={`fixed right-0 top-0 h-screen w-full max-w-lg`}
               >
-                <button className="btn btn-xs btn-with-icon btn-secondary absolute -top-10 right-4 rounded-full">
-                  <span>Close</span>
+                <button className="btn btn-with-icon-only btn-secondary absolute -top-9 right-4 rounded-full bg-base-50 p-1">
                   <Icon name="FiX" className={'h-4 w-4'} />
                 </button>
                 <Dialog.Panel
