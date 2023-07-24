@@ -14,7 +14,7 @@ const FiveZeroZero = () => {
     );
   }, []);
   return (
-    <div className="h-screen">
+    <div className="h-screen bg-base-50 dark:bg-base-900">
       <div className="flex h-full w-full justify-center">
         <div className="m-auto flex max-w-3xl flex-col px-4 text-center">
           <h2 className="mt-10 mb-4 text-4xl font-bold tracking-tight md:text-5xl">
@@ -27,7 +27,7 @@ const FiveZeroZero = () => {
             refreshing the page or click the button below.
           </p>
           <p className="my-10">
-            <a href={`${process.env.BASEURL}/`} className="btn-primary">
+            <a href={`${process.env.BASEURL}/`} className="btn btn-primary">
               Lets try this again &rarr;
             </a>
           </p>

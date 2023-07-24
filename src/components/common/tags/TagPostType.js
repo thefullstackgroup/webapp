@@ -8,7 +8,10 @@ const TagPostType = ({ postType, className }) => {
     label = 'Spark';
     icon = 'FiZap';
   }
-
+  if (postType === 'ANNOUNCEMENT') {
+    label = 'Introduction';
+    icon = 'FiMessageCircle';
+  }
   if (postType === 'POST') {
     label = 'Braindumps';
     icon = 'FiCloud';

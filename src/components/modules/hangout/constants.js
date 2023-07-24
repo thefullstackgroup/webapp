@@ -5,6 +5,11 @@ export const postTypeOptions = [
     icon: 'FiHash',
   },
   {
+    label: 'Introductions',
+    slug: 'announcement',
+    icon: 'FiMessageCircle',
+  },
+  {
     label: 'Sparks',
     slug: 'spark',
     icon: 'FiZap',
@@ -86,6 +91,11 @@ export const topics = [
     label: 'Sparks',
     slug: 'spark',
     icon: 'FiZap',
+  },
+  {
+    label: 'Introductions',
+    slug: 'announcement',
+    icon: 'FiMessageCircle',
   },
   {
     label: 'Braindumps',

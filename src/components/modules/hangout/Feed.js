@@ -4,7 +4,6 @@ import FollowingCard from 'components/common/cards/FollowingCard';
 import PostCard from 'components/common/cards/PostCard';
 import useSWRInfinite from 'swr/infinite';
 import fetcher from 'utils/fetcher';
-import PinnedPost from 'components/modules/hangout/PinnedPost';
 
 const defaultTopics =
   'SPARK,POST,SHOWSTARTUP,LEARNING,ADVICE,MEME,VENT,NEWS,POLL,FRAMEWORKS,UTILITIES,TUTORIALS,CAREER_ADVICE,WORKING_REMOTELY,DESK_SETUP,DESIGN_TIPS,GOT_THE_JOB,PROJECT_IDEAS,COLLABS,WORKFLOWS';
