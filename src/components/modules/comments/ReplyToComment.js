@@ -134,11 +134,13 @@ const ReplyToComment = ({
     >
       <div className="py-4">
         <div className="hidden items-start sm:flex">
-          <Avatar
-            image={commentReplyTo?.authorProfileImageURL}
-            name={commentReplyTo?.authorName}
-            dimensions="h-10 w-10"
-          />
+          <div>
+            <Avatar
+              image={commentReplyTo?.authorProfileImageURL}
+              name={commentReplyTo?.authorName}
+              dimensions="h-10 w-10"
+            />
+          </div>
           <div className="no-scrollbar mr-0 ml-2 w-auto max-w-full overflow-scroll overscroll-contain rounded bg-base-200/70 p-4 py-2 dark:bg-base-600/80 sm:max-h-56">
             <p className="text-sm font-medium">{commentReplyTo?.authorName}</p>
 
@@ -165,12 +167,13 @@ const ReplyToComment = ({
         <div className="relative mt-4">
           <div className="relative flex items-start sm:space-x-3">
             <div className="flex w-full sm:ml-12 sm:space-x-4">
-              <Avatar
-                image={user?.profilePicUrl}
-                name={user?.displayName}
-                dimensions="hidden sm:block h-10 w-10"
-              />
-
+              <div>
+                <Avatar
+                  image={user?.profilePicUrl}
+                  name={user?.displayName}
+                  dimensions="hidden sm:block h-10 w-10"
+                />
+              </div>
               <div className="w-auto flex-1">
                 <div className="block">
                   <div className="dark text-input mb-2 border border-base-400 dark:border-base-600">

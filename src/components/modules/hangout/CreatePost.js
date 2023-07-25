@@ -161,11 +161,13 @@ const CreatePost = ({ user }) => {
         <div className="relative w-full">
           <div className="text-lg text-base-500">
             <div className="mb-6 flex items-start space-x-4">
-              <Avatar
-                image={user?.profilePicUrl}
-                name={user?.displayName}
-                dimensions={'w-9 h-9 mt-2'}
-              />
+              <div>
+                <Avatar
+                  image={user?.profilePicUrl}
+                  name={user?.displayName}
+                  dimensions={'w-10 h-10 mt-2'}
+                />
+              </div>
               <div className="w-full">
                 {postType !== 'SPARK' && (
                   <div className="pt-2">
