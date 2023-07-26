@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import Icon from '../elements/Icon';
 import Avatar from '../elements/Avatar';
 
@@ -14,6 +14,7 @@ const ProjectCard = ({ project }) => {
             {project.projectImgURI && (
               <Image
                 src={project.projectImgURI}
+                blurDataURL={project.projectImgURI}
                 className="h-full w-full object-cover object-center duration-200 hover:opacity-100 group-hover:shadow-xl dark:opacity-90 xl:group-hover:scale-105"
                 alt={project.projectName}
                 title={project.projectName}

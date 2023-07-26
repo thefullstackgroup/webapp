@@ -7,7 +7,7 @@ import Icon from 'components/common/elements/Icon';
 
 const SuggestedUserCard = (props) => {
   return (
-    <>
+    <div className="h-auto w-28 space-y-2 sm:h-auto sm:w-28">
       <div className="mx-auto h-24 w-24 sm:h-28 sm:w-28">
         {props.project.projectCreator.profilePicUrl && (
           <Avatar
@@ -20,14 +20,11 @@ const SuggestedUserCard = (props) => {
         )}
       </div>
       <Link href={`/${props.project.projectCreator.displayName}`}>
-        <div className="text-center text-sm">
-          <p className="truncate">{props.project.projectCreator.displayName}</p>
-          {/* <p className="truncate text-xs font-normal text-base-400 dark:text-base-400">
-            {props.project.projectCreator.currentTitle}
-          </p> */}
-        </div>
+        <p className="cursor-pointer truncate text-center text-sm">
+          {props.project.projectCreator.displayName}
+        </p>
       </Link>
-    </>
+    </div>
   );
 };
 
@@ -88,12 +85,11 @@ const Discover = ({ user, count, search }) => {
             {suggestedUsers?.map(
               (project, index) =>
                 user?.userId !== project.userId && (
-                  <div
-                    className="h-auto w-28 space-y-2 sm:h-auto sm:w-28"
+                  <SuggestedUserCard
+                    project={project}
+                    user={user}
                     key={index}
-                  >
-                    <SuggestedUserCard project={project} user={user} />
-                  </div>
+                  />
                 )
             )}
           </div>

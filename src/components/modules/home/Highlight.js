@@ -22,7 +22,7 @@ const Slide = ({ data }) => {
           <div className="h-[400px] w-full 2xl:h-[440px]">
             <Image
               src={data?.projectImgURI}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover object-center"
               alt={data?.projectName}
               width={800}
               height={800}
