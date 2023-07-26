@@ -5,7 +5,7 @@ const UserProfile = () => {
 export default UserProfile;
 
 export async function getServerSideProps({ res, req, query }) {
-  res.writeHead(302, {
+  res.writeHead(301, {
     Location: `${process.env.BASEURL}/${encodeURIComponent(query.userId)}`,
   });
   res.end();
