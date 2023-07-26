@@ -105,9 +105,9 @@ const Overview = ({
 
           <div className="w-full lg:pr-4">
             <div className="items-baseline lg:flex lg:space-x-2">
-              <h2 className="mb-0 font-manrope text-2xl font-bold md:text-3xl">
+              <h1 className="mb-0 font-manrope text-2xl font-bold md:text-3xl">
                 {profile?.name}
-              </h2>
+              </h1>
               <p className="text-sm text-base-500 md:text-base">
                 @{profile?.displayName}
               </p>
