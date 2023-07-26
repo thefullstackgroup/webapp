@@ -14,12 +14,11 @@ const ProjectCard = ({ project }) => {
             {project.projectImgURI && (
               <Image
                 src={project.projectImgURI}
-                className="h-full w-full object-cover object-top duration-200 hover:opacity-100 group-hover:shadow-xl dark:opacity-90 xl:group-hover:scale-105"
+                className="h-full w-full object-cover object-center duration-200 hover:opacity-100 group-hover:shadow-xl dark:opacity-90 xl:group-hover:scale-105"
                 alt={project.projectName}
                 title={project.projectName}
                 width={400}
                 height={400}
-                layout="fill"
               />
             )}
           </div>

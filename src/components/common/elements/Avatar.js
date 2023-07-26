@@ -4,8 +4,8 @@ import { checkIfUserOnline } from 'firebase/firebasePresence';
 import Image from 'next/image';
 
 const avatarSize = 'h-11 w-11 sm:h-14 sm:w-14';
-const avatarWidth = 100;
-const avatarHeight = 100;
+const avatarWidth = 150;
+const avatarHeight = 150;
 
 const ProfileImage = ({ src, setSrc, width, height, name }) => {
   return (
@@ -17,7 +17,6 @@ const ProfileImage = ({ src, setSrc, width, height, name }) => {
       referrerPolicy="no-referrer"
       width={width}
       height={height}
-      layout="fill"
       onError={() => setSrc('/assets/profile/user/avatar-notfound.webp')}
     />
   );
