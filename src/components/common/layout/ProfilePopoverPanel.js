@@ -17,8 +17,7 @@ const ProfilePopoverPanel = ({
       {user ? (
         <Popover.Button
           className={'btn px-1'}
-          onMouseEnter={() => setIsShowing(true)}
-          onMouseLeave={() => setIsShowing(false)}
+          onClick={() => setIsShowing(true)}
         >
           <Avatar
             image={user.profilePicUrl}
@@ -29,11 +28,10 @@ const ProfilePopoverPanel = ({
       ) : (
         <Popover.Button
           className={
-            'nav-bar nav-bar-icon bg-base-200 dark:bg-base-700 ' +
+            'nav-bar nav-bar-icon bg-base-200 outline-none dark:bg-base-700 ' +
             (isShowing && ` bg-base-200 dark:bg-base-700 dark:text-white`)
           }
-          onMouseEnter={() => setIsShowing(true)}
-          onMouseLeave={() => setIsShowing(false)}
+          onClick={() => setIsShowing(true)}
         >
           <Icon name={'FiUser'} />
         </Popover.Button>

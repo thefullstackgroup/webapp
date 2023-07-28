@@ -25,7 +25,7 @@ const Slide = ({ data }) => {
               className="h-full w-full object-cover object-center"
               alt={data?.projectName}
               width={800}
-              height={800}
+              height={1000}
             />
           </div>
           <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-base-900/80 duration-200 group-hover:to-base-900/80 dark:to-base-900/90">
