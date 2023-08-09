@@ -12,10 +12,8 @@ const Competition = ({ user }) => {
         description="Read the code of conduct for The Full Stack community platform for Developers"
         keywords="developer, social network, developers, software engineering, full stack, software engineering network, tech community, tech companies, best tech companies, developer portfolio, developer network, professional network, professional community"
       />
-      <Layout user={user}>
-        <div className="pt-10 sm:pt-28">
-          <Page />
-        </div>
+      <Layout user={user} fullWidth={true}>
+        <Page />
       </Layout>
     </>
   );

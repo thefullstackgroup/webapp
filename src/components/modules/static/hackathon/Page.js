@@ -1,20 +1,33 @@
-import Icon from "components/common/elements/Icon";
-import { FaHeart } from "react-icons/fa";
+import Icon from 'components/common/elements/Icon';
+import Image from 'next/image';
 
 const Page = () => {
   return (
     <div className="bg-transparent dark:bg-black">
-      <div className="relative z-10 mx-auto mb-20 max-w-5xl">
-        <h1 className="mb-12 text-center text-3xl font-bold tracking-tighter md:text-6xl">
+      <div className="relative h-[350px] w-full">
+        <Image
+          src="https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+          alt="Announcing our first Hackathon"
+          width={2000}
+          height={350}
+          className="rotate-180 object-cover"
+        />
+        <div className="absolute bottom-8 w-full px-8 text-right">
+          <span className="font-manrope text-xl font-semibold">
+            September 22 - October 20
+          </span>
+        </div>
+      </div>
+      <div className="relative z-10 mx-auto mt-10 mb-20 max-w-5xl">
+        <h1 className="mb-12 px-4 font-manrope text-3xl font-bold tracking-tighter md:text-6xl">
           Announcing our first Hackathon!
         </h1>
-
         <div className="prose max-w-full space-y-10 px-4 dark:prose-dark">
           <div>
             <p>Hey All!</p>
             <p>
               Today, we’re launching a new way for you to build an interesting
-              application in the open, learn something new, and win exciting
+              application in the open, learn something new, and win awesome
               prizes in the process.
             </p>
             <p>
@@ -53,7 +66,7 @@ const Page = () => {
                   <Icon
                     name="IoTrophyOutline"
                     pack="Io"
-                    className={"h-10 w-10"}
+                    className={'h-10 w-10'}
                   />
                 </div>
                 <ul className="mt-4 space-y-3 pl-0 text-sm leading-8 text-gray-600">
@@ -94,7 +107,7 @@ const Page = () => {
                   <Icon
                     name="IoRibbonOutline"
                     pack="Io"
-                    className={"h-10 w-10"}
+                    className={'h-10 w-10'}
                   />
                 </div>
                 <ul className="mt-4 space-y-3 pl-0 text-sm leading-8 text-gray-600">
@@ -128,7 +141,7 @@ const Page = () => {
                   <Icon
                     name="IoRibbonOutline"
                     pack="Io"
-                    className={"h-10 w-10"}
+                    className={'h-10 w-10'}
                   />
                 </div>
                 <ul className="mt-4 space-y-3 pl-0 text-sm leading-8 text-gray-600">
@@ -159,7 +172,7 @@ const Page = () => {
           </div>
 
           <div>
-            <h2>How It Will Be Judged?</h2>
+            <h2>The judging</h2>
             <p>
               Projects will be judged based on the following criteria:
               <ul>
@@ -177,7 +190,7 @@ const Page = () => {
           </div>
 
           <div>
-            <h2>Tips and useful resources</h2>
+            <h2>Useful resources</h2>
             <p>
               Check out these useful resources to get ideas and look to help
               build your project idea:
@@ -190,7 +203,7 @@ const Page = () => {
           </div>
 
           <div>
-            <h2>Where to get help / find a partner?</h2>
+            <h2>Where to get help / pair up?</h2>
             <p>Text here...</p>
           </div>
 
