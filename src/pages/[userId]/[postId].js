@@ -1,26 +1,13 @@
-import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import useUserProfile from 'hooks/useUserProfile';
-import Meta from 'components/common/partials/Metadata';
-import Layout from 'components/common/layout/Layout';
-import PostContainer from 'components/modules/post/Container';
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
-import { RiEmotionSadLine } from 'react-icons/ri';
+import { withAuthUserTokenSSR } from "next-firebase-auth";
+import Meta from "components/common/partials/Metadata";
+import Layout from "components/common/layout/Layout";
+import PostContainer from "components/modules/post/Container";
+import fetcher from "utils/fetcher";
+import { RiEmotionSadLine } from "react-icons/ri";
+import { getUserProfile } from "pages/api/auth/userProfile";
+import axios from "axios";
 
-const Project = () => {
-  const router = useRouter();
-  const { postId, userId } = router.query;
-  const [user, getUser] = useUserProfile();
-
-  let url = `${process.env.BASEURL}/api/posts/getPost?postId=${postId}&authorId=${userId}`;
-  const { data: project } = useSWR(url, fetcher);
-
-  useEffect(() => {
-    getUser();
-  }, []);
-
+const Post = ({ user, project }) => {
   return (
     <>
       <Meta
@@ -29,11 +16,9 @@ const Project = () => {
         keywords=""
       />
 
-      {user && project && (
-        <Layout user={user}>
-          <PostContainer project={project} user={user} />
-        </Layout>
-      )}
+      <Layout user={user}>
+        <PostContainer project={project} user={user} />
+      </Layout>
 
       {user && !project && (
         <Layout user={user}>
@@ -51,6 +36,47 @@ const Project = () => {
   );
 };
 
-export default withAuthUser()(Project);
+export default Post;
 
-export const getServerSideProps = withAuthUserTokenSSR()();
+export const getServerSideProps = withAuthUserTokenSSR()(
+  async ({ AuthUser, req, res, params }) => {
+    const accessToken = await AuthUser.getIdToken();
+    const userProfile = await getUserProfile(accessToken, null, req, res);
+
+    let headers = "";
+    if (accessToken) {
+      headers = {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+    }
+
+    const project = await axios
+      .get(
+        `${process.env.API_PROJECTS_URL}/project/${encodeURIComponent(
+          params.postId
+        )}/user/${encodeURIComponent(params.userId)}`,
+        headers
+      )
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        console.log(error.status);
+      });
+
+    const author = await fetcher(
+      `${process.env.API_PROFILE_URL}/profile/user/${encodeURIComponent(
+        params.userId
+      )}`
+    );
+
+    return {
+      props: {
+        user: userProfile || null,
+        project: project,
+      },
+    };
+  }
+);
