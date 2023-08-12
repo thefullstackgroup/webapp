@@ -204,11 +204,12 @@ const Page = () => {
           <div className="space-y-10 px-4">
             <h2 className="font-manrope text-4xl font-bold">Judges</h2>
             <p className="text-xl">
-              As The Full Stack is a community, the judging will be based on the
-              number of votes given to projects that are submitted for the
-              hackathon. Therefore the project with the highest number of votes
-              will be the winner. And the projects with second and third highest
-              votes will be deemed the runners up.
+              As The Full Stack is a community, the judging will be community
+              based. All project submissions will be posted here on The Full
+              Stack and open to the community vote on. Therefore the project
+              with the highest number of votes will be the winner. And the
+              projects with second and third highest votes will be deemed the
+              runners up.
             </p>
           </div>
 
