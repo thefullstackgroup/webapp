@@ -54,12 +54,12 @@ const Page = () => {
           <div className="h-64 w-full overflow-hidden bg-black sm:h-[500px] sm:rounded-2xl">
             <Image
               src={
-                'https://images.unsplash.com/photo-1636036766419-4e0e3e628acc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80'
+                'https://images.unsplash.com/photo-1629429407759-01cd3d7cfb38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
               }
               alt="The Full Stack Hackathon"
               width="800"
               height="800"
-              className="h-full w-full object-cover opacity-50"
+              className="h-full w-full object-cover opacity-70"
               layout="fill"
             />
           </div>
