@@ -244,8 +244,8 @@ const Page = () => {
 
             <ul className="ml-6 list-disc text-xl">
               <li>
-                Team size 1-5 (all team members on a winning team will receive a
-                prize)
+                Team size 1-5 (all team members on a winning team will receive
+                the prizes)
               </li>
               <li>It&apos;s not a requirement to use AI</li>
               <li>Can be any language or framework</li>
