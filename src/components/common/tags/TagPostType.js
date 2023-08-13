@@ -24,6 +24,14 @@ const TagPostType = ({ postType, className }) => {
     label = 'Utilities';
     icon = 'FiTerminal';
   }
+  if (postType === 'PLAYLIST') {
+    label = 'Playlist';
+    icon = 'FiMusic';
+  }
+  if (postType === 'HACKATHON') {
+    label = 'Hackathon';
+    icon = 'FiBox';
+  }
   if (postType === 'TUTORIALS') {
     label = 'Tutorials';
     icon = 'FiYoutube';

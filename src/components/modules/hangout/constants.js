@@ -98,6 +98,11 @@ export const topics = [
     icon: 'FiMessageCircle',
   },
   {
+    label: 'Hackathon',
+    slug: 'hackathon',
+    icon: 'FiBox',
+  },
+  {
     label: 'Braindumps',
     slug: 'post',
     icon: 'FiCloud',
@@ -111,6 +116,11 @@ export const topics = [
     label: 'Utilities',
     slug: 'utilities',
     icon: 'FiTerminal',
+  },
+  {
+    label: 'Playlists',
+    slug: 'playlist',
+    icon: 'FiMusic',
   },
   {
     label: 'Articles',
@@ -137,11 +147,11 @@ export const topics = [
     slug: 'career_advice',
     icon: 'FiBriefcase',
   },
-  {
-    label: 'Working remote',
-    slug: 'working_remotely',
-    icon: 'FiCast',
-  },
+  // {
+  //   label: 'Working remote',
+  //   slug: 'working_remotely',
+  //   icon: 'FiCast',
+  // },
   {
     label: 'My desk setup',
     slug: 'desk_setup',

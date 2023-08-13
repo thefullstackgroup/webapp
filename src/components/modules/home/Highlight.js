@@ -151,6 +151,45 @@ const Highlight = ({ user }) => {
           },
         }}
       >
+        <SwiperSlide>
+          <Link href="/hackathon/competition">
+            <div className="group relative mb-8 flex h-[400px] w-full flex-1 grow cursor-pointer overflow-hidden rounded-lg border border-transparent duration-200 dark:border-base-700 sm:dark:hover:border-base-300 2xl:h-[440px]">
+              <div className="h-[400px] w-full 2xl:h-[440px]">
+                <Image
+                  src={
+                    'https://images.unsplash.com/photo-1629429407759-01cd3d7cfb38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                  }
+                  className="h-full w-full object-cover object-center"
+                  alt={'The Full Stack Hackathon'}
+                  width={800}
+                  height={1000}
+                />
+              </div>
+              <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-base-900/80 duration-200 group-hover:to-base-900/80 dark:to-base-900/90">
+                <div className="w-12/12 absolute bottom-4 px-4 text-base-100 duration-200 sm:group-hover:bottom-6">
+                  <h3 className="font-manrope text-4xl font-semibold">
+                    Announcing our first Hackathon #1
+                  </h3>
+                  <div className="mt-2 flex flex-col">
+                    <span className="text-sm dark:text-base-200">
+                      September 17th - October 15th
+                    </span>
+                    <span className="text-sm dark:text-base-200">
+                      Find out more &rarr;
+                    </span>
+                  </div>
+                </div>
+                <div className="absolute bottom-2 right-8 hidden h-10 w-10 duration-200 sm:group-hover:right-4 lg:block">
+                  <Icon
+                    name="FiArrowRight"
+                    className="h-6 w-6 text-white opacity-0 duration-200 sm:group-hover:opacity-100"
+                  />
+                </div>
+              </div>
+            </div>
+          </Link>
+        </SwiperSlide>
+
         {!data &&
           [...Array(15)].map((elementInArray, index) => (
             <SwiperSlide key={index}>
@@ -159,6 +198,7 @@ const Highlight = ({ user }) => {
               </div>
             </SwiperSlide>
           ))}
+
         {projects?.map((project, index) => (
           <SwiperSlide key={index}>
             <Slide data={project} />

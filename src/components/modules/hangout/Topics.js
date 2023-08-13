@@ -38,6 +38,9 @@ const Topics = ({ topic }) => {
             >
               <Icon name={`${item.icon}`} />
               <span className="relative">{item.label}</span>
+              {item.slug === 'hackathon' && (
+                <span className="relative mb-2 h-2 w-2 rounded-full bg-red-500"></span>
+              )}
             </a>
           </Link>
         ))}

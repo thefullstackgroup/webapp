@@ -150,10 +150,10 @@ export const navigation = [
         icon: 'FiSmile',
       },
       {
-        href: '/hangout/career_advice',
-        label: 'Career Advice',
-        desc: 'Here to help with your dev career',
-        icon: 'FiBriefcase',
+        href: '/hangout/playlist',
+        label: 'Playlists',
+        desc: 'Awesome playlists when coding',
+        icon: 'FiMusic',
       },
       {
         href: '/hangout',
