@@ -377,7 +377,7 @@ const Page = () => {
 
           <div>
             <h2 className="text-center font-manrope text-xl font-semibold">
-              Goodluck ... and happy coding !
+              Good luck ... and happy coding !
             </h2>
           </div>
         </div>
