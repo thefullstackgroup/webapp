@@ -49,7 +49,7 @@ const Page = () => {
 
   return (
     <div className="bg-transparent dark:bg-black">
-      <div className="relative z-10 mx-auto mb-20 max-w-5xl space-y-10 sm:pt-20">
+      <div className="relative z-10 mx-auto mb-20 max-w-5xl space-y-10 sm:pt-14">
         <div className="relative h-64 w-full sm:h-[500px]">
           <div className="h-64 w-full overflow-hidden bg-black sm:h-[500px] sm:rounded-2xl">
             <Image
@@ -59,11 +59,11 @@ const Page = () => {
               alt="The Full Stack Hackathon"
               width="800"
               height="800"
-              className="h-full w-full object-cover opacity-70"
+              className="h-full w-full object-cover opacity-60"
               layout="fill"
             />
           </div>
-          <div className="absolute top-14 flex w-full flex-col text-center sm:top-28 sm:py-8">
+          <div className="absolute top-14 flex w-full flex-col space-y-2 text-center sm:top-28 sm:py-8">
             <div className="mx-auto h-16 w-16 cursor-pointer overflow-hidden">
               <Image
                 src={'/assets/icons/thefullstack-dark.webp'}
@@ -100,8 +100,8 @@ const Page = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <button className="btn btn-primary rounded-full px-10 py-4 text-xl">
-                    Register here
+                  <button className="btn btn-primary rounded-full px-10 py-4 text-xl font-medium">
+                    Register here &rarr;
                   </button>
                 </a>
               )}
@@ -171,9 +171,9 @@ const Page = () => {
 
       <div className="py-20">
         <div className="mx-auto max-w-4xl space-y-20">
-          <div className="space-y-10 px-4">
+          <div className="space-y-6 px-4">
             <h2 className="font-manrope text-2xl font-bold sm:text-4xl">
-              Awesome Prizes
+              Prizes
             </h2>
 
             <div className="h-52 w-full overflow-hidden rounded-2xl sm:h-[420px]">
@@ -187,7 +187,8 @@ const Page = () => {
               />
             </div>
             <div className="text-xl">
-              The winner will receive amazing prizes that include a{' '}
+              The winner (or members of winning team) will receive amazing
+              prizes that include a{' '}
               <span className="underline">customized mechanical keyboard</span>{' '}
               of your choosing up to a value of $500. Unique{' '}
               <span className="underline">one time only custom made swag</span>{' '}
@@ -201,19 +202,33 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="space-y-10 px-4">
+          <div className="space-y-6 px-4">
+            <h2 className="font-manrope text-4xl font-bold">Raffle</h2>
+            <p className="text-xl">
+              For everyone who registers, you will be entered into a raffle to
+              be in with a chance to receive one time only swag including hat,
+              hoody, t-shirts, water bottle, laptop bag, mugs, and more along
+              with gift card subscriptions of your choice. As this is our first
+              hackathon, we would love for as many people to participate and
+              have fun. Please share this hackathon with your friends or on your
+              social accounts, and you too will be entered into a raffle to be
+              in with a chance to receive one time only swag.
+            </p>
+          </div>
+
+          <div className="space-y-6 px-4">
             <h2 className="font-manrope text-4xl font-bold">Judges</h2>
             <p className="text-xl">
               As The Full Stack is a community, the judging will be community
               based. All project submissions will be posted here on The Full
-              Stack and open to the community vote on. Therefore the project
+              Stack and open to the community to vote on. Therefore the project
               with the highest number of votes will be the winner. And the
               projects with second and third highest votes will be deemed the
               runners up.
             </p>
           </div>
 
-          <div className="space-y-10 px-4">
+          <div className="space-y-6 px-4">
             <h2 className="font-manrope text-4xl font-bold">Rules</h2>
 
             <ul className="ml-6 list-disc text-xl">
@@ -224,11 +239,12 @@ const Page = () => {
               <li>It&apos;s not a requirement to use AI</li>
               <li>Can be any language or framework</li>
               <li>All entries preferably be Open Source, but not mandatory</li>
-              <li>You must submit before the deadline</li>
+              <li>All submissions must be posted on The Full Stack</li>
+              <li>You must submit your project before the deadline</li>
             </ul>
           </div>
 
-          <div className="space-y-10 px-4">
+          <div className="space-y-6 px-4">
             <h2 className="font-manrope text-4xl font-bold">
               Useful Resources
             </h2>
@@ -263,7 +279,7 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="space-y-10 px-4">
+          <div className="space-y-6 px-4">
             <h2 className="font-manrope text-4xl font-bold">Community Help</h2>
             <p className="text-xl">
               Head over to the{' '}
@@ -278,8 +294,20 @@ const Page = () => {
             </p>
           </div>
 
-          <div className="space-y-10 px-4">
+          <div className="space-y-6 px-4">
             <h2 className="font-manrope text-4xl font-bold">Additional Info</h2>
+            <p className="text-xl">
+              To keep up to date on news and progress throughout the hackathon,
+              head over to our{' '}
+              <Link href="/hangout/hackathon">
+                <span className="text-link cursor-pointer">
+                  Hackathon hangout
+                </span>
+              </Link>
+              . Share updates on how you are progressing with your project
+              build. And seek out help if needs be. We&apos;re here to help and
+              learn too.
+            </p>
             <p className="text-xl">
               Any intellectual property developed during the hackathon will
               belong to the person or team that developed it. The Full Stack
@@ -287,46 +315,51 @@ const Page = () => {
             </p>
           </div>
 
-          {expiryTime !== false ? (
-            <div className="mx-auto flex max-w-md items-center gap-2 px-4 sm:gap-4">
-              <div className="box flex w-80 flex-col bg-transparent text-center">
-                <span className="text-2xl font-semibold sm:text-4xl">
-                  {countdownTime.countdownDays}
-                </span>
-                <span className="text-sm text-base-400 dark:text-base-500 sm:text-base">
-                  Days
-                </span>
+          <div className="space-y-4">
+            <h3 className="text-center font-manrope text-2xl font-bold">
+              Submission Deadline
+            </h3>
+            {expiryTime !== false ? (
+              <div className="mx-auto flex max-w-md items-center gap-2 px-4 sm:gap-4">
+                <div className="box flex w-80 flex-col bg-transparent text-center">
+                  <span className="text-2xl font-semibold sm:text-4xl">
+                    {countdownTime.countdownDays}
+                  </span>
+                  <span className="text-sm text-base-400 dark:text-base-500 sm:text-base">
+                    Days
+                  </span>
+                </div>
+                <div className="box flex w-80 flex-col bg-transparent text-center">
+                  <span className="text-2xl font-semibold sm:text-4xl">
+                    {countdownTime.countdownHours}
+                  </span>
+                  <span className="text-sm text-base-400 dark:text-base-500 sm:text-base">
+                    Hours
+                  </span>
+                </div>
+                <div className="box flex w-80 flex-col bg-transparent text-center">
+                  <span className="text-2xl font-semibold sm:text-4xl">
+                    {countdownTime.countdownMinutes}
+                  </span>
+                  <span className="text-sm text-base-400 dark:text-base-500 sm:text-base">
+                    Minutes
+                  </span>
+                </div>
+                <div className="box flex w-80 flex-col bg-transparent text-center">
+                  <span className="text-2xl font-semibold sm:text-4xl">
+                    {countdownTime.countdownSeconds}
+                  </span>
+                  <span className="text-sm text-base-400 dark:text-base-500 sm:text-base">
+                    Seconds
+                  </span>
+                </div>
               </div>
-              <div className="box flex w-80 flex-col bg-transparent text-center">
-                <span className="text-2xl font-semibold sm:text-4xl">
-                  {countdownTime.countdownHours}
-                </span>
-                <span className="text-sm text-base-400 dark:text-base-500 sm:text-base">
-                  Hours
-                </span>
-              </div>
-              <div className="box flex w-80 flex-col bg-transparent text-center">
-                <span className="text-2xl font-semibold sm:text-4xl">
-                  {countdownTime.countdownMinutes}
-                </span>
-                <span className="text-sm text-base-400 dark:text-base-500 sm:text-base">
-                  Minutes
-                </span>
-              </div>
-              <div className="box flex w-80 flex-col bg-transparent text-center">
-                <span className="text-2xl font-semibold sm:text-4xl">
-                  {countdownTime.countdownSeconds}
-                </span>
-                <span className="text-sm text-base-400 dark:text-base-500 sm:text-base">
-                  Seconds
-                </span>
-              </div>
-            </div>
-          ) : (
-            <p className="text-center font-bold">
-              **Entry for the Hackathon is now closed**
-            </p>
-          )}
+            ) : (
+              <p className="text-center font-bold">
+                **Entry for the Hackathon is now closed**
+              </p>
+            )}
+          </div>
 
           {expiryTime !== false && (
             <p className="flex justify-center">

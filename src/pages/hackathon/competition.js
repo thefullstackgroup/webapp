@@ -8,8 +8,8 @@ const Competition = ({ user }) => {
   return (
     <>
       <Meta
-        title="The Full Stack - Code of conduct."
-        description="Read the code of conduct for The Full Stack community platform for Developers"
+        title="The Full Stack Hackathon"
+        description="Announcing our first hackathon for you or your team to build an awesome project, get exposure and win awesome prizes."
         keywords="developer, social network, developers, software engineering, full stack, software engineering network, tech community, tech companies, best tech companies, developer portfolio, developer network, professional network, professional community"
       />
       <Layout user={user} fullWidth={true}>
