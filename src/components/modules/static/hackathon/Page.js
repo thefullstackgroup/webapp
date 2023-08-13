@@ -3,6 +3,7 @@ import { CategoriesFilter } from 'components/modules/explore/constants';
 import Image from 'next/future/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 
 const Page = () => {
   const [expiryTime, setExpiryTime] = useState('15 oct 2023 23:59:59');
@@ -100,7 +101,12 @@ const Page = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <button className="btn btn-primary rounded-full px-10 py-4 text-xl font-medium">
+                  <button
+                    className="btn btn-primary rounded-full px-10 py-4 text-xl font-medium"
+                    onClick={() =>
+                      sendSlackMessage('Clicked on REGISTER FOR HACKATHON')
+                    }
+                  >
                     Register here &rarr;
                   </button>
                 </a>
@@ -159,7 +165,12 @@ const Page = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <button className="btn btn-primary rounded-full px-10 py-4 text-xl">
+                  <button
+                    className="btn btn-primary rounded-full px-10 py-4 text-xl"
+                    onClick={() =>
+                      sendSlackMessage('Clicked on REGISTER FOR HACKATHON')
+                    }
+                  >
                     Register here &rarr;
                   </button>
                 </a>
@@ -368,7 +379,12 @@ const Page = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <button className="btn btn-primary rounded-full px-10 py-4 text-xl">
+                <button
+                  className="btn btn-primary rounded-full px-10 py-4 text-xl"
+                  onClick={() =>
+                    sendSlackMessage('Clicked on REGISTER FOR HACKATHON')
+                  }
+                >
                   Register here &rarr;
                 </button>
               </a>
