@@ -1,22 +1,22 @@
-import { useEffect, useMemo, useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import FollowingCard from 'components/common/cards/FollowingCard';
-import PostCard from 'components/common/cards/PostCard';
-import useSWRInfinite from 'swr/infinite';
-import fetcher from 'utils/fetcher';
+import { useEffect, useMemo, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import FollowingCard from "components/common/cards/FollowingCard";
+import PostCard from "components/common/cards/PostCard";
+import useSWRInfinite from "swr/infinite";
+import fetcher from "utils/fetcher";
 
 const defaultTopics =
-  'SPARK,POST,SHOWSTARTUP,LEARNING,ADVICE,MEME,VENT,NEWS,POLL,FRAMEWORKS,UTILITIES,TUTORIALS,CAREER_ADVICE,WORKING_REMOTELY,DESK_SETUP,DESIGN_TIPS,GOT_THE_JOB,PROJECT_IDEAS,COLLABS,WORKFLOWS';
+  "SPARK,POST,SHOWSTARTUP,LEARNING,ADVICE,MEME,VENT,NEWS,POLL,FRAMEWORKS,UTILITIES,TUTORIALS,CAREER_ADVICE,WORKING_REMOTELY,DESK_SETUP,DESIGN_TIPS,GOT_THE_JOB,PROJECT_IDEAS,COLLABS,WORKFLOWS,PLAYLIST,HACKATHON";
 
 const PAGE_SIZE = 10;
 
 const Feed = ({ user, topic, following }) => {
   const [hasMore, setHasMore] = useState(true);
 
-  let url = '';
+  let url = "";
   let postType = topic;
 
-  if (topic === 'following') {
+  if (topic === "following") {
     url = `${process.env.BASEURL}/api/explore/getActivity?range=100&size=10&following=${following}`;
   } else {
     url = `${
@@ -38,8 +38,8 @@ const Feed = ({ user, topic, following }) => {
     const postList = posts;
     return postList.map(
       (project) =>
-        project.projectSlug !== 'welcome-to-the-full-stack-' &&
-        (topic === 'following' ? (
+        project.projectSlug !== "welcome-to-the-full-stack-" &&
+        (topic === "following" ? (
           <FollowingCard post={project} user={user} key={project.id} />
         ) : (
           <div className="mb-6" key={project.projectId}>
@@ -72,7 +72,7 @@ const Feed = ({ user, topic, following }) => {
         hasMore={hasMore}
         loader={<div className="flex w-full justify-center py-20"></div>}
         endMessage={<div className="p-4 py-20 text-center">No more posts</div>}
-        style={{ overflow: 'hidden' }}
+        style={{ overflow: "hidden" }}
       >
         <div className="overflow-hidden">
           {isEmpty && (
