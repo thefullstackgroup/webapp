@@ -1,15 +1,15 @@
-const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
-const removeImports = require('next-remove-imports')({
+const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
+const removeImports = require("next-remove-imports")({
   test: /node_modules([\s\S]*?)\.(tsx|ts|js|mjs|jsx)$/,
-  matchImports: '\\.(less|css|scss|sass|styl)$',
+  matchImports: "\\.(less|css|scss|sass|styl)$",
 });
 
 module.exports = (phase) => {
   let FIREBASE_KEY_LOCATION;
   if (phase === PHASE_DEVELOPMENT_SERVER) {
-    FIREBASE_KEY_LOCATION = '../src/pages/api/firebase/service-account.enc';
+    FIREBASE_KEY_LOCATION = "../src/pages/api/firebase/service-account.enc";
   } else {
-    FIREBASE_KEY_LOCATION = '../src/pages/api/firebase/service-account.enc';
+    FIREBASE_KEY_LOCATION = "../src/pages/api/firebase/service-account.enc";
   }
   return removeImports({
     webpack: (config, { isServer }) => {
@@ -25,66 +25,71 @@ module.exports = (phase) => {
     async redirects() {
       return [
         {
-          source: '/legal/code-of-conduct',
-          destination: '/code-of-conduct',
+          source: "/legal/code-of-conduct",
+          destination: "/code-of-conduct",
           permanent: true,
         },
         {
-          source: '/legal/privacy-policy',
-          destination: '/privacy-policy',
+          source: "/legal/privacy-policy",
+          destination: "/privacy-policy",
           permanent: true,
         },
         {
-          source: '/privacy-policy',
-          destination: '/privacy',
+          source: "/privacy-policy",
+          destination: "/privacy",
           permanent: true,
         },
         {
-          source: '/legal/cookie-policy',
-          destination: '/cookie-policy',
+          source: "/legal/cookie-policy",
+          destination: "/cookie-policy",
           permanent: true,
         },
         {
-          source: '/explore',
-          destination: '/explore/popular',
+          source: "/explore",
+          destination: "/explore/popular",
           permanent: false,
         },
         {
-          source: '/welcome',
+          source: "/welcome",
           destination:
-            '/?utm_source=reddit&utm_medium=chat&utm_campaign=message1',
+            "/?utm_source=reddit&utm_medium=chat&utm_campaign=message1",
           permanent: true,
         },
         {
-          source: '/showcase',
+          source: "/showcase",
           destination:
-            '/?utm_source=reddit&utm_medium=chat&utm_campaign=message2',
+            "/?utm_source=reddit&utm_medium=chat&utm_campaign=message2",
           permanent: true,
         },
         {
-          source: '/discover',
+          source: "/discover",
           destination:
-            '/?utm_source=reddit&utm_medium=chat&utm_campaign=message3',
+            "/?utm_source=reddit&utm_medium=chat&utm_campaign=message3",
           permanent: true,
         },
         {
-          source: '/app',
+          source: "/app",
           destination:
-            '/?utm_source=reddit&utm_medium=chat&utm_campaign=message4',
+            "/?utm_source=reddit&utm_medium=chat&utm_campaign=message4",
           permanent: true,
         },
         {
-          source: '/beta',
+          source: "/beta",
           destination:
-            '/?utm_source=reddit&utm_medium=chat&utm_campaign=message5',
+            "/?utm_source=reddit&utm_medium=chat&utm_campaign=message5",
+          permanent: true,
+        },
+        {
+          source: "/lp/developer-portfolio",
+          destination: "/",
           permanent: true,
         },
       ];
     },
     env: {
-      brandName: 'The Full Stack',
+      brandName: "The Full Stack",
       BASEURL: process.env.BASEURL,
-      GA_TRACKING_ID: 'G-5XMPSJ6DS5',
+      GA_TRACKING_ID: "G-5XMPSJ6DS5",
       FIREBASE_KEY: FIREBASE_KEY_LOCATION,
       KNOCK_API_KEY: process.env.KNOCK_API_KEY,
       KNOCK_API_PUBLIC_KEY: process.env.KNOCK_API_PUBLIC_KEY,
@@ -92,47 +97,47 @@ module.exports = (phase) => {
       ENABLE_EMAIL_PASS_SIGNUP: false,
     },
     i18n: {
-      locales: ['en-US'],
-      defaultLocale: 'en-US',
+      locales: ["en-US"],
+      defaultLocale: "en-US",
       localeDetection: false,
     },
     images: {
       domains: [
-        'images.unsplash.com',
-        'terrabyte.fra1.digitaloceanspaces.com',
-        'terrabyte.fra1.cdn.digitaloceanspaces.com',
-        'lh3.googleusercontent.com',
-        'avatars.githubusercontent.com',
-        's.gravatar.com',
-        'image.mux.com',
-        'media-exp1.licdn.com',
-        'www.google.ie',
-        'node.deso.org',
-        'media-exp2.licdn.com',
-        'res.cloudinary.com',
-        'media.licdn.com',
-        'www.example.com',
-        'github.com',
-        'unmaskcrypto.com',
+        "images.unsplash.com",
+        "terrabyte.fra1.digitaloceanspaces.com",
+        "terrabyte.fra1.cdn.digitaloceanspaces.com",
+        "lh3.googleusercontent.com",
+        "avatars.githubusercontent.com",
+        "s.gravatar.com",
+        "image.mux.com",
+        "media-exp1.licdn.com",
+        "www.google.ie",
+        "node.deso.org",
+        "media-exp2.licdn.com",
+        "res.cloudinary.com",
+        "media.licdn.com",
+        "www.example.com",
+        "github.com",
+        "unmaskcrypto.com",
       ],
     },
 
     async rewrites() {
       return [
         {
-          source: '/firebase-messaging-sw.js',
-          destination: '/api/firebase/firebase-messaging-sw',
+          source: "/firebase-messaging-sw.js",
+          destination: "/api/firebase/firebase-messaging-sw",
         },
       ];
     },
     async headers() {
       return [
         {
-          source: '/firebase-messaging-sw.js',
+          source: "/firebase-messaging-sw.js",
           headers: [
             {
-              key: 'Content-Type',
-              value: 'text/javascript',
+              key: "Content-Type",
+              value: "text/javascript",
             },
           ],
         },
