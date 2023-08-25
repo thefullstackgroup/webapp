@@ -43,17 +43,17 @@ const Main = ({ user }) => {
         <div className="mx-auto mb-20 w-full max-w-screen-2xl space-y-20 px-4 lg:px-0">
           <div className="mx-auto max-w-7xl pt-10 md:pt-14 lg:pt-24">
             <div className="relative mx-auto w-min whitespace-nowrap">
-              <h1 className="flex justify-center bg-clip-text py-2 text-center font-manrope text-5xl font-extrabold tracking-tighter text-base-900 dark:text-base-200 md:text-7xl lg:text-7xl">
+              <h1 className="font-manrope text-base-900 dark:text-base-200 flex justify-center bg-clip-text py-2 text-center text-5xl font-extrabold tracking-tighter md:text-7xl lg:text-7xl">
                 Team Profiles
               </h1>
-              <div className="absolute -top-2 -right-6 lg:top-1 lg:-right-10">
-                <span className="rounded-xl border border-green-500 bg-base-50 py-0.5 px-1.5 text-xs text-green-500 dark:bg-base-900">
+              <div className="absolute -right-6 -top-2 lg:-right-10 lg:top-1">
+                <span className="bg-base-50 dark:bg-base-900 rounded-xl border border-green-500 px-1.5 py-0.5 text-xs text-green-500">
                   Beta
                 </span>
               </div>
             </div>
             <div className="mx-auto mt-4 max-w-xl">
-              <p className="text-center text-xl font-light text-base-400 dark:text-base-300">
+              <p className="text-base-400 dark:text-base-300 text-center text-xl font-light">
                 Building something cool with your team? Create your team profile
                 and show off what your team is building.
               </p>
@@ -62,21 +62,21 @@ const Main = ({ user }) => {
               <div className="flex items-center justify-center space-x-2">
                 {user ? (
                   <button
-                    className="btn btn-primary py-2.5 px-6"
+                    className="btn btn-primary px-6 py-2.5"
                     onClick={() => setCreateTeamPanel(true)}
                   >
                     Create team
                   </button>
                 ) : (
-                  <Link href="/signup">
-                    <button className="btn btn-primary py-2.5 px-6">
+                  <Link href="/login">
+                    <button className="btn btn-primary px-6 py-2.5">
                       Create team
                     </button>
                   </Link>
                 )}
 
                 <Link href="/for/teams">
-                  <a href="#" className="btn btn-secondary py-2.5 px-6">
+                  <a href="#" className="btn btn-secondary px-6 py-2.5">
                     Learn more
                   </a>
                 </Link>

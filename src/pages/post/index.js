@@ -1,7 +1,11 @@
-import { withAuthUser, withAuthUserTokenSSR } from "next-firebase-auth";
-import { getUserProfile } from "pages/api/auth/userProfile";
-import Meta from "components/common/partials/Metadata";
-import Main from "components/modules/create/Main";
+import {
+  AuthAction,
+  withAuthUser,
+  withAuthUserTokenSSR,
+} from 'next-firebase-auth';
+import { getUserProfile } from 'pages/api/auth/userProfile';
+import Meta from 'components/common/partials/Metadata';
+import Main from 'components/modules/create/Main';
 
 const CreatePost = ({ user }) => {
   return (
@@ -18,24 +22,24 @@ const CreatePost = ({ user }) => {
 
 export default withAuthUser()(CreatePost);
 
-export const getServerSideProps = withAuthUserTokenSSR()(
-  async ({ AuthUser, req, res, query }) => {
-    const accessToken = await AuthUser.getIdToken();
-    const userProfile = await getUserProfile(accessToken, null, req, res);
+export const getServerSideProps = withAuthUserTokenSSR({
+  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+})(async ({ AuthUser, req, res, query }) => {
+  const accessToken = await AuthUser.getIdToken();
+  const userProfile = await getUserProfile(accessToken, null, req, res);
 
-    if (userProfile?.redirect) {
-      return {
-        redirect: {
-          destination: userProfile.redirect,
-          permanent: false,
-        },
-      };
-    }
-
+  if (userProfile?.redirect) {
     return {
-      props: {
-        user: userProfile,
+      redirect: {
+        destination: userProfile.redirect,
+        permanent: false,
       },
     };
   }
-);
+
+  return {
+    props: {
+      user: userProfile,
+    },
+  };
+});
