@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import Icon from './Icon';
 import ModalAlert from '../modals/ModalAlert';
+import { useRouter } from 'next/router';
 
 const SignUpPrompt = ({ show, setShow }) => {
+  const router = useRouter();
   return (
     <ModalAlert show={show} setShow={setShow} title="Join us">
       <div className="px-4">
@@ -20,7 +22,16 @@ const SignUpPrompt = ({ show, setShow }) => {
                 Sign up
               </a>
             </Link>
-            <Link href="/login">
+            <Link
+              href={{
+                pathname: '/login',
+                query: {
+                  destination: encodeURIComponent(
+                    `${process.env.BASEURL}${router.asPath}`
+                  ),
+                },
+              }}
+            >
               <a href="#" className="btn btn-secondary">
                 Login
               </a>

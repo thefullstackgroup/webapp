@@ -117,7 +117,7 @@ const StepOne = ({ user, referralCode }) => {
   return (
     <div className="mx-auto max-w-screen-xl sm:px-0">
       <div className="flex justify-center sm:w-full md:justify-start">
-        <div className="my-8 mx-auto w-full max-w-3xl space-y-8 px-4 sm:px-0">
+        <div className="mx-auto my-8 w-full max-w-3xl space-y-8 px-4 sm:px-0">
           <div className="flex w-full justify-center text-base tracking-tight sm:mb-8">
             <label
               htmlFor="avatar"
@@ -177,7 +177,7 @@ const StepOne = ({ user, referralCode }) => {
                 </option>
               ))}
             </select>
-            <span className="mt-1 text-xs text-base-500">
+            <span className="text-base-500 mt-1 text-xs">
               You can always change this later
             </span>
           </div>
@@ -204,7 +204,14 @@ const StepOne = ({ user, referralCode }) => {
           <button
             onClick={() => {
               AuthUser.signOut();
-              router.push('/login');
+              router.push({
+                pathname: '/login',
+                query: {
+                  destination: encodeURIComponent(
+                    `${process.env.BASEURL}${router.asPath}`
+                  ),
+                },
+              });
             }}
             className="btn btn-ghost w-full px-0"
           >

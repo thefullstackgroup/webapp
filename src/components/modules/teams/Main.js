@@ -7,6 +7,7 @@ import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
 import Link from 'next/link';
 import Faq from './Faq';
+import { useRouter } from 'next/router';
 
 const images = [
   'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
@@ -33,6 +34,8 @@ const ImageSample = ({ image }) => {
 
 const Main = ({ user }) => {
   const [createTeamPanel, setCreateTeamPanel] = useState(false);
+
+  const router = useRouter();
 
   const teamsURL = `${process.env.BASEURL}/api/teams/getTeamsByUser?userId=${user?.userId}`;
   const { data: teams } = useSWR(teamsURL, fetcher);
@@ -68,7 +71,16 @@ const Main = ({ user }) => {
                     Create team
                   </button>
                 ) : (
-                  <Link href="/login">
+                  <Link
+                    href={{
+                      pathname: '/login',
+                      query: {
+                        destination: encodeURIComponent(
+                          `${process.env.BASEURL}${router.asPath}`
+                        ),
+                      },
+                    }}
+                  >
                     <button className="btn btn-primary px-6 py-2.5">
                       Create team
                     </button>

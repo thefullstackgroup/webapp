@@ -6,6 +6,7 @@ import { navigation } from './constants';
 import Avatar from '../elements/Avatar';
 import Image from 'next/future/image';
 import { useTheme } from 'next-themes';
+import { useRouter } from 'next/router';
 
 const Drawer = ({
   user,
@@ -19,6 +20,7 @@ const Drawer = ({
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const [activeDisclosurePanel, setActiveDisclosurePanel] = useState(null);
   const cancelButtonRef = useRef(null);
+  const router = useRouter();
 
   const togglePanels = (newPanel) => {
     if (activeDisclosurePanel) {
@@ -52,7 +54,7 @@ const Drawer = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-base-800/50 backdrop-blur-sm" />
+          <div className="bg-base-800/50 fixed inset-0 backdrop-blur-sm" />
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 flex justify-center">
@@ -64,10 +66,10 @@ const Drawer = ({
               leave="ease-in duration-200"
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
-              className={`fixed left-0 top-0 h-screen w-[85vw] bg-base-50 dark:bg-base-900 md:w-[40vw]`}
+              className={`bg-base-50 dark:bg-base-900 fixed left-0 top-0 h-screen w-[85vw] md:w-[40vw]`}
             >
               <Dialog.Panel
-                className={`relative h-full w-full overflow-hidden px-1 py-0 text-left shadow-xl dark:border-base-600`}
+                className={`dark:border-base-600 relative h-full w-full overflow-hidden px-1 py-0 text-left shadow-xl`}
               >
                 <div className="relative flex min-h-screen flex-col overflow-scroll">
                   <div>
@@ -117,7 +119,7 @@ const Drawer = ({
                                   {item.slug !== 'teams' &&
                                     item.slug !== 'developers' && (
                                       <Disclosure.Button
-                                        className="flex items-center justify-between pr-2 text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
+                                        className="text-base-600 dark:text-base-200 flex items-center justify-between pr-2 text-left text-lg font-medium focus:outline-none"
                                         onClick={() => {
                                           if (!open) {
                                             close();
@@ -134,7 +136,7 @@ const Drawer = ({
                                             <Icon
                                               name="FiChevronDown"
                                               className={
-                                                'h-5 w-5 text-base-600 dark:text-base-200 ' +
+                                                'text-base-600 dark:text-base-200 h-5 w-5 ' +
                                                 (open
                                                   ? 'rotate-180 transform duration-200'
                                                   : '')
@@ -157,7 +159,7 @@ const Drawer = ({
                                                 <li key={index}>
                                                   <Link href={navItem.href}>
                                                     <button
-                                                      className="btn btn-with-icon btn-ghost w-full px-0 text-base-600 dark:text-base-200"
+                                                      className="btn btn-with-icon btn-ghost text-base-600 dark:text-base-200 w-full px-0"
                                                       onClick={() =>
                                                         setShow(false)
                                                       }
@@ -178,7 +180,7 @@ const Drawer = ({
                                                 <li key={index}>
                                                   <Link href={navItem.href}>
                                                     <button
-                                                      className="btn btn-with-icon btn-ghost w-full px-0 text-base-600 dark:text-base-200"
+                                                      className="btn btn-with-icon btn-ghost text-base-600 dark:text-base-200 w-full px-0"
                                                       onClick={() =>
                                                         setShow(false)
                                                       }
@@ -205,7 +207,7 @@ const Drawer = ({
                         ))}
                         <Link href={'/for/developers'}>
                           <button
-                            className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
+                            className="text-base-600 dark:text-base-200 flex items-center justify-between text-left text-lg font-medium focus:outline-none"
                             onClick={() => setShow(false)}
                           >
                             <span>About</span>
@@ -213,7 +215,7 @@ const Drawer = ({
                         </Link>
                         <Link href={'/teams'}>
                           <button
-                            className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
+                            className="text-base-600 dark:text-base-200 flex items-center justify-between text-left text-lg font-medium focus:outline-none"
                             onClick={() => setShow(false)}
                           >
                             <span>Teams</span>
@@ -222,7 +224,7 @@ const Drawer = ({
 
                         {user ? (
                           <button
-                            className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
+                            className="text-base-600 dark:text-base-200 flex items-center justify-between text-left text-lg font-medium focus:outline-none"
                             onClick={() => {
                               setShowCreatePost(true);
                             }}
@@ -232,7 +234,7 @@ const Drawer = ({
                         ) : (
                           <Link href={'/signup'}>
                             <button
-                              className="flex items-center justify-between text-left text-lg font-medium text-base-600 focus:outline-none dark:text-base-200"
+                              className="text-base-600 dark:text-base-200 flex items-center justify-between text-left text-lg font-medium focus:outline-none"
                               onClick={() => setShow(false)}
                             >
                               <span>Add your project</span>
@@ -241,7 +243,7 @@ const Drawer = ({
                         )}
                       </div>
                       {user && (
-                        <div className="flex flex-col border-t border-base-200 pt-2 dark:border-base-700">
+                        <div className="border-base-200 dark:border-base-700 flex flex-col border-t pt-2">
                           <Link href="/account/dashboard">
                             <button
                               className="btn btn-ghost px-0 text-left font-medium"
@@ -298,7 +300,7 @@ const Drawer = ({
                                   />
                                   <div className="flex flex-col text-left text-sm leading-5">
                                     <p>{user.name}</p>
-                                    <p className="text-sm text-base-400 dark:text-base-500">
+                                    <p className="text-base-400 dark:text-base-500 text-sm">
                                       @{user.displayName}
                                     </p>
                                   </div>
@@ -319,7 +321,16 @@ const Drawer = ({
                                   Sign up
                                 </button>
                               </Link>
-                              <Link href={'/login'}>
+                              <Link
+                                href={{
+                                  pathname: '/login',
+                                  query: {
+                                    destination: encodeURIComponent(
+                                      `${process.env.BASEURL}${router.asPath}`
+                                    ),
+                                  },
+                                }}
+                              >
                                 <button className="btn btn-secondary rounded-full">
                                   Login
                                 </button>
