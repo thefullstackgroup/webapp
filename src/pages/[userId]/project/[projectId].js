@@ -7,16 +7,14 @@ import fetcher from 'utils/fetcher';
 import axios from 'axios';
 
 const Project = ({ user, project, author }) => {
-  // let url = `${process.env.BASEURL}/api/posts/getPost?postId=${projectSlug}&authorId=${user.id}`;
-  // // if (!user)
-  // //   url = `${process.env.BASEURL}/api/posts/getPublicPost?postId=${projectSlug}&authorId=${projectUserId}`;
-  // const { data: project } = useSWR(url, fetcher);
-
   return (
     <>
       <Meta
-        title={`${project?.projectName} - by ${project?.projectCreator?.name} on The Full Stack`}
-        description="The developer network"
+        title={`${project?.projectName} - by ${project?.projectCreator?.name}`}
+        description={`${project?.projectBodyPreview.substr(
+          0,
+          Math.min(140, project?.projectBodyPreview.lastIndexOf(' '))
+        )}`}
         keywords=""
         openGraphImage={project?.projectImgURI}
       />
