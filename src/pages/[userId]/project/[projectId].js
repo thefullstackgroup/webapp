@@ -18,6 +18,7 @@ const Project = ({ user, project, author }) => {
         title={`${project?.projectName} - by ${project?.projectCreator?.name} on The Full Stack`}
         description="The developer network"
         keywords=""
+        openGraphImage={project?.projectImgURI}
       />
 
       {project && (

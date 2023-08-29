@@ -1,10 +1,13 @@
 import { useTheme } from 'next-themes';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 const Metadata = (props) => {
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const { title, description, keywords, openGraphImage = '' } = props;
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -19,6 +22,7 @@ const Metadata = (props) => {
         <meta name="description" content={description} />
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="canonical" href={`${process.env.BASEURL}${router.asPath}`} />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
