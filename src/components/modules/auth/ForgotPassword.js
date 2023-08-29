@@ -3,12 +3,15 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [emailNotFound, setEmailNotFound] = useState(false);
   const [emailSuccess, setEmailSuccess] = useState(false);
   const [emailError, setEmailError] = useState(false);
+
+  const router = useRouter();
 
   const sendPasswordResetEmail = async (email) => {
     if (email == '') {
@@ -36,7 +39,7 @@ const ForgotPassword = () => {
       <div className="mx-auto my-12 w-full max-w-md lg:my-20">
         <div className="flex flex-col justify-center space-y-4 text-center sm:mb-6">
           <h2 className="font-manrope">Forgot your password?</h2>
-          <div className="py-2 text-center text-sm text-base-600 dark:text-base-400">
+          <div className="text-base-600 dark:text-base-400 py-2 text-center text-sm">
             Don&apos;t panic! We will send you a link to reset your password.
           </div>
         </div>
@@ -82,7 +85,17 @@ const ForgotPassword = () => {
 
             <div className="text-tfssecondary-500 flex items-center justify-center space-x-1 whitespace-nowrap pt-6 text-xs sm:space-x-2 sm:text-sm">
               <div className="text-center hover:text-white">
-                <Link href="/login" passHref>
+                <Link
+                  href={{
+                    pathname: '/login',
+                    query: {
+                      destination: encodeURIComponent(
+                        `${process.env.BASEURL}${router.asPath}`
+                      ),
+                    },
+                  }}
+                  passHref
+                >
                   <a href="#">&larr; Back to login</a>
                 </Link>
               </div>

@@ -1,4 +1,8 @@
-import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
+import {
+  AuthAction,
+  withAuthUser,
+  withAuthUserTokenSSR,
+} from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
 import Meta from 'components/common/partials/Metadata';
 import Main from 'components/modules/account/teams/EditJob';
@@ -27,7 +31,7 @@ const EditJob = ({ userProfile, jobId }) => {
 
   if (!job) {
     return (
-      <div className="mt-4 w-full flex flex-1 justify-center py-40">
+      <div className="mt-4 flex w-full flex-1 justify-center py-40">
         <Loader />
       </div>
     );
@@ -51,25 +55,25 @@ const EditJob = ({ userProfile, jobId }) => {
 
 export default withAuthUser()(EditJob);
 
-export const getServerSideProps = withAuthUserTokenSSR()(
-  async ({ AuthUser, req, res, params }) => {
-    const accessToken = await AuthUser.getIdToken();
-    const userProfile = await getUserProfile(accessToken, null, req, res);
+export const getServerSideProps = withAuthUserTokenSSR({
+  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+})(async ({ AuthUser, req, res, params }) => {
+  const accessToken = await AuthUser.getIdToken();
+  const userProfile = await getUserProfile(accessToken, null, req, res);
 
-    if (userProfile?.redirect) {
-      return {
-        redirect: {
-          destination: userProfile.redirect,
-          permanent: false,
-        },
-      };
-    }
-
+  if (userProfile?.redirect) {
     return {
-      props: {
-        userProfile: userProfile,
-        jobId: params.jobId,
+      redirect: {
+        destination: userProfile.redirect,
+        permanent: false,
       },
     };
   }
-);
+
+  return {
+    props: {
+      userProfile: userProfile,
+      jobId: params.jobId,
+    },
+  };
+});

@@ -87,18 +87,27 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   </div>
                 </Link>
               </div>
-              <div className="flex items-center space-x-10 text-base font-normal text-base-100">
+              <div className="text-base-100 flex items-center space-x-10 text-base font-normal">
                 <Link href="/#howitworks">
                   <button className="text-base-300">How it works</button>
                 </Link>
                 <Link href="/about/our-story">
                   <button className="text-base-300">Why this matters?</button>
                 </Link>
-                <Link href="/login">
+                <Link
+                  href={{
+                    pathname: '/login',
+                    query: {
+                      destination: encodeURIComponent(
+                        `${process.env.BASEURL}${router.asPath}`
+                      ),
+                    },
+                  }}
+                >
                   <button className="text-base-300">Login</button>
                 </Link>
                 <Link href="/signup">
-                  <button className="btn-primary bg-base-100 py-1.5 text-base-800">
+                  <button className="btn-primary bg-base-100 text-base-800 py-1.5">
                     Sign up
                   </button>
                 </Link>
@@ -115,14 +124,23 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                         alt={process.env.brandName}
                       />
                     </span>
-                    <span className="text-lg font-semibold tracking-tight text-base-100">
+                    <span className="text-base-100 text-lg font-semibold tracking-tight">
                       thefullstack
                     </span>
                   </div>
                 </Link>
               </div>
-              <Link href="/login">
-                <button className="btn-with-icon text-sm font-bold text-base-300">
+              <Link
+                href={{
+                  pathname: '/login',
+                  query: {
+                    destination: encodeURIComponent(
+                      `${process.env.BASEURL}${router.asPath}`
+                    ),
+                  },
+                }}
+              >
+                <button className="btn-with-icon text-base-300 text-sm font-bold">
                   <IoLogInOutline className="h-5 w-5" />
                   <span>Sign in</span>
                 </button>
@@ -143,7 +161,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   >
                     <div className="flex cursor-pointer items-center">
                       <IoChevronBack className="mr-2 h-6 w-6" />
-                      <span className="text-lg font-semibold tracking-tight text-base-100">
+                      <span className="text-base-100 text-lg font-semibold tracking-tight">
                         Chat
                       </span>
                     </div>
@@ -183,9 +201,9 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
         {user && (
           <main className="">
             <div className="hidden w-16 lg:block xl:w-52 2xl:w-56">
-              <nav className="fixed top-0 z-0 min-h-screen w-16 border-r border-base-600/80 bg-black py-8 xl:w-52 2xl:w-56">
+              <nav className="border-base-600/80 fixed top-0 z-0 min-h-screen w-16 border-r bg-black py-8 xl:w-52 2xl:w-56">
                 <Link href="/explore" passHref>
-                  <div className="ml-5 mb-8 flex cursor-pointer items-center xl:ml-16">
+                  <div className="mb-8 ml-5 flex cursor-pointer items-center xl:ml-16">
                     <span className="w-7 xl:w-16">
                       <img
                         src="/assets/icons/thefullstack-circle.webp"
@@ -196,11 +214,11 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   </div>
                 </Link>
 
-                <div className="relative mx-auto flex-col space-y-2 text-base font-normal text-base-300/70 xl:space-y-1">
+                <div className="text-base-300/70 relative mx-auto flex-col space-y-2 text-base font-normal xl:space-y-1">
                   <Link href="/explore" passHref>
                     <button
                       className={
-                        'first-step ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
+                        'first-step xl:hover:bg-base-800 ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 ' +
                         (leftNavSection[1] === 'explore'
                           ? 'text-white'
                           : 'hover:text-white')
@@ -215,7 +233,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   <Link href="/hangout" passHref>
                     <button
                       className={
-                        'second-step ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
+                        'second-step xl:hover:bg-base-800 ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 ' +
                         (leftNavSection[1] === 'hangout'
                           ? 'text-white'
                           : 'hover:text-white')
@@ -230,7 +248,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   <Link href="/teams" passHref>
                     <button
                       className={
-                        'third-step ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
+                        'third-step xl:hover:bg-base-800 ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 ' +
                         (leftNavSection[1] === 'teams'
                           ? 'text-white'
                           : 'hover:text-white')
@@ -245,7 +263,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
 
                   <button
                     className={
-                      'ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
+                      'xl:hover:bg-base-800 ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 ' +
                       (leftNavSection[2] === 'saved'
                         ? 'text-white'
                         : 'hover:text-white')
@@ -261,7 +279,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   <Link href="/account/network" passHref>
                     <button
                       className={
-                        'relative ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
+                        'xl:hover:bg-base-800 relative ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 ' +
                         (leftNavSection[2] === 'network'
                           ? 'text-white'
                           : 'hover:text-white')
@@ -284,7 +302,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   <Link href="/chat" passHref>
                     <button
                       className={
-                        'relative ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
+                        'xl:hover:bg-base-800 relative ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 ' +
                         (leftNavSection[1] === 'chat'
                           ? 'text-white'
                           : 'hover:text-white')
@@ -306,7 +324,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   <Link href="/post" passHref>
                     <button
                       className={
-                        'fourth-step ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
+                        'fourth-step xl:hover:bg-base-800 ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 ' +
                         (leftNavSection[2] === 'new'
                           ? 'text-white'
                           : 'hover:text-white')
@@ -322,7 +340,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                   <Link href={`/${user?.displayName}`} passHref>
                     <button
                       className={
-                        'relative ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 xl:hover:bg-base-800 ' +
+                        'xl:hover:bg-base-800 relative ml-2 flex items-center space-x-5 rounded-full py-3 pl-4 xl:ml-4 xl:w-44 ' +
                         (router.query.userId === user?.displayName
                           ? 'text-white'
                           : 'hover:text-white')
@@ -342,7 +360,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
                 </div>
                 <div className="absolute bottom-10 hidden md:block">
                   <button
-                    className="relative ml-2 flex items-center space-x-3 rounded-full py-3 pl-4 text-base-400 hover:text-white xl:ml-4 xl:w-44 xl:hover:bg-base-800"
+                    className="text-base-400 xl:hover:bg-base-800 relative ml-2 flex items-center space-x-3 rounded-full py-3 pl-4 hover:text-white xl:ml-4 xl:w-44"
                     onClick={() => setShowMoreMenu(true)}
                   >
                     <IoMenuSharp className="h-6 w-6" />
@@ -353,7 +371,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
             </div>
             <div className="lg:[100vw] mt-14 w-full sm:w-[100vw] sm:px-4 lg:mt-0 xl:w-full">
               {/* Tablet and Desktop only */}
-              <div className="fixed top-0 right-0 z-20 mx-auto hidden h-20 w-auto px-4 pt-4 lg:block">
+              <div className="fixed right-0 top-0 z-20 mx-auto hidden h-20 w-auto px-4 pt-4 lg:block">
                 <div className="flex items-center justify-end space-x-10">
                   <Link href="/account/wallet" passHref>
                     <button className="w-6 text-white">
@@ -386,7 +404,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
 
       {showSearchPanel && (
         <div className="fixed inset-0 z-50 h-screen overflow-hidden">
-          <div className="flex min-h-screen px-4 pt-4 pb-20 text-right sm:block sm:p-0">
+          <div className="flex min-h-screen px-4 pb-20 pt-4 text-right sm:block sm:p-0">
             <div
               className="absolute inset-0"
               onClick={() => setShowSearchPanel(!showSearchPanel)}
@@ -396,8 +414,8 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
               &#8203;
             </span>
 
-            <div className="absolute top-0 left-0 z-50 min-h-screen w-full sm:align-bottom md:w-72">
-              <div className="h-screen border-l border-r border-base-600/50 bg-base-700 shadow-xl sm:max-w-xl">
+            <div className="absolute left-0 top-0 z-50 min-h-screen w-full sm:align-bottom md:w-72">
+              <div className="border-base-600/50 bg-base-700 h-screen border-l border-r shadow-xl sm:max-w-xl">
                 <div className="rounded-lg">
                   <button
                     className="z-50 h-10 w-10 pt-2"
@@ -417,7 +435,7 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
 
       {showMoreMenu && (
         <div className="fixed inset-0 z-50 h-screen overflow-hidden">
-          <div className="flex min-h-screen px-4 pt-4 pb-20 text-right sm:block sm:p-0">
+          <div className="flex min-h-screen px-4 pb-20 pt-4 text-right sm:block sm:p-0">
             <div
               className="absolute inset-0"
               onClick={() => setShowMoreMenu(!showMoreMenu)}
@@ -428,9 +446,9 @@ const LayoutLoggedIn = ({ user, hideMobileNav = false, children }) => {
             </span>
 
             <div className="absolute bottom-24 left-4 z-50 mt-24 w-full sm:align-bottom md:mt-16 md:w-48">
-              <div className="rounded-md border border-base-600 bg-base-700 shadow-xl sm:max-w-xl">
-                <div className="rounded-lg bg-base-700">
-                  <ul className="flex flex-col divide-y-2 divide-base-700/50 text-left text-sm text-base-400">
+              <div className="border-base-600 bg-base-700 rounded-md border shadow-xl sm:max-w-xl">
+                <div className="bg-base-700 rounded-lg">
+                  <ul className="divide-base-700/50 text-base-400 flex flex-col divide-y-2 text-left text-sm">
                     <li className="px-2 py-2 pr-2 hover:text-white">
                       <Link href="/account/dashboard">
                         <button className="flex w-full items-center space-x-2">

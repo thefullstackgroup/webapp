@@ -1,4 +1,8 @@
-import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
+import {
+  AuthAction,
+  withAuthUser,
+  withAuthUserTokenSSR,
+} from 'next-firebase-auth';
 import Meta from 'components/common/partials/Metadata';
 import Footer from 'components/modules/signup/Footer';
 import Header from 'components/modules/signup/Header';
@@ -19,9 +23,9 @@ const VerifyEmail = () => {
       />
       <main className="pt-4 sm:pt-10">
         <Header />
-        <div className="mx-auto max-w-2xl rounded-md border border-base-700 bg-black px-0 sm:px-8">
+        <div className="border-base-700 mx-auto max-w-2xl rounded-md border bg-black px-0 sm:px-8">
           <div className="m-auto flex max-w-3xl flex-col space-y-8 px-4 pb-20 text-center">
-            <h2 className="mt-10 mb-4 text-2xl font-bold tracking-tight">
+            <h2 className="mb-4 mt-10 text-2xl font-bold tracking-tight">
               Please verify your email address
             </h2>
             <p className="text-lg text-gray-200">
@@ -46,17 +50,17 @@ const VerifyEmail = () => {
 
 export default withAuthUser()(VerifyEmail);
 
-export const getServerSideProps = withAuthUserTokenSSR()(
-  async ({ AuthUser, req, res }) => {
-    if (AuthUser.emailVerified) {
-      return {
-        redirect: {
-          destination: '/account/signup/step1',
-          permanent: false,
-        },
-      };
-    }
-
-    return { props: {} };
+export const getServerSideProps = withAuthUserTokenSSR({
+  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+})(async ({ AuthUser, req, res }) => {
+  if (AuthUser.emailVerified) {
+    return {
+      redirect: {
+        destination: '/account/signup/step1',
+        permanent: false,
+      },
+    };
   }
-);
+
+  return { props: {} };
+});

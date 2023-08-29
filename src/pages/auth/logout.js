@@ -2,6 +2,7 @@ import {
   useAuthUser,
   withAuthUserTokenSSR,
   withAuthUser,
+  AuthAction,
 } from 'next-firebase-auth';
 
 const Logout = () => {
@@ -24,4 +25,6 @@ const Logout = () => {
 
 export default withAuthUser()(Logout);
 
-export const getServerSideProps = withAuthUserTokenSSR()();
+export const getServerSideProps = withAuthUserTokenSSR({
+  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+})();

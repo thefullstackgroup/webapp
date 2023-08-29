@@ -1,4 +1,8 @@
-import { withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
+import {
+  AuthAction,
+  withAuthUser,
+  withAuthUserTokenSSR,
+} from 'next-firebase-auth';
 import { getUserProfile } from 'pages/api/auth/userProfile';
 import { useRouter } from 'next/router';
 import Meta from 'components/common/partials/Metadata';
@@ -28,26 +32,26 @@ const Chat = ({ user }) => {
 
 export default withAuthUser()(Chat);
 
-export const getServerSideProps = withAuthUserTokenSSR()(
-  async ({ AuthUser, req, res }) => {
-    const accessToken = await AuthUser.getIdToken();
-    const userProfile = await getUserProfile(accessToken, null, req, res);
+export const getServerSideProps = withAuthUserTokenSSR({
+  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+})(async ({ AuthUser, req, res }) => {
+  const accessToken = await AuthUser.getIdToken();
+  const userProfile = await getUserProfile(accessToken, null, req, res);
 
-    if (userProfile?.redirect) {
-      return {
-        redirect: {
-          destination: userProfile.redirect,
-          permanent: false,
-        },
-      };
-    }
-    if (userProfile) {
-      return {
-        props: {
-          user: userProfile,
-        },
-      };
-    }
-    return { props: {} };
+  if (userProfile?.redirect) {
+    return {
+      redirect: {
+        destination: userProfile.redirect,
+        permanent: false,
+      },
+    };
   }
-);
+  if (userProfile) {
+    return {
+      props: {
+        user: userProfile,
+      },
+    };
+  }
+  return { props: {} };
+});

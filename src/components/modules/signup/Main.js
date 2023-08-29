@@ -6,10 +6,11 @@ import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { CgSpinner } from 'react-icons/cg';
 import Icon from 'components/common/elements/Icon';
+import { useRouter } from 'next/router';
 
 const Loader = () => {
   return (
-    <div className="flex w-full items-center justify-center bg-base-800">
+    <div className="bg-base-800 flex w-full items-center justify-center">
       <CgSpinner className="h-14 w-14 animate-spin text-white" />
     </div>
   );
@@ -22,6 +23,8 @@ const Main = () => {
   const [signUpMessage, setSignUpMessage] = useState('');
   const googleProvider = new firebase.auth.GoogleAuthProvider();
   const gitHubProvider = new firebase.auth.GithubAuthProvider();
+
+  const router = useRouter();
 
   const signInWithGoogle = async () => {
     try {
@@ -78,7 +81,7 @@ const Main = () => {
   return (
     <div className="mx-auto my-12 w-full max-w-md lg:my-20">
       <div className="mb-2 flex flex-col justify-center space-y-6 text-center md:mb-0">
-        <h2 className="mt-2 font-manrope">Sign up to The Full Stack</h2>
+        <h2 className="font-manrope mt-2">Sign up to The Full Stack</h2>
       </div>
       <div className="p-4 md:p-8">
         <div className="space-y-4">
@@ -171,7 +174,17 @@ const Main = () => {
           </div>
           <div className="flex justify-center pt-4 md:pt-6">
             <div className="text-tfssecondary-500 text-center text-sm">
-              <Link href="/login" passHref>
+              <Link
+                href={{
+                  pathname: '/login',
+                  query: {
+                    destination: encodeURIComponent(
+                      `${process.env.BASEURL}${router.asPath}`
+                    ),
+                  },
+                }}
+                passHref
+              >
                 <a href="#">Already have an account?</a>
               </Link>
             </div>
