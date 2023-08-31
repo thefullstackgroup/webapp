@@ -1,13 +1,15 @@
 import { useAuthUser } from 'next-firebase-auth';
 import { useRouter } from 'next/router';
 import Image from 'next/future/image';
+import axios from 'axios';
 
 const Page = () => {
   const AuthUser = useAuthUser();
   const router = useRouter();
 
   const handleLogout = async () => {
-    AuthUser.signOut();
+    await AuthUser.signOut();
+    await axios.get(`/api/auth/logout`);
     router.push('/');
   };
 

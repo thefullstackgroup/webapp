@@ -38,10 +38,13 @@ const initAuth = () => {
       let destURL = '/';
 
       if (destinationParamVal) {
-        const allowedHosts = ['localhost:3000', `${process.env.BASEURL}`];
+        const allowedHosts = [
+          'http://localhost:3000',
+          `${process.env.BASEURL}`,
+        ];
 
         const allowed =
-          allowedHosts.indexOf(new URL(destinationParamVal).host) > -1;
+          allowedHosts.indexOf(new URL(destinationParamVal).origin) > -1;
 
         if (allowed) {
           destURL = destinationParamVal;
@@ -72,7 +75,7 @@ const initAuth = () => {
         clientEmail: process.env.NEXT_PUBLIC_FIREBASE_EMAIL_CLIENT,
         // The private key must not be accessible on the client side.
         privateKey: process.env.FIREBASE_PRIVATE_KEY
-          ? JSON.parse(process.env.FIREBASE_PRIVATE_KEY)
+          ? process.env.FIREBASE_PRIVATE_KEY
           : undefined,
       },
       databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,

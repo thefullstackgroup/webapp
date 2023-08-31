@@ -9,8 +9,9 @@ const SignOutPrompt = ({ show, setShow }) => {
   const router = useRouter();
 
   const handleLogout = async () => {
-    AuthUser.signOut();
-    axios.get(`/api/auth/logout`).then((response) => router.reload('/'));
+    await AuthUser.signOut();
+    await axios.get(`/api/auth/logout`);
+    router.reload('/');
   };
 
   return (
