@@ -54,7 +54,7 @@ const SocialShareLinks = ({ link, title }) => {
         <div className="w-14 rounded-xl bg-blue-500 px-3 py-3">
           <FaLinkedin className="mx-auto h-7 w-7 text-white" />
         </div>
-        <div className="text-base-400 mt-2 text-xs">Whatsapp</div>
+        <div className="text-base-400 mt-2 text-xs">LinkedIn</div>
       </LinkedinShareButton>
     </div>
   );
