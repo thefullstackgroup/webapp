@@ -231,8 +231,8 @@ const JobPreferences = ({ user }) => {
         preferredWorkTypes: preferredWorkTypes,
         interestedRoles: interestedRoles,
         remoteWorkExperience: 0,
-        baseSalary: parseInt(baseSalary),
-        maxSalary: parseInt(maxSalary),
+        baseSalary: baseSalary,
+        maxSalary: maxSalary,
         localCurrency: localCurrency,
         notableAccomplishment: notableAccomplishment,
       },
@@ -331,12 +331,12 @@ const JobPreferences = ({ user }) => {
                   <select
                     className="text-input"
                     onChange={(e) => {
-                      setBaseSalary(e.target.value);
+                      setBaseSalary(parseInt(e.target.value));
                     }}
                   >
                     <option value="">Minimum</option>
                     {salaryRanges.map((range, index) =>
-                      range.value == baseSalary ? (
+                      range.value === baseSalary ? (
                         <option value={range.value} key={index} selected>
                           {range.label}
                         </option>
@@ -352,12 +352,12 @@ const JobPreferences = ({ user }) => {
                   <select
                     className="text-input"
                     onChange={(e) => {
-                      setMaxSalary(e.target.value);
+                      setMaxSalary(parseInt(e.target.value));
                     }}
                   >
                     <option value="">Maximum</option>
                     {salaryRanges.map((range, index) =>
-                      range.value == maxSalary ? (
+                      range.value === maxSalary ? (
                         <option value={range.value} key={index} selected>
                           {range.label}
                         </option>
