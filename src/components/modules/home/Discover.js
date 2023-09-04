@@ -1,9 +1,9 @@
-import React, { useMemo } from 'react';
-import Link from 'next/link';
-import Avatar from 'components/common/elements/Avatar';
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
-import Icon from 'components/common/elements/Icon';
+import React, { useMemo } from "react";
+import Link from "next/link";
+import Avatar from "components/common/elements/Avatar";
+import useSWR from "swr";
+import fetcher from "utils/fetcher";
+import Icon from "components/common/elements/Icon";
 
 const SuggestedUserCard = (props) => {
   return (
@@ -32,9 +32,9 @@ const Discover = ({ user, count, search }) => {
   const myTechStack =
     user?.userSkills?.skills
       .map(({ languageName }) => languageName)
-      .join(',') || null;
+      .join(",") || null;
 
-  let url = `${process.env.BASEURL}/api/projects/get?page=0&size=60&sort=mostpopular&projectType=PROJECT&range=40`;
+  let url = `${process.env.BASEURL}/api/projects/get?page=0&size=60&sort=mostpopular&projectType=PROJECT&range=90`;
   if (search) {
     url = `${process.env.BASEURL}/api/search/showcase?size=60&sort=mostpopular&projectType=PROJECT&tech=${myTechStack}&range=90`;
   }

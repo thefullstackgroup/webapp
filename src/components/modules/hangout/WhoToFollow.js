@@ -1,12 +1,12 @@
-import Link from 'next/link';
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
-import { useMemo } from 'react';
-import Avatar from 'components/common/elements/Avatar';
-import Icon from 'components/common/elements/Icon';
+import Link from "next/link";
+import useSWR from "swr";
+import fetcher from "utils/fetcher";
+import { useMemo } from "react";
+import Avatar from "components/common/elements/Avatar";
+import Icon from "components/common/elements/Icon";
 
 const WhoToFollow = ({ user }) => {
-  let url = `${process.env.BASEURL}/api/projects/get?page=1&size=8&sort=mostpopular&projectType=PROJECT&range=60`;
+  let url = `${process.env.BASEURL}/api/projects/get?page=1&size=8&sort=mostpopular&projectType=PROJECT&range=90`;
 
   const { data } = useSWR(url, fetcher);
   const uniqueIds = [];
