@@ -14,7 +14,7 @@ const Search = ({ user }) => {
   const router = useRouter();
   const q = router.query.q !== '' ? router.query.q : '';
   const [sort, setSort] = useState(SortFilter[1]);
-  const [range, setRange] = useState(RangeFilter[3]);
+  const [range, setRange] = useState(RangeFilter[2]);
   const [stack, setStack] = useState(null);
   const [category, setCategory] = useState({
     title: 'Search',
