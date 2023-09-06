@@ -75,7 +75,7 @@ const initAuth = () => {
         clientEmail: process.env.NEXT_PUBLIC_FIREBASE_EMAIL_CLIENT,
         // The private key must not be accessible on the client side.
         privateKey: process.env.FIREBASE_PRIVATE_KEY
-          ? process.env.FIREBASE_PRIVATE_KEY
+          ? JSON.parse(process.env.FIREBASE_PRIVATE_KEY)
           : undefined,
       },
       databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
