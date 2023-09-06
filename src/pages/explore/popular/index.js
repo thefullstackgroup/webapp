@@ -10,7 +10,7 @@ import Categories from 'components/modules/explore/Categories';
 
 const ExplorePopular = ({ user }) => {
   const [sort, setSort] = useState(SortFilter[1]);
-  const [range, setRange] = useState(RangeFilter[3]);
+  const [range, setRange] = useState(RangeFilter[2]);
   const [stack, setStack] = useState(null);
   const [category, setCategory] = useState(null);
 
