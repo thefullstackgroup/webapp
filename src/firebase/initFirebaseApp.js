@@ -38,7 +38,10 @@ const initAuth = () => {
       let destURL = '/';
 
       if (destinationParamVal) {
-        const allowedHosts = ['localhost:3000', `${process.env.BASEURL}`];
+        const allowedHosts = [
+          'localhost:3000',
+          `${process.env.BASEURL.replace(/^https:\/\//, '')}`,
+        ];
 
         const allowed =
           allowedHosts.indexOf(new URL(destinationParamVal).host) > -1;
