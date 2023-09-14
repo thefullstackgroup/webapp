@@ -69,11 +69,11 @@ const ProfileVideoPlayer = ({
       <video
         ref={videoRef}
         poster={poster}
-        className="w-full h-full object-cover rounded-lg"
+        className="h-full w-full rounded-lg object-cover"
       />
       {!isPlaying && (
         <button
-          className="hidden sm:block absolute top-10 bottom-0 sm:top-20 left-0 h-32 sm:h-48 w-full sm:w-52"
+          className="absolute top-10 bottom-0 left-0 hidden h-32 w-full sm:top-20 sm:block sm:h-48 sm:w-52"
           onClick={() => actionPlay()}
         ></button>
       )}

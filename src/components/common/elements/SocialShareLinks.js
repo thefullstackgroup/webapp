@@ -30,31 +30,31 @@ const SocialShareLinks = ({ link, title }) => {
         <div className="w-14 rounded-xl bg-red-600 px-3 py-3">
           <FaReddit className="mx-auto h-7 w-7 text-white" />
         </div>
-        <div className="text-base-400 mt-2 text-xs">Reddit</div>
+        <div className="mt-2 text-xs text-base-400">Reddit</div>
       </RedditShareButton>
       <FacebookShareButton url={link} quote={title}>
         <div className="w-14 rounded-xl bg-blue-600 px-3 py-3">
           <FaFacebook className="mx-auto h-7 w-7 text-white" />
         </div>
-        <div className="text-base-400 mt-2 text-xs">Facebook</div>
+        <div className="mt-2 text-xs text-base-400">Facebook</div>
       </FacebookShareButton>
       <TwitterShareButton url={link} title={title}>
         <div className="w-14 rounded-xl bg-blue-500 px-3 py-3">
           <FaTwitter className="mx-auto h-7 w-7 text-white" />
         </div>
-        <div className="text-base-400 mt-2 text-xs">Twitter</div>
+        <div className="mt-2 text-xs text-base-400">Twitter</div>
       </TwitterShareButton>
       <WhatsappShareButton url={link} title={title}>
         <div className="w-14 rounded-xl bg-green-500 px-3 py-3">
           <FaWhatsapp className="mx-auto h-7 w-7 text-white" />
         </div>
-        <div className="text-base-400 mt-2 text-xs">Whatsapp</div>
+        <div className="mt-2 text-xs text-base-400">Whatsapp</div>
       </WhatsappShareButton>{' '}
       <LinkedinShareButton url={link} title={title}>
         <div className="w-14 rounded-xl bg-blue-500 px-3 py-3">
           <FaLinkedin className="mx-auto h-7 w-7 text-white" />
         </div>
-        <div className="text-base-400 mt-2 text-xs">LinkedIn</div>
+        <div className="mt-2 text-xs text-base-400">LinkedIn</div>
       </LinkedinShareButton>
     </div>
   );

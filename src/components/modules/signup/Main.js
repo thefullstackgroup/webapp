@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 
 const Loader = () => {
   return (
-    <div className="bg-base-800 flex w-full items-center justify-center">
+    <div className="flex w-full items-center justify-center bg-base-800">
       <CgSpinner className="h-14 w-14 animate-spin text-white" />
     </div>
   );
@@ -81,7 +81,7 @@ const Main = () => {
   return (
     <div className="mx-auto my-12 w-full max-w-md lg:my-20">
       <div className="mb-2 flex flex-col justify-center space-y-6 text-center md:mb-0">
-        <h2 className="font-manrope mt-2">Sign up to The Full Stack</h2>
+        <h2 className="mt-2 font-manrope">Sign up to The Full Stack</h2>
       </div>
       <div className="p-4 md:p-8">
         <div className="space-y-4">

@@ -30,7 +30,7 @@ const ProfilePopoverPanel = ({
       ) : (
         <Popover.Button
           className={
-            'nav-bar nav-bar-icon bg-base-200 dark:bg-base-700 outline-none ' +
+            'nav-bar nav-bar-icon bg-base-200 outline-none dark:bg-base-700 ' +
             (isShowing && ` bg-base-200 dark:bg-base-700 dark:text-white`)
           }
           onClick={() => setIsShowing(true)}
@@ -68,14 +68,14 @@ const ProfilePopoverPanel = ({
                         <span className="text-base font-semibold">
                           {user.name}
                         </span>
-                        <span className="text-base-500 dark:text-base-400 text-xs font-normal">
+                        <span className="text-xs font-normal text-base-500 dark:text-base-400">
                           @{user.displayName}
                         </span>
                       </div>
                     </div>
                   </Link>
 
-                  <div className="border-base-200 dark:border-base-700 flex flex-col border-b border-t py-2">
+                  <div className="flex flex-col border-b border-t border-base-200 py-2 dark:border-base-700">
                     <Link href="/account/dashboard">
                       <button
                         className="nav-popover items-center"
@@ -152,7 +152,7 @@ const ProfilePopoverPanel = ({
                   </div>
 
                   <Link href="/account/settings/signout">
-                    <button className="nav-popover text-base-500 hover:text-base-500 dark:text-base-300 hover:dark:text-base-300 items-center focus:border-none focus:outline-none focus:ring-0">
+                    <button className="nav-popover items-center text-base-500 hover:text-base-500 focus:border-none focus:outline-none focus:ring-0 dark:text-base-300 hover:dark:text-base-300">
                       <Icon name={'FiLogOut'} className="h-6 w-6" />
                       <span className="text-base-500 hover:text-base-500 dark:text-base-300 hover:dark:text-base-300">
                         Sign out
@@ -162,7 +162,7 @@ const ProfilePopoverPanel = ({
                 </div>
               ) : (
                 <div className="w-64 space-y-2 px-2 py-4 text-center">
-                  <div className="bg-base-200 dark:bg-base-700 mx-auto h-20 w-20 rounded-full p-4">
+                  <div className="mx-auto h-20 w-20 rounded-full bg-base-200 p-4 dark:bg-base-700">
                     <Icon name={'FiUser'} className="h-12 w-12" />
                   </div>
                   <p className="">Sign up or login to your account.</p>

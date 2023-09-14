@@ -1,6 +1,6 @@
-import { Transition } from "@headlessui/react";
-import { useEffect, useState } from "react";
-import { IoCloseSharp } from "react-icons/io5";
+import { Transition } from '@headlessui/react';
+import { useEffect, useState } from 'react';
+import { IoCloseSharp } from 'react-icons/io5';
 
 const Toast = ({ message, show, setShow }) => {
   const [isShowing, setIsShowing] = useState(false);

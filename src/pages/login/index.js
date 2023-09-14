@@ -11,7 +11,7 @@ import { getUserProfile } from 'pages/api/auth/userProfile';
 
 const Loading = () => {
   return (
-    <div className="bg-base-50 dark:bg-base-900 flex min-h-screen w-full items-center justify-center">
+    <div className="flex min-h-screen w-full items-center justify-center bg-base-50 dark:bg-base-900">
       <Loader />
     </div>
   );

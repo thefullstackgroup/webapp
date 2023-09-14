@@ -177,7 +177,7 @@ const StepOne = ({ user, referralCode }) => {
                 </option>
               ))}
             </select>
-            <span className="text-base-500 mt-1 text-xs">
+            <span className="mt-1 text-xs text-base-500">
               You can always change this later
             </span>
           </div>

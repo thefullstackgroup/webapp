@@ -1,10 +1,10 @@
-import Link from "next/link";
-import PostCard from "components/common/cards/PostCard";
-import useSWR from "swr";
-import fetcher from "utils/fetcher";
+import Link from 'next/link';
+import PostCard from 'components/common/cards/PostCard';
+import useSWR from 'swr';
+import fetcher from 'utils/fetcher';
 
 const types =
-  "SPARK,POST,SHOWSTARTUP,LEARNING,ADVICE,MEME,VENT,NEWS,POLL,FRAMEWORKS,UTILITIES,TUTORIALS,CAREER_ADVICE,WORKING_REMOTELY,DESK_SETUP,DESIGN_TIPS,GOT_THE_JOB,PROJECT_IDEAS,COLLABS,WORKFLOWS";
+  'SPARK,POST,SHOWSTARTUP,LEARNING,ADVICE,MEME,VENT,NEWS,POLL,FRAMEWORKS,UTILITIES,TUTORIALS,CAREER_ADVICE,WORKING_REMOTELY,DESK_SETUP,DESIGN_TIPS,GOT_THE_JOB,PROJECT_IDEAS,COLLABS,WORKFLOWS';
 
 const Sparks = ({ profile, myProfile }) => {
   const url = `${process.env.BASEURL}/api/profile/posts/get?userId=${profile.displayName}&projectType=${types}&page=0&size=100`;

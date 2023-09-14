@@ -112,13 +112,13 @@ const UploadPostVideo = ({ setCoverImage, setCoverVideo }) => {
         {isUploading ? (
           <>
             {isPreparing ? (
-              <div className="text-sm flex items-center space-x-1">
-                <BiLoaderAlt className="w-4 h-auto animate-spin" />
+              <div className="flex items-center space-x-1 text-sm">
+                <BiLoaderAlt className="h-auto w-4 animate-spin" />
                 <span>Preparing...</span>
               </div>
             ) : (
-              <div className="text-sm flex items-center space-x-1">
-                <BiLoaderAlt className="w-4 h-auto animate-spin" />
+              <div className="flex items-center space-x-1 text-sm">
+                <BiLoaderAlt className="h-auto w-4 animate-spin" />
                 <span>Uploading...{progress ? `${progress}%` : ''}</span>
               </div>
             )}
@@ -126,11 +126,11 @@ const UploadPostVideo = ({ setCoverImage, setCoverVideo }) => {
         ) : (
           <>
             <button
-              className="flex space-x-1 items-center font-semibold"
+              className="flex items-center space-x-1 font-semibold"
               onClick={() => inputRef.current.click()}
             >
-              <IoVideocamOutline className="h-6 mx-auto w-auto text-gray-400 dark:text-gray-400" />
-              <span className="hidden md:block text-sm">Video</span>
+              <IoVideocamOutline className="mx-auto h-6 w-auto text-gray-400 dark:text-gray-400" />
+              <span className="hidden text-sm md:block">Video</span>
             </button>
 
             <input
