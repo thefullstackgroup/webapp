@@ -8,6 +8,7 @@ import Footer from 'components/modules/signup/Footer';
 import Header from 'components/modules/signup/Header';
 import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import { useEffect } from 'react';
+import Link from 'next/link';
 
 const VerifyEmail = () => {
   useEffect(() => {
@@ -34,11 +35,11 @@ const VerifyEmail = () => {
               the link in the email to continue sign up.
             </p>
             <p className="text-lg text-gray-200">
-              <a href="/signup">
+              <Link href="/signup">
                 <button className="btn-primary">
                   Email verified? Continue
                 </button>
-              </a>
+              </Link>
             </p>
           </div>
         </div>
