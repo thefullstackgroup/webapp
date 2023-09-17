@@ -5,7 +5,7 @@ const CountrySelect = ({ countryName, setCountryName }) => {
     <CountryDropdown
       value={countryName}
       onChange={(val) => setCountryName(val)}
-      className="text-input"
+      className="text-input dark:bg-black"
     />
   );
 };
