@@ -33,7 +33,7 @@ const ListTeams = () => {
   }, [teams]);
 
   return (
-    <div className="mb-20 space-y-6 xl:max-w-3xl 2xl:xl:max-w-full">
+    <div className="mb-20 space-y-6">
       {!data && (
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
           {[...Array(16)].map((elementInArray, index) => (
