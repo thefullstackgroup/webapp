@@ -136,7 +136,7 @@ const StepFive = ({ user, referralCode }) => {
                     Lastly, where did you hear about thefullstack?
                   </label>
                   <select
-                    className="text-input"
+                    className="text-input dark:bg-black"
                     onChange={(e) => setHearAbout(e.target.value)}
                     value={hearAbout}
                   >

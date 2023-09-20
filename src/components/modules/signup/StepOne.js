@@ -166,7 +166,7 @@ const StepOne = ({ user, referralCode }) => {
             <label className="label">What do you do?</label>
 
             <select
-              className="text-input"
+              className="text-input dark:bg-black"
               onChange={(e) => setCurrentTitle(e.target.value)}
               value={currentTitle || user.currentTitle || ''}
             >
@@ -177,7 +177,7 @@ const StepOne = ({ user, referralCode }) => {
                 </option>
               ))}
             </select>
-            <span className="text-base-500 mt-1 text-xs">
+            <span className="mt-1 text-xs text-base-500">
               You can always change this later
             </span>
           </div>
