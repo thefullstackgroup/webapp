@@ -24,7 +24,7 @@ const VerifyEmail = () => {
       />
       <main className="pt-4 sm:pt-10">
         <Header />
-        <div className="border-base-700 mx-auto max-w-2xl rounded-md border bg-black px-0 sm:px-8">
+        <div className="mx-auto max-w-2xl rounded-md border border-base-700 bg-black px-0 sm:px-8">
           <div className="m-auto flex max-w-3xl flex-col space-y-8 px-4 pb-20 text-center">
             <h2 className="mb-4 mt-10 text-2xl font-bold tracking-tight">
               Please verify your email address

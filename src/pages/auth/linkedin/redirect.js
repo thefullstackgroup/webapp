@@ -40,12 +40,12 @@ export default function LinkedInRedirect({ firebaseToken, error }) {
         desc="The network built for Software Engineers"
         keywords=""
       />
-      <div className="min-h-screen dark:bg-dovegray-900">
+      <div className="dark:bg-dovegray-900 min-h-screen">
         <main className="mx-auto max-w-full">
           <div className="">
             <div className="relative overflow-hidden">
               <div className="relative pt-6 pb-16 sm:pb-24">
-                <div className="mt-16 mx-auto max-w-5xl px-4 sm:mt-24 sm:px-6">
+                <div className="mx-auto mt-16 max-w-5xl px-4 sm:mt-24 sm:px-6">
                   Signin in...
                   {error && <div>{error}</div>}
                 </div>

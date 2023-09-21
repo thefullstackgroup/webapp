@@ -1,11 +1,11 @@
-import { withAuthUserTokenSSR } from "next-firebase-auth";
-import Meta from "components/common/partials/Metadata";
-import Layout from "components/common/layout/Layout";
-import PostContainer from "components/modules/post/Container";
-import fetcher from "utils/fetcher";
-import { RiEmotionSadLine } from "react-icons/ri";
-import { getUserProfile } from "pages/api/auth/userProfile";
-import axios from "axios";
+import { withAuthUserTokenSSR } from 'next-firebase-auth';
+import Meta from 'components/common/partials/Metadata';
+import Layout from 'components/common/layout/Layout';
+import PostContainer from 'components/modules/post/Container';
+import fetcher from 'utils/fetcher';
+import { RiEmotionSadLine } from 'react-icons/ri';
+import { getUserProfile } from 'pages/api/auth/userProfile';
+import axios from 'axios';
 
 const Post = ({ user, project }) => {
   return (
@@ -43,7 +43,7 @@ export const getServerSideProps = withAuthUserTokenSSR()(
     const accessToken = await AuthUser.getIdToken();
     const userProfile = await getUserProfile(accessToken, null, req, res);
 
-    let headers = "";
+    let headers = '';
     if (accessToken) {
       headers = {
         headers: {

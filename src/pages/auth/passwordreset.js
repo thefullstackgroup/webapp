@@ -16,9 +16,9 @@ const PasswordResetPage = () => {
         keywords=""
       />
       <Layout>
-        <main className="dark:bg-dovegray-900 pb-20 mx-auto max-w-full">
-          <div className="flex-grow w-full max-w-full mx-auto relative">
-            <div className="max-w-full mx-auto">
+        <main className="dark:bg-dovegray-900 mx-auto max-w-full pb-20">
+          <div className="relative mx-auto w-full max-w-full flex-grow">
+            <div className="mx-auto max-w-full">
               <div className="mx-auto w-full max-w-screen-xl px-4 xl:px-8">
                 {showPWReset && (
                   <ResetPassword

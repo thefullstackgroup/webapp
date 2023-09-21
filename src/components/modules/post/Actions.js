@@ -14,12 +14,12 @@ const Actions = (props) => {
   return (
     <>
       {props.user ? (
-        <div className="border-base-200 dark:border-base-700/70 flex justify-between border-t px-4 py-2">
+        <div className="flex justify-between border-t border-base-200 px-4 py-2 dark:border-base-700/70">
           <ButtonLike user={props.user} post={props.project} />
 
           {props.setShowCommentsModal ? (
             <button
-              className="text-base-200 group relative flex items-center space-x-1 font-semibold"
+              className="group relative flex items-center space-x-1 font-semibold text-base-200"
               onClick={() => props.setShowCommentsModal(true)}
             >
               <ToolTip message={'Comment'} />
@@ -33,7 +33,7 @@ const Actions = (props) => {
             </button>
           ) : (
             <button
-              className="btn btn-ghost btn-with-icon text-base-800 dark:text-base-200 group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm hover:bg-violet-500/40 hover:text-violet-500 dark:hover:bg-violet-500/40 dark:hover:text-violet-500"
+              className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm text-base-800 hover:bg-violet-500/40 hover:text-violet-500 dark:text-base-200 dark:hover:bg-violet-500/40 dark:hover:text-violet-500"
               onClick={() => commentAction(true)}
             >
               <ToolTip message={'Comment'} />
@@ -47,9 +47,9 @@ const Actions = (props) => {
           <ButtonAward user={props.user} post={props.project} />
         </div>
       ) : (
-        <div className="border-base-200 dark:border-base-700 flex justify-between border-t px-4 py-2">
+        <div className="flex justify-between border-t border-base-200 px-4 py-2 dark:border-base-700">
           <button
-            className="btn btn-ghost btn-with-icon text-base-800 dark:text-base-200 group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm hover:bg-red-500/20 hover:text-red-400 dark:hover:bg-red-500/20 dark:hover:text-red-400"
+            className="btn btn-ghost btn-with-icon group relative space-x-1 rounded-xl bg-transparent py-1 pl-0.5 pr-2 text-sm text-base-800 hover:bg-red-500/20 hover:text-red-400 dark:text-base-200 dark:hover:bg-red-500/20 dark:hover:text-red-400"
             onClick={() => setShowSignUp(!showSignUp)}
           >
             <ToolTip message="Like" />
@@ -58,7 +58,7 @@ const Actions = (props) => {
             <span>{Math.abs(props.project.numberOfLikes)}</span>
           </button>
           <button
-            className="btn btn-ghost btn-with-icon text-base-800 dark:text-base-200 group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm hover:bg-violet-500/40 hover:text-violet-500 dark:hover:bg-violet-500/40 dark:hover:text-violet-500"
+            className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm text-base-800 hover:bg-violet-500/40 hover:text-violet-500 dark:text-base-200 dark:hover:bg-violet-500/40 dark:hover:text-violet-500"
             onClick={() => setShowSignUp(!showSignUp)}
           >
             <ToolTip message="Comment" />
@@ -66,7 +66,7 @@ const Actions = (props) => {
             <span>{Math.abs(props.project.numberOfComments)}</span>
           </button>
           <button
-            className="btn btn-ghost btn-with-icon text-base-800 dark:text-base-200 group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm hover:bg-yellow-500/40 hover:text-yellow-600 dark:hover:bg-yellow-500/40 dark:hover:text-yellow-500"
+            className="btn btn-ghost btn-with-icon group group relative cursor-pointer space-x-1 rounded-xl bg-transparent px-2 text-sm text-base-800 hover:bg-yellow-500/40 hover:text-yellow-600 dark:text-base-200 dark:hover:bg-yellow-500/40 dark:hover:text-yellow-500"
             onClick={() => setShowSignUp(!showSignUp)}
           >
             <ToolTip message="Award" />
