@@ -157,12 +157,12 @@ const Detail = ({ postId, user, setShowPost }) => {
       )}
 
       <ModalAlert show={isDeletePromptOpen} setShow={setIsDeletePromptOpen}>
-        <div>
+        <div className="py-8">
           <div className="justify-center sm:flex sm:items-start">
             <div className="mt-3 text-center sm:mt-0">
-              <h3 className="text-xl font-bold text-base-200">Delete post?</h3>
-              <div className="mt-2">
-                <p className="text-sm text-base-300">
+              <h3 className="text-xl font-bold">Delete post?</h3>
+              <div className="mt-2 max-w-xs">
+                <p className="text-sm">
                   Are you sure you want to delete this post?
                 </p>
               </div>
@@ -171,14 +171,14 @@ const Detail = ({ postId, user, setShowPost }) => {
           <div className="mt-5 flex justify-center space-x-2 sm:mt-4">
             <button
               type="button"
-              className="btn-primary bg-red-600/80 hover:bg-red-500"
+              className="btn btn-primary"
               onClick={() => deletePost()}
             >
               Delete
             </button>
             <button
               type="button"
-              className="btn-secondary"
+              className="btn btn-secondary"
               onClick={() => setIsDeletePromptOpen(false)}
             >
               Cancel
