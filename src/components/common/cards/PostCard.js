@@ -91,7 +91,8 @@ const Post = (props) => {
                 className="w-full cursor-pointer px-4 text-left outline-none"
                 onClick={() => setShowPost(true)}
               >
-                {props.project?.projectBodyPreview?.length < sparkCharCount && (
+                {props.project?.projectBodyPreview?.length <
+                  sparkCharCount + 1 && (
                   <div className="prose-custom prose-sm w-full overflow-hidden dark:prose-dark sm:prose-base">
                     <Markdown
                       options={{
