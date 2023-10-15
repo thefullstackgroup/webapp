@@ -44,9 +44,9 @@ const Page = () => {
         <div className="max-w-full space-y-10 px-4 text-xl">
           <div className="space-y-10 px-4 sm:px-20">
             <p className="text-center">
-              We’re announcing our first hackathon for you or your team to build
-              an awesome project, get exposure, learn something new, win awesome
-              prizes and ultimately have fun.
+              We&apos;re announcing our first hackathon for you or your team to
+              build an awesome project, get exposure, learn something new, win
+              awesome prizes and ultimately have fun.
             </p>
 
             <div className="flex justify-center gap-4">
@@ -59,70 +59,6 @@ const Page = () => {
           </div>
         </div>
       </div>
-
-      {/* <div className="bg-base-200/50 py-20 dark:bg-base-800">
-        <div className="mx-auto max-w-4xl space-y-10 px-4">
-          <div>
-            <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-8">
-              <div className="box flex w-full flex-col border-base-400 bg-transparent py-8 text-center dark:border-cyan-dark/40 dark:bg-transparent">
-                <span className="text-xl text-base-500 dark:text-cyan-default">
-                  Hackathon starts:
-                </span>
-                <span className="text-3xl font-semibold">Sep 17th</span>
-              </div>
-              <div className="hidden lg:block">
-                <Icon
-                  name="FiArrowRight"
-                  className={'h-8 w-8 text-base-400 dark:text-base-500'}
-                />
-              </div>
-              <div className="box flex w-full flex-col border-base-400 bg-transparent py-8 text-center dark:border-cyan-dark/40 dark:bg-transparent">
-                <span className="text-xl text-base-500 dark:text-cyan-default">
-                  Hackathon ends:
-                </span>
-                <span className="text-3xl font-semibold">Oct 15th</span>
-              </div>
-              <div className="hidden lg:block">
-                <Icon
-                  name="FiArrowRight"
-                  className={'h-8 w-8 text-base-400 dark:text-base-500'}
-                />
-              </div>
-              <div className="box flex w-full flex-col border-base-400 bg-transparent py-8 text-center dark:border-cyan-dark/40 dark:bg-transparent">
-                <span className="text-xl text-base-500 dark:text-cyan-default">
-                  Winners:
-                </span>
-                <span className="text-3xl font-semibold">Oct 29th</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="mx-auto max-w-2xl space-y-8">
-            <p className="text-center text-xl">
-              Register your name or team name and start building. You will have
-              until October 15th to submit your project to the Hackathon.
-            </p>
-            {expiryTime !== false && (
-              <p className="flex justify-center">
-                <a
-                  href="https://forms.gle/tGkCWjExJzY8YKTQ8"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <button
-                    className="btn btn-primary rounded-full px-10 py-4 text-xl"
-                    onClick={() =>
-                      sendSlackMessage('Clicked on REGISTER FOR HACKATHON')
-                    }
-                  >
-                    Register here &rarr;
-                  </button>
-                </a>
-              </p>
-            )}
-          </div>
-        </div>
-      </div> */}
 
       <div className="py-20">
         <div className="mx-auto max-w-4xl space-y-20">
