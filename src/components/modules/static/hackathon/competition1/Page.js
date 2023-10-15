@@ -131,8 +131,8 @@ const Page = () => {
                 to The Full Stack
               </li>
               <li>
-                Once you are logged in, click "Add Your Project" button in the
-                header
+                Once you are logged in, click &apos;Add Your Project&apos;
+                button in the header
               </li>
               <li>Import your project from GitHub or Create from scratch.</li>
               <li>
@@ -140,7 +140,7 @@ const Page = () => {
                 short video demo of your project.
               </li>
               <li>Select YES to enter your project to the Hackathon</li>
-              <li>Then 'Publish' your project!</li>
+              <li>Then &apos;Publish&apos; your project!</li>
             </ul>
             <p className="text-xl">
               If you have an existing project already published on The Full
