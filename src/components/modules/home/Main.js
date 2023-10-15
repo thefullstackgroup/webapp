@@ -106,7 +106,7 @@ const Main = ({ user }) => {
         showMore={'/explore/popular'}
       />
 
-      <ProjectCarousel
+      {/* <ProjectCarousel
         title="Open to collaboration"
         sort={'mostpopular'}
         category={{
@@ -119,7 +119,7 @@ const Main = ({ user }) => {
         range={90}
         count={15}
         showMore={'/explore/popular/opentocollab'}
-      />
+      /> */}
 
       <ProjectCarousel
         title="Awesome apps you'll like"
@@ -161,7 +161,7 @@ const Main = ({ user }) => {
           title: '',
           desc: '',
         }}
-        range={90}
+        range={200}
         count={15}
         showMore={'/explore/popular/tools'}
       />
