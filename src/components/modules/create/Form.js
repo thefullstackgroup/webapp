@@ -44,11 +44,15 @@ const sendGAEvent = (eventName) => {
 const Form = ({ user, postData }) => {
   const router = useRouter();
   let postRef = router.query.ref;
+
   const [windowSize, setWindowSize] = useState(
     typeof window !== 'undefined' ? getWindowSize() : ''
   );
   const [isDiscardPromptOpen, setIsDiscardPromptOpen] = useState(false);
   const [isDeletePromptOpen, setIsDeletePromptOpen] = useState(false);
+  const [isHackathon, setIsHackathon] = useState(
+    postData?.projectType === 'HACKATHON_PROJECT' ? true : false
+  );
   const [saving, setSaving] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [showTagTechStack, setShowTagTechStack] = useState(false);
@@ -170,7 +174,7 @@ const Form = ({ user, postData }) => {
         customInformation: '',
         isPublicViewable: 'true',
         isDraft: isDraft,
-        projectType: 'PROJECT',
+        projectType: isHackathon ? 'HACKATHON_PROJECT' : 'PROJECT',
       },
     };
 
@@ -227,6 +231,47 @@ const Form = ({ user, postData }) => {
       />
 
       <div className="mx-auto max-w-screen-lg space-y-6 px-4 py-8">
+        <div className="box">
+          {/* <div className="font-manrope text-2xl font-semibold">
+            Is this project for the Hackathon?
+          </div> */}
+          <div className="flex flex-1 items-center justify-between">
+            <span className="font-manrope text-lg font-medium">
+              Select <span className="underline">yes</span> to enter this
+              project to The Full Stack Hackathon
+            </span>
+
+            <div className="flex items-center space-x-6 text-sm">
+              <div className="flex items-center space-x-2">
+                <input
+                  id="hackathonyes"
+                  name="hackathon"
+                  type="radio"
+                  defaultChecked={isHackathon && 'hackathonyes'}
+                  className="h-5 w-5 cursor-pointer border-gray-300 text-green-600 focus:ring-0"
+                  onClick={() => setIsHackathon(true)}
+                />
+                <label htmlFor="collabyes" className="cursor-pointer">
+                  Yes
+                </label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  id="hackathonno"
+                  name="hackathon"
+                  type="radio"
+                  defaultChecked={!isHackathon && 'hackathonno'}
+                  className="h-5 w-5 cursor-pointer border-gray-300 text-green-600 focus:ring-0"
+                  onClick={() => setIsHackathon(false)}
+                />
+                <label htmlFor="collabno" className="cursor-pointer">
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="relative mx-auto flex flex-col justify-center space-y-4 text-center">
           {postCoverImage && !postCoverVideo && (
             <div className="group relative h-auto overflow-hidden rounded-md">

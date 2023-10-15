@@ -48,7 +48,7 @@ const Actions = (props) => {
           />
           <div>
             <ButtonShare
-              url={`${process.env.BASEURL}/u/${props.project?.projectCreator?.displayName}/${props.project?.projectSlug}`}
+              url={`${process.env.BASEURL}/${props.project?.projectCreator?.displayName}/${props.project?.projectSlug}`}
               message={props.project?.projectName}
               showLabel={props.showLabel}
               toolTipPosition={props.toolTipPosition}
@@ -97,7 +97,7 @@ const Actions = (props) => {
 
           <div>
             <ButtonShare
-              url={`${process.env.BASEURL}/u/${props.project?.projectCreator?.displayName}/${props.project?.projectSlug}`}
+              url={`${process.env.BASEURL}/${props.project?.projectCreator?.displayName}/${props.project?.projectSlug}`}
               message={props.project?.projectName}
               showLabel={props.showLabel}
               toolTipPosition={props.toolTipPosition}

@@ -30,7 +30,7 @@ const ProjectCard = ({ project }) => {
       </div>
       <div className="absolute bottom-2 right-2">
         <ShareButton
-          url={`${process.env.BASEURL}/u/${project?.contentOwnerUserName}/${project?.projectSlug}`}
+          url={`${process.env.BASEURL}/${project?.contentOwnerUserName}/${project?.projectSlug}`}
           message={project?.projectName}
           showLabel={false}
         />

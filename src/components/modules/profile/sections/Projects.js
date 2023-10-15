@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 const Projects = ({ profile, myProfile }) => {
   const [showCreatePost, setShowCreatePost] = useState(false);
-  const url = `${process.env.BASEURL}/api/profile/posts/get?userId=${profile.displayName}&projectType=PROJECT&page=0&size=100`;
+  const url = `${process.env.BASEURL}/api/profile/posts/get?userId=${profile.displayName}&projectType=PROJECT,HACKATHON_PROJECT&page=0&size=100`;
   const { data } = useSWR(url, fetcher);
   const projects = data ? data.content : null;
 
