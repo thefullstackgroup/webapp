@@ -12,6 +12,12 @@ export const navigation = [
         icon: 'FiStar',
       },
       {
+        href: '/hackathon/entries',
+        label: 'Hackathon #1',
+        desc: 'Vote for your winning project!',
+        icon: 'FiTrendingUp',
+      },
+      {
         href: '/explore/trending',
         label: 'Trending projects',
         desc: 'Projects trending in the community',
@@ -35,12 +41,12 @@ export const navigation = [
         desc: 'Get inspired under the hood',
         icon: 'FiUnlock',
       },
-      {
-        href: '/explore/popular/apps',
-        label: 'Apps',
-        desc: 'Cool apps built by the commmunity',
-        icon: 'FiPackage',
-      },
+      // {
+      //   href: '/explore/popular/apps',
+      //   label: 'Apps',
+      //   desc: 'Cool apps built by the commmunity',
+      //   icon: 'FiPackage',
+      // },
     ],
     childrenTwo: [
       {
