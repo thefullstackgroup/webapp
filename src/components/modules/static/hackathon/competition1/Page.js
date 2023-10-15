@@ -2,52 +2,8 @@ import Icon from 'components/common/elements/Icon';
 import { CategoriesFilter } from 'components/modules/explore/constants';
 import Image from 'next/future/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 
 const Page = () => {
-  const [expiryTime, setExpiryTime] = useState('29 oct 2023 23:59:59');
-  const [countdownTime, setCountdownTime] = useState({
-    countdownDays: '',
-    countdownHours: '',
-    countdownMinutes: '',
-    countdownSeconds: '',
-  });
-
-  const countdownTimer = () => {
-    const timeInterval = setInterval(() => {
-      const countdownDateTime = new Date(expiryTime).getTime();
-      const currentTime = new Date().getTime();
-      const remainingDayTime = countdownDateTime - currentTime;
-      const totalDays = Math.floor(remainingDayTime / (1000 * 60 * 60 * 24));
-      const totalHours = Math.floor(
-        (remainingDayTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const totalMinutes = Math.floor(
-        (remainingDayTime % (1000 * 60 * 60)) / (1000 * 60)
-      );
-      const totalSeconds = Math.floor((remainingDayTime % (1000 * 60)) / 1000);
-
-      const runningCountdownTime = {
-        countdownDays: totalDays,
-        countdownHours: totalHours,
-        countdownMinutes: totalMinutes,
-        countdownSeconds: totalSeconds,
-      };
-
-      setCountdownTime(runningCountdownTime);
-
-      if (remainingDayTime < 0) {
-        clearInterval(timeInterval);
-        setExpiryTime(false);
-      }
-    }, 1000);
-  };
-
-  useEffect(() => {
-    countdownTimer();
-  }, []);
-
   return (
     <div className="bg-transparent dark:bg-black">
       <div className="relative z-10 mx-auto mb-20 max-w-5xl space-y-10 sm:pt-14">
@@ -344,61 +300,13 @@ const Page = () => {
             </p>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-center font-manrope text-2xl font-bold">
-              Winners announced in...
-            </h3>
-            {expiryTime !== false ? (
-              <div className="mx-auto flex max-w-md items-center gap-2 px-4 sm:gap-4">
-                <div className="box flex w-80 flex-col bg-transparent text-center">
-                  <span className="text-2xl font-semibold sm:text-4xl">
-                    {countdownTime.countdownDays}
-                  </span>
-                  <span className="text-sm text-base-400 dark:text-base-500 sm:text-base">
-                    Days
-                  </span>
-                </div>
-                <div className="box flex w-80 flex-col bg-transparent text-center">
-                  <span className="text-2xl font-semibold sm:text-4xl">
-                    {countdownTime.countdownHours}
-                  </span>
-                  <span className="text-sm text-base-400 dark:text-base-500 sm:text-base">
-                    Hours
-                  </span>
-                </div>
-                <div className="box flex w-80 flex-col bg-transparent text-center">
-                  <span className="text-2xl font-semibold sm:text-4xl">
-                    {countdownTime.countdownMinutes}
-                  </span>
-                  <span className="text-sm text-base-400 dark:text-base-500 sm:text-base">
-                    Minutes
-                  </span>
-                </div>
-                <div className="box flex w-80 flex-col bg-transparent text-center">
-                  <span className="text-2xl font-semibold sm:text-4xl">
-                    {countdownTime.countdownSeconds}
-                  </span>
-                  <span className="text-sm text-base-400 dark:text-base-500 sm:text-base">
-                    Seconds
-                  </span>
-                </div>
-              </div>
-            ) : (
-              <p className="text-center font-bold">
-                **Entry for the Hackathon is now closed**
-              </p>
-            )}
-          </div>
-
-          {expiryTime !== false && (
-            <p className="flex justify-center">
-              <Link href="/hackathon/entries">
-                <button className="btn btn-primary rounded-full px-10 py-4 text-xl">
-                  Vote your favourite project &rarr;
-                </button>
-              </Link>
-            </p>
-          )}
+          <p className="flex justify-center">
+            <Link href="/hackathon/entries">
+              <button className="btn btn-primary rounded-full px-10 py-4 text-xl">
+                Vote your favourite project &rarr;
+              </button>
+            </Link>
+          </p>
 
           <div>
             <h2 className="text-center font-manrope text-xl font-semibold">
