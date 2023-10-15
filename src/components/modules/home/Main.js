@@ -5,6 +5,7 @@ import Discover from 'components/modules/home/Discover';
 import ProjectCarousel from 'components/modules/home/ProjectCarousel';
 import { CategoriesFilter } from 'components/modules/explore/constants';
 import { FcGoogle } from 'react-icons/fc';
+import HackathonCarousel from './HackathonCarousel';
 
 export const Greeting = ({ name }) => {
   const myDate = new Date();
@@ -80,6 +81,14 @@ const Main = ({ user }) => {
       <div className="pb-10">
         <Discover user={user} sort="newest" range={90} />
       </div>
+
+      <HackathonCarousel
+        title="The Full Stack Hackathon #1"
+        sort={'newest'}
+        range={365}
+        count={15}
+        showMore={'/hackathon/entries'}
+      />
 
       <ProjectCarousel
         title="Recently added"
