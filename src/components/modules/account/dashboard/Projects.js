@@ -73,7 +73,7 @@ const ProjectCard = ({ project }) => {
 };
 
 const TabProjects = ({ user }) => {
-  const url = `${process.env.BASEURL}/api/profile/posts/get?userId=${user.displayName}&projectType=PROJECT&page=0&size=100`;
+  const url = `${process.env.BASEURL}/api/profile/posts/get?userId=${user.displayName}&projectType=PROJECT,HACKATHON_PROJECT&page=0&size=100`;
   const { data } = useSWR(url, fetcher);
   const projects = data ? data.content : null;
 
