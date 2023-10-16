@@ -11,6 +11,7 @@ import { IoLogoMarkdown } from 'react-icons/io5';
 import ModalAlert from 'components/common/modals/ModalAlert';
 import Icon from 'components/common/elements/Icon';
 import SelectEmoji from 'components/common/elements/SelectEmoji';
+import MentionInput from 'components/common/elements/MentionInput';
 
 const ReplyToComment = ({
   commentReplyTo,
@@ -176,23 +177,13 @@ const ReplyToComment = ({
               </div>
               <div className="w-auto flex-1">
                 <div className="block">
-                  <div className="dark text-input mb-2 border border-base-400 dark:border-base-600">
-                    <ReactMde
-                      value={commentReply}
-                      onChange={setCommentReply}
-                      selectedTab={selectedTab}
-                      onTabChange={setSelectedTab}
-                      minEditorHeight={150}
-                      maxEditorHeight={250}
-                      childProps={{
-                        textArea: {
-                          placeholder: 'Leave your reply ...',
-                        },
-                      }}
-                      toolbarCommands={[]}
-                      loadSuggestions={loadSuggestions}
-                    />
-                  </div>
+                  <MentionInput
+                    userId={user?.userId}
+                    value={commentReply}
+                    onChange={setCommentReply}
+                    placeholder={'Leave your reply ....'}
+                    name={'reply'}
+                  />
 
                   <div className="item-center flex justify-between">
                     <div className="flex items-center space-x-4">

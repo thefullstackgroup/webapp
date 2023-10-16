@@ -2,7 +2,13 @@ import { Dialog, Transition } from '@headlessui/react';
 import { useRef } from 'react';
 import Icon from '../elements/Icon';
 
-const ModalAlert = ({ children, title = false, show, setShow, dimensions }) => {
+const ModalAlert = ({
+  children,
+  title = false,
+  show,
+  setShow,
+  dimensions,
+}) => {
   const cancelButtonRef = useRef(null);
   let modalSize = 'sm:max-w-lg';
   if (dimensions) modalSize = dimensions;
