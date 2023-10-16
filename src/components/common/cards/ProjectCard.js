@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/future/image';
 import Icon from '../elements/Icon';
 import Avatar from '../elements/Avatar';
+import { RiTimer2Line } from 'react-icons/ri';
 
 const ProjectCard = ({ project }) => {
   const projectLink = `/${project?.projectCreator?.displayName}/project/${project.projectSlug}`;
@@ -27,6 +28,13 @@ const ProjectCard = ({ project }) => {
           {project?.lookingForCollabs && (
             <div className="absolute bottom-20 right-2 rounded-lg bg-base-200 px-2 py-0.5 text-xs font-medium dark:bg-base-600 xl:bottom-28">
               Collab
+            </div>
+          )}
+
+          {project?.projectType === 'HACKATHON_PROJECT' && (
+            <div className="absolute top-20 right-2 flex items-center space-x-1 rounded-lg bg-zinc-700 px-2 py-1 text-xs font-medium text-white dark:bg-zinc-700 xl:top-4">
+              <RiTimer2Line className={'h-4 w-4 animate-spin'} />
+              <span>Hackathon</span>
             </div>
           )}
 

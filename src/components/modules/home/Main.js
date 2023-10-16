@@ -91,14 +91,6 @@ const Main = ({ user }) => {
       />
 
       <ProjectCarousel
-        title="Recently added"
-        sort={'newest'}
-        range={60}
-        count={15}
-        showMore={'/explore/new'}
-      />
-
-      <ProjectCarousel
         title="Popular projects"
         sort={'mostpopular'}
         range={365}
@@ -164,6 +156,14 @@ const Main = ({ user }) => {
         range={200}
         count={15}
         showMore={'/explore/popular/tools'}
+      />
+
+      <ProjectCarousel
+        title="Recently added"
+        sort={'newest'}
+        range={60}
+        count={15}
+        showMore={'/explore/new'}
       />
 
       <ProjectCarousel

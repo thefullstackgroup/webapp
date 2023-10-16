@@ -49,13 +49,13 @@ const ProjectCarousel = ({
   const nextRef = useRef(null);
   const [carouselReady, setCarouselReady] = useState(false);
 
-  let url = `${process.env.BASEURL}/api/projects/get?size=${count}&sort=${sort}&projectType=PROJECT&range=${range}`;
+  let url = `${process.env.BASEURL}/api/projects/get?size=${count}&sort=${sort}&projectType=PROJECT,HACKATHON_PROJECT&range=${range}`;
 
   if (category) {
     if (category?.slug === 'opentocollab') {
-      url = `${process.env.BASEURL}/api/projects/get?size=${count}&sort=${sort}&projectType=PROJECT&lookingForCollabs=true`;
+      url = `${process.env.BASEURL}/api/projects/get?size=${count}&sort=${sort}&projectType=PROJECT,HACKATHON_PROJECT&lookingForCollabs=true`;
     } else {
-      url = `${process.env.BASEURL}/api/projects/find?size=${count}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&category=${category.term}`;
+      url = `${process.env.BASEURL}/api/projects/find?size=${count}&sort=${sort}&userId=&projectType=PROJECT,HACKATHON_PROJECT&range=${range}&category=${category.term}`;
     }
   }
 

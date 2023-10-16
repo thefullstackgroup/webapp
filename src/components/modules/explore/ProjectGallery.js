@@ -21,23 +21,23 @@ const ProjectGallery = ({
 
   if (count !== null) PAGE_SIZE = count;
 
-  let url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&range=${range}`;
+  let url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT,HACKATHON_PROJECT&range=${range}`;
 
   if (category) {
     if (category?.slug === 'opentocollab') {
-      url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT&lookingForCollabs=true`;
+      url = `${process.env.BASEURL}/api/projects/get?size=${PAGE_SIZE}&sort=${sort}&projectType=PROJECT,HACKATHON_PROJECT&lookingForCollabs=true`;
     } else {
-      url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&category=${category.term}`;
+      url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT,HACKATHON_PROJECT&range=${range}&category=${category.term}`;
     }
   }
 
   if (stack) {
     // url = `${process.env.BASEURL}/api/projects/find?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${stack?.terms}`;
-    url = `${process.env.BASEURL}/api/search/projects?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${stack?.terms}`;
+    url = `${process.env.BASEURL}/api/search/projects?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT,HACKATHON_PROJECT&range=${range}&term=${stack?.terms}`;
   }
 
   if (router.pathname === '/search' && query !== '') {
-    url = `${process.env.BASEURL}/api/search/projects?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT&range=${range}&term=${query}`;
+    url = `${process.env.BASEURL}/api/search/projects?size=${PAGE_SIZE}&sort=${sort}&userId=&projectType=PROJECT,HACKATHON_PROJECT&range=${range}&term=${query}`;
   }
 
   const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
