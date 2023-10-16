@@ -32,7 +32,7 @@ const ProjectCard = ({ project }) => {
           )}
 
           {project?.projectType === 'HACKATHON_PROJECT' && (
-            <div className="absolute top-20 right-2 flex items-center space-x-1 rounded-lg bg-zinc-700 px-2 py-1 text-xs font-medium text-white dark:bg-zinc-700 xl:top-4">
+            <div className="absolute top-2 right-2 flex items-center space-x-1 rounded-lg bg-zinc-700 px-2 py-1 text-xs font-medium text-white dark:bg-zinc-700 xl:top-4">
               <RiTimer2Line className={'h-4 w-4 animate-spin'} />
               <span>Hackathon</span>
             </div>
