@@ -22,7 +22,7 @@ const PollCard = ({ user, postId }) => {
 
     await axios
       .get(
-        `${process.env.BASEURL}/api/posts/polls/castVote?postId=${postId}&optionId=${optionId}`
+        `${process.env.BASEURL}/api/posts/polls/castVote?postId=${poll._id}&optionId=${optionId}`
       )
       .then((response) => {
         setPollUserHasVoted(true);
