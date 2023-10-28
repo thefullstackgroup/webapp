@@ -124,13 +124,6 @@ const Header = ({
         leaveTo="-translate-y-40 opacity-0"
         className={'sticky top-0 z-50 hidden w-full lg:block'}
       >
-        <Link href="/hackathon/entries">
-          <div className="w-full cursor-pointer bg-purple-700 py-2 text-center text-sm font-semibold text-white dark:bg-purple-700">
-            The Full Stack Hackathon &middot;{' '}
-            <span className="underline">Voting now open</span> &middot; Upvote
-            your favourite project
-          </div>
-        </Link>
         <header className="dark:bg-base/90 z-50 border-b border-base-200 bg-white/90 backdrop-blur dark:border-base-700/50 dark:bg-base-900">
           <div className="mx-auto flex max-w-full items-center justify-between px-8 py-3">
             <div className="flex w-6/12 items-center space-x-4 text-base 2xl:space-x-6">

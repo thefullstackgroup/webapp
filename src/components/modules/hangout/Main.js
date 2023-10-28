@@ -47,7 +47,7 @@ const Main = ({ user, topic }) => {
         </div>
         <div className="hidden w-3/12 xl:block">
           <div className="sticky top-28 space-y-8">
-            <div className="pl-6 pt-4">
+            {/* <div className="pl-6 pt-4">
               <div className="pl-7">
                 <Link href="/hackathon/competition">
                   <div className="relative h-auto w-full cursor-pointer rounded-lg border border-transparent duration-200 dark:hover:border-white">
@@ -77,7 +77,7 @@ const Main = ({ user, topic }) => {
                   </div>
                 </Link>
               </div>
-            </div>
+            </div> */}
             <WhoToFollow user={user} />
           </div>
         </div>

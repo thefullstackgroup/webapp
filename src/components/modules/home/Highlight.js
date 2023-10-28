@@ -151,7 +151,7 @@ const Highlight = ({ user }) => {
           },
         }}
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <Link href="/hackathon/entries">
             <div className="group relative mb-8 flex h-[400px] w-full flex-1 grow cursor-pointer overflow-hidden rounded-lg border border-transparent duration-200 dark:border-base-700 sm:dark:hover:border-base-300 2xl:h-[440px]">
               <div className="h-[400px] w-full 2xl:h-[440px]">
@@ -186,7 +186,7 @@ const Highlight = ({ user }) => {
               </div>
             </div>
           </Link>
-        </SwiperSlide>
+        </SwiperSlide> */}
 
         {!data &&
           [...Array(15)].map((elementInArray, index) => (

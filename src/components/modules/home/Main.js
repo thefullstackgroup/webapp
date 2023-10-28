@@ -82,20 +82,20 @@ const Main = ({ user }) => {
         <Discover user={user} sort="newest" range={90} />
       </div>
 
-      <HackathonCarousel
-        title="The Full Stack Hackathon #1"
-        sort={'newest'}
-        range={365}
-        count={15}
-        showMore={'/hackathon/entries'}
-      />
-
       <ProjectCarousel
         title="Popular projects"
         sort={'mostpopular'}
         range={365}
         count={15}
         showMore={'/explore/popular'}
+      />
+
+      <ProjectCarousel
+        title="Recently added"
+        sort={'newest'}
+        range={60}
+        count={15}
+        showMore={'/explore/new'}
       />
 
       {/* <ProjectCarousel
@@ -156,14 +156,6 @@ const Main = ({ user }) => {
         range={200}
         count={15}
         showMore={'/explore/popular/tools'}
-      />
-
-      <ProjectCarousel
-        title="Recently added"
-        sort={'newest'}
-        range={60}
-        count={15}
-        showMore={'/explore/new'}
       />
 
       <ProjectCarousel

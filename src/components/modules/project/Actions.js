@@ -3,8 +3,6 @@ import ButtonShare from 'components/common/buttons/Share';
 import ButtonVote from 'components/common/buttons/Vote';
 import ButtonComment from 'components/common/buttons/Comment';
 import ButtonAward from 'components/common/buttons/Award';
-import ModalAlert from 'components/common/modals/ModalAlert';
-import Link from 'next/link';
 import { useState } from 'react';
 import ToolTip from 'components/common/elements/ToolTip';
 import Icon from 'components/common/elements/Icon';
@@ -16,12 +14,14 @@ const Actions = (props) => {
     <>
       {props.user ? (
         <div className="flex w-full items-center justify-around space-x-2">
-          <ButtonVote
-            user={props.user}
-            post={props.project}
-            showLabel={props.showLabel}
-            toolTipPosition={props.toolTipPosition}
-          />
+          {props.project?.projectType !== 'HACKATHON_PROJECT' && (
+            <ButtonVote
+              user={props.user}
+              post={props.project}
+              showLabel={props.showLabel}
+              toolTipPosition={props.toolTipPosition}
+            />
+          )}
 
           <div>
             <ButtonComment
