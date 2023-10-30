@@ -14,14 +14,12 @@ const Actions = (props) => {
     <>
       {props.user ? (
         <div className="flex w-full items-center justify-around space-x-2">
-          {props.project?.projectType !== 'HACKATHON_PROJECT' && (
-            <ButtonVote
-              user={props.user}
-              post={props.project}
-              showLabel={props.showLabel}
-              toolTipPosition={props.toolTipPosition}
-            />
-          )}
+          <ButtonVote
+            user={props.user}
+            post={props.project}
+            showLabel={props.showLabel}
+            toolTipPosition={props.toolTipPosition}
+          />
 
           <div>
             <ButtonComment
