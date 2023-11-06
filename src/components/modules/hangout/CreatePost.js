@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
-import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
-import TextareaAutosize from 'react-textarea-autosize';
+import Avatar from 'components/common/elements/Avatar';
+import Icon from 'components/common/elements/Icon';
 import Loader from 'components/common/elements/Loader';
+import ToolTip from 'components/common/elements/ToolTip';
+import ModalAlert from 'components/common/modals/ModalAlert';
+import TagPostType from 'components/common/tags/TagPostType';
+import TagStack from 'components/common/tags/TagStack';
+import { useRouter } from 'next/router';
+import { useEffect, useRef, useState } from 'react';
 import { CgSpinner } from 'react-icons/cg';
 import { FiSend } from 'react-icons/fi';
 import { IoTrashOutline } from 'react-icons/io5';
-import TagStack from 'components/common/tags/TagStack';
-import Avatar from 'components/common/elements/Avatar';
-import Icon from 'components/common/elements/Icon';
-import ToolTip from 'components/common/elements/ToolTip';
-import TagPostType from 'components/common/tags/TagPostType';
-import { topics } from './constants';
-import ModalAlert from 'components/common/modals/ModalAlert';
+import TextareaAutosize from 'react-textarea-autosize';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
 import TagTechStack from './TagTechStack';
+import { topics } from './constants';
+
+import MentionInput from 'components/common/elements/MentionInput';
 
 const sparkCharCount = 300;
 const initialPollOptions = ['', ''];
@@ -168,7 +170,7 @@ const CreatePost = ({ user }) => {
                   dimensions={'w-10 h-10 mt-2'}
                 />
               </div>
-              <div className="w-full">
+              <div className="h-auto w-full">
                 {postType !== 'SPARK' && (
                   <div className="pt-2">
                     <button
@@ -181,20 +183,17 @@ const CreatePost = ({ user }) => {
                     </button>
                   </div>
                 )}
-                <TextareaAutosize
+
+                <MentionInput
+                  userId={user?.userId}
+                  value={postBody}
+                  onChange={setPostBody}
                   name="postBody"
-                  autoFocus
-                  rows={3}
-                  className="text-input border-0 bg-transparent px-0 text-lg"
                   placeholder={
                     postType === 'POLL'
                       ? `Type your poll question here...`
                       : `Share something today ...`
                   }
-                  value={postBody}
-                  onChange={(e) => {
-                    setPostBody(e.target.value);
-                  }}
                 />
               </div>
             </div>

@@ -13,6 +13,7 @@ import extractUrls from 'extract-urls';
 import TagPostType from 'components/common/tags/TagPostType';
 import Icon from '../elements/Icon';
 import PollCard from './PollCard';
+import MentionsSpan from '../elements/MentionsSpan';
 
 const sparkCharCount = 250;
 
@@ -111,6 +112,9 @@ const Post = (props) => {
                             props: {
                               className: 'text-sm sm:text-base font-normal',
                             },
+                          },
+                          span: {
+                            component: MentionsSpan,
                           },
                         },
                       }}
@@ -229,7 +233,7 @@ const Post = (props) => {
       <ModalDialog
         show={showPost}
         setShow={setShowPost}
-        title={`${props.project.projectName}...`}
+        title={`${props.project.projectName.replace(/\[|\]/g, '')}...`}
         dimensions={'sm:max-w-screen-md'}
       >
         <div>

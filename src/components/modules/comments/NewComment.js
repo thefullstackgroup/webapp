@@ -1,14 +1,16 @@
 import axios from 'axios';
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
-const ReactMde = dynamic(() => import('react-mde'), { ssr: false });
-import * as ga from 'lib/ga';
 import Avatar from 'components/common/elements/Avatar';
-import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
-import { IoLogoMarkdown } from 'react-icons/io5';
-import ModalAlert from 'components/common/modals/ModalAlert';
-import SelectEmoji from 'components/common/elements/SelectEmoji';
 import Icon from 'components/common/elements/Icon';
+import SelectEmoji from 'components/common/elements/SelectEmoji';
+import ModalAlert from 'components/common/modals/ModalAlert';
+import * as ga from 'lib/ga';
+import dynamic from 'next/dynamic';
+import { useState } from 'react';
+import { IoLogoMarkdown } from 'react-icons/io5';
+import { sendSlackMessage } from 'utils/slack/sendMessageSlack';
+const ReactMde = dynamic(() => import('react-mde'), { ssr: false });
+
+import MentionInput from 'components/common/elements/MentionInput';
 
 const NewComment = ({ user, show, setShow, project }) => {
   const [comment, setComment] = useState('');
@@ -18,72 +20,77 @@ const NewComment = ({ user, show, setShow, project }) => {
     { preview: 'Type name', value: 'Type name' },
   ]);
 
-  const MentionListItem = ({
-    profilePicUrl,
-    profileName,
-    profileCurrentTitle,
-  }) => {
-    return (
-      <div className="flex items-center space-x-2">
-        <Avatar image={profilePicUrl} name={profileName} dimensions="h-8 w-8" />
-        <div className="flex flex-col text-sm text-gray-700 dark:text-gray-200">
-          <span className="font-semibold">{profileName}</span>
-          <span className="text-xs text-gray-500 dark:text-gray-400">
-            {profileCurrentTitle}
-          </span>
-        </div>
-      </div>
-    );
-  };
+  // .push({
+  //   id: project.projectCreator.userId,
+  //   display: project.projectCreator.displayName,
+  // });
 
-  const searchUsers = (term) => {
-    if (term.length > 1) {
-      axios
-        .post(
-          `${process.env.BASEURL}/api/profile/search`,
-          JSON.stringify(term),
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        )
-        .then((response) => {
-          if (response.data.content.length > 0) {
-            const results = [];
-            var i;
-            for (i = 0; i < response.data.content.length; i++) {
-              results.push({
-                preview: (
-                  <MentionListItem
-                    profilePicUrl={response.data.content[i].profilePicUrl}
-                    profileName={response.data.content[i].name}
-                    profileCurrentTitle={response.data.content[i].currentTitle}
-                  />
-                ),
-                value: `[@${response.data.content[i].displayName}](/${response.data.content[i].displayName})`,
-              });
-            }
-            setMentionList(results);
-          }
-        });
-    }
-  };
+  // const MentionListItem = ({
+  //   profilePicUrl,
+  //   profileName,
+  //   profileCurrentTitle,
+  // }) => {
+  //   return (
+  //     <div className="flex items-center space-x-2">
+  //       <Avatar image={profilePicUrl} name={profileName} dimensions="h-8 w-8" />
+  //       <div className="flex flex-col text-sm text-gray-700 dark:text-gray-200">
+  //         <span className="font-semibold">{profileName}</span>
+  //         <span className="text-xs text-gray-500 dark:text-gray-400">
+  //           {profileCurrentTitle}
+  //         </span>
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
-  const loadSuggestions = (text) => {
-    return new Promise((accept, reject) => {
-      setTimeout(() => {
-        searchUsers(text);
+  // const searchUsers = (term) => {
+  //   if (term.length > 1) {
+  //     axios
+  //       .post(
+  //         `${process.env.BASEURL}/api/profile/search`,
+  //         JSON.stringify(term),
+  //         {
+  //           headers: {
+  //             'Content-Type': 'application/json',
+  //           },
+  //         }
+  //       )
+  //       .then((response) => {
+  //         if (response.data.content.length > 0) {
+  //           const results = [];
+  //           var i;
+  //           for (i = 0; i < response.data.content.length; i++) {
+  //             results.push({
+  //               preview: (
+  //                 <MentionListItem
+  //                   profilePicUrl={response.data.content[i].profilePicUrl}
+  //                   profileName={response.data.content[i].name}
+  //                   profileCurrentTitle={response.data.content[i].currentTitle}
+  //                 />
+  //               ),
+  //               value: `[@${response.data.content[i].displayName}](/${response.data.content[i].displayName})`,
+  //             });
+  //           }
+  //           setMentionList(results);
+  //         }
+  //       });
+  //   }
+  // };
 
-        mentionList.filter((i) =>
-          i.value.toLowerCase().includes(text.toLowerCase())
-        );
+  // const loadSuggestions = (text) => {
+  //   return new Promise((accept, reject) => {
+  //     setTimeout(() => {
+  //       searchUsers(text);
 
-        accept(mentionList);
-        reject(mentionList);
-      }, 100);
-    });
-  };
+  //       mentionList.filter((i) =>
+  //         i.value.toLowerCase().includes(text.toLowerCase())
+  //       );
+
+  //       accept(mentionList);
+  //       reject(mentionList);
+  //     }, 100);
+  //   });
+  // };
 
   const handlePostComment = async () => {
     if (!comment?.trim().length) {
@@ -123,23 +130,13 @@ const NewComment = ({ user, show, setShow, project }) => {
 
           <div className="w-auto flex-1">
             <div className="block">
-              <div className="dark text-input mb-2 border">
-                <ReactMde
+              <div className=" dark mb-2 ">
+                <MentionInput
+                  userId={user?.userId}
                   value={comment}
                   onChange={setComment}
-                  selectedTab={selectedTab}
-                  onTabChange={setSelectedTab}
-                  minEditorHeight={150}
-                  maxEditorHeight={250}
-                  childProps={{
-                    textArea: {
-                      placeholder: 'Write your comment ...',
-                      autoFocus: true,
-                    },
-                  }}
-                  autoFocus
-                  toolbarCommands={[]}
-                  loadSuggestions={loadSuggestions}
+                  placeholder={'Write your comment ...'}
+                  name={'comment'}
                 />
               </div>
 
