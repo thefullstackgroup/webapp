@@ -124,10 +124,10 @@ const ButtonConnect = ({
               />
             </div>
             <div className="mt-6 mb-6 flex max-w-7xl flex-col items-center sm:px-12">
-              <span className="space-x-2 text-center text-xl font-bold tracking-tight text-gray-100 sm:text-3xl">
+              <span className="space-x-2 text-center text-xl font-bold tracking-tight sm:text-3xl">
                 Boom!
               </span>
-              <span className="mt-2 space-x-2 text-center text-base font-light tracking-tight text-gray-300 sm:text-xl">
+              <span className="mt-2 space-x-2 text-center text-base font-light tracking-tight sm:text-xl">
                 Your request was sent to {connectTo.name}.
               </span>
               <span className="my-4 text-center">
