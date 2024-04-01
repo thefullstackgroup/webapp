@@ -10,6 +10,7 @@ import * as ga from '../lib/ga';
 import 'styles/globals.css';
 import 'react-mde/lib/styles/css/react-mde-all.css';
 import 'styles/mde-editor.css';
+import Maintenance from './maintenance';
 
 initAuth();
 
@@ -28,6 +29,14 @@ function App({ Component, pageProps }) {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
+
+  if (process.env.NEXT_PUBLIC_MAINTENANCE === 'true') {
+    return (
+      <ThemeProvider attribute="class">
+        <Maintenance />
+      </ThemeProvider>
+    );
+  }
 
   return (
     <ThemeProvider attribute="class">
