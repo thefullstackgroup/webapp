@@ -46,8 +46,8 @@ const Maintenance = ({ user }) => {
               <div className="border-t border-base-200 dark:border-base-700"></div>
               <div className="space-y-4">
                 <p className="mx-auto max-w-2xl text-base font-light tracking-tight text-black dark:text-white xl:text-2xl">
-                  Sorry, we had to do some maintenance updates and needed to
-                  take site offline temporariliy. Will be back online ASAP.
+                  Sorry, we have to do some maintenance updates and need to take
+                  the site offline temporarily. Will be back online ASAP.
                 </p>
                 <p className="text-2xl">✌️</p>
               </div>
