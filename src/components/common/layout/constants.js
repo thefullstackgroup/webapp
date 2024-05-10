@@ -169,5 +169,4 @@ export const navigation = [
     children: false,
     slug: 'developers',
   },
-  { href: '/teams', label: 'Teams', children: false, slug: 'teams' },
 ];
