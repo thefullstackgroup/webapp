@@ -11,6 +11,7 @@ import OpenGraphPreview from 'components/modules/post/OpenGraphPreview';
 import Avatar from 'components/common/elements/Avatar';
 import TagPostType from 'components/common/tags/TagPostType';
 import Poll from './Poll';
+import MentionsSpan from 'components/common/elements/MentionsSpan';
 
 const sparkCharCount = 300;
 
@@ -101,6 +102,9 @@ const Content = ({
                   overrides: {
                     pre: {
                       component: CodeBlock,
+                    },
+                    span: {
+                      component: MentionsSpan,
                     },
                     a: {
                       props: {

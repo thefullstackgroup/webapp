@@ -8,6 +8,7 @@ import { IoLogoMarkdown } from 'react-icons/io5';
 import ModalAlert from 'components/common/modals/ModalAlert';
 import Icon from 'components/common/elements/Icon';
 import SelectEmoji from 'components/common/elements/SelectEmoji';
+import MentionInput from 'components/common/elements/MentionInput';
 
 const EditComment = ({
   commentToUpdate,
@@ -125,7 +126,14 @@ const EditComment = ({
 
           <div className=" w-auto flex-1">
             <div className="block">
-              <div className="dark text-input mb-2 border">
+              <MentionInput
+                userId={user?.userId}
+                value={comment}
+                onChange={setComment}
+                placeholder={'Edit comment ...'}
+                name={'editComment'}
+              />
+              {/* <div className="dark text-input mb-2 border">
                 <ReactMde
                   value={comment}
                   onChange={setComment}
@@ -141,7 +149,7 @@ const EditComment = ({
                   toolbarCommands={[]}
                   loadSuggestions={loadSuggestions}
                 />
-              </div>
+              </div> */}
 
               <div className="item-center flex justify-between">
                 <div className="flex items-center space-x-4">
